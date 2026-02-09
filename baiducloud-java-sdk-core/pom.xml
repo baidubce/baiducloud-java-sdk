@@ -3,19 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baidubce</groupId>
-    <artifactId>baiducloud-java-sdk</artifactId>
+    <artifactId>baiducloud-java-sdk-core</artifactId>
     <version>0.0.1</version>
-    <packaging>pom</packaging>
-    <name>baiducloud-java-sdk</name>
-    <description>The BCE SDK for Java provides Java APIs for all of BCE services.</description>
-    <url>http://bce.baidu.com/sdk/index.html</url>
-
-    <modules>
-        <module>baiducloud-java-sdk-core</module>
-        <module>baiducloud-java-sdk-vpc</module>
-    </modules>
+    <name>baiducloud-java-sdk-core</name>
+    <description>Baidu Cloud SDK for Java - Core Module providing fundamental APIs for BCE services</description>
+    <url>https://github.com/baidubce/baiducloud-java-sdk</url>
 
     <scm>
         <url>https://github.com/baidubce/baiducloud-java-sdk.git</url>
@@ -60,6 +53,7 @@
         <bouncycastle.version>1.59</bouncycastle.version>
         <minio.version>8.4.5</minio.version>
         <spring-core.version>5.3.32</spring-core.version>
+        <central-publishing-maven-plugin.version>0.7.0</central-publishing-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -249,6 +243,25 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assembly</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>src/main/assembly/package.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>2.6</version>
@@ -281,18 +294,21 @@
                         </executions>
                     </plugin>
 
+                    <!-- Publishing to Maven Central Portal plugin -->
+                    <!-- https://central.sonatype.com/artifact/org.sonatype.central/central-publishing-maven-plugin -->
                     <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.5.1</version>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>${central-publishing-maven-plugin.version}</version>
                         <extensions>true</extensions>
                         <configuration>
-                            <serverId>sonatype-nexus-staging</serverId>
-                            <nexusUrl>https://oss.sonatype.org</nexusUrl>
+                            <!-- 注意：此 serverId 必须与 Maven settings.xml 中的 server id 对应 -->
+                            <publishingServerId>central</publishingServerId>
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
         </profile>
     </profiles>
+
 </project>
