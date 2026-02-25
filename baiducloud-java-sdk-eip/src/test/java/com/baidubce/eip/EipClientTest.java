@@ -2,20 +2,33 @@
 
 package com.baidubce.eip;
 
+import com.baidubce.eip.models.ActivateEipAutomaticRenewalRequest;
 import com.baidubce.eip.models.AddTbspAreaBlockingRequest;
 import com.baidubce.eip.models.AddTbspIpWhitelistRequest;
 import com.baidubce.eip.models.AddTbspProtocolBlockingRequest;
+import com.baidubce.eip.models.ApplyForEipRequest;
+import com.baidubce.eip.models.ApplyForEipResponse;
 import com.baidubce.eip.models.BandwidthPackageInquiryRequest;
 import com.baidubce.eip.models.BandwidthPackageInquiryResponse;
+import com.baidubce.eip.models.BindEipRequest;
 import com.baidubce.eip.models.BindTbspProtectionObjectRequest;
+import com.baidubce.eip.models.CancelEipTransferRequest;
+import com.baidubce.eip.models.CloseEipDirectAccessRequest;
+import com.baidubce.eip.models.CreateEipTransferRequest;
 import com.baidubce.eip.models.CreateTbspRequest;
 import com.baidubce.eip.models.CreateTbspResponse;
 import com.baidubce.eip.models.DetailTbspRequest;
 import com.baidubce.eip.models.DetailTbspResponse;
 import com.baidubce.eip.models.DisableTbspIpCleanRequest;
+import com.baidubce.eip.models.EipBandwidthScalingCapacityRequest;
 import com.baidubce.eip.models.EipInquiryRequest;
 import com.baidubce.eip.models.EipInquiryResponse;
+import com.baidubce.eip.models.EipPostpaidToPrepaidRequest;
+import com.baidubce.eip.models.EipRenewalRequest;
+import com.baidubce.eip.models.EnableEipDirectAccessRequest;
 import com.baidubce.eip.models.EnableTbspIpCleanRequest;
+import com.baidubce.eip.models.ListEipTransferRequest;
+import com.baidubce.eip.models.ListEipTransferResponse;
 import com.baidubce.eip.models.ListTbspAreaBlockingRequest;
 import com.baidubce.eip.models.ListTbspAreaBlockingResponse;
 import com.baidubce.eip.models.ListTbspIpCleanRequest;
@@ -28,16 +41,30 @@ import com.baidubce.eip.models.ListTbspRequest;
 import com.baidubce.eip.models.ListTbspResponse;
 import com.baidubce.eip.models.ModifyTbspIpCleanThresholdRequest;
 import com.baidubce.eip.models.ModifyTbspIpProtectLevelRequest;
+import com.baidubce.eip.models.PrepaidEipUnsubscribeRequest;
+import com.baidubce.eip.models.QueryEipListRequest;
+import com.baidubce.eip.models.QueryEipListResponse;
+import com.baidubce.eip.models.QueryTheListOfEipsInTheRecyclingBinRequest;
+import com.baidubce.eip.models.QueryTheListOfEipsInTheRecyclingBinResponse;
+import com.baidubce.eip.models.ReceiveEipTransferRequest;
+import com.baidubce.eip.models.RejectEipTransferRequest;
+import com.baidubce.eip.models.ReleaseEipRequest;
+import com.baidubce.eip.models.ReleaseTheEipFromTheRecyclingBinRequest;
 import com.baidubce.eip.models.RemoveTbspAreaBlockingRequest;
 import com.baidubce.eip.models.RemoveTbspIpWhitelistRequest;
 import com.baidubce.eip.models.RemoveTbspProtocolBlockingRequest;
 import com.baidubce.eip.models.RenewTbspRequest;
 import com.baidubce.eip.models.ResizeTbspRequest;
+import com.baidubce.eip.models.RestoreEipInRecycleBinRequest;
+import com.baidubce.eip.models.SelectiveReleaseOfEipRequest;
 import com.baidubce.eip.models.SharedBandwidthInquiryRequest;
 import com.baidubce.eip.models.SharedBandwidthInquiryResponse;
 import com.baidubce.eip.models.SharedDataPackageInquiryRequest;
 import com.baidubce.eip.models.SharedDataPackageInquiryResponse;
+import com.baidubce.eip.models.TurnOffEipAutomaticRenewalRequest;
+import com.baidubce.eip.models.UnbindEipRequest;
 import com.baidubce.eip.models.UnbindTbspProtectionObjectRequest;
+import com.baidubce.eip.models.UpdateEipReleaseProtectionSwitchRequest;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -59,6 +86,19 @@ public class EipClientTest {
         eipClient = new EipClient(config);
     }
 
+    /**
+     * activateEipAutomaticRenewal
+     *
+     */
+    @Test
+    public void activateEipAutomaticRenewalTest() {
+        ActivateEipAutomaticRenewalRequest activateEipAutomaticRenewalRequest = new ActivateEipAutomaticRenewalRequest();
+        activateEipAutomaticRenewalRequest.setClientToken("");
+        activateEipAutomaticRenewalRequest.setEip("");
+        activateEipAutomaticRenewalRequest.setAutoRenewTimeUnit("");
+        activateEipAutomaticRenewalRequest.setAutoRenewTime(0);
+        eipClient.activateEipAutomaticRenewal(activateEipAutomaticRenewalRequest);
+    }
     /**
      * addTbspAreaBlocking
      *
@@ -100,6 +140,27 @@ public class EipClientTest {
         eipClient.addTbspProtocolBlocking(addTbspProtocolBlockingRequest);
     }
     /**
+     * applyForEip
+     *
+     */
+    @Test
+    public void applyForEipTest() {
+        ApplyForEipRequest applyForEipRequest = new ApplyForEipRequest();
+        applyForEipRequest.setClientToken("");
+        applyForEipRequest.setIpVersion("");
+        applyForEipRequest.setRouteType("");
+        applyForEipRequest.setBandwidthInMbps(0);
+        applyForEipRequest.setBilling(null);
+        applyForEipRequest.setName("");
+        applyForEipRequest.setTags(new ArrayList<>());
+        applyForEipRequest.setResourceGroupId("");
+        applyForEipRequest.setAutoRenewTimeUnit("");
+        applyForEipRequest.setAutoRenewTime(0);
+        applyForEipRequest.setDeleteProtect(false);
+        ApplyForEipResponse response = eipClient.applyForEip(applyForEipRequest);
+        System.out.println(response);
+    }
+    /**
      * bandwidthPackageInquiry
      *
      */
@@ -113,6 +174,20 @@ public class EipClientTest {
         System.out.println(response);
     }
     /**
+     * bindEip
+     *
+     */
+    @Test
+    public void bindEipTest() {
+        BindEipRequest bindEipRequest = new BindEipRequest();
+        bindEipRequest.setEip("");
+        bindEipRequest.setClientToken("");
+        bindEipRequest.setInstanceType("");
+        bindEipRequest.setInstanceId("");
+        bindEipRequest.setInstanceIp("");
+        eipClient.bindEip(bindEipRequest);
+    }
+    /**
      * bindTbspProtectionObject
      *
      */
@@ -123,6 +198,42 @@ public class EipClientTest {
         bindTbspProtectionObjectRequest.setClientToken("");
         bindTbspProtectionObjectRequest.setIpList(new ArrayList<>());
         eipClient.bindTbspProtectionObject(bindTbspProtectionObjectRequest);
+    }
+    /**
+     * cancelEipTransfer
+     *
+     */
+    @Test
+    public void cancelEipTransferTest() {
+        CancelEipTransferRequest cancelEipTransferRequest = new CancelEipTransferRequest();
+        cancelEipTransferRequest.setAction("");
+        cancelEipTransferRequest.setClientToken("");
+        cancelEipTransferRequest.setTransferIdList(new ArrayList<>());
+        eipClient.cancelEipTransfer(cancelEipTransferRequest);
+    }
+    /**
+     * closeEipDirectAccess
+     *
+     */
+    @Test
+    public void closeEipDirectAccessTest() {
+        CloseEipDirectAccessRequest closeEipDirectAccessRequest = new CloseEipDirectAccessRequest();
+        closeEipDirectAccessRequest.setEip("");
+        closeEipDirectAccessRequest.setClientToken("");
+        eipClient.closeEipDirectAccess(closeEipDirectAccessRequest);
+    }
+    /**
+     * createEipTransfer
+     *
+     */
+    @Test
+    public void createEipTransferTest() {
+        CreateEipTransferRequest createEipTransferRequest = new CreateEipTransferRequest();
+        createEipTransferRequest.setClientToken("");
+        createEipTransferRequest.setTransferType("");
+        createEipTransferRequest.setTransferResourceList(new ArrayList<>());
+        createEipTransferRequest.setToUserId("");
+        eipClient.createEipTransfer(createEipTransferRequest);
     }
     /**
      * createTbsp
@@ -167,6 +278,18 @@ public class EipClientTest {
         eipClient.disableTbspIpClean(disableTbspIpCleanRequest);
     }
     /**
+     * eipBandwidthScalingCapacity
+     *
+     */
+    @Test
+    public void eipBandwidthScalingCapacityTest() {
+        EipBandwidthScalingCapacityRequest eipBandwidthScalingCapacityRequest = new EipBandwidthScalingCapacityRequest();
+        eipBandwidthScalingCapacityRequest.setEip("");
+        eipBandwidthScalingCapacityRequest.setClientToken("");
+        eipBandwidthScalingCapacityRequest.setNewBandwidthInMbps(0);
+        eipClient.eipBandwidthScalingCapacity(eipBandwidthScalingCapacityRequest);
+    }
+    /**
      * eipInquiry
      *
      */
@@ -181,6 +304,42 @@ public class EipClientTest {
         System.out.println(response);
     }
     /**
+     * eipPostpaidToPrepaid
+     *
+     */
+    @Test
+    public void eipPostpaidToPrepaidTest() {
+        EipPostpaidToPrepaidRequest eipPostpaidToPrepaidRequest = new EipPostpaidToPrepaidRequest();
+        eipPostpaidToPrepaidRequest.setEip("");
+        eipPostpaidToPrepaidRequest.setClientToken("");
+        eipPostpaidToPrepaidRequest.setPurchaseLength(0);
+        eipPostpaidToPrepaidRequest.setBandWidth(0);
+        eipClient.eipPostpaidToPrepaid(eipPostpaidToPrepaidRequest);
+    }
+    /**
+     * eipRenewal
+     *
+     */
+    @Test
+    public void eipRenewalTest() {
+        EipRenewalRequest eipRenewalRequest = new EipRenewalRequest();
+        eipRenewalRequest.setEip("");
+        eipRenewalRequest.setClientToken("");
+        eipRenewalRequest.setBilling(null);
+        eipClient.eipRenewal(eipRenewalRequest);
+    }
+    /**
+     * enableEipDirectAccess
+     *
+     */
+    @Test
+    public void enableEipDirectAccessTest() {
+        EnableEipDirectAccessRequest enableEipDirectAccessRequest = new EnableEipDirectAccessRequest();
+        enableEipDirectAccessRequest.setEip("");
+        enableEipDirectAccessRequest.setClientToken("");
+        eipClient.enableEipDirectAccess(enableEipDirectAccessRequest);
+    }
+    /**
      * enableTbspIpClean
      *
      */
@@ -191,6 +350,25 @@ public class EipClientTest {
         enableTbspIpCleanRequest.setClientToken("");
         enableTbspIpCleanRequest.setIp("");
         eipClient.enableTbspIpClean(enableTbspIpCleanRequest);
+    }
+    /**
+     * listEipTransfer
+     *
+     */
+    @Test
+    public void listEipTransferTest() {
+        ListEipTransferRequest listEipTransferRequest = new ListEipTransferRequest();
+        listEipTransferRequest.setMaxKeys("");
+        listEipTransferRequest.setMarker("");
+        listEipTransferRequest.setDirection("");
+        listEipTransferRequest.setTransferId("");
+        listEipTransferRequest.setStatus("");
+        listEipTransferRequest.setFuzzyTransferId("");
+        listEipTransferRequest.setFuzzyInstanceId("");
+        listEipTransferRequest.setFuzzyInstanceName("");
+        listEipTransferRequest.setFuzzyInstanceIp("");
+        ListEipTransferResponse response = eipClient.listEipTransfer(listEipTransferRequest);
+        System.out.println(response);
     }
     /**
      * listTbsp
@@ -289,6 +467,97 @@ public class EipClientTest {
         eipClient.modifyTbspIpProtectLevel(modifyTbspIpProtectLevelRequest);
     }
     /**
+     * prepaidEipUnsubscribe
+     *
+     */
+    @Test
+    public void prepaidEipUnsubscribeTest() {
+        PrepaidEipUnsubscribeRequest prepaidEipUnsubscribeRequest = new PrepaidEipUnsubscribeRequest();
+        prepaidEipUnsubscribeRequest.setEip("");
+        prepaidEipUnsubscribeRequest.setClientToken("");
+        eipClient.prepaidEipUnsubscribe(prepaidEipUnsubscribeRequest);
+    }
+    /**
+     * queryEipList
+     *
+     */
+    @Test
+    public void queryEipListTest() {
+        QueryEipListRequest queryEipListRequest = new QueryEipListRequest();
+        queryEipListRequest.setIpVersion("");
+        queryEipListRequest.setEip("");
+        queryEipListRequest.setInstanceType("");
+        queryEipListRequest.setInstanceId("");
+        queryEipListRequest.setName("");
+        queryEipListRequest.setStatus("");
+        queryEipListRequest.setEipIds(new ArrayList<>());
+        queryEipListRequest.setMarker("");
+        queryEipListRequest.setMaxKeys(0);
+        QueryEipListResponse response = eipClient.queryEipList(queryEipListRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryTheListOfEipsInTheRecyclingBin
+     *
+     */
+    @Test
+    public void queryTheListOfEipsInTheRecyclingBinTest() {
+        QueryTheListOfEipsInTheRecyclingBinRequest queryTheListOfEipsInTheRecyclingBinRequest = new QueryTheListOfEipsInTheRecyclingBinRequest();
+        queryTheListOfEipsInTheRecyclingBinRequest.setEip("");
+        queryTheListOfEipsInTheRecyclingBinRequest.setName("");
+        queryTheListOfEipsInTheRecyclingBinRequest.setMarker("");
+        queryTheListOfEipsInTheRecyclingBinRequest.setMaxKeys(0);
+        QueryTheListOfEipsInTheRecyclingBinResponse response = eipClient.queryTheListOfEipsInTheRecyclingBin(queryTheListOfEipsInTheRecyclingBinRequest);
+        System.out.println(response);
+    }
+    /**
+     * receiveEipTransfer
+     *
+     */
+    @Test
+    public void receiveEipTransferTest() {
+        ReceiveEipTransferRequest receiveEipTransferRequest = new ReceiveEipTransferRequest();
+        receiveEipTransferRequest.setAction("");
+        receiveEipTransferRequest.setClientToken("");
+        receiveEipTransferRequest.setTransferIdList(new ArrayList<>());
+        eipClient.receiveEipTransfer(receiveEipTransferRequest);
+    }
+    /**
+     * rejectEipTransfer
+     *
+     */
+    @Test
+    public void rejectEipTransferTest() {
+        RejectEipTransferRequest rejectEipTransferRequest = new RejectEipTransferRequest();
+        rejectEipTransferRequest.setAction("");
+        rejectEipTransferRequest.setClientToken("");
+        rejectEipTransferRequest.setTransferIdList(new ArrayList<>());
+        eipClient.rejectEipTransfer(rejectEipTransferRequest);
+    }
+    /**
+     * releaseEip
+     *
+     */
+    @Test
+    public void releaseEipTest() {
+        ReleaseEipRequest releaseEipRequest = new ReleaseEipRequest();
+        releaseEipRequest.setEip("");
+        releaseEipRequest.setClientToken("");
+        releaseEipRequest.setReleaseToRecycle(false);
+        eipClient.releaseEip(releaseEipRequest);
+    }
+    /**
+     * releaseTheEipFromTheRecyclingBin
+     *
+     */
+    @Test
+    public void releaseTheEipFromTheRecyclingBinTest() {
+        ReleaseTheEipFromTheRecyclingBinRequest releaseTheEipFromTheRecyclingBinRequest = new ReleaseTheEipFromTheRecyclingBinRequest();
+        releaseTheEipFromTheRecyclingBinRequest.setEip("");
+        releaseTheEipFromTheRecyclingBinRequest.setClientToken("");
+        eipClient.releaseTheEipFromTheRecyclingBin(releaseTheEipFromTheRecyclingBinRequest);
+    }
+    /**
      * removeTbspAreaBlocking
      *
      */
@@ -352,6 +621,29 @@ public class EipClientTest {
         eipClient.resizeTbsp(resizeTbspRequest);
     }
     /**
+     * restoreEipInRecycleBin
+     *
+     */
+    @Test
+    public void restoreEipInRecycleBinTest() {
+        RestoreEipInRecycleBinRequest restoreEipInRecycleBinRequest = new RestoreEipInRecycleBinRequest();
+        restoreEipInRecycleBinRequest.setEip("");
+        restoreEipInRecycleBinRequest.setClientToken("");
+        eipClient.restoreEipInRecycleBin(restoreEipInRecycleBinRequest);
+    }
+    /**
+     * selectiveReleaseOfEip
+     *
+     */
+    @Test
+    public void selectiveReleaseOfEipTest() {
+        SelectiveReleaseOfEipRequest selectiveReleaseOfEipRequest = new SelectiveReleaseOfEipRequest();
+        selectiveReleaseOfEipRequest.setEip("");
+        selectiveReleaseOfEipRequest.setReleaseToRecycle(false);
+        selectiveReleaseOfEipRequest.setClientToken("");
+        eipClient.selectiveReleaseOfEip(selectiveReleaseOfEipRequest);
+    }
+    /**
      * sharedBandwidthInquiry
      *
      */
@@ -381,6 +673,28 @@ public class EipClientTest {
         System.out.println(response);
     }
     /**
+     * turnOffEipAutomaticRenewal
+     *
+     */
+    @Test
+    public void turnOffEipAutomaticRenewalTest() {
+        TurnOffEipAutomaticRenewalRequest turnOffEipAutomaticRenewalRequest = new TurnOffEipAutomaticRenewalRequest();
+        turnOffEipAutomaticRenewalRequest.setClientToken("");
+        turnOffEipAutomaticRenewalRequest.setEip("");
+        eipClient.turnOffEipAutomaticRenewal(turnOffEipAutomaticRenewalRequest);
+    }
+    /**
+     * unbindEip
+     *
+     */
+    @Test
+    public void unbindEipTest() {
+        UnbindEipRequest unbindEipRequest = new UnbindEipRequest();
+        unbindEipRequest.setEip("");
+        unbindEipRequest.setClientToken("");
+        eipClient.unbindEip(unbindEipRequest);
+    }
+    /**
      * unbindTbspProtectionObject
      *
      */
@@ -391,5 +705,17 @@ public class EipClientTest {
         unbindTbspProtectionObjectRequest.setClientToken("");
         unbindTbspProtectionObjectRequest.setIpList(new ArrayList<>());
         eipClient.unbindTbspProtectionObject(unbindTbspProtectionObjectRequest);
+    }
+    /**
+     * updateEipReleaseProtectionSwitch
+     *
+     */
+    @Test
+    public void updateEipReleaseProtectionSwitchTest() {
+        UpdateEipReleaseProtectionSwitchRequest updateEipReleaseProtectionSwitchRequest = new UpdateEipReleaseProtectionSwitchRequest();
+        updateEipReleaseProtectionSwitchRequest.setEip("");
+        updateEipReleaseProtectionSwitchRequest.setClientToken("");
+        updateEipReleaseProtectionSwitchRequest.setDeleteProtect(false);
+        eipClient.updateEipReleaseProtectionSwitch(updateEipReleaseProtectionSwitchRequest);
     }
 }
