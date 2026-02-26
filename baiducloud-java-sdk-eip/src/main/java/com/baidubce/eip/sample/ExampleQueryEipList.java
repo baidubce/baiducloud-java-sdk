@@ -6,6 +6,7 @@ import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.eip.EipClient;
 import com.baidubce.eip.models.QueryEipListRequest;
 import com.baidubce.eip.models.QueryEipListResponse;
+
 import java.util.ArrayList;
 
 public class ExampleQueryEipList {

@@ -5,9 +5,10 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.eip.EipClient;
 import com.baidubce.eip.models.ApplyForEipRequest;
-import com.baidubce.eip.models.Reservation;
-import com.baidubce.eip.models.Billing;
 import com.baidubce.eip.models.ApplyForEipResponse;
+import com.baidubce.eip.models.Billing;
+import com.baidubce.eip.models.Reservation;
+
 import java.util.ArrayList;
 
 public class ExampleApplyForEip {

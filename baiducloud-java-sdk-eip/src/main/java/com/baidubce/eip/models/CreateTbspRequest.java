@@ -19,32 +19,32 @@ public class CreateTbspRequest extends BaseBceRequest {
     private String name;
 
     /**
-    * 线路类型(支持BGP/BGP_S,分别代表标准BGP/增强BGP)
+    * 线路类型（支持BGP/BGP_S，分别代表标准BGP/增强BGP）
     */
     private String lineType;
 
     /**
-    * 单个服务包的IP容量(1/5/30/100)
+    * 单个服务包的IP容量（1/5/30/100）
     */
     private Integer ipCapacity;
 
     /**
-    * 购买时长(按天:1-20;按月:3,6;按年:1-3)
+    * 购买时长（按天：1-20；按月：3，6； 按年：1-3）
     */
     private Integer reservationLength;
 
     /**
-    * 购买时长单位(DAY/MONTH/YEAR)
+    * 购买时长单位（DAY/MONTH/YEAR）
     */
     private String reservationTimeUnit;
 
     /**
-    * 自动续费周期,创建TBSP同时开通自动续费(按月:1-9;按年:1-3)
+    * 自动续费周期，创建TBSP同时开通自动续费（按月：1-9； 按年：1-3）
     */
     private Integer autoRenewTime;
 
     /**
-    * 自动续费周期单位,创建TBSP同时开通自动续费(MONTH/YEAR)
+    * 自动续费周期单位，创建TBSP同时开通自动续费（MONTH/YEAR）
     */
     private String autoRenewTimeUnit;
 

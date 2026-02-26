@@ -2,6 +2,8 @@
 
 package com.baidubce.eip;
 
+import com.baidubce.BceClientConfiguration;
+import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.eip.models.ActivateEipAutomaticRenewalRequest;
 import com.baidubce.eip.models.AddTbspAreaBlockingRequest;
 import com.baidubce.eip.models.AddTbspIpWhitelistRequest;
@@ -65,11 +67,11 @@ import com.baidubce.eip.models.TurnOffEipAutomaticRenewalRequest;
 import com.baidubce.eip.models.UnbindEipRequest;
 import com.baidubce.eip.models.UnbindTbspProtectionObjectRequest;
 import com.baidubce.eip.models.UpdateEipReleaseProtectionSwitchRequest;
-import org.junit.Test;
 import org.junit.Before;
-import com.baidubce.BceClientConfiguration;
-import com.baidubce.auth.DefaultBceCredentials;
+import org.junit.Test;
+
 import java.util.ArrayList;
+
 /**
  * API tests for EipClient
  */
@@ -206,7 +208,6 @@ public class EipClientTest {
     @Test
     public void cancelEipTransferTest() {
         CancelEipTransferRequest cancelEipTransferRequest = new CancelEipTransferRequest();
-        cancelEipTransferRequest.setAction("");
         cancelEipTransferRequest.setClientToken("");
         cancelEipTransferRequest.setTransferIdList(new ArrayList<>());
         eipClient.cancelEipTransfer(cancelEipTransferRequest);
@@ -358,7 +359,7 @@ public class EipClientTest {
     @Test
     public void listEipTransferTest() {
         ListEipTransferRequest listEipTransferRequest = new ListEipTransferRequest();
-        listEipTransferRequest.setMaxKeys("");
+        listEipTransferRequest.setMaxKeys(0);
         listEipTransferRequest.setMarker("");
         listEipTransferRequest.setDirection("");
         listEipTransferRequest.setTransferId("");
@@ -517,7 +518,6 @@ public class EipClientTest {
     @Test
     public void receiveEipTransferTest() {
         ReceiveEipTransferRequest receiveEipTransferRequest = new ReceiveEipTransferRequest();
-        receiveEipTransferRequest.setAction("");
         receiveEipTransferRequest.setClientToken("");
         receiveEipTransferRequest.setTransferIdList(new ArrayList<>());
         eipClient.receiveEipTransfer(receiveEipTransferRequest);
@@ -529,7 +529,6 @@ public class EipClientTest {
     @Test
     public void rejectEipTransferTest() {
         RejectEipTransferRequest rejectEipTransferRequest = new RejectEipTransferRequest();
-        rejectEipTransferRequest.setAction("");
         rejectEipTransferRequest.setClientToken("");
         rejectEipTransferRequest.setTransferIdList(new ArrayList<>());
         eipClient.rejectEipTransfer(rejectEipTransferRequest);

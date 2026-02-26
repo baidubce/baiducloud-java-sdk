@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.eip.EipClient;
 import com.baidubce.eip.models.CancelEipTransferRequest;
+
 import java.util.ArrayList;
 
 public class ExampleCancelEipTransfer {
@@ -18,7 +19,6 @@ public class ExampleCancelEipTransfer {
         config.setEndpoint(endpoint);
         EipClient client = new EipClient(config);
         CancelEipTransferRequest cancelEipTransferRequest = new CancelEipTransferRequest();
-        cancelEipTransferRequest.setAction("");
         cancelEipTransferRequest.setClientToken("");
         cancelEipTransferRequest.setTransferIdList(new ArrayList<>());
         try {

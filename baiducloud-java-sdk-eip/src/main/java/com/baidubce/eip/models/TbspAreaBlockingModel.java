@@ -13,7 +13,7 @@ public class TbspAreaBlockingModel  {
     private String ip;
 
     /**
-     * DDoS增强防护包防护对象封禁区域,包含大陆地区 (continent) 和海外及港澳台地区 (overseas)
+     * DDoS增强防护包防护对象封禁区域，包含大陆地区 (continent) 和海外及港澳台地区 (overseas)
      */
     private String blockArea;
 

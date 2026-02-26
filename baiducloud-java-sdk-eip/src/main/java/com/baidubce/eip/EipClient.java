@@ -1,27 +1,11 @@
 package com.baidubce.eip;
+
 import com.baidubce.AbstractBceClient;
-import com.baidubce.http.handler.HttpResponseHandler;
-import com.baidubce.http.handler.BceErrorResponseHandler;
-import com.baidubce.http.handler.BceJsonResponseHandler;
-import com.baidubce.http.handler.BceMetadataResponseHandler;
 import com.baidubce.BceClientConfiguration;
-import com.baidubce.internal.InternalRequest;
-import com.baidubce.http.HttpMethodName;
-import com.baidubce.model.AbstractBceRequest;
-import com.baidubce.util.HttpUtils;
-import java.net.URI;
-import com.baidubce.util.JsonUtils;
-import java.io.UnsupportedEncodingException;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.SignOptions;
-import com.baidubce.http.Headers;
-import com.baidubce.internal.RestartableInputStream;
-import static com.baidubce.util.Validate.checkNotNull;
 import com.baidubce.common.BaseBceRequest;
-import java.util.UUID;
-import com.google.common.base.Strings;
 import com.baidubce.common.BaseBceResponse;
-
 import com.baidubce.eip.models.ActivateEipAutomaticRenewalRequest;
 import com.baidubce.eip.models.AddTbspAreaBlockingRequest;
 import com.baidubce.eip.models.AddTbspIpWhitelistRequest;
@@ -85,12 +69,28 @@ import com.baidubce.eip.models.TurnOffEipAutomaticRenewalRequest;
 import com.baidubce.eip.models.UnbindEipRequest;
 import com.baidubce.eip.models.UnbindTbspProtectionObjectRequest;
 import com.baidubce.eip.models.UpdateEipReleaseProtectionSwitchRequest;
+import com.baidubce.http.Headers;
+import com.baidubce.http.HttpMethodName;
+import com.baidubce.http.handler.BceErrorResponseHandler;
+import com.baidubce.http.handler.BceJsonResponseHandler;
+import com.baidubce.http.handler.BceMetadataResponseHandler;
+import com.baidubce.http.handler.HttpResponseHandler;
+import com.baidubce.internal.InternalRequest;
+import com.baidubce.internal.RestartableInputStream;
+import com.baidubce.model.AbstractBceRequest;
+import com.baidubce.util.HttpUtils;
+import com.baidubce.util.JsonUtils;
+import com.google.common.base.Strings;
 
-
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
+import java.util.UUID;
+
+import static com.baidubce.util.Validate.checkNotNull;
 
 
 public class EipClient extends AbstractBceClient {
@@ -316,15 +316,13 @@ public class EipClient extends AbstractBceClient {
    * @param request 入参结构体
    */
   public void cancelEipTransfer(CancelEipTransferRequest request) {
-    // verify the required parameter 'action' is set
-    checkNotNull(request.getAction(), "Missing the required parameter 'action' when calling cancelEipTransfer");
     if (Strings.isNullOrEmpty(request.getClientToken())) {
         request.setClientToken(generateDefaultClientToken());
     }
     // verify the required parameter 'transferIdList' is set
     checkNotNull(request.getTransferIdList(), "Missing the required parameter 'transferIdList' when calling cancelEipTransfer");
     InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_TRANSFER);
-    internalRequest.addParameter(request.getAction(), null);
+    internalRequest.addParameter("cancel", null);
     if (request.getClientToken() != null) {
         internalRequest.addParameter("clientToken", request.getClientToken());
     }
@@ -569,7 +567,7 @@ public class EipClient extends AbstractBceClient {
   public ListEipTransferResponse listEipTransfer(ListEipTransferRequest request) {
     InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_TRANSFER);
     if (request.getMaxKeys() != null) {
-        internalRequest.addParameter("maxKeys", request.getMaxKeys());
+        internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
     }
     if (request.getMarker() != null) {
         internalRequest.addParameter("marker", request.getMarker());
@@ -827,15 +825,13 @@ public class EipClient extends AbstractBceClient {
    * @param request 入参结构体
    */
   public void receiveEipTransfer(ReceiveEipTransferRequest request) {
-    // verify the required parameter 'action' is set
-    checkNotNull(request.getAction(), "Missing the required parameter 'action' when calling receiveEipTransfer");
     if (Strings.isNullOrEmpty(request.getClientToken())) {
         request.setClientToken(generateDefaultClientToken());
     }
     // verify the required parameter 'transferIdList' is set
     checkNotNull(request.getTransferIdList(), "Missing the required parameter 'transferIdList' when calling receiveEipTransfer");
     InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_TRANSFER);
-    internalRequest.addParameter(request.getAction(), null);
+    internalRequest.addParameter("accept", null);
     if (request.getClientToken() != null) {
         internalRequest.addParameter("clientToken", request.getClientToken());
     }
@@ -849,15 +845,13 @@ public class EipClient extends AbstractBceClient {
    * @param request 入参结构体
    */
   public void rejectEipTransfer(RejectEipTransferRequest request) {
-    // verify the required parameter 'action' is set
-    checkNotNull(request.getAction(), "Missing the required parameter 'action' when calling rejectEipTransfer");
     if (Strings.isNullOrEmpty(request.getClientToken())) {
         request.setClientToken(generateDefaultClientToken());
     }
     // verify the required parameter 'transferIdList' is set
     checkNotNull(request.getTransferIdList(), "Missing the required parameter 'transferIdList' when calling rejectEipTransfer");
     InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_TRANSFER);
-    internalRequest.addParameter(request.getAction(), null);
+    internalRequest.addParameter("reject", null);
     if (request.getClientToken() != null) {
         internalRequest.addParameter("clientToken", request.getClientToken());
     }

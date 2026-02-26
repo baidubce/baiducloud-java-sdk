@@ -1,13 +1,10 @@
 
 package com.baidubce.eip.models;
 
-import java.util.HashMap;
-import java.util.Map;
-
-
-
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SharedBandwidthInquiryResponse extends BaseBceResponse  {

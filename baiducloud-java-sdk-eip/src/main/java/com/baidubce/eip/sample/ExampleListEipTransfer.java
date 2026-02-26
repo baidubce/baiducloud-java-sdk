@@ -18,7 +18,7 @@ public class ExampleListEipTransfer {
         config.setEndpoint(endpoint);
         EipClient client = new EipClient(config);
         ListEipTransferRequest listEipTransferRequest = new ListEipTransferRequest();
-        listEipTransferRequest.setMaxKeys("");
+        listEipTransferRequest.setMaxKeys(0);
         listEipTransferRequest.setMarker("");
         listEipTransferRequest.setDirection("");
         listEipTransferRequest.setTransferId("");

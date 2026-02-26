@@ -1,12 +1,10 @@
 
 package com.baidubce.eip.models;
 
-import java.util.List;
-
-
-
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ListTbspAreaBlockingResponse extends BaseBceResponse  {

@@ -10,7 +10,7 @@ public class ListEipTransferRequest {
     * maxKeys
     */
     @JsonIgnore
-    private String maxKeys;
+    private Integer maxKeys;
 
     /**
     * marker
@@ -61,11 +61,11 @@ public class ListEipTransferRequest {
     private String fuzzyInstanceIp;
 
 
-    public String getMaxKeys() {
+    public Integer getMaxKeys() {
         return maxKeys;
     }
 
-    public ListEipTransferRequest setMaxKeys(String maxKeys) {
+    public ListEipTransferRequest setMaxKeys(Integer maxKeys) {
         this.maxKeys = maxKeys;
         return this;
     }

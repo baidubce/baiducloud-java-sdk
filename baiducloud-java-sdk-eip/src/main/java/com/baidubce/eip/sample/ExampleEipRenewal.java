@@ -4,9 +4,9 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.eip.EipClient;
+import com.baidubce.eip.models.Billing;
 import com.baidubce.eip.models.EipRenewalRequest;
 import com.baidubce.eip.models.Reservation;
-import com.baidubce.eip.models.Billing;
 
 public class ExampleEipRenewal {
     public static void main(String[] args) {

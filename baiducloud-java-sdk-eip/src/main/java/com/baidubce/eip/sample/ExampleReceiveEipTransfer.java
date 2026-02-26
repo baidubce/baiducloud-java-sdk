@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.eip.EipClient;
 import com.baidubce.eip.models.ReceiveEipTransferRequest;
+
 import java.util.ArrayList;
 
 public class ExampleReceiveEipTransfer {
@@ -18,7 +19,6 @@ public class ExampleReceiveEipTransfer {
         config.setEndpoint(endpoint);
         EipClient client = new EipClient(config);
         ReceiveEipTransferRequest receiveEipTransferRequest = new ReceiveEipTransferRequest();
-        receiveEipTransferRequest.setAction("");
         receiveEipTransferRequest.setClientToken("");
         receiveEipTransferRequest.setTransferIdList(new ArrayList<>());
         try {

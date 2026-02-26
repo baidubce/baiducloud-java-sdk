@@ -4,10 +4,10 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.eip.EipClient;
-import com.baidubce.eip.models.EipInquiryRequest;
-import com.baidubce.eip.models.Reservation;
-import com.baidubce.eip.models.EipInquiryResponse;
 import com.baidubce.eip.models.Billing;
+import com.baidubce.eip.models.EipInquiryRequest;
+import com.baidubce.eip.models.EipInquiryResponse;
+import com.baidubce.eip.models.Reservation;
 
 public class ExampleEipInquiry {
     public static void main(String[] args) {
