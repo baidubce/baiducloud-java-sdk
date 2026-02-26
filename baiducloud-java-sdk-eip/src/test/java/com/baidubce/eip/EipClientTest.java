@@ -206,7 +206,6 @@ public class EipClientTest {
     @Test
     public void cancelEipTransferTest() {
         CancelEipTransferRequest cancelEipTransferRequest = new CancelEipTransferRequest();
-        cancelEipTransferRequest.setAction("");
         cancelEipTransferRequest.setClientToken("");
         cancelEipTransferRequest.setTransferIdList(new ArrayList<>());
         eipClient.cancelEipTransfer(cancelEipTransferRequest);
@@ -358,7 +357,7 @@ public class EipClientTest {
     @Test
     public void listEipTransferTest() {
         ListEipTransferRequest listEipTransferRequest = new ListEipTransferRequest();
-        listEipTransferRequest.setMaxKeys("");
+        listEipTransferRequest.setMaxKeys(0);
         listEipTransferRequest.setMarker("");
         listEipTransferRequest.setDirection("");
         listEipTransferRequest.setTransferId("");
@@ -517,7 +516,6 @@ public class EipClientTest {
     @Test
     public void receiveEipTransferTest() {
         ReceiveEipTransferRequest receiveEipTransferRequest = new ReceiveEipTransferRequest();
-        receiveEipTransferRequest.setAction("");
         receiveEipTransferRequest.setClientToken("");
         receiveEipTransferRequest.setTransferIdList(new ArrayList<>());
         eipClient.receiveEipTransfer(receiveEipTransferRequest);
@@ -529,7 +527,6 @@ public class EipClientTest {
     @Test
     public void rejectEipTransferTest() {
         RejectEipTransferRequest rejectEipTransferRequest = new RejectEipTransferRequest();
-        rejectEipTransferRequest.setAction("");
         rejectEipTransferRequest.setClientToken("");
         rejectEipTransferRequest.setTransferIdList(new ArrayList<>());
         eipClient.rejectEipTransfer(rejectEipTransferRequest);

@@ -42,7 +42,7 @@ public class TransferEipVo  {
     /**
      * EIP地址
      */
-    private String instanceIP;
+    private String instanceIp;
 
     /**
      * 线路类型
@@ -55,7 +55,7 @@ public class TransferEipVo  {
     private String instanceBandwidth;
 
     /**
-     * 状态
+     * 状态(处理中-processing、转移中-transfering、转移撤销-cancel、转移拒绝-reject、转移超时-timeout、转移失败-failed、转移成功-success)
      */
     private String status;
 
@@ -123,13 +123,13 @@ public class TransferEipVo  {
         return this.instanceName;
     }
 
-    public TransferEipVo setInstanceIP(String instanceIP) {
-        this.instanceIP = instanceIP;
+    public TransferEipVo setInstanceIp(String instanceIp) {
+        this.instanceIp = instanceIp;
         return this;
     }
 
-    public String getInstanceIP() {
-        return this.instanceIP;
+    public String getInstanceIp() {
+        return this.instanceIp;
     }
 
     public TransferEipVo setInstanceType(String instanceType) {
@@ -186,7 +186,7 @@ public class TransferEipVo  {
                 + "toUserId=" + toUserId + "\n"
                 + "instanceId=" + instanceId + "\n"
                 + "instanceName=" + instanceName + "\n"
-                + "instanceIP=" + instanceIP + "\n"
+                + "instanceIp=" + instanceIp + "\n"
                 + "instanceType=" + instanceType + "\n"
                 + "instanceBandwidth=" + instanceBandwidth + "\n"
                 + "status=" + status + "\n"

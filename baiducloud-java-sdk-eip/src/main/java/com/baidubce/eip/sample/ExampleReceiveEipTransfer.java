@@ -18,7 +18,6 @@ public class ExampleReceiveEipTransfer {
         config.setEndpoint(endpoint);
         EipClient client = new EipClient(config);
         ReceiveEipTransferRequest receiveEipTransferRequest = new ReceiveEipTransferRequest();
-        receiveEipTransferRequest.setAction("");
         receiveEipTransferRequest.setClientToken("");
         receiveEipTransferRequest.setTransferIdList(new ArrayList<>());
         try {

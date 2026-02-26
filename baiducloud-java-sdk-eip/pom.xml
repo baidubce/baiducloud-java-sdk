@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baidubce</groupId>
     <artifactId>baiducloud-java-sdk-eip</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <name>baiducloud-java-sdk-eip</name>
     <description>Baidu Cloud SDK for Java</description>
     <url>https://github.com/baidubce/baiducloud-java-sdk</url>

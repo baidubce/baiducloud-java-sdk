@@ -9,12 +9,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class RejectEipTransferRequest extends BaseBceRequest {
 
     /**
-    * action
-    */
-    @JsonIgnore
-    private String action;
-
-    /**
     * clientToken
     */
     @JsonIgnore
@@ -25,15 +19,6 @@ public class RejectEipTransferRequest extends BaseBceRequest {
     */
     private List<String> transferIdList;
 
-
-    public String getAction() {
-        return action;
-    }
-
-    public RejectEipTransferRequest setAction(String action) {
-        this.action = action;
-        return this;
-    }
 
     public String getClientToken() {
         return clientToken;

@@ -18,7 +18,6 @@ public class ExampleRejectEipTransfer {
         config.setEndpoint(endpoint);
         EipClient client = new EipClient(config);
         RejectEipTransferRequest rejectEipTransferRequest = new RejectEipTransferRequest();
-        rejectEipTransferRequest.setAction("");
         rejectEipTransferRequest.setClientToken("");
         rejectEipTransferRequest.setTransferIdList(new ArrayList<>());
         try {

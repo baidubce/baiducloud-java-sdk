@@ -316,15 +316,13 @@ public class EipClient extends AbstractBceClient {
    * @param request 入参结构体
    */
   public void cancelEipTransfer(CancelEipTransferRequest request) {
-    // verify the required parameter 'action' is set
-    checkNotNull(request.getAction(), "Missing the required parameter 'action' when calling cancelEipTransfer");
     if (Strings.isNullOrEmpty(request.getClientToken())) {
         request.setClientToken(generateDefaultClientToken());
     }
     // verify the required parameter 'transferIdList' is set
     checkNotNull(request.getTransferIdList(), "Missing the required parameter 'transferIdList' when calling cancelEipTransfer");
     InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_TRANSFER);
-    internalRequest.addParameter(request.getAction(), null);
+    internalRequest.addParameter("cancel", null);
     if (request.getClientToken() != null) {
         internalRequest.addParameter("clientToken", request.getClientToken());
     }
@@ -569,7 +567,7 @@ public class EipClient extends AbstractBceClient {
   public ListEipTransferResponse listEipTransfer(ListEipTransferRequest request) {
     InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_TRANSFER);
     if (request.getMaxKeys() != null) {
-        internalRequest.addParameter("maxKeys", request.getMaxKeys());
+        internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
     }
     if (request.getMarker() != null) {
         internalRequest.addParameter("marker", request.getMarker());
@@ -827,15 +825,13 @@ public class EipClient extends AbstractBceClient {
    * @param request 入参结构体
    */
   public void receiveEipTransfer(ReceiveEipTransferRequest request) {
-    // verify the required parameter 'action' is set
-    checkNotNull(request.getAction(), "Missing the required parameter 'action' when calling receiveEipTransfer");
     if (Strings.isNullOrEmpty(request.getClientToken())) {
         request.setClientToken(generateDefaultClientToken());
     }
     // verify the required parameter 'transferIdList' is set
     checkNotNull(request.getTransferIdList(), "Missing the required parameter 'transferIdList' when calling receiveEipTransfer");
     InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_TRANSFER);
-    internalRequest.addParameter(request.getAction(), null);
+    internalRequest.addParameter("accept", null);
     if (request.getClientToken() != null) {
         internalRequest.addParameter("clientToken", request.getClientToken());
     }
@@ -849,15 +845,13 @@ public class EipClient extends AbstractBceClient {
    * @param request 入参结构体
    */
   public void rejectEipTransfer(RejectEipTransferRequest request) {
-    // verify the required parameter 'action' is set
-    checkNotNull(request.getAction(), "Missing the required parameter 'action' when calling rejectEipTransfer");
     if (Strings.isNullOrEmpty(request.getClientToken())) {
         request.setClientToken(generateDefaultClientToken());
     }
     // verify the required parameter 'transferIdList' is set
     checkNotNull(request.getTransferIdList(), "Missing the required parameter 'transferIdList' when calling rejectEipTransfer");
     InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_TRANSFER);
-    internalRequest.addParameter(request.getAction(), null);
+    internalRequest.addParameter("reject", null);
     if (request.getClientToken() != null) {
         internalRequest.addParameter("clientToken", request.getClientToken());
     }

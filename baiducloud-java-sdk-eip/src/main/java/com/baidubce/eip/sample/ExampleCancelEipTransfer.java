@@ -18,7 +18,6 @@ public class ExampleCancelEipTransfer {
         config.setEndpoint(endpoint);
         EipClient client = new EipClient(config);
         CancelEipTransferRequest cancelEipTransferRequest = new CancelEipTransferRequest();
-        cancelEipTransferRequest.setAction("");
         cancelEipTransferRequest.setClientToken("");
         cancelEipTransferRequest.setTransferIdList(new ArrayList<>());
         try {
