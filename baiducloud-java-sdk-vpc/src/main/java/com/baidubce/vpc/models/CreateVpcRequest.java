@@ -8,91 +8,75 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateVpcRequest extends BaseBceRequest {
 
-    /**
-    * clientToken
-    */
-    @JsonIgnore
-    private String clientToken;
+  /** clientToken */
+  @JsonIgnore private String clientToken;
 
-    /**
-    * VPC名称，不能取值"default"，长度不超过65个字符，可由数字，字符，下划线组成
-    */
-    private String name;
+  /** VPC名称，不能取值"default"，长度不超过65个字符，可由数字，字符，下划线组成 */
+  private String name;
 
-    /**
-    * VPC描述，不超过200字符
-    */
-    private String description;
+  /** VPC描述，不超过200字符 */
+  private String description;
 
-    /**
-    * VPC的cidr
-    */
-    private String cidr;
+  /** VPC的cidr */
+  private String cidr;
 
-    /**
-    * 是否开启IPv6网段，true开启，默认false不开启。
-    */
-    private Boolean enableIpv6;
+  /** 是否开启IPv6网段，true开启，默认false不开启。 */
+  private Boolean enableIpv6;
 
-    /**
-    * 待创建的标签键值对列表
-    */
-    private List<TagModel> tags;
+  /** 待创建的标签键值对列表 */
+  private List<TagModel> tags;
 
+  public String getClientToken() {
+    return clientToken;
+  }
 
-    public String getClientToken() {
-        return clientToken;
-    }
+  public CreateVpcRequest setClientToken(String clientToken) {
+    this.clientToken = clientToken;
+    return this;
+  }
 
-    public CreateVpcRequest setClientToken(String clientToken) {
-        this.clientToken = clientToken;
-        return this;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public CreateVpcRequest setName(String name) {
+    this.name = name;
+    return this;
+  }
 
-    public CreateVpcRequest setName(String name) {
-        this.name = name;
-        return this;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public CreateVpcRequest setDescription(String description) {
+    this.description = description;
+    return this;
+  }
 
-    public CreateVpcRequest setDescription(String description) {
-        this.description = description;
-        return this;
-    }
+  public String getCidr() {
+    return cidr;
+  }
 
-    public String getCidr() {
-        return cidr;
-    }
+  public CreateVpcRequest setCidr(String cidr) {
+    this.cidr = cidr;
+    return this;
+  }
 
-    public CreateVpcRequest setCidr(String cidr) {
-        this.cidr = cidr;
-        return this;
-    }
+  public Boolean getEnableIpv6() {
+    return enableIpv6;
+  }
 
-    public Boolean getEnableIpv6() {
-        return enableIpv6;
-    }
+  public CreateVpcRequest setEnableIpv6(Boolean enableIpv6) {
+    this.enableIpv6 = enableIpv6;
+    return this;
+  }
 
-    public CreateVpcRequest setEnableIpv6(Boolean enableIpv6) {
-        this.enableIpv6 = enableIpv6;
-        return this;
-    }
+  public List<TagModel> getTags() {
+    return tags;
+  }
 
-    public List<TagModel> getTags() {
-        return tags;
-    }
-
-    public CreateVpcRequest setTags(List<TagModel> tags) {
-        this.tags = tags;
-        return this;
-    }
-
-
+  public CreateVpcRequest setTags(List<TagModel> tags) {
+    this.tags = tags;
+    return this;
+  }
 }

@@ -8,29 +8,30 @@ import com.baidubce.eip.models.CreateTbspRequest;
 import com.baidubce.eip.models.CreateTbspResponse;
 
 public class ExampleCreateTbsp {
-    public static void main(String[] args) {
-        // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
-        String ak = "Your Ak";
-        String sk = "Your Sk";
-        String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        EipClient client = new EipClient(config);
-        CreateTbspRequest createTbspRequest = new CreateTbspRequest();
-        createTbspRequest.setClientToken("");
-        createTbspRequest.setName("");
-        createTbspRequest.setLineType("");
-        createTbspRequest.setIpCapacity(0);
-        createTbspRequest.setReservationLength(0);
-        createTbspRequest.setReservationTimeUnit("");
-        createTbspRequest.setAutoRenewTime(0);
-        createTbspRequest.setAutoRenewTimeUnit("");
-        try {
-            CreateTbspResponse response = client.createTbsp(createTbspRequest);
-            System.out.println(response.toJsonString());
-        } catch (BceClientException e) {
-            System.out.println(e.getMessage());
-        }
+  public static void main(String[] args) {
+    // 设置Client的Access Key ID和Secret Access
+    // Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
+    String ak = "Your Ak";
+    String sk = "Your Sk";
+    String endpoint = "Endpoint";
+    BceClientConfiguration config = new BceClientConfiguration();
+    config.setCredentials(new DefaultBceCredentials(ak, sk));
+    config.setEndpoint(endpoint);
+    EipClient client = new EipClient(config);
+    CreateTbspRequest createTbspRequest = new CreateTbspRequest();
+    createTbspRequest.setClientToken("");
+    createTbspRequest.setName("");
+    createTbspRequest.setLineType("");
+    createTbspRequest.setIpCapacity(0);
+    createTbspRequest.setReservationLength(0);
+    createTbspRequest.setReservationTimeUnit("");
+    createTbspRequest.setAutoRenewTime(0);
+    createTbspRequest.setAutoRenewTimeUnit("");
+    try {
+      CreateTbspResponse response = client.createTbsp(createTbspRequest);
+      System.out.println(response.toJsonString());
+    } catch (BceClientException e) {
+      System.out.println(e.getMessage());
     }
+  }
 }

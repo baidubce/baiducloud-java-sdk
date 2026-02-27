@@ -8,27 +8,28 @@ import com.baidubce.vpc.models.UpdateVpcRequest;
 import java.util.ArrayList;
 
 public class ExampleUpdateVpc {
-    public static void main(String[] args) {
-        // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
-        String ak = "Your Ak";
-        String sk = "Your Sk";
-        String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        VpcClient client = new VpcClient(config);
-        UpdateVpcRequest updateVpcRequest = new UpdateVpcRequest();
-        updateVpcRequest.setVpcId("");
-        updateVpcRequest.setClientToken("");
-        updateVpcRequest.setName("");
-        updateVpcRequest.setDescription("");
-        updateVpcRequest.setEnableIpv6(false);
-        updateVpcRequest.setSecondaryCidr(new ArrayList<>());
-        try {
-            client.updateVpc(updateVpcRequest);
-        } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
-            System.out.println(e.getMessage());
-        }
+  public static void main(String[] args) {
+    // 设置Client的Access Key ID和Secret Access
+    // Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
+    String ak = "Your Ak";
+    String sk = "Your Sk";
+    String endpoint = "Endpoint";
+    BceClientConfiguration config = new BceClientConfiguration();
+    config.setCredentials(new DefaultBceCredentials(ak, sk));
+    config.setEndpoint(endpoint);
+    VpcClient client = new VpcClient(config);
+    UpdateVpcRequest updateVpcRequest = new UpdateVpcRequest();
+    updateVpcRequest.setVpcId("");
+    updateVpcRequest.setClientToken("");
+    updateVpcRequest.setName("");
+    updateVpcRequest.setDescription("");
+    updateVpcRequest.setEnableIpv6(false);
+    updateVpcRequest.setSecondaryCidr(new ArrayList<>());
+    try {
+      client.updateVpc(updateVpcRequest);
+    } catch (BceClientException e) {
+      // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
+      System.out.println(e.getMessage());
     }
+  }
 }

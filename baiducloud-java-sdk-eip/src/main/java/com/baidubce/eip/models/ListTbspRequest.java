@@ -6,81 +6,63 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ListTbspRequest {
 
-    /**
-    * id
-    */
-    @JsonIgnore
-    private String id;
+  /** id */
+  @JsonIgnore private String id;
 
-    /**
-    * name
-    */
-    @JsonIgnore
-    private String name;
+  /** name */
+  @JsonIgnore private String name;
 
-    /**
-    * status
-    */
-    @JsonIgnore
-    private String status;
+  /** status */
+  @JsonIgnore private String status;
 
-    /**
-    * marker
-    */
-    @JsonIgnore
-    private String marker;
+  /** marker */
+  @JsonIgnore private String marker;
 
-    /**
-    * maxKeys
-    */
-    @JsonIgnore
-    private Integer maxKeys;
+  /** maxKeys */
+  @JsonIgnore private Integer maxKeys;
 
+  public String getId() {
+    return id;
+  }
 
-    public String getId() {
-        return id;
-    }
+  public ListTbspRequest setId(String id) {
+    this.id = id;
+    return this;
+  }
 
-    public ListTbspRequest setId(String id) {
-        this.id = id;
-        return this;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public ListTbspRequest setName(String name) {
+    this.name = name;
+    return this;
+  }
 
-    public ListTbspRequest setName(String name) {
-        this.name = name;
-        return this;
-    }
+  public String getStatus() {
+    return status;
+  }
 
-    public String getStatus() {
-        return status;
-    }
+  public ListTbspRequest setStatus(String status) {
+    this.status = status;
+    return this;
+  }
 
-    public ListTbspRequest setStatus(String status) {
-        this.status = status;
-        return this;
-    }
+  public String getMarker() {
+    return marker;
+  }
 
-    public String getMarker() {
-        return marker;
-    }
+  public ListTbspRequest setMarker(String marker) {
+    this.marker = marker;
+    return this;
+  }
 
-    public ListTbspRequest setMarker(String marker) {
-        this.marker = marker;
-        return this;
-    }
+  public Integer getMaxKeys() {
+    return maxKeys;
+  }
 
-    public Integer getMaxKeys() {
-        return maxKeys;
-    }
-
-    public ListTbspRequest setMaxKeys(Integer maxKeys) {
-        this.maxKeys = maxKeys;
-        return this;
-    }
-
-
+  public ListTbspRequest setMaxKeys(Integer maxKeys) {
+    this.maxKeys = maxKeys;
+    return this;
+  }
 }

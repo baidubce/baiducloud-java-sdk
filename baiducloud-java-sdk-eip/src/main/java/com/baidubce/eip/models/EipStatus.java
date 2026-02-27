@@ -1,27 +1,21 @@
-
 package com.baidubce.eip.models;
 
-
-
-/**
- * Gets or Sets EipStatus
- */
+/** Gets or Sets EipStatus */
 public enum EipStatus {
-  
   CREATING("creating"),
-  
+
   AVAILABLE("available"),
-  
+
   BINDED("binded"),
-  
+
   BINDING("binding"),
-  
+
   UNBINDING("unbinding"),
-  
+
   UPDATING("updating"),
-  
+
   PAUSED("paused"),
-  
+
   UNAVAILABLE("unavailable");
 
   private String value;
@@ -38,8 +32,4 @@ public enum EipStatus {
   public String toString() {
     return String.valueOf(value);
   }
-
-
-
-
 }

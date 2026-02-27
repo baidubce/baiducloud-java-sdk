@@ -9,33 +9,34 @@ import com.baidubce.eip.models.Reservation;
 import com.baidubce.eip.models.Billing;
 
 public class ExampleEipRenewal {
-    public static void main(String[] args) {
-        // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
-        String ak = "Your Ak";
-        String sk = "Your Sk";
-        String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        EipClient client = new EipClient(config);
-        Billing billing = new Billing();
-        billing.setPaymentTiming("");
-        billing.setBillingMethod("");
-        Reservation reservation = new Reservation();
-        reservation.setReservationLength(0);
-        reservation.setReservationTimeUnit("");
+  public static void main(String[] args) {
+    // 设置Client的Access Key ID和Secret Access
+    // Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
+    String ak = "Your Ak";
+    String sk = "Your Sk";
+    String endpoint = "Endpoint";
+    BceClientConfiguration config = new BceClientConfiguration();
+    config.setCredentials(new DefaultBceCredentials(ak, sk));
+    config.setEndpoint(endpoint);
+    EipClient client = new EipClient(config);
+    Billing billing = new Billing();
+    billing.setPaymentTiming("");
+    billing.setBillingMethod("");
+    Reservation reservation = new Reservation();
+    reservation.setReservationLength(0);
+    reservation.setReservationTimeUnit("");
 
-        billing.setReservation(reservation);
+    billing.setReservation(reservation);
 
-        EipRenewalRequest eipRenewalRequest = new EipRenewalRequest();
-        eipRenewalRequest.setEip("");
-        eipRenewalRequest.setClientToken("");
-        eipRenewalRequest.setBilling(billing);
-        try {
-            client.eipRenewal(eipRenewalRequest);
-        } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
-            System.out.println(e.getMessage());
-        }
+    EipRenewalRequest eipRenewalRequest = new EipRenewalRequest();
+    eipRenewalRequest.setEip("");
+    eipRenewalRequest.setClientToken("");
+    eipRenewalRequest.setBilling(billing);
+    try {
+      client.eipRenewal(eipRenewalRequest);
+    } catch (BceClientException e) {
+      // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
+      System.out.println(e.getMessage());
     }
+  }
 }
