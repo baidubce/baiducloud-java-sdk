@@ -34,6 +34,7 @@ import com.baidubce.eip.models.BindEipRequest;
 import com.baidubce.eip.models.BindTbspProtectionObjectRequest;
 import com.baidubce.eip.models.CancelEipTransferRequest;
 import com.baidubce.eip.models.CreateEipTransferRequest;
+import com.baidubce.eip.models.CreateEipTransferResponse;
 import com.baidubce.eip.models.CreateTbspRequest;
 import com.baidubce.eip.models.CreateTbspResponse;
 import com.baidubce.eip.models.DetailTbspRequest;
@@ -359,8 +360,9 @@ public class EipClient extends AbstractBceClient {
    * createEipTransfer
    *
    * @param request 入参结构体
+   * @return CreateEipTransferResponse
    */
-  public void createEipTransfer(CreateEipTransferRequest request) {
+  public CreateEipTransferResponse createEipTransfer(CreateEipTransferRequest request) {
     if (Strings.isNullOrEmpty(request.getClientToken())) {
       request.setClientToken(generateDefaultClientToken());
     }
@@ -382,7 +384,7 @@ public class EipClient extends AbstractBceClient {
       internalRequest.addParameter("clientToken", request.getClientToken());
     }
     fillPayload(internalRequest, request);
-    invokeHttpClient(internalRequest, BaseBceResponse.class);
+    return invokeHttpClient(internalRequest, CreateEipTransferResponse.class);
   }
 
   /**

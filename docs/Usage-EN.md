@@ -19,7 +19,7 @@ Users can interact with Baidu Cloud through two methods: authenticated and anony
 
 **Using Maven**
 
-Add the bce-java-sdk dependency to your Maven pom.xml file:
+Add the baiducloud-java-sdk dependency to your Maven pom.xml file:
 
 ```xml
 <dependency>

@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.eip.EipClient;
 import com.baidubce.eip.models.CreateEipTransferRequest;
+import com.baidubce.eip.models.CreateEipTransferResponse;
 import java.util.ArrayList;
 
 public class ExampleCreateEipTransfer {
@@ -24,9 +25,9 @@ public class ExampleCreateEipTransfer {
     createEipTransferRequest.setTransferResourceList(new ArrayList<>());
     createEipTransferRequest.setToUserId("");
     try {
-      client.createEipTransfer(createEipTransferRequest);
+      CreateEipTransferResponse response = client.createEipTransfer(createEipTransferRequest);
+      System.out.println(response.toJsonString());
     } catch (BceClientException e) {
-      // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
       System.out.println(e.getMessage());
     }
   }

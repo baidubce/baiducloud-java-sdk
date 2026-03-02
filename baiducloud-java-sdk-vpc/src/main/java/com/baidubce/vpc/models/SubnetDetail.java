@@ -24,7 +24,7 @@ public class SubnetDetail {
   /** 子网所属VPC的ID */
   private String vpcId;
 
-  /** 子网类型，BCC、BCC_NAT、BBC */
+  /** 子网类型，"BCC”、"BCC_NAT”、”BBC” */
   private String subnetType;
 
   /** 描述 */

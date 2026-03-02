@@ -29,7 +29,7 @@ public class CreateSubnetRequest extends BaseBceRequest {
   /** 子网所属VPC的辅助网段的cidr */
   private String vpcSecondaryCidr;
 
-  /** 子网类型，“BCC”、“BBC” */
+  /** 子网类型，BCC、BBC */
   private String subnetType;
 
   /** 描述，不超过200字符 */

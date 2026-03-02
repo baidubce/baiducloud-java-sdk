@@ -11,6 +11,7 @@ import com.baidubce.eip.models.BindEipRequest;
 import com.baidubce.eip.models.BindTbspProtectionObjectRequest;
 import com.baidubce.eip.models.CancelEipTransferRequest;
 import com.baidubce.eip.models.CreateEipTransferRequest;
+import com.baidubce.eip.models.CreateEipTransferResponse;
 import com.baidubce.eip.models.CreateTbspRequest;
 import com.baidubce.eip.models.CreateTbspResponse;
 import com.baidubce.eip.models.DetailTbspRequest;
@@ -190,7 +191,8 @@ public class EipClientTest {
     createEipTransferRequest.setTransferType("");
     createEipTransferRequest.setTransferResourceList(new ArrayList<>());
     createEipTransferRequest.setToUserId("");
-    eipClient.createEipTransfer(createEipTransferRequest);
+    CreateEipTransferResponse response = eipClient.createEipTransfer(createEipTransferRequest);
+    System.out.println(response);
   }
 
   /** createTbsp */
