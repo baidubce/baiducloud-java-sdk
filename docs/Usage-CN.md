@@ -19,7 +19,7 @@ JAVA SDK可以在Java1.8环境下运行。
 
 **使用Maven安装**
 
-在Maven的pom.xml文件中添加bce-java-sdk的依赖：
+在Maven的pom.xml文件中添加baiducloud-java-sdk的依赖：
 
 ```xml
 <dependency>

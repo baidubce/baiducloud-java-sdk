@@ -1,15 +1,9 @@
-
 package com.baidubce.eip.models;
 
-
-
-/**
- * Gets or Sets EipInstanceType
- */
+/** Gets or Sets EipInstanceType */
 public enum EipInstanceType {
-  
   NORMAL("normal"),
-  
+
   SHARED("shared");
 
   private String value;
@@ -26,8 +20,4 @@ public enum EipInstanceType {
   public String toString() {
     return String.valueOf(value);
   }
-
-
-
-
 }

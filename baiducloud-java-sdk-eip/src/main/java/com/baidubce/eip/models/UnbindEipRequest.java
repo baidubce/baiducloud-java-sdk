@@ -6,36 +6,27 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UnbindEipRequest {
 
-    /**
-    * eip
-    */
-    @JsonIgnore
-    private String eip;
+  /** eip */
+  @JsonIgnore private String eip;
 
-    /**
-    * clientToken
-    */
-    @JsonIgnore
-    private String clientToken;
+  /** clientToken */
+  @JsonIgnore private String clientToken;
 
+  public String getEip() {
+    return eip;
+  }
 
-    public String getEip() {
-        return eip;
-    }
+  public UnbindEipRequest setEip(String eip) {
+    this.eip = eip;
+    return this;
+  }
 
-    public UnbindEipRequest setEip(String eip) {
-        this.eip = eip;
-        return this;
-    }
+  public String getClientToken() {
+    return clientToken;
+  }
 
-    public String getClientToken() {
-        return clientToken;
-    }
-
-    public UnbindEipRequest setClientToken(String clientToken) {
-        this.clientToken = clientToken;
-        return this;
-    }
-
-
+  public UnbindEipRequest setClientToken(String clientToken) {
+    this.clientToken = clientToken;
+    return this;
+  }
 }
