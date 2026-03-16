@@ -17,22 +17,34 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.SignOptions;
 import com.baidubce.http.Headers;
 import com.baidubce.internal.RestartableInputStream;
-import static com.baidubce.util.Validate.checkNotNull;
 import com.baidubce.common.BaseBceRequest;
-import java.util.UUID;
-import com.google.common.base.Strings;
 import com.baidubce.common.BaseBceResponse;
 
+import com.baidubce.vpc.models.BatchCreateSslVpnUsersRequest;
+import com.baidubce.vpc.models.BatchCreateSslVpnUsersResponse;
+import com.baidubce.vpc.models.BindEipRequest;
 import com.baidubce.vpc.models.CloseVpcRelayRequest;
 import com.baidubce.vpc.models.CreateIpReservedRequest;
 import com.baidubce.vpc.models.CreateIpReservedResponse;
+import com.baidubce.vpc.models.CreateSslVpnServerRequest;
+import com.baidubce.vpc.models.CreateSslVpnServerResponse;
 import com.baidubce.vpc.models.CreateSubnetRequest;
 import com.baidubce.vpc.models.CreateSubnetResponse;
+import com.baidubce.vpc.models.CreateUserGatewayRequest;
+import com.baidubce.vpc.models.CreateUserGatewayResponse;
 import com.baidubce.vpc.models.CreateVpcRequest;
 import com.baidubce.vpc.models.CreateVpcResponse;
+import com.baidubce.vpc.models.CreateVpnRequest;
+import com.baidubce.vpc.models.CreateVpnResponse;
+import com.baidubce.vpc.models.CreateVpnTunnelRequest;
+import com.baidubce.vpc.models.CreateVpnTunnelResponse;
 import com.baidubce.vpc.models.DeleteIpReserveRequest;
+import com.baidubce.vpc.models.DeleteSslVpnServerRequest;
+import com.baidubce.vpc.models.DeleteSslVpnUserRequest;
 import com.baidubce.vpc.models.DeleteSubnetRequest;
+import com.baidubce.vpc.models.DeleteUserGatewayRequest;
 import com.baidubce.vpc.models.DeleteVpcRequest;
+import com.baidubce.vpc.models.DeleteVpnTunnelRequest;
 import com.baidubce.vpc.models.GetVpcResourceIpInfoRequest;
 import com.baidubce.vpc.models.GetVpcResourceIpInfoResponse;
 import com.baidubce.vpc.models.ListIpReserveRequest;
@@ -42,14 +54,37 @@ import com.baidubce.vpc.models.QuerySpecifiedSubnetRequest;
 import com.baidubce.vpc.models.QuerySpecifiedSubnetResponse;
 import com.baidubce.vpc.models.QuerySpecifiedVpcRequest;
 import com.baidubce.vpc.models.QuerySpecifiedVpcResponse;
+import com.baidubce.vpc.models.QuerySslVpnServerRequest;
+import com.baidubce.vpc.models.QuerySslVpnServerResponse;
+import com.baidubce.vpc.models.QuerySslVpnUsersRequest;
+import com.baidubce.vpc.models.QuerySslVpnUsersResponse;
 import com.baidubce.vpc.models.QuerySubnetListRequest;
 import com.baidubce.vpc.models.QuerySubnetListResponse;
 import com.baidubce.vpc.models.QueryVpcIntranetIpRequest;
 import com.baidubce.vpc.models.QueryVpcIntranetIpResponse;
 import com.baidubce.vpc.models.QueryVpcListRequest;
 import com.baidubce.vpc.models.QueryVpcListResponse;
+import com.baidubce.vpc.models.QueryVpnListRequest;
+import com.baidubce.vpc.models.QueryVpnListResponse;
+import com.baidubce.vpc.models.ReleaseVpnRequest;
+import com.baidubce.vpc.models.RenewVpnRequest;
+import com.baidubce.vpc.models.SearchForVpnDetailsRequest;
+import com.baidubce.vpc.models.SearchForVpnDetailsResponse;
+import com.baidubce.vpc.models.SearchVpnTunnelRequest;
+import com.baidubce.vpc.models.SearchVpnTunnelResponse;
+import com.baidubce.vpc.models.UnbindEipRequest;
+import com.baidubce.vpc.models.UpdateSslVpnServerRequest;
+import com.baidubce.vpc.models.UpdateSslVpnUsersRequest;
 import com.baidubce.vpc.models.UpdateSubnetRequest;
+import com.baidubce.vpc.models.UpdateUserGatewayRequest;
 import com.baidubce.vpc.models.UpdateVpcRequest;
+import com.baidubce.vpc.models.UpdateVpnReleaseProtectionRequest;
+import com.baidubce.vpc.models.UpdateVpnRequest;
+import com.baidubce.vpc.models.UpdateVpnTunnelRequest;
+import com.baidubce.vpc.models.UserGatewayDetailsRequest;
+import com.baidubce.vpc.models.UserGatewayDetailsResponse;
+import com.baidubce.vpc.models.UserGatewayListRequest;
+import com.baidubce.vpc.models.UserGatewayListResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,17 +99,29 @@ public class VpcClient extends AbstractBceClient {
 
   private static final String CONSTANT_VPC = "vpc";
 
+  private static final String CONSTANT_VPN = "vpn";
+
+  private static final String CONSTANT_VPNCONN = "vpnconn";
+
+  private static final String CONSTANT_SSL_VPN_SERVER = "sslVpnServer";
+
   private static final String CONSTANT_SHUTDOWN_RELAY = "shutdownRelay";
 
   private static final String CONSTANT_RESOURCE_IP = "resourceIp";
 
-  private static final String CONSTANT_SUBNET = "subnet";
+  private static final String CONSTANT_CGW = "cgw";
 
-  private static final String CONSTANT_OPEN_RELAY = "openRelay";
+  private static final String CONSTANT_SSL_VPN_USER = "sslVpnUser";
+
+  private static final String CONSTANT_SUBNET = "subnet";
 
   private static final String CONSTANT_PRIVATE_IP_ADDRESS_INFO = "privateIpAddressInfo";
 
   private static final String CONSTANT_IPRESERVE = "ipreserve";
+
+  private static final String CONSTANT_OPEN_RELAY = "openRelay";
+
+  private static final String CONSTANT_DELETE_PROTECT = "deleteProtect";
 
   /** Responsible for handling httpResponses from all service calls. */
   private static HttpResponseHandler[] VpcClientHandlers =
@@ -98,17 +145,51 @@ public class VpcClient extends AbstractBceClient {
   }
 
   /**
+   * batchCreateSslVpnUsers
+   *
+   * @param request 入参结构体
+   * @return BatchCreateSslVpnUsersResponse
+   */
+  public BatchCreateSslVpnUsersResponse batchCreateSslVpnUsers(
+      BatchCreateSslVpnUsersRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            request,
+            HttpMethodName.POST,
+            VERSION_V1,
+            CONSTANT_VPN,
+            request.getVpnId(),
+            CONSTANT_SSL_VPN_USER);
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    fillPayload(internalRequest, request);
+    return invokeHttpClient(internalRequest, BatchCreateSslVpnUsersResponse.class);
+  }
+
+  /**
+   * bindEip
+   *
+   * @param request 入参结构体
+   */
+  public void bindEip(BindEipRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            request, HttpMethodName.PUT, VERSION_V1, CONSTANT_VPN, request.getVpnId());
+    internalRequest.addParameter("bind", null);
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    fillPayload(internalRequest, request);
+    invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
    * closeVpcRelay
    *
    * @param request 入参结构体
    */
   public void closeVpcRelay(CloseVpcRelayRequest request) {
-    // verify the required parameter 'vpcId' is set
-    checkNotNull(
-        request.getVpcId(), "Missing the required parameter 'vpcId' when calling closeVpcRelay");
-    if (Strings.isNullOrEmpty(request.getClientToken())) {
-      request.setClientToken(generateDefaultClientToken());
-    }
     InternalRequest internalRequest =
         this.createRequest(
             new BaseBceRequest(),
@@ -130,21 +211,6 @@ public class VpcClient extends AbstractBceClient {
    * @return CreateIpReservedResponse
    */
   public CreateIpReservedResponse createIpReserved(CreateIpReservedRequest request) {
-    if (Strings.isNullOrEmpty(request.getClientToken())) {
-      request.setClientToken(generateDefaultClientToken());
-    }
-    // verify the required parameter 'subnetId' is set
-    checkNotNull(
-        request.getSubnetId(),
-        "Missing the required parameter 'subnetId' when calling createIpReserved");
-    // verify the required parameter 'ipCidr' is set
-    checkNotNull(
-        request.getIpCidr(),
-        "Missing the required parameter 'ipCidr' when calling createIpReserved");
-    // verify the required parameter 'ipVersion' is set
-    checkNotNull(
-        request.getIpVersion(),
-        "Missing the required parameter 'ipVersion' when calling createIpReserved");
     InternalRequest internalRequest =
         this.createRequest(
             request, HttpMethodName.POST, VERSION_V1, CONSTANT_SUBNET, CONSTANT_IPRESERVE);
@@ -156,28 +222,34 @@ public class VpcClient extends AbstractBceClient {
   }
 
   /**
+   * createSslVpnServer
+   *
+   * @param request 入参结构体
+   * @return CreateSslVpnServerResponse
+   */
+  public CreateSslVpnServerResponse createSslVpnServer(CreateSslVpnServerRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            request,
+            HttpMethodName.POST,
+            VERSION_V1,
+            CONSTANT_VPN,
+            request.getVpnId(),
+            CONSTANT_SSL_VPN_SERVER);
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    fillPayload(internalRequest, request);
+    return invokeHttpClient(internalRequest, CreateSslVpnServerResponse.class);
+  }
+
+  /**
    * createSubnet
    *
    * @param request 入参结构体
    * @return CreateSubnetResponse
    */
   public CreateSubnetResponse createSubnet(CreateSubnetRequest request) {
-    if (Strings.isNullOrEmpty(request.getClientToken())) {
-      request.setClientToken(generateDefaultClientToken());
-    }
-    // verify the required parameter 'name' is set
-    checkNotNull(
-        request.getName(), "Missing the required parameter 'name' when calling createSubnet");
-    // verify the required parameter 'zoneName' is set
-    checkNotNull(
-        request.getZoneName(),
-        "Missing the required parameter 'zoneName' when calling createSubnet");
-    // verify the required parameter 'cidr' is set
-    checkNotNull(
-        request.getCidr(), "Missing the required parameter 'cidr' when calling createSubnet");
-    // verify the required parameter 'vpcId' is set
-    checkNotNull(
-        request.getVpcId(), "Missing the required parameter 'vpcId' when calling createSubnet");
     InternalRequest internalRequest =
         this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_SUBNET);
     if (request.getClientToken() != null) {
@@ -188,19 +260,28 @@ public class VpcClient extends AbstractBceClient {
   }
 
   /**
+   * createUserGateway
+   *
+   * @param request 入参结构体
+   * @return CreateUserGatewayResponse
+   */
+  public CreateUserGatewayResponse createUserGateway(CreateUserGatewayRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_VPN, CONSTANT_CGW);
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    fillPayload(internalRequest, request);
+    return invokeHttpClient(internalRequest, CreateUserGatewayResponse.class);
+  }
+
+  /**
    * createVpc
    *
    * @param request 入参结构体
    * @return CreateVpcResponse
    */
   public CreateVpcResponse createVpc(CreateVpcRequest request) {
-    if (Strings.isNullOrEmpty(request.getClientToken())) {
-      request.setClientToken(generateDefaultClientToken());
-    }
-    // verify the required parameter 'name' is set
-    checkNotNull(request.getName(), "Missing the required parameter 'name' when calling createVpc");
-    // verify the required parameter 'cidr' is set
-    checkNotNull(request.getCidr(), "Missing the required parameter 'cidr' when calling createVpc");
     InternalRequest internalRequest =
         this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_VPC);
     if (request.getClientToken() != null) {
@@ -211,18 +292,49 @@ public class VpcClient extends AbstractBceClient {
   }
 
   /**
+   * createVpn
+   *
+   * @param request 入参结构体
+   * @return CreateVpnResponse
+   */
+  public CreateVpnResponse createVpn(CreateVpnRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_VPN);
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    fillPayload(internalRequest, request);
+    return invokeHttpClient(internalRequest, CreateVpnResponse.class);
+  }
+
+  /**
+   * createVpnTunnel
+   *
+   * @param request 入参结构体
+   * @return CreateVpnTunnelResponse
+   */
+  public CreateVpnTunnelResponse createVpnTunnel(CreateVpnTunnelRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            request,
+            HttpMethodName.POST,
+            VERSION_V1,
+            CONSTANT_VPN,
+            request.getVpnId(),
+            CONSTANT_VPNCONN);
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    fillPayload(internalRequest, request);
+    return invokeHttpClient(internalRequest, CreateVpnTunnelResponse.class);
+  }
+
+  /**
    * deleteIpReserve
    *
    * @param request 入参结构体
    */
   public void deleteIpReserve(DeleteIpReserveRequest request) {
-    // verify the required parameter 'ipReserveId' is set
-    checkNotNull(
-        request.getIpReserveId(),
-        "Missing the required parameter 'ipReserveId' when calling deleteIpReserve");
-    if (Strings.isNullOrEmpty(request.getClientToken())) {
-      request.setClientToken(generateDefaultClientToken());
-    }
     InternalRequest internalRequest =
         this.createRequest(
             new BaseBceRequest(),
@@ -238,18 +350,53 @@ public class VpcClient extends AbstractBceClient {
   }
 
   /**
+   * deleteSslVpnServer
+   *
+   * @param request 入参结构体
+   */
+  public void deleteSslVpnServer(DeleteSslVpnServerRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            new BaseBceRequest(),
+            HttpMethodName.DELETE,
+            VERSION_V1,
+            CONSTANT_VPN,
+            request.getVpnId(),
+            CONSTANT_SSL_VPN_SERVER,
+            request.getSslVpnServerId());
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
+   * deleteSslVpnUser
+   *
+   * @param request 入参结构体
+   */
+  public void deleteSslVpnUser(DeleteSslVpnUserRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            new BaseBceRequest(),
+            HttpMethodName.DELETE,
+            VERSION_V1,
+            CONSTANT_VPN,
+            request.getVpnId(),
+            CONSTANT_SSL_VPN_USER,
+            request.getUserId());
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
    * deleteSubnet
    *
    * @param request 入参结构体
    */
   public void deleteSubnet(DeleteSubnetRequest request) {
-    // verify the required parameter 'subnetId' is set
-    checkNotNull(
-        request.getSubnetId(),
-        "Missing the required parameter 'subnetId' when calling deleteSubnet");
-    if (Strings.isNullOrEmpty(request.getClientToken())) {
-      request.setClientToken(generateDefaultClientToken());
-    }
     InternalRequest internalRequest =
         this.createRequest(
             new BaseBceRequest(),
@@ -264,17 +411,28 @@ public class VpcClient extends AbstractBceClient {
   }
 
   /**
+   * deleteUserGateway
+   *
+   * @param request 入参结构体
+   */
+  public void deleteUserGateway(DeleteUserGatewayRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            new BaseBceRequest(),
+            HttpMethodName.DELETE,
+            VERSION_V1,
+            CONSTANT_VPN,
+            CONSTANT_CGW,
+            request.getCgwId());
+    invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
    * deleteVpc
    *
    * @param request 入参结构体
    */
   public void deleteVpc(DeleteVpcRequest request) {
-    // verify the required parameter 'vpcId' is set
-    checkNotNull(
-        request.getVpcId(), "Missing the required parameter 'vpcId' when calling deleteVpc");
-    if (Strings.isNullOrEmpty(request.getClientToken())) {
-      request.setClientToken(generateDefaultClientToken());
-    }
     InternalRequest internalRequest =
         this.createRequest(
             new BaseBceRequest(),
@@ -289,16 +447,32 @@ public class VpcClient extends AbstractBceClient {
   }
 
   /**
+   * deleteVpnTunnel
+   *
+   * @param request 入参结构体
+   */
+  public void deleteVpnTunnel(DeleteVpnTunnelRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            new BaseBceRequest(),
+            HttpMethodName.DELETE,
+            VERSION_V1,
+            CONSTANT_VPN,
+            CONSTANT_VPNCONN,
+            request.getVpnConnId());
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
    * getVpcResourceIpInfo
    *
    * @param request 入参结构体
    * @return GetVpcResourceIpInfoResponse
    */
   public GetVpcResourceIpInfoResponse getVpcResourceIpInfo(GetVpcResourceIpInfoRequest request) {
-    // verify the required parameter 'vpcId' is set
-    checkNotNull(
-        request.getVpcId(),
-        "Missing the required parameter 'vpcId' when calling getVpcResourceIpInfo");
     InternalRequest internalRequest =
         this.createRequest(
             new BaseBceRequest(),
@@ -356,12 +530,6 @@ public class VpcClient extends AbstractBceClient {
    * @param request 入参结构体
    */
   public void openVpcRelay(OpenVpcRelayRequest request) {
-    // verify the required parameter 'vpcId' is set
-    checkNotNull(
-        request.getVpcId(), "Missing the required parameter 'vpcId' when calling openVpcRelay");
-    if (Strings.isNullOrEmpty(request.getClientToken())) {
-      request.setClientToken(generateDefaultClientToken());
-    }
     InternalRequest internalRequest =
         this.createRequest(
             new BaseBceRequest(),
@@ -383,10 +551,6 @@ public class VpcClient extends AbstractBceClient {
    * @return QuerySpecifiedSubnetResponse
    */
   public QuerySpecifiedSubnetResponse querySpecifiedSubnet(QuerySpecifiedSubnetRequest request) {
-    // verify the required parameter 'subnetId' is set
-    checkNotNull(
-        request.getSubnetId(),
-        "Missing the required parameter 'subnetId' when calling querySpecifiedSubnet");
     InternalRequest internalRequest =
         this.createRequest(
             new BaseBceRequest(),
@@ -404,14 +568,58 @@ public class VpcClient extends AbstractBceClient {
    * @return QuerySpecifiedVpcResponse
    */
   public QuerySpecifiedVpcResponse querySpecifiedVpc(QuerySpecifiedVpcRequest request) {
-    // verify the required parameter 'vpcId' is set
-    checkNotNull(
-        request.getVpcId(),
-        "Missing the required parameter 'vpcId' when calling querySpecifiedVpc");
     InternalRequest internalRequest =
         this.createRequest(
             new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_VPC, request.getVpcId());
     return invokeHttpClient(internalRequest, QuerySpecifiedVpcResponse.class);
+  }
+
+  /**
+   * querySslVpnServer
+   *
+   * @param request 入参结构体
+   * @return QuerySslVpnServerResponse
+   */
+  public QuerySslVpnServerResponse querySslVpnServer(QuerySslVpnServerRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            new BaseBceRequest(),
+            HttpMethodName.GET,
+            VERSION_V1,
+            CONSTANT_VPN,
+            request.getVpnId(),
+            CONSTANT_SSL_VPN_SERVER);
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    return invokeHttpClient(internalRequest, QuerySslVpnServerResponse.class);
+  }
+
+  /**
+   * querySslVpnUsers
+   *
+   * @param request 入参结构体
+   * @return QuerySslVpnUsersResponse
+   */
+  public QuerySslVpnUsersResponse querySslVpnUsers(QuerySslVpnUsersRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            new BaseBceRequest(),
+            HttpMethodName.GET,
+            VERSION_V1,
+            CONSTANT_VPN,
+            request.getVpnId(),
+            CONSTANT_SSL_VPN_USER);
+    if (request.getMarker() != null) {
+      internalRequest.addParameter("marker", request.getMarker());
+    }
+    if (request.getMaxKeys() != null) {
+      internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+    }
+    if (request.getUserName() != null) {
+      internalRequest.addParameter("userName", request.getUserName());
+    }
+    return invokeHttpClient(internalRequest, QuerySslVpnUsersResponse.class);
   }
 
   /**
@@ -451,10 +659,6 @@ public class VpcClient extends AbstractBceClient {
    * @return QueryVpcIntranetIpResponse
    */
   public QueryVpcIntranetIpResponse queryVpcIntranetIp(QueryVpcIntranetIpRequest request) {
-    // verify the required parameter 'vpcId' is set
-    checkNotNull(
-        request.getVpcId(),
-        "Missing the required parameter 'vpcId' when calling queryVpcIntranetIp");
     InternalRequest internalRequest =
         this.createRequest(
             new BaseBceRequest(),
@@ -498,25 +702,193 @@ public class VpcClient extends AbstractBceClient {
   }
 
   /**
+   * queryVpnList
+   *
+   * @param request 入参结构体
+   * @return QueryVpnListResponse
+   */
+  public QueryVpnListResponse queryVpnList(QueryVpnListRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_VPN);
+    if (request.getVpcId() != null) {
+      internalRequest.addParameter("vpcId", request.getVpcId());
+    }
+    if (request.getMarker() != null) {
+      internalRequest.addParameter("marker", request.getMarker());
+    }
+    if (request.getMaxKeys() != null) {
+      internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+    }
+    if (request.getEip() != null) {
+      internalRequest.addParameter("eip", request.getEip());
+    }
+    if (request.getType() != null) {
+      internalRequest.addParameter("type", request.getType());
+    }
+    return invokeHttpClient(internalRequest, QueryVpnListResponse.class);
+  }
+
+  /**
+   * releaseVpn
+   *
+   * @param request 入参结构体
+   */
+  public void releaseVpn(ReleaseVpnRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            new BaseBceRequest(),
+            HttpMethodName.DELETE,
+            VERSION_V1,
+            CONSTANT_VPN,
+            request.getVpnId());
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
+   * renewVpn
+   *
+   * @param request 入参结构体
+   */
+  public void renewVpn(RenewVpnRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            request, HttpMethodName.PUT, VERSION_V1, CONSTANT_VPN, request.getVpnId());
+    internalRequest.addParameter("purchaseReserved", null);
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    fillPayload(internalRequest, request);
+    invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
+   * searchForVpnDetails
+   *
+   * @param request 入参结构体
+   * @return SearchForVpnDetailsResponse
+   */
+  public SearchForVpnDetailsResponse searchForVpnDetails(SearchForVpnDetailsRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_VPN, request.getVpnId());
+    return invokeHttpClient(internalRequest, SearchForVpnDetailsResponse.class);
+  }
+
+  /**
+   * searchVpnTunnel
+   *
+   * @param request 入参结构体
+   * @return SearchVpnTunnelResponse
+   */
+  public SearchVpnTunnelResponse searchVpnTunnel(SearchVpnTunnelRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            new BaseBceRequest(),
+            HttpMethodName.GET,
+            VERSION_V1,
+            CONSTANT_VPN,
+            CONSTANT_VPNCONN,
+            request.getVpnId());
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    return invokeHttpClient(internalRequest, SearchVpnTunnelResponse.class);
+  }
+
+  /**
+   * unbindEip
+   *
+   * @param request 入参结构体
+   */
+  public void unbindEip(UnbindEipRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            new BaseBceRequest(), HttpMethodName.PUT, VERSION_V1, CONSTANT_VPN, request.getVpnId());
+    internalRequest.addParameter("unbind", null);
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
+   * updateSslVpnServer
+   *
+   * @param request 入参结构体
+   */
+  public void updateSslVpnServer(UpdateSslVpnServerRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            request,
+            HttpMethodName.PUT,
+            VERSION_V1,
+            CONSTANT_VPN,
+            request.getVpnId(),
+            CONSTANT_SSL_VPN_SERVER,
+            request.getSslVpnServerId());
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    fillPayload(internalRequest, request);
+    invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
+   * updateSslVpnUsers
+   *
+   * @param request 入参结构体
+   */
+  public void updateSslVpnUsers(UpdateSslVpnUsersRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            request,
+            HttpMethodName.PUT,
+            VERSION_V1,
+            CONSTANT_VPN,
+            request.getVpnId(),
+            CONSTANT_SSL_VPN_USER,
+            request.getUserId());
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    fillPayload(internalRequest, request);
+    invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
    * updateSubnet
    *
    * @param request 入参结构体
    */
   public void updateSubnet(UpdateSubnetRequest request) {
-    // verify the required parameter 'subnetId' is set
-    checkNotNull(
-        request.getSubnetId(),
-        "Missing the required parameter 'subnetId' when calling updateSubnet");
-    if (Strings.isNullOrEmpty(request.getClientToken())) {
-      request.setClientToken(generateDefaultClientToken());
-    }
-    // verify the required parameter 'name' is set
-    checkNotNull(
-        request.getName(), "Missing the required parameter 'name' when calling updateSubnet");
     InternalRequest internalRequest =
         this.createRequest(
             request, HttpMethodName.PUT, VERSION_V1, CONSTANT_SUBNET, request.getSubnetId());
     internalRequest.addParameter("modifyAttribute", null);
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    fillPayload(internalRequest, request);
+    invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
+   * updateUserGateway
+   *
+   * @param request 入参结构体
+   */
+  public void updateUserGateway(UpdateUserGatewayRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            request,
+            HttpMethodName.PUT,
+            VERSION_V1,
+            CONSTANT_VPN,
+            CONSTANT_CGW,
+            request.getCgwId());
     if (request.getClientToken() != null) {
       internalRequest.addParameter("clientToken", request.getClientToken());
     }
@@ -530,14 +902,6 @@ public class VpcClient extends AbstractBceClient {
    * @param request 入参结构体
    */
   public void updateVpc(UpdateVpcRequest request) {
-    // verify the required parameter 'vpcId' is set
-    checkNotNull(
-        request.getVpcId(), "Missing the required parameter 'vpcId' when calling updateVpc");
-    if (Strings.isNullOrEmpty(request.getClientToken())) {
-      request.setClientToken(generateDefaultClientToken());
-    }
-    // verify the required parameter 'name' is set
-    checkNotNull(request.getName(), "Missing the required parameter 'name' when calling updateVpc");
     InternalRequest internalRequest =
         this.createRequest(
             request, HttpMethodName.PUT, VERSION_V1, CONSTANT_VPC, request.getVpcId());
@@ -547,6 +911,102 @@ public class VpcClient extends AbstractBceClient {
     }
     fillPayload(internalRequest, request);
     invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
+   * updateVpn
+   *
+   * @param request 入参结构体
+   */
+  public void updateVpn(UpdateVpnRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            request, HttpMethodName.PUT, VERSION_V1, CONSTANT_VPN, request.getVpnId());
+    internalRequest.addParameter("modifyAttribute", null);
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    fillPayload(internalRequest, request);
+    invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
+   * updateVpnReleaseProtection
+   *
+   * @param request 入参结构体
+   */
+  public void updateVpnReleaseProtection(UpdateVpnReleaseProtectionRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            request,
+            HttpMethodName.PUT,
+            VERSION_V1,
+            CONSTANT_VPN,
+            request.getVpnId(),
+            CONSTANT_DELETE_PROTECT);
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    fillPayload(internalRequest, request);
+    invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
+   * updateVpnTunnel
+   *
+   * @param request 入参结构体
+   */
+  public void updateVpnTunnel(UpdateVpnTunnelRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            request,
+            HttpMethodName.PUT,
+            VERSION_V1,
+            CONSTANT_VPN,
+            CONSTANT_VPNCONN,
+            request.getVpnConnId());
+    if (request.getClientToken() != null) {
+      internalRequest.addParameter("clientToken", request.getClientToken());
+    }
+    fillPayload(internalRequest, request);
+    invokeHttpClient(internalRequest, BaseBceResponse.class);
+  }
+
+  /**
+   * userGatewayDetails
+   *
+   * @param request 入参结构体
+   * @return UserGatewayDetailsResponse
+   */
+  public UserGatewayDetailsResponse userGatewayDetails(UserGatewayDetailsRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            new BaseBceRequest(),
+            HttpMethodName.GET,
+            VERSION_V1,
+            CONSTANT_VPN,
+            CONSTANT_CGW,
+            request.getCgwId());
+    return invokeHttpClient(internalRequest, UserGatewayDetailsResponse.class);
+  }
+
+  /**
+   * userGatewayList
+   *
+   * @param request 入参结构体
+   * @return UserGatewayListResponse
+   */
+  public UserGatewayListResponse userGatewayList(UserGatewayListRequest request) {
+    InternalRequest internalRequest =
+        this.createRequest(
+            new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_VPN, CONSTANT_CGW);
+    if (request.getMarker() != null) {
+      internalRequest.addParameter("marker", request.getMarker());
+    }
+    if (request.getMaxKeys() != null) {
+      internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+    }
+    return invokeHttpClient(internalRequest, UserGatewayListResponse.class);
   }
 
   /**
@@ -597,17 +1057,5 @@ public class VpcClient extends AbstractBceClient {
       internalRequest.addHeader(Headers.CONTENT_TYPE, DEFAULT_CONTENT_TYPE);
       internalRequest.setContent(RestartableInputStream.wrap(requestJson));
     }
-  }
-
-  /**
-   * The default method to generate the random String for clientToken if the optional parameter
-   * clientToken is not specified by the user.
-   *
-   * <p>The default algorithm is using {@link UUID} to generate a random UUID,
-   *
-   * @return An random String generated by {@link UUID}.
-   */
-  private String generateDefaultClientToken() {
-    return UUID.randomUUID().toString();
   }
 }
