@@ -6,15 +6,19 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QuerySpecifiedVpcRequest {
 
-  /** vpcId */
-  @JsonIgnore private String vpcId;
+    /**
+    * vpcId
+    */
+    @JsonIgnore
+    private String vpcId;
 
-  public String getVpcId() {
-    return vpcId;
-  }
+    public String getVpcId() {
+        return vpcId;
+    }
 
-  public QuerySpecifiedVpcRequest setVpcId(String vpcId) {
-    this.vpcId = vpcId;
-    return this;
-  }
+    public QuerySpecifiedVpcRequest setVpcId(String vpcId) {
+        this.vpcId = vpcId;
+        return this;
+    }
+
 }

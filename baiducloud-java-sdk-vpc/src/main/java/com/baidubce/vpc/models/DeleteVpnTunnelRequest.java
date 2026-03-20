@@ -6,27 +6,34 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DeleteVpnTunnelRequest {
 
-  /** vpnConnId */
-  @JsonIgnore private String vpnConnId;
+    /**
+    * vpnConnId
+    */
+    @JsonIgnore
+    private String vpnConnId;
 
-  /** clientToken */
-  @JsonIgnore private String clientToken;
+    /**
+    * clientToken
+    */
+    @JsonIgnore
+    private String clientToken;
 
-  public String getVpnConnId() {
-    return vpnConnId;
-  }
+    public String getVpnConnId() {
+        return vpnConnId;
+    }
 
-  public DeleteVpnTunnelRequest setVpnConnId(String vpnConnId) {
-    this.vpnConnId = vpnConnId;
-    return this;
-  }
+    public DeleteVpnTunnelRequest setVpnConnId(String vpnConnId) {
+        this.vpnConnId = vpnConnId;
+        return this;
+    }
 
-  public String getClientToken() {
-    return clientToken;
-  }
+    public String getClientToken() {
+        return clientToken;
+    }
 
-  public DeleteVpnTunnelRequest setClientToken(String clientToken) {
-    this.clientToken = clientToken;
-    return this;
-  }
+    public DeleteVpnTunnelRequest setClientToken(String clientToken) {
+        this.clientToken = clientToken;
+        return this;
+    }
+
 }

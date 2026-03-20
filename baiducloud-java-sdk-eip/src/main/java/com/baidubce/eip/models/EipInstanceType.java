@@ -1,23 +1,27 @@
 package com.baidubce.eip.models;
 
-/** Gets or Sets EipInstanceType */
+/**
+ * Gets or Sets EipInstanceType
+ */
 public enum EipInstanceType {
-  NORMAL("normal"),
 
-  SHARED("shared");
+    NORMAL("normal"),
 
-  private String value;
+    SHARED("shared");
 
-  EipInstanceType(String value) {
-    this.value = value;
-  }
+    private String value;
 
-  public String getValue() {
-    return value;
-  }
+    EipInstanceType(String value) {
+        this.value = value;
+    }
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
+    public String getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
 }

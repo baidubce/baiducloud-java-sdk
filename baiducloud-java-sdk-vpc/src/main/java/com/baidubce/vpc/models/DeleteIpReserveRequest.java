@@ -6,27 +6,34 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DeleteIpReserveRequest {
 
-  /** ipReserveId */
-  @JsonIgnore private String ipReserveId;
+    /**
+    * ipReserveId
+    */
+    @JsonIgnore
+    private String ipReserveId;
 
-  /** clientToken */
-  @JsonIgnore private String clientToken;
+    /**
+    * clientToken
+    */
+    @JsonIgnore
+    private String clientToken;
 
-  public String getIpReserveId() {
-    return ipReserveId;
-  }
+    public String getIpReserveId() {
+        return ipReserveId;
+    }
 
-  public DeleteIpReserveRequest setIpReserveId(String ipReserveId) {
-    this.ipReserveId = ipReserveId;
-    return this;
-  }
+    public DeleteIpReserveRequest setIpReserveId(String ipReserveId) {
+        this.ipReserveId = ipReserveId;
+        return this;
+    }
 
-  public String getClientToken() {
-    return clientToken;
-  }
+    public String getClientToken() {
+        return clientToken;
+    }
 
-  public DeleteIpReserveRequest setClientToken(String clientToken) {
-    this.clientToken = clientToken;
-    return this;
-  }
+    public DeleteIpReserveRequest setClientToken(String clientToken) {
+        this.clientToken = clientToken;
+        return this;
+    }
+
 }

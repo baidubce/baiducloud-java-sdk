@@ -6,39 +6,49 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ListIpReserveRequest {
 
-  /** subnetId */
-  @JsonIgnore private String subnetId;
+    /**
+    * subnetId
+    */
+    @JsonIgnore
+    private String subnetId;
 
-  /** marker */
-  @JsonIgnore private String marker;
+    /**
+    * marker
+    */
+    @JsonIgnore
+    private String marker;
 
-  /** maxKeys */
-  @JsonIgnore private Integer maxKeys;
+    /**
+    * maxKeys
+    */
+    @JsonIgnore
+    private Integer maxKeys;
 
-  public String getSubnetId() {
-    return subnetId;
-  }
+    public String getSubnetId() {
+        return subnetId;
+    }
 
-  public ListIpReserveRequest setSubnetId(String subnetId) {
-    this.subnetId = subnetId;
-    return this;
-  }
+    public ListIpReserveRequest setSubnetId(String subnetId) {
+        this.subnetId = subnetId;
+        return this;
+    }
 
-  public String getMarker() {
-    return marker;
-  }
+    public String getMarker() {
+        return marker;
+    }
 
-  public ListIpReserveRequest setMarker(String marker) {
-    this.marker = marker;
-    return this;
-  }
+    public ListIpReserveRequest setMarker(String marker) {
+        this.marker = marker;
+        return this;
+    }
 
-  public Integer getMaxKeys() {
-    return maxKeys;
-  }
+    public Integer getMaxKeys() {
+        return maxKeys;
+    }
 
-  public ListIpReserveRequest setMaxKeys(Integer maxKeys) {
-    this.maxKeys = maxKeys;
-    return this;
-  }
+    public ListIpReserveRequest setMaxKeys(Integer maxKeys) {
+        this.maxKeys = maxKeys;
+        return this;
+    }
+
 }

@@ -7,20 +7,23 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateEipTransferResponse extends BaseBceResponse {
-  /** 转移信息 */
-  private List<TransferInfo> transfers;
+    /**
+     * 转移信息
+     */
+    private List<TransferInfo> transfers;
 
-  public CreateEipTransferResponse setTransfers(List<TransferInfo> transfers) {
-    this.transfers = transfers;
-    return this;
-  }
+    public CreateEipTransferResponse setTransfers(List<TransferInfo> transfers) {
+        this.transfers = transfers;
+        return this;
+    }
 
-  public List<TransferInfo> getTransfers() {
-    return this.transfers;
-  }
+    public List<TransferInfo> getTransfers() {
+        return this.transfers;
+    }
 
-  @Override
-  public String toString() {
-    return "CreateEipTransferResponse{" + "transfers=" + transfers + "\n" + "}";
-  }
+    @Override
+    public String toString() {
+        return "CreateEipTransferResponse{" + "transfers=" + transfers + "\n" + "}";
+    }
+
 }

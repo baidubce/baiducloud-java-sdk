@@ -7,39 +7,48 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UpdateVpnReleaseProtectionRequest extends BaseBceRequest {
 
-  /** vpnId */
-  @JsonIgnore private String vpnId;
+    /**
+    * vpnId
+    */
+    @JsonIgnore
+    private String vpnId;
 
-  /** clientToken */
-  @JsonIgnore private String clientToken;
+    /**
+    * clientToken
+    */
+    @JsonIgnore
+    private String clientToken;
 
-  /** 是否开启释放保护 */
-  private Boolean deleteProtect;
+    /**
+    * 是否开启释放保护
+    */
+    private Boolean deleteProtect;
 
-  public String getVpnId() {
-    return vpnId;
-  }
+    public String getVpnId() {
+        return vpnId;
+    }
 
-  public UpdateVpnReleaseProtectionRequest setVpnId(String vpnId) {
-    this.vpnId = vpnId;
-    return this;
-  }
+    public UpdateVpnReleaseProtectionRequest setVpnId(String vpnId) {
+        this.vpnId = vpnId;
+        return this;
+    }
 
-  public String getClientToken() {
-    return clientToken;
-  }
+    public String getClientToken() {
+        return clientToken;
+    }
 
-  public UpdateVpnReleaseProtectionRequest setClientToken(String clientToken) {
-    this.clientToken = clientToken;
-    return this;
-  }
+    public UpdateVpnReleaseProtectionRequest setClientToken(String clientToken) {
+        this.clientToken = clientToken;
+        return this;
+    }
 
-  public Boolean getDeleteProtect() {
-    return deleteProtect;
-  }
+    public Boolean getDeleteProtect() {
+        return deleteProtect;
+    }
 
-  public UpdateVpnReleaseProtectionRequest setDeleteProtect(Boolean deleteProtect) {
-    this.deleteProtect = deleteProtect;
-    return this;
-  }
+    public UpdateVpnReleaseProtectionRequest setDeleteProtect(Boolean deleteProtect) {
+        this.deleteProtect = deleteProtect;
+        return this;
+    }
+
 }

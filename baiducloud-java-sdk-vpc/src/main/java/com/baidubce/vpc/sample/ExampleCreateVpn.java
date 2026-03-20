@@ -11,42 +11,41 @@ import com.baidubce.vpc.models.Billing;
 import java.util.ArrayList;
 
 public class ExampleCreateVpn {
-  public static void main(String[] args) {
-    // 设置Client的Access Key ID和Secret Access
-    // Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
-    String ak = "Your Ak";
-    String sk = "Your Sk";
-    String endpoint = "Endpoint";
-    BceClientConfiguration config = new BceClientConfiguration();
-    config.setCredentials(new DefaultBceCredentials(ak, sk));
-    config.setEndpoint(endpoint);
-    VpcClient client = new VpcClient(config);
-    Billing billing = new Billing();
-    billing.setPaymentTiming("");
-    Reservation reservation = new Reservation();
-    reservation.setReservationLength(0);
-    reservation.setReservationTimeUnit("");
+    public static void main(String[] args) {
+        // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
+        String ak = "Your Ak";
+        String sk = "Your Sk";
+        String endpoint = "Endpoint";
+        BceClientConfiguration config = new BceClientConfiguration();
+        config.setCredentials(new DefaultBceCredentials(ak, sk));
+        config.setEndpoint(endpoint);
+        VpcClient client = new VpcClient(config);
+        Billing billing = new Billing();
+        billing.setPaymentTiming("");
+        Reservation reservation = new Reservation();
+        reservation.setReservationLength(0);
+        reservation.setReservationTimeUnit("");
 
-    billing.setReservation(reservation);
+        billing.setReservation(reservation);
 
-    CreateVpnRequest createVpnRequest = new CreateVpnRequest();
-    createVpnRequest.setClientToken("");
-    createVpnRequest.setVpcId("");
-    createVpnRequest.setSubnetId("");
-    createVpnRequest.setVpnName("");
-    createVpnRequest.setType("");
-    createVpnRequest.setDescription("");
-    createVpnRequest.setEip("");
-    createVpnRequest.setTags(new ArrayList<>());
-    createVpnRequest.setResourceGroupId("");
-    createVpnRequest.setBilling(billing);
-    createVpnRequest.setMaxConnection(0);
-    createVpnRequest.setDeleteProtect(false);
-    try {
-      CreateVpnResponse response = client.createVpn(createVpnRequest);
-      System.out.println(response.toJsonString());
-    } catch (BceClientException e) {
-      System.out.println(e.getMessage());
+        CreateVpnRequest createVpnRequest = new CreateVpnRequest();
+        createVpnRequest.setClientToken("");
+        createVpnRequest.setVpcId("");
+        createVpnRequest.setSubnetId("");
+        createVpnRequest.setVpnName("");
+        createVpnRequest.setType("");
+        createVpnRequest.setDescription("");
+        createVpnRequest.setEip("");
+        createVpnRequest.setTags(new ArrayList<>());
+        createVpnRequest.setResourceGroupId("");
+        createVpnRequest.setBilling(billing);
+        createVpnRequest.setMaxConnection(0);
+        createVpnRequest.setDeleteProtect(false);
+        try {
+            CreateVpnResponse response = client.createVpn(createVpnRequest);
+            System.out.println(response.toJsonString());
+        } catch (BceClientException e) {
+            System.out.println(e.getMessage());
+        }
     }
-  }
 }

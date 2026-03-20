@@ -1,35 +1,39 @@
 package com.baidubce.eip.models;
 
-/** Gets or Sets EipStatus */
+/**
+ * Gets or Sets EipStatus
+ */
 public enum EipStatus {
-  CREATING("creating"),
 
-  AVAILABLE("available"),
+    CREATING("creating"),
 
-  BINDED("binded"),
+    AVAILABLE("available"),
 
-  BINDING("binding"),
+    BINDED("binded"),
 
-  UNBINDING("unbinding"),
+    BINDING("binding"),
 
-  UPDATING("updating"),
+    UNBINDING("unbinding"),
 
-  PAUSED("paused"),
+    UPDATING("updating"),
 
-  UNAVAILABLE("unavailable");
+    PAUSED("paused"),
 
-  private String value;
+    UNAVAILABLE("unavailable");
 
-  EipStatus(String value) {
-    this.value = value;
-  }
+    private String value;
 
-  public String getValue() {
-    return value;
-  }
+    EipStatus(String value) {
+        this.value = value;
+    }
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
+    public String getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
 }

@@ -7,51 +7,62 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UpdateUserGatewayRequest extends BaseBceRequest {
 
-  /** cgwId */
-  @JsonIgnore private String cgwId;
+    /**
+    * cgwId
+    */
+    @JsonIgnore
+    private String cgwId;
 
-  /** clientToken */
-  @JsonIgnore private String clientToken;
+    /**
+    * clientToken
+    */
+    @JsonIgnore
+    private String clientToken;
 
-  /** 用户网关名称 */
-  private String name;
+    /**
+    * 用户网关名称
+    */
+    private String name;
 
-  /** 用户网关描述，名称与描述不能同时为空 */
-  private String description;
+    /**
+    * 用户网关描述，名称与描述不能同时为空
+    */
+    private String description;
 
-  public String getCgwId() {
-    return cgwId;
-  }
+    public String getCgwId() {
+        return cgwId;
+    }
 
-  public UpdateUserGatewayRequest setCgwId(String cgwId) {
-    this.cgwId = cgwId;
-    return this;
-  }
+    public UpdateUserGatewayRequest setCgwId(String cgwId) {
+        this.cgwId = cgwId;
+        return this;
+    }
 
-  public String getClientToken() {
-    return clientToken;
-  }
+    public String getClientToken() {
+        return clientToken;
+    }
 
-  public UpdateUserGatewayRequest setClientToken(String clientToken) {
-    this.clientToken = clientToken;
-    return this;
-  }
+    public UpdateUserGatewayRequest setClientToken(String clientToken) {
+        this.clientToken = clientToken;
+        return this;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public UpdateUserGatewayRequest setName(String name) {
-    this.name = name;
-    return this;
-  }
+    public UpdateUserGatewayRequest setName(String name) {
+        this.name = name;
+        return this;
+    }
 
-  public String getDescription() {
-    return description;
-  }
+    public String getDescription() {
+        return description;
+    }
 
-  public UpdateUserGatewayRequest setDescription(String description) {
-    this.description = description;
-    return this;
-  }
+    public UpdateUserGatewayRequest setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
 }

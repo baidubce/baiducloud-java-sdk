@@ -6,27 +6,34 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class RestoreEipFromRecycleRequest {
 
-  /** eip */
-  @JsonIgnore private String eip;
+    /**
+    * eip
+    */
+    @JsonIgnore
+    private String eip;
 
-  /** clientToken */
-  @JsonIgnore private String clientToken;
+    /**
+    * clientToken
+    */
+    @JsonIgnore
+    private String clientToken;
 
-  public String getEip() {
-    return eip;
-  }
+    public String getEip() {
+        return eip;
+    }
 
-  public RestoreEipFromRecycleRequest setEip(String eip) {
-    this.eip = eip;
-    return this;
-  }
+    public RestoreEipFromRecycleRequest setEip(String eip) {
+        this.eip = eip;
+        return this;
+    }
 
-  public String getClientToken() {
-    return clientToken;
-  }
+    public String getClientToken() {
+        return clientToken;
+    }
 
-  public RestoreEipFromRecycleRequest setClientToken(String clientToken) {
-    this.clientToken = clientToken;
-    return this;
-  }
+    public RestoreEipFromRecycleRequest setClientToken(String clientToken) {
+        this.clientToken = clientToken;
+        return this;
+    }
+
 }

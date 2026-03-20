@@ -7,85 +7,80 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ListTbspIpWhitelistResponse extends BaseBceResponse {
-  /** 包含查询结果的列表 */
-  private List<TbspIpWhitelistModel> ipWhitelistList;
+    /**
+     * 包含查询结果的列表
+     */
+    private List<TbspIpWhitelistModel> ipWhitelistList;
 
-  /** 标记查询的起始位置，若结果列表为空，此项不存在 */
-  private String marker;
+    /**
+     * 标记查询的起始位置，若结果列表为空，此项不存在
+     */
+    private String marker;
 
-  /** true表示后面还有数据，false表示已经是最后一页 */
-  private Boolean isTruncated;
+    /**
+     * true表示后面还有数据，false表示已经是最后一页
+     */
+    private Boolean isTruncated;
 
-  /** 获取下一页所需要传递的marker值。当isTruncated为false时，该域不出现 */
-  private String nextMarker;
+    /**
+     * 获取下一页所需要传递的marker值。当isTruncated为false时，该域不出现
+     */
+    private String nextMarker;
 
-  /** 每页包含的最大数量 */
-  private Integer maxKeys;
+    /**
+     * 每页包含的最大数量
+     */
+    private Integer maxKeys;
 
-  public ListTbspIpWhitelistResponse setIpWhitelistList(
-      List<TbspIpWhitelistModel> ipWhitelistList) {
-    this.ipWhitelistList = ipWhitelistList;
-    return this;
-  }
+    public ListTbspIpWhitelistResponse setIpWhitelistList(List<TbspIpWhitelistModel> ipWhitelistList) {
+        this.ipWhitelistList = ipWhitelistList;
+        return this;
+    }
 
-  public List<TbspIpWhitelistModel> getIpWhitelistList() {
-    return this.ipWhitelistList;
-  }
+    public List<TbspIpWhitelistModel> getIpWhitelistList() {
+        return this.ipWhitelistList;
+    }
 
-  public ListTbspIpWhitelistResponse setMarker(String marker) {
-    this.marker = marker;
-    return this;
-  }
+    public ListTbspIpWhitelistResponse setMarker(String marker) {
+        this.marker = marker;
+        return this;
+    }
 
-  public String getMarker() {
-    return this.marker;
-  }
+    public String getMarker() {
+        return this.marker;
+    }
 
-  public ListTbspIpWhitelistResponse setIsTruncated(Boolean isTruncated) {
-    this.isTruncated = isTruncated;
-    return this;
-  }
+    public ListTbspIpWhitelistResponse setIsTruncated(Boolean isTruncated) {
+        this.isTruncated = isTruncated;
+        return this;
+    }
 
-  public Boolean getIsTruncated() {
-    return this.isTruncated;
-  }
+    public Boolean getIsTruncated() {
+        return this.isTruncated;
+    }
 
-  public ListTbspIpWhitelistResponse setNextMarker(String nextMarker) {
-    this.nextMarker = nextMarker;
-    return this;
-  }
+    public ListTbspIpWhitelistResponse setNextMarker(String nextMarker) {
+        this.nextMarker = nextMarker;
+        return this;
+    }
 
-  public String getNextMarker() {
-    return this.nextMarker;
-  }
+    public String getNextMarker() {
+        return this.nextMarker;
+    }
 
-  public ListTbspIpWhitelistResponse setMaxKeys(Integer maxKeys) {
-    this.maxKeys = maxKeys;
-    return this;
-  }
+    public ListTbspIpWhitelistResponse setMaxKeys(Integer maxKeys) {
+        this.maxKeys = maxKeys;
+        return this;
+    }
 
-  public Integer getMaxKeys() {
-    return this.maxKeys;
-  }
+    public Integer getMaxKeys() {
+        return this.maxKeys;
+    }
 
-  @Override
-  public String toString() {
-    return "ListTbspIpWhitelistResponse{"
-        + "ipWhitelistList="
-        + ipWhitelistList
-        + "\n"
-        + "marker="
-        + marker
-        + "\n"
-        + "isTruncated="
-        + isTruncated
-        + "\n"
-        + "nextMarker="
-        + nextMarker
-        + "\n"
-        + "maxKeys="
-        + maxKeys
-        + "\n"
-        + "}";
-  }
+    @Override
+    public String toString() {
+        return "ListTbspIpWhitelistResponse{" + "ipWhitelistList=" + ipWhitelistList + "\n" + "marker=" + marker + "\n" + "isTruncated=" + isTruncated + "\n" + "nextMarker="
+                + nextMarker + "\n" + "maxKeys=" + maxKeys + "\n" + "}";
+    }
+
 }

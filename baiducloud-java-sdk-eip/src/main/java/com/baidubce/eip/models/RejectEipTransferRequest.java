@@ -8,27 +8,33 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class RejectEipTransferRequest extends BaseBceRequest {
 
-  /** clientToken */
-  @JsonIgnore private String clientToken;
+    /**
+    * clientToken
+    */
+    @JsonIgnore
+    private String clientToken;
 
-  /** 转移资源短ID列表,单次最多接收30个。 */
-  private List<String> transferIdList;
+    /**
+    * 转移资源短ID列表,单次最多接收30个。
+    */
+    private List<String> transferIdList;
 
-  public String getClientToken() {
-    return clientToken;
-  }
+    public String getClientToken() {
+        return clientToken;
+    }
 
-  public RejectEipTransferRequest setClientToken(String clientToken) {
-    this.clientToken = clientToken;
-    return this;
-  }
+    public RejectEipTransferRequest setClientToken(String clientToken) {
+        this.clientToken = clientToken;
+        return this;
+    }
 
-  public List<String> getTransferIdList() {
-    return transferIdList;
-  }
+    public List<String> getTransferIdList() {
+        return transferIdList;
+    }
 
-  public RejectEipTransferRequest setTransferIdList(List<String> transferIdList) {
-    this.transferIdList = transferIdList;
-    return this;
-  }
+    public RejectEipTransferRequest setTransferIdList(List<String> transferIdList) {
+        this.transferIdList = transferIdList;
+        return this;
+    }
+
 }

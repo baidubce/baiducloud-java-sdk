@@ -1,33 +1,37 @@
 package com.baidubce.eip.models;
 
-/** Gets or Sets InstanceType */
+/**
+ * Gets or Sets InstanceType
+ */
 public enum InstanceType {
-  BCC("BCC"),
 
-  BBC("BBC"),
+    BCC("BCC"),
 
-  DCC("DCC"),
+    BBC("BBC"),
 
-  ENI("ENI"),
+    DCC("DCC"),
 
-  BLB("BLB"),
+    ENI("ENI"),
 
-  VPN("VPN"),
+    BLB("BLB"),
 
-  NAT("NAT");
+    VPN("VPN"),
 
-  private String value;
+    NAT("NAT");
 
-  InstanceType(String value) {
-    this.value = value;
-  }
+    private String value;
 
-  public String getValue() {
-    return value;
-  }
+    InstanceType(String value) {
+        this.value = value;
+    }
 
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
+    public String getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
 }

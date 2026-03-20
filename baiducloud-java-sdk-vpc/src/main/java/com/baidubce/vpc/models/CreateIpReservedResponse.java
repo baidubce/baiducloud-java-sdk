@@ -5,20 +5,23 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateIpReservedResponse extends BaseBceResponse {
-  /** 预留网段的ID */
-  private String ipReserveId;
+    /**
+     * 预留网段的ID
+     */
+    private String ipReserveId;
 
-  public CreateIpReservedResponse setIpReserveId(String ipReserveId) {
-    this.ipReserveId = ipReserveId;
-    return this;
-  }
+    public CreateIpReservedResponse setIpReserveId(String ipReserveId) {
+        this.ipReserveId = ipReserveId;
+        return this;
+    }
 
-  public String getIpReserveId() {
-    return this.ipReserveId;
-  }
+    public String getIpReserveId() {
+        return this.ipReserveId;
+    }
 
-  @Override
-  public String toString() {
-    return "CreateIpReservedResponse{" + "ipReserveId=" + ipReserveId + "\n" + "}";
-  }
+    @Override
+    public String toString() {
+        return "CreateIpReservedResponse{" + "ipReserveId=" + ipReserveId + "\n" + "}";
+    }
+
 }

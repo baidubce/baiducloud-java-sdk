@@ -12,12 +12,6 @@
     <description>The BCE SDK for Java provides Java APIs for all of BCE services.</description>
     <url>http://bce.baidu.com/sdk/index.html</url>
 
-    <modules>
-        <module>baiducloud-java-sdk-core</module>
-        <module>baiducloud-java-sdk-vpc</module>
-        <module>baiducloud-java-sdk-eip</module>
-    </modules>
-
     <scm>
         <url>https://github.com/baidubce/baiducloud-java-sdk.git</url>
     </scm>

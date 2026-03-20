@@ -8,27 +8,26 @@ import com.baidubce.eip.models.ListTbspRequest;
 import com.baidubce.eip.models.ListTbspResponse;
 
 public class ExampleListTbsp {
-  public static void main(String[] args) {
-    // 设置Client的Access Key ID和Secret Access
-    // Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
-    String ak = "Your Ak";
-    String sk = "Your Sk";
-    String endpoint = "Endpoint";
-    BceClientConfiguration config = new BceClientConfiguration();
-    config.setCredentials(new DefaultBceCredentials(ak, sk));
-    config.setEndpoint(endpoint);
-    EipClient client = new EipClient(config);
-    ListTbspRequest listTbspRequest = new ListTbspRequest();
-    listTbspRequest.setId("");
-    listTbspRequest.setName("");
-    listTbspRequest.setStatus("");
-    listTbspRequest.setMarker("");
-    listTbspRequest.setMaxKeys(0);
-    try {
-      ListTbspResponse response = client.listTbsp(listTbspRequest);
-      System.out.println(response.toJsonString());
-    } catch (BceClientException e) {
-      System.out.println(e.getMessage());
+    public static void main(String[] args) {
+        // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
+        String ak = "Your Ak";
+        String sk = "Your Sk";
+        String endpoint = "Endpoint";
+        BceClientConfiguration config = new BceClientConfiguration();
+        config.setCredentials(new DefaultBceCredentials(ak, sk));
+        config.setEndpoint(endpoint);
+        EipClient client = new EipClient(config);
+        ListTbspRequest listTbspRequest = new ListTbspRequest();
+        listTbspRequest.setId("");
+        listTbspRequest.setName("");
+        listTbspRequest.setStatus("");
+        listTbspRequest.setMarker("");
+        listTbspRequest.setMaxKeys(0);
+        try {
+            ListTbspResponse response = client.listTbsp(listTbspRequest);
+            System.out.println(response.toJsonString());
+        } catch (BceClientException e) {
+            System.out.println(e.getMessage());
+        }
     }
-  }
 }

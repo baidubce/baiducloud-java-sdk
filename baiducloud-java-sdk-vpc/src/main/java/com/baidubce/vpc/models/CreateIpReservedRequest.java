@@ -7,63 +7,75 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateIpReservedRequest extends BaseBceRequest {
 
-  /** clientToken */
-  @JsonIgnore private String clientToken;
+    /**
+    * clientToken
+    */
+    @JsonIgnore
+    private String clientToken;
 
-  /** 预留网段所属的子网ID */
-  private String subnetId;
+    /**
+    * 预留网段所属的子网ID
+    */
+    private String subnetId;
 
-  /** 预留网段的ip或cidr */
-  private String ipCidr;
+    /**
+    * 预留网段的ip或cidr
+    */
+    private String ipCidr;
 
-  /** IP版本，支持IPv4和IPv6 */
-  private Integer ipVersion;
+    /**
+    * IP版本，支持IPv4和IPv6
+    */
+    private Integer ipVersion;
 
-  /** 预留网段描述 */
-  private String description;
+    /**
+    * 预留网段描述
+    */
+    private String description;
 
-  public String getClientToken() {
-    return clientToken;
-  }
+    public String getClientToken() {
+        return clientToken;
+    }
 
-  public CreateIpReservedRequest setClientToken(String clientToken) {
-    this.clientToken = clientToken;
-    return this;
-  }
+    public CreateIpReservedRequest setClientToken(String clientToken) {
+        this.clientToken = clientToken;
+        return this;
+    }
 
-  public String getSubnetId() {
-    return subnetId;
-  }
+    public String getSubnetId() {
+        return subnetId;
+    }
 
-  public CreateIpReservedRequest setSubnetId(String subnetId) {
-    this.subnetId = subnetId;
-    return this;
-  }
+    public CreateIpReservedRequest setSubnetId(String subnetId) {
+        this.subnetId = subnetId;
+        return this;
+    }
 
-  public String getIpCidr() {
-    return ipCidr;
-  }
+    public String getIpCidr() {
+        return ipCidr;
+    }
 
-  public CreateIpReservedRequest setIpCidr(String ipCidr) {
-    this.ipCidr = ipCidr;
-    return this;
-  }
+    public CreateIpReservedRequest setIpCidr(String ipCidr) {
+        this.ipCidr = ipCidr;
+        return this;
+    }
 
-  public Integer getIpVersion() {
-    return ipVersion;
-  }
+    public Integer getIpVersion() {
+        return ipVersion;
+    }
 
-  public CreateIpReservedRequest setIpVersion(Integer ipVersion) {
-    this.ipVersion = ipVersion;
-    return this;
-  }
+    public CreateIpReservedRequest setIpVersion(Integer ipVersion) {
+        this.ipVersion = ipVersion;
+        return this;
+    }
 
-  public String getDescription() {
-    return description;
-  }
+    public String getDescription() {
+        return description;
+    }
 
-  public CreateIpReservedRequest setDescription(String description) {
-    this.description = description;
-    return this;
-  }
+    public CreateIpReservedRequest setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
 }

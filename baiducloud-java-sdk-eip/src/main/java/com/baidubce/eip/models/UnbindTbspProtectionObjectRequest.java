@@ -8,39 +8,48 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UnbindTbspProtectionObjectRequest extends BaseBceRequest {
 
-  /** id */
-  @JsonIgnore private String id;
+    /**
+    * id
+    */
+    @JsonIgnore
+    private String id;
 
-  /** clientToken */
-  @JsonIgnore private String clientToken;
+    /**
+    * clientToken
+    */
+    @JsonIgnore
+    private String clientToken;
 
-  /** 解绑的防护对象IP列表 */
-  private List<String> ipList;
+    /**
+    * 解绑的防护对象IP列表
+    */
+    private List<String> ipList;
 
-  public String getId() {
-    return id;
-  }
+    public String getId() {
+        return id;
+    }
 
-  public UnbindTbspProtectionObjectRequest setId(String id) {
-    this.id = id;
-    return this;
-  }
+    public UnbindTbspProtectionObjectRequest setId(String id) {
+        this.id = id;
+        return this;
+    }
 
-  public String getClientToken() {
-    return clientToken;
-  }
+    public String getClientToken() {
+        return clientToken;
+    }
 
-  public UnbindTbspProtectionObjectRequest setClientToken(String clientToken) {
-    this.clientToken = clientToken;
-    return this;
-  }
+    public UnbindTbspProtectionObjectRequest setClientToken(String clientToken) {
+        this.clientToken = clientToken;
+        return this;
+    }
 
-  public List<String> getIpList() {
-    return ipList;
-  }
+    public List<String> getIpList() {
+        return ipList;
+    }
 
-  public UnbindTbspProtectionObjectRequest setIpList(List<String> ipList) {
-    this.ipList = ipList;
-    return this;
-  }
+    public UnbindTbspProtectionObjectRequest setIpList(List<String> ipList) {
+        this.ipList = ipList;
+        return this;
+    }
+
 }
