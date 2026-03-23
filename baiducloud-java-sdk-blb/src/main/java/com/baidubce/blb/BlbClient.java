@@ -26,6 +26,7 @@ import com.baidubce.blb.models.BillingChangePostToPreBlbResponse;
 import com.baidubce.blb.models.BillingChangePreToPostBlbRequest;
 import com.baidubce.blb.models.BillingChangePreToPostBlbResponse;
 import com.baidubce.blb.models.BlbInquiryRequest;
+import com.baidubce.blb.models.BlbInquiryResponse;
 import com.baidubce.blb.models.RefundBlbRequest;
 import com.baidubce.blb.models.ResizeBlbRequest;
 import com.baidubce.blb.models.ResizeBlbResponse;
@@ -116,13 +117,14 @@ public class BlbClient extends AbstractBceClient {
 
     /**
      * blbInquiry
-     * 
+     *
      * @param request 入参结构体
+     * @return BlbInquiryResponse
      */
-    public void blbInquiry(BlbInquiryRequest request) {
+    public BlbInquiryResponse blbInquiry(BlbInquiryRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_BLB, CONSTANT_PRICE);
         fillPayload(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, BlbInquiryResponse.class);
     }
 
     /**
