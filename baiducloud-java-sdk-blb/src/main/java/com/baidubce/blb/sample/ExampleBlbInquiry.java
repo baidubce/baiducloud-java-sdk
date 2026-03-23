@@ -12,9 +12,9 @@ import com.baidubce.blb.models.BlbInquiryResponse;
 public class ExampleBlbInquiry {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
-        String ak = "your ak";
-        String sk = "your sk";
-        String endpoint = "blb.bj.qasandbox.baidu-int.com";
+        String ak = "ak";
+        String sk = "sk";
+        String endpoint = "endpoint";
         BceClientConfiguration config = new BceClientConfiguration();
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
