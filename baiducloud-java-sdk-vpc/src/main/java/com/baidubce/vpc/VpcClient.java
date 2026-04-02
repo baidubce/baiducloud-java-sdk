@@ -134,8 +134,8 @@ public class VpcClient extends AbstractBceClient {
     private static final String CONSTANT_DELETE_PROTECT = "deleteProtect";
 
     /**
-     * Responsible for handling httpResponses from all service calls.
-     */
+    * Responsible for handling httpResponses from all service calls.
+    */
     private static final HttpResponseHandler[] CLIENT_HANDLERS =
             new HttpResponseHandler[]{new BceMetadataResponseHandler(), new BceErrorResponseHandler(), new BceJsonResponseHandler()};
 
@@ -144,17 +144,17 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
-     * Constructs a new InstanceClient to invoke service methods on eip instance.
-     *
-     * @param clientConfiguration The BCE client configuration options.
-     */
+    * Constructs a new InstanceClient to invoke service methods on eip instance.
+    *
+    * @param clientConfiguration The BCE client configuration options.
+    */
     public VpcClient(BceClientConfiguration clientConfiguration) {
         super(clientConfiguration, CLIENT_HANDLERS);
     }
 
     /**
      * batchCreateSslVpnUsers
-     *
+     * 
      * @param request 入参结构体
      * @return BatchCreateSslVpnUsersResponse
      */
@@ -169,7 +169,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * bindEip
-     *
+     * 
      * @param request 入参结构体
      */
     public void bindEip(BindEipRequest request) {
@@ -184,7 +184,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * closeVpcRelay
-     *
+     * 
      * @param request 入参结构体
      */
     public void closeVpcRelay(CloseVpcRelayRequest request) {
@@ -197,7 +197,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * createGatewayLimitRules
-     *
+     * 
      * @param request 入参结构体
      * @return CreateGatewayLimitRulesResponse
      */
@@ -212,7 +212,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * createIpReserved
-     *
+     * 
      * @param request 入参结构体
      * @return CreateIpReservedResponse
      */
@@ -227,7 +227,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * createSslVpnServer
-     *
+     * 
      * @param request 入参结构体
      * @return CreateSslVpnServerResponse
      */
@@ -242,7 +242,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * createSubnet
-     *
+     * 
      * @param request 入参结构体
      * @return CreateSubnetResponse
      */
@@ -257,7 +257,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * createUserGateway
-     *
+     * 
      * @param request 入参结构体
      * @return CreateUserGatewayResponse
      */
@@ -272,7 +272,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * createVpc
-     *
+     * 
      * @param request 入参结构体
      * @return CreateVpcResponse
      */
@@ -287,7 +287,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * createVpn
-     *
+     * 
      * @param request 入参结构体
      * @return CreateVpnResponse
      */
@@ -302,7 +302,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * createVpnTunnel
-     *
+     * 
      * @param request 入参结构体
      * @return CreateVpnTunnelResponse
      */
@@ -317,7 +317,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * deleteGatewayLimitRule
-     *
+     * 
      * @param request 入参结构体
      */
     public void deleteGatewayLimitRule(DeleteGatewayLimitRuleRequest request) {
@@ -330,7 +330,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * deleteIpReserve
-     *
+     * 
      * @param request 入参结构体
      */
     public void deleteIpReserve(DeleteIpReserveRequest request) {
@@ -344,7 +344,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * deleteSslVpnServer
-     *
+     * 
      * @param request 入参结构体
      */
     public void deleteSslVpnServer(DeleteSslVpnServerRequest request) {
@@ -365,7 +365,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * deleteSslVpnUser
-     *
+     * 
      * @param request 入参结构体
      */
     public void deleteSslVpnUser(DeleteSslVpnUserRequest request) {
@@ -379,7 +379,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * deleteSubnet
-     *
+     * 
      * @param request 入参结构体
      */
     public void deleteSubnet(DeleteSubnetRequest request) {
@@ -392,7 +392,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * deleteUserGateway
-     *
+     * 
      * @param request 入参结构体
      */
     public void deleteUserGateway(DeleteUserGatewayRequest request) {
@@ -402,7 +402,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * deleteVpc
-     *
+     * 
      * @param request 入参结构体
      */
     public void deleteVpc(DeleteVpcRequest request) {
@@ -415,7 +415,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * deleteVpnTunnel
-     *
+     * 
      * @param request 入参结构体
      */
     public void deleteVpnTunnel(DeleteVpnTunnelRequest request) {
@@ -428,7 +428,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * getVpcResourceIpInfo
-     *
+     * 
      * @param request 入参结构体
      * @return GetVpcResourceIpInfoResponse
      */
@@ -454,7 +454,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * listIpReserve
-     *
+     * 
      * @param request 入参结构体
      * @return ListIpReserveResponse
      */
@@ -474,7 +474,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * modifyGatewayLimitRules
-     *
+     * 
      * @param request 入参结构体
      */
     public void modifyGatewayLimitRules(ModifyGatewayLimitRulesRequest request) {
@@ -488,7 +488,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * openVpcRelay
-     *
+     * 
      * @param request 入参结构体
      */
     public void openVpcRelay(OpenVpcRelayRequest request) {
@@ -501,7 +501,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * querySpecifiedSubnet
-     *
+     * 
      * @param request 入参结构体
      * @return QuerySpecifiedSubnetResponse
      */
@@ -512,7 +512,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * querySpecifiedVpc
-     *
+     * 
      * @param request 入参结构体
      * @return QuerySpecifiedVpcResponse
      */
@@ -523,7 +523,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * querySslVpnServer
-     *
+     * 
      * @param request 入参结构体
      * @return QuerySslVpnServerResponse
      */
@@ -537,7 +537,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * querySslVpnUsers
-     *
+     * 
      * @param request 入参结构体
      * @return QuerySslVpnUsersResponse
      */
@@ -557,7 +557,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * querySubnetList
-     *
+     * 
      * @param request 入参结构体
      * @return QuerySubnetListResponse
      */
@@ -586,7 +586,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * queryVpcIntranetIp
-     *
+     * 
      * @param request 入参结构体
      * @return QueryVpcIntranetIpResponse
      */
@@ -604,7 +604,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * queryVpcList
-     *
+     * 
      * @param request 入参结构体
      * @return QueryVpcListResponse
      */
@@ -627,7 +627,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * queryVpnList
-     *
+     * 
      * @param request 入参结构体
      * @return QueryVpnListResponse
      */
@@ -653,7 +653,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * releaseVpn
-     *
+     * 
      * @param request 入参结构体
      */
     public void releaseVpn(ReleaseVpnRequest request) {
@@ -666,7 +666,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * renewVpn
-     *
+     * 
      * @param request 入参结构体
      */
     public void renewVpn(RenewVpnRequest request) {
@@ -681,7 +681,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * searchForVpnDetails
-     *
+     * 
      * @param request 入参结构体
      * @return SearchForVpnDetailsResponse
      */
@@ -692,7 +692,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * searchVpnTunnel
-     *
+     * 
      * @param request 入参结构体
      * @return SearchVpnTunnelResponse
      */
@@ -706,7 +706,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * unbindEip
-     *
+     * 
      * @param request 入参结构体
      */
     public void unbindEip(UnbindEipRequest request) {
@@ -720,7 +720,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * updateSslVpnServer
-     *
+     * 
      * @param request 入参结构体
      */
     public void updateSslVpnServer(UpdateSslVpnServerRequest request) {
@@ -735,7 +735,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * updateSslVpnUsers
-     *
+     * 
      * @param request 入参结构体
      */
     public void updateSslVpnUsers(UpdateSslVpnUsersRequest request) {
@@ -750,7 +750,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * updateSubnet
-     *
+     * 
      * @param request 入参结构体
      */
     public void updateSubnet(UpdateSubnetRequest request) {
@@ -765,7 +765,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * updateUserGateway
-     *
+     * 
      * @param request 入参结构体
      */
     public void updateUserGateway(UpdateUserGatewayRequest request) {
@@ -779,7 +779,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * updateVpc
-     *
+     * 
      * @param request 入参结构体
      */
     public void updateVpc(UpdateVpcRequest request) {
@@ -794,7 +794,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * updateVpn
-     *
+     * 
      * @param request 入参结构体
      */
     public void updateVpn(UpdateVpnRequest request) {
@@ -809,7 +809,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * updateVpnReleaseProtection
-     *
+     * 
      * @param request 入参结构体
      */
     public void updateVpnReleaseProtection(UpdateVpnReleaseProtectionRequest request) {
@@ -823,7 +823,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * updateVpnTunnel
-     *
+     * 
      * @param request 入参结构体
      */
     public void updateVpnTunnel(UpdateVpnTunnelRequest request) {
@@ -837,7 +837,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * userGatewayDetails
-     *
+     * 
      * @param request 入参结构体
      * @return UserGatewayDetailsResponse
      */
@@ -848,7 +848,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * userGatewayList
-     *
+     * 
      * @param request 入参结构体
      * @return UserGatewayListResponse
      */
@@ -865,7 +865,7 @@ public class VpcClient extends AbstractBceClient {
 
     /**
      * viewGatewayLimitRules
-     *
+     * 
      * @param request 入参结构体
      * @return ViewGatewayLimitRulesResponse
      */
@@ -893,14 +893,14 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
-     * Creates and initializes a new request object for the specified resource.
-     *
-     * @param bceRequest The original BCE request created by the user.
-     * @param httpMethod The HTTP method to use when sending the request.
-     * @param pathVariables The optional variables used in the URI path.
-     * @return A new request object populated with endpoint, resource path and specific
-     *         parameters to send.
-     */
+    * Creates and initializes a new request object for the specified resource.
+    *
+    * @param bceRequest The original BCE request created by the user.
+    * @param httpMethod The HTTP method to use when sending the request.
+    * @param pathVariables The optional variables used in the URI path.
+    * @return A new request object populated with endpoint, resource path and specific
+    *         parameters to send.
+    */
     private InternalRequest createRequest(AbstractBceRequest bceRequest, HttpMethodName httpMethod, String... pathVariables) {
         List<String> path = new ArrayList<String>();
         if (pathVariables != null) {
@@ -918,13 +918,13 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
-     * the method to fill the internalRequest's content field with bceRequest
-     * only support HttpMethodName.POST or HttpMethodName.PUT
-     *
-     * @param internalRequest A request object, populated with endpoint, resource path, ready for callers to populate
-     * any additional headers or parameters, and execute.
-     * @param bceRequest The original request, as created by the user.
-     */
+    * the method to fill the internalRequest's content field with bceRequest
+    * only support HttpMethodName.POST or HttpMethodName.PUT
+    *
+    * @param internalRequest A request object, populated with endpoint, resource path, ready for callers to populate
+    * any additional headers or parameters, and execute.
+    * @param bceRequest The original request, as created by the user.
+    */
     protected void fillPayload(InternalRequest internalRequest, AbstractBceRequest bceRequest) {
         if (internalRequest.getHttpMethod() == HttpMethodName.POST || internalRequest.getHttpMethod() == HttpMethodName.PUT) {
             String strJson = JsonUtils.toJsonString(bceRequest);
