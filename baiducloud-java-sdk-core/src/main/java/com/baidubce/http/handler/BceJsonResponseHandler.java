@@ -13,6 +13,7 @@
 package com.baidubce.http.handler;
 
 import com.baidubce.http.BceHttpResponse;
+import com.baidubce.http.Headers;
 import com.baidubce.model.AbstractBceResponse;
 import com.baidubce.util.JsonUtils;
 
@@ -26,8 +27,8 @@ public class BceJsonResponseHandler implements HttpResponseHandler {
     public boolean handle(BceHttpResponse httpResponse, AbstractBceResponse response) throws Exception {
         InputStream content = httpResponse.getContent();
         if (content != null) {
-            if (response.getMetadata().getContentLength() > 0
-                    || "chunked".equalsIgnoreCase(response.getMetadata().getTransferEncoding())) {
+            if (httpResponse.getHeaderAsLong(Headers.CONTENT_LENGTH) > 0
+                    || "chunked".equalsIgnoreCase(response.getMetadata().get(Headers.TRANSFER_ENCODING))) {
                 JsonUtils.load(content, response);
             }
             content.close();

@@ -18,6 +18,8 @@ import com.baidubce.http.Headers;
 import com.baidubce.model.AbstractBceResponse;
 import com.google.common.base.CharMatcher;
 
+import java.util.Map;
+
 /**
  * HTTP response handler for Baidu BCE responses. Provides common utilities that other specialized BCE response
  * handlers need to share such as pulling common response metadata (ex: request IDs) out of headers.
@@ -25,26 +27,7 @@ import com.google.common.base.CharMatcher;
 public class BceMetadataResponseHandler implements HttpResponseHandler {
     @Override
     public boolean handle(BceHttpResponse httpResponse, AbstractBceResponse response) throws Exception {
-        BceResponseMetadata metadata = response.getMetadata();
-        metadata.setBceRequestId(httpResponse.getHeader(Headers.BCE_REQUEST_ID));
-        metadata.setBceContentSha256(httpResponse.getHeader(Headers.BCE_CONTENT_SHA256));
-        metadata.setContentDisposition(httpResponse.getHeader(Headers.CONTENT_DISPOSITION));
-        metadata.setContentEncoding(httpResponse.getHeader(Headers.CONTENT_ENCODING));
-        metadata.setContentLength(httpResponse.getHeaderAsLong(Headers.CONTENT_LENGTH));
-        metadata.setContentMd5(httpResponse.getHeader(Headers.CONTENT_MD5));
-        metadata.setContentRange(httpResponse.getHeader(Headers.CONTENT_RANGE));
-        metadata.setContentType(httpResponse.getHeader(Headers.CONTENT_TYPE));
-        metadata.setDate(httpResponse.getHeaderAsRfc822Date(Headers.DATE));
-        metadata.setTransferEncoding(httpResponse.getHeader(Headers.TRANSFER_ENCODING));
-        metadata.setSymlinkTarget(httpResponse.getHeader(Headers.BCE_SYMLINK_TARGET));
-        metadata.setBucketType(httpResponse.getHeader(Headers.BCE_BUCKET_TYPE));
-        String eTag = httpResponse.getHeader(Headers.ETAG);
-        if (eTag != null) {
-            metadata.setETag(CharMatcher.is('"').trimFrom(eTag));
-        }
-        metadata.setExpires(httpResponse.getHeaderAsRfc822Date(Headers.EXPIRES));
-        metadata.setLastModified(httpResponse.getHeaderAsRfc822Date(Headers.LAST_MODIFIED));
-        metadata.setServer(httpResponse.getHeader(Headers.SERVER));
+        response.setMetadata(httpResponse.getHeaders());
         return false;
     }
 }

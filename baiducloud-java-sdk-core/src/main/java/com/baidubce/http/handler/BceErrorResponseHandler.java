@@ -16,6 +16,7 @@ import com.baidubce.BceErrorResponse;
 import com.baidubce.BceServiceException;
 import com.baidubce.BceServiceException.ErrorType;
 import com.baidubce.http.BceHttpResponse;
+import com.baidubce.http.Headers;
 import com.baidubce.model.AbstractBceResponse;
 import com.baidubce.util.JsonUtils;
 import org.apache.http.HttpStatus;
@@ -56,7 +57,7 @@ public class BceErrorResponseHandler implements HttpResponseHandler {
         }
         if (bse == null) {
             bse = new BceServiceException(httpResponse.getStatusText());
-            bse.setRequestId(response.getMetadata().getBceRequestId());
+            bse.setRequestId(response.getMetadata().get(Headers.BCE_REQUEST_ID));
         }
         bse.setStatusCode(httpResponse.getStatusCode());
         if (bse.getStatusCode() >= 500) {

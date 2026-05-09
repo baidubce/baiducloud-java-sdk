@@ -14,8 +14,11 @@ package com.baidubce.model;
 
 import com.baidubce.BceResponseMetadata;
 import com.baidubce.util.JsonUtils;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.Map;
 
 /**
  * Represents the response from an BCE service, including the result payload and any response metadata. BCE response
@@ -24,10 +27,14 @@ import java.io.Serializable;
  */
 public class AbstractBceResponse implements Serializable {
 
-    protected BceResponseMetadata metadata = new BceResponseMetadata();
+    @JsonIgnore
+    protected Map<String, String> metadata;
 
-    public BceResponseMetadata getMetadata() {
+    public Map<String, String> getMetadata() {
         return this.metadata;
+    }
+    public void setMetadata(Map<String, String> metadata) {
+        this.metadata = metadata;
     }
 
     public String toJsonString() {

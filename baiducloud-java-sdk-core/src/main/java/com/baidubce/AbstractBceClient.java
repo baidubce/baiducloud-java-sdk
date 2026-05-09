@@ -19,6 +19,7 @@ import com.baidubce.http.handler.HttpResponseHandler;
 import com.baidubce.internal.InternalRequest;
 import com.baidubce.model.AbstractBceResponse;
 import com.baidubce.util.DateUtils;
+import com.baidubce.util.HttpUtils;
 import org.apache.http.annotation.ThreadSafe;
 
 import java.net.URI;
@@ -195,6 +196,30 @@ public abstract class AbstractBceClient {
     }
 
     /**
+     * Subclasses should invoke this method for sending request to the target service with custom handlers.
+     * <p>
+     * This method will add "Content-Type" and "Date" to headers with default values if not present.
+     *
+     * @param request          the request to build up the HTTP request.
+     * @param responseClass    the response class.
+     * @param customHandlers   custom response handlers to use instead of the default ones.
+     * @param <T>              the type of response
+     * @return the final response object.
+     */
+    protected <T extends AbstractBceResponse> T invokeHttpClient(
+            InternalRequest request, Class<T> responseClass, HttpResponseHandler[] customHandlers) {
+        if (!request.getHeaders().containsKey(Headers.CONTENT_TYPE)) {
+            request.addHeader(Headers.CONTENT_TYPE, DEFAULT_CONTENT_TYPE);
+        }
+
+        if (!request.getHeaders().containsKey(Headers.DATE)) {
+            request.addHeader(Headers.DATE, DateUtils.formatRfc822Date(new Date()));
+        }
+
+        return this.client.execute(request, responseClass, customHandlers);
+    }
+
+    /**
      * Returns the service ID based on the actual class name.
      * <p>
      * The class name should be in the form of "com.baidubce.services.xxx.XxxClient",
@@ -308,5 +333,156 @@ public abstract class AbstractBceClient {
             // only if the endpoint specified in the client configuration is not a valid URI, which is not expected.
             throw new IllegalArgumentException("Invalid endpoint." + endpoint, e);
         }
+    }
+
+    /**
+     * 从请求对象中提取 @Host 注解字段的值
+     * 
+     * <p>此方法通过反射扫描请求对象的所有字段，查找标记了 {@link com.baidubce.annotation.Host} 注解的字段，
+     * 并返回该字段的值。该值将被用作主机名前缀拼接到 endpoint 中。
+     * 
+     * <h3>使用场景：</h3>
+     * <ul>
+     *   <li>BOS：bucket name 作为子域名</li>
+     *   <li>VPC：bucket name 作为子域名</li>
+     * </ul>
+     * 
+     * @param bceRequest 原始请求对象
+     * @return @Host 注解字段的值，如果不存在则返回 null
+     */
+    protected String extractHostAnnotationValue(com.baidubce.model.AbstractBceRequest bceRequest) {
+        if (bceRequest == null) {
+            return null;
+        }
+        
+        try {
+            Class<?> clazz = bceRequest.getClass();
+            
+            // 遍历所有字段（包括父类字段）
+            for (java.lang.reflect.Field field : clazz.getDeclaredFields()) {
+                if (field.isAnnotationPresent(com.baidubce.annotation.Host.class)) {
+                    field.setAccessible(true);
+                    Object value = field.get(bceRequest);
+                    
+                    if (value instanceof String) {
+                        return (String) value;
+                    }
+                }
+            }
+        } catch (IllegalAccessException e) {
+            // 如果反射失败，记录日志但不抛异常，返回 null 使用原始 endpoint
+            // This should not happen in normal circumstances
+        }
+        
+        return null;
+    }
+    
+    /**
+     * 根据 hostPrefix 构建新的 endpoint
+     * 
+     * <p>将 hostPrefix 作为子域名拼接到原始 endpoint 的主机名前面。
+     * 
+     * <h3>示例：</h3>
+     * <ul>
+     *   <li>原始 endpoint: {@code http://bj.bcebos.com}</li>
+     *   <li>hostPrefix: {@code mybucket}</li>
+     *   <li>结果: {@code http://mybucket.bj.bcebos.com}</li>
+     * </ul>
+     * 
+     * @param originalEndpoint 原始 endpoint
+     * @param hostPrefix       主机名前缀
+     * @return 修改后的 endpoint，如果构建失败则返回原始 endpoint
+     */
+    protected URI buildHostEndpoint(URI originalEndpoint, String hostPrefix) {
+        if (originalEndpoint == null || hostPrefix == null || hostPrefix.isEmpty()) {
+            return originalEndpoint;
+        }
+        
+        try {
+            String newHost = hostPrefix + "." + originalEndpoint.getHost();
+            return new URI(
+                originalEndpoint.getScheme(),
+                null,  // userInfo
+                newHost,
+                originalEndpoint.getPort(),
+                originalEndpoint.getPath(),
+                originalEndpoint.getQuery(),
+                originalEndpoint.getFragment()
+            );
+        } catch (URISyntaxException e) {
+            // 如果构建失败，返回原始 endpoint
+            // This should not happen if the original endpoint is valid
+            return originalEndpoint;
+        }
+    }
+    
+    /**
+     * 创建内部请求对象，自动处理 @Host 注解
+     * 
+     * <p>此方法是子类创建请求的统一入口，提供以下功能：
+     * <ul>
+     *   <li>自动提取 @Host 注解字段并修改 endpoint</li>
+     *   <li>构建完整的 URI（包含路径变量）</li>
+     *   <li>设置凭证信息</li>
+     * </ul>
+     * 
+     * <h3>使用示例：</h3>
+     * <pre>
+     * // 在子类 Client 中
+     * InternalRequest internalRequest = this.createRequest(
+     *     request, 
+     *     HttpMethodName.PUT,
+     *     request.getObjectName()
+     * );
+     * </pre>
+     * 
+     * @param bceRequest    原始 BCE 请求对象
+     * @param httpMethod    HTTP 方法
+     * @param pathVariables 路径变量
+     * @return 处理后的内部请求对象
+     */
+    protected com.baidubce.internal.InternalRequest createRequest(
+            com.baidubce.model.AbstractBceRequest bceRequest, 
+            com.baidubce.http.HttpMethodName httpMethod, 
+            String... pathVariables) {
+        return createRequest(bceRequest, httpMethod, null, pathVariables);
+    }
+    
+    /**
+     * 创建内部请求对象，自动处理 @Host 注解，并支持自定义签名选项
+     * 
+     * <p>此方法是 {@link #createRequest(com.baidubce.model.AbstractBceRequest, com.baidubce.http.HttpMethodName, String...)} 
+     * 的重载版本，支持传入自定义的签名选项。
+     * 
+     * @param bceRequest    原始 BCE 请求对象
+     * @param httpMethod    HTTP 方法
+     * @param signOptions   签名选项（可选，为 null 则不设置）
+     * @param pathVariables 路径变量
+     * @return 处理后的内部请求对象
+     */
+    protected com.baidubce.internal.InternalRequest createRequest(
+            com.baidubce.model.AbstractBceRequest bceRequest,
+            com.baidubce.http.HttpMethodName httpMethod,
+            com.baidubce.auth.SignOptions signOptions,
+            String... pathVariables) {
+        java.util.List<String> path = new java.util.ArrayList<String>();
+        if (pathVariables != null) {
+            for (String pathVariable : pathVariables) {
+                path.add(pathVariable);
+            }
+        }
+        String hostPrefix = extractHostAnnotationValue(bceRequest);
+        // 3. 修改 endpoint（如果有 @Host 注解）
+        URI endpoint = this.getEndpoint();
+        if (hostPrefix != null && !hostPrefix.isEmpty()) {
+            endpoint = buildHostEndpoint(endpoint, hostPrefix);
+        }
+        URI uri = HttpUtils.appendUri(endpoint, path.toArray(new String[path.size()]));
+        com.baidubce.internal.InternalRequest request = new com.baidubce.internal.InternalRequest(httpMethod, uri);
+        if (signOptions != null) {
+            request.setSignOptions(signOptions);
+        }
+        request.setCredentials(bceRequest.getRequestCredentials());
+        return request;
     }
 }
