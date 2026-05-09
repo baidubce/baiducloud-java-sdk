@@ -12,12 +12,10 @@
  */
 package com.baidubce.model;
 
-import com.baidubce.BceResponseMetadata;
 import com.baidubce.util.JsonUtils;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.Map;
 
 /**

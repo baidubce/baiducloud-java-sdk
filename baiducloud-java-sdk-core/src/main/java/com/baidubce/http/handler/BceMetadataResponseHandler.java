@@ -12,13 +12,8 @@
  */
 package com.baidubce.http.handler;
 
-import com.baidubce.BceResponseMetadata;
 import com.baidubce.http.BceHttpResponse;
-import com.baidubce.http.Headers;
 import com.baidubce.model.AbstractBceResponse;
-import com.google.common.base.CharMatcher;
-
-import java.util.Map;
 
 /**
  * HTTP response handler for Baidu BCE responses. Provides common utilities that other specialized BCE response
