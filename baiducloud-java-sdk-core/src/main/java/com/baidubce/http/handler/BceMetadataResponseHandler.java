@@ -13,7 +13,11 @@
 package com.baidubce.http.handler;
 
 import com.baidubce.http.BceHttpResponse;
+import com.baidubce.http.Headers;
 import com.baidubce.model.AbstractBceResponse;
+import com.google.common.base.CharMatcher;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * HTTP response handler for Baidu BCE responses. Provides common utilities that other specialized BCE response
@@ -22,7 +26,20 @@ import com.baidubce.model.AbstractBceResponse;
 public class BceMetadataResponseHandler implements HttpResponseHandler {
     @Override
     public boolean handle(BceHttpResponse httpResponse, AbstractBceResponse response) throws Exception {
-        response.setMetadata(httpResponse.getHeaders());
+        Map<String, String> metadata = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        metadata.putAll(httpResponse.getHeaders());
+        metadata.put(Headers.CONTENT_LENGTH, String.valueOf(httpResponse.getHeaderAsLong(Headers.CONTENT_LENGTH)));
+        metadata.put(Headers.DATE, httpResponse.getHeaderAsRfc822Date(Headers.DATE) == null ?
+                null : String.valueOf(httpResponse.getHeaderAsRfc822Date(Headers.DATE)));
+        String eTag = httpResponse.getHeader(Headers.ETAG);
+        if (eTag != null) {
+            metadata.put(Headers.ETAG, CharMatcher.is('"').trimFrom(eTag));
+        }
+        metadata.put(Headers.EXPIRES, httpResponse.getHeaderAsRfc822Date(Headers.EXPIRES) == null ?
+                null : String.valueOf(httpResponse.getHeaderAsRfc822Date(Headers.EXPIRES)));
+        metadata.put(Headers.LAST_MODIFIED, httpResponse.getHeaderAsRfc822Date(Headers.LAST_MODIFIED) == null ?
+                null : String.valueOf(httpResponse.getHeaderAsRfc822Date(Headers.LAST_MODIFIED)));
+        response.setMetadata(metadata);
         return false;
     }
 }
