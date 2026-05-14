@@ -1,11 +1,12 @@
 package com.baidubce.vpc.models;
 
+import com.baidubce.common.BaseBceRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class QueryVpcIntranetIpRequest {
+public class QueryVpcIntranetIpRequest extends BaseBceRequest {
 
     /**
     * vpcId

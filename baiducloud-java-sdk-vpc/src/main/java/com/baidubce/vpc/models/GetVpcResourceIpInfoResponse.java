@@ -1,39 +1,43 @@
 package com.baidubce.vpc.models;
 
-import java.util.List;
-
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GetVpcResourceIpInfoResponse extends BaseBceResponse {
+
     /**
-     * page number
-     */
+    * page number
+    */
     private Integer pageNo;
 
     /**
-     * page size
-     */
+    * page size
+    */
     private Integer pageSize;
 
     /**
-     * 满足查询条件的结果集总数
-     */
+    * 满足查询条件的结果集总数
+    */
     private Integer totalCount;
 
     /**
-     * VPC内产品占用IP分页信息
-     */
+    * VPC内产品占用IP分页信息
+    */
     private List<ResourceIp> result;
+
+    public Integer getPageNo() {
+        return pageNo;
+    }
 
     public GetVpcResourceIpInfoResponse setPageNo(Integer pageNo) {
         this.pageNo = pageNo;
         return this;
     }
 
-    public Integer getPageNo() {
-        return this.pageNo;
+    public Integer getPageSize() {
+        return pageSize;
     }
 
     public GetVpcResourceIpInfoResponse setPageSize(Integer pageSize) {
@@ -41,8 +45,8 @@ public class GetVpcResourceIpInfoResponse extends BaseBceResponse {
         return this;
     }
 
-    public Integer getPageSize() {
-        return this.pageSize;
+    public Integer getTotalCount() {
+        return totalCount;
     }
 
     public GetVpcResourceIpInfoResponse setTotalCount(Integer totalCount) {
@@ -50,17 +54,13 @@ public class GetVpcResourceIpInfoResponse extends BaseBceResponse {
         return this;
     }
 
-    public Integer getTotalCount() {
-        return this.totalCount;
+    public List<ResourceIp> getResult() {
+        return result;
     }
 
     public GetVpcResourceIpInfoResponse setResult(List<ResourceIp> result) {
         this.result = result;
         return this;
-    }
-
-    public List<ResourceIp> getResult() {
-        return this.result;
     }
 
     @Override

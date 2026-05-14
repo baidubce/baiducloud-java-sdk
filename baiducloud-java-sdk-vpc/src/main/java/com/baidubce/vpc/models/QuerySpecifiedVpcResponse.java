@@ -5,18 +5,19 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QuerySpecifiedVpcResponse extends BaseBceResponse {
+
     /**
-     * vpc
-     */
+    * vpc
+    */
     private ShowVpcModel vpc;
+
+    public ShowVpcModel getVpc() {
+        return vpc;
+    }
 
     public QuerySpecifiedVpcResponse setVpc(ShowVpcModel vpc) {
         this.vpc = vpc;
         return this;
-    }
-
-    public ShowVpcModel getVpc() {
-        return this.vpc;
     }
 
     @Override

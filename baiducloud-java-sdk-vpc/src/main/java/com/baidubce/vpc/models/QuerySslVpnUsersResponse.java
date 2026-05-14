@@ -1,44 +1,48 @@
 package com.baidubce.vpc.models;
 
-import java.util.List;
-
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QuerySslVpnUsersResponse extends BaseBceResponse {
+
     /**
-     * 标记查询的起始位置
-     */
+    * 标记查询的起始位置
+    */
     private String marker;
 
     /**
-     * true表示后面还有数据，false表示已经是最后一页
-     */
+    * true表示后面还有数据，false表示已经是最后一页
+    */
     private Boolean isTruncated;
 
     /**
-     * 获取下一页所需要传递的marker值。当isTruncated为false时，该域不出现
-     */
+    * 获取下一页所需要传递的marker值。当isTruncated为false时，该域不出现
+    */
     private String nextMarker;
 
     /**
-     * 每页包含的最大数量
-     */
+    * 每页包含的最大数量
+    */
     private Integer maxKeys;
 
     /**
-     * SSL-VPN用户列表
-     */
+    * SSL-VPN用户列表
+    */
     private List<SslVpnUserVo> sslVpnUsers;
+
+    public String getMarker() {
+        return marker;
+    }
 
     public QuerySslVpnUsersResponse setMarker(String marker) {
         this.marker = marker;
         return this;
     }
 
-    public String getMarker() {
-        return this.marker;
+    public Boolean getIsTruncated() {
+        return isTruncated;
     }
 
     public QuerySslVpnUsersResponse setIsTruncated(Boolean isTruncated) {
@@ -46,8 +50,8 @@ public class QuerySslVpnUsersResponse extends BaseBceResponse {
         return this;
     }
 
-    public Boolean getIsTruncated() {
-        return this.isTruncated;
+    public String getNextMarker() {
+        return nextMarker;
     }
 
     public QuerySslVpnUsersResponse setNextMarker(String nextMarker) {
@@ -55,8 +59,8 @@ public class QuerySslVpnUsersResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getNextMarker() {
-        return this.nextMarker;
+    public Integer getMaxKeys() {
+        return maxKeys;
     }
 
     public QuerySslVpnUsersResponse setMaxKeys(Integer maxKeys) {
@@ -64,17 +68,13 @@ public class QuerySslVpnUsersResponse extends BaseBceResponse {
         return this;
     }
 
-    public Integer getMaxKeys() {
-        return this.maxKeys;
+    public List<SslVpnUserVo> getSslVpnUsers() {
+        return sslVpnUsers;
     }
 
     public QuerySslVpnUsersResponse setSslVpnUsers(List<SslVpnUserVo> sslVpnUsers) {
         this.sslVpnUsers = sslVpnUsers;
         return this;
-    }
-
-    public List<SslVpnUserVo> getSslVpnUsers() {
-        return this.sslVpnUsers;
     }
 
     @Override

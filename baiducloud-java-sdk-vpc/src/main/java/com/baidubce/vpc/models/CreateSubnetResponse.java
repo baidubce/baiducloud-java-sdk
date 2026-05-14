@@ -5,18 +5,19 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateSubnetResponse extends BaseBceResponse {
+
     /**
-     * 创建子网的ID
-     */
+    * 创建子网的ID
+    */
     private String subnetId;
+
+    public String getSubnetId() {
+        return subnetId;
+    }
 
     public CreateSubnetResponse setSubnetId(String subnetId) {
         this.subnetId = subnetId;
         return this;
-    }
-
-    public String getSubnetId() {
-        return this.subnetId;
     }
 
     @Override

@@ -1,104 +1,108 @@
 package com.baidubce.vpc.models;
 
-import java.util.List;
-
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SearchForVpnDetailsResponse extends BaseBceResponse {
+
     /**
-     * VPN的ID
-     */
+    * VPN的ID
+    */
     private String vpnId;
 
     /**
-     * 名称
-     */
+    * 名称
+    */
     private String vpnName;
 
     /**
-     * 创建时间
-     */
+    * 创建时间
+    */
     private String createTime;
 
     /**
-     * 描述
-     */
+    * 描述
+    */
     private String description;
 
     /**
-     * VPN网关类型，值“IPSec”表示IPSec-VPN网关，值“SSL”表示SSL-VPN网关
-     */
+    * VPN网关类型，值“IPSec”表示IPSec-VPN网关，值“SSL”表示SSL-VPN网关
+    */
     private String type;
 
     /**
-     * vpn状态，active：可用，building：创建中，unconfigured：未配置
-     */
+    * vpn状态，active：可用，building：创建中，unconfigured：未配置
+    */
     private String status;
 
     /**
-     * 到期时间
-     */
+    * 到期时间
+    */
     private String expiredTime;
 
     /**
-     * 计费类型
-     */
+    * 计费类型
+    */
     private String paymentTiming;
 
     /**
-     * 公网IP
-     */
+    * 公网IP
+    */
     private String eip;
 
     /**
-     * eip带宽
-     */
+    * eip带宽
+    */
     private Integer bandwidthInMbps;
 
     /**
-     * VPC的ID
-     */
+    * VPC的ID
+    */
     private String vpcId;
 
     /**
-     * 隧道数量
-     */
+    * 隧道数量
+    */
     private Integer vpnConnNum;
 
     /**
-     * SSL-VPN最大客户端连接数
-     */
+    * SSL-VPN最大客户端连接数
+    */
     private Integer maxConnection;
 
     /**
-     * VPN隧道列表
-     */
+    * VPN隧道列表
+    */
     private List<VpnConn> vpnConns;
 
     /**
-     * sslVpnServer
-     */
+    * sslVpnServer
+    */
     private SslVpnServer sslVpnServer;
 
     /**
-     * VPN实例绑定的标签
-     */
+    * VPN实例绑定的标签
+    */
     private List<TagModel> tags;
 
     /**
-     * 是否开启释放保护
-     */
+    * 是否开启释放保护
+    */
     private Boolean deleteProtect;
+
+    public String getVpnId() {
+        return vpnId;
+    }
 
     public SearchForVpnDetailsResponse setVpnId(String vpnId) {
         this.vpnId = vpnId;
         return this;
     }
 
-    public String getVpnId() {
-        return this.vpnId;
+    public String getVpnName() {
+        return vpnName;
     }
 
     public SearchForVpnDetailsResponse setVpnName(String vpnName) {
@@ -106,8 +110,8 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getVpnName() {
-        return this.vpnName;
+    public String getCreateTime() {
+        return createTime;
     }
 
     public SearchForVpnDetailsResponse setCreateTime(String createTime) {
@@ -115,8 +119,8 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getCreateTime() {
-        return this.createTime;
+    public String getDescription() {
+        return description;
     }
 
     public SearchForVpnDetailsResponse setDescription(String description) {
@@ -124,8 +128,8 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getDescription() {
-        return this.description;
+    public String getType() {
+        return type;
     }
 
     public SearchForVpnDetailsResponse setType(String type) {
@@ -133,8 +137,8 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getType() {
-        return this.type;
+    public String getStatus() {
+        return status;
     }
 
     public SearchForVpnDetailsResponse setStatus(String status) {
@@ -142,8 +146,8 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getStatus() {
-        return this.status;
+    public String getExpiredTime() {
+        return expiredTime;
     }
 
     public SearchForVpnDetailsResponse setExpiredTime(String expiredTime) {
@@ -151,8 +155,8 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getExpiredTime() {
-        return this.expiredTime;
+    public String getPaymentTiming() {
+        return paymentTiming;
     }
 
     public SearchForVpnDetailsResponse setPaymentTiming(String paymentTiming) {
@@ -160,8 +164,8 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getPaymentTiming() {
-        return this.paymentTiming;
+    public String getEip() {
+        return eip;
     }
 
     public SearchForVpnDetailsResponse setEip(String eip) {
@@ -169,8 +173,8 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getEip() {
-        return this.eip;
+    public Integer getBandwidthInMbps() {
+        return bandwidthInMbps;
     }
 
     public SearchForVpnDetailsResponse setBandwidthInMbps(Integer bandwidthInMbps) {
@@ -178,8 +182,8 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public Integer getBandwidthInMbps() {
-        return this.bandwidthInMbps;
+    public String getVpcId() {
+        return vpcId;
     }
 
     public SearchForVpnDetailsResponse setVpcId(String vpcId) {
@@ -187,8 +191,8 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getVpcId() {
-        return this.vpcId;
+    public Integer getVpnConnNum() {
+        return vpnConnNum;
     }
 
     public SearchForVpnDetailsResponse setVpnConnNum(Integer vpnConnNum) {
@@ -196,8 +200,8 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public Integer getVpnConnNum() {
-        return this.vpnConnNum;
+    public Integer getMaxConnection() {
+        return maxConnection;
     }
 
     public SearchForVpnDetailsResponse setMaxConnection(Integer maxConnection) {
@@ -205,8 +209,8 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public Integer getMaxConnection() {
-        return this.maxConnection;
+    public List<VpnConn> getVpnConns() {
+        return vpnConns;
     }
 
     public SearchForVpnDetailsResponse setVpnConns(List<VpnConn> vpnConns) {
@@ -214,8 +218,8 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public List<VpnConn> getVpnConns() {
-        return this.vpnConns;
+    public SslVpnServer getSslVpnServer() {
+        return sslVpnServer;
     }
 
     public SearchForVpnDetailsResponse setSslVpnServer(SslVpnServer sslVpnServer) {
@@ -223,8 +227,8 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public SslVpnServer getSslVpnServer() {
-        return this.sslVpnServer;
+    public List<TagModel> getTags() {
+        return tags;
     }
 
     public SearchForVpnDetailsResponse setTags(List<TagModel> tags) {
@@ -232,17 +236,13 @@ public class SearchForVpnDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public List<TagModel> getTags() {
-        return this.tags;
+    public Boolean getDeleteProtect() {
+        return deleteProtect;
     }
 
     public SearchForVpnDetailsResponse setDeleteProtect(Boolean deleteProtect) {
         this.deleteProtect = deleteProtect;
         return this;
-    }
-
-    public Boolean getDeleteProtect() {
-        return this.deleteProtect;
     }
 
     @Override

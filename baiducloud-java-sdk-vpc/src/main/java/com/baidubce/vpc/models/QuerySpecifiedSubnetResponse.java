@@ -5,18 +5,19 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QuerySpecifiedSubnetResponse extends BaseBceResponse {
+
     /**
-     * subnet
-     */
+    * subnet
+    */
     private SubnetDetail subnet;
+
+    public SubnetDetail getSubnet() {
+        return subnet;
+    }
 
     public QuerySpecifiedSubnetResponse setSubnet(SubnetDetail subnet) {
         this.subnet = subnet;
         return this;
-    }
-
-    public SubnetDetail getSubnet() {
-        return this.subnet;
     }
 
     @Override

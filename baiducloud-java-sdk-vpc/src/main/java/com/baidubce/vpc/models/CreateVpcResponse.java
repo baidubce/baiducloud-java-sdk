@@ -5,18 +5,19 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateVpcResponse extends BaseBceResponse {
+
     /**
-     * 创建VPC的id
-     */
+    * 创建VPC的id
+    */
     private String vpcId;
+
+    public String getVpcId() {
+        return vpcId;
+    }
 
     public CreateVpcResponse setVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
-    }
-
-    public String getVpcId() {
-        return this.vpcId;
     }
 
     @Override

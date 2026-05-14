@@ -1,64 +1,68 @@
 package com.baidubce.vpc.models;
 
-import java.util.List;
-
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QuerySslVpnServerResponse extends BaseBceResponse {
+
     /**
-     * VPN的ID
-     */
+    * VPN的ID
+    */
     private String vpnId;
 
     /**
-     * SSL-VPN服务端ID
-     */
+    * SSL-VPN服务端ID
+    */
     private String sslVpnServerId;
 
     /**
-     * SSL-VPN服务端的名称
-     */
+    * SSL-VPN服务端的名称
+    */
     private String sslVpnServerName;
 
     /**
-     * SSL-VPN服务端接口类型
-     */
+    * SSL-VPN服务端接口类型
+    */
     private String interfaceType;
 
     /**
-     * SSL-VPN服务端状态
-     */
+    * SSL-VPN服务端状态
+    */
     private String status;
 
     /**
-     * 本端网络CIDR列表
-     */
+    * 本端网络CIDR列表
+    */
     private List<String> localSubnets;
 
     /**
-     * 客户端网络CIDR
-     */
+    * 客户端网络CIDR
+    */
     private String remoteSubnet;
 
     /**
-     * 客户端的DNS地址
-     */
+    * 客户端的DNS地址
+    */
     private String clientDns;
 
     /**
-     * SSL-VPN最大客户端连接数
-     */
+    * SSL-VPN最大客户端连接数
+    */
     private Integer maxConnection;
+
+    public String getVpnId() {
+        return vpnId;
+    }
 
     public QuerySslVpnServerResponse setVpnId(String vpnId) {
         this.vpnId = vpnId;
         return this;
     }
 
-    public String getVpnId() {
-        return this.vpnId;
+    public String getSslVpnServerId() {
+        return sslVpnServerId;
     }
 
     public QuerySslVpnServerResponse setSslVpnServerId(String sslVpnServerId) {
@@ -66,8 +70,8 @@ public class QuerySslVpnServerResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getSslVpnServerId() {
-        return this.sslVpnServerId;
+    public String getSslVpnServerName() {
+        return sslVpnServerName;
     }
 
     public QuerySslVpnServerResponse setSslVpnServerName(String sslVpnServerName) {
@@ -75,8 +79,8 @@ public class QuerySslVpnServerResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getSslVpnServerName() {
-        return this.sslVpnServerName;
+    public String getInterfaceType() {
+        return interfaceType;
     }
 
     public QuerySslVpnServerResponse setInterfaceType(String interfaceType) {
@@ -84,8 +88,8 @@ public class QuerySslVpnServerResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getInterfaceType() {
-        return this.interfaceType;
+    public String getStatus() {
+        return status;
     }
 
     public QuerySslVpnServerResponse setStatus(String status) {
@@ -93,8 +97,8 @@ public class QuerySslVpnServerResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getStatus() {
-        return this.status;
+    public List<String> getLocalSubnets() {
+        return localSubnets;
     }
 
     public QuerySslVpnServerResponse setLocalSubnets(List<String> localSubnets) {
@@ -102,8 +106,8 @@ public class QuerySslVpnServerResponse extends BaseBceResponse {
         return this;
     }
 
-    public List<String> getLocalSubnets() {
-        return this.localSubnets;
+    public String getRemoteSubnet() {
+        return remoteSubnet;
     }
 
     public QuerySslVpnServerResponse setRemoteSubnet(String remoteSubnet) {
@@ -111,8 +115,8 @@ public class QuerySslVpnServerResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getRemoteSubnet() {
-        return this.remoteSubnet;
+    public String getClientDns() {
+        return clientDns;
     }
 
     public QuerySslVpnServerResponse setClientDns(String clientDns) {
@@ -120,17 +124,13 @@ public class QuerySslVpnServerResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getClientDns() {
-        return this.clientDns;
+    public Integer getMaxConnection() {
+        return maxConnection;
     }
 
     public QuerySslVpnServerResponse setMaxConnection(Integer maxConnection) {
         this.maxConnection = maxConnection;
         return this;
-    }
-
-    public Integer getMaxConnection() {
-        return this.maxConnection;
     }
 
     @Override

@@ -5,18 +5,19 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateVpnTunnelResponse extends BaseBceResponse {
+
     /**
-     * VPN隧道的ID
-     */
+    * VPN隧道的ID
+    */
     private String vpnConnId;
+
+    public String getVpnConnId() {
+        return vpnConnId;
+    }
 
     public CreateVpnTunnelResponse setVpnConnId(String vpnConnId) {
         this.vpnConnId = vpnConnId;
         return this;
-    }
-
-    public String getVpnConnId() {
-        return this.vpnConnId;
     }
 
     @Override

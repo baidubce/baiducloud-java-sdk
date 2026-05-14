@@ -1,44 +1,48 @@
 package com.baidubce.vpc.models;
 
-import java.util.List;
-
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ViewGatewayLimitRulesResponse extends BaseBceResponse {
+
     /**
-     * 限流规则列表
-     */
+    * 限流规则列表
+    */
     private List<GlrItem> result;
 
     /**
-     * 标记查询的起始位置
-     */
+    * 标记查询的起始位置
+    */
     private String marker;
 
     /**
-     * true表示后面还有数据，false表示已经是最后一页
-     */
+    * true表示后面还有数据，false表示已经是最后一页
+    */
     private Boolean isTruncated;
 
     /**
-     * 每页包含的最大数量
-     */
+    * 每页包含的最大数量
+    */
     private Integer maxKeys;
 
     /**
-     * 获取下一页所需要传递的marker值。当isTruncated为false时，该域不出现
-     */
+    * 获取下一页所需要传递的marker值。当isTruncated为false时，该域不出现
+    */
     private String nextMarker;
+
+    public List<GlrItem> getResult() {
+        return result;
+    }
 
     public ViewGatewayLimitRulesResponse setResult(List<GlrItem> result) {
         this.result = result;
         return this;
     }
 
-    public List<GlrItem> getResult() {
-        return this.result;
+    public String getMarker() {
+        return marker;
     }
 
     public ViewGatewayLimitRulesResponse setMarker(String marker) {
@@ -46,8 +50,8 @@ public class ViewGatewayLimitRulesResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getMarker() {
-        return this.marker;
+    public Boolean getIsTruncated() {
+        return isTruncated;
     }
 
     public ViewGatewayLimitRulesResponse setIsTruncated(Boolean isTruncated) {
@@ -55,8 +59,8 @@ public class ViewGatewayLimitRulesResponse extends BaseBceResponse {
         return this;
     }
 
-    public Boolean getIsTruncated() {
-        return this.isTruncated;
+    public Integer getMaxKeys() {
+        return maxKeys;
     }
 
     public ViewGatewayLimitRulesResponse setMaxKeys(Integer maxKeys) {
@@ -64,17 +68,13 @@ public class ViewGatewayLimitRulesResponse extends BaseBceResponse {
         return this;
     }
 
-    public Integer getMaxKeys() {
-        return this.maxKeys;
+    public String getNextMarker() {
+        return nextMarker;
     }
 
     public ViewGatewayLimitRulesResponse setNextMarker(String nextMarker) {
         this.nextMarker = nextMarker;
         return this;
-    }
-
-    public String getNextMarker() {
-        return this.nextMarker;
     }
 
     @Override
