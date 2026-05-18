@@ -13,7 +13,7 @@ The Java SDK can run in Java 1.8 environments.
 
 [**AK/SK**](https://cloud.baidu.com/doc/Reference/s/9jwvz2egb): Authentication with the SDK requires passing AK/SK parameters. You can obtain your Access Key and Secret Key from the [Security Authentication page](https://console.bce.baidu.com/iam/#/iam/accesslist).
 
-Users can interact with Baidu Cloud through two methods: authenticated and anonymous. For authenticated access, the Access Key / Secret Key encryption method is used to verify the sender's identity. The Access Key (AK) identifies the user, while the Secret Key (SK) is used to encrypt the authentication string. Baidu Cloud uses the SK to verify the authentication string. The SK must be kept confidential and should only be known to the user and Baidu Cloud.
+Users can interact with Baidu Cloud through account authenticated. During authentication, the Access Key / Secret Key encryption method is used to verify the sender's identity. The Access Key (AK) identifies the user, while the Secret Key (SK) is used to encrypt the authentication string. Baidu Cloud uses the SK to verify the authentication string. The SK must be kept confidential and should only be known to the user and Baidu Cloud.
 
 ### Installing the SDK
 

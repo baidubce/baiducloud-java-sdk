@@ -13,7 +13,7 @@ JAVA SDK可以在Java1.8环境下运行。
 
 [**AK/SK**](https://cloud.baidu.com/doc/Reference/s/9jwvz2egb)：SDK 认证时必须传入 AK/SK 参数，在[安全认证页面](https://console.bce.baidu.com/iam/#/iam/accesslist) 获取 Access Key和Secret Key。
 
-用户可以通过两种方式与百度智能云进行交互，包括认证方式和匿名方式。对于认证方式，需要通过使用Access Key / Secret Key加密的方法来验证某个请求的发送者身份。Access Key(AK) 用于标示用户，Secret Key(SK) 是用户用于加密认证字符串和百度智能云用来验证认证字符串的密钥，其中SK必须保密，只有用户和百度智能云知道。
+用户可以通过账号认证与百度智能云进行交互。认证时，需要通过使用Access Key / Secret Key加密的方法来验证某个请求的发送者身份。Access Key(AK) 用于标示用户，Secret Key(SK) 是用户用于加密认证字符串和百度智能云用来验证认证字符串的密钥，其中SK必须保密，只有用户和百度智能云知道。
 
 ### 安装SDK
 
