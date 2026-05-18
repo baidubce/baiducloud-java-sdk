@@ -171,6 +171,10 @@
                         <configuration>
                             <!-- 注意：此 serverId 必须与 Maven settings.xml 中的 server id 对应 -->
                             <publishingServerId>central</publishingServerId>
+                            <!-- 自动发布 -->
+                            <autoPublish>true</autoPublish>
+                            <!-- 等待发布真正完成 -->
+                            <waitUntil>published</waitUntil>
                         </configuration>
                     </plugin>
                 </plugins>
