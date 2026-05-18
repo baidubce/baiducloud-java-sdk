@@ -1,89 +1,93 @@
 package com.baidubce.eip.models;
 
-import java.util.List;
-
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DetailTbspResponse extends BaseBceResponse {
+
     /**
-     * DDoS增强防护包名称
-     */
+    * DDoS增强防护包名称
+    */
     private String name;
 
     /**
-     * DDoS增强防护包id
-     */
+    * DDoS增强防护包id
+    */
     private String id;
 
     /**
-     * DDoS增强防护包线路类型
-     */
+    * DDoS增强防护包线路类型
+    */
     private String defenseLineType;
 
     /**
-     * DDoS增强防护包容量
-     */
+    * DDoS增强防护包容量
+    */
     private Integer defenseCountQuota;
 
     /**
-     * DDoS增强防护包绑定的IP列表
-     */
+    * DDoS增强防护包绑定的IP列表
+    */
     private List<TbspIpModel> ipList;
 
     /**
-     * DDoS增强防护包绑定的IP数量
-     */
+    * DDoS增强防护包绑定的IP数量
+    */
     private Integer ipTotalCount;
 
     /**
-     * DDoS增强防护包是否开启自动续费，1代表开启
-     */
+    * DDoS增强防护包是否开启自动续费，1代表开启
+    */
     private Integer autoRenewSwitch;
 
     /**
-     * DDoS增强防护包状态
-     */
+    * DDoS增强防护包状态
+    */
     private String productStatus;
 
     /**
-     * DDoS增强防护包创建时间
-     */
+    * DDoS增强防护包创建时间
+    */
     private String createTime;
 
     /**
-     * DDoS增强防护包到期时间
-     */
+    * DDoS增强防护包到期时间
+    */
     private String expireTime;
 
     /**
-     * DDoS增强防护包防护能力，0代表尽力防护
-     */
+    * DDoS增强防护包防护能力，0代表尽力防护
+    */
     private Integer defenseEnable;
 
     /**
-     * DDoS增强防护包攻击记录列表
-     */
+    * DDoS增强防护包攻击记录列表
+    */
     private List<TbspAttackRecordModel> attackingRecordList;
 
     /**
-     * DDoS增强防护包攻击记录总数
-     */
+    * DDoS增强防护包攻击记录总数
+    */
     private Integer attackingRecordTotalCount;
 
     /**
-     * 标签
-     */
+    * 标签
+    */
     private List<TagModel> tags;
+
+    public String getName() {
+        return name;
+    }
 
     public DetailTbspResponse setName(String name) {
         this.name = name;
         return this;
     }
 
-    public String getName() {
-        return this.name;
+    public String getId() {
+        return id;
     }
 
     public DetailTbspResponse setId(String id) {
@@ -91,8 +95,8 @@ public class DetailTbspResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getId() {
-        return this.id;
+    public String getDefenseLineType() {
+        return defenseLineType;
     }
 
     public DetailTbspResponse setDefenseLineType(String defenseLineType) {
@@ -100,8 +104,8 @@ public class DetailTbspResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getDefenseLineType() {
-        return this.defenseLineType;
+    public Integer getDefenseCountQuota() {
+        return defenseCountQuota;
     }
 
     public DetailTbspResponse setDefenseCountQuota(Integer defenseCountQuota) {
@@ -109,8 +113,8 @@ public class DetailTbspResponse extends BaseBceResponse {
         return this;
     }
 
-    public Integer getDefenseCountQuota() {
-        return this.defenseCountQuota;
+    public List<TbspIpModel> getIpList() {
+        return ipList;
     }
 
     public DetailTbspResponse setIpList(List<TbspIpModel> ipList) {
@@ -118,8 +122,8 @@ public class DetailTbspResponse extends BaseBceResponse {
         return this;
     }
 
-    public List<TbspIpModel> getIpList() {
-        return this.ipList;
+    public Integer getIpTotalCount() {
+        return ipTotalCount;
     }
 
     public DetailTbspResponse setIpTotalCount(Integer ipTotalCount) {
@@ -127,8 +131,8 @@ public class DetailTbspResponse extends BaseBceResponse {
         return this;
     }
 
-    public Integer getIpTotalCount() {
-        return this.ipTotalCount;
+    public Integer getAutoRenewSwitch() {
+        return autoRenewSwitch;
     }
 
     public DetailTbspResponse setAutoRenewSwitch(Integer autoRenewSwitch) {
@@ -136,8 +140,8 @@ public class DetailTbspResponse extends BaseBceResponse {
         return this;
     }
 
-    public Integer getAutoRenewSwitch() {
-        return this.autoRenewSwitch;
+    public String getProductStatus() {
+        return productStatus;
     }
 
     public DetailTbspResponse setProductStatus(String productStatus) {
@@ -145,8 +149,8 @@ public class DetailTbspResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getProductStatus() {
-        return this.productStatus;
+    public String getCreateTime() {
+        return createTime;
     }
 
     public DetailTbspResponse setCreateTime(String createTime) {
@@ -154,8 +158,8 @@ public class DetailTbspResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getCreateTime() {
-        return this.createTime;
+    public String getExpireTime() {
+        return expireTime;
     }
 
     public DetailTbspResponse setExpireTime(String expireTime) {
@@ -163,8 +167,8 @@ public class DetailTbspResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getExpireTime() {
-        return this.expireTime;
+    public Integer getDefenseEnable() {
+        return defenseEnable;
     }
 
     public DetailTbspResponse setDefenseEnable(Integer defenseEnable) {
@@ -172,8 +176,8 @@ public class DetailTbspResponse extends BaseBceResponse {
         return this;
     }
 
-    public Integer getDefenseEnable() {
-        return this.defenseEnable;
+    public List<TbspAttackRecordModel> getAttackingRecordList() {
+        return attackingRecordList;
     }
 
     public DetailTbspResponse setAttackingRecordList(List<TbspAttackRecordModel> attackingRecordList) {
@@ -181,8 +185,8 @@ public class DetailTbspResponse extends BaseBceResponse {
         return this;
     }
 
-    public List<TbspAttackRecordModel> getAttackingRecordList() {
-        return this.attackingRecordList;
+    public Integer getAttackingRecordTotalCount() {
+        return attackingRecordTotalCount;
     }
 
     public DetailTbspResponse setAttackingRecordTotalCount(Integer attackingRecordTotalCount) {
@@ -190,17 +194,13 @@ public class DetailTbspResponse extends BaseBceResponse {
         return this;
     }
 
-    public Integer getAttackingRecordTotalCount() {
-        return this.attackingRecordTotalCount;
+    public List<TagModel> getTags() {
+        return tags;
     }
 
     public DetailTbspResponse setTags(List<TagModel> tags) {
         this.tags = tags;
         return this;
-    }
-
-    public List<TagModel> getTags() {
-        return this.tags;
     }
 
     @Override

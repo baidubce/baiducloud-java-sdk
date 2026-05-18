@@ -5,18 +5,19 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApplyForEipResponse extends BaseBceResponse {
+
     /**
-     * 分配的EIP地址
-     */
+    * 分配的EIP地址
+    */
     private String eip;
+
+    public String getEip() {
+        return eip;
+    }
 
     public ApplyForEipResponse setEip(String eip) {
         this.eip = eip;
         return this;
-    }
-
-    public String getEip() {
-        return this.eip;
     }
 
     @Override

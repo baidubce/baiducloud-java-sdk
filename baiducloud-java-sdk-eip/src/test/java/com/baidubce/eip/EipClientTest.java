@@ -1,5 +1,6 @@
 package com.baidubce.eip;
 
+import com.baidubce.eip.models.AddEipGroupCountRequest;
 import com.baidubce.eip.models.AddTbspAreaBlockingRequest;
 import com.baidubce.eip.models.AddTbspIpWhitelistRequest;
 import com.baidubce.eip.models.AddTbspProtocolBlockingRequest;
@@ -10,6 +11,12 @@ import com.baidubce.eip.models.BandwidthPackageInquiryResponse;
 import com.baidubce.eip.models.BindEipRequest;
 import com.baidubce.eip.models.BindTbspProtectionObjectRequest;
 import com.baidubce.eip.models.CancelEipTransferRequest;
+import com.baidubce.eip.models.CreateASharedTrafficPackageRequest;
+import com.baidubce.eip.models.CreateASharedTrafficPackageResponse;
+import com.baidubce.eip.models.CreateEipBpRequest;
+import com.baidubce.eip.models.CreateEipBpResponse;
+import com.baidubce.eip.models.CreateEipGroupRequest;
+import com.baidubce.eip.models.CreateEipGroupResponse;
 import com.baidubce.eip.models.CreateEipTransferRequest;
 import com.baidubce.eip.models.CreateEipTransferResponse;
 import com.baidubce.eip.models.CreateTbspRequest;
@@ -24,6 +31,18 @@ import com.baidubce.eip.models.EipInquiryResponse;
 import com.baidubce.eip.models.EipPostpaidToPrepaidRequest;
 import com.baidubce.eip.models.EipRenewalRequest;
 import com.baidubce.eip.models.EnableTbspIpCleanRequest;
+import com.baidubce.eip.models.GetEipBpRequest;
+import com.baidubce.eip.models.GetEipBpResponse;
+import com.baidubce.eip.models.GetEipGroupRequest;
+import com.baidubce.eip.models.GetEipGroupResponse;
+import com.baidubce.eip.models.ListBaseDdosAttackRecordRequest;
+import com.baidubce.eip.models.ListBaseDdosAttackRecordResponse;
+import com.baidubce.eip.models.ListBaseDdosRequest;
+import com.baidubce.eip.models.ListBaseDdosResponse;
+import com.baidubce.eip.models.ListEipBpRequest;
+import com.baidubce.eip.models.ListEipBpResponse;
+import com.baidubce.eip.models.ListEipGroupRequest;
+import com.baidubce.eip.models.ListEipGroupResponse;
 import com.baidubce.eip.models.ListEipTransferRequest;
 import com.baidubce.eip.models.ListEipTransferResponse;
 import com.baidubce.eip.models.ListRecycleEipsRequest;
@@ -38,20 +57,34 @@ import com.baidubce.eip.models.ListTbspProtocolBlockingRequest;
 import com.baidubce.eip.models.ListTbspProtocolBlockingResponse;
 import com.baidubce.eip.models.ListTbspRequest;
 import com.baidubce.eip.models.ListTbspResponse;
+import com.baidubce.eip.models.ListUnbanRequest;
+import com.baidubce.eip.models.ListUnbanResponse;
 import com.baidubce.eip.models.ModifyTbspIpCleanThresholdRequest;
 import com.baidubce.eip.models.ModifyTbspIpProtectLevelRequest;
+import com.baidubce.eip.models.MoveInEipsRequest;
+import com.baidubce.eip.models.MoveOutEipsRequest;
 import com.baidubce.eip.models.OptionalReleaseEipRequest;
+import com.baidubce.eip.models.PurchaseReservedEipGroupRequest;
 import com.baidubce.eip.models.QueryEipListRequest;
 import com.baidubce.eip.models.QueryEipListResponse;
+import com.baidubce.eip.models.QueryTheDetailsOfSharedTrafficPackagesRequest;
+import com.baidubce.eip.models.QueryTheDetailsOfSharedTrafficPackagesResponse;
+import com.baidubce.eip.models.QueryTheListOfSharedTrafficPackagesRequest;
+import com.baidubce.eip.models.QueryTheListOfSharedTrafficPackagesResponse;
 import com.baidubce.eip.models.ReceiveEipTransferRequest;
+import com.baidubce.eip.models.RefundEipGroupRequest;
 import com.baidubce.eip.models.RefundEipRequest;
 import com.baidubce.eip.models.RejectEipTransferRequest;
+import com.baidubce.eip.models.ReleaseEipBpRequest;
 import com.baidubce.eip.models.ReleaseEipFromRecycleRequest;
+import com.baidubce.eip.models.ReleaseEipGroupRequest;
 import com.baidubce.eip.models.ReleaseEipRequest;
 import com.baidubce.eip.models.RemoveTbspAreaBlockingRequest;
 import com.baidubce.eip.models.RemoveTbspIpWhitelistRequest;
 import com.baidubce.eip.models.RemoveTbspProtocolBlockingRequest;
 import com.baidubce.eip.models.RenewTbspRequest;
+import com.baidubce.eip.models.ResizeEipBpBandwidthRequest;
+import com.baidubce.eip.models.ResizeEipGroupBandwidthRequest;
 import com.baidubce.eip.models.ResizeTbspRequest;
 import com.baidubce.eip.models.RestoreEipFromRecycleRequest;
 import com.baidubce.eip.models.SharedBandwidthInquiryRequest;
@@ -63,7 +96,11 @@ import com.baidubce.eip.models.StopEipAutoRenewRequest;
 import com.baidubce.eip.models.UnDirectEipRequest;
 import com.baidubce.eip.models.UnbindEipRequest;
 import com.baidubce.eip.models.UnbindTbspProtectionObjectRequest;
+import com.baidubce.eip.models.UpdateBaseDdosThresholdRequest;
+import com.baidubce.eip.models.UpdateEipBpAutoReleaseTimeRequest;
+import com.baidubce.eip.models.UpdateEipBpNameRequest;
 import com.baidubce.eip.models.UpdateEipDeleteProtectRequest;
+import com.baidubce.eip.models.UpdateEipGroupRequest;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -86,6 +123,19 @@ public class EipClientTest {
         eipClient = new EipClient(config);
     }
 
+    /**
+     * addEipGroupCount
+     *
+     */
+    @Test
+    public void addEipGroupCountTest() {
+        AddEipGroupCountRequest addEipGroupCountRequest = new AddEipGroupCountRequest();
+        addEipGroupCountRequest.setId("");
+        addEipGroupCountRequest.setClientToken("");
+        addEipGroupCountRequest.setEipAddCount(0);
+        addEipGroupCountRequest.setEipv6AddCount(0);
+        eipClient.addEipGroupCount(addEipGroupCountRequest);
+    }
     /**
      * addTbspAreaBlocking
      *
@@ -196,6 +246,59 @@ public class EipClientTest {
         cancelEipTransferRequest.setClientToken("");
         cancelEipTransferRequest.setTransferIdList(new ArrayList<>());
         eipClient.cancelEipTransfer(cancelEipTransferRequest);
+    }
+    /**
+     * createASharedTrafficPackage
+     *
+     */
+    @Test
+    public void createASharedTrafficPackageTest() {
+        CreateASharedTrafficPackageRequest createASharedTrafficPackageRequest = new CreateASharedTrafficPackageRequest();
+        createASharedTrafficPackageRequest.setClientToken("");
+        createASharedTrafficPackageRequest.setReservationLength(0);
+        createASharedTrafficPackageRequest.setCapacity("");
+        createASharedTrafficPackageRequest.setDeductPolicy("");
+        createASharedTrafficPackageRequest.setPackageType("");
+        CreateASharedTrafficPackageResponse response = eipClient.createASharedTrafficPackage(createASharedTrafficPackageRequest);
+        System.out.println(response);
+    }
+    /**
+     * createEipBp
+     *
+     */
+    @Test
+    public void createEipBpTest() {
+        CreateEipBpRequest createEipBpRequest = new CreateEipBpRequest();
+        createEipBpRequest.setClientToken("");
+        createEipBpRequest.setName("");
+        createEipBpRequest.setEip("");
+        createEipBpRequest.setEipGroupId("");
+        createEipBpRequest.setBandwidthInMbps(0);
+        createEipBpRequest.setType("");
+        createEipBpRequest.setAutoReleaseTime("");
+        createEipBpRequest.setTags(new ArrayList<>());
+        createEipBpRequest.setResourceGroupId("");
+        CreateEipBpResponse response = eipClient.createEipBp(createEipBpRequest);
+        System.out.println(response);
+    }
+    /**
+     * createEipGroup
+     *
+     */
+    @Test
+    public void createEipGroupTest() {
+        CreateEipGroupRequest createEipGroupRequest = new CreateEipGroupRequest();
+        createEipGroupRequest.setClientToken("");
+        createEipGroupRequest.setRouteType("");
+        createEipGroupRequest.setEipCount(0);
+        createEipGroupRequest.setEipv6Count(0);
+        createEipGroupRequest.setBandwidthInMbps(0);
+        createEipGroupRequest.setBilling(null);
+        createEipGroupRequest.setName("");
+        createEipGroupRequest.setTags(new ArrayList<>());
+        createEipGroupRequest.setResourceGroupId("");
+        CreateEipGroupResponse response = eipClient.createEipGroup(createEipGroupRequest);
+        System.out.println(response);
     }
     /**
      * createEipTransfer
@@ -328,6 +431,88 @@ public class EipClientTest {
         eipClient.enableTbspIpClean(enableTbspIpCleanRequest);
     }
     /**
+     * getEipBp
+     *
+     */
+    @Test
+    public void getEipBpTest() {
+        GetEipBpRequest getEipBpRequest = new GetEipBpRequest();
+        getEipBpRequest.setId("");
+        getEipBpRequest.setClientToken("");
+        GetEipBpResponse response = eipClient.getEipBp(getEipBpRequest);
+        System.out.println(response);
+    }
+    /**
+     * getEipGroup
+     *
+     */
+    @Test
+    public void getEipGroupTest() {
+        GetEipGroupRequest getEipGroupRequest = new GetEipGroupRequest();
+        getEipGroupRequest.setId("");
+        GetEipGroupResponse response = eipClient.getEipGroup(getEipGroupRequest);
+        System.out.println(response);
+    }
+    /**
+     * listBaseDdos
+     *
+     */
+    @Test
+    public void listBaseDdosTest() {
+        ListBaseDdosRequest listBaseDdosRequest = new ListBaseDdosRequest();
+        listBaseDdosRequest.setIps("");
+        listBaseDdosRequest.setType("");
+        listBaseDdosRequest.setMarker("");
+        listBaseDdosRequest.setMaxKeys(0);
+        ListBaseDdosResponse response = eipClient.listBaseDdos(listBaseDdosRequest);
+        System.out.println(response);
+    }
+    /**
+     * listBaseDdosAttackRecord
+     *
+     */
+    @Test
+    public void listBaseDdosAttackRecordTest() {
+        ListBaseDdosAttackRecordRequest listBaseDdosAttackRecordRequest = new ListBaseDdosAttackRecordRequest();
+        listBaseDdosAttackRecordRequest.setIp("");
+        listBaseDdosAttackRecordRequest.setStartTime("");
+        listBaseDdosAttackRecordRequest.setMarker("");
+        listBaseDdosAttackRecordRequest.setMaxKeys(0);
+        ListBaseDdosAttackRecordResponse response = eipClient.listBaseDdosAttackRecord(listBaseDdosAttackRecordRequest);
+        System.out.println(response);
+    }
+    /**
+     * listEipBp
+     *
+     */
+    @Test
+    public void listEipBpTest() {
+        ListEipBpRequest listEipBpRequest = new ListEipBpRequest();
+        listEipBpRequest.setMarker("");
+        listEipBpRequest.setMaxKeys(0);
+        listEipBpRequest.setId("");
+        listEipBpRequest.setName("");
+        listEipBpRequest.setBindType("");
+        listEipBpRequest.setType("");
+        ListEipBpResponse response = eipClient.listEipBp(listEipBpRequest);
+        System.out.println(response);
+    }
+    /**
+     * listEipGroup
+     *
+     */
+    @Test
+    public void listEipGroupTest() {
+        ListEipGroupRequest listEipGroupRequest = new ListEipGroupRequest();
+        listEipGroupRequest.setId("");
+        listEipGroupRequest.setName("");
+        listEipGroupRequest.setStatus("");
+        listEipGroupRequest.setMarker("");
+        listEipGroupRequest.setMaxKeys(0);
+        ListEipGroupResponse response = eipClient.listEipGroup(listEipGroupRequest);
+        System.out.println(response);
+    }
+    /**
      * listEipTransfer
      *
      */
@@ -429,6 +614,19 @@ public class EipClientTest {
         System.out.println(response);
     }
     /**
+     * listUnban
+     *
+     */
+    @Test
+    public void listUnbanTest() {
+        ListUnbanRequest listUnbanRequest = new ListUnbanRequest();
+        listUnbanRequest.setMarker("");
+        listUnbanRequest.setMaxKeys(0);
+        listUnbanRequest.setIp("");
+        ListUnbanResponse response = eipClient.listUnban(listUnbanRequest);
+        System.out.println(response);
+    }
+    /**
      * modifyTbspIpCleanThreshold
      *
      */
@@ -457,6 +655,30 @@ public class EipClientTest {
         eipClient.modifyTbspIpProtectLevel(modifyTbspIpProtectLevelRequest);
     }
     /**
+     * moveInEips
+     *
+     */
+    @Test
+    public void moveInEipsTest() {
+        MoveInEipsRequest moveInEipsRequest = new MoveInEipsRequest();
+        moveInEipsRequest.setId("");
+        moveInEipsRequest.setClientToken("");
+        moveInEipsRequest.setEips(new ArrayList<>());
+        eipClient.moveInEips(moveInEipsRequest);
+    }
+    /**
+     * moveOutEips
+     *
+     */
+    @Test
+    public void moveOutEipsTest() {
+        MoveOutEipsRequest moveOutEipsRequest = new MoveOutEipsRequest();
+        moveOutEipsRequest.setId("");
+        moveOutEipsRequest.setClientToken("");
+        moveOutEipsRequest.setMoveOutEips(new ArrayList<>());
+        eipClient.moveOutEips(moveOutEipsRequest);
+    }
+    /**
      * optionalReleaseEip
      *
      */
@@ -467,6 +689,18 @@ public class EipClientTest {
         optionalReleaseEipRequest.setReleaseToRecycle(false);
         optionalReleaseEipRequest.setClientToken("");
         eipClient.optionalReleaseEip(optionalReleaseEipRequest);
+    }
+    /**
+     * purchaseReservedEipGroup
+     *
+     */
+    @Test
+    public void purchaseReservedEipGroupTest() {
+        PurchaseReservedEipGroupRequest purchaseReservedEipGroupRequest = new PurchaseReservedEipGroupRequest();
+        purchaseReservedEipGroupRequest.setId("");
+        purchaseReservedEipGroupRequest.setClientToken("");
+        purchaseReservedEipGroupRequest.setBilling(null);
+        eipClient.purchaseReservedEipGroup(purchaseReservedEipGroupRequest);
     }
     /**
      * queryEipList
@@ -485,6 +719,33 @@ public class EipClientTest {
         queryEipListRequest.setMarker("");
         queryEipListRequest.setMaxKeys(0);
         QueryEipListResponse response = eipClient.queryEipList(queryEipListRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryTheDetailsOfSharedTrafficPackages
+     *
+     */
+    @Test
+    public void queryTheDetailsOfSharedTrafficPackagesTest() {
+        QueryTheDetailsOfSharedTrafficPackagesRequest queryTheDetailsOfSharedTrafficPackagesRequest = new QueryTheDetailsOfSharedTrafficPackagesRequest();
+        queryTheDetailsOfSharedTrafficPackagesRequest.setId("");
+        queryTheDetailsOfSharedTrafficPackagesRequest.setClientToken("");
+        QueryTheDetailsOfSharedTrafficPackagesResponse response = eipClient.queryTheDetailsOfSharedTrafficPackages(queryTheDetailsOfSharedTrafficPackagesRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryTheListOfSharedTrafficPackages
+     *
+     */
+    @Test
+    public void queryTheListOfSharedTrafficPackagesTest() {
+        QueryTheListOfSharedTrafficPackagesRequest queryTheListOfSharedTrafficPackagesRequest = new QueryTheListOfSharedTrafficPackagesRequest();
+        queryTheListOfSharedTrafficPackagesRequest.setMarker("");
+        queryTheListOfSharedTrafficPackagesRequest.setMaxKeys(0);
+        queryTheListOfSharedTrafficPackagesRequest.setId("");
+        queryTheListOfSharedTrafficPackagesRequest.setStatus("");
+        queryTheListOfSharedTrafficPackagesRequest.setDeductPolicy("");
+        QueryTheListOfSharedTrafficPackagesResponse response = eipClient.queryTheListOfSharedTrafficPackages(queryTheListOfSharedTrafficPackagesRequest);
         System.out.println(response);
     }
     /**
@@ -510,6 +771,17 @@ public class EipClientTest {
         eipClient.refundEip(refundEipRequest);
     }
     /**
+     * refundEipGroup
+     *
+     */
+    @Test
+    public void refundEipGroupTest() {
+        RefundEipGroupRequest refundEipGroupRequest = new RefundEipGroupRequest();
+        refundEipGroupRequest.setId("");
+        refundEipGroupRequest.setClientToken("");
+        eipClient.refundEipGroup(refundEipGroupRequest);
+    }
+    /**
      * rejectEipTransfer
      *
      */
@@ -533,6 +805,17 @@ public class EipClientTest {
         eipClient.releaseEip(releaseEipRequest);
     }
     /**
+     * releaseEipBp
+     *
+     */
+    @Test
+    public void releaseEipBpTest() {
+        ReleaseEipBpRequest releaseEipBpRequest = new ReleaseEipBpRequest();
+        releaseEipBpRequest.setId("");
+        releaseEipBpRequest.setClientToken("");
+        eipClient.releaseEipBp(releaseEipBpRequest);
+    }
+    /**
      * releaseEipFromRecycle
      *
      */
@@ -542,6 +825,17 @@ public class EipClientTest {
         releaseEipFromRecycleRequest.setEip("");
         releaseEipFromRecycleRequest.setClientToken("");
         eipClient.releaseEipFromRecycle(releaseEipFromRecycleRequest);
+    }
+    /**
+     * releaseEipGroup
+     *
+     */
+    @Test
+    public void releaseEipGroupTest() {
+        ReleaseEipGroupRequest releaseEipGroupRequest = new ReleaseEipGroupRequest();
+        releaseEipGroupRequest.setId("");
+        releaseEipGroupRequest.setClientToken("");
+        eipClient.releaseEipGroup(releaseEipGroupRequest);
     }
     /**
      * removeTbspAreaBlocking
@@ -593,6 +887,30 @@ public class EipClientTest {
         renewTbspRequest.setRenewTime(0);
         renewTbspRequest.setRenewTimeUnit("");
         eipClient.renewTbsp(renewTbspRequest);
+    }
+    /**
+     * resizeEipBpBandwidth
+     *
+     */
+    @Test
+    public void resizeEipBpBandwidthTest() {
+        ResizeEipBpBandwidthRequest resizeEipBpBandwidthRequest = new ResizeEipBpBandwidthRequest();
+        resizeEipBpBandwidthRequest.setId("");
+        resizeEipBpBandwidthRequest.setClientToken("");
+        resizeEipBpBandwidthRequest.setBandwidthInMbps(0);
+        eipClient.resizeEipBpBandwidth(resizeEipBpBandwidthRequest);
+    }
+    /**
+     * resizeEipGroupBandwidth
+     *
+     */
+    @Test
+    public void resizeEipGroupBandwidthTest() {
+        ResizeEipGroupBandwidthRequest resizeEipGroupBandwidthRequest = new ResizeEipGroupBandwidthRequest();
+        resizeEipGroupBandwidthRequest.setId("");
+        resizeEipGroupBandwidthRequest.setClientToken("");
+        resizeEipGroupBandwidthRequest.setBandwidthInMbps(0);
+        eipClient.resizeEipGroupBandwidth(resizeEipGroupBandwidthRequest);
     }
     /**
      * resizeTbsp
@@ -705,6 +1023,44 @@ public class EipClientTest {
         eipClient.unbindTbspProtectionObject(unbindTbspProtectionObjectRequest);
     }
     /**
+     * updateBaseDdosThreshold
+     *
+     */
+    @Test
+    public void updateBaseDdosThresholdTest() {
+        UpdateBaseDdosThresholdRequest updateBaseDdosThresholdRequest = new UpdateBaseDdosThresholdRequest();
+        updateBaseDdosThresholdRequest.setIp("");
+        updateBaseDdosThresholdRequest.setClientToken("");
+        updateBaseDdosThresholdRequest.setThresholdType("");
+        updateBaseDdosThresholdRequest.setIpCleanMbps(0L);
+        updateBaseDdosThresholdRequest.setIpCleanPps(0L);
+        eipClient.updateBaseDdosThreshold(updateBaseDdosThresholdRequest);
+    }
+    /**
+     * updateEipBpAutoReleaseTime
+     *
+     */
+    @Test
+    public void updateEipBpAutoReleaseTimeTest() {
+        UpdateEipBpAutoReleaseTimeRequest updateEipBpAutoReleaseTimeRequest = new UpdateEipBpAutoReleaseTimeRequest();
+        updateEipBpAutoReleaseTimeRequest.setId("");
+        updateEipBpAutoReleaseTimeRequest.setClientToken("");
+        updateEipBpAutoReleaseTimeRequest.setAutoReleaseTime("");
+        eipClient.updateEipBpAutoReleaseTime(updateEipBpAutoReleaseTimeRequest);
+    }
+    /**
+     * updateEipBpName
+     *
+     */
+    @Test
+    public void updateEipBpNameTest() {
+        UpdateEipBpNameRequest updateEipBpNameRequest = new UpdateEipBpNameRequest();
+        updateEipBpNameRequest.setId("");
+        updateEipBpNameRequest.setClientToken("");
+        updateEipBpNameRequest.setName("");
+        eipClient.updateEipBpName(updateEipBpNameRequest);
+    }
+    /**
      * updateEipDeleteProtect
      *
      */
@@ -715,5 +1071,17 @@ public class EipClientTest {
         updateEipDeleteProtectRequest.setClientToken("");
         updateEipDeleteProtectRequest.setDeleteProtect(false);
         eipClient.updateEipDeleteProtect(updateEipDeleteProtectRequest);
+    }
+    /**
+     * updateEipGroup
+     *
+     */
+    @Test
+    public void updateEipGroupTest() {
+        UpdateEipGroupRequest updateEipGroupRequest = new UpdateEipGroupRequest();
+        updateEipGroupRequest.setId("");
+        updateEipGroupRequest.setClientToken("");
+        updateEipGroupRequest.setName("");
+        eipClient.updateEipGroup(updateEipGroupRequest);
     }
 }

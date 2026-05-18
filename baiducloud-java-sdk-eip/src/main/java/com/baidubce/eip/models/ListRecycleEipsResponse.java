@@ -1,44 +1,48 @@
 package com.baidubce.eip.models;
 
-import java.util.List;
-
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ListRecycleEipsResponse extends BaseBceResponse {
+
     /**
-     * 包含查询结果的列表。
-     */
+    * 包含查询结果的列表。
+    */
     private List<RecycleEipModel> eipList;
 
     /**
-     * 标记查询的起始位置，若结果列表为空，此项不存在。
-     */
+    * 标记查询的起始位置，若结果列表为空，此项不存在。
+    */
     private String marker;
 
     /**
-     * true表示后面还有数据，false表示已经是最后一页。
-     */
+    * true表示后面还有数据，false表示已经是最后一页。
+    */
     private Boolean isTruncated;
 
     /**
-     * 获取下一页所需要传递的marker值，当isTruncated为false时，该域不出现。
-     */
+    * 获取下一页所需要传递的marker值，当isTruncated为false时，该域不出现。
+    */
     private String nextMarker;
 
     /**
-     * 每页包含的最大数量。
-     */
+    * 每页包含的最大数量。
+    */
     private Integer maxKeys;
+
+    public List<RecycleEipModel> getEipList() {
+        return eipList;
+    }
 
     public ListRecycleEipsResponse setEipList(List<RecycleEipModel> eipList) {
         this.eipList = eipList;
         return this;
     }
 
-    public List<RecycleEipModel> getEipList() {
-        return this.eipList;
+    public String getMarker() {
+        return marker;
     }
 
     public ListRecycleEipsResponse setMarker(String marker) {
@@ -46,8 +50,8 @@ public class ListRecycleEipsResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getMarker() {
-        return this.marker;
+    public Boolean getIsTruncated() {
+        return isTruncated;
     }
 
     public ListRecycleEipsResponse setIsTruncated(Boolean isTruncated) {
@@ -55,8 +59,8 @@ public class ListRecycleEipsResponse extends BaseBceResponse {
         return this;
     }
 
-    public Boolean getIsTruncated() {
-        return this.isTruncated;
+    public String getNextMarker() {
+        return nextMarker;
     }
 
     public ListRecycleEipsResponse setNextMarker(String nextMarker) {
@@ -64,17 +68,13 @@ public class ListRecycleEipsResponse extends BaseBceResponse {
         return this;
     }
 
-    public String getNextMarker() {
-        return this.nextMarker;
+    public Integer getMaxKeys() {
+        return maxKeys;
     }
 
     public ListRecycleEipsResponse setMaxKeys(Integer maxKeys) {
         this.maxKeys = maxKeys;
         return this;
-    }
-
-    public Integer getMaxKeys() {
-        return this.maxKeys;
     }
 
     @Override

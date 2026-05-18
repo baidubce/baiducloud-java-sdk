@@ -1,10 +1,11 @@
 package com.baidubce.eip.models;
 
+import com.baidubce.common.BaseBceRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UnDirectEipRequest {
+public class UnDirectEipRequest extends BaseBceRequest {
 
     /**
     * eip
