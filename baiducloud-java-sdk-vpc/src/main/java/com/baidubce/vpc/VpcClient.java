@@ -19,10 +19,14 @@ import com.baidubce.vpc.models.AcceptPeerToPeerConnectionApplicationsRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersResponse;
 import com.baidubce.vpc.models.BindEipRequest;
+import com.baidubce.vpc.models.BindPhysicalDedicatedLineRequest;
 import com.baidubce.vpc.models.ClosePeerToPeerConnectionToSynchronizeDnsRequest;
 import com.baidubce.vpc.models.CloseVpcRelayRequest;
 import com.baidubce.vpc.models.CreateAPeerToPeerConnectionRequest;
 import com.baidubce.vpc.models.CreateAPeerToPeerConnectionResponse;
+import com.baidubce.vpc.models.CreateDedicatedGatewayHealthCheckRequest;
+import com.baidubce.vpc.models.CreateDedicatedGatewayRequest;
+import com.baidubce.vpc.models.CreateDedicatedGatewayResponse;
 import com.baidubce.vpc.models.CreateGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.CreateGatewayLimitRulesResponse;
 import com.baidubce.vpc.models.CreateIpReservedRequest;
@@ -67,6 +71,10 @@ import com.baidubce.vpc.models.QuerySslVpnUsersRequest;
 import com.baidubce.vpc.models.QuerySslVpnUsersResponse;
 import com.baidubce.vpc.models.QuerySubnetListRequest;
 import com.baidubce.vpc.models.QuerySubnetListResponse;
+import com.baidubce.vpc.models.QueryTheDetailsOfTheDedicatedGatewayRequest;
+import com.baidubce.vpc.models.QueryTheDetailsOfTheDedicatedGatewayResponse;
+import com.baidubce.vpc.models.QueryTheListOfDedicatedLineGatewaysRequest;
+import com.baidubce.vpc.models.QueryTheListOfDedicatedLineGatewaysResponse;
 import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsRequest;
 import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsResponse;
 import com.baidubce.vpc.models.QueryVpcIntranetIpRequest;
@@ -76,6 +84,7 @@ import com.baidubce.vpc.models.QueryVpcListResponse;
 import com.baidubce.vpc.models.QueryVpnListRequest;
 import com.baidubce.vpc.models.QueryVpnListResponse;
 import com.baidubce.vpc.models.RejectPeerToPeerConnectionRequestRequest;
+import com.baidubce.vpc.models.ReleaseDedicatedGatewayRequest;
 import com.baidubce.vpc.models.ReleasePeerToPeerConnectionRequest;
 import com.baidubce.vpc.models.ReleaseVpnRequest;
 import com.baidubce.vpc.models.RenewVpnRequest;
@@ -84,6 +93,8 @@ import com.baidubce.vpc.models.SearchForVpnDetailsResponse;
 import com.baidubce.vpc.models.SearchVpnTunnelRequest;
 import com.baidubce.vpc.models.SearchVpnTunnelResponse;
 import com.baidubce.vpc.models.UnbindEipRequest;
+import com.baidubce.vpc.models.UnbindPhysicalDedicatedLineRequest;
+import com.baidubce.vpc.models.UpdateDedicatedGatewayRequest;
 import com.baidubce.vpc.models.UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest;
 import com.baidubce.vpc.models.UpdateSslVpnServerRequest;
 import com.baidubce.vpc.models.UpdateSslVpnUsersRequest;
@@ -117,6 +128,8 @@ public class VpcClient extends AbstractBceClient {
     private static final String CONSTANT_CGW = "cgw";
     private static final String CONSTANT_PEERCONN = "peerconn";
     private static final String CONSTANT_PRIVATE_IP_ADDRESS_INFO = "privateIpAddressInfo";
+    private static final String CONSTANT_ET_GATEWAY = "etGateway";
+    private static final String CONSTANT_HEALTH_CHECK = "healthCheck";
     private static final String CONSTANT_SSL_VPN_USER = "sslVpnUser";
     private static final String CONSTANT_SUBNET = "subnet";
     private static final String CONSTANT_GATEWAY = "gateway";
@@ -189,6 +202,21 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * bindPhysicalDedicatedLine
+     * 
+     * @param request 入参结构体
+     */
+    public void bindPhysicalDedicatedLine(BindPhysicalDedicatedLineRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ET_GATEWAY, request.getEtGatewayId());
+        internalRequest.addParameter("bind", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * closePeerToPeerConnectionToSynchronizeDns
      * 
      * @param request 入参结构体
@@ -231,6 +259,35 @@ public class VpcClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateAPeerToPeerConnectionResponse.class);
+    }
+
+    /**
+     * createDedicatedGateway
+     * 
+     * @param request 入参结构体
+     * @return CreateDedicatedGatewayResponse
+     */
+    public CreateDedicatedGatewayResponse createDedicatedGateway(CreateDedicatedGatewayRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_ET_GATEWAY);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateDedicatedGatewayResponse.class);
+    }
+
+    /**
+     * createDedicatedGatewayHealthCheck
+     * 
+     * @param request 入参结构体
+     */
+    public void createDedicatedGatewayHealthCheck(CreateDedicatedGatewayHealthCheckRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_ET_GATEWAY, request.getEtGatewayId(), CONSTANT_HEALTH_CHECK);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
@@ -676,6 +733,46 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * queryTheDetailsOfTheDedicatedGateway
+     * 
+     * @param request 入参结构体
+     * @return QueryTheDetailsOfTheDedicatedGatewayResponse
+     */
+    public QueryTheDetailsOfTheDedicatedGatewayResponse queryTheDetailsOfTheDedicatedGateway(QueryTheDetailsOfTheDedicatedGatewayRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_ET_GATEWAY, request.getEtGatewayId());
+        return invokeHttpClient(internalRequest, QueryTheDetailsOfTheDedicatedGatewayResponse.class);
+    }
+
+    /**
+     * queryTheListOfDedicatedLineGateways
+     * 
+     * @param request 入参结构体
+     * @return QueryTheListOfDedicatedLineGatewaysResponse
+     */
+    public QueryTheListOfDedicatedLineGatewaysResponse queryTheListOfDedicatedLineGateways(QueryTheListOfDedicatedLineGatewaysRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_ET_GATEWAY);
+        if (request.getVpcId() != null) {
+            internalRequest.addParameter("vpcId", request.getVpcId());
+        }
+        if (request.getEtGatewayId() != null) {
+            internalRequest.addParameter("etGatewayId", request.getEtGatewayId());
+        }
+        if (request.getName() != null) {
+            internalRequest.addParameter("name", request.getName());
+        }
+        if (request.getStatus() != null) {
+            internalRequest.addParameter("status", request.getStatus());
+        }
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, QueryTheListOfDedicatedLineGatewaysResponse.class);
+    }
+
+    /**
      * queryTheListOfPeerConnections
      * 
      * @param request 入参结构体
@@ -773,6 +870,19 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * releaseDedicatedGateway
+     * 
+     * @param request 入参结构体
+     */
+    public void releaseDedicatedGateway(ReleaseDedicatedGatewayRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_ET_GATEWAY, request.getEtGatewayId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * releasePeerToPeerConnection
      * 
      * @param request 入参结构体
@@ -849,6 +959,34 @@ public class VpcClient extends AbstractBceClient {
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * unbindPhysicalDedicatedLine
+     * 
+     * @param request 入参结构体
+     */
+    public void unbindPhysicalDedicatedLine(UnbindPhysicalDedicatedLineRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ET_GATEWAY, request.getEtGatewayId());
+        internalRequest.addParameter("unbind", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateDedicatedGateway
+     * 
+     * @param request 入参结构体
+     */
+    public void updateDedicatedGateway(UpdateDedicatedGatewayRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ET_GATEWAY, request.getEtGatewayId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 

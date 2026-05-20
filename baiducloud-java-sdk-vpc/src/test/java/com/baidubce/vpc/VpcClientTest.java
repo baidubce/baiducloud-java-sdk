@@ -4,10 +4,14 @@ import com.baidubce.vpc.models.AcceptPeerToPeerConnectionApplicationsRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersResponse;
 import com.baidubce.vpc.models.BindEipRequest;
+import com.baidubce.vpc.models.BindPhysicalDedicatedLineRequest;
 import com.baidubce.vpc.models.ClosePeerToPeerConnectionToSynchronizeDnsRequest;
 import com.baidubce.vpc.models.CloseVpcRelayRequest;
 import com.baidubce.vpc.models.CreateAPeerToPeerConnectionRequest;
 import com.baidubce.vpc.models.CreateAPeerToPeerConnectionResponse;
+import com.baidubce.vpc.models.CreateDedicatedGatewayHealthCheckRequest;
+import com.baidubce.vpc.models.CreateDedicatedGatewayRequest;
+import com.baidubce.vpc.models.CreateDedicatedGatewayResponse;
 import com.baidubce.vpc.models.CreateGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.CreateGatewayLimitRulesResponse;
 import com.baidubce.vpc.models.CreateIpReservedRequest;
@@ -52,6 +56,10 @@ import com.baidubce.vpc.models.QuerySslVpnUsersRequest;
 import com.baidubce.vpc.models.QuerySslVpnUsersResponse;
 import com.baidubce.vpc.models.QuerySubnetListRequest;
 import com.baidubce.vpc.models.QuerySubnetListResponse;
+import com.baidubce.vpc.models.QueryTheDetailsOfTheDedicatedGatewayRequest;
+import com.baidubce.vpc.models.QueryTheDetailsOfTheDedicatedGatewayResponse;
+import com.baidubce.vpc.models.QueryTheListOfDedicatedLineGatewaysRequest;
+import com.baidubce.vpc.models.QueryTheListOfDedicatedLineGatewaysResponse;
 import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsRequest;
 import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsResponse;
 import com.baidubce.vpc.models.QueryVpcIntranetIpRequest;
@@ -61,6 +69,7 @@ import com.baidubce.vpc.models.QueryVpcListResponse;
 import com.baidubce.vpc.models.QueryVpnListRequest;
 import com.baidubce.vpc.models.QueryVpnListResponse;
 import com.baidubce.vpc.models.RejectPeerToPeerConnectionRequestRequest;
+import com.baidubce.vpc.models.ReleaseDedicatedGatewayRequest;
 import com.baidubce.vpc.models.ReleasePeerToPeerConnectionRequest;
 import com.baidubce.vpc.models.ReleaseVpnRequest;
 import com.baidubce.vpc.models.RenewVpnRequest;
@@ -69,6 +78,8 @@ import com.baidubce.vpc.models.SearchForVpnDetailsResponse;
 import com.baidubce.vpc.models.SearchVpnTunnelRequest;
 import com.baidubce.vpc.models.SearchVpnTunnelResponse;
 import com.baidubce.vpc.models.UnbindEipRequest;
+import com.baidubce.vpc.models.UnbindPhysicalDedicatedLineRequest;
+import com.baidubce.vpc.models.UpdateDedicatedGatewayRequest;
 import com.baidubce.vpc.models.UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest;
 import com.baidubce.vpc.models.UpdateSslVpnServerRequest;
 import com.baidubce.vpc.models.UpdateSslVpnUsersRequest;
@@ -146,6 +157,20 @@ public class VpcClientTest {
         vpcClient.bindEip(bindEipRequest);
     }
     /**
+     * bindPhysicalDedicatedLine
+     *
+     */
+    @Test
+    public void bindPhysicalDedicatedLineTest() {
+        BindPhysicalDedicatedLineRequest bindPhysicalDedicatedLineRequest = new BindPhysicalDedicatedLineRequest();
+        bindPhysicalDedicatedLineRequest.setEtGatewayId("");
+        bindPhysicalDedicatedLineRequest.setClientToken("");
+        bindPhysicalDedicatedLineRequest.setEtId("");
+        bindPhysicalDedicatedLineRequest.setChannelId("");
+        bindPhysicalDedicatedLineRequest.setLocalCidrs(new ArrayList<>());
+        vpcClient.bindPhysicalDedicatedLine(bindPhysicalDedicatedLineRequest);
+    }
+    /**
      * closePeerToPeerConnectionToSynchronizeDns
      *
      */
@@ -190,6 +215,44 @@ public class VpcClientTest {
         createAPeerToPeerConnectionRequest.setDeleteProtect(false);
         CreateAPeerToPeerConnectionResponse response = vpcClient.createAPeerToPeerConnection(createAPeerToPeerConnectionRequest);
         System.out.println(response);
+    }
+    /**
+     * createDedicatedGateway
+     *
+     */
+    @Test
+    public void createDedicatedGatewayTest() {
+        CreateDedicatedGatewayRequest createDedicatedGatewayRequest = new CreateDedicatedGatewayRequest();
+        createDedicatedGatewayRequest.setClientToken("");
+        createDedicatedGatewayRequest.setName("");
+        createDedicatedGatewayRequest.setVpcId("");
+        createDedicatedGatewayRequest.setSpeed(0);
+        createDedicatedGatewayRequest.setDescription("");
+        createDedicatedGatewayRequest.setEtId("");
+        createDedicatedGatewayRequest.setChannelId("");
+        createDedicatedGatewayRequest.setLocalCidrs(new ArrayList<>());
+        createDedicatedGatewayRequest.setTags(new ArrayList<>());
+        createDedicatedGatewayRequest.setResourceGroupId("");
+        CreateDedicatedGatewayResponse response = vpcClient.createDedicatedGateway(createDedicatedGatewayRequest);
+        System.out.println(response);
+    }
+    /**
+     * createDedicatedGatewayHealthCheck
+     *
+     */
+    @Test
+    public void createDedicatedGatewayHealthCheckTest() {
+        CreateDedicatedGatewayHealthCheckRequest createDedicatedGatewayHealthCheckRequest = new CreateDedicatedGatewayHealthCheckRequest();
+        createDedicatedGatewayHealthCheckRequest.setEtGatewayId("");
+        createDedicatedGatewayHealthCheckRequest.setClientToken("");
+        createDedicatedGatewayHealthCheckRequest.setHealthCheckSourceIp("");
+        createDedicatedGatewayHealthCheckRequest.setHealthCheckType("");
+        createDedicatedGatewayHealthCheckRequest.setHealthCheckPort(0);
+        createDedicatedGatewayHealthCheckRequest.setHealthCheckInterval(0);
+        createDedicatedGatewayHealthCheckRequest.setHealthThreshold(0);
+        createDedicatedGatewayHealthCheckRequest.setUnhealthThreshold(0);
+        createDedicatedGatewayHealthCheckRequest.setAutoGenerateRouteRule(false);
+        vpcClient.createDedicatedGatewayHealthCheck(createDedicatedGatewayHealthCheckRequest);
     }
     /**
      * createGatewayLimitRules
@@ -591,6 +654,33 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
+     * queryTheDetailsOfTheDedicatedGateway
+     *
+     */
+    @Test
+    public void queryTheDetailsOfTheDedicatedGatewayTest() {
+        QueryTheDetailsOfTheDedicatedGatewayRequest queryTheDetailsOfTheDedicatedGatewayRequest = new QueryTheDetailsOfTheDedicatedGatewayRequest();
+        queryTheDetailsOfTheDedicatedGatewayRequest.setEtGatewayId("");
+        QueryTheDetailsOfTheDedicatedGatewayResponse response = vpcClient.queryTheDetailsOfTheDedicatedGateway(queryTheDetailsOfTheDedicatedGatewayRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryTheListOfDedicatedLineGateways
+     *
+     */
+    @Test
+    public void queryTheListOfDedicatedLineGatewaysTest() {
+        QueryTheListOfDedicatedLineGatewaysRequest queryTheListOfDedicatedLineGatewaysRequest = new QueryTheListOfDedicatedLineGatewaysRequest();
+        queryTheListOfDedicatedLineGatewaysRequest.setVpcId("");
+        queryTheListOfDedicatedLineGatewaysRequest.setEtGatewayId("");
+        queryTheListOfDedicatedLineGatewaysRequest.setName("");
+        queryTheListOfDedicatedLineGatewaysRequest.setStatus("");
+        queryTheListOfDedicatedLineGatewaysRequest.setMarker("");
+        queryTheListOfDedicatedLineGatewaysRequest.setMaxKeys(0);
+        QueryTheListOfDedicatedLineGatewaysResponse response = vpcClient.queryTheListOfDedicatedLineGateways(queryTheListOfDedicatedLineGatewaysRequest);
+        System.out.println(response);
+    }
+    /**
      * queryTheListOfPeerConnections
      *
      */
@@ -655,6 +745,17 @@ public class VpcClientTest {
         rejectPeerToPeerConnectionRequestRequest.setPeerConnId("");
         rejectPeerToPeerConnectionRequestRequest.setClientToken("");
         vpcClient.rejectPeerToPeerConnectionRequest(rejectPeerToPeerConnectionRequestRequest);
+    }
+    /**
+     * releaseDedicatedGateway
+     *
+     */
+    @Test
+    public void releaseDedicatedGatewayTest() {
+        ReleaseDedicatedGatewayRequest releaseDedicatedGatewayRequest = new ReleaseDedicatedGatewayRequest();
+        releaseDedicatedGatewayRequest.setEtGatewayId("");
+        releaseDedicatedGatewayRequest.setClientToken("");
+        vpcClient.releaseDedicatedGateway(releaseDedicatedGatewayRequest);
     }
     /**
      * releasePeerToPeerConnection
@@ -723,6 +824,34 @@ public class VpcClientTest {
         unbindEipRequest.setVpnId("");
         unbindEipRequest.setClientToken("");
         vpcClient.unbindEip(unbindEipRequest);
+    }
+    /**
+     * unbindPhysicalDedicatedLine
+     *
+     */
+    @Test
+    public void unbindPhysicalDedicatedLineTest() {
+        UnbindPhysicalDedicatedLineRequest unbindPhysicalDedicatedLineRequest = new UnbindPhysicalDedicatedLineRequest();
+        unbindPhysicalDedicatedLineRequest.setEtGatewayId("");
+        unbindPhysicalDedicatedLineRequest.setClientToken("");
+        vpcClient.unbindPhysicalDedicatedLine(unbindPhysicalDedicatedLineRequest);
+    }
+    /**
+     * updateDedicatedGateway
+     *
+     */
+    @Test
+    public void updateDedicatedGatewayTest() {
+        UpdateDedicatedGatewayRequest updateDedicatedGatewayRequest = new UpdateDedicatedGatewayRequest();
+        updateDedicatedGatewayRequest.setEtGatewayId("");
+        updateDedicatedGatewayRequest.setClientToken("");
+        updateDedicatedGatewayRequest.setName("");
+        updateDedicatedGatewayRequest.setSpeed(0);
+        updateDedicatedGatewayRequest.setDescription("");
+        updateDedicatedGatewayRequest.setLocalCidrs(new ArrayList<>());
+        updateDedicatedGatewayRequest.setEnableIpv6(0);
+        updateDedicatedGatewayRequest.setIpv6LocalCidrs(new ArrayList<>());
+        vpcClient.updateDedicatedGateway(updateDedicatedGatewayRequest);
     }
     /**
      * updatePeerToPeerConnectionReleaseProtectionSwitch

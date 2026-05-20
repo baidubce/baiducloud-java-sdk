@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baidubce</groupId>
     <artifactId>baiducloud-java-sdk-vpc</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
     <name>baiducloud-java-sdk-vpc</name>
     <description>Baidu Cloud SDK for Java</description>
     <url>https://github.com/baidubce/baiducloud-java-sdk</url>
@@ -171,6 +171,7 @@
                         <configuration>
                             <!-- 注意：此 serverId 必须与 Maven settings.xml 中的 server id 对应 -->
                             <publishingServerId>central</publishingServerId>
+                            <autoPublish>true</autoPublish>
                         </configuration>
                     </plugin>
                 </plugins>
