@@ -31,7 +31,6 @@ public class ExamplePurchaseAPaidDomainName {
         try {
             client.purchaseAPaidDomainName(purchaseAPaidDomainNameRequest);
         } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }
