@@ -5,7 +5,10 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.dns.DnsClient;
 import com.baidubce.dns.models.UpgradeTheFreeDomainNameToTheUniversalVersionRequest;
+import com.baidubce.dns.models.Billing;
+import com.baidubce.dns.models.Reservation;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ExampleUpgradeTheFreeDomainNameToTheUniversalVersion {
     public static void main(String[] args) {
@@ -18,10 +21,12 @@ public class ExampleUpgradeTheFreeDomainNameToTheUniversalVersion {
         config.setEndpoint(endpoint);
         DnsClient client = new DnsClient(config);
         UpgradeTheFreeDomainNameToTheUniversalVersionRequest upgradeTheFreeDomainNameToTheUniversalVersionRequest = new UpgradeTheFreeDomainNameToTheUniversalVersionRequest();
-        upgradeTheFreeDomainNameToTheUniversalVersionRequest.setAction("");
+        upgradeTheFreeDomainNameToTheUniversalVersionRequest.setAction("upgradeToDiscount");
         upgradeTheFreeDomainNameToTheUniversalVersionRequest.setClientToken("");
-        upgradeTheFreeDomainNameToTheUniversalVersionRequest.setNames(new ArrayList<>());
-        upgradeTheFreeDomainNameToTheUniversalVersionRequest.setBilling(new ArrayList<>());
+        upgradeTheFreeDomainNameToTheUniversalVersionRequest.setNames(new ArrayList<>(Arrays.asList("abbbbb.com")));
+        upgradeTheFreeDomainNameToTheUniversalVersionRequest.setBilling(new Billing()
+                .setPaymentTiming("Prepaid")
+                .setReservation(new Reservation().setReservationLength(1)));
         try {
             client.upgradeTheFreeDomainNameToTheUniversalVersion(upgradeTheFreeDomainNameToTheUniversalVersionRequest);
         } catch (BceClientException e) {

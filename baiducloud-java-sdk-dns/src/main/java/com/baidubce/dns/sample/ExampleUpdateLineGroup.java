@@ -5,7 +5,9 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.dns.DnsClient;
 import com.baidubce.dns.models.UpdateLineGroupRequest;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ExampleUpdateLineGroup {
     public static void main(String[] args) {
@@ -18,10 +20,10 @@ public class ExampleUpdateLineGroup {
         config.setEndpoint(endpoint);
         DnsClient client = new DnsClient(config);
         UpdateLineGroupRequest updateLineGroupRequest = new UpdateLineGroupRequest();
-        updateLineGroupRequest.setLineId(0);
+        updateLineGroupRequest.setLineId("6042");
         updateLineGroupRequest.setClientToken("");
-        updateLineGroupRequest.setName("");
-        updateLineGroupRequest.setLines(new ArrayList<>());
+        updateLineGroupRequest.setName("test0507");
+        updateLineGroupRequest.setLines(new ArrayList<>(Arrays.asList("henan.ct")));
         try {
             client.updateLineGroup(updateLineGroupRequest);
         } catch (BceClientException e) {

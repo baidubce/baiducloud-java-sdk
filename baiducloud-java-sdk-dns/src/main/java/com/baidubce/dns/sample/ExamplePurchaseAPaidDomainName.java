@@ -4,8 +4,12 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.dns.DnsClient;
+import com.baidubce.dns.models.Billing;
 import com.baidubce.dns.models.PurchaseAPaidDomainNameRequest;
+import com.baidubce.dns.models.Reservation;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ExamplePurchaseAPaidDomainName {
     public static void main(String[] args) {
@@ -19,9 +23,11 @@ public class ExamplePurchaseAPaidDomainName {
         DnsClient client = new DnsClient(config);
         PurchaseAPaidDomainNameRequest purchaseAPaidDomainNameRequest = new PurchaseAPaidDomainNameRequest();
         purchaseAPaidDomainNameRequest.setClientToken("");
-        purchaseAPaidDomainNameRequest.setNames(new ArrayList<>());
-        purchaseAPaidDomainNameRequest.setProductVersion("");
-        purchaseAPaidDomainNameRequest.setBilling(new ArrayList<>());
+        purchaseAPaidDomainNameRequest.setNames(new ArrayList<>(Arrays.asList("testnewdomain52.com")));
+        purchaseAPaidDomainNameRequest.setProductVersion("discount");
+        purchaseAPaidDomainNameRequest.setBilling(new Billing()
+                .setPaymentTiming("Prepaid")
+                .setReservation(new Reservation().setReservationLength(1)));
         try {
             client.purchaseAPaidDomainName(purchaseAPaidDomainNameRequest);
         } catch (BceClientException e) {

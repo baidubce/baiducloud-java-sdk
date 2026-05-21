@@ -19,7 +19,7 @@ public class ExampleQueryTheListOfLineGroups {
         DnsClient client = new DnsClient(config);
         QueryTheListOfLineGroupsRequest queryTheListOfLineGroupsRequest = new QueryTheListOfLineGroupsRequest();
         queryTheListOfLineGroupsRequest.setMarker("");
-        queryTheListOfLineGroupsRequest.setMaxKeys(0);
+        queryTheListOfLineGroupsRequest.setMaxKeys(10);
         try {
             QueryTheListOfLineGroupsResponse response = client.queryTheListOfLineGroups(queryTheListOfLineGroupsRequest);
             System.out.println(response.toJsonString());

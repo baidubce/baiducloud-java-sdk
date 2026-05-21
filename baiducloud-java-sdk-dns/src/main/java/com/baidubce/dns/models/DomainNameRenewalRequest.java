@@ -2,7 +2,6 @@ package com.baidubce.dns.models;
 
 import com.baidubce.common.BaseBceRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -29,7 +28,7 @@ public class DomainNameRenewalRequest extends BaseBceRequest {
     /**
     * 计费信息。
     */
-    private List<BillingForRenew> billing;
+    private BillingForRenew billing;
 
     public String getName() {
         return name;
@@ -58,11 +57,11 @@ public class DomainNameRenewalRequest extends BaseBceRequest {
         return this;
     }
 
-    public List<BillingForRenew> getBilling() {
+    public BillingForRenew getBilling() {
         return billing;
     }
 
-    public DomainNameRenewalRequest setBilling(List<BillingForRenew> billing) {
+    public DomainNameRenewalRequest setBilling(BillingForRenew billing) {
         this.billing = billing;
         return this;
     }

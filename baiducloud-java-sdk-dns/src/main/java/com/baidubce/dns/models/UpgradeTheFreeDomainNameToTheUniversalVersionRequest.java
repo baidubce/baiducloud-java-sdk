@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UpgradeTheFreeDomainNameToTheUniversalVersionRequest extends BaseBceRequest {
 
@@ -28,7 +29,7 @@ public class UpgradeTheFreeDomainNameToTheUniversalVersionRequest extends BaseBc
     /**
     * 计费信息。
     */
-    private List<Billing> billing;
+    private Billing billing;
 
     public String getAction() {
         return action;
@@ -57,11 +58,11 @@ public class UpgradeTheFreeDomainNameToTheUniversalVersionRequest extends BaseBc
         return this;
     }
 
-    public List<Billing> getBilling() {
+    public Billing getBilling() {
         return billing;
     }
 
-    public UpgradeTheFreeDomainNameToTheUniversalVersionRequest setBilling(List<Billing> billing) {
+    public UpgradeTheFreeDomainNameToTheUniversalVersionRequest setBilling(Billing billing) {
         this.billing = billing;
         return this;
     }

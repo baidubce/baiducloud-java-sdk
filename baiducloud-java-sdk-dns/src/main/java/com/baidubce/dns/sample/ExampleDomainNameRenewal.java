@@ -4,8 +4,9 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.dns.DnsClient;
+import com.baidubce.dns.models.BillingForRenew;
 import com.baidubce.dns.models.DomainNameRenewalRequest;
-import java.util.ArrayList;
+import com.baidubce.dns.models.Reservation;
 
 public class ExampleDomainNameRenewal {
     public static void main(String[] args) {
@@ -18,10 +19,11 @@ public class ExampleDomainNameRenewal {
         config.setEndpoint(endpoint);
         DnsClient client = new DnsClient(config);
         DomainNameRenewalRequest domainNameRenewalRequest = new DomainNameRenewalRequest();
-        domainNameRenewalRequest.setName("");
-        domainNameRenewalRequest.setAction("");
+        domainNameRenewalRequest.setName("abbbbb.com");
+        domainNameRenewalRequest.setAction("purchaseReserved");
         domainNameRenewalRequest.setClientToken("");
-        domainNameRenewalRequest.setBilling(new ArrayList<>());
+        domainNameRenewalRequest.setBilling(new BillingForRenew()
+                .setReservation(new Reservation().setReservationLength(1)));
         try {
             client.domainNameRenewal(domainNameRenewalRequest);
         } catch (BceClientException e) {

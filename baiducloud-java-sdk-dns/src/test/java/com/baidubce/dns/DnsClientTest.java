@@ -18,6 +18,9 @@ import com.baidubce.dns.models.QueryTheListOfLineGroupsResponse;
 import com.baidubce.dns.models.RemoveDomainNameRequest;
 import com.baidubce.dns.models.UpdateLineGroupRequest;
 import com.baidubce.dns.models.UpgradeTheFreeDomainNameToTheUniversalVersionRequest;
+import com.baidubce.dns.models.Billing;
+import com.baidubce.dns.models.BillingForRenew;
+import com.baidubce.dns.models.Reservation;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -114,7 +117,8 @@ public class DnsClientTest {
         domainNameRenewalRequest.setName("");
         domainNameRenewalRequest.setAction("");
         domainNameRenewalRequest.setClientToken("");
-        domainNameRenewalRequest.setBilling(new ArrayList<>());
+        domainNameRenewalRequest.setBilling(new BillingForRenew()
+                .setReservation(new Reservation().setReservationLength(1)));
         dnsClient.domainNameRenewal(domainNameRenewalRequest);
     }
     /**
@@ -158,7 +162,9 @@ public class DnsClientTest {
         purchaseAPaidDomainNameRequest.setClientToken("");
         purchaseAPaidDomainNameRequest.setNames(new ArrayList<>());
         purchaseAPaidDomainNameRequest.setProductVersion("");
-        purchaseAPaidDomainNameRequest.setBilling(new ArrayList<>());
+        purchaseAPaidDomainNameRequest.setBilling(new Billing()
+                .setPaymentTiming("Prepaid")
+                .setReservation(new Reservation().setReservationLength(1)));
         dnsClient.purchaseAPaidDomainName(purchaseAPaidDomainNameRequest);
     }
     /**
@@ -219,7 +225,7 @@ public class DnsClientTest {
     @Test
     public void updateLineGroupTest() {
         UpdateLineGroupRequest updateLineGroupRequest = new UpdateLineGroupRequest();
-        updateLineGroupRequest.setLineId(0);
+        updateLineGroupRequest.setLineId("");
         updateLineGroupRequest.setClientToken("");
         updateLineGroupRequest.setName("");
         updateLineGroupRequest.setLines(new ArrayList<>());
@@ -235,7 +241,9 @@ public class DnsClientTest {
         upgradeTheFreeDomainNameToTheUniversalVersionRequest.setAction("");
         upgradeTheFreeDomainNameToTheUniversalVersionRequest.setClientToken("");
         upgradeTheFreeDomainNameToTheUniversalVersionRequest.setNames(new ArrayList<>());
-        upgradeTheFreeDomainNameToTheUniversalVersionRequest.setBilling(new ArrayList<>());
+        upgradeTheFreeDomainNameToTheUniversalVersionRequest.setBilling(new Billing()
+                .setPaymentTiming("Prepaid")
+                .setReservation(new Reservation().setReservationLength(1)));
         dnsClient.upgradeTheFreeDomainNameToTheUniversalVersion(upgradeTheFreeDomainNameToTheUniversalVersionRequest);
     }
 }

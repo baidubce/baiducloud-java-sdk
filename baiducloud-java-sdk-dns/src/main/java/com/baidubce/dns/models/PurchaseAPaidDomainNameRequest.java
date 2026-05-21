@@ -27,7 +27,7 @@ public class PurchaseAPaidDomainNameRequest extends BaseBceRequest {
     /**
     * 计费信息。
     */
-    private List<Billing> billing;
+    private Billing billing;
 
     public String getClientToken() {
         return clientToken;
@@ -56,11 +56,11 @@ public class PurchaseAPaidDomainNameRequest extends BaseBceRequest {
         return this;
     }
 
-    public List<Billing> getBilling() {
+    public Billing getBilling() {
         return billing;
     }
 
-    public PurchaseAPaidDomainNameRequest setBilling(List<Billing> billing) {
+    public PurchaseAPaidDomainNameRequest setBilling(Billing billing) {
         this.billing = billing;
         return this;
     }
