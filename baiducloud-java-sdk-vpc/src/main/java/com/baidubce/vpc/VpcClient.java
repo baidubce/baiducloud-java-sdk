@@ -16,6 +16,7 @@ import java.util.HashSet;
 import com.baidubce.common.BaseBceResponse;
 
 import com.baidubce.vpc.models.AcceptPeerToPeerConnectionApplicationsRequest;
+import com.baidubce.vpc.models.ActiveStandbySwitchoverRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersResponse;
 import com.baidubce.vpc.models.BindEipRequest;
@@ -31,6 +32,8 @@ import com.baidubce.vpc.models.CreateGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.CreateGatewayLimitRulesResponse;
 import com.baidubce.vpc.models.CreateIpReservedRequest;
 import com.baidubce.vpc.models.CreateIpReservedResponse;
+import com.baidubce.vpc.models.CreateRoutingRulesRequest;
+import com.baidubce.vpc.models.CreateRoutingRulesResponse;
 import com.baidubce.vpc.models.CreateSslVpnServerRequest;
 import com.baidubce.vpc.models.CreateSslVpnServerResponse;
 import com.baidubce.vpc.models.CreateSubnetRequest;
@@ -45,6 +48,7 @@ import com.baidubce.vpc.models.CreateVpnTunnelRequest;
 import com.baidubce.vpc.models.CreateVpnTunnelResponse;
 import com.baidubce.vpc.models.DeleteGatewayLimitRuleRequest;
 import com.baidubce.vpc.models.DeleteIpReserveRequest;
+import com.baidubce.vpc.models.DeleteRoutingRulesRequest;
 import com.baidubce.vpc.models.DeleteSslVpnServerRequest;
 import com.baidubce.vpc.models.DeleteSslVpnUserRequest;
 import com.baidubce.vpc.models.DeleteSubnetRequest;
@@ -61,6 +65,10 @@ import com.baidubce.vpc.models.OpenVpcRelayRequest;
 import com.baidubce.vpc.models.PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest;
 import com.baidubce.vpc.models.PeerToPeerConnectionRenewalRequest;
 import com.baidubce.vpc.models.PrepaidPeerToPeerConnectionUnsubscribeRequest;
+import com.baidubce.vpc.models.QueryRoutingRulesRequest;
+import com.baidubce.vpc.models.QueryRoutingRulesResponse;
+import com.baidubce.vpc.models.QueryRoutingTableRequest;
+import com.baidubce.vpc.models.QueryRoutingTableResponse;
 import com.baidubce.vpc.models.QuerySpecifiedSubnetRequest;
 import com.baidubce.vpc.models.QuerySpecifiedSubnetResponse;
 import com.baidubce.vpc.models.QuerySpecifiedVpcRequest;
@@ -96,6 +104,7 @@ import com.baidubce.vpc.models.UnbindEipRequest;
 import com.baidubce.vpc.models.UnbindPhysicalDedicatedLineRequest;
 import com.baidubce.vpc.models.UpdateDedicatedGatewayRequest;
 import com.baidubce.vpc.models.UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest;
+import com.baidubce.vpc.models.UpdateRoutingRulesRequest;
 import com.baidubce.vpc.models.UpdateSslVpnServerRequest;
 import com.baidubce.vpc.models.UpdateSslVpnUsersRequest;
 import com.baidubce.vpc.models.UpdateSubnetRequest;
@@ -127,6 +136,8 @@ public class VpcClient extends AbstractBceClient {
     private static final String CONSTANT_RESOURCE_IP = "resourceIp";
     private static final String CONSTANT_CGW = "cgw";
     private static final String CONSTANT_PEERCONN = "peerconn";
+    private static final String CONSTANT_ROUTE = "route";
+    private static final String CONSTANT_RULE = "rule";
     private static final String CONSTANT_PRIVATE_IP_ADDRESS_INFO = "privateIpAddressInfo";
     private static final String CONSTANT_ET_GATEWAY = "etGateway";
     private static final String CONSTANT_HEALTH_CHECK = "healthCheck";
@@ -165,6 +176,20 @@ public class VpcClient extends AbstractBceClient {
     public void acceptPeerToPeerConnectionApplications(AcceptPeerToPeerConnectionApplicationsRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
         internalRequest.addParameter("accept", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * activeStandbySwitchover
+     * 
+     * @param request 入参结构体
+     */
+    public void activeStandbySwitchover(ActiveStandbySwitchoverRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ROUTE, CONSTANT_RULE, request.getRouteRuleId());
+        internalRequest.addParameter("switchRouteHA", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -321,6 +346,21 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * createRoutingRules
+     * 
+     * @param request 入参结构体
+     * @return CreateRoutingRulesResponse
+     */
+    public CreateRoutingRulesResponse createRoutingRules(CreateRoutingRulesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_ROUTE, CONSTANT_RULE);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateRoutingRulesResponse.class);
+    }
+
+    /**
      * createSslVpnServer
      * 
      * @param request 入参结构体
@@ -430,6 +470,19 @@ public class VpcClient extends AbstractBceClient {
      */
     public void deleteIpReserve(DeleteIpReserveRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_SUBNET, CONSTANT_IPRESERVE, request.getIpReserveId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteRoutingRules
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteRoutingRules(DeleteRoutingRulesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_ROUTE, CONSTANT_RULE, request.getRouteRuleId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -645,6 +698,46 @@ public class VpcClient extends AbstractBceClient {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * queryRoutingRules
+     * 
+     * @param request 入参结构体
+     * @return QueryRoutingRulesResponse
+     */
+    public QueryRoutingRulesResponse queryRoutingRules(QueryRoutingRulesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_ROUTE, CONSTANT_RULE);
+        if (request.getRouteTableId() != null) {
+            internalRequest.addParameter("routeTableId", request.getRouteTableId());
+        }
+        if (request.getVpcId() != null) {
+            internalRequest.addParameter("vpcId", request.getVpcId());
+        }
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, QueryRoutingRulesResponse.class);
+    }
+
+    /**
+     * queryRoutingTable
+     * 
+     * @param request 入参结构体
+     * @return QueryRoutingTableResponse
+     */
+    public QueryRoutingTableResponse queryRoutingTable(QueryRoutingTableRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_ROUTE);
+        if (request.getRouteTableId() != null) {
+            internalRequest.addParameter("routeTableId", request.getRouteTableId());
+        }
+        if (request.getVpcId() != null) {
+            internalRequest.addParameter("vpcId", request.getVpcId());
+        }
+        return invokeHttpClient(internalRequest, QueryRoutingTableResponse.class);
     }
 
     /**
@@ -997,6 +1090,20 @@ public class VpcClient extends AbstractBceClient {
      */
     public void updatePeerToPeerConnectionReleaseProtectionSwitch(UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId(), CONSTANT_DELETE_PROTECT);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateRoutingRules
+     * 
+     * @param request 入参结构体
+     */
+    public void updateRoutingRules(UpdateRoutingRulesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ROUTE, CONSTANT_RULE, request.getRouteRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }

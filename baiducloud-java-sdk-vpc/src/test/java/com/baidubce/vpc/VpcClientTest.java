@@ -1,6 +1,7 @@
 package com.baidubce.vpc;
 
 import com.baidubce.vpc.models.AcceptPeerToPeerConnectionApplicationsRequest;
+import com.baidubce.vpc.models.ActiveStandbySwitchoverRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersResponse;
 import com.baidubce.vpc.models.BindEipRequest;
@@ -16,6 +17,8 @@ import com.baidubce.vpc.models.CreateGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.CreateGatewayLimitRulesResponse;
 import com.baidubce.vpc.models.CreateIpReservedRequest;
 import com.baidubce.vpc.models.CreateIpReservedResponse;
+import com.baidubce.vpc.models.CreateRoutingRulesRequest;
+import com.baidubce.vpc.models.CreateRoutingRulesResponse;
 import com.baidubce.vpc.models.CreateSslVpnServerRequest;
 import com.baidubce.vpc.models.CreateSslVpnServerResponse;
 import com.baidubce.vpc.models.CreateSubnetRequest;
@@ -30,6 +33,7 @@ import com.baidubce.vpc.models.CreateVpnTunnelRequest;
 import com.baidubce.vpc.models.CreateVpnTunnelResponse;
 import com.baidubce.vpc.models.DeleteGatewayLimitRuleRequest;
 import com.baidubce.vpc.models.DeleteIpReserveRequest;
+import com.baidubce.vpc.models.DeleteRoutingRulesRequest;
 import com.baidubce.vpc.models.DeleteSslVpnServerRequest;
 import com.baidubce.vpc.models.DeleteSslVpnUserRequest;
 import com.baidubce.vpc.models.DeleteSubnetRequest;
@@ -46,6 +50,10 @@ import com.baidubce.vpc.models.OpenVpcRelayRequest;
 import com.baidubce.vpc.models.PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest;
 import com.baidubce.vpc.models.PeerToPeerConnectionRenewalRequest;
 import com.baidubce.vpc.models.PrepaidPeerToPeerConnectionUnsubscribeRequest;
+import com.baidubce.vpc.models.QueryRoutingRulesRequest;
+import com.baidubce.vpc.models.QueryRoutingRulesResponse;
+import com.baidubce.vpc.models.QueryRoutingTableRequest;
+import com.baidubce.vpc.models.QueryRoutingTableResponse;
 import com.baidubce.vpc.models.QuerySpecifiedSubnetRequest;
 import com.baidubce.vpc.models.QuerySpecifiedSubnetResponse;
 import com.baidubce.vpc.models.QuerySpecifiedVpcRequest;
@@ -81,6 +89,7 @@ import com.baidubce.vpc.models.UnbindEipRequest;
 import com.baidubce.vpc.models.UnbindPhysicalDedicatedLineRequest;
 import com.baidubce.vpc.models.UpdateDedicatedGatewayRequest;
 import com.baidubce.vpc.models.UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest;
+import com.baidubce.vpc.models.UpdateRoutingRulesRequest;
 import com.baidubce.vpc.models.UpdateSslVpnServerRequest;
 import com.baidubce.vpc.models.UpdateSslVpnUsersRequest;
 import com.baidubce.vpc.models.UpdateSubnetRequest;
@@ -130,6 +139,17 @@ public class VpcClientTest {
         acceptPeerToPeerConnectionApplicationsRequest.setPeerConnId("");
         acceptPeerToPeerConnectionApplicationsRequest.setClientToken("");
         vpcClient.acceptPeerToPeerConnectionApplications(acceptPeerToPeerConnectionApplicationsRequest);
+    }
+    /**
+     * activeStandbySwitchover
+     *
+     */
+    @Test
+    public void activeStandbySwitchoverTest() {
+        ActiveStandbySwitchoverRequest activeStandbySwitchoverRequest = new ActiveStandbySwitchoverRequest();
+        activeStandbySwitchoverRequest.setRouteRuleId("");
+        activeStandbySwitchoverRequest.setClientToken("");
+        vpcClient.activeStandbySwitchover(activeStandbySwitchoverRequest);
     }
     /**
      * batchCreateSslVpnUsers
@@ -291,6 +311,24 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
+     * createRoutingRules
+     *
+     */
+    @Test
+    public void createRoutingRulesTest() {
+        CreateRoutingRulesRequest createRoutingRulesRequest = new CreateRoutingRulesRequest();
+        createRoutingRulesRequest.setClientToken("");
+        createRoutingRulesRequest.setRouteTableId("");
+        createRoutingRulesRequest.setSourceAddress("");
+        createRoutingRulesRequest.setDestinationAddress("");
+        createRoutingRulesRequest.setNexthopId("");
+        createRoutingRulesRequest.setNexthopType("");
+        createRoutingRulesRequest.setNextHopList(new ArrayList<>());
+        createRoutingRulesRequest.setDescription("");
+        CreateRoutingRulesResponse response = vpcClient.createRoutingRules(createRoutingRulesRequest);
+        System.out.println(response);
+    }
+    /**
      * createSslVpnServer
      *
      */
@@ -420,6 +458,17 @@ public class VpcClientTest {
         deleteIpReserveRequest.setIpReserveId("");
         deleteIpReserveRequest.setClientToken("");
         vpcClient.deleteIpReserve(deleteIpReserveRequest);
+    }
+    /**
+     * deleteRoutingRules
+     *
+     */
+    @Test
+    public void deleteRoutingRulesTest() {
+        DeleteRoutingRulesRequest deleteRoutingRulesRequest = new DeleteRoutingRulesRequest();
+        deleteRoutingRulesRequest.setRouteRuleId("");
+        deleteRoutingRulesRequest.setClientToken("");
+        vpcClient.deleteRoutingRules(deleteRoutingRulesRequest);
     }
     /**
      * deleteSslVpnServer
@@ -588,6 +637,32 @@ public class VpcClientTest {
         prepaidPeerToPeerConnectionUnsubscribeRequest.setPeerConnId("");
         prepaidPeerToPeerConnectionUnsubscribeRequest.setClientToken("");
         vpcClient.prepaidPeerToPeerConnectionUnsubscribe(prepaidPeerToPeerConnectionUnsubscribeRequest);
+    }
+    /**
+     * queryRoutingRules
+     *
+     */
+    @Test
+    public void queryRoutingRulesTest() {
+        QueryRoutingRulesRequest queryRoutingRulesRequest = new QueryRoutingRulesRequest();
+        queryRoutingRulesRequest.setRouteTableId("");
+        queryRoutingRulesRequest.setVpcId("");
+        queryRoutingRulesRequest.setMarker("");
+        queryRoutingRulesRequest.setMaxKeys(0);
+        QueryRoutingRulesResponse response = vpcClient.queryRoutingRules(queryRoutingRulesRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryRoutingTable
+     *
+     */
+    @Test
+    public void queryRoutingTableTest() {
+        QueryRoutingTableRequest queryRoutingTableRequest = new QueryRoutingTableRequest();
+        queryRoutingTableRequest.setRouteTableId("");
+        queryRoutingTableRequest.setVpcId("");
+        QueryRoutingTableResponse response = vpcClient.queryRoutingTable(queryRoutingTableRequest);
+        System.out.println(response);
     }
     /**
      * querySpecifiedSubnet
@@ -864,6 +939,21 @@ public class VpcClientTest {
         updatePeerToPeerConnectionReleaseProtectionSwitchRequest.setPeerConnId("");
         updatePeerToPeerConnectionReleaseProtectionSwitchRequest.setDeleteProtect(false);
         vpcClient.updatePeerToPeerConnectionReleaseProtectionSwitch(updatePeerToPeerConnectionReleaseProtectionSwitchRequest);
+    }
+    /**
+     * updateRoutingRules
+     *
+     */
+    @Test
+    public void updateRoutingRulesTest() {
+        UpdateRoutingRulesRequest updateRoutingRulesRequest = new UpdateRoutingRulesRequest();
+        updateRoutingRulesRequest.setRouteRuleId("");
+        updateRoutingRulesRequest.setClientToken("");
+        updateRoutingRulesRequest.setSourceAddress("");
+        updateRoutingRulesRequest.setDestinationAddress("");
+        updateRoutingRulesRequest.setNexthopId("");
+        updateRoutingRulesRequest.setDescription("");
+        vpcClient.updateRoutingRules(updateRoutingRulesRequest);
     }
     /**
      * updateSslVpnServer
