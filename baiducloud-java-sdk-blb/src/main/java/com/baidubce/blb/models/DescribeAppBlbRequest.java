@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RefundBlbRequest extends BaseBceRequest {
+public class DescribeAppBlbRequest extends BaseBceRequest {
 
     /**
     * blbId
@@ -13,27 +13,12 @@ public class RefundBlbRequest extends BaseBceRequest {
     @JsonIgnore
     private String blbId;
 
-    /**
-    * clientToken
-    */
-    @JsonIgnore
-    private String clientToken;
-
     public String getBlbId() {
         return blbId;
     }
 
-    public RefundBlbRequest setBlbId(String blbId) {
+    public DescribeAppBlbRequest setBlbId(String blbId) {
         this.blbId = blbId;
-        return this;
-    }
-
-    public String getClientToken() {
-        return clientToken;
-    }
-
-    public RefundBlbRequest setClientToken(String clientToken) {
-        this.clientToken = clientToken;
         return this;
     }
 

@@ -1,10 +1,11 @@
 package com.baidubce.blb.models;
 
+import com.baidubce.common.BaseBceRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class BillingChangeCancelToPostBlbRequest {
+public class BillingChangeCancelToPostBlbRequest extends BaseBceRequest {
 
     /**
     * blbId
