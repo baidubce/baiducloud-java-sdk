@@ -10,11 +10,28 @@ import com.baidubce.internal.InternalRequest;
 import com.baidubce.http.HttpMethodName;
 import com.baidubce.model.AbstractBceRequest;
 import com.baidubce.auth.SignOptions;
+import com.baidubce.util.RequestBodyUtils;
 import java.util.Arrays;
 import java.util.HashSet;
-import com.baidubce.common.BaseBceRequest;
+import com.baidubce.common.BaseBceResponse;
 
-import com.baidubce.cfw.models.QueryCfwListResponse;
+import com.baidubce.cfw.models.BindCfwRequest;
+import com.baidubce.cfw.models.CreateCfwRequest;
+import com.baidubce.cfw.models.CreateCfwResponse;
+import com.baidubce.cfw.models.CreateCfwRuleRequest;
+import com.baidubce.cfw.models.DeleteCfwRequest;
+import com.baidubce.cfw.models.DeleteCfwRuleRequest;
+import com.baidubce.cfw.models.DisableCfwProtectRequest;
+import com.baidubce.cfw.models.EnableCfwProtectRequest;
+import com.baidubce.cfw.models.GetCfwRequest;
+import com.baidubce.cfw.models.GetCfwResponse;
+import com.baidubce.cfw.models.ListCfwRequest;
+import com.baidubce.cfw.models.ListCfwResponse;
+import com.baidubce.cfw.models.ListProtectInstancesRequest;
+import com.baidubce.cfw.models.ListProtectInstancesResponse;
+import com.baidubce.cfw.models.UnbindCfwRequest;
+import com.baidubce.cfw.models.UpdateCfwRequest;
+import com.baidubce.cfw.models.UpdateCfwRuleRequest;
 
 public class CfwClient extends AbstractBceClient {
 
@@ -22,6 +39,9 @@ public class CfwClient extends AbstractBceClient {
 
     private static final String VERSION_V1 = "v1";
     private static final String CONSTANT_CFW = "cfw";
+    private static final String CONSTANT_RULE = "rule";
+    private static final String CONSTANT_DELETE = "delete";
+    private static final String CONSTANT_INSTANCE = "instance";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -43,15 +63,171 @@ public class CfwClient extends AbstractBceClient {
     }
 
     /**
-     * queryCfwList
+     * bindCfw
      * 
-     * @return QueryCfwListResponse
+     * @param request 入参结构体
      */
-    public QueryCfwListResponse queryCfwList() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_CFW);
-        internalRequest.addParameter("marker", "cfw-egx34bzjj43k");
-        internalRequest.addParameter("maxKeys", "1");
-        return invokeHttpClient(internalRequest, QueryCfwListResponse.class);
+    public void bindCfw(BindCfwRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_CFW, request.getCfwId());
+        internalRequest.addParameter("bind", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * createCfw
+     * 
+     * @param request 入参结构体
+     * @return CreateCfwResponse
+     */
+    public CreateCfwResponse createCfw(CreateCfwRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_CFW);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateCfwResponse.class);
+    }
+
+    /**
+     * createCfwRule
+     * 
+     * @param request 入参结构体
+     */
+    public void createCfwRule(CreateCfwRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_CFW, request.getCfwId(), CONSTANT_RULE);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteCfw
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteCfw(DeleteCfwRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_CFW, request.getCfwId());
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteCfwRule
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteCfwRule(DeleteCfwRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_CFW, request.getCfwId(), CONSTANT_DELETE, CONSTANT_RULE);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * disableCfwProtect
+     * 
+     * @param request 入参结构体
+     */
+    public void disableCfwProtect(DisableCfwProtectRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_CFW, request.getCfwId());
+        internalRequest.addParameter("off", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * enableCfwProtect
+     * 
+     * @param request 入参结构体
+     */
+    public void enableCfwProtect(EnableCfwProtectRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_CFW, request.getCfwId());
+        internalRequest.addParameter("on", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * getCfw
+     * 
+     * @param request 入参结构体
+     * @return GetCfwResponse
+     */
+    public GetCfwResponse getCfw(GetCfwRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_CFW, request.getCfwId());
+        return invokeHttpClient(internalRequest, GetCfwResponse.class);
+    }
+
+    /**
+     * listCfw
+     * 
+     * @param request 入参结构体
+     * @return ListCfwResponse
+     */
+    public ListCfwResponse listCfw(ListCfwRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_CFW);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, ListCfwResponse.class);
+    }
+
+    /**
+     * listProtectInstances
+     * 
+     * @param request 入参结构体
+     * @return ListProtectInstancesResponse
+     */
+    public ListProtectInstancesResponse listProtectInstances(ListProtectInstancesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_CFW, CONSTANT_INSTANCE);
+        if (request.getInstanceType() != null) {
+            internalRequest.addParameter("instanceType", request.getInstanceType());
+        }
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        if (request.getStatus() != null) {
+            internalRequest.addParameter("status", request.getStatus());
+        }
+        if (request.getRegion() != null) {
+            internalRequest.addParameter("region", request.getRegion());
+        }
+        return invokeHttpClient(internalRequest, ListProtectInstancesResponse.class);
+    }
+
+    /**
+     * unbindCfw
+     * 
+     * @param request 入参结构体
+     */
+    public void unbindCfw(UnbindCfwRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_CFW, request.getCfwId());
+        internalRequest.addParameter("unbind", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateCfw
+     * 
+     * @param request 入参结构体
+     */
+    public void updateCfw(UpdateCfwRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_CFW, request.getCfwId());
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateCfwRule
+     * 
+     * @param request 入参结构体
+     */
+    public void updateCfwRule(UpdateCfwRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_CFW, request.getCfwId(), CONSTANT_RULE, request.getCfwRuleId());
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
