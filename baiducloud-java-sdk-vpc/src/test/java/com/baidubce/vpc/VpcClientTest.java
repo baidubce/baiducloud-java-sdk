@@ -2,6 +2,8 @@ package com.baidubce.vpc;
 
 import com.baidubce.vpc.models.AcceptPeerToPeerConnectionApplicationsRequest;
 import com.baidubce.vpc.models.ActiveStandbySwitchoverRequest;
+import com.baidubce.vpc.models.AuthorizeRegularSecurityGroupRulesV2Request;
+import com.baidubce.vpc.models.AuthorizedEnterpriseSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersResponse;
 import com.baidubce.vpc.models.BindEipRequest;
@@ -10,9 +12,13 @@ import com.baidubce.vpc.models.ClosePeerToPeerConnectionToSynchronizeDnsRequest;
 import com.baidubce.vpc.models.CloseVpcRelayRequest;
 import com.baidubce.vpc.models.CreateAPeerToPeerConnectionRequest;
 import com.baidubce.vpc.models.CreateAPeerToPeerConnectionResponse;
+import com.baidubce.vpc.models.CreateARegularSecurityGroupV2Request;
+import com.baidubce.vpc.models.CreateARegularSecurityGroupV2Response;
 import com.baidubce.vpc.models.CreateDedicatedGatewayHealthCheckRequest;
 import com.baidubce.vpc.models.CreateDedicatedGatewayRequest;
 import com.baidubce.vpc.models.CreateDedicatedGatewayResponse;
+import com.baidubce.vpc.models.CreateEnterpriseSecurityGroupRequest;
+import com.baidubce.vpc.models.CreateEnterpriseSecurityGroupResponse;
 import com.baidubce.vpc.models.CreateGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.CreateGatewayLimitRulesResponse;
 import com.baidubce.vpc.models.CreateIpReservedRequest;
@@ -31,8 +37,12 @@ import com.baidubce.vpc.models.CreateVpnRequest;
 import com.baidubce.vpc.models.CreateVpnResponse;
 import com.baidubce.vpc.models.CreateVpnTunnelRequest;
 import com.baidubce.vpc.models.CreateVpnTunnelResponse;
+import com.baidubce.vpc.models.DeleteEnterpriseSecurityGroupRequest;
+import com.baidubce.vpc.models.DeleteEnterpriseSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.DeleteGatewayLimitRuleRequest;
 import com.baidubce.vpc.models.DeleteIpReserveRequest;
+import com.baidubce.vpc.models.DeleteRegularSecurityGroupRulesV2Request;
+import com.baidubce.vpc.models.DeleteRegularSecurityGroupV2Request;
 import com.baidubce.vpc.models.DeleteRoutingRulesRequest;
 import com.baidubce.vpc.models.DeleteSslVpnServerRequest;
 import com.baidubce.vpc.models.DeleteSslVpnUserRequest;
@@ -68,8 +78,12 @@ import com.baidubce.vpc.models.QueryTheDetailsOfTheDedicatedGatewayRequest;
 import com.baidubce.vpc.models.QueryTheDetailsOfTheDedicatedGatewayResponse;
 import com.baidubce.vpc.models.QueryTheListOfDedicatedLineGatewaysRequest;
 import com.baidubce.vpc.models.QueryTheListOfDedicatedLineGatewaysResponse;
+import com.baidubce.vpc.models.QueryTheListOfEnterpriseSecurityGroupsRequest;
+import com.baidubce.vpc.models.QueryTheListOfEnterpriseSecurityGroupsResponse;
 import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsRequest;
 import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsResponse;
+import com.baidubce.vpc.models.QueryTheListOfRegularSecurityGroupsV2Request;
+import com.baidubce.vpc.models.QueryTheListOfRegularSecurityGroupsV2Response;
 import com.baidubce.vpc.models.QueryVpcIntranetIpRequest;
 import com.baidubce.vpc.models.QueryVpcIntranetIpResponse;
 import com.baidubce.vpc.models.QueryVpcListRequest;
@@ -81,6 +95,7 @@ import com.baidubce.vpc.models.ReleaseDedicatedGatewayRequest;
 import com.baidubce.vpc.models.ReleasePeerToPeerConnectionRequest;
 import com.baidubce.vpc.models.ReleaseVpnRequest;
 import com.baidubce.vpc.models.RenewVpnRequest;
+import com.baidubce.vpc.models.RevokeRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.SearchForVpnDetailsRequest;
 import com.baidubce.vpc.models.SearchForVpnDetailsResponse;
 import com.baidubce.vpc.models.SearchVpnTunnelRequest;
@@ -88,7 +103,9 @@ import com.baidubce.vpc.models.SearchVpnTunnelResponse;
 import com.baidubce.vpc.models.UnbindEipRequest;
 import com.baidubce.vpc.models.UnbindPhysicalDedicatedLineRequest;
 import com.baidubce.vpc.models.UpdateDedicatedGatewayRequest;
+import com.baidubce.vpc.models.UpdateEnterpriseSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest;
+import com.baidubce.vpc.models.UpdateRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.UpdateRoutingRulesRequest;
 import com.baidubce.vpc.models.UpdateSslVpnServerRequest;
 import com.baidubce.vpc.models.UpdateSslVpnUsersRequest;
@@ -107,6 +124,8 @@ import com.baidubce.vpc.models.ViewGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.ViewGatewayLimitRulesResponse;
 import com.baidubce.vpc.models.ViewPeerToPeerConnectionDetailsRequest;
 import com.baidubce.vpc.models.ViewPeerToPeerConnectionDetailsResponse;
+import com.baidubce.vpc.models.ViewSecurityGroupDetailsV2Request;
+import com.baidubce.vpc.models.ViewSecurityGroupDetailsV2Response;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -150,6 +169,31 @@ public class VpcClientTest {
         activeStandbySwitchoverRequest.setRouteRuleId("");
         activeStandbySwitchoverRequest.setClientToken("");
         vpcClient.activeStandbySwitchover(activeStandbySwitchoverRequest);
+    }
+    /**
+     * authorizeRegularSecurityGroupRulesV2
+     *
+     */
+    @Test
+    public void authorizeRegularSecurityGroupRulesV2Test() {
+        AuthorizeRegularSecurityGroupRulesV2Request authorizeRegularSecurityGroupRulesV2Request = new AuthorizeRegularSecurityGroupRulesV2Request();
+        authorizeRegularSecurityGroupRulesV2Request.setSecurityGroupId("");
+        authorizeRegularSecurityGroupRulesV2Request.setSgVersion(0L);
+        authorizeRegularSecurityGroupRulesV2Request.setClientToken("");
+        authorizeRegularSecurityGroupRulesV2Request.setRule(null);
+        vpcClient.authorizeRegularSecurityGroupRulesV2(authorizeRegularSecurityGroupRulesV2Request);
+    }
+    /**
+     * authorizedEnterpriseSecurityGroupRules
+     *
+     */
+    @Test
+    public void authorizedEnterpriseSecurityGroupRulesTest() {
+        AuthorizedEnterpriseSecurityGroupRulesRequest authorizedEnterpriseSecurityGroupRulesRequest = new AuthorizedEnterpriseSecurityGroupRulesRequest();
+        authorizedEnterpriseSecurityGroupRulesRequest.setEnterpriseSecurityGroupId("");
+        authorizedEnterpriseSecurityGroupRulesRequest.setClientToken("");
+        authorizedEnterpriseSecurityGroupRulesRequest.setRules(new ArrayList<>());
+        vpcClient.authorizedEnterpriseSecurityGroupRules(authorizedEnterpriseSecurityGroupRulesRequest);
     }
     /**
      * batchCreateSslVpnUsers
@@ -237,6 +281,22 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
+     * createARegularSecurityGroupV2
+     *
+     */
+    @Test
+    public void createARegularSecurityGroupV2Test() {
+        CreateARegularSecurityGroupV2Request createARegularSecurityGroupV2Request = new CreateARegularSecurityGroupV2Request();
+        createARegularSecurityGroupV2Request.setClientToken("");
+        createARegularSecurityGroupV2Request.setName("");
+        createARegularSecurityGroupV2Request.setVpcId("");
+        createARegularSecurityGroupV2Request.setDesc("");
+        createARegularSecurityGroupV2Request.setRules(new ArrayList<>());
+        createARegularSecurityGroupV2Request.setTags(new ArrayList<>());
+        CreateARegularSecurityGroupV2Response response = vpcClient.createARegularSecurityGroupV2(createARegularSecurityGroupV2Request);
+        System.out.println(response);
+    }
+    /**
      * createDedicatedGateway
      *
      */
@@ -273,6 +333,21 @@ public class VpcClientTest {
         createDedicatedGatewayHealthCheckRequest.setUnhealthThreshold(0);
         createDedicatedGatewayHealthCheckRequest.setAutoGenerateRouteRule(false);
         vpcClient.createDedicatedGatewayHealthCheck(createDedicatedGatewayHealthCheckRequest);
+    }
+    /**
+     * createEnterpriseSecurityGroup
+     *
+     */
+    @Test
+    public void createEnterpriseSecurityGroupTest() {
+        CreateEnterpriseSecurityGroupRequest createEnterpriseSecurityGroupRequest = new CreateEnterpriseSecurityGroupRequest();
+        createEnterpriseSecurityGroupRequest.setClientToken("");
+        createEnterpriseSecurityGroupRequest.setName("");
+        createEnterpriseSecurityGroupRequest.setDesc("");
+        createEnterpriseSecurityGroupRequest.setRules(new ArrayList<>());
+        createEnterpriseSecurityGroupRequest.setTags(new ArrayList<>());
+        CreateEnterpriseSecurityGroupResponse response = vpcClient.createEnterpriseSecurityGroup(createEnterpriseSecurityGroupRequest);
+        System.out.println(response);
     }
     /**
      * createGatewayLimitRules
@@ -438,6 +513,28 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
+     * deleteEnterpriseSecurityGroup
+     *
+     */
+    @Test
+    public void deleteEnterpriseSecurityGroupTest() {
+        DeleteEnterpriseSecurityGroupRequest deleteEnterpriseSecurityGroupRequest = new DeleteEnterpriseSecurityGroupRequest();
+        deleteEnterpriseSecurityGroupRequest.setEnterpriseSecurityGroupId("");
+        deleteEnterpriseSecurityGroupRequest.setClientToken("");
+        vpcClient.deleteEnterpriseSecurityGroup(deleteEnterpriseSecurityGroupRequest);
+    }
+    /**
+     * deleteEnterpriseSecurityGroupRules
+     *
+     */
+    @Test
+    public void deleteEnterpriseSecurityGroupRulesTest() {
+        DeleteEnterpriseSecurityGroupRulesRequest deleteEnterpriseSecurityGroupRulesRequest = new DeleteEnterpriseSecurityGroupRulesRequest();
+        deleteEnterpriseSecurityGroupRulesRequest.setEnterpriseSecurityGroupRuleId("");
+        deleteEnterpriseSecurityGroupRulesRequest.setClientToken("");
+        vpcClient.deleteEnterpriseSecurityGroupRules(deleteEnterpriseSecurityGroupRulesRequest);
+    }
+    /**
      * deleteGatewayLimitRule
      *
      */
@@ -458,6 +555,29 @@ public class VpcClientTest {
         deleteIpReserveRequest.setIpReserveId("");
         deleteIpReserveRequest.setClientToken("");
         vpcClient.deleteIpReserve(deleteIpReserveRequest);
+    }
+    /**
+     * deleteRegularSecurityGroupRulesV2
+     *
+     */
+    @Test
+    public void deleteRegularSecurityGroupRulesV2Test() {
+        DeleteRegularSecurityGroupRulesV2Request deleteRegularSecurityGroupRulesV2Request = new DeleteRegularSecurityGroupRulesV2Request();
+        deleteRegularSecurityGroupRulesV2Request.setSecurityGroupRuleId("");
+        deleteRegularSecurityGroupRulesV2Request.setClientToken("");
+        deleteRegularSecurityGroupRulesV2Request.setSgVersion(0L);
+        vpcClient.deleteRegularSecurityGroupRulesV2(deleteRegularSecurityGroupRulesV2Request);
+    }
+    /**
+     * deleteRegularSecurityGroupV2
+     *
+     */
+    @Test
+    public void deleteRegularSecurityGroupV2Test() {
+        DeleteRegularSecurityGroupV2Request deleteRegularSecurityGroupV2Request = new DeleteRegularSecurityGroupV2Request();
+        deleteRegularSecurityGroupV2Request.setSecurityGroupId("");
+        deleteRegularSecurityGroupV2Request.setClientToken("");
+        vpcClient.deleteRegularSecurityGroupV2(deleteRegularSecurityGroupV2Request);
     }
     /**
      * deleteRoutingRules
@@ -756,6 +876,19 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
+     * queryTheListOfEnterpriseSecurityGroups
+     *
+     */
+    @Test
+    public void queryTheListOfEnterpriseSecurityGroupsTest() {
+        QueryTheListOfEnterpriseSecurityGroupsRequest queryTheListOfEnterpriseSecurityGroupsRequest = new QueryTheListOfEnterpriseSecurityGroupsRequest();
+        queryTheListOfEnterpriseSecurityGroupsRequest.setMarker("");
+        queryTheListOfEnterpriseSecurityGroupsRequest.setMaxKeys(0);
+        queryTheListOfEnterpriseSecurityGroupsRequest.setInstanceId("");
+        QueryTheListOfEnterpriseSecurityGroupsResponse response = vpcClient.queryTheListOfEnterpriseSecurityGroups(queryTheListOfEnterpriseSecurityGroupsRequest);
+        System.out.println(response);
+    }
+    /**
      * queryTheListOfPeerConnections
      *
      */
@@ -766,6 +899,22 @@ public class VpcClientTest {
         queryTheListOfPeerConnectionsRequest.setMarker("");
         queryTheListOfPeerConnectionsRequest.setMaxKeys(0);
         QueryTheListOfPeerConnectionsResponse response = vpcClient.queryTheListOfPeerConnections(queryTheListOfPeerConnectionsRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryTheListOfRegularSecurityGroupsV2
+     *
+     */
+    @Test
+    public void queryTheListOfRegularSecurityGroupsV2Test() {
+        QueryTheListOfRegularSecurityGroupsV2Request queryTheListOfRegularSecurityGroupsV2Request = new QueryTheListOfRegularSecurityGroupsV2Request();
+        queryTheListOfRegularSecurityGroupsV2Request.setMarker("");
+        queryTheListOfRegularSecurityGroupsV2Request.setMaxKeys(0);
+        queryTheListOfRegularSecurityGroupsV2Request.setInstanceId("");
+        queryTheListOfRegularSecurityGroupsV2Request.setVpcId("");
+        queryTheListOfRegularSecurityGroupsV2Request.setSecurityGroupId("");
+        queryTheListOfRegularSecurityGroupsV2Request.setSecurityGroupIds("");
+        QueryTheListOfRegularSecurityGroupsV2Response response = vpcClient.queryTheListOfRegularSecurityGroupsV2(queryTheListOfRegularSecurityGroupsV2Request);
         System.out.println(response);
     }
     /**
@@ -867,6 +1016,19 @@ public class VpcClientTest {
         vpcClient.renewVpn(renewVpnRequest);
     }
     /**
+     * revokeRegularSecurityGroupRulesV2
+     *
+     */
+    @Test
+    public void revokeRegularSecurityGroupRulesV2Test() {
+        RevokeRegularSecurityGroupRulesV2Request revokeRegularSecurityGroupRulesV2Request = new RevokeRegularSecurityGroupRulesV2Request();
+        revokeRegularSecurityGroupRulesV2Request.setSecurityGroupId("");
+        revokeRegularSecurityGroupRulesV2Request.setClientToken("");
+        revokeRegularSecurityGroupRulesV2Request.setSgVersion(0L);
+        revokeRegularSecurityGroupRulesV2Request.setRule(null);
+        vpcClient.revokeRegularSecurityGroupRulesV2(revokeRegularSecurityGroupRulesV2Request);
+    }
+    /**
      * searchForVpnDetails
      *
      */
@@ -929,6 +1091,28 @@ public class VpcClientTest {
         vpcClient.updateDedicatedGateway(updateDedicatedGatewayRequest);
     }
     /**
+     * updateEnterpriseSecurityGroupRules
+     *
+     */
+    @Test
+    public void updateEnterpriseSecurityGroupRulesTest() {
+        UpdateEnterpriseSecurityGroupRulesRequest updateEnterpriseSecurityGroupRulesRequest = new UpdateEnterpriseSecurityGroupRulesRequest();
+        updateEnterpriseSecurityGroupRulesRequest.setEnterpriseSecurityGroupRuleId("");
+        updateEnterpriseSecurityGroupRulesRequest.setClientToken("");
+        updateEnterpriseSecurityGroupRulesRequest.setRemark("");
+        updateEnterpriseSecurityGroupRulesRequest.setPortRange("");
+        updateEnterpriseSecurityGroupRulesRequest.setSourcePortRange("");
+        updateEnterpriseSecurityGroupRulesRequest.setSourceIp("");
+        updateEnterpriseSecurityGroupRulesRequest.setDestIp("");
+        updateEnterpriseSecurityGroupRulesRequest.setLocalIp("");
+        updateEnterpriseSecurityGroupRulesRequest.setRemoteIpSet("");
+        updateEnterpriseSecurityGroupRulesRequest.setRemoteIpGroup("");
+        updateEnterpriseSecurityGroupRulesRequest.setAction("");
+        updateEnterpriseSecurityGroupRulesRequest.setPriority(0);
+        updateEnterpriseSecurityGroupRulesRequest.setProtocol("");
+        vpcClient.updateEnterpriseSecurityGroupRules(updateEnterpriseSecurityGroupRulesRequest);
+    }
+    /**
      * updatePeerToPeerConnectionReleaseProtectionSwitch
      *
      */
@@ -939,6 +1123,25 @@ public class VpcClientTest {
         updatePeerToPeerConnectionReleaseProtectionSwitchRequest.setPeerConnId("");
         updatePeerToPeerConnectionReleaseProtectionSwitchRequest.setDeleteProtect(false);
         vpcClient.updatePeerToPeerConnectionReleaseProtectionSwitch(updatePeerToPeerConnectionReleaseProtectionSwitchRequest);
+    }
+    /**
+     * updateRegularSecurityGroupRulesV2
+     *
+     */
+    @Test
+    public void updateRegularSecurityGroupRulesV2Test() {
+        UpdateRegularSecurityGroupRulesV2Request updateRegularSecurityGroupRulesV2Request = new UpdateRegularSecurityGroupRulesV2Request();
+        updateRegularSecurityGroupRulesV2Request.setClientToken("");
+        updateRegularSecurityGroupRulesV2Request.setSgVersion(0L);
+        updateRegularSecurityGroupRulesV2Request.setSecurityGroupRuleId("");
+        updateRegularSecurityGroupRulesV2Request.setRemark("");
+        updateRegularSecurityGroupRulesV2Request.setPortRange("");
+        updateRegularSecurityGroupRulesV2Request.setSourceIp("");
+        updateRegularSecurityGroupRulesV2Request.setSourceGroupId("");
+        updateRegularSecurityGroupRulesV2Request.setDestIp("");
+        updateRegularSecurityGroupRulesV2Request.setDestGroupId("");
+        updateRegularSecurityGroupRulesV2Request.setProtocol("");
+        vpcClient.updateRegularSecurityGroupRulesV2(updateRegularSecurityGroupRulesV2Request);
     }
     /**
      * updateRoutingRules
@@ -1136,6 +1339,17 @@ public class VpcClientTest {
         viewPeerToPeerConnectionDetailsRequest.setPeerConnId("");
         viewPeerToPeerConnectionDetailsRequest.setRole("");
         ViewPeerToPeerConnectionDetailsResponse response = vpcClient.viewPeerToPeerConnectionDetails(viewPeerToPeerConnectionDetailsRequest);
+        System.out.println(response);
+    }
+    /**
+     * viewSecurityGroupDetailsV2
+     *
+     */
+    @Test
+    public void viewSecurityGroupDetailsV2Test() {
+        ViewSecurityGroupDetailsV2Request viewSecurityGroupDetailsV2Request = new ViewSecurityGroupDetailsV2Request();
+        viewSecurityGroupDetailsV2Request.setSecurityGroupId("");
+        ViewSecurityGroupDetailsV2Response response = vpcClient.viewSecurityGroupDetailsV2(viewSecurityGroupDetailsV2Request);
         System.out.println(response);
     }
 }

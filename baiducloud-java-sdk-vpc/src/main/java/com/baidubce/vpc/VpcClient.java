@@ -17,6 +17,8 @@ import com.baidubce.common.BaseBceResponse;
 
 import com.baidubce.vpc.models.AcceptPeerToPeerConnectionApplicationsRequest;
 import com.baidubce.vpc.models.ActiveStandbySwitchoverRequest;
+import com.baidubce.vpc.models.AuthorizeRegularSecurityGroupRulesV2Request;
+import com.baidubce.vpc.models.AuthorizedEnterpriseSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersResponse;
 import com.baidubce.vpc.models.BindEipRequest;
@@ -25,9 +27,13 @@ import com.baidubce.vpc.models.ClosePeerToPeerConnectionToSynchronizeDnsRequest;
 import com.baidubce.vpc.models.CloseVpcRelayRequest;
 import com.baidubce.vpc.models.CreateAPeerToPeerConnectionRequest;
 import com.baidubce.vpc.models.CreateAPeerToPeerConnectionResponse;
+import com.baidubce.vpc.models.CreateARegularSecurityGroupV2Request;
+import com.baidubce.vpc.models.CreateARegularSecurityGroupV2Response;
 import com.baidubce.vpc.models.CreateDedicatedGatewayHealthCheckRequest;
 import com.baidubce.vpc.models.CreateDedicatedGatewayRequest;
 import com.baidubce.vpc.models.CreateDedicatedGatewayResponse;
+import com.baidubce.vpc.models.CreateEnterpriseSecurityGroupRequest;
+import com.baidubce.vpc.models.CreateEnterpriseSecurityGroupResponse;
 import com.baidubce.vpc.models.CreateGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.CreateGatewayLimitRulesResponse;
 import com.baidubce.vpc.models.CreateIpReservedRequest;
@@ -46,8 +52,12 @@ import com.baidubce.vpc.models.CreateVpnRequest;
 import com.baidubce.vpc.models.CreateVpnResponse;
 import com.baidubce.vpc.models.CreateVpnTunnelRequest;
 import com.baidubce.vpc.models.CreateVpnTunnelResponse;
+import com.baidubce.vpc.models.DeleteEnterpriseSecurityGroupRequest;
+import com.baidubce.vpc.models.DeleteEnterpriseSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.DeleteGatewayLimitRuleRequest;
 import com.baidubce.vpc.models.DeleteIpReserveRequest;
+import com.baidubce.vpc.models.DeleteRegularSecurityGroupRulesV2Request;
+import com.baidubce.vpc.models.DeleteRegularSecurityGroupV2Request;
 import com.baidubce.vpc.models.DeleteRoutingRulesRequest;
 import com.baidubce.vpc.models.DeleteSslVpnServerRequest;
 import com.baidubce.vpc.models.DeleteSslVpnUserRequest;
@@ -83,8 +93,12 @@ import com.baidubce.vpc.models.QueryTheDetailsOfTheDedicatedGatewayRequest;
 import com.baidubce.vpc.models.QueryTheDetailsOfTheDedicatedGatewayResponse;
 import com.baidubce.vpc.models.QueryTheListOfDedicatedLineGatewaysRequest;
 import com.baidubce.vpc.models.QueryTheListOfDedicatedLineGatewaysResponse;
+import com.baidubce.vpc.models.QueryTheListOfEnterpriseSecurityGroupsRequest;
+import com.baidubce.vpc.models.QueryTheListOfEnterpriseSecurityGroupsResponse;
 import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsRequest;
 import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsResponse;
+import com.baidubce.vpc.models.QueryTheListOfRegularSecurityGroupsV2Request;
+import com.baidubce.vpc.models.QueryTheListOfRegularSecurityGroupsV2Response;
 import com.baidubce.vpc.models.QueryVpcIntranetIpRequest;
 import com.baidubce.vpc.models.QueryVpcIntranetIpResponse;
 import com.baidubce.vpc.models.QueryVpcListRequest;
@@ -96,6 +110,7 @@ import com.baidubce.vpc.models.ReleaseDedicatedGatewayRequest;
 import com.baidubce.vpc.models.ReleasePeerToPeerConnectionRequest;
 import com.baidubce.vpc.models.ReleaseVpnRequest;
 import com.baidubce.vpc.models.RenewVpnRequest;
+import com.baidubce.vpc.models.RevokeRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.SearchForVpnDetailsRequest;
 import com.baidubce.vpc.models.SearchForVpnDetailsResponse;
 import com.baidubce.vpc.models.SearchVpnTunnelRequest;
@@ -103,7 +118,9 @@ import com.baidubce.vpc.models.SearchVpnTunnelResponse;
 import com.baidubce.vpc.models.UnbindEipRequest;
 import com.baidubce.vpc.models.UnbindPhysicalDedicatedLineRequest;
 import com.baidubce.vpc.models.UpdateDedicatedGatewayRequest;
+import com.baidubce.vpc.models.UpdateEnterpriseSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest;
+import com.baidubce.vpc.models.UpdateRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.UpdateRoutingRulesRequest;
 import com.baidubce.vpc.models.UpdateSslVpnServerRequest;
 import com.baidubce.vpc.models.UpdateSslVpnUsersRequest;
@@ -122,29 +139,36 @@ import com.baidubce.vpc.models.ViewGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.ViewGatewayLimitRulesResponse;
 import com.baidubce.vpc.models.ViewPeerToPeerConnectionDetailsRequest;
 import com.baidubce.vpc.models.ViewPeerToPeerConnectionDetailsResponse;
+import com.baidubce.vpc.models.ViewSecurityGroupDetailsV2Request;
+import com.baidubce.vpc.models.ViewSecurityGroupDetailsV2Response;
 
 public class VpcClient extends AbstractBceClient {
 
     private static final String[] HEADERS_TO_SIGN = {"host", "x-bce-date"};
 
     private static final String VERSION_V1 = "v1";
+    private static final String VERSION_V2 = "v2";
     private static final String CONSTANT_VPC = "vpc";
+    private static final String CONSTANT_SECURITY_GROUP = "securityGroup";
     private static final String CONSTANT_VPN = "vpn";
     private static final String CONSTANT_SSL_VPN_SERVER = "sslVpnServer";
     private static final String CONSTANT_SHUTDOWN_RELAY = "shutdownRelay";
     private static final String CONSTANT_VPNCONN = "vpnconn";
+    private static final String CONSTANT_RULE = "rule";
     private static final String CONSTANT_RESOURCE_IP = "resourceIp";
     private static final String CONSTANT_CGW = "cgw";
     private static final String CONSTANT_PEERCONN = "peerconn";
     private static final String CONSTANT_ROUTE = "route";
-    private static final String CONSTANT_RULE = "rule";
     private static final String CONSTANT_PRIVATE_IP_ADDRESS_INFO = "privateIpAddressInfo";
     private static final String CONSTANT_ET_GATEWAY = "etGateway";
     private static final String CONSTANT_HEALTH_CHECK = "healthCheck";
+    private static final String CONSTANT_ENTERPRISE = "enterprise";
+    private static final String CONSTANT_SECURITY = "security";
     private static final String CONSTANT_SSL_VPN_USER = "sslVpnUser";
     private static final String CONSTANT_SUBNET = "subnet";
     private static final String CONSTANT_GATEWAY = "gateway";
     private static final String CONSTANT_LIMITRULE = "limitrule";
+    private static final String CONSTANT_UPDATE = "update";
     private static final String CONSTANT_IPRESERVE = "ipreserve";
     private static final String CONSTANT_OPEN_RELAY = "openRelay";
     private static final String CONSTANT_DELETE_PROTECT = "deleteProtect";
@@ -193,6 +217,40 @@ public class VpcClient extends AbstractBceClient {
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * authorizeRegularSecurityGroupRulesV2
+     * 
+     * @param request 入参结构体
+     */
+    public void authorizeRegularSecurityGroupRulesV2(AuthorizeRegularSecurityGroupRulesV2Request request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
+        internalRequest.addParameter("authorizeRule", null);
+        if (request.getSgVersion() != null) {
+            internalRequest.addParameter("sgVersion", String.valueOf(request.getSgVersion()));
+        }
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * authorizedEnterpriseSecurityGroupRules
+     * 
+     * @param request 入参结构体
+     */
+    public void authorizedEnterpriseSecurityGroupRules(AuthorizedEnterpriseSecurityGroupRulesRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ENTERPRISE, CONSTANT_SECURITY, request.getEnterpriseSecurityGroupId());
+        internalRequest.addParameter("authorizeRule", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
@@ -287,6 +345,21 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * createARegularSecurityGroupV2
+     * 
+     * @param request 入参结构体
+     * @return CreateARegularSecurityGroupV2Response
+     */
+    public CreateARegularSecurityGroupV2Response createARegularSecurityGroupV2(CreateARegularSecurityGroupV2Request request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_SECURITY_GROUP);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateARegularSecurityGroupV2Response.class);
+    }
+
+    /**
      * createDedicatedGateway
      * 
      * @param request 入参结构体
@@ -313,6 +386,21 @@ public class VpcClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * createEnterpriseSecurityGroup
+     * 
+     * @param request 入参结构体
+     * @return CreateEnterpriseSecurityGroupResponse
+     */
+    public CreateEnterpriseSecurityGroupResponse createEnterpriseSecurityGroup(CreateEnterpriseSecurityGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_ENTERPRISE, CONSTANT_SECURITY);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateEnterpriseSecurityGroupResponse.class);
     }
 
     /**
@@ -451,6 +539,34 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * deleteEnterpriseSecurityGroup
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteEnterpriseSecurityGroup(DeleteEnterpriseSecurityGroupRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_ENTERPRISE, CONSTANT_SECURITY, request.getEnterpriseSecurityGroupId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteEnterpriseSecurityGroupRules
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteEnterpriseSecurityGroupRules(DeleteEnterpriseSecurityGroupRulesRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_ENTERPRISE, CONSTANT_SECURITY, CONSTANT_RULE, request.getEnterpriseSecurityGroupRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * deleteGatewayLimitRule
      * 
      * @param request 入参结构体
@@ -470,6 +586,35 @@ public class VpcClient extends AbstractBceClient {
      */
     public void deleteIpReserve(DeleteIpReserveRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_SUBNET, CONSTANT_IPRESERVE, request.getIpReserveId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteRegularSecurityGroupRulesV2
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteRegularSecurityGroupRulesV2(DeleteRegularSecurityGroupRulesV2Request request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V2, CONSTANT_SECURITY_GROUP, CONSTANT_RULE, request.getSecurityGroupRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        if (request.getSgVersion() != null) {
+            internalRequest.addParameter("sgVersion", String.valueOf(request.getSgVersion()));
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteRegularSecurityGroupV2
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteRegularSecurityGroupV2(DeleteRegularSecurityGroupV2Request request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V2, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -866,6 +1011,26 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * queryTheListOfEnterpriseSecurityGroups
+     * 
+     * @param request 入参结构体
+     * @return QueryTheListOfEnterpriseSecurityGroupsResponse
+     */
+    public QueryTheListOfEnterpriseSecurityGroupsResponse queryTheListOfEnterpriseSecurityGroups(QueryTheListOfEnterpriseSecurityGroupsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_ENTERPRISE, CONSTANT_SECURITY);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        if (request.getInstanceId() != null) {
+            internalRequest.addParameter("instanceId", request.getInstanceId());
+        }
+        return invokeHttpClient(internalRequest, QueryTheListOfEnterpriseSecurityGroupsResponse.class);
+    }
+
+    /**
      * queryTheListOfPeerConnections
      * 
      * @param request 入参结构体
@@ -880,6 +1045,35 @@ public class VpcClient extends AbstractBceClient {
             internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
         }
         return invokeHttpClient(internalRequest, QueryTheListOfPeerConnectionsResponse.class);
+    }
+
+    /**
+     * queryTheListOfRegularSecurityGroupsV2
+     * 
+     * @param request 入参结构体
+     * @return QueryTheListOfRegularSecurityGroupsV2Response
+     */
+    public QueryTheListOfRegularSecurityGroupsV2Response queryTheListOfRegularSecurityGroupsV2(QueryTheListOfRegularSecurityGroupsV2Request request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_SECURITY_GROUP);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        if (request.getInstanceId() != null) {
+            internalRequest.addParameter("instanceId", request.getInstanceId());
+        }
+        if (request.getVpcId() != null) {
+            internalRequest.addParameter("vpcId", request.getVpcId());
+        }
+        if (request.getSecurityGroupId() != null) {
+            internalRequest.addParameter("securityGroupId", request.getSecurityGroupId());
+        }
+        if (request.getSecurityGroupIds() != null) {
+            internalRequest.addParameter("securityGroupIds", request.getSecurityGroupIds());
+        }
+        return invokeHttpClient(internalRequest, QueryTheListOfRegularSecurityGroupsV2Response.class);
     }
 
     /**
@@ -1017,6 +1211,24 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * revokeRegularSecurityGroupRulesV2
+     * 
+     * @param request 入参结构体
+     */
+    public void revokeRegularSecurityGroupRulesV2(RevokeRegularSecurityGroupRulesV2Request request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
+        internalRequest.addParameter("revokeRule", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        if (request.getSgVersion() != null) {
+            internalRequest.addParameter("sgVersion", String.valueOf(request.getSgVersion()));
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * searchForVpnDetails
      * 
      * @param request 入参结构体
@@ -1084,12 +1296,44 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * updateEnterpriseSecurityGroupRules
+     * 
+     * @param request 入参结构体
+     */
+    public void updateEnterpriseSecurityGroupRules(UpdateEnterpriseSecurityGroupRulesRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ENTERPRISE, CONSTANT_SECURITY, CONSTANT_RULE, request.getEnterpriseSecurityGroupRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * updatePeerToPeerConnectionReleaseProtectionSwitch
      * 
      * @param request 入参结构体
      */
     public void updatePeerToPeerConnectionReleaseProtectionSwitch(UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId(), CONSTANT_DELETE_PROTECT);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateRegularSecurityGroupRulesV2
+     * 
+     * @param request 入参结构体
+     */
+    public void updateRegularSecurityGroupRulesV2(UpdateRegularSecurityGroupRulesV2Request request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SECURITY_GROUP, CONSTANT_RULE, CONSTANT_UPDATE);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        if (request.getSgVersion() != null) {
+            internalRequest.addParameter("sgVersion", String.valueOf(request.getSgVersion()));
+        }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
@@ -1305,6 +1549,17 @@ public class VpcClient extends AbstractBceClient {
             internalRequest.addParameter("role", request.getRole());
         }
         return invokeHttpClient(internalRequest, ViewPeerToPeerConnectionDetailsResponse.class);
+    }
+
+    /**
+     * viewSecurityGroupDetailsV2
+     * 
+     * @param request 入参结构体
+     * @return ViewSecurityGroupDetailsV2Response
+     */
+    public ViewSecurityGroupDetailsV2Response viewSecurityGroupDetailsV2(ViewSecurityGroupDetailsV2Request request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
+        return invokeHttpClient(internalRequest, ViewSecurityGroupDetailsV2Response.class);
     }
 
     /**
