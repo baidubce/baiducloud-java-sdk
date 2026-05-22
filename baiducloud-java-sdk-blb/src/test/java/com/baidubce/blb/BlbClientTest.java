@@ -15,6 +15,8 @@ import com.baidubce.blb.models.CreateAppBlbResponse;
 import com.baidubce.blb.models.CreateAppBlbSslListenerRequest;
 import com.baidubce.blb.models.CreateAppBlbTcpListenerRequest;
 import com.baidubce.blb.models.CreateAppBlbUdpListenerRequest;
+import com.baidubce.blb.models.CreateBlbRequest;
+import com.baidubce.blb.models.CreateBlbResponse;
 import com.baidubce.blb.models.DeleteAppBlbListenerRequest;
 import com.baidubce.blb.models.DeleteAppBlbPolicyRequest;
 import com.baidubce.blb.models.DescribeAppBlbHttpListenerRequest;
@@ -35,8 +37,13 @@ import com.baidubce.blb.models.DescribeAppBlbUdpListenerRequest;
 import com.baidubce.blb.models.DescribeAppBlbUdpListenerResponse;
 import com.baidubce.blb.models.DescribeAppBlbsRequest;
 import com.baidubce.blb.models.DescribeAppBlbsResponse;
+import com.baidubce.blb.models.DescribeBlbRequest;
+import com.baidubce.blb.models.DescribeBlbResponse;
+import com.baidubce.blb.models.DescribeBlbsRequest;
+import com.baidubce.blb.models.DescribeBlbsResponse;
 import com.baidubce.blb.models.RefundBlbRequest;
 import com.baidubce.blb.models.ReleaseAppBlbRequest;
+import com.baidubce.blb.models.ReleaseBlbRequest;
 import com.baidubce.blb.models.ResizeBlbRequest;
 import com.baidubce.blb.models.ResizeBlbResponse;
 import com.baidubce.blb.models.UpdateAppBlbHttpListenerRequest;
@@ -46,6 +53,9 @@ import com.baidubce.blb.models.UpdateAppBlbRequest;
 import com.baidubce.blb.models.UpdateAppBlbSslListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbTcpListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbUdpListenerRequest;
+import com.baidubce.blb.models.UpdateBlbAclRequest;
+import com.baidubce.blb.models.UpdateBlbModifyProtectionRequest;
+import com.baidubce.blb.models.UpdateBlbRequest;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -268,6 +278,34 @@ public class BlbClientTest {
         blbClient.createAppBlbUdpListener(createAppBlbUdpListenerRequest);
     }
     /**
+     * createBlb
+     *
+     */
+    @Test
+    public void createBlbTest() {
+        CreateBlbRequest createBlbRequest = new CreateBlbRequest();
+        createBlbRequest.setClientToken("");
+        createBlbRequest.setName("");
+        createBlbRequest.setDesc("");
+        createBlbRequest.setVpcId("");
+        createBlbRequest.setSubnetId("");
+        createBlbRequest.setAddress("");
+        createBlbRequest.setType("");
+        createBlbRequest.setEip("");
+        createBlbRequest.setTags(new ArrayList<>());
+        createBlbRequest.setBilling(null);
+        createBlbRequest.setPerformanceLevel("");
+        createBlbRequest.setAutoRenewLength(0);
+        createBlbRequest.setAutoRenewTimeUnit("");
+        createBlbRequest.setResourceGroupId("");
+        createBlbRequest.setAllowDelete(false);
+        createBlbRequest.setAllowModify(false);
+        createBlbRequest.setModificationProtectionReason("");
+        createBlbRequest.setAllocateIpv6(false);
+        CreateBlbResponse response = blbClient.createBlb(createBlbRequest);
+        System.out.println(response);
+    }
+    /**
      * deleteAppBlbListener
      *
      */
@@ -422,6 +460,36 @@ public class BlbClientTest {
         System.out.println(response);
     }
     /**
+     * describeBlb
+     *
+     */
+    @Test
+    public void describeBlbTest() {
+        DescribeBlbRequest describeBlbRequest = new DescribeBlbRequest();
+        describeBlbRequest.setBlbId("");
+        describeBlbRequest.setType("");
+        DescribeBlbResponse response = blbClient.describeBlb(describeBlbRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeBlbs
+     *
+     */
+    @Test
+    public void describeBlbsTest() {
+        DescribeBlbsRequest describeBlbsRequest = new DescribeBlbsRequest();
+        describeBlbsRequest.setAddress("");
+        describeBlbsRequest.setName("");
+        describeBlbsRequest.setBlbId("");
+        describeBlbsRequest.setBccId("");
+        describeBlbsRequest.setExactlyMatch(false);
+        describeBlbsRequest.setMarker("");
+        describeBlbsRequest.setMaxKeys(0);
+        describeBlbsRequest.setType("");
+        DescribeBlbsResponse response = blbClient.describeBlbs(describeBlbsRequest);
+        System.out.println(response);
+    }
+    /**
      * refundBlb
      *
      */
@@ -441,6 +509,17 @@ public class BlbClientTest {
         ReleaseAppBlbRequest releaseAppBlbRequest = new ReleaseAppBlbRequest();
         releaseAppBlbRequest.setBlbId("");
         blbClient.releaseAppBlb(releaseAppBlbRequest);
+    }
+    /**
+     * releaseBlb
+     *
+     */
+    @Test
+    public void releaseBlbTest() {
+        ReleaseBlbRequest releaseBlbRequest = new ReleaseBlbRequest();
+        releaseBlbRequest.setBlbId("");
+        releaseBlbRequest.setClientToken("");
+        blbClient.releaseBlb(releaseBlbRequest);
     }
     /**
      * resizeBlb
@@ -584,5 +663,44 @@ public class BlbClientTest {
         updateAppBlbUdpListenerRequest.setUdpSessionTimeout(0);
         updateAppBlbUdpListenerRequest.setDescription("");
         blbClient.updateAppBlbUdpListener(updateAppBlbUdpListenerRequest);
+    }
+    /**
+     * updateBlb
+     *
+     */
+    @Test
+    public void updateBlbTest() {
+        UpdateBlbRequest updateBlbRequest = new UpdateBlbRequest();
+        updateBlbRequest.setBlbId("");
+        updateBlbRequest.setName("");
+        updateBlbRequest.setDesc("");
+        updateBlbRequest.setAllowDelete(false);
+        updateBlbRequest.setAllocateIpv6(false);
+        blbClient.updateBlb(updateBlbRequest);
+    }
+    /**
+     * updateBlbAcl
+     *
+     */
+    @Test
+    public void updateBlbAclTest() {
+        UpdateBlbAclRequest updateBlbAclRequest = new UpdateBlbAclRequest();
+        updateBlbAclRequest.setBlbId("");
+        updateBlbAclRequest.setClientToken("");
+        updateBlbAclRequest.setSupportAcl(false);
+        blbClient.updateBlbAcl(updateBlbAclRequest);
+    }
+    /**
+     * updateBlbModifyProtection
+     *
+     */
+    @Test
+    public void updateBlbModifyProtectionTest() {
+        UpdateBlbModifyProtectionRequest updateBlbModifyProtectionRequest = new UpdateBlbModifyProtectionRequest();
+        updateBlbModifyProtectionRequest.setBlbId("");
+        updateBlbModifyProtectionRequest.setClientToken("");
+        updateBlbModifyProtectionRequest.setAllowModify(false);
+        updateBlbModifyProtectionRequest.setModificationProtectionReason("");
+        blbClient.updateBlbModifyProtection(updateBlbModifyProtectionRequest);
     }
 }

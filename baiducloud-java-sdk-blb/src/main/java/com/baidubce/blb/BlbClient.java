@@ -30,6 +30,8 @@ import com.baidubce.blb.models.CreateAppBlbResponse;
 import com.baidubce.blb.models.CreateAppBlbSslListenerRequest;
 import com.baidubce.blb.models.CreateAppBlbTcpListenerRequest;
 import com.baidubce.blb.models.CreateAppBlbUdpListenerRequest;
+import com.baidubce.blb.models.CreateBlbRequest;
+import com.baidubce.blb.models.CreateBlbResponse;
 import com.baidubce.blb.models.DeleteAppBlbListenerRequest;
 import com.baidubce.blb.models.DeleteAppBlbPolicyRequest;
 import com.baidubce.blb.models.DescribeAppBlbHttpListenerRequest;
@@ -50,8 +52,13 @@ import com.baidubce.blb.models.DescribeAppBlbUdpListenerRequest;
 import com.baidubce.blb.models.DescribeAppBlbUdpListenerResponse;
 import com.baidubce.blb.models.DescribeAppBlbsRequest;
 import com.baidubce.blb.models.DescribeAppBlbsResponse;
+import com.baidubce.blb.models.DescribeBlbRequest;
+import com.baidubce.blb.models.DescribeBlbResponse;
+import com.baidubce.blb.models.DescribeBlbsRequest;
+import com.baidubce.blb.models.DescribeBlbsResponse;
 import com.baidubce.blb.models.RefundBlbRequest;
 import com.baidubce.blb.models.ReleaseAppBlbRequest;
+import com.baidubce.blb.models.ReleaseBlbRequest;
 import com.baidubce.blb.models.ResizeBlbRequest;
 import com.baidubce.blb.models.ResizeBlbResponse;
 import com.baidubce.blb.models.UpdateAppBlbHttpListenerRequest;
@@ -61,15 +68,19 @@ import com.baidubce.blb.models.UpdateAppBlbRequest;
 import com.baidubce.blb.models.UpdateAppBlbSslListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbTcpListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbUdpListenerRequest;
+import com.baidubce.blb.models.UpdateBlbAclRequest;
+import com.baidubce.blb.models.UpdateBlbModifyProtectionRequest;
+import com.baidubce.blb.models.UpdateBlbRequest;
 
 public class BlbClient extends AbstractBceClient {
 
     private static final String[] HEADERS_TO_SIGN = {"host", "x-bce-date"};
 
     private static final String VERSION_V1 = "v1";
+    private static final String CONSTANT_BLB = "blb";
+    private static final String CONSTANT_ACL = "acl";
     private static final String CONSTANT_APPBLB = "appblb";
     private static final String CONSTANT_H_T_T_P_SLISTENER = "HTTPSlistener";
-    private static final String CONSTANT_BLB = "blb";
     private static final String CONSTANT_CHARGE = "charge";
     private static final String CONSTANT_T_C_PLISTENER = "TCPlistener";
     private static final String CONSTANT_LISTENER = "listener";
@@ -79,6 +90,7 @@ public class BlbClient extends AbstractBceClient {
     private static final String CONSTANT_S_S_LLISTENER = "SSLlistener";
     private static final String CONSTANT_REFUND = "refund";
     private static final String CONSTANT_PRICE = "price";
+    private static final String CONSTANT_MODIFICATION_PROTECTION = "modification_protection";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -254,6 +266,21 @@ public class BlbClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * createBlb
+     * 
+     * @param request 入参结构体
+     * @return CreateBlbResponse
+     */
+    public CreateBlbResponse createBlb(CreateBlbRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_BLB);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateBlbResponse.class);
     }
 
     /**
@@ -473,6 +500,55 @@ public class BlbClient extends AbstractBceClient {
     }
 
     /**
+     * describeBlb
+     * 
+     * @param request 入参结构体
+     * @return DescribeBlbResponse
+     */
+    public DescribeBlbResponse describeBlb(DescribeBlbRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_BLB, request.getBlbId());
+        if (request.getType() != null) {
+            internalRequest.addParameter("type", request.getType());
+        }
+        return invokeHttpClient(internalRequest, DescribeBlbResponse.class);
+    }
+
+    /**
+     * describeBlbs
+     * 
+     * @param request 入参结构体
+     * @return DescribeBlbsResponse
+     */
+    public DescribeBlbsResponse describeBlbs(DescribeBlbsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_BLB);
+        if (request.getAddress() != null) {
+            internalRequest.addParameter("address", request.getAddress());
+        }
+        if (request.getName() != null) {
+            internalRequest.addParameter("name", request.getName());
+        }
+        if (request.getBlbId() != null) {
+            internalRequest.addParameter("blbId", request.getBlbId());
+        }
+        if (request.getBccId() != null) {
+            internalRequest.addParameter("bccId", request.getBccId());
+        }
+        if (request.getExactlyMatch() != null) {
+            internalRequest.addParameter("exactlyMatch", String.valueOf(request.getExactlyMatch()));
+        }
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        if (request.getType() != null) {
+            internalRequest.addParameter("type", request.getType());
+        }
+        return invokeHttpClient(internalRequest, DescribeBlbsResponse.class);
+    }
+
+    /**
      * refundBlb
      * 
      * @param request 入参结构体
@@ -492,6 +568,19 @@ public class BlbClient extends AbstractBceClient {
      */
     public void releaseAppBlb(ReleaseAppBlbRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_APPBLB, request.getBlbId());
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * releaseBlb
+     * 
+     * @param request 入参结构体
+     */
+    public void releaseBlb(ReleaseBlbRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_BLB, request.getBlbId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
@@ -620,6 +709,45 @@ public class BlbClient extends AbstractBceClient {
         }
         if (request.getListenerPort() != null) {
             internalRequest.addParameter("listenerPort", String.valueOf(request.getListenerPort()));
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateBlb
+     * 
+     * @param request 入参结构体
+     */
+    public void updateBlb(UpdateBlbRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_BLB, request.getBlbId());
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateBlbAcl
+     * 
+     * @param request 入参结构体
+     */
+    public void updateBlbAcl(UpdateBlbAclRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_BLB, CONSTANT_ACL, request.getBlbId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateBlbModifyProtection
+     * 
+     * @param request 入参结构体
+     */
+    public void updateBlbModifyProtection(UpdateBlbModifyProtectionRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_BLB, CONSTANT_MODIFICATION_PROTECTION, request.getBlbId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
