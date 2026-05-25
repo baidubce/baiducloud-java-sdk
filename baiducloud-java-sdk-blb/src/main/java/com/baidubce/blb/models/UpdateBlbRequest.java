@@ -14,6 +14,12 @@ public class UpdateBlbRequest extends BaseBceRequest {
     private String blbId;
 
     /**
+    * clientToken
+    */
+    @JsonIgnore
+    private String clientToken;
+
+    /**
     * LoadBalancer的名称，方便记忆。长度1~65个字节，字母开头，可包含字母数字-\_/.字符。若不传该参数，会自动生成
     */
     private String name;
@@ -39,6 +45,15 @@ public class UpdateBlbRequest extends BaseBceRequest {
 
     public UpdateBlbRequest setBlbId(String blbId) {
         this.blbId = blbId;
+        return this;
+    }
+
+    public String getClientToken() {
+        return clientToken;
+    }
+
+    public UpdateBlbRequest setClientToken(String clientToken) {
+        this.clientToken = clientToken;
         return this;
     }
 

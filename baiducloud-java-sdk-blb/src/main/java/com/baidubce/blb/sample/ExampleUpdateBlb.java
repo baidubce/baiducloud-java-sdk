@@ -18,6 +18,7 @@ public class ExampleUpdateBlb {
         BlbClient client = new BlbClient(config);
         UpdateBlbRequest updateBlbRequest = new UpdateBlbRequest();
         updateBlbRequest.setBlbId("");
+        updateBlbRequest.setClientToken("");
         updateBlbRequest.setName("");
         updateBlbRequest.setDesc("");
         updateBlbRequest.setAllowDelete(false);
