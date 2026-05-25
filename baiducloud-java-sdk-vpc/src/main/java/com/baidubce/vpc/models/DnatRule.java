@@ -32,12 +32,12 @@ public class DnatRule {
     /**
      * 公网IP端口（1-65535）
      */
-    private String publicPort;
+    private Integer publicPort;
 
     /**
      * 内网IP端口（1-65535）
      */
-    private String privatePort;
+    private Integer privatePort;
 
     /**
      * 规则状态
@@ -99,21 +99,21 @@ public class DnatRule {
         return this.protocol;
     }
 
-    public DnatRule setPublicPort(String publicPort) {
+    public DnatRule setPublicPort(Integer publicPort) {
         this.publicPort = publicPort;
         return this;
     }
 
-    public String getPublicPort() {
+    public Integer getPublicPort() {
         return this.publicPort;
     }
 
-    public DnatRule setPrivatePort(String privatePort) {
+    public DnatRule setPrivatePort(Integer privatePort) {
         this.privatePort = privatePort;
         return this;
     }
 
-    public String getPrivatePort() {
+    public Integer getPrivatePort() {
         return this.privatePort;
     }
 
