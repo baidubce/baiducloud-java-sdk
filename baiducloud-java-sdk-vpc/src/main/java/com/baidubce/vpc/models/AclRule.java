@@ -47,7 +47,7 @@ public class AclRule {
     /**
      * 优先级 1-32768且不能与已有条目重复。数值越小，优先级越高，规则匹配顺序为按优先级由高到低匹配
      */
-    private String position;
+    private Integer position;
 
     /**
      * 规则的入站ingress 规则的出站egress
@@ -136,12 +136,12 @@ public class AclRule {
         return this.destinationPort;
     }
 
-    public AclRule setPosition(String position) {
+    public AclRule setPosition(Integer position) {
         this.position = position;
         return this;
     }
 
-    public String getPosition() {
+    public Integer getPosition() {
         return this.position;
     }
 
