@@ -11,6 +11,10 @@ import com.baidubce.vpc.models.AddIpv6OnlyOutboundAndNoInboundPolicyRequest;
 import com.baidubce.vpc.models.AddIpv6OnlyOutboundAndNoInboundPolicyResponse;
 import com.baidubce.vpc.models.AuthorizeRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.AuthorizedEnterpriseSecurityGroupRulesRequest;
+import com.baidubce.vpc.models.BatchAddDnatRulesRequest;
+import com.baidubce.vpc.models.BatchAddDnatRulesResponse;
+import com.baidubce.vpc.models.BatchAddSnatRulesRequest;
+import com.baidubce.vpc.models.BatchAddSnatRulesResponse;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersResponse;
 import com.baidubce.vpc.models.BatchDeleteElasticNetworkCardIntranetIpRequest;
@@ -31,6 +35,8 @@ import com.baidubce.vpc.models.CreateAnIpv6GatewayResponse;
 import com.baidubce.vpc.models.CreateDedicatedGatewayHealthCheckRequest;
 import com.baidubce.vpc.models.CreateDedicatedGatewayRequest;
 import com.baidubce.vpc.models.CreateDedicatedGatewayResponse;
+import com.baidubce.vpc.models.CreateDnatRuleRequest;
+import com.baidubce.vpc.models.CreateDnatRuleResponse;
 import com.baidubce.vpc.models.CreateElasticNetworkCardRequest;
 import com.baidubce.vpc.models.CreateElasticNetworkCardResponse;
 import com.baidubce.vpc.models.CreateEnterpriseSecurityGroupRequest;
@@ -45,10 +51,14 @@ import com.baidubce.vpc.models.CreateIpReservedRequest;
 import com.baidubce.vpc.models.CreateIpReservedResponse;
 import com.baidubce.vpc.models.CreateIpv6GatewaySpeedLimitPolicyRequest;
 import com.baidubce.vpc.models.CreateIpv6GatewaySpeedLimitPolicyResponse;
+import com.baidubce.vpc.models.CreateNatRequest;
+import com.baidubce.vpc.models.CreateNatResponse;
 import com.baidubce.vpc.models.CreateNetworkDetectionRequest;
 import com.baidubce.vpc.models.CreateNetworkDetectionResponse;
 import com.baidubce.vpc.models.CreateRoutingRulesRequest;
 import com.baidubce.vpc.models.CreateRoutingRulesResponse;
+import com.baidubce.vpc.models.CreateSnatRuleRequest;
+import com.baidubce.vpc.models.CreateSnatRuleResponse;
 import com.baidubce.vpc.models.CreateSslVpnServerRequest;
 import com.baidubce.vpc.models.CreateSslVpnServerResponse;
 import com.baidubce.vpc.models.CreateSubnetRequest;
@@ -62,6 +72,7 @@ import com.baidubce.vpc.models.CreateVpnResponse;
 import com.baidubce.vpc.models.CreateVpnTunnelRequest;
 import com.baidubce.vpc.models.CreateVpnTunnelResponse;
 import com.baidubce.vpc.models.DeleteAclRuleRequest;
+import com.baidubce.vpc.models.DeleteDnatRuleRequest;
 import com.baidubce.vpc.models.DeleteElasticNetworkCardAuxiliaryIpRequest;
 import com.baidubce.vpc.models.DeleteEnterpriseSecurityGroupRequest;
 import com.baidubce.vpc.models.DeleteEnterpriseSecurityGroupRulesRequest;
@@ -78,6 +89,7 @@ import com.baidubce.vpc.models.DeleteNetworkDetectionRequest;
 import com.baidubce.vpc.models.DeleteRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.DeleteRegularSecurityGroupV2Request;
 import com.baidubce.vpc.models.DeleteRoutingRulesRequest;
+import com.baidubce.vpc.models.DeleteSnatRuleRequest;
 import com.baidubce.vpc.models.DeleteSslVpnServerRequest;
 import com.baidubce.vpc.models.DeleteSslVpnUserRequest;
 import com.baidubce.vpc.models.DeleteSubnetRequest;
@@ -91,6 +103,8 @@ import com.baidubce.vpc.models.ElasticNetworkCardUninstallationCloudProductInsta
 import com.baidubce.vpc.models.ElasticNetworkCardUpdateEnterpriseSecurityGroupRequest;
 import com.baidubce.vpc.models.ElasticNetworkCardUpdatesRegularSecurityGroupRequest;
 import com.baidubce.vpc.models.EnablePeerToPeerConnectionToSynchronizeDnsRequest;
+import com.baidubce.vpc.models.GetNatRequest;
+import com.baidubce.vpc.models.GetNatResponse;
 import com.baidubce.vpc.models.GetVpcResourceIpInfoRequest;
 import com.baidubce.vpc.models.GetVpcResourceIpInfoResponse;
 import com.baidubce.vpc.models.HighAvailabilityVirtualIpUnbindingEipRequest;
@@ -98,13 +112,23 @@ import com.baidubce.vpc.models.HighAvailabilityVirtualIpUnbindingInstanceRequest
 import com.baidubce.vpc.models.HighlyAvailableVirtualIpBindingEipRequest;
 import com.baidubce.vpc.models.HighlyAvailableVirtualIpBindingInstanceRequest;
 import com.baidubce.vpc.models.Ipv6GatewayBandwidthUpgradeAndDowngradeRequest;
+import com.baidubce.vpc.models.ListDnatRuleRequest;
+import com.baidubce.vpc.models.ListDnatRuleResponse;
 import com.baidubce.vpc.models.ListIpReserveRequest;
 import com.baidubce.vpc.models.ListIpReserveResponse;
+import com.baidubce.vpc.models.ListNatRequest;
+import com.baidubce.vpc.models.ListNatResponse;
+import com.baidubce.vpc.models.ListSnatRuleRequest;
+import com.baidubce.vpc.models.ListSnatRuleResponse;
 import com.baidubce.vpc.models.ModifyGatewayLimitRulesRequest;
+import com.baidubce.vpc.models.ModifyNatRequest;
+import com.baidubce.vpc.models.NatBindEipRequest;
+import com.baidubce.vpc.models.NatUnBindEipRequest;
 import com.baidubce.vpc.models.OpenVpcRelayRequest;
 import com.baidubce.vpc.models.PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest;
 import com.baidubce.vpc.models.PeerToPeerConnectionRenewalRequest;
 import com.baidubce.vpc.models.PrepaidPeerToPeerConnectionUnsubscribeRequest;
+import com.baidubce.vpc.models.PurchaseReservedNatRequest;
 import com.baidubce.vpc.models.QueryAclRequest;
 import com.baidubce.vpc.models.QueryAclResponse;
 import com.baidubce.vpc.models.QueryAclRulesRequest;
@@ -169,11 +193,13 @@ import com.baidubce.vpc.models.QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclu
 import com.baidubce.vpc.models.QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionResponse;
 import com.baidubce.vpc.models.RejectPeerToPeerConnectionRequestRequest;
 import com.baidubce.vpc.models.ReleaseDedicatedGatewayRequest;
+import com.baidubce.vpc.models.ReleaseNatRequest;
 import com.baidubce.vpc.models.ReleasePeerToPeerConnectionRequest;
 import com.baidubce.vpc.models.ReleaseVpnRequest;
 import com.baidubce.vpc.models.RemoveElasticNetworkCardRequest;
 import com.baidubce.vpc.models.RemoveIpAddressGroupFromIpAddressFamilyRequest;
 import com.baidubce.vpc.models.RenewVpnRequest;
+import com.baidubce.vpc.models.ResizeNatRequest;
 import com.baidubce.vpc.models.RevokeRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.SearchForVpnDetailsRequest;
 import com.baidubce.vpc.models.SearchForVpnDetailsResponse;
@@ -183,6 +209,7 @@ import com.baidubce.vpc.models.UnbindEipRequest;
 import com.baidubce.vpc.models.UnbindPhysicalDedicatedLineRequest;
 import com.baidubce.vpc.models.UpdateAclRulesRequest;
 import com.baidubce.vpc.models.UpdateDedicatedGatewayRequest;
+import com.baidubce.vpc.models.UpdateDnatRuleRequest;
 import com.baidubce.vpc.models.UpdateElasticNetworkCardRequest;
 import com.baidubce.vpc.models.UpdateEnterpriseSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.UpdateHighlyAvailableVirtualIpRequest;
@@ -190,10 +217,12 @@ import com.baidubce.vpc.models.UpdateIpAddressFamilyRequest;
 import com.baidubce.vpc.models.UpdateIpAddressGroupRequest;
 import com.baidubce.vpc.models.UpdateIpv6GatewayReleaseProtectionSwitchRequest;
 import com.baidubce.vpc.models.UpdateIpv6GatewaySpeedLimitPolicyRequest;
+import com.baidubce.vpc.models.UpdateNatReleaseProtectionSwitchRequest;
 import com.baidubce.vpc.models.UpdateNetworkDetectionRequest;
 import com.baidubce.vpc.models.UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest;
 import com.baidubce.vpc.models.UpdateRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.UpdateRoutingRulesRequest;
+import com.baidubce.vpc.models.UpdateSnatRuleRequest;
 import com.baidubce.vpc.models.UpdateSslVpnServerRequest;
 import com.baidubce.vpc.models.UpdateSslVpnUsersRequest;
 import com.baidubce.vpc.models.UpdateSubnetRequest;
@@ -343,6 +372,32 @@ public class VpcClientTest {
         authorizedEnterpriseSecurityGroupRulesRequest.setClientToken("");
         authorizedEnterpriseSecurityGroupRulesRequest.setRules(new ArrayList<>());
         vpcClient.authorizedEnterpriseSecurityGroupRules(authorizedEnterpriseSecurityGroupRulesRequest);
+    }
+    /**
+     * batchAddDnatRules
+     *
+     */
+    @Test
+    public void batchAddDnatRulesTest() {
+        BatchAddDnatRulesRequest batchAddDnatRulesRequest = new BatchAddDnatRulesRequest();
+        batchAddDnatRulesRequest.setClientToken("");
+        batchAddDnatRulesRequest.setNatId("");
+        batchAddDnatRulesRequest.setRules(new ArrayList<>());
+        BatchAddDnatRulesResponse response = vpcClient.batchAddDnatRules(batchAddDnatRulesRequest);
+        System.out.println(response);
+    }
+    /**
+     * batchAddSnatRules
+     *
+     */
+    @Test
+    public void batchAddSnatRulesTest() {
+        BatchAddSnatRulesRequest batchAddSnatRulesRequest = new BatchAddSnatRulesRequest();
+        batchAddSnatRulesRequest.setClientToken("");
+        batchAddSnatRulesRequest.setNatId("");
+        batchAddSnatRulesRequest.setSnatRules(new ArrayList<>());
+        BatchAddSnatRulesResponse response = vpcClient.batchAddSnatRules(batchAddSnatRulesRequest);
+        System.out.println(response);
     }
     /**
      * batchCreateSslVpnUsers
@@ -544,6 +599,26 @@ public class VpcClientTest {
         vpcClient.createDedicatedGatewayHealthCheck(createDedicatedGatewayHealthCheckRequest);
     }
     /**
+     * createDnatRule
+     *
+     */
+    @Test
+    public void createDnatRuleTest() {
+        CreateDnatRuleRequest createDnatRuleRequest = new CreateDnatRuleRequest();
+        createDnatRuleRequest.setClientToken("");
+        createDnatRuleRequest.setNatId("");
+        createDnatRuleRequest.setRuleName("");
+        createDnatRuleRequest.setPublicIpAddress("");
+        createDnatRuleRequest.setPrivateIpAddress("");
+        createDnatRuleRequest.setProtocol("");
+        createDnatRuleRequest.setPublicPort(0);
+        createDnatRuleRequest.setPrivatePort(0);
+        createDnatRuleRequest.setPublicPortRange("");
+        createDnatRuleRequest.setPrivatePortRange("");
+        CreateDnatRuleResponse response = vpcClient.createDnatRule(createDnatRuleRequest);
+        System.out.println(response);
+    }
+    /**
      * createElasticNetworkCard
      *
      */
@@ -659,6 +734,26 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
+     * createNat
+     *
+     */
+    @Test
+    public void createNatTest() {
+        CreateNatRequest createNatRequest = new CreateNatRequest();
+        createNatRequest.setClientToken("");
+        createNatRequest.setName("");
+        createNatRequest.setVpcId("");
+        createNatRequest.setCuNum(0);
+        createNatRequest.setIpVersion("");
+        createNatRequest.setBindEips(new ArrayList<>());
+        createNatRequest.setBilling(null);
+        createNatRequest.setTags(new ArrayList<>());
+        createNatRequest.setResourceGroupId("");
+        createNatRequest.setDeleteProtect(false);
+        CreateNatResponse response = vpcClient.createNat(createNatRequest);
+        System.out.println(response);
+    }
+    /**
      * createNetworkDetection
      *
      */
@@ -696,6 +791,21 @@ public class VpcClientTest {
         createRoutingRulesRequest.setNextHopList(new ArrayList<>());
         createRoutingRulesRequest.setDescription("");
         CreateRoutingRulesResponse response = vpcClient.createRoutingRules(createRoutingRulesRequest);
+        System.out.println(response);
+    }
+    /**
+     * createSnatRule
+     *
+     */
+    @Test
+    public void createSnatRuleTest() {
+        CreateSnatRuleRequest createSnatRuleRequest = new CreateSnatRuleRequest();
+        createSnatRuleRequest.setClientToken("");
+        createSnatRuleRequest.setNatId("");
+        createSnatRuleRequest.setRuleName("");
+        createSnatRuleRequest.setPublicIpsAddress(new ArrayList<>());
+        createSnatRuleRequest.setSourceCIDR("");
+        CreateSnatRuleResponse response = vpcClient.createSnatRule(createSnatRuleRequest);
         System.out.println(response);
     }
     /**
@@ -817,6 +927,18 @@ public class VpcClientTest {
         deleteAclRuleRequest.setAclRuleId("");
         deleteAclRuleRequest.setClientToken("");
         vpcClient.deleteAclRule(deleteAclRuleRequest);
+    }
+    /**
+     * deleteDnatRule
+     *
+     */
+    @Test
+    public void deleteDnatRuleTest() {
+        DeleteDnatRuleRequest deleteDnatRuleRequest = new DeleteDnatRuleRequest();
+        deleteDnatRuleRequest.setClientToken("");
+        deleteDnatRuleRequest.setNatId("");
+        deleteDnatRuleRequest.setRuleId("");
+        vpcClient.deleteDnatRule(deleteDnatRuleRequest);
     }
     /**
      * deleteElasticNetworkCardAuxiliaryIp
@@ -1000,6 +1122,18 @@ public class VpcClientTest {
         vpcClient.deleteRoutingRules(deleteRoutingRulesRequest);
     }
     /**
+     * deleteSnatRule
+     *
+     */
+    @Test
+    public void deleteSnatRuleTest() {
+        DeleteSnatRuleRequest deleteSnatRuleRequest = new DeleteSnatRuleRequest();
+        deleteSnatRuleRequest.setClientToken("");
+        deleteSnatRuleRequest.setNatId("");
+        deleteSnatRuleRequest.setRuleId("");
+        vpcClient.deleteSnatRule(deleteSnatRuleRequest);
+    }
+    /**
      * deleteSslVpnServer
      *
      */
@@ -1155,6 +1289,17 @@ public class VpcClientTest {
         vpcClient.enablePeerToPeerConnectionToSynchronizeDns(enablePeerToPeerConnectionToSynchronizeDnsRequest);
     }
     /**
+     * getNat
+     *
+     */
+    @Test
+    public void getNatTest() {
+        GetNatRequest getNatRequest = new GetNatRequest();
+        getNatRequest.setNatId("");
+        GetNatResponse response = vpcClient.getNat(getNatRequest);
+        System.out.println(response);
+    }
+    /**
      * getVpcResourceIpInfo
      *
      */
@@ -1231,6 +1376,19 @@ public class VpcClientTest {
         vpcClient.ipv6GatewayBandwidthUpgradeAndDowngrade(ipv6GatewayBandwidthUpgradeAndDowngradeRequest);
     }
     /**
+     * listDnatRule
+     *
+     */
+    @Test
+    public void listDnatRuleTest() {
+        ListDnatRuleRequest listDnatRuleRequest = new ListDnatRuleRequest();
+        listDnatRuleRequest.setNatId("");
+        listDnatRuleRequest.setMarker("");
+        listDnatRuleRequest.setMaxKeys(0);
+        ListDnatRuleResponse response = vpcClient.listDnatRule(listDnatRuleRequest);
+        System.out.println(response);
+    }
+    /**
      * listIpReserve
      *
      */
@@ -1241,6 +1399,35 @@ public class VpcClientTest {
         listIpReserveRequest.setMarker("");
         listIpReserveRequest.setMaxKeys(0);
         ListIpReserveResponse response = vpcClient.listIpReserve(listIpReserveRequest);
+        System.out.println(response);
+    }
+    /**
+     * listNat
+     *
+     */
+    @Test
+    public void listNatTest() {
+        ListNatRequest listNatRequest = new ListNatRequest();
+        listNatRequest.setVpcId("");
+        listNatRequest.setNatId("");
+        listNatRequest.setName("");
+        listNatRequest.setIp("");
+        listNatRequest.setMarker("");
+        listNatRequest.setMaxKeys(0);
+        ListNatResponse response = vpcClient.listNat(listNatRequest);
+        System.out.println(response);
+    }
+    /**
+     * listSnatRule
+     *
+     */
+    @Test
+    public void listSnatRuleTest() {
+        ListSnatRuleRequest listSnatRuleRequest = new ListSnatRuleRequest();
+        listSnatRuleRequest.setNatId("");
+        listSnatRuleRequest.setMarker("");
+        listSnatRuleRequest.setMaxKeys(0);
+        ListSnatRuleResponse response = vpcClient.listSnatRule(listSnatRuleRequest);
         System.out.println(response);
     }
     /**
@@ -1256,6 +1443,42 @@ public class VpcClientTest {
         modifyGatewayLimitRulesRequest.setDescription("");
         modifyGatewayLimitRulesRequest.setBandwidth(0);
         vpcClient.modifyGatewayLimitRules(modifyGatewayLimitRulesRequest);
+    }
+    /**
+     * modifyNat
+     *
+     */
+    @Test
+    public void modifyNatTest() {
+        ModifyNatRequest modifyNatRequest = new ModifyNatRequest();
+        modifyNatRequest.setNatId("");
+        modifyNatRequest.setClientToken("");
+        modifyNatRequest.setName("");
+        vpcClient.modifyNat(modifyNatRequest);
+    }
+    /**
+     * natBindEip
+     *
+     */
+    @Test
+    public void natBindEipTest() {
+        NatBindEipRequest natBindEipRequest = new NatBindEipRequest();
+        natBindEipRequest.setNatId("");
+        natBindEipRequest.setClientToken("");
+        natBindEipRequest.setBindEips(new ArrayList<>());
+        vpcClient.natBindEip(natBindEipRequest);
+    }
+    /**
+     * natUnBindEip
+     *
+     */
+    @Test
+    public void natUnBindEipTest() {
+        NatUnBindEipRequest natUnBindEipRequest = new NatUnBindEipRequest();
+        natUnBindEipRequest.setNatId("");
+        natUnBindEipRequest.setClientToken("");
+        natUnBindEipRequest.setBindEips(new ArrayList<>());
+        vpcClient.natUnBindEip(natUnBindEipRequest);
     }
     /**
      * openVpcRelay
@@ -1303,6 +1526,18 @@ public class VpcClientTest {
         prepaidPeerToPeerConnectionUnsubscribeRequest.setPeerConnId("");
         prepaidPeerToPeerConnectionUnsubscribeRequest.setClientToken("");
         vpcClient.prepaidPeerToPeerConnectionUnsubscribe(prepaidPeerToPeerConnectionUnsubscribeRequest);
+    }
+    /**
+     * purchaseReservedNat
+     *
+     */
+    @Test
+    public void purchaseReservedNatTest() {
+        PurchaseReservedNatRequest purchaseReservedNatRequest = new PurchaseReservedNatRequest();
+        purchaseReservedNatRequest.setNatId("");
+        purchaseReservedNatRequest.setClientToken("");
+        purchaseReservedNatRequest.setBilling(null);
+        vpcClient.purchaseReservedNat(purchaseReservedNatRequest);
     }
     /**
      * queryAcl
@@ -1725,6 +1960,17 @@ public class VpcClientTest {
         vpcClient.releaseDedicatedGateway(releaseDedicatedGatewayRequest);
     }
     /**
+     * releaseNat
+     *
+     */
+    @Test
+    public void releaseNatTest() {
+        ReleaseNatRequest releaseNatRequest = new ReleaseNatRequest();
+        releaseNatRequest.setNatId("");
+        releaseNatRequest.setClientToken("");
+        vpcClient.releaseNat(releaseNatRequest);
+    }
+    /**
      * releasePeerToPeerConnection
      *
      */
@@ -1780,6 +2026,18 @@ public class VpcClientTest {
         renewVpnRequest.setClientToken("");
         renewVpnRequest.setBilling(null);
         vpcClient.renewVpn(renewVpnRequest);
+    }
+    /**
+     * resizeNat
+     *
+     */
+    @Test
+    public void resizeNatTest() {
+        ResizeNatRequest resizeNatRequest = new ResizeNatRequest();
+        resizeNatRequest.setClientToken("");
+        resizeNatRequest.setNatId("");
+        resizeNatRequest.setCuNum(0);
+        vpcClient.resizeNat(resizeNatRequest);
     }
     /**
      * revokeRegularSecurityGroupRulesV2
@@ -1874,6 +2132,26 @@ public class VpcClientTest {
         updateDedicatedGatewayRequest.setEnableIpv6(0);
         updateDedicatedGatewayRequest.setIpv6LocalCidrs(new ArrayList<>());
         vpcClient.updateDedicatedGateway(updateDedicatedGatewayRequest);
+    }
+    /**
+     * updateDnatRule
+     *
+     */
+    @Test
+    public void updateDnatRuleTest() {
+        UpdateDnatRuleRequest updateDnatRuleRequest = new UpdateDnatRuleRequest();
+        updateDnatRuleRequest.setNatId("");
+        updateDnatRuleRequest.setRuleId("");
+        updateDnatRuleRequest.setClientToken("");
+        updateDnatRuleRequest.setRuleName("");
+        updateDnatRuleRequest.setProtocol("");
+        updateDnatRuleRequest.setPublicPort(0);
+        updateDnatRuleRequest.setPrivatePort(0);
+        updateDnatRuleRequest.setPublicPortRange("");
+        updateDnatRuleRequest.setPrivatePortRange("");
+        updateDnatRuleRequest.setPrivateIpAddress("");
+        updateDnatRuleRequest.setPublicIpAddress("");
+        vpcClient.updateDnatRule(updateDnatRuleRequest);
     }
     /**
      * updateElasticNetworkCard
@@ -1976,6 +2254,18 @@ public class VpcClientTest {
         vpcClient.updateIpv6GatewaySpeedLimitPolicy(updateIpv6GatewaySpeedLimitPolicyRequest);
     }
     /**
+     * updateNatReleaseProtectionSwitch
+     *
+     */
+    @Test
+    public void updateNatReleaseProtectionSwitchTest() {
+        UpdateNatReleaseProtectionSwitchRequest updateNatReleaseProtectionSwitchRequest = new UpdateNatReleaseProtectionSwitchRequest();
+        updateNatReleaseProtectionSwitchRequest.setNatId("");
+        updateNatReleaseProtectionSwitchRequest.setClientToken("");
+        updateNatReleaseProtectionSwitchRequest.setDeleteProtect(false);
+        vpcClient.updateNatReleaseProtectionSwitch(updateNatReleaseProtectionSwitchRequest);
+    }
+    /**
      * updateNetworkDetection
      *
      */
@@ -2035,6 +2325,21 @@ public class VpcClientTest {
         updateRoutingRulesRequest.setNexthopId("");
         updateRoutingRulesRequest.setDescription("");
         vpcClient.updateRoutingRules(updateRoutingRulesRequest);
+    }
+    /**
+     * updateSnatRule
+     *
+     */
+    @Test
+    public void updateSnatRuleTest() {
+        UpdateSnatRuleRequest updateSnatRuleRequest = new UpdateSnatRuleRequest();
+        updateSnatRuleRequest.setNatId("");
+        updateSnatRuleRequest.setRuleId("");
+        updateSnatRuleRequest.setClientToken("");
+        updateSnatRuleRequest.setRuleName("");
+        updateSnatRuleRequest.setSourceCIDR("");
+        updateSnatRuleRequest.setPublicIpsAddress(new ArrayList<>());
+        vpcClient.updateSnatRule(updateSnatRuleRequest);
     }
     /**
      * updateSslVpnServer

@@ -26,6 +26,10 @@ import com.baidubce.vpc.models.AddIpv6OnlyOutboundAndNoInboundPolicyRequest;
 import com.baidubce.vpc.models.AddIpv6OnlyOutboundAndNoInboundPolicyResponse;
 import com.baidubce.vpc.models.AuthorizeRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.AuthorizedEnterpriseSecurityGroupRulesRequest;
+import com.baidubce.vpc.models.BatchAddDnatRulesRequest;
+import com.baidubce.vpc.models.BatchAddDnatRulesResponse;
+import com.baidubce.vpc.models.BatchAddSnatRulesRequest;
+import com.baidubce.vpc.models.BatchAddSnatRulesResponse;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersResponse;
 import com.baidubce.vpc.models.BatchDeleteElasticNetworkCardIntranetIpRequest;
@@ -46,6 +50,8 @@ import com.baidubce.vpc.models.CreateAnIpv6GatewayResponse;
 import com.baidubce.vpc.models.CreateDedicatedGatewayHealthCheckRequest;
 import com.baidubce.vpc.models.CreateDedicatedGatewayRequest;
 import com.baidubce.vpc.models.CreateDedicatedGatewayResponse;
+import com.baidubce.vpc.models.CreateDnatRuleRequest;
+import com.baidubce.vpc.models.CreateDnatRuleResponse;
 import com.baidubce.vpc.models.CreateElasticNetworkCardRequest;
 import com.baidubce.vpc.models.CreateElasticNetworkCardResponse;
 import com.baidubce.vpc.models.CreateEnterpriseSecurityGroupRequest;
@@ -60,10 +66,14 @@ import com.baidubce.vpc.models.CreateIpReservedRequest;
 import com.baidubce.vpc.models.CreateIpReservedResponse;
 import com.baidubce.vpc.models.CreateIpv6GatewaySpeedLimitPolicyRequest;
 import com.baidubce.vpc.models.CreateIpv6GatewaySpeedLimitPolicyResponse;
+import com.baidubce.vpc.models.CreateNatRequest;
+import com.baidubce.vpc.models.CreateNatResponse;
 import com.baidubce.vpc.models.CreateNetworkDetectionRequest;
 import com.baidubce.vpc.models.CreateNetworkDetectionResponse;
 import com.baidubce.vpc.models.CreateRoutingRulesRequest;
 import com.baidubce.vpc.models.CreateRoutingRulesResponse;
+import com.baidubce.vpc.models.CreateSnatRuleRequest;
+import com.baidubce.vpc.models.CreateSnatRuleResponse;
 import com.baidubce.vpc.models.CreateSslVpnServerRequest;
 import com.baidubce.vpc.models.CreateSslVpnServerResponse;
 import com.baidubce.vpc.models.CreateSubnetRequest;
@@ -77,6 +87,7 @@ import com.baidubce.vpc.models.CreateVpnResponse;
 import com.baidubce.vpc.models.CreateVpnTunnelRequest;
 import com.baidubce.vpc.models.CreateVpnTunnelResponse;
 import com.baidubce.vpc.models.DeleteAclRuleRequest;
+import com.baidubce.vpc.models.DeleteDnatRuleRequest;
 import com.baidubce.vpc.models.DeleteElasticNetworkCardAuxiliaryIpRequest;
 import com.baidubce.vpc.models.DeleteEnterpriseSecurityGroupRequest;
 import com.baidubce.vpc.models.DeleteEnterpriseSecurityGroupRulesRequest;
@@ -93,6 +104,7 @@ import com.baidubce.vpc.models.DeleteNetworkDetectionRequest;
 import com.baidubce.vpc.models.DeleteRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.DeleteRegularSecurityGroupV2Request;
 import com.baidubce.vpc.models.DeleteRoutingRulesRequest;
+import com.baidubce.vpc.models.DeleteSnatRuleRequest;
 import com.baidubce.vpc.models.DeleteSslVpnServerRequest;
 import com.baidubce.vpc.models.DeleteSslVpnUserRequest;
 import com.baidubce.vpc.models.DeleteSubnetRequest;
@@ -106,6 +118,8 @@ import com.baidubce.vpc.models.ElasticNetworkCardUninstallationCloudProductInsta
 import com.baidubce.vpc.models.ElasticNetworkCardUpdateEnterpriseSecurityGroupRequest;
 import com.baidubce.vpc.models.ElasticNetworkCardUpdatesRegularSecurityGroupRequest;
 import com.baidubce.vpc.models.EnablePeerToPeerConnectionToSynchronizeDnsRequest;
+import com.baidubce.vpc.models.GetNatRequest;
+import com.baidubce.vpc.models.GetNatResponse;
 import com.baidubce.vpc.models.GetVpcResourceIpInfoRequest;
 import com.baidubce.vpc.models.GetVpcResourceIpInfoResponse;
 import com.baidubce.vpc.models.HighAvailabilityVirtualIpUnbindingEipRequest;
@@ -113,13 +127,23 @@ import com.baidubce.vpc.models.HighAvailabilityVirtualIpUnbindingInstanceRequest
 import com.baidubce.vpc.models.HighlyAvailableVirtualIpBindingEipRequest;
 import com.baidubce.vpc.models.HighlyAvailableVirtualIpBindingInstanceRequest;
 import com.baidubce.vpc.models.Ipv6GatewayBandwidthUpgradeAndDowngradeRequest;
+import com.baidubce.vpc.models.ListDnatRuleRequest;
+import com.baidubce.vpc.models.ListDnatRuleResponse;
 import com.baidubce.vpc.models.ListIpReserveRequest;
 import com.baidubce.vpc.models.ListIpReserveResponse;
+import com.baidubce.vpc.models.ListNatRequest;
+import com.baidubce.vpc.models.ListNatResponse;
+import com.baidubce.vpc.models.ListSnatRuleRequest;
+import com.baidubce.vpc.models.ListSnatRuleResponse;
 import com.baidubce.vpc.models.ModifyGatewayLimitRulesRequest;
+import com.baidubce.vpc.models.ModifyNatRequest;
+import com.baidubce.vpc.models.NatBindEipRequest;
+import com.baidubce.vpc.models.NatUnBindEipRequest;
 import com.baidubce.vpc.models.OpenVpcRelayRequest;
 import com.baidubce.vpc.models.PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest;
 import com.baidubce.vpc.models.PeerToPeerConnectionRenewalRequest;
 import com.baidubce.vpc.models.PrepaidPeerToPeerConnectionUnsubscribeRequest;
+import com.baidubce.vpc.models.PurchaseReservedNatRequest;
 import com.baidubce.vpc.models.QueryAclRequest;
 import com.baidubce.vpc.models.QueryAclResponse;
 import com.baidubce.vpc.models.QueryAclRulesRequest;
@@ -184,11 +208,13 @@ import com.baidubce.vpc.models.QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclu
 import com.baidubce.vpc.models.QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionResponse;
 import com.baidubce.vpc.models.RejectPeerToPeerConnectionRequestRequest;
 import com.baidubce.vpc.models.ReleaseDedicatedGatewayRequest;
+import com.baidubce.vpc.models.ReleaseNatRequest;
 import com.baidubce.vpc.models.ReleasePeerToPeerConnectionRequest;
 import com.baidubce.vpc.models.ReleaseVpnRequest;
 import com.baidubce.vpc.models.RemoveElasticNetworkCardRequest;
 import com.baidubce.vpc.models.RemoveIpAddressGroupFromIpAddressFamilyRequest;
 import com.baidubce.vpc.models.RenewVpnRequest;
+import com.baidubce.vpc.models.ResizeNatRequest;
 import com.baidubce.vpc.models.RevokeRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.SearchForVpnDetailsRequest;
 import com.baidubce.vpc.models.SearchForVpnDetailsResponse;
@@ -198,6 +224,7 @@ import com.baidubce.vpc.models.UnbindEipRequest;
 import com.baidubce.vpc.models.UnbindPhysicalDedicatedLineRequest;
 import com.baidubce.vpc.models.UpdateAclRulesRequest;
 import com.baidubce.vpc.models.UpdateDedicatedGatewayRequest;
+import com.baidubce.vpc.models.UpdateDnatRuleRequest;
 import com.baidubce.vpc.models.UpdateElasticNetworkCardRequest;
 import com.baidubce.vpc.models.UpdateEnterpriseSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.UpdateHighlyAvailableVirtualIpRequest;
@@ -205,10 +232,12 @@ import com.baidubce.vpc.models.UpdateIpAddressFamilyRequest;
 import com.baidubce.vpc.models.UpdateIpAddressGroupRequest;
 import com.baidubce.vpc.models.UpdateIpv6GatewayReleaseProtectionSwitchRequest;
 import com.baidubce.vpc.models.UpdateIpv6GatewaySpeedLimitPolicyRequest;
+import com.baidubce.vpc.models.UpdateNatReleaseProtectionSwitchRequest;
 import com.baidubce.vpc.models.UpdateNetworkDetectionRequest;
 import com.baidubce.vpc.models.UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest;
 import com.baidubce.vpc.models.UpdateRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.UpdateRoutingRulesRequest;
+import com.baidubce.vpc.models.UpdateSnatRuleRequest;
 import com.baidubce.vpc.models.UpdateSslVpnServerRequest;
 import com.baidubce.vpc.models.UpdateSslVpnUsersRequest;
 import com.baidubce.vpc.models.UpdateSubnetRequest;
@@ -237,10 +266,13 @@ public class VpcClient extends AbstractBceClient {
     private static final String VERSION_V2 = "v2";
     private static final String CONSTANT_VPC = "vpc";
     private static final String CONSTANT_SECURITY_GROUP = "securityGroup";
+    private static final String CONSTANT_NAT = "nat";
+    private static final String CONSTANT_DNAT_RULE = "dnatRule";
     private static final String CONSTANT_RESOURCE_IP = "resourceIp";
     private static final String CONSTANT_ENI = "eni";
     private static final String CONSTANT_IP_GROUP = "ipGroup";
     private static final String CONSTANT_PRIVATE_IP_ADDRESS_INFO = "privateIpAddressInfo";
+    private static final String CONSTANT_SNAT_RULE = "snatRule";
     private static final String CONSTANT_HAVIP = "havip";
     private static final String CONSTANT_ET_GATEWAY = "etGateway";
     private static final String CONSTANT_IP_SET = "ipSet";
@@ -252,6 +284,7 @@ public class VpcClient extends AbstractBceClient {
     private static final String CONSTANT_PEERCONN = "peerconn";
     private static final String CONSTANT_I_PV6_GATEWAY = "IPv6Gateway";
     private static final String CONSTANT_RATE_LIMIT_RULE = "rateLimitRule";
+    private static final String CONSTANT_BATCH_CREATE = "batchCreate";
     private static final String CONSTANT_VPNCONN = "vpnconn";
     private static final String CONSTANT_STATUS = "status";
     private static final String CONSTANT_ACL = "acl";
@@ -428,6 +461,37 @@ public class VpcClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * batchAddDnatRules
+     * 
+     * @param request 入参结构体
+     * @return BatchAddDnatRulesResponse
+     */
+    public BatchAddDnatRulesResponse batchAddDnatRules(BatchAddDnatRulesRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_NAT, request.getNatId(), CONSTANT_DNAT_RULE, CONSTANT_BATCH_CREATE);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, BatchAddDnatRulesResponse.class);
+    }
+
+    /**
+     * batchAddSnatRules
+     * 
+     * @param request 入参结构体
+     * @return BatchAddSnatRulesResponse
+     */
+    public BatchAddSnatRulesResponse batchAddSnatRules(BatchAddSnatRulesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_NAT, CONSTANT_SNAT_RULE, CONSTANT_BATCH_CREATE);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, BatchAddSnatRulesResponse.class);
     }
 
     /**
@@ -624,6 +688,21 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * createDnatRule
+     * 
+     * @param request 入参结构体
+     * @return CreateDnatRuleResponse
+     */
+    public CreateDnatRuleResponse createDnatRule(CreateDnatRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_NAT, request.getNatId(), CONSTANT_DNAT_RULE);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateDnatRuleResponse.class);
+    }
+
+    /**
      * createElasticNetworkCard
      * 
      * @param request 入参结构体
@@ -729,6 +808,21 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * createNat
+     * 
+     * @param request 入参结构体
+     * @return CreateNatResponse
+     */
+    public CreateNatResponse createNat(CreateNatRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_NAT);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateNatResponse.class);
+    }
+
+    /**
      * createNetworkDetection
      * 
      * @param request 入参结构体
@@ -756,6 +850,21 @@ public class VpcClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateRoutingRulesResponse.class);
+    }
+
+    /**
+     * createSnatRule
+     * 
+     * @param request 入参结构体
+     * @return CreateSnatRuleResponse
+     */
+    public CreateSnatRuleResponse createSnatRule(CreateSnatRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_NAT, request.getNatId(), CONSTANT_SNAT_RULE);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateSnatRuleResponse.class);
     }
 
     /**
@@ -855,6 +964,20 @@ public class VpcClient extends AbstractBceClient {
      */
     public void deleteAclRule(DeleteAclRuleRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_ACL, CONSTANT_RULE, request.getAclRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteDnatRule
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteDnatRule(DeleteDnatRuleRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_NAT, request.getNatId(), CONSTANT_DNAT_RULE, request.getRuleId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -1093,6 +1216,20 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * deleteSnatRule
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteSnatRule(DeleteSnatRuleRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_NAT, request.getNatId(), CONSTANT_SNAT_RULE, request.getRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * deleteSslVpnServer
      * 
      * @param request 入参结构体
@@ -1277,6 +1414,17 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * getNat
+     * 
+     * @param request 入参结构体
+     * @return GetNatResponse
+     */
+    public GetNatResponse getNat(GetNatRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_NAT, request.getNatId());
+        return invokeHttpClient(internalRequest, GetNatResponse.class);
+    }
+
+    /**
      * getVpcResourceIpInfo
      * 
      * @param request 入参结构体
@@ -1377,6 +1525,23 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * listDnatRule
+     * 
+     * @param request 入参结构体
+     * @return ListDnatRuleResponse
+     */
+    public ListDnatRuleResponse listDnatRule(ListDnatRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_NAT, request.getNatId(), CONSTANT_DNAT_RULE);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, ListDnatRuleResponse.class);
+    }
+
+    /**
      * listIpReserve
      * 
      * @param request 入参结构体
@@ -1397,12 +1562,102 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * listNat
+     * 
+     * @param request 入参结构体
+     * @return ListNatResponse
+     */
+    public ListNatResponse listNat(ListNatRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_NAT);
+        if (request.getVpcId() != null) {
+            internalRequest.addParameter("vpcId", request.getVpcId());
+        }
+        if (request.getNatId() != null) {
+            internalRequest.addParameter("natId", request.getNatId());
+        }
+        if (request.getName() != null) {
+            internalRequest.addParameter("name", request.getName());
+        }
+        if (request.getIp() != null) {
+            internalRequest.addParameter("ip", request.getIp());
+        }
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, ListNatResponse.class);
+    }
+
+    /**
+     * listSnatRule
+     * 
+     * @param request 入参结构体
+     * @return ListSnatRuleResponse
+     */
+    public ListSnatRuleResponse listSnatRule(ListSnatRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_NAT, request.getNatId(), CONSTANT_SNAT_RULE);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, ListSnatRuleResponse.class);
+    }
+
+    /**
      * modifyGatewayLimitRules
      * 
      * @param request 入参结构体
      */
     public void modifyGatewayLimitRules(ModifyGatewayLimitRulesRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_GATEWAY, CONSTANT_LIMITRULE, request.getGlrId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * modifyNat
+     * 
+     * @param request 入参结构体
+     */
+    public void modifyNat(ModifyNatRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_NAT, request.getNatId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * natBindEip
+     * 
+     * @param request 入参结构体
+     */
+    public void natBindEip(NatBindEipRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_NAT, request.getNatId());
+        internalRequest.addParameter("bind", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * natUnBindEip
+     * 
+     * @param request 入参结构体
+     */
+    public void natUnBindEip(NatUnBindEipRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_NAT, request.getNatId());
+        internalRequest.addParameter("unbind", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -1464,6 +1719,21 @@ public class VpcClient extends AbstractBceClient {
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * purchaseReservedNat
+     * 
+     * @param request 入参结构体
+     */
+    public void purchaseReservedNat(PurchaseReservedNatRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_NAT, request.getNatId());
+        internalRequest.addParameter("purchaseReserved", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
@@ -2047,6 +2317,19 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * releaseNat
+     * 
+     * @param request 入参结构体
+     */
+    public void releaseNat(ReleaseNatRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_NAT, request.getNatId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * releasePeerToPeerConnection
      * 
      * @param request 入参结构体
@@ -2107,6 +2390,21 @@ public class VpcClient extends AbstractBceClient {
     public void renewVpn(RenewVpnRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_VPN, request.getVpnId());
         internalRequest.addParameter("purchaseReserved", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * resizeNat
+     * 
+     * @param request 入参结构体
+     */
+    public void resizeNat(ResizeNatRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_NAT, request.getNatId());
+        internalRequest.addParameter("resize", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -2206,6 +2504,20 @@ public class VpcClient extends AbstractBceClient {
      */
     public void updateDedicatedGateway(UpdateDedicatedGatewayRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ET_GATEWAY, request.getEtGatewayId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateDnatRule
+     * 
+     * @param request 入参结构体
+     */
+    public void updateDnatRule(UpdateDnatRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_NAT, request.getNatId(), CONSTANT_DNAT_RULE, request.getRuleId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -2325,6 +2637,20 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * updateNatReleaseProtectionSwitch
+     * 
+     * @param request 入参结构体
+     */
+    public void updateNatReleaseProtectionSwitch(UpdateNatReleaseProtectionSwitchRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_NAT, request.getNatId(), CONSTANT_DELETE_PROTECT);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * updateNetworkDetection
      * 
      * @param request 入参结构体
@@ -2373,6 +2699,20 @@ public class VpcClient extends AbstractBceClient {
      */
     public void updateRoutingRules(UpdateRoutingRulesRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ROUTE, CONSTANT_RULE, request.getRouteRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateSnatRule
+     * 
+     * @param request 入参结构体
+     */
+    public void updateSnatRule(UpdateSnatRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_NAT, request.getNatId(), CONSTANT_SNAT_RULE, request.getRuleId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
