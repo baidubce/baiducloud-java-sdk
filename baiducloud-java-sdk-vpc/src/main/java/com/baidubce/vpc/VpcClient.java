@@ -17,27 +17,51 @@ import com.baidubce.common.BaseBceResponse;
 
 import com.baidubce.vpc.models.AcceptPeerToPeerConnectionApplicationsRequest;
 import com.baidubce.vpc.models.ActiveStandbySwitchoverRequest;
+import com.baidubce.vpc.models.AddAclRuleRequest;
+import com.baidubce.vpc.models.AddElasticNetworkCardAuxiliaryIpRequest;
+import com.baidubce.vpc.models.AddElasticNetworkCardAuxiliaryIpResponse;
+import com.baidubce.vpc.models.AddIpAddressGroupToIpAddressFamilyRequest;
+import com.baidubce.vpc.models.AddIpAddressesToTheIpAddressGroupRequest;
+import com.baidubce.vpc.models.AddIpv6OnlyOutboundAndNoInboundPolicyRequest;
+import com.baidubce.vpc.models.AddIpv6OnlyOutboundAndNoInboundPolicyResponse;
 import com.baidubce.vpc.models.AuthorizeRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.AuthorizedEnterpriseSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersResponse;
+import com.baidubce.vpc.models.BatchDeleteElasticNetworkCardIntranetIpRequest;
+import com.baidubce.vpc.models.BatchIncreaseElasticNetworkCardIntranetIpRequest;
+import com.baidubce.vpc.models.BatchIncreaseElasticNetworkCardIntranetIpResponse;
 import com.baidubce.vpc.models.BindEipRequest;
 import com.baidubce.vpc.models.BindPhysicalDedicatedLineRequest;
 import com.baidubce.vpc.models.ClosePeerToPeerConnectionToSynchronizeDnsRequest;
 import com.baidubce.vpc.models.CloseVpcRelayRequest;
+import com.baidubce.vpc.models.CreateAHighlyAvailableVirtualIpRequest;
+import com.baidubce.vpc.models.CreateAHighlyAvailableVirtualIpResponse;
 import com.baidubce.vpc.models.CreateAPeerToPeerConnectionRequest;
 import com.baidubce.vpc.models.CreateAPeerToPeerConnectionResponse;
 import com.baidubce.vpc.models.CreateARegularSecurityGroupV2Request;
 import com.baidubce.vpc.models.CreateARegularSecurityGroupV2Response;
+import com.baidubce.vpc.models.CreateAnIpv6GatewayRequest;
+import com.baidubce.vpc.models.CreateAnIpv6GatewayResponse;
 import com.baidubce.vpc.models.CreateDedicatedGatewayHealthCheckRequest;
 import com.baidubce.vpc.models.CreateDedicatedGatewayRequest;
 import com.baidubce.vpc.models.CreateDedicatedGatewayResponse;
+import com.baidubce.vpc.models.CreateElasticNetworkCardRequest;
+import com.baidubce.vpc.models.CreateElasticNetworkCardResponse;
 import com.baidubce.vpc.models.CreateEnterpriseSecurityGroupRequest;
 import com.baidubce.vpc.models.CreateEnterpriseSecurityGroupResponse;
 import com.baidubce.vpc.models.CreateGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.CreateGatewayLimitRulesResponse;
+import com.baidubce.vpc.models.CreateIpAddressFamilyRequest;
+import com.baidubce.vpc.models.CreateIpAddressFamilyResponse;
+import com.baidubce.vpc.models.CreateIpAddressGroupRequest;
+import com.baidubce.vpc.models.CreateIpAddressGroupResponse;
 import com.baidubce.vpc.models.CreateIpReservedRequest;
 import com.baidubce.vpc.models.CreateIpReservedResponse;
+import com.baidubce.vpc.models.CreateIpv6GatewaySpeedLimitPolicyRequest;
+import com.baidubce.vpc.models.CreateIpv6GatewaySpeedLimitPolicyResponse;
+import com.baidubce.vpc.models.CreateNetworkDetectionRequest;
+import com.baidubce.vpc.models.CreateNetworkDetectionResponse;
 import com.baidubce.vpc.models.CreateRoutingRulesRequest;
 import com.baidubce.vpc.models.CreateRoutingRulesResponse;
 import com.baidubce.vpc.models.CreateSslVpnServerRequest;
@@ -52,10 +76,20 @@ import com.baidubce.vpc.models.CreateVpnRequest;
 import com.baidubce.vpc.models.CreateVpnResponse;
 import com.baidubce.vpc.models.CreateVpnTunnelRequest;
 import com.baidubce.vpc.models.CreateVpnTunnelResponse;
+import com.baidubce.vpc.models.DeleteAclRuleRequest;
+import com.baidubce.vpc.models.DeleteElasticNetworkCardAuxiliaryIpRequest;
 import com.baidubce.vpc.models.DeleteEnterpriseSecurityGroupRequest;
 import com.baidubce.vpc.models.DeleteEnterpriseSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.DeleteGatewayLimitRuleRequest;
+import com.baidubce.vpc.models.DeleteHighlyAvailableVirtualIpRequest;
+import com.baidubce.vpc.models.DeleteIpAddressFamilyRequest;
+import com.baidubce.vpc.models.DeleteIpAddressFromIpAddressGroupRequest;
+import com.baidubce.vpc.models.DeleteIpAddressGroupRequest;
 import com.baidubce.vpc.models.DeleteIpReserveRequest;
+import com.baidubce.vpc.models.DeleteIpv6GatewayRequest;
+import com.baidubce.vpc.models.DeleteIpv6GatewaySpeedLimitPolicyRequest;
+import com.baidubce.vpc.models.DeleteIpv6OnlyAccessPolicyRequest;
+import com.baidubce.vpc.models.DeleteNetworkDetectionRequest;
 import com.baidubce.vpc.models.DeleteRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.DeleteRegularSecurityGroupV2Request;
 import com.baidubce.vpc.models.DeleteRoutingRulesRequest;
@@ -65,9 +99,20 @@ import com.baidubce.vpc.models.DeleteSubnetRequest;
 import com.baidubce.vpc.models.DeleteUserGatewayRequest;
 import com.baidubce.vpc.models.DeleteVpcRequest;
 import com.baidubce.vpc.models.DeleteVpnTunnelRequest;
+import com.baidubce.vpc.models.ElasticNetworkCardBindingEipRequest;
+import com.baidubce.vpc.models.ElasticNetworkCardMountedCloudProductInstanceRequest;
+import com.baidubce.vpc.models.ElasticNetworkCardUnbindingEipRequest;
+import com.baidubce.vpc.models.ElasticNetworkCardUninstallationCloudProductInstanceRequest;
+import com.baidubce.vpc.models.ElasticNetworkCardUpdateEnterpriseSecurityGroupRequest;
+import com.baidubce.vpc.models.ElasticNetworkCardUpdatesRegularSecurityGroupRequest;
 import com.baidubce.vpc.models.EnablePeerToPeerConnectionToSynchronizeDnsRequest;
 import com.baidubce.vpc.models.GetVpcResourceIpInfoRequest;
 import com.baidubce.vpc.models.GetVpcResourceIpInfoResponse;
+import com.baidubce.vpc.models.HighAvailabilityVirtualIpUnbindingEipRequest;
+import com.baidubce.vpc.models.HighAvailabilityVirtualIpUnbindingInstanceRequest;
+import com.baidubce.vpc.models.HighlyAvailableVirtualIpBindingEipRequest;
+import com.baidubce.vpc.models.HighlyAvailableVirtualIpBindingInstanceRequest;
+import com.baidubce.vpc.models.Ipv6GatewayBandwidthUpgradeAndDowngradeRequest;
 import com.baidubce.vpc.models.ListIpReserveRequest;
 import com.baidubce.vpc.models.ListIpReserveResponse;
 import com.baidubce.vpc.models.ModifyGatewayLimitRulesRequest;
@@ -75,6 +120,18 @@ import com.baidubce.vpc.models.OpenVpcRelayRequest;
 import com.baidubce.vpc.models.PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest;
 import com.baidubce.vpc.models.PeerToPeerConnectionRenewalRequest;
 import com.baidubce.vpc.models.PrepaidPeerToPeerConnectionUnsubscribeRequest;
+import com.baidubce.vpc.models.QueryAclRequest;
+import com.baidubce.vpc.models.QueryAclResponse;
+import com.baidubce.vpc.models.QueryAclRulesRequest;
+import com.baidubce.vpc.models.QueryAclRulesResponse;
+import com.baidubce.vpc.models.QueryIpAddressFamilyListRequest;
+import com.baidubce.vpc.models.QueryIpAddressFamilyListResponse;
+import com.baidubce.vpc.models.QueryIpv6GatewayRequest;
+import com.baidubce.vpc.models.QueryIpv6GatewayResponse;
+import com.baidubce.vpc.models.QueryNetworkDetectionDetailsRequest;
+import com.baidubce.vpc.models.QueryNetworkDetectionDetailsResponse;
+import com.baidubce.vpc.models.QueryNetworkDetectionListRequest;
+import com.baidubce.vpc.models.QueryNetworkDetectionListResponse;
 import com.baidubce.vpc.models.QueryRoutingRulesRequest;
 import com.baidubce.vpc.models.QueryRoutingRulesResponse;
 import com.baidubce.vpc.models.QueryRoutingTableRequest;
@@ -93,22 +150,44 @@ import com.baidubce.vpc.models.QueryTheDetailsOfTheDedicatedGatewayRequest;
 import com.baidubce.vpc.models.QueryTheDetailsOfTheDedicatedGatewayResponse;
 import com.baidubce.vpc.models.QueryTheListOfDedicatedLineGatewaysRequest;
 import com.baidubce.vpc.models.QueryTheListOfDedicatedLineGatewaysResponse;
+import com.baidubce.vpc.models.QueryTheListOfElasticNetworkCardsRequest;
+import com.baidubce.vpc.models.QueryTheListOfElasticNetworkCardsResponse;
 import com.baidubce.vpc.models.QueryTheListOfEnterpriseSecurityGroupsRequest;
 import com.baidubce.vpc.models.QueryTheListOfEnterpriseSecurityGroupsResponse;
+import com.baidubce.vpc.models.QueryTheListOfHighlyAvailableVirtualIpsRequest;
+import com.baidubce.vpc.models.QueryTheListOfHighlyAvailableVirtualIpsResponse;
+import com.baidubce.vpc.models.QueryTheListOfIpAddressGroupsRequest;
+import com.baidubce.vpc.models.QueryTheListOfIpAddressGroupsResponse;
 import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsRequest;
 import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsResponse;
 import com.baidubce.vpc.models.QueryTheListOfRegularSecurityGroupsV2Request;
 import com.baidubce.vpc.models.QueryTheListOfRegularSecurityGroupsV2Response;
+import com.baidubce.vpc.models.QueryTheListOfSpeedLimitPoliciesForIpv6GatewayRequest;
+import com.baidubce.vpc.models.QueryTheListOfSpeedLimitPoliciesForIpv6GatewayResponse;
+import com.baidubce.vpc.models.QueryTheSpecifiedElasticNetworkCardRequest;
+import com.baidubce.vpc.models.QueryTheSpecifiedElasticNetworkCardResponse;
+import com.baidubce.vpc.models.QueryTheSpecifiedHighlyAvailableVirtualIpRequest;
+import com.baidubce.vpc.models.QueryTheSpecifiedHighlyAvailableVirtualIpResponse;
+import com.baidubce.vpc.models.QueryTheSpecifiedIpAddressFamilyRequest;
+import com.baidubce.vpc.models.QueryTheSpecifiedIpAddressFamilyResponse;
+import com.baidubce.vpc.models.QueryTheSpecifiedIpAddressGroupRequest;
+import com.baidubce.vpc.models.QueryTheSpecifiedIpAddressGroupResponse;
+import com.baidubce.vpc.models.QueryTheStatusOfTheElasticNetworkCardRequest;
+import com.baidubce.vpc.models.QueryTheStatusOfTheElasticNetworkCardResponse;
 import com.baidubce.vpc.models.QueryVpcIntranetIpRequest;
 import com.baidubce.vpc.models.QueryVpcIntranetIpResponse;
 import com.baidubce.vpc.models.QueryVpcListRequest;
 import com.baidubce.vpc.models.QueryVpcListResponse;
 import com.baidubce.vpc.models.QueryVpnListRequest;
 import com.baidubce.vpc.models.QueryVpnListResponse;
+import com.baidubce.vpc.models.QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionRequest;
+import com.baidubce.vpc.models.QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionResponse;
 import com.baidubce.vpc.models.RejectPeerToPeerConnectionRequestRequest;
 import com.baidubce.vpc.models.ReleaseDedicatedGatewayRequest;
 import com.baidubce.vpc.models.ReleasePeerToPeerConnectionRequest;
 import com.baidubce.vpc.models.ReleaseVpnRequest;
+import com.baidubce.vpc.models.RemoveElasticNetworkCardRequest;
+import com.baidubce.vpc.models.RemoveIpAddressGroupFromIpAddressFamilyRequest;
 import com.baidubce.vpc.models.RenewVpnRequest;
 import com.baidubce.vpc.models.RevokeRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.SearchForVpnDetailsRequest;
@@ -117,8 +196,16 @@ import com.baidubce.vpc.models.SearchVpnTunnelRequest;
 import com.baidubce.vpc.models.SearchVpnTunnelResponse;
 import com.baidubce.vpc.models.UnbindEipRequest;
 import com.baidubce.vpc.models.UnbindPhysicalDedicatedLineRequest;
+import com.baidubce.vpc.models.UpdateAclRulesRequest;
 import com.baidubce.vpc.models.UpdateDedicatedGatewayRequest;
+import com.baidubce.vpc.models.UpdateElasticNetworkCardRequest;
 import com.baidubce.vpc.models.UpdateEnterpriseSecurityGroupRulesRequest;
+import com.baidubce.vpc.models.UpdateHighlyAvailableVirtualIpRequest;
+import com.baidubce.vpc.models.UpdateIpAddressFamilyRequest;
+import com.baidubce.vpc.models.UpdateIpAddressGroupRequest;
+import com.baidubce.vpc.models.UpdateIpv6GatewayReleaseProtectionSwitchRequest;
+import com.baidubce.vpc.models.UpdateIpv6GatewaySpeedLimitPolicyRequest;
+import com.baidubce.vpc.models.UpdateNetworkDetectionRequest;
 import com.baidubce.vpc.models.UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest;
 import com.baidubce.vpc.models.UpdateRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.UpdateRoutingRulesRequest;
@@ -150,28 +237,45 @@ public class VpcClient extends AbstractBceClient {
     private static final String VERSION_V2 = "v2";
     private static final String CONSTANT_VPC = "vpc";
     private static final String CONSTANT_SECURITY_GROUP = "securityGroup";
-    private static final String CONSTANT_VPN = "vpn";
-    private static final String CONSTANT_SSL_VPN_SERVER = "sslVpnServer";
-    private static final String CONSTANT_SHUTDOWN_RELAY = "shutdownRelay";
-    private static final String CONSTANT_VPNCONN = "vpnconn";
-    private static final String CONSTANT_RULE = "rule";
     private static final String CONSTANT_RESOURCE_IP = "resourceIp";
-    private static final String CONSTANT_CGW = "cgw";
-    private static final String CONSTANT_PEERCONN = "peerconn";
-    private static final String CONSTANT_ROUTE = "route";
+    private static final String CONSTANT_ENI = "eni";
+    private static final String CONSTANT_IP_GROUP = "ipGroup";
     private static final String CONSTANT_PRIVATE_IP_ADDRESS_INFO = "privateIpAddressInfo";
+    private static final String CONSTANT_HAVIP = "havip";
     private static final String CONSTANT_ET_GATEWAY = "etGateway";
-    private static final String CONSTANT_HEALTH_CHECK = "healthCheck";
+    private static final String CONSTANT_IP_SET = "ipSet";
     private static final String CONSTANT_ENTERPRISE = "enterprise";
     private static final String CONSTANT_SECURITY = "security";
-    private static final String CONSTANT_SSL_VPN_USER = "sslVpnUser";
-    private static final String CONSTANT_SUBNET = "subnet";
+    private static final String CONSTANT_VPN = "vpn";
+    private static final String CONSTANT_CGW = "cgw";
+    private static final String CONSTANT_DELETE_IP_ADDRESS = "deleteIpAddress";
+    private static final String CONSTANT_PEERCONN = "peerconn";
+    private static final String CONSTANT_I_PV6_GATEWAY = "IPv6Gateway";
+    private static final String CONSTANT_RATE_LIMIT_RULE = "rateLimitRule";
+    private static final String CONSTANT_VPNCONN = "vpnconn";
+    private static final String CONSTANT_STATUS = "status";
+    private static final String CONSTANT_ACL = "acl";
+    private static final String CONSTANT_RULE = "rule";
+    private static final String CONSTANT_BIND_IP_SET = "bindIpSet";
+    private static final String CONSTANT_PROBE = "probe";
     private static final String CONSTANT_GATEWAY = "gateway";
     private static final String CONSTANT_LIMITRULE = "limitrule";
+    private static final String CONSTANT_SUBNET = "subnet";
     private static final String CONSTANT_UPDATE = "update";
     private static final String CONSTANT_IPRESERVE = "ipreserve";
-    private static final String CONSTANT_OPEN_RELAY = "openRelay";
+    private static final String CONSTANT_SSL_VPN_SERVER = "sslVpnServer";
+    private static final String CONSTANT_PRIVATE_IP = "privateIp";
     private static final String CONSTANT_DELETE_PROTECT = "deleteProtect";
+    private static final String CONSTANT_IP_ADDRESS = "ipAddress";
+    private static final String CONSTANT_ROUTE = "route";
+    private static final String CONSTANT_EGRESS_ONLY_RULE = "egressOnlyRule";
+    private static final String CONSTANT_SHUTDOWN_RELAY = "shutdownRelay";
+    private static final String CONSTANT_HEALTH_CHECK = "healthCheck";
+    private static final String CONSTANT_SSL_VPN_USER = "sslVpnUser";
+    private static final String CONSTANT_UNBIND_IP_SET = "unbindIpSet";
+    private static final String CONSTANT_OPEN_RELAY = "openRelay";
+    private static final String CONSTANT_BATCH_ADD = "batchAdd";
+    private static final String CONSTANT_BATCH_DEL = "batchDel";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -221,6 +325,78 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * addAclRule
+     * 
+     * @param request 入参结构体
+     */
+    public void addAclRule(AddAclRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_ACL, CONSTANT_RULE);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * addElasticNetworkCardAuxiliaryIp
+     * 
+     * @param request 入参结构体
+     * @return AddElasticNetworkCardAuxiliaryIpResponse
+     */
+    public AddElasticNetworkCardAuxiliaryIpResponse addElasticNetworkCardAuxiliaryIp(AddElasticNetworkCardAuxiliaryIpRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_ENI, request.getEniId(), CONSTANT_PRIVATE_IP);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, AddElasticNetworkCardAuxiliaryIpResponse.class);
+    }
+
+    /**
+     * addIpAddressGroupToIpAddressFamily
+     * 
+     * @param request 入参结构体
+     */
+    public void addIpAddressGroupToIpAddressFamily(AddIpAddressGroupToIpAddressFamilyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_IP_GROUP, request.getIpGroupId(), CONSTANT_BIND_IP_SET);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * addIpAddressesToTheIpAddressGroup
+     * 
+     * @param request 入参结构体
+     */
+    public void addIpAddressesToTheIpAddressGroup(AddIpAddressesToTheIpAddressGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_IP_SET, request.getIpSetId(), CONSTANT_IP_ADDRESS);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * addIpv6OnlyOutboundAndNoInboundPolicy
+     * 
+     * @param request 入参结构体
+     * @return AddIpv6OnlyOutboundAndNoInboundPolicyResponse
+     */
+    public AddIpv6OnlyOutboundAndNoInboundPolicyResponse addIpv6OnlyOutboundAndNoInboundPolicy(AddIpv6OnlyOutboundAndNoInboundPolicyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_I_PV6_GATEWAY, request.getGatewayId(), CONSTANT_EGRESS_ONLY_RULE);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, AddIpv6OnlyOutboundAndNoInboundPolicyResponse.class);
+    }
+
+    /**
      * authorizeRegularSecurityGroupRulesV2
      * 
      * @param request 入参结构体
@@ -267,6 +443,35 @@ public class VpcClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, BatchCreateSslVpnUsersResponse.class);
+    }
+
+    /**
+     * batchDeleteElasticNetworkCardIntranetIp
+     * 
+     * @param request 入参结构体
+     */
+    public void batchDeleteElasticNetworkCardIntranetIp(BatchDeleteElasticNetworkCardIntranetIpRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_ENI, request.getEniId(), CONSTANT_PRIVATE_IP, CONSTANT_BATCH_DEL);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * batchIncreaseElasticNetworkCardIntranetIp
+     * 
+     * @param request 入参结构体
+     * @return BatchIncreaseElasticNetworkCardIntranetIpResponse
+     */
+    public BatchIncreaseElasticNetworkCardIntranetIpResponse batchIncreaseElasticNetworkCardIntranetIp(BatchIncreaseElasticNetworkCardIntranetIpRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_ENI, request.getEniId(), CONSTANT_PRIVATE_IP, CONSTANT_BATCH_ADD);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, BatchIncreaseElasticNetworkCardIntranetIpResponse.class);
     }
 
     /**
@@ -330,6 +535,21 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * createAHighlyAvailableVirtualIp
+     * 
+     * @param request 入参结构体
+     * @return CreateAHighlyAvailableVirtualIpResponse
+     */
+    public CreateAHighlyAvailableVirtualIpResponse createAHighlyAvailableVirtualIp(CreateAHighlyAvailableVirtualIpRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_HAVIP);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateAHighlyAvailableVirtualIpResponse.class);
+    }
+
+    /**
      * createAPeerToPeerConnection
      * 
      * @param request 入参结构体
@@ -360,6 +580,21 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * createAnIpv6Gateway
+     * 
+     * @param request 入参结构体
+     * @return CreateAnIpv6GatewayResponse
+     */
+    public CreateAnIpv6GatewayResponse createAnIpv6Gateway(CreateAnIpv6GatewayRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_I_PV6_GATEWAY);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateAnIpv6GatewayResponse.class);
+    }
+
+    /**
      * createDedicatedGateway
      * 
      * @param request 入参结构体
@@ -386,6 +621,21 @@ public class VpcClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * createElasticNetworkCard
+     * 
+     * @param request 入参结构体
+     * @return CreateElasticNetworkCardResponse
+     */
+    public CreateElasticNetworkCardResponse createElasticNetworkCard(CreateElasticNetworkCardRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_ENI);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateElasticNetworkCardResponse.class);
     }
 
     /**
@@ -419,6 +669,36 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * createIpAddressFamily
+     * 
+     * @param request 入参结构体
+     * @return CreateIpAddressFamilyResponse
+     */
+    public CreateIpAddressFamilyResponse createIpAddressFamily(CreateIpAddressFamilyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_IP_GROUP);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateIpAddressFamilyResponse.class);
+    }
+
+    /**
+     * createIpAddressGroup
+     * 
+     * @param request 入参结构体
+     * @return CreateIpAddressGroupResponse
+     */
+    public CreateIpAddressGroupResponse createIpAddressGroup(CreateIpAddressGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_IP_SET);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateIpAddressGroupResponse.class);
+    }
+
+    /**
      * createIpReserved
      * 
      * @param request 入参结构体
@@ -431,6 +711,36 @@ public class VpcClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateIpReservedResponse.class);
+    }
+
+    /**
+     * createIpv6GatewaySpeedLimitPolicy
+     * 
+     * @param request 入参结构体
+     * @return CreateIpv6GatewaySpeedLimitPolicyResponse
+     */
+    public CreateIpv6GatewaySpeedLimitPolicyResponse createIpv6GatewaySpeedLimitPolicy(CreateIpv6GatewaySpeedLimitPolicyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_I_PV6_GATEWAY, request.getGatewayId(), CONSTANT_RATE_LIMIT_RULE);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateIpv6GatewaySpeedLimitPolicyResponse.class);
+    }
+
+    /**
+     * createNetworkDetection
+     * 
+     * @param request 入参结构体
+     * @return CreateNetworkDetectionResponse
+     */
+    public CreateNetworkDetectionResponse createNetworkDetection(CreateNetworkDetectionRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_PROBE);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateNetworkDetectionResponse.class);
     }
 
     /**
@@ -539,6 +849,33 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * deleteAclRule
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteAclRule(DeleteAclRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_ACL, CONSTANT_RULE, request.getAclRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteElasticNetworkCardAuxiliaryIp
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteElasticNetworkCardAuxiliaryIp(DeleteElasticNetworkCardAuxiliaryIpRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_ENI, request.getEniId(), CONSTANT_PRIVATE_IP, request.getPrivateIpAddress());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * deleteEnterpriseSecurityGroup
      * 
      * @param request 入参结构体
@@ -580,12 +917,133 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * deleteHighlyAvailableVirtualIp
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteHighlyAvailableVirtualIp(DeleteHighlyAvailableVirtualIpRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_HAVIP, request.getHaVipId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteIpAddressFamily
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteIpAddressFamily(DeleteIpAddressFamilyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_IP_GROUP, request.getIpGroupId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteIpAddressFromIpAddressGroup
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteIpAddressFromIpAddressGroup(DeleteIpAddressFromIpAddressGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_IP_SET, request.getIpSetId(), CONSTANT_DELETE_IP_ADDRESS);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteIpAddressGroup
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteIpAddressGroup(DeleteIpAddressGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_IP_SET, request.getIpSetId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * deleteIpReserve
      * 
      * @param request 入参结构体
      */
     public void deleteIpReserve(DeleteIpReserveRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_SUBNET, CONSTANT_IPRESERVE, request.getIpReserveId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteIpv6Gateway
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteIpv6Gateway(DeleteIpv6GatewayRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_I_PV6_GATEWAY, request.getGatewayId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteIpv6GatewaySpeedLimitPolicy
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteIpv6GatewaySpeedLimitPolicy(DeleteIpv6GatewaySpeedLimitPolicyRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(
+                        request,
+                        HttpMethodName.DELETE,
+                        VERSION_V1,
+                        CONSTANT_I_PV6_GATEWAY,
+                        request.getGatewayId(),
+                        CONSTANT_RATE_LIMIT_RULE,
+                        request.getRateLimitRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteIpv6OnlyAccessPolicy
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteIpv6OnlyAccessPolicy(DeleteIpv6OnlyAccessPolicyRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(
+                        request,
+                        HttpMethodName.DELETE,
+                        VERSION_V1,
+                        CONSTANT_I_PV6_GATEWAY,
+                        request.getGatewayId(),
+                        CONSTANT_EGRESS_ONLY_RULE,
+                        request.getEgressOnlyRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteNetworkDetection
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteNetworkDetection(DeleteNetworkDetectionRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_PROBE, request.getProbeId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -712,6 +1170,96 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * elasticNetworkCardBindingEip
+     * 
+     * @param request 入参结构体
+     */
+    public void elasticNetworkCardBindingEip(ElasticNetworkCardBindingEipRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ENI, request.getEniId());
+        internalRequest.addParameter("bind", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * elasticNetworkCardMountedCloudProductInstance
+     * 
+     * @param request 入参结构体
+     */
+    public void elasticNetworkCardMountedCloudProductInstance(ElasticNetworkCardMountedCloudProductInstanceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ENI, request.getEniId());
+        internalRequest.addParameter("attach", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * elasticNetworkCardUnbindingEip
+     * 
+     * @param request 入参结构体
+     */
+    public void elasticNetworkCardUnbindingEip(ElasticNetworkCardUnbindingEipRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ENI, request.getEniId());
+        internalRequest.addParameter("unBind", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * elasticNetworkCardUninstallationCloudProductInstance
+     * 
+     * @param request 入参结构体
+     */
+    public void elasticNetworkCardUninstallationCloudProductInstance(ElasticNetworkCardUninstallationCloudProductInstanceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ENI, request.getEniId());
+        internalRequest.addParameter("detach", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * elasticNetworkCardUpdateEnterpriseSecurityGroup
+     * 
+     * @param request 入参结构体
+     */
+    public void elasticNetworkCardUpdateEnterpriseSecurityGroup(ElasticNetworkCardUpdateEnterpriseSecurityGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ENI, request.getEniId());
+        internalRequest.addParameter("bindEsg", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * elasticNetworkCardUpdatesRegularSecurityGroup
+     * 
+     * @param request 入参结构体
+     */
+    public void elasticNetworkCardUpdatesRegularSecurityGroup(ElasticNetworkCardUpdatesRegularSecurityGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ENI, request.getEniId());
+        internalRequest.addParameter("bindSg", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * enablePeerToPeerConnectionToSynchronizeDns
      * 
      * @param request 入参结构体
@@ -752,6 +1300,80 @@ public class VpcClient extends AbstractBceClient {
             internalRequest.addParameter("pageSize", String.valueOf(request.getPageSize()));
         }
         return invokeHttpClient(internalRequest, GetVpcResourceIpInfoResponse.class);
+    }
+
+    /**
+     * highAvailabilityVirtualIpUnbindingEip
+     * 
+     * @param request 入参结构体
+     */
+    public void highAvailabilityVirtualIpUnbindingEip(HighAvailabilityVirtualIpUnbindingEipRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_HAVIP, request.getHaVipId());
+        internalRequest.addParameter("unbindPublicIp", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * highAvailabilityVirtualIpUnbindingInstance
+     * 
+     * @param request 入参结构体
+     */
+    public void highAvailabilityVirtualIpUnbindingInstance(HighAvailabilityVirtualIpUnbindingInstanceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_HAVIP, request.getHaVipId());
+        internalRequest.addParameter("detach", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * highlyAvailableVirtualIpBindingEip
+     * 
+     * @param request 入参结构体
+     */
+    public void highlyAvailableVirtualIpBindingEip(HighlyAvailableVirtualIpBindingEipRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_HAVIP, request.getHaVipId());
+        internalRequest.addParameter("bindPublicIp", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * highlyAvailableVirtualIpBindingInstance
+     * 
+     * @param request 入参结构体
+     */
+    public void highlyAvailableVirtualIpBindingInstance(HighlyAvailableVirtualIpBindingInstanceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_HAVIP, request.getHaVipId());
+        internalRequest.addParameter("attach", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * ipv6GatewayBandwidthUpgradeAndDowngrade
+     * 
+     * @param request 入参结构体
+     */
+    public void ipv6GatewayBandwidthUpgradeAndDowngrade(Ipv6GatewayBandwidthUpgradeAndDowngradeRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_I_PV6_GATEWAY, request.getGatewayId());
+        internalRequest.addParameter("resize", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
@@ -843,6 +1465,102 @@ public class VpcClient extends AbstractBceClient {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * queryAcl
+     * 
+     * @param request 入参结构体
+     * @return QueryAclResponse
+     */
+    public QueryAclResponse queryAcl(QueryAclRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_ACL);
+        if (request.getVpcId() != null) {
+            internalRequest.addParameter("vpcId", request.getVpcId());
+        }
+        return invokeHttpClient(internalRequest, QueryAclResponse.class);
+    }
+
+    /**
+     * queryAclRules
+     * 
+     * @param request 入参结构体
+     * @return QueryAclRulesResponse
+     */
+    public QueryAclRulesResponse queryAclRules(QueryAclRulesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_ACL, CONSTANT_RULE);
+        if (request.getSubnetId() != null) {
+            internalRequest.addParameter("subnetId", request.getSubnetId());
+        }
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, QueryAclRulesResponse.class);
+    }
+
+    /**
+     * queryIpAddressFamilyList
+     * 
+     * @param request 入参结构体
+     * @return QueryIpAddressFamilyListResponse
+     */
+    public QueryIpAddressFamilyListResponse queryIpAddressFamilyList(QueryIpAddressFamilyListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_IP_GROUP);
+        if (request.getIpVersion() != null) {
+            internalRequest.addParameter("ipVersion", request.getIpVersion());
+        }
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, QueryIpAddressFamilyListResponse.class);
+    }
+
+    /**
+     * queryIpv6Gateway
+     * 
+     * @param request 入参结构体
+     * @return QueryIpv6GatewayResponse
+     */
+    public QueryIpv6GatewayResponse queryIpv6Gateway(QueryIpv6GatewayRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_I_PV6_GATEWAY);
+        if (request.getVpcId() != null) {
+            internalRequest.addParameter("vpcId", request.getVpcId());
+        }
+        return invokeHttpClient(internalRequest, QueryIpv6GatewayResponse.class);
+    }
+
+    /**
+     * queryNetworkDetectionDetails
+     * 
+     * @param request 入参结构体
+     * @return QueryNetworkDetectionDetailsResponse
+     */
+    public QueryNetworkDetectionDetailsResponse queryNetworkDetectionDetails(QueryNetworkDetectionDetailsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_PROBE, request.getProbeId());
+        return invokeHttpClient(internalRequest, QueryNetworkDetectionDetailsResponse.class);
+    }
+
+    /**
+     * queryNetworkDetectionList
+     * 
+     * @param request 入参结构体
+     * @return QueryNetworkDetectionListResponse
+     */
+    public QueryNetworkDetectionListResponse queryNetworkDetectionList(QueryNetworkDetectionListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_PROBE);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, QueryNetworkDetectionListResponse.class);
     }
 
     /**
@@ -1011,6 +1729,35 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * queryTheListOfElasticNetworkCards
+     * 
+     * @param request 入参结构体
+     * @return QueryTheListOfElasticNetworkCardsResponse
+     */
+    public QueryTheListOfElasticNetworkCardsResponse queryTheListOfElasticNetworkCards(QueryTheListOfElasticNetworkCardsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_ENI);
+        if (request.getVpcId() != null) {
+            internalRequest.addParameter("vpcId", request.getVpcId());
+        }
+        if (request.getInstanceId() != null) {
+            internalRequest.addParameter("instanceId", request.getInstanceId());
+        }
+        if (request.getName() != null) {
+            internalRequest.addParameter("name", request.getName());
+        }
+        if (request.getPrivateIpAddress() != null && !request.getPrivateIpAddress().isEmpty()) {
+            internalRequest.addParameter("privateIpAddress", String.join(",", request.getPrivateIpAddress()));
+        }
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, QueryTheListOfElasticNetworkCardsResponse.class);
+    }
+
+    /**
      * queryTheListOfEnterpriseSecurityGroups
      * 
      * @param request 入参结构体
@@ -1028,6 +1775,46 @@ public class VpcClient extends AbstractBceClient {
             internalRequest.addParameter("instanceId", request.getInstanceId());
         }
         return invokeHttpClient(internalRequest, QueryTheListOfEnterpriseSecurityGroupsResponse.class);
+    }
+
+    /**
+     * queryTheListOfHighlyAvailableVirtualIps
+     * 
+     * @param request 入参结构体
+     * @return QueryTheListOfHighlyAvailableVirtualIpsResponse
+     */
+    public QueryTheListOfHighlyAvailableVirtualIpsResponse queryTheListOfHighlyAvailableVirtualIps(QueryTheListOfHighlyAvailableVirtualIpsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_HAVIP);
+        if (request.getVpcId() != null) {
+            internalRequest.addParameter("vpcId", request.getVpcId());
+        }
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, QueryTheListOfHighlyAvailableVirtualIpsResponse.class);
+    }
+
+    /**
+     * queryTheListOfIpAddressGroups
+     * 
+     * @param request 入参结构体
+     * @return QueryTheListOfIpAddressGroupsResponse
+     */
+    public QueryTheListOfIpAddressGroupsResponse queryTheListOfIpAddressGroups(QueryTheListOfIpAddressGroupsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_IP_SET);
+        if (request.getIpVersion() != null) {
+            internalRequest.addParameter("ipVersion", request.getIpVersion());
+        }
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, QueryTheListOfIpAddressGroupsResponse.class);
     }
 
     /**
@@ -1074,6 +1861,78 @@ public class VpcClient extends AbstractBceClient {
             internalRequest.addParameter("securityGroupIds", request.getSecurityGroupIds());
         }
         return invokeHttpClient(internalRequest, QueryTheListOfRegularSecurityGroupsV2Response.class);
+    }
+
+    /**
+     * queryTheListOfSpeedLimitPoliciesForIpv6Gateway
+     * 
+     * @param request 入参结构体
+     * @return QueryTheListOfSpeedLimitPoliciesForIpv6GatewayResponse
+     */
+    public QueryTheListOfSpeedLimitPoliciesForIpv6GatewayResponse queryTheListOfSpeedLimitPoliciesForIpv6Gateway(QueryTheListOfSpeedLimitPoliciesForIpv6GatewayRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_I_PV6_GATEWAY, request.getGatewayId(), CONSTANT_RATE_LIMIT_RULE);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, QueryTheListOfSpeedLimitPoliciesForIpv6GatewayResponse.class);
+    }
+
+    /**
+     * queryTheSpecifiedElasticNetworkCard
+     * 
+     * @param request 入参结构体
+     * @return QueryTheSpecifiedElasticNetworkCardResponse
+     */
+    public QueryTheSpecifiedElasticNetworkCardResponse queryTheSpecifiedElasticNetworkCard(QueryTheSpecifiedElasticNetworkCardRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_ENI, request.getEniId());
+        return invokeHttpClient(internalRequest, QueryTheSpecifiedElasticNetworkCardResponse.class);
+    }
+
+    /**
+     * queryTheSpecifiedHighlyAvailableVirtualIp
+     * 
+     * @param request 入参结构体
+     * @return QueryTheSpecifiedHighlyAvailableVirtualIpResponse
+     */
+    public QueryTheSpecifiedHighlyAvailableVirtualIpResponse queryTheSpecifiedHighlyAvailableVirtualIp(QueryTheSpecifiedHighlyAvailableVirtualIpRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_HAVIP, request.getHaVipId());
+        return invokeHttpClient(internalRequest, QueryTheSpecifiedHighlyAvailableVirtualIpResponse.class);
+    }
+
+    /**
+     * queryTheSpecifiedIpAddressFamily
+     * 
+     * @param request 入参结构体
+     * @return QueryTheSpecifiedIpAddressFamilyResponse
+     */
+    public QueryTheSpecifiedIpAddressFamilyResponse queryTheSpecifiedIpAddressFamily(QueryTheSpecifiedIpAddressFamilyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_IP_GROUP, request.getIpGroupId());
+        return invokeHttpClient(internalRequest, QueryTheSpecifiedIpAddressFamilyResponse.class);
+    }
+
+    /**
+     * queryTheSpecifiedIpAddressGroup
+     * 
+     * @param request 入参结构体
+     * @return QueryTheSpecifiedIpAddressGroupResponse
+     */
+    public QueryTheSpecifiedIpAddressGroupResponse queryTheSpecifiedIpAddressGroup(QueryTheSpecifiedIpAddressGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_IP_SET, request.getIpSetId());
+        return invokeHttpClient(internalRequest, QueryTheSpecifiedIpAddressGroupResponse.class);
+    }
+
+    /**
+     * queryTheStatusOfTheElasticNetworkCard
+     * 
+     * @param request 入参结构体
+     * @return QueryTheStatusOfTheElasticNetworkCardResponse
+     */
+    public QueryTheStatusOfTheElasticNetworkCardResponse queryTheStatusOfTheElasticNetworkCard(QueryTheStatusOfTheElasticNetworkCardRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_ENI, request.getEniId(), CONSTANT_STATUS);
+        return invokeHttpClient(internalRequest, QueryTheStatusOfTheElasticNetworkCardResponse.class);
     }
 
     /**
@@ -1143,6 +2002,24 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * queryingTheIpv6PolicyListWithOnlyOutputAndNoInclusion
+     * 
+     * @param request 入参结构体
+     * @return QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionResponse
+     */
+    public QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionResponse queryingTheIpv6PolicyListWithOnlyOutputAndNoInclusion(
+            QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_I_PV6_GATEWAY, request.getGatewayId(), CONSTANT_EGRESS_ONLY_RULE);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionResponse.class);
+    }
+
+    /**
      * rejectPeerToPeerConnectionRequest
      * 
      * @param request 入参结构体
@@ -1192,6 +2069,33 @@ public class VpcClient extends AbstractBceClient {
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * removeElasticNetworkCard
+     * 
+     * @param request 入参结构体
+     */
+    public void removeElasticNetworkCard(RemoveElasticNetworkCardRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_ENI, request.getEniId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * removeIpAddressGroupFromIpAddressFamily
+     * 
+     * @param request 入参结构体
+     */
+    public void removeIpAddressGroupFromIpAddressFamily(RemoveIpAddressGroupFromIpAddressFamilyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_IP_GROUP, request.getIpGroupId(), CONSTANT_UNBIND_IP_SET);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
@@ -1282,12 +2186,41 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * updateAclRules
+     * 
+     * @param request 入参结构体
+     */
+    public void updateAclRules(UpdateAclRulesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ACL, CONSTANT_RULE, request.getAclRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * updateDedicatedGateway
      * 
      * @param request 入参结构体
      */
     public void updateDedicatedGateway(UpdateDedicatedGatewayRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ET_GATEWAY, request.getEtGatewayId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateElasticNetworkCard
+     * 
+     * @param request 入参结构体
+     */
+    public void updateElasticNetworkCard(UpdateElasticNetworkCardRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ENI, request.getEniId());
+        internalRequest.addParameter("modifyAttribute", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -1303,6 +2236,101 @@ public class VpcClient extends AbstractBceClient {
     public void updateEnterpriseSecurityGroupRules(UpdateEnterpriseSecurityGroupRulesRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_ENTERPRISE, CONSTANT_SECURITY, CONSTANT_RULE, request.getEnterpriseSecurityGroupRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateHighlyAvailableVirtualIp
+     * 
+     * @param request 入参结构体
+     */
+    public void updateHighlyAvailableVirtualIp(UpdateHighlyAvailableVirtualIpRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_HAVIP, request.getHaVipId());
+        internalRequest.addParameter("modifyAttribute", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateIpAddressFamily
+     * 
+     * @param request 入参结构体
+     */
+    public void updateIpAddressFamily(UpdateIpAddressFamilyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_IP_GROUP, request.getIpGroupId());
+        internalRequest.addParameter("modifyAttribute", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateIpAddressGroup
+     * 
+     * @param request 入参结构体
+     */
+    public void updateIpAddressGroup(UpdateIpAddressGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_IP_SET, request.getIpSetId());
+        internalRequest.addParameter("modifyAttribute", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateIpv6GatewayReleaseProtectionSwitch
+     * 
+     * @param request 入参结构体
+     */
+    public void updateIpv6GatewayReleaseProtectionSwitch(UpdateIpv6GatewayReleaseProtectionSwitchRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_I_PV6_GATEWAY, request.getGatewayId(), CONSTANT_DELETE_PROTECT);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateIpv6GatewaySpeedLimitPolicy
+     * 
+     * @param request 入参结构体
+     */
+    public void updateIpv6GatewaySpeedLimitPolicy(UpdateIpv6GatewaySpeedLimitPolicyRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(
+                        request,
+                        HttpMethodName.PUT,
+                        VERSION_V1,
+                        CONSTANT_I_PV6_GATEWAY,
+                        request.getGatewayId(),
+                        CONSTANT_RATE_LIMIT_RULE,
+                        request.getRateLimitRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateNetworkDetection
+     * 
+     * @param request 入参结构体
+     */
+    public void updateNetworkDetection(UpdateNetworkDetectionRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PROBE, request.getProbeId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
