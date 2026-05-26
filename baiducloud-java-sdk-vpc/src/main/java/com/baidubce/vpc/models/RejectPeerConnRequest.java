@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ReleasePeerToPeerConnectionRequest extends BaseBceRequest {
+public class RejectPeerConnRequest extends BaseBceRequest {
 
     /**
     * peerConnId
@@ -23,7 +23,7 @@ public class ReleasePeerToPeerConnectionRequest extends BaseBceRequest {
         return peerConnId;
     }
 
-    public ReleasePeerToPeerConnectionRequest setPeerConnId(String peerConnId) {
+    public RejectPeerConnRequest setPeerConnId(String peerConnId) {
         this.peerConnId = peerConnId;
         return this;
     }
@@ -32,7 +32,7 @@ public class ReleasePeerToPeerConnectionRequest extends BaseBceRequest {
         return clientToken;
     }
 
-    public ReleasePeerToPeerConnectionRequest setClientToken(String clientToken) {
+    public RejectPeerConnRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }

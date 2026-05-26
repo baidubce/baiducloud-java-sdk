@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class QueryTheListOfPeerConnectionsRequest extends BaseBceRequest {
+public class ListPeerConnRequest extends BaseBceRequest {
 
     /**
     * vpcId
@@ -29,7 +29,7 @@ public class QueryTheListOfPeerConnectionsRequest extends BaseBceRequest {
         return vpcId;
     }
 
-    public QueryTheListOfPeerConnectionsRequest setVpcId(String vpcId) {
+    public ListPeerConnRequest setVpcId(String vpcId) {
         this.vpcId = vpcId;
         return this;
     }
@@ -38,7 +38,7 @@ public class QueryTheListOfPeerConnectionsRequest extends BaseBceRequest {
         return marker;
     }
 
-    public QueryTheListOfPeerConnectionsRequest setMarker(String marker) {
+    public ListPeerConnRequest setMarker(String marker) {
         this.marker = marker;
         return this;
     }
@@ -47,7 +47,7 @@ public class QueryTheListOfPeerConnectionsRequest extends BaseBceRequest {
         return maxKeys;
     }
 
-    public QueryTheListOfPeerConnectionsRequest setMaxKeys(Integer maxKeys) {
+    public ListPeerConnRequest setMaxKeys(Integer maxKeys) {
         this.maxKeys = maxKeys;
         return this;
     }

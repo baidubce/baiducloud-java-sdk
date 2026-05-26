@@ -4,9 +4,11 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.vpc.VpcClient;
-import com.baidubce.vpc.models.ReleasePeerToPeerConnectionRequest;
+import com.baidubce.vpc.models.RenewPeerConnRequest;
+import com.baidubce.vpc.models.Reservation;
+import com.baidubce.vpc.models.Billing;
 
-public class ExampleReleasePeerToPeerConnection {
+public class ExampleRenewPeerConn {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -16,11 +18,20 @@ public class ExampleReleasePeerToPeerConnection {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         VpcClient client = new VpcClient(config);
-        ReleasePeerToPeerConnectionRequest releasePeerToPeerConnectionRequest = new ReleasePeerToPeerConnectionRequest();
-        releasePeerToPeerConnectionRequest.setPeerConnId("");
-        releasePeerToPeerConnectionRequest.setClientToken("");
+        Billing billing = new Billing();
+        billing.setPaymentTiming("");
+        Reservation reservation = new Reservation();
+        reservation.setReservationLength(0);
+        reservation.setReservationTimeUnit("");
+
+        billing.setReservation(reservation);
+
+        RenewPeerConnRequest renewPeerConnRequest = new RenewPeerConnRequest();
+        renewPeerConnRequest.setPeerConnId("");
+        renewPeerConnRequest.setClientToken("");
+        renewPeerConnRequest.setBilling(billing);
         try {
-            client.releasePeerToPeerConnection(releasePeerToPeerConnectionRequest);
+            client.renewPeerConn(renewPeerConnRequest);
         } catch (BceClientException e) {
             // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());

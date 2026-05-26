@@ -4,9 +4,10 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.vpc.VpcClient;
-import com.baidubce.vpc.models.EnablePeerToPeerConnectionToSynchronizeDnsRequest;
+import com.baidubce.vpc.models.GetPeerConnRequest;
+import com.baidubce.vpc.models.GetPeerConnResponse;
 
-public class ExampleEnablePeerToPeerConnectionToSynchronizeDns {
+public class ExampleGetPeerConn {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -16,14 +17,13 @@ public class ExampleEnablePeerToPeerConnectionToSynchronizeDns {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         VpcClient client = new VpcClient(config);
-        EnablePeerToPeerConnectionToSynchronizeDnsRequest enablePeerToPeerConnectionToSynchronizeDnsRequest = new EnablePeerToPeerConnectionToSynchronizeDnsRequest();
-        enablePeerToPeerConnectionToSynchronizeDnsRequest.setPeerConnId("");
-        enablePeerToPeerConnectionToSynchronizeDnsRequest.setRole("");
-        enablePeerToPeerConnectionToSynchronizeDnsRequest.setClientToken("");
+        GetPeerConnRequest getPeerConnRequest = new GetPeerConnRequest();
+        getPeerConnRequest.setPeerConnId("");
+        getPeerConnRequest.setRole("");
         try {
-            client.enablePeerToPeerConnectionToSynchronizeDns(enablePeerToPeerConnectionToSynchronizeDnsRequest);
+            GetPeerConnResponse response = client.getPeerConn(getPeerConnRequest);
+            System.out.println(response.toJsonString());
         } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

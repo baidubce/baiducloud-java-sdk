@@ -6,7 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreateAPeerToPeerConnectionRequest extends BaseBceRequest {
+public class CreatePeerConnRequest extends BaseBceRequest {
 
     /**
     * clientToken
@@ -78,7 +78,7 @@ public class CreateAPeerToPeerConnectionRequest extends BaseBceRequest {
         return clientToken;
     }
 
-    public CreateAPeerToPeerConnectionRequest setClientToken(String clientToken) {
+    public CreatePeerConnRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
@@ -87,7 +87,7 @@ public class CreateAPeerToPeerConnectionRequest extends BaseBceRequest {
         return bandwidthInMbps;
     }
 
-    public CreateAPeerToPeerConnectionRequest setBandwidthInMbps(Integer bandwidthInMbps) {
+    public CreatePeerConnRequest setBandwidthInMbps(Integer bandwidthInMbps) {
         this.bandwidthInMbps = bandwidthInMbps;
         return this;
     }
@@ -96,7 +96,7 @@ public class CreateAPeerToPeerConnectionRequest extends BaseBceRequest {
         return description;
     }
 
-    public CreateAPeerToPeerConnectionRequest setDescription(String description) {
+    public CreatePeerConnRequest setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -105,7 +105,7 @@ public class CreateAPeerToPeerConnectionRequest extends BaseBceRequest {
         return localIfName;
     }
 
-    public CreateAPeerToPeerConnectionRequest setLocalIfName(String localIfName) {
+    public CreatePeerConnRequest setLocalIfName(String localIfName) {
         this.localIfName = localIfName;
         return this;
     }
@@ -114,7 +114,7 @@ public class CreateAPeerToPeerConnectionRequest extends BaseBceRequest {
         return localVpcId;
     }
 
-    public CreateAPeerToPeerConnectionRequest setLocalVpcId(String localVpcId) {
+    public CreatePeerConnRequest setLocalVpcId(String localVpcId) {
         this.localVpcId = localVpcId;
         return this;
     }
@@ -123,7 +123,7 @@ public class CreateAPeerToPeerConnectionRequest extends BaseBceRequest {
         return peerAccountId;
     }
 
-    public CreateAPeerToPeerConnectionRequest setPeerAccountId(String peerAccountId) {
+    public CreatePeerConnRequest setPeerAccountId(String peerAccountId) {
         this.peerAccountId = peerAccountId;
         return this;
     }
@@ -132,7 +132,7 @@ public class CreateAPeerToPeerConnectionRequest extends BaseBceRequest {
         return peerVpcId;
     }
 
-    public CreateAPeerToPeerConnectionRequest setPeerVpcId(String peerVpcId) {
+    public CreatePeerConnRequest setPeerVpcId(String peerVpcId) {
         this.peerVpcId = peerVpcId;
         return this;
     }
@@ -141,7 +141,7 @@ public class CreateAPeerToPeerConnectionRequest extends BaseBceRequest {
         return peerRegion;
     }
 
-    public CreateAPeerToPeerConnectionRequest setPeerRegion(String peerRegion) {
+    public CreatePeerConnRequest setPeerRegion(String peerRegion) {
         this.peerRegion = peerRegion;
         return this;
     }
@@ -150,7 +150,7 @@ public class CreateAPeerToPeerConnectionRequest extends BaseBceRequest {
         return peerIfName;
     }
 
-    public CreateAPeerToPeerConnectionRequest setPeerIfName(String peerIfName) {
+    public CreatePeerConnRequest setPeerIfName(String peerIfName) {
         this.peerIfName = peerIfName;
         return this;
     }
@@ -159,7 +159,7 @@ public class CreateAPeerToPeerConnectionRequest extends BaseBceRequest {
         return billing;
     }
 
-    public CreateAPeerToPeerConnectionRequest setBilling(Billing billing) {
+    public CreatePeerConnRequest setBilling(Billing billing) {
         this.billing = billing;
         return this;
     }
@@ -168,7 +168,7 @@ public class CreateAPeerToPeerConnectionRequest extends BaseBceRequest {
         return tags;
     }
 
-    public CreateAPeerToPeerConnectionRequest setTags(List<TagModel> tags) {
+    public CreatePeerConnRequest setTags(List<TagModel> tags) {
         this.tags = tags;
         return this;
     }
@@ -177,7 +177,7 @@ public class CreateAPeerToPeerConnectionRequest extends BaseBceRequest {
         return resourceGroupId;
     }
 
-    public CreateAPeerToPeerConnectionRequest setResourceGroupId(String resourceGroupId) {
+    public CreatePeerConnRequest setResourceGroupId(String resourceGroupId) {
         this.resourceGroupId = resourceGroupId;
         return this;
     }
@@ -186,7 +186,7 @@ public class CreateAPeerToPeerConnectionRequest extends BaseBceRequest {
         return deleteProtect;
     }
 
-    public CreateAPeerToPeerConnectionRequest setDeleteProtect(Boolean deleteProtect) {
+    public CreatePeerConnRequest setDeleteProtect(Boolean deleteProtect) {
         this.deleteProtect = deleteProtect;
         return this;
     }

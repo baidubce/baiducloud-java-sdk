@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PrepaidPeerToPeerConnectionUnsubscribeRequest extends BaseBceRequest {
+public class RenewPeerConnRequest extends BaseBceRequest {
 
     /**
     * peerConnId
@@ -19,11 +19,16 @@ public class PrepaidPeerToPeerConnectionUnsubscribeRequest extends BaseBceReques
     @JsonIgnore
     private String clientToken;
 
+    /**
+    * billing
+    */
+    private Billing billing;
+
     public String getPeerConnId() {
         return peerConnId;
     }
 
-    public PrepaidPeerToPeerConnectionUnsubscribeRequest setPeerConnId(String peerConnId) {
+    public RenewPeerConnRequest setPeerConnId(String peerConnId) {
         this.peerConnId = peerConnId;
         return this;
     }
@@ -32,8 +37,17 @@ public class PrepaidPeerToPeerConnectionUnsubscribeRequest extends BaseBceReques
         return clientToken;
     }
 
-    public PrepaidPeerToPeerConnectionUnsubscribeRequest setClientToken(String clientToken) {
+    public RenewPeerConnRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
+        return this;
+    }
+
+    public Billing getBilling() {
+        return billing;
+    }
+
+    public RenewPeerConnRequest setBilling(Billing billing) {
+        this.billing = billing;
         return this;
     }
 

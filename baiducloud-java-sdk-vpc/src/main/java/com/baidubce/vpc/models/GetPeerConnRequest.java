@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest extends BaseBceRequest {
+public class GetPeerConnRequest extends BaseBceRequest {
 
     /**
     * peerConnId
@@ -14,25 +14,26 @@ public class UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest extends Ba
     private String peerConnId;
 
     /**
-    * 是否开启释放保护
+    * role
     */
-    private Boolean deleteProtect;
+    @JsonIgnore
+    private String role;
 
     public String getPeerConnId() {
         return peerConnId;
     }
 
-    public UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest setPeerConnId(String peerConnId) {
+    public GetPeerConnRequest setPeerConnId(String peerConnId) {
         this.peerConnId = peerConnId;
         return this;
     }
 
-    public Boolean getDeleteProtect() {
-        return deleteProtect;
+    public String getRole() {
+        return role;
     }
 
-    public UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest setDeleteProtect(Boolean deleteProtect) {
-        this.deleteProtect = deleteProtect;
+    public GetPeerConnRequest setRole(String role) {
+        this.role = role;
         return this;
     }
 

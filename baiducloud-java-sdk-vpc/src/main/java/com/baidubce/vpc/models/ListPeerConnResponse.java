@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class QueryTheListOfPeerConnectionsResponse extends BaseBceResponse {
+public class ListPeerConnResponse extends BaseBceResponse {
 
     /**
     * 包含查询结果的列表
@@ -36,7 +36,7 @@ public class QueryTheListOfPeerConnectionsResponse extends BaseBceResponse {
         return peerConns;
     }
 
-    public QueryTheListOfPeerConnectionsResponse setPeerConns(List<PeerConn> peerConns) {
+    public ListPeerConnResponse setPeerConns(List<PeerConn> peerConns) {
         this.peerConns = peerConns;
         return this;
     }
@@ -45,7 +45,7 @@ public class QueryTheListOfPeerConnectionsResponse extends BaseBceResponse {
         return marker;
     }
 
-    public QueryTheListOfPeerConnectionsResponse setMarker(String marker) {
+    public ListPeerConnResponse setMarker(String marker) {
         this.marker = marker;
         return this;
     }
@@ -54,7 +54,7 @@ public class QueryTheListOfPeerConnectionsResponse extends BaseBceResponse {
         return isTruncated;
     }
 
-    public QueryTheListOfPeerConnectionsResponse setIsTruncated(Boolean isTruncated) {
+    public ListPeerConnResponse setIsTruncated(Boolean isTruncated) {
         this.isTruncated = isTruncated;
         return this;
     }
@@ -63,7 +63,7 @@ public class QueryTheListOfPeerConnectionsResponse extends BaseBceResponse {
         return nextMarker;
     }
 
-    public QueryTheListOfPeerConnectionsResponse setNextMarker(String nextMarker) {
+    public ListPeerConnResponse setNextMarker(String nextMarker) {
         this.nextMarker = nextMarker;
         return this;
     }
@@ -72,15 +72,15 @@ public class QueryTheListOfPeerConnectionsResponse extends BaseBceResponse {
         return maxKeys;
     }
 
-    public QueryTheListOfPeerConnectionsResponse setMaxKeys(Integer maxKeys) {
+    public ListPeerConnResponse setMaxKeys(Integer maxKeys) {
         this.maxKeys = maxKeys;
         return this;
     }
 
     @Override
     public String toString() {
-        return "QueryTheListOfPeerConnectionsResponse{" + "peerConns=" + peerConns + "\n" + "marker=" + marker + "\n" + "isTruncated=" + isTruncated + "\n" + "nextMarker="
-                + nextMarker + "\n" + "maxKeys=" + maxKeys + "\n" + "}";
+        return "ListPeerConnResponse{" + "peerConns=" + peerConns + "\n" + "marker=" + marker + "\n" + "isTruncated=" + isTruncated + "\n" + "nextMarker=" + nextMarker + "\n"
+                + "maxKeys=" + maxKeys + "\n" + "}";
     }
 
 }

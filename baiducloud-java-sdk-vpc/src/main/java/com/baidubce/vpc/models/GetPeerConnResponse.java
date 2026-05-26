@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
+public class GetPeerConnResponse extends BaseBceResponse {
 
     /**
     * 对等连接的ID
@@ -18,9 +18,9 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
     private String role;
 
     /**
-    * status
+    * 对等连接的状态
     */
-    private PeerConnStatus status;
+    private String status;
 
     /**
     * 对等连接的带宽
@@ -78,9 +78,9 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
     private String expiredTime;
 
     /**
-    * dnsStatus
+    * 对等连接同步dns的状态
     */
-    private DnsStatus dnsStatus;
+    private String dnsStatus;
 
     /**
     * 对等连接的计费类型 \"Prepaid\"为预付费 \"Postpaid\"为后付费
@@ -101,7 +101,7 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return peerConnId;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setPeerConnId(String peerConnId) {
+    public GetPeerConnResponse setPeerConnId(String peerConnId) {
         this.peerConnId = peerConnId;
         return this;
     }
@@ -110,16 +110,16 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return role;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setRole(String role) {
+    public GetPeerConnResponse setRole(String role) {
         this.role = role;
         return this;
     }
 
-    public PeerConnStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setStatus(PeerConnStatus status) {
+    public GetPeerConnResponse setStatus(String status) {
         this.status = status;
         return this;
     }
@@ -128,7 +128,7 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return bandwidthInMbps;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setBandwidthInMbps(Integer bandwidthInMbps) {
+    public GetPeerConnResponse setBandwidthInMbps(Integer bandwidthInMbps) {
         this.bandwidthInMbps = bandwidthInMbps;
         return this;
     }
@@ -137,7 +137,7 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return description;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setDescription(String description) {
+    public GetPeerConnResponse setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -146,7 +146,7 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return localIfId;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setLocalIfId(String localIfId) {
+    public GetPeerConnResponse setLocalIfId(String localIfId) {
         this.localIfId = localIfId;
         return this;
     }
@@ -155,7 +155,7 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return localIfName;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setLocalIfName(String localIfName) {
+    public GetPeerConnResponse setLocalIfName(String localIfName) {
         this.localIfName = localIfName;
         return this;
     }
@@ -164,7 +164,7 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return localVpcId;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setLocalVpcId(String localVpcId) {
+    public GetPeerConnResponse setLocalVpcId(String localVpcId) {
         this.localVpcId = localVpcId;
         return this;
     }
@@ -173,7 +173,7 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return localRegion;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setLocalRegion(String localRegion) {
+    public GetPeerConnResponse setLocalRegion(String localRegion) {
         this.localRegion = localRegion;
         return this;
     }
@@ -182,7 +182,7 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return peerVpcId;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setPeerVpcId(String peerVpcId) {
+    public GetPeerConnResponse setPeerVpcId(String peerVpcId) {
         this.peerVpcId = peerVpcId;
         return this;
     }
@@ -191,7 +191,7 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return peerRegion;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setPeerRegion(String peerRegion) {
+    public GetPeerConnResponse setPeerRegion(String peerRegion) {
         this.peerRegion = peerRegion;
         return this;
     }
@@ -200,7 +200,7 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return peerAccountId;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setPeerAccountId(String peerAccountId) {
+    public GetPeerConnResponse setPeerAccountId(String peerAccountId) {
         this.peerAccountId = peerAccountId;
         return this;
     }
@@ -209,7 +209,7 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return createdTime;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setCreatedTime(String createdTime) {
+    public GetPeerConnResponse setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
         return this;
     }
@@ -218,16 +218,16 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return expiredTime;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setExpiredTime(String expiredTime) {
+    public GetPeerConnResponse setExpiredTime(String expiredTime) {
         this.expiredTime = expiredTime;
         return this;
     }
 
-    public DnsStatus getDnsStatus() {
+    public String getDnsStatus() {
         return dnsStatus;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setDnsStatus(DnsStatus dnsStatus) {
+    public GetPeerConnResponse setDnsStatus(String dnsStatus) {
         this.dnsStatus = dnsStatus;
         return this;
     }
@@ -236,7 +236,7 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return paymentTiming;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setPaymentTiming(String paymentTiming) {
+    public GetPeerConnResponse setPaymentTiming(String paymentTiming) {
         this.paymentTiming = paymentTiming;
         return this;
     }
@@ -245,7 +245,7 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return tags;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setTags(List<TagModel> tags) {
+    public GetPeerConnResponse setTags(List<TagModel> tags) {
         this.tags = tags;
         return this;
     }
@@ -254,18 +254,18 @@ public class ViewPeerToPeerConnectionDetailsResponse extends BaseBceResponse {
         return deleteProtect;
     }
 
-    public ViewPeerToPeerConnectionDetailsResponse setDeleteProtect(Boolean deleteProtect) {
+    public GetPeerConnResponse setDeleteProtect(Boolean deleteProtect) {
         this.deleteProtect = deleteProtect;
         return this;
     }
 
     @Override
     public String toString() {
-        return "ViewPeerToPeerConnectionDetailsResponse{" + "peerConnId=" + peerConnId + "\n" + "role=" + role + "\n" + "status=" + status + "\n" + "bandwidthInMbps="
-                + bandwidthInMbps + "\n" + "description=" + description + "\n" + "localIfId=" + localIfId + "\n" + "localIfName=" + localIfName + "\n" + "localVpcId=" + localVpcId
-                + "\n" + "localRegion=" + localRegion + "\n" + "peerVpcId=" + peerVpcId + "\n" + "peerRegion=" + peerRegion + "\n" + "peerAccountId=" + peerAccountId + "\n"
-                + "createdTime=" + createdTime + "\n" + "expiredTime=" + expiredTime + "\n" + "dnsStatus=" + dnsStatus + "\n" + "paymentTiming=" + paymentTiming + "\n" + "tags="
-                + tags + "\n" + "deleteProtect=" + deleteProtect + "\n" + "}";
+        return "GetPeerConnResponse{" + "peerConnId=" + peerConnId + "\n" + "role=" + role + "\n" + "status=" + status + "\n" + "bandwidthInMbps=" + bandwidthInMbps + "\n"
+                + "description=" + description + "\n" + "localIfId=" + localIfId + "\n" + "localIfName=" + localIfName + "\n" + "localVpcId=" + localVpcId + "\n" + "localRegion="
+                + localRegion + "\n" + "peerVpcId=" + peerVpcId + "\n" + "peerRegion=" + peerRegion + "\n" + "peerAccountId=" + peerAccountId + "\n" + "createdTime=" + createdTime
+                + "\n" + "expiredTime=" + expiredTime + "\n" + "dnsStatus=" + dnsStatus + "\n" + "paymentTiming=" + paymentTiming + "\n" + "tags=" + tags + "\n" + "deleteProtect="
+                + deleteProtect + "\n" + "}";
     }
 
 }

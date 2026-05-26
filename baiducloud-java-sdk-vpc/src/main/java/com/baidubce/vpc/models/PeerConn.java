@@ -15,9 +15,9 @@ public class PeerConn {
     private String role;
 
     /**
-     * status
+     * 对等连接状态
      */
-    private PeerConnStatus status;
+    private String status;
 
     /**
      * 对等连接的带宽
@@ -70,9 +70,9 @@ public class PeerConn {
     private String paymentTiming;
 
     /**
-     * dnsStatus
+     * DNS同步状态
      */
-    private DnsStatus dnsStatus;
+    private String dnsStatus;
 
     /**
      * 对等连接的创建时间
@@ -102,12 +102,12 @@ public class PeerConn {
         return this.role;
     }
 
-    public PeerConn setStatus(PeerConnStatus status) {
+    public PeerConn setStatus(String status) {
         this.status = status;
         return this;
     }
 
-    public PeerConnStatus getStatus() {
+    public String getStatus() {
         return this.status;
     }
 
@@ -201,12 +201,12 @@ public class PeerConn {
         return this.paymentTiming;
     }
 
-    public PeerConn setDnsStatus(DnsStatus dnsStatus) {
+    public PeerConn setDnsStatus(String dnsStatus) {
         this.dnsStatus = dnsStatus;
         return this;
     }
 
-    public DnsStatus getDnsStatus() {
+    public String getDnsStatus() {
         return this.dnsStatus;
     }
 

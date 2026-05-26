@@ -5,19 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class EnablePeerToPeerConnectionToSynchronizeDnsRequest extends BaseBceRequest {
+public class AcceptPeerConnRequest extends BaseBceRequest {
 
     /**
     * peerConnId
     */
     @JsonIgnore
     private String peerConnId;
-
-    /**
-    * role
-    */
-    @JsonIgnore
-    private String role;
 
     /**
     * clientToken
@@ -29,17 +23,8 @@ public class EnablePeerToPeerConnectionToSynchronizeDnsRequest extends BaseBceRe
         return peerConnId;
     }
 
-    public EnablePeerToPeerConnectionToSynchronizeDnsRequest setPeerConnId(String peerConnId) {
+    public AcceptPeerConnRequest setPeerConnId(String peerConnId) {
         this.peerConnId = peerConnId;
-        return this;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public EnablePeerToPeerConnectionToSynchronizeDnsRequest setRole(String role) {
-        this.role = role;
         return this;
     }
 
@@ -47,7 +32,7 @@ public class EnablePeerToPeerConnectionToSynchronizeDnsRequest extends BaseBceRe
         return clientToken;
     }
 
-    public EnablePeerToPeerConnectionToSynchronizeDnsRequest setClientToken(String clientToken) {
+    public AcceptPeerConnRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }

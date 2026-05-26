@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PeerToPeerConnectionRenewalRequest extends BaseBceRequest {
+public class UpdatePeerConnDeleteProtectRequest extends BaseBceRequest {
 
     /**
     * peerConnId
@@ -20,15 +20,15 @@ public class PeerToPeerConnectionRenewalRequest extends BaseBceRequest {
     private String clientToken;
 
     /**
-    * billing
+    * 是否开启释放保护
     */
-    private Billing billing;
+    private Boolean deleteProtect;
 
     public String getPeerConnId() {
         return peerConnId;
     }
 
-    public PeerToPeerConnectionRenewalRequest setPeerConnId(String peerConnId) {
+    public UpdatePeerConnDeleteProtectRequest setPeerConnId(String peerConnId) {
         this.peerConnId = peerConnId;
         return this;
     }
@@ -37,17 +37,17 @@ public class PeerToPeerConnectionRenewalRequest extends BaseBceRequest {
         return clientToken;
     }
 
-    public PeerToPeerConnectionRenewalRequest setClientToken(String clientToken) {
+    public UpdatePeerConnDeleteProtectRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
 
-    public Billing getBilling() {
-        return billing;
+    public Boolean getDeleteProtect() {
+        return deleteProtect;
     }
 
-    public PeerToPeerConnectionRenewalRequest setBilling(Billing billing) {
-        this.billing = billing;
+    public UpdatePeerConnDeleteProtectRequest setDeleteProtect(Boolean deleteProtect) {
+        this.deleteProtect = deleteProtect;
         return this;
     }
 

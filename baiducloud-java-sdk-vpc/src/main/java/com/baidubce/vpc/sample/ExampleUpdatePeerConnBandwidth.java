@@ -4,10 +4,9 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.vpc.VpcClient;
-import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsRequest;
-import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsResponse;
+import com.baidubce.vpc.models.UpdatePeerConnBandwidthRequest;
 
-public class ExampleQueryTheListOfPeerConnections {
+public class ExampleUpdatePeerConnBandwidth {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -17,14 +16,14 @@ public class ExampleQueryTheListOfPeerConnections {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         VpcClient client = new VpcClient(config);
-        QueryTheListOfPeerConnectionsRequest queryTheListOfPeerConnectionsRequest = new QueryTheListOfPeerConnectionsRequest();
-        queryTheListOfPeerConnectionsRequest.setVpcId("");
-        queryTheListOfPeerConnectionsRequest.setMarker("");
-        queryTheListOfPeerConnectionsRequest.setMaxKeys(0);
+        UpdatePeerConnBandwidthRequest updatePeerConnBandwidthRequest = new UpdatePeerConnBandwidthRequest();
+        updatePeerConnBandwidthRequest.setPeerConnId("");
+        updatePeerConnBandwidthRequest.setClientToken("");
+        updatePeerConnBandwidthRequest.setNewBandwidthInMbps(0);
         try {
-            QueryTheListOfPeerConnectionsResponse response = client.queryTheListOfPeerConnections(queryTheListOfPeerConnectionsRequest);
-            System.out.println(response.toJsonString());
+            client.updatePeerConnBandwidth(updatePeerConnBandwidthRequest);
         } catch (BceClientException e) {
+            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

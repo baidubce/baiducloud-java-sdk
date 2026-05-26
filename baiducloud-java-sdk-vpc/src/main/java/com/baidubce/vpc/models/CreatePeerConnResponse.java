@@ -4,7 +4,7 @@ import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreateAPeerToPeerConnectionResponse extends BaseBceResponse {
+public class CreatePeerConnResponse extends BaseBceResponse {
 
     /**
     * 创建的对等连接ID
@@ -15,14 +15,14 @@ public class CreateAPeerToPeerConnectionResponse extends BaseBceResponse {
         return peerConnId;
     }
 
-    public CreateAPeerToPeerConnectionResponse setPeerConnId(String peerConnId) {
+    public CreatePeerConnResponse setPeerConnId(String peerConnId) {
         this.peerConnId = peerConnId;
         return this;
     }
 
     @Override
     public String toString() {
-        return "CreateAPeerToPeerConnectionResponse{" + "peerConnId=" + peerConnId + "\n" + "}";
+        return "CreatePeerConnResponse{" + "peerConnId=" + peerConnId + "\n" + "}";
     }
 
 }

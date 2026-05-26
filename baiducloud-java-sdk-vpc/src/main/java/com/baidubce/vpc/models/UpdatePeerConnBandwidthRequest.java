@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest extends BaseBceRequest {
+public class UpdatePeerConnBandwidthRequest extends BaseBceRequest {
 
     /**
     * peerConnId
@@ -28,7 +28,7 @@ public class PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest extends Bas
         return peerConnId;
     }
 
-    public PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest setPeerConnId(String peerConnId) {
+    public UpdatePeerConnBandwidthRequest setPeerConnId(String peerConnId) {
         this.peerConnId = peerConnId;
         return this;
     }
@@ -37,7 +37,7 @@ public class PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest extends Bas
         return clientToken;
     }
 
-    public PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest setClientToken(String clientToken) {
+    public UpdatePeerConnBandwidthRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
@@ -46,7 +46,7 @@ public class PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest extends Bas
         return newBandwidthInMbps;
     }
 
-    public PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest setNewBandwidthInMbps(Integer newBandwidthInMbps) {
+    public UpdatePeerConnBandwidthRequest setNewBandwidthInMbps(Integer newBandwidthInMbps) {
         this.newBandwidthInMbps = newBandwidthInMbps;
         return this;
     }

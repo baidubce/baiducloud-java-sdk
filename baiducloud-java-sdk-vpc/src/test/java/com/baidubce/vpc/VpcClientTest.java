@@ -1,6 +1,6 @@
 package com.baidubce.vpc;
 
-import com.baidubce.vpc.models.AcceptPeerToPeerConnectionApplicationsRequest;
+import com.baidubce.vpc.models.AcceptPeerConnRequest;
 import com.baidubce.vpc.models.ActiveStandbySwitchoverRequest;
 import com.baidubce.vpc.models.AddAclRuleRequest;
 import com.baidubce.vpc.models.AddElasticNetworkCardAuxiliaryIpRequest;
@@ -22,12 +22,10 @@ import com.baidubce.vpc.models.BatchIncreaseElasticNetworkCardIntranetIpRequest;
 import com.baidubce.vpc.models.BatchIncreaseElasticNetworkCardIntranetIpResponse;
 import com.baidubce.vpc.models.BindEipRequest;
 import com.baidubce.vpc.models.BindPhysicalDedicatedLineRequest;
-import com.baidubce.vpc.models.ClosePeerToPeerConnectionToSynchronizeDnsRequest;
+import com.baidubce.vpc.models.ClosePeerConnSyncDnsRequest;
 import com.baidubce.vpc.models.CloseVpcRelayRequest;
 import com.baidubce.vpc.models.CreateAHighlyAvailableVirtualIpRequest;
 import com.baidubce.vpc.models.CreateAHighlyAvailableVirtualIpResponse;
-import com.baidubce.vpc.models.CreateAPeerToPeerConnectionRequest;
-import com.baidubce.vpc.models.CreateAPeerToPeerConnectionResponse;
 import com.baidubce.vpc.models.CreateARegularSecurityGroupV2Request;
 import com.baidubce.vpc.models.CreateARegularSecurityGroupV2Response;
 import com.baidubce.vpc.models.CreateAnIpv6GatewayRequest;
@@ -55,6 +53,8 @@ import com.baidubce.vpc.models.CreateNatRequest;
 import com.baidubce.vpc.models.CreateNatResponse;
 import com.baidubce.vpc.models.CreateNetworkDetectionRequest;
 import com.baidubce.vpc.models.CreateNetworkDetectionResponse;
+import com.baidubce.vpc.models.CreatePeerConnRequest;
+import com.baidubce.vpc.models.CreatePeerConnResponse;
 import com.baidubce.vpc.models.CreateRoutingRulesRequest;
 import com.baidubce.vpc.models.CreateRoutingRulesResponse;
 import com.baidubce.vpc.models.CreateSnatRuleRequest;
@@ -102,9 +102,10 @@ import com.baidubce.vpc.models.ElasticNetworkCardUnbindingEipRequest;
 import com.baidubce.vpc.models.ElasticNetworkCardUninstallationCloudProductInstanceRequest;
 import com.baidubce.vpc.models.ElasticNetworkCardUpdateEnterpriseSecurityGroupRequest;
 import com.baidubce.vpc.models.ElasticNetworkCardUpdatesRegularSecurityGroupRequest;
-import com.baidubce.vpc.models.EnablePeerToPeerConnectionToSynchronizeDnsRequest;
 import com.baidubce.vpc.models.GetNatRequest;
 import com.baidubce.vpc.models.GetNatResponse;
+import com.baidubce.vpc.models.GetPeerConnRequest;
+import com.baidubce.vpc.models.GetPeerConnResponse;
 import com.baidubce.vpc.models.GetVpcResourceIpInfoRequest;
 import com.baidubce.vpc.models.GetVpcResourceIpInfoResponse;
 import com.baidubce.vpc.models.HighAvailabilityVirtualIpUnbindingEipRequest;
@@ -118,16 +119,16 @@ import com.baidubce.vpc.models.ListIpReserveRequest;
 import com.baidubce.vpc.models.ListIpReserveResponse;
 import com.baidubce.vpc.models.ListNatRequest;
 import com.baidubce.vpc.models.ListNatResponse;
+import com.baidubce.vpc.models.ListPeerConnRequest;
+import com.baidubce.vpc.models.ListPeerConnResponse;
 import com.baidubce.vpc.models.ListSnatRuleRequest;
 import com.baidubce.vpc.models.ListSnatRuleResponse;
 import com.baidubce.vpc.models.ModifyGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.ModifyNatRequest;
 import com.baidubce.vpc.models.NatBindEipRequest;
 import com.baidubce.vpc.models.NatUnBindEipRequest;
+import com.baidubce.vpc.models.OpenPeerConnSyncDnsRequest;
 import com.baidubce.vpc.models.OpenVpcRelayRequest;
-import com.baidubce.vpc.models.PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest;
-import com.baidubce.vpc.models.PeerToPeerConnectionRenewalRequest;
-import com.baidubce.vpc.models.PrepaidPeerToPeerConnectionUnsubscribeRequest;
 import com.baidubce.vpc.models.PurchaseReservedNatRequest;
 import com.baidubce.vpc.models.QueryAclRequest;
 import com.baidubce.vpc.models.QueryAclResponse;
@@ -167,8 +168,6 @@ import com.baidubce.vpc.models.QueryTheListOfHighlyAvailableVirtualIpsRequest;
 import com.baidubce.vpc.models.QueryTheListOfHighlyAvailableVirtualIpsResponse;
 import com.baidubce.vpc.models.QueryTheListOfIpAddressGroupsRequest;
 import com.baidubce.vpc.models.QueryTheListOfIpAddressGroupsResponse;
-import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsRequest;
-import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsResponse;
 import com.baidubce.vpc.models.QueryTheListOfRegularSecurityGroupsV2Request;
 import com.baidubce.vpc.models.QueryTheListOfRegularSecurityGroupsV2Response;
 import com.baidubce.vpc.models.QueryTheListOfSpeedLimitPoliciesForIpv6GatewayRequest;
@@ -191,13 +190,15 @@ import com.baidubce.vpc.models.QueryVpnListRequest;
 import com.baidubce.vpc.models.QueryVpnListResponse;
 import com.baidubce.vpc.models.QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionRequest;
 import com.baidubce.vpc.models.QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionResponse;
-import com.baidubce.vpc.models.RejectPeerToPeerConnectionRequestRequest;
+import com.baidubce.vpc.models.RefundPeerConnRequest;
+import com.baidubce.vpc.models.RejectPeerConnRequest;
 import com.baidubce.vpc.models.ReleaseDedicatedGatewayRequest;
 import com.baidubce.vpc.models.ReleaseNatRequest;
-import com.baidubce.vpc.models.ReleasePeerToPeerConnectionRequest;
+import com.baidubce.vpc.models.ReleasePeerConnRequest;
 import com.baidubce.vpc.models.ReleaseVpnRequest;
 import com.baidubce.vpc.models.RemoveElasticNetworkCardRequest;
 import com.baidubce.vpc.models.RemoveIpAddressGroupFromIpAddressFamilyRequest;
+import com.baidubce.vpc.models.RenewPeerConnRequest;
 import com.baidubce.vpc.models.RenewVpnRequest;
 import com.baidubce.vpc.models.ResizeNatRequest;
 import com.baidubce.vpc.models.RevokeRegularSecurityGroupRulesV2Request;
@@ -219,14 +220,15 @@ import com.baidubce.vpc.models.UpdateIpv6GatewayReleaseProtectionSwitchRequest;
 import com.baidubce.vpc.models.UpdateIpv6GatewaySpeedLimitPolicyRequest;
 import com.baidubce.vpc.models.UpdateNatReleaseProtectionSwitchRequest;
 import com.baidubce.vpc.models.UpdateNetworkDetectionRequest;
-import com.baidubce.vpc.models.UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest;
+import com.baidubce.vpc.models.UpdatePeerConnBandwidthRequest;
+import com.baidubce.vpc.models.UpdatePeerConnDeleteProtectRequest;
+import com.baidubce.vpc.models.UpdatePeerConnRequest;
 import com.baidubce.vpc.models.UpdateRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.UpdateRoutingRulesRequest;
 import com.baidubce.vpc.models.UpdateSnatRuleRequest;
 import com.baidubce.vpc.models.UpdateSslVpnServerRequest;
 import com.baidubce.vpc.models.UpdateSslVpnUsersRequest;
 import com.baidubce.vpc.models.UpdateSubnetRequest;
-import com.baidubce.vpc.models.UpdateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest;
 import com.baidubce.vpc.models.UpdateUserGatewayRequest;
 import com.baidubce.vpc.models.UpdateVpcRequest;
 import com.baidubce.vpc.models.UpdateVpnReleaseProtectionRequest;
@@ -238,8 +240,6 @@ import com.baidubce.vpc.models.UserGatewayListRequest;
 import com.baidubce.vpc.models.UserGatewayListResponse;
 import com.baidubce.vpc.models.ViewGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.ViewGatewayLimitRulesResponse;
-import com.baidubce.vpc.models.ViewPeerToPeerConnectionDetailsRequest;
-import com.baidubce.vpc.models.ViewPeerToPeerConnectionDetailsResponse;
 import com.baidubce.vpc.models.ViewSecurityGroupDetailsV2Request;
 import com.baidubce.vpc.models.ViewSecurityGroupDetailsV2Response;
 import org.junit.Test;
@@ -265,15 +265,15 @@ public class VpcClientTest {
     }
 
     /**
-     * acceptPeerToPeerConnectionApplications
+     * acceptPeerConn
      *
      */
     @Test
-    public void acceptPeerToPeerConnectionApplicationsTest() {
-        AcceptPeerToPeerConnectionApplicationsRequest acceptPeerToPeerConnectionApplicationsRequest = new AcceptPeerToPeerConnectionApplicationsRequest();
-        acceptPeerToPeerConnectionApplicationsRequest.setPeerConnId("");
-        acceptPeerToPeerConnectionApplicationsRequest.setClientToken("");
-        vpcClient.acceptPeerToPeerConnectionApplications(acceptPeerToPeerConnectionApplicationsRequest);
+    public void acceptPeerConnTest() {
+        AcceptPeerConnRequest acceptPeerConnRequest = new AcceptPeerConnRequest();
+        acceptPeerConnRequest.setPeerConnId("");
+        acceptPeerConnRequest.setClientToken("");
+        vpcClient.acceptPeerConn(acceptPeerConnRequest);
     }
     /**
      * activeStandbySwitchover
@@ -466,16 +466,16 @@ public class VpcClientTest {
         vpcClient.bindPhysicalDedicatedLine(bindPhysicalDedicatedLineRequest);
     }
     /**
-     * closePeerToPeerConnectionToSynchronizeDns
+     * closePeerConnSyncDns
      *
      */
     @Test
-    public void closePeerToPeerConnectionToSynchronizeDnsTest() {
-        ClosePeerToPeerConnectionToSynchronizeDnsRequest closePeerToPeerConnectionToSynchronizeDnsRequest = new ClosePeerToPeerConnectionToSynchronizeDnsRequest();
-        closePeerToPeerConnectionToSynchronizeDnsRequest.setPeerConnId("");
-        closePeerToPeerConnectionToSynchronizeDnsRequest.setRole("");
-        closePeerToPeerConnectionToSynchronizeDnsRequest.setClientToken("");
-        vpcClient.closePeerToPeerConnectionToSynchronizeDns(closePeerToPeerConnectionToSynchronizeDnsRequest);
+    public void closePeerConnSyncDnsTest() {
+        ClosePeerConnSyncDnsRequest closePeerConnSyncDnsRequest = new ClosePeerConnSyncDnsRequest();
+        closePeerConnSyncDnsRequest.setPeerConnId("");
+        closePeerConnSyncDnsRequest.setRole("");
+        closePeerConnSyncDnsRequest.setClientToken("");
+        vpcClient.closePeerConnSyncDns(closePeerConnSyncDnsRequest);
     }
     /**
      * closeVpcRelay
@@ -501,29 +501,6 @@ public class VpcClientTest {
         createAHighlyAvailableVirtualIpRequest.setPrivateIpAddress("");
         createAHighlyAvailableVirtualIpRequest.setDescription("");
         CreateAHighlyAvailableVirtualIpResponse response = vpcClient.createAHighlyAvailableVirtualIp(createAHighlyAvailableVirtualIpRequest);
-        System.out.println(response);
-    }
-    /**
-     * createAPeerToPeerConnection
-     *
-     */
-    @Test
-    public void createAPeerToPeerConnectionTest() {
-        CreateAPeerToPeerConnectionRequest createAPeerToPeerConnectionRequest = new CreateAPeerToPeerConnectionRequest();
-        createAPeerToPeerConnectionRequest.setClientToken("");
-        createAPeerToPeerConnectionRequest.setBandwidthInMbps(0);
-        createAPeerToPeerConnectionRequest.setDescription("");
-        createAPeerToPeerConnectionRequest.setLocalIfName("");
-        createAPeerToPeerConnectionRequest.setLocalVpcId("");
-        createAPeerToPeerConnectionRequest.setPeerAccountId("");
-        createAPeerToPeerConnectionRequest.setPeerVpcId("");
-        createAPeerToPeerConnectionRequest.setPeerRegion("");
-        createAPeerToPeerConnectionRequest.setPeerIfName("");
-        createAPeerToPeerConnectionRequest.setBilling(null);
-        createAPeerToPeerConnectionRequest.setTags(new ArrayList<>());
-        createAPeerToPeerConnectionRequest.setResourceGroupId("");
-        createAPeerToPeerConnectionRequest.setDeleteProtect(false);
-        CreateAPeerToPeerConnectionResponse response = vpcClient.createAPeerToPeerConnection(createAPeerToPeerConnectionRequest);
         System.out.println(response);
     }
     /**
@@ -774,6 +751,29 @@ public class VpcClientTest {
         createNetworkDetectionRequest.setDestPort(0);
         createNetworkDetectionRequest.setPayload("");
         CreateNetworkDetectionResponse response = vpcClient.createNetworkDetection(createNetworkDetectionRequest);
+        System.out.println(response);
+    }
+    /**
+     * createPeerConn
+     *
+     */
+    @Test
+    public void createPeerConnTest() {
+        CreatePeerConnRequest createPeerConnRequest = new CreatePeerConnRequest();
+        createPeerConnRequest.setClientToken("");
+        createPeerConnRequest.setBandwidthInMbps(0);
+        createPeerConnRequest.setDescription("");
+        createPeerConnRequest.setLocalIfName("");
+        createPeerConnRequest.setLocalVpcId("");
+        createPeerConnRequest.setPeerAccountId("");
+        createPeerConnRequest.setPeerVpcId("");
+        createPeerConnRequest.setPeerRegion("");
+        createPeerConnRequest.setPeerIfName("");
+        createPeerConnRequest.setBilling(null);
+        createPeerConnRequest.setTags(new ArrayList<>());
+        createPeerConnRequest.setResourceGroupId("");
+        createPeerConnRequest.setDeleteProtect(false);
+        CreatePeerConnResponse response = vpcClient.createPeerConn(createPeerConnRequest);
         System.out.println(response);
     }
     /**
@@ -1278,18 +1278,6 @@ public class VpcClientTest {
         vpcClient.elasticNetworkCardUpdatesRegularSecurityGroup(elasticNetworkCardUpdatesRegularSecurityGroupRequest);
     }
     /**
-     * enablePeerToPeerConnectionToSynchronizeDns
-     *
-     */
-    @Test
-    public void enablePeerToPeerConnectionToSynchronizeDnsTest() {
-        EnablePeerToPeerConnectionToSynchronizeDnsRequest enablePeerToPeerConnectionToSynchronizeDnsRequest = new EnablePeerToPeerConnectionToSynchronizeDnsRequest();
-        enablePeerToPeerConnectionToSynchronizeDnsRequest.setPeerConnId("");
-        enablePeerToPeerConnectionToSynchronizeDnsRequest.setRole("");
-        enablePeerToPeerConnectionToSynchronizeDnsRequest.setClientToken("");
-        vpcClient.enablePeerToPeerConnectionToSynchronizeDns(enablePeerToPeerConnectionToSynchronizeDnsRequest);
-    }
-    /**
      * getNat
      *
      */
@@ -1298,6 +1286,18 @@ public class VpcClientTest {
         GetNatRequest getNatRequest = new GetNatRequest();
         getNatRequest.setNatId("");
         GetNatResponse response = vpcClient.getNat(getNatRequest);
+        System.out.println(response);
+    }
+    /**
+     * getPeerConn
+     *
+     */
+    @Test
+    public void getPeerConnTest() {
+        GetPeerConnRequest getPeerConnRequest = new GetPeerConnRequest();
+        getPeerConnRequest.setPeerConnId("");
+        getPeerConnRequest.setRole("");
+        GetPeerConnResponse response = vpcClient.getPeerConn(getPeerConnRequest);
         System.out.println(response);
     }
     /**
@@ -1419,6 +1419,19 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
+     * listPeerConn
+     *
+     */
+    @Test
+    public void listPeerConnTest() {
+        ListPeerConnRequest listPeerConnRequest = new ListPeerConnRequest();
+        listPeerConnRequest.setVpcId("");
+        listPeerConnRequest.setMarker("");
+        listPeerConnRequest.setMaxKeys(0);
+        ListPeerConnResponse response = vpcClient.listPeerConn(listPeerConnRequest);
+        System.out.println(response);
+    }
+    /**
      * listSnatRule
      *
      */
@@ -1482,6 +1495,18 @@ public class VpcClientTest {
         vpcClient.natUnBindEip(natUnBindEipRequest);
     }
     /**
+     * openPeerConnSyncDns
+     *
+     */
+    @Test
+    public void openPeerConnSyncDnsTest() {
+        OpenPeerConnSyncDnsRequest openPeerConnSyncDnsRequest = new OpenPeerConnSyncDnsRequest();
+        openPeerConnSyncDnsRequest.setPeerConnId("");
+        openPeerConnSyncDnsRequest.setRole("");
+        openPeerConnSyncDnsRequest.setClientToken("");
+        vpcClient.openPeerConnSyncDns(openPeerConnSyncDnsRequest);
+    }
+    /**
      * openVpcRelay
      *
      */
@@ -1491,42 +1516,6 @@ public class VpcClientTest {
         openVpcRelayRequest.setVpcId("");
         openVpcRelayRequest.setClientToken("");
         vpcClient.openVpcRelay(openVpcRelayRequest);
-    }
-    /**
-     * peerToPeerConnectionBandwidthUpgradeAndDowngrade
-     *
-     */
-    @Test
-    public void peerToPeerConnectionBandwidthUpgradeAndDowngradeTest() {
-        PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest peerToPeerConnectionBandwidthUpgradeAndDowngradeRequest =
-                new PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest();
-        peerToPeerConnectionBandwidthUpgradeAndDowngradeRequest.setPeerConnId("");
-        peerToPeerConnectionBandwidthUpgradeAndDowngradeRequest.setClientToken("");
-        peerToPeerConnectionBandwidthUpgradeAndDowngradeRequest.setNewBandwidthInMbps(0);
-        vpcClient.peerToPeerConnectionBandwidthUpgradeAndDowngrade(peerToPeerConnectionBandwidthUpgradeAndDowngradeRequest);
-    }
-    /**
-     * peerToPeerConnectionRenewal
-     *
-     */
-    @Test
-    public void peerToPeerConnectionRenewalTest() {
-        PeerToPeerConnectionRenewalRequest peerToPeerConnectionRenewalRequest = new PeerToPeerConnectionRenewalRequest();
-        peerToPeerConnectionRenewalRequest.setPeerConnId("");
-        peerToPeerConnectionRenewalRequest.setClientToken("");
-        peerToPeerConnectionRenewalRequest.setBilling(null);
-        vpcClient.peerToPeerConnectionRenewal(peerToPeerConnectionRenewalRequest);
-    }
-    /**
-     * prepaidPeerToPeerConnectionUnsubscribe
-     *
-     */
-    @Test
-    public void prepaidPeerToPeerConnectionUnsubscribeTest() {
-        PrepaidPeerToPeerConnectionUnsubscribeRequest prepaidPeerToPeerConnectionUnsubscribeRequest = new PrepaidPeerToPeerConnectionUnsubscribeRequest();
-        prepaidPeerToPeerConnectionUnsubscribeRequest.setPeerConnId("");
-        prepaidPeerToPeerConnectionUnsubscribeRequest.setClientToken("");
-        vpcClient.prepaidPeerToPeerConnectionUnsubscribe(prepaidPeerToPeerConnectionUnsubscribeRequest);
     }
     /**
      * purchaseReservedNat
@@ -1784,19 +1773,6 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
-     * queryTheListOfPeerConnections
-     *
-     */
-    @Test
-    public void queryTheListOfPeerConnectionsTest() {
-        QueryTheListOfPeerConnectionsRequest queryTheListOfPeerConnectionsRequest = new QueryTheListOfPeerConnectionsRequest();
-        queryTheListOfPeerConnectionsRequest.setVpcId("");
-        queryTheListOfPeerConnectionsRequest.setMarker("");
-        queryTheListOfPeerConnectionsRequest.setMaxKeys(0);
-        QueryTheListOfPeerConnectionsResponse response = vpcClient.queryTheListOfPeerConnections(queryTheListOfPeerConnectionsRequest);
-        System.out.println(response);
-    }
-    /**
      * queryTheListOfRegularSecurityGroupsV2
      *
      */
@@ -1939,15 +1915,26 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
-     * rejectPeerToPeerConnectionRequest
+     * refundPeerConn
      *
      */
     @Test
-    public void rejectPeerToPeerConnectionRequestTest() {
-        RejectPeerToPeerConnectionRequestRequest rejectPeerToPeerConnectionRequestRequest = new RejectPeerToPeerConnectionRequestRequest();
-        rejectPeerToPeerConnectionRequestRequest.setPeerConnId("");
-        rejectPeerToPeerConnectionRequestRequest.setClientToken("");
-        vpcClient.rejectPeerToPeerConnectionRequest(rejectPeerToPeerConnectionRequestRequest);
+    public void refundPeerConnTest() {
+        RefundPeerConnRequest refundPeerConnRequest = new RefundPeerConnRequest();
+        refundPeerConnRequest.setPeerConnId("");
+        refundPeerConnRequest.setClientToken("");
+        vpcClient.refundPeerConn(refundPeerConnRequest);
+    }
+    /**
+     * rejectPeerConn
+     *
+     */
+    @Test
+    public void rejectPeerConnTest() {
+        RejectPeerConnRequest rejectPeerConnRequest = new RejectPeerConnRequest();
+        rejectPeerConnRequest.setPeerConnId("");
+        rejectPeerConnRequest.setClientToken("");
+        vpcClient.rejectPeerConn(rejectPeerConnRequest);
     }
     /**
      * releaseDedicatedGateway
@@ -1972,15 +1959,15 @@ public class VpcClientTest {
         vpcClient.releaseNat(releaseNatRequest);
     }
     /**
-     * releasePeerToPeerConnection
+     * releasePeerConn
      *
      */
     @Test
-    public void releasePeerToPeerConnectionTest() {
-        ReleasePeerToPeerConnectionRequest releasePeerToPeerConnectionRequest = new ReleasePeerToPeerConnectionRequest();
-        releasePeerToPeerConnectionRequest.setPeerConnId("");
-        releasePeerToPeerConnectionRequest.setClientToken("");
-        vpcClient.releasePeerToPeerConnection(releasePeerToPeerConnectionRequest);
+    public void releasePeerConnTest() {
+        ReleasePeerConnRequest releasePeerConnRequest = new ReleasePeerConnRequest();
+        releasePeerConnRequest.setPeerConnId("");
+        releasePeerConnRequest.setClientToken("");
+        vpcClient.releasePeerConn(releasePeerConnRequest);
     }
     /**
      * releaseVpn
@@ -2015,6 +2002,18 @@ public class VpcClientTest {
         removeIpAddressGroupFromIpAddressFamilyRequest.setClientToken("");
         removeIpAddressGroupFromIpAddressFamilyRequest.setIpSetIds(new ArrayList<>());
         vpcClient.removeIpAddressGroupFromIpAddressFamily(removeIpAddressGroupFromIpAddressFamilyRequest);
+    }
+    /**
+     * renewPeerConn
+     *
+     */
+    @Test
+    public void renewPeerConnTest() {
+        RenewPeerConnRequest renewPeerConnRequest = new RenewPeerConnRequest();
+        renewPeerConnRequest.setPeerConnId("");
+        renewPeerConnRequest.setClientToken("");
+        renewPeerConnRequest.setBilling(null);
+        vpcClient.renewPeerConn(renewPeerConnRequest);
     }
     /**
      * renewVpn
@@ -2282,16 +2281,42 @@ public class VpcClientTest {
         vpcClient.updateNetworkDetection(updateNetworkDetectionRequest);
     }
     /**
-     * updatePeerToPeerConnectionReleaseProtectionSwitch
+     * updatePeerConn
      *
      */
     @Test
-    public void updatePeerToPeerConnectionReleaseProtectionSwitchTest() {
-        UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest updatePeerToPeerConnectionReleaseProtectionSwitchRequest =
-                new UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest();
-        updatePeerToPeerConnectionReleaseProtectionSwitchRequest.setPeerConnId("");
-        updatePeerToPeerConnectionReleaseProtectionSwitchRequest.setDeleteProtect(false);
-        vpcClient.updatePeerToPeerConnectionReleaseProtectionSwitch(updatePeerToPeerConnectionReleaseProtectionSwitchRequest);
+    public void updatePeerConnTest() {
+        UpdatePeerConnRequest updatePeerConnRequest = new UpdatePeerConnRequest();
+        updatePeerConnRequest.setPeerConnId("");
+        updatePeerConnRequest.setClientToken("");
+        updatePeerConnRequest.setLocalIfId("");
+        updatePeerConnRequest.setDescription("");
+        updatePeerConnRequest.setLocalIfName("");
+        vpcClient.updatePeerConn(updatePeerConnRequest);
+    }
+    /**
+     * updatePeerConnBandwidth
+     *
+     */
+    @Test
+    public void updatePeerConnBandwidthTest() {
+        UpdatePeerConnBandwidthRequest updatePeerConnBandwidthRequest = new UpdatePeerConnBandwidthRequest();
+        updatePeerConnBandwidthRequest.setPeerConnId("");
+        updatePeerConnBandwidthRequest.setClientToken("");
+        updatePeerConnBandwidthRequest.setNewBandwidthInMbps(0);
+        vpcClient.updatePeerConnBandwidth(updatePeerConnBandwidthRequest);
+    }
+    /**
+     * updatePeerConnDeleteProtect
+     *
+     */
+    @Test
+    public void updatePeerConnDeleteProtectTest() {
+        UpdatePeerConnDeleteProtectRequest updatePeerConnDeleteProtectRequest = new UpdatePeerConnDeleteProtectRequest();
+        updatePeerConnDeleteProtectRequest.setPeerConnId("");
+        updatePeerConnDeleteProtectRequest.setClientToken("");
+        updatePeerConnDeleteProtectRequest.setDeleteProtect(false);
+        vpcClient.updatePeerConnDeleteProtect(updatePeerConnDeleteProtectRequest);
     }
     /**
      * updateRegularSecurityGroupRulesV2
@@ -2386,20 +2411,6 @@ public class VpcClientTest {
         updateSubnetRequest.setDescription("");
         updateSubnetRequest.setEnableIpv6(false);
         vpcClient.updateSubnet(updateSubnetRequest);
-    }
-    /**
-     * updateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnections
-     *
-     */
-    @Test
-    public void updateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsTest() {
-        UpdateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest updateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest =
-                new UpdateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest();
-        updateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest.setPeerConnId("");
-        updateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest.setLocalIfId("");
-        updateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest.setDescription("");
-        updateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest.setLocalIfName("");
-        vpcClient.updateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnections(updateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest);
     }
     /**
      * updateUserGateway
@@ -2511,18 +2522,6 @@ public class VpcClientTest {
         viewGatewayLimitRulesRequest.setMarker("");
         viewGatewayLimitRulesRequest.setMaxKeys("");
         ViewGatewayLimitRulesResponse response = vpcClient.viewGatewayLimitRules(viewGatewayLimitRulesRequest);
-        System.out.println(response);
-    }
-    /**
-     * viewPeerToPeerConnectionDetails
-     *
-     */
-    @Test
-    public void viewPeerToPeerConnectionDetailsTest() {
-        ViewPeerToPeerConnectionDetailsRequest viewPeerToPeerConnectionDetailsRequest = new ViewPeerToPeerConnectionDetailsRequest();
-        viewPeerToPeerConnectionDetailsRequest.setPeerConnId("");
-        viewPeerToPeerConnectionDetailsRequest.setRole("");
-        ViewPeerToPeerConnectionDetailsResponse response = vpcClient.viewPeerToPeerConnectionDetails(viewPeerToPeerConnectionDetailsRequest);
         System.out.println(response);
     }
     /**

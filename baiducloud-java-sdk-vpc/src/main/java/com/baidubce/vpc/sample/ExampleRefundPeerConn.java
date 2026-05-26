@@ -4,9 +4,9 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.vpc.VpcClient;
-import com.baidubce.vpc.models.AcceptPeerToPeerConnectionApplicationsRequest;
+import com.baidubce.vpc.models.RefundPeerConnRequest;
 
-public class ExampleAcceptPeerToPeerConnectionApplications {
+public class ExampleRefundPeerConn {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -16,11 +16,11 @@ public class ExampleAcceptPeerToPeerConnectionApplications {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         VpcClient client = new VpcClient(config);
-        AcceptPeerToPeerConnectionApplicationsRequest acceptPeerToPeerConnectionApplicationsRequest = new AcceptPeerToPeerConnectionApplicationsRequest();
-        acceptPeerToPeerConnectionApplicationsRequest.setPeerConnId("");
-        acceptPeerToPeerConnectionApplicationsRequest.setClientToken("");
+        RefundPeerConnRequest refundPeerConnRequest = new RefundPeerConnRequest();
+        refundPeerConnRequest.setPeerConnId("");
+        refundPeerConnRequest.setClientToken("");
         try {
-            client.acceptPeerToPeerConnectionApplications(acceptPeerToPeerConnectionApplicationsRequest);
+            client.refundPeerConn(refundPeerConnRequest);
         } catch (BceClientException e) {
             // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());

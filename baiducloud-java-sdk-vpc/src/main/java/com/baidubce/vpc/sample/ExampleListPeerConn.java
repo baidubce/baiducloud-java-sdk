@@ -4,10 +4,10 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.vpc.VpcClient;
-import com.baidubce.vpc.models.ViewPeerToPeerConnectionDetailsRequest;
-import com.baidubce.vpc.models.ViewPeerToPeerConnectionDetailsResponse;
+import com.baidubce.vpc.models.ListPeerConnRequest;
+import com.baidubce.vpc.models.ListPeerConnResponse;
 
-public class ExampleViewPeerToPeerConnectionDetails {
+public class ExampleListPeerConn {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -17,11 +17,12 @@ public class ExampleViewPeerToPeerConnectionDetails {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         VpcClient client = new VpcClient(config);
-        ViewPeerToPeerConnectionDetailsRequest viewPeerToPeerConnectionDetailsRequest = new ViewPeerToPeerConnectionDetailsRequest();
-        viewPeerToPeerConnectionDetailsRequest.setPeerConnId("");
-        viewPeerToPeerConnectionDetailsRequest.setRole("");
+        ListPeerConnRequest listPeerConnRequest = new ListPeerConnRequest();
+        listPeerConnRequest.setVpcId("");
+        listPeerConnRequest.setMarker("");
+        listPeerConnRequest.setMaxKeys(0);
         try {
-            ViewPeerToPeerConnectionDetailsResponse response = client.viewPeerToPeerConnectionDetails(viewPeerToPeerConnectionDetailsRequest);
+            ListPeerConnResponse response = client.listPeerConn(listPeerConnRequest);
             System.out.println(response.toJsonString());
         } catch (BceClientException e) {
             System.out.println(e.getMessage());

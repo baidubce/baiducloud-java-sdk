@@ -5,13 +5,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UpdateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest extends BaseBceRequest {
+public class UpdatePeerConnRequest extends BaseBceRequest {
 
     /**
     * peerConnId
     */
     @JsonIgnore
     private String peerConnId;
+
+    /**
+    * clientToken
+    */
+    @JsonIgnore
+    private String clientToken;
 
     /**
     * 对等连接的接口ID 不可更改
@@ -32,8 +38,17 @@ public class UpdateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnections
         return peerConnId;
     }
 
-    public UpdateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest setPeerConnId(String peerConnId) {
+    public UpdatePeerConnRequest setPeerConnId(String peerConnId) {
         this.peerConnId = peerConnId;
+        return this;
+    }
+
+    public String getClientToken() {
+        return clientToken;
+    }
+
+    public UpdatePeerConnRequest setClientToken(String clientToken) {
+        this.clientToken = clientToken;
         return this;
     }
 
@@ -41,7 +56,7 @@ public class UpdateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnections
         return localIfId;
     }
 
-    public UpdateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest setLocalIfId(String localIfId) {
+    public UpdatePeerConnRequest setLocalIfId(String localIfId) {
         this.localIfId = localIfId;
         return this;
     }
@@ -50,7 +65,7 @@ public class UpdateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnections
         return description;
     }
 
-    public UpdateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest setDescription(String description) {
+    public UpdatePeerConnRequest setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -59,7 +74,7 @@ public class UpdateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnections
         return localIfName;
     }
 
-    public UpdateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest setLocalIfName(String localIfName) {
+    public UpdatePeerConnRequest setLocalIfName(String localIfName) {
         this.localIfName = localIfName;
         return this;
     }

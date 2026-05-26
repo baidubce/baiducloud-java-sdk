@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import com.baidubce.common.BaseBceResponse;
 
-import com.baidubce.vpc.models.AcceptPeerToPeerConnectionApplicationsRequest;
+import com.baidubce.vpc.models.AcceptPeerConnRequest;
 import com.baidubce.vpc.models.ActiveStandbySwitchoverRequest;
 import com.baidubce.vpc.models.AddAclRuleRequest;
 import com.baidubce.vpc.models.AddElasticNetworkCardAuxiliaryIpRequest;
@@ -37,12 +37,10 @@ import com.baidubce.vpc.models.BatchIncreaseElasticNetworkCardIntranetIpRequest;
 import com.baidubce.vpc.models.BatchIncreaseElasticNetworkCardIntranetIpResponse;
 import com.baidubce.vpc.models.BindEipRequest;
 import com.baidubce.vpc.models.BindPhysicalDedicatedLineRequest;
-import com.baidubce.vpc.models.ClosePeerToPeerConnectionToSynchronizeDnsRequest;
+import com.baidubce.vpc.models.ClosePeerConnSyncDnsRequest;
 import com.baidubce.vpc.models.CloseVpcRelayRequest;
 import com.baidubce.vpc.models.CreateAHighlyAvailableVirtualIpRequest;
 import com.baidubce.vpc.models.CreateAHighlyAvailableVirtualIpResponse;
-import com.baidubce.vpc.models.CreateAPeerToPeerConnectionRequest;
-import com.baidubce.vpc.models.CreateAPeerToPeerConnectionResponse;
 import com.baidubce.vpc.models.CreateARegularSecurityGroupV2Request;
 import com.baidubce.vpc.models.CreateARegularSecurityGroupV2Response;
 import com.baidubce.vpc.models.CreateAnIpv6GatewayRequest;
@@ -70,6 +68,8 @@ import com.baidubce.vpc.models.CreateNatRequest;
 import com.baidubce.vpc.models.CreateNatResponse;
 import com.baidubce.vpc.models.CreateNetworkDetectionRequest;
 import com.baidubce.vpc.models.CreateNetworkDetectionResponse;
+import com.baidubce.vpc.models.CreatePeerConnRequest;
+import com.baidubce.vpc.models.CreatePeerConnResponse;
 import com.baidubce.vpc.models.CreateRoutingRulesRequest;
 import com.baidubce.vpc.models.CreateRoutingRulesResponse;
 import com.baidubce.vpc.models.CreateSnatRuleRequest;
@@ -117,9 +117,10 @@ import com.baidubce.vpc.models.ElasticNetworkCardUnbindingEipRequest;
 import com.baidubce.vpc.models.ElasticNetworkCardUninstallationCloudProductInstanceRequest;
 import com.baidubce.vpc.models.ElasticNetworkCardUpdateEnterpriseSecurityGroupRequest;
 import com.baidubce.vpc.models.ElasticNetworkCardUpdatesRegularSecurityGroupRequest;
-import com.baidubce.vpc.models.EnablePeerToPeerConnectionToSynchronizeDnsRequest;
 import com.baidubce.vpc.models.GetNatRequest;
 import com.baidubce.vpc.models.GetNatResponse;
+import com.baidubce.vpc.models.GetPeerConnRequest;
+import com.baidubce.vpc.models.GetPeerConnResponse;
 import com.baidubce.vpc.models.GetVpcResourceIpInfoRequest;
 import com.baidubce.vpc.models.GetVpcResourceIpInfoResponse;
 import com.baidubce.vpc.models.HighAvailabilityVirtualIpUnbindingEipRequest;
@@ -133,16 +134,16 @@ import com.baidubce.vpc.models.ListIpReserveRequest;
 import com.baidubce.vpc.models.ListIpReserveResponse;
 import com.baidubce.vpc.models.ListNatRequest;
 import com.baidubce.vpc.models.ListNatResponse;
+import com.baidubce.vpc.models.ListPeerConnRequest;
+import com.baidubce.vpc.models.ListPeerConnResponse;
 import com.baidubce.vpc.models.ListSnatRuleRequest;
 import com.baidubce.vpc.models.ListSnatRuleResponse;
 import com.baidubce.vpc.models.ModifyGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.ModifyNatRequest;
 import com.baidubce.vpc.models.NatBindEipRequest;
 import com.baidubce.vpc.models.NatUnBindEipRequest;
+import com.baidubce.vpc.models.OpenPeerConnSyncDnsRequest;
 import com.baidubce.vpc.models.OpenVpcRelayRequest;
-import com.baidubce.vpc.models.PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest;
-import com.baidubce.vpc.models.PeerToPeerConnectionRenewalRequest;
-import com.baidubce.vpc.models.PrepaidPeerToPeerConnectionUnsubscribeRequest;
 import com.baidubce.vpc.models.PurchaseReservedNatRequest;
 import com.baidubce.vpc.models.QueryAclRequest;
 import com.baidubce.vpc.models.QueryAclResponse;
@@ -182,8 +183,6 @@ import com.baidubce.vpc.models.QueryTheListOfHighlyAvailableVirtualIpsRequest;
 import com.baidubce.vpc.models.QueryTheListOfHighlyAvailableVirtualIpsResponse;
 import com.baidubce.vpc.models.QueryTheListOfIpAddressGroupsRequest;
 import com.baidubce.vpc.models.QueryTheListOfIpAddressGroupsResponse;
-import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsRequest;
-import com.baidubce.vpc.models.QueryTheListOfPeerConnectionsResponse;
 import com.baidubce.vpc.models.QueryTheListOfRegularSecurityGroupsV2Request;
 import com.baidubce.vpc.models.QueryTheListOfRegularSecurityGroupsV2Response;
 import com.baidubce.vpc.models.QueryTheListOfSpeedLimitPoliciesForIpv6GatewayRequest;
@@ -206,13 +205,15 @@ import com.baidubce.vpc.models.QueryVpnListRequest;
 import com.baidubce.vpc.models.QueryVpnListResponse;
 import com.baidubce.vpc.models.QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionRequest;
 import com.baidubce.vpc.models.QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionResponse;
-import com.baidubce.vpc.models.RejectPeerToPeerConnectionRequestRequest;
+import com.baidubce.vpc.models.RefundPeerConnRequest;
+import com.baidubce.vpc.models.RejectPeerConnRequest;
 import com.baidubce.vpc.models.ReleaseDedicatedGatewayRequest;
 import com.baidubce.vpc.models.ReleaseNatRequest;
-import com.baidubce.vpc.models.ReleasePeerToPeerConnectionRequest;
+import com.baidubce.vpc.models.ReleasePeerConnRequest;
 import com.baidubce.vpc.models.ReleaseVpnRequest;
 import com.baidubce.vpc.models.RemoveElasticNetworkCardRequest;
 import com.baidubce.vpc.models.RemoveIpAddressGroupFromIpAddressFamilyRequest;
+import com.baidubce.vpc.models.RenewPeerConnRequest;
 import com.baidubce.vpc.models.RenewVpnRequest;
 import com.baidubce.vpc.models.ResizeNatRequest;
 import com.baidubce.vpc.models.RevokeRegularSecurityGroupRulesV2Request;
@@ -234,14 +235,15 @@ import com.baidubce.vpc.models.UpdateIpv6GatewayReleaseProtectionSwitchRequest;
 import com.baidubce.vpc.models.UpdateIpv6GatewaySpeedLimitPolicyRequest;
 import com.baidubce.vpc.models.UpdateNatReleaseProtectionSwitchRequest;
 import com.baidubce.vpc.models.UpdateNetworkDetectionRequest;
-import com.baidubce.vpc.models.UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest;
+import com.baidubce.vpc.models.UpdatePeerConnBandwidthRequest;
+import com.baidubce.vpc.models.UpdatePeerConnDeleteProtectRequest;
+import com.baidubce.vpc.models.UpdatePeerConnRequest;
 import com.baidubce.vpc.models.UpdateRegularSecurityGroupRulesV2Request;
 import com.baidubce.vpc.models.UpdateRoutingRulesRequest;
 import com.baidubce.vpc.models.UpdateSnatRuleRequest;
 import com.baidubce.vpc.models.UpdateSslVpnServerRequest;
 import com.baidubce.vpc.models.UpdateSslVpnUsersRequest;
 import com.baidubce.vpc.models.UpdateSubnetRequest;
-import com.baidubce.vpc.models.UpdateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest;
 import com.baidubce.vpc.models.UpdateUserGatewayRequest;
 import com.baidubce.vpc.models.UpdateVpcRequest;
 import com.baidubce.vpc.models.UpdateVpnReleaseProtectionRequest;
@@ -253,8 +255,6 @@ import com.baidubce.vpc.models.UserGatewayListRequest;
 import com.baidubce.vpc.models.UserGatewayListResponse;
 import com.baidubce.vpc.models.ViewGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.ViewGatewayLimitRulesResponse;
-import com.baidubce.vpc.models.ViewPeerToPeerConnectionDetailsRequest;
-import com.baidubce.vpc.models.ViewPeerToPeerConnectionDetailsResponse;
 import com.baidubce.vpc.models.ViewSecurityGroupDetailsV2Request;
 import com.baidubce.vpc.models.ViewSecurityGroupDetailsV2Response;
 
@@ -281,9 +281,9 @@ public class VpcClient extends AbstractBceClient {
     private static final String CONSTANT_VPN = "vpn";
     private static final String CONSTANT_CGW = "cgw";
     private static final String CONSTANT_DELETE_IP_ADDRESS = "deleteIpAddress";
-    private static final String CONSTANT_PEERCONN = "peerconn";
     private static final String CONSTANT_I_PV6_GATEWAY = "IPv6Gateway";
     private static final String CONSTANT_RATE_LIMIT_RULE = "rateLimitRule";
+    private static final String CONSTANT_PEERCONN = "peerconn";
     private static final String CONSTANT_BATCH_CREATE = "batchCreate";
     private static final String CONSTANT_VPNCONN = "vpnconn";
     private static final String CONSTANT_STATUS = "status";
@@ -330,11 +330,11 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
-     * acceptPeerToPeerConnectionApplications
+     * acceptPeerConn
      * 
      * @param request 入参结构体
      */
-    public void acceptPeerToPeerConnectionApplications(AcceptPeerToPeerConnectionApplicationsRequest request) {
+    public void acceptPeerConn(AcceptPeerConnRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
         internalRequest.addParameter("accept", null);
         if (request.getClientToken() != null) {
@@ -569,11 +569,11 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
-     * closePeerToPeerConnectionToSynchronizeDns
+     * closePeerConnSyncDns
      * 
      * @param request 入参结构体
      */
-    public void closePeerToPeerConnectionToSynchronizeDns(ClosePeerToPeerConnectionToSynchronizeDnsRequest request) {
+    public void closePeerConnSyncDns(ClosePeerConnSyncDnsRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
         internalRequest.addParameter("close", null);
         if (request.getRole() != null) {
@@ -611,21 +611,6 @@ public class VpcClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateAHighlyAvailableVirtualIpResponse.class);
-    }
-
-    /**
-     * createAPeerToPeerConnection
-     * 
-     * @param request 入参结构体
-     * @return CreateAPeerToPeerConnectionResponse
-     */
-    public CreateAPeerToPeerConnectionResponse createAPeerToPeerConnection(CreateAPeerToPeerConnectionRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_PEERCONN);
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
-        }
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, CreateAPeerToPeerConnectionResponse.class);
     }
 
     /**
@@ -835,6 +820,21 @@ public class VpcClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateNetworkDetectionResponse.class);
+    }
+
+    /**
+     * createPeerConn
+     * 
+     * @param request 入参结构体
+     * @return CreatePeerConnResponse
+     */
+    public CreatePeerConnResponse createPeerConn(CreatePeerConnRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_PEERCONN);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreatePeerConnResponse.class);
     }
 
     /**
@@ -1397,23 +1397,6 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
-     * enablePeerToPeerConnectionToSynchronizeDns
-     * 
-     * @param request 入参结构体
-     */
-    public void enablePeerToPeerConnectionToSynchronizeDns(EnablePeerToPeerConnectionToSynchronizeDnsRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
-        internalRequest.addParameter("open", null);
-        if (request.getRole() != null) {
-            internalRequest.addParameter("role", request.getRole());
-        }
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
-        }
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
      * getNat
      * 
      * @param request 入参结构体
@@ -1422,6 +1405,20 @@ public class VpcClient extends AbstractBceClient {
     public GetNatResponse getNat(GetNatRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_NAT, request.getNatId());
         return invokeHttpClient(internalRequest, GetNatResponse.class);
+    }
+
+    /**
+     * getPeerConn
+     * 
+     * @param request 入参结构体
+     * @return GetPeerConnResponse
+     */
+    public GetPeerConnResponse getPeerConn(GetPeerConnRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
+        if (request.getRole() != null) {
+            internalRequest.addParameter("role", request.getRole());
+        }
+        return invokeHttpClient(internalRequest, GetPeerConnResponse.class);
     }
 
     /**
@@ -1591,6 +1588,26 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * listPeerConn
+     * 
+     * @param request 入参结构体
+     * @return ListPeerConnResponse
+     */
+    public ListPeerConnResponse listPeerConn(ListPeerConnRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_PEERCONN);
+        if (request.getVpcId() != null) {
+            internalRequest.addParameter("vpcId", request.getVpcId());
+        }
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, ListPeerConnResponse.class);
+    }
+
+    /**
      * listSnatRule
      * 
      * @param request 入参结构体
@@ -1666,56 +1683,29 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
+     * openPeerConnSyncDns
+     * 
+     * @param request 入参结构体
+     */
+    public void openPeerConnSyncDns(OpenPeerConnSyncDnsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
+        internalRequest.addParameter("open", null);
+        if (request.getRole() != null) {
+            internalRequest.addParameter("role", request.getRole());
+        }
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * openVpcRelay
      * 
      * @param request 入参结构体
      */
     public void openVpcRelay(OpenVpcRelayRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_VPC, CONSTANT_OPEN_RELAY, request.getVpcId());
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
-        }
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
-     * peerToPeerConnectionBandwidthUpgradeAndDowngrade
-     * 
-     * @param request 入参结构体
-     */
-    public void peerToPeerConnectionBandwidthUpgradeAndDowngrade(PeerToPeerConnectionBandwidthUpgradeAndDowngradeRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
-        internalRequest.addParameter("resize", null);
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
-        }
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
-     * peerToPeerConnectionRenewal
-     * 
-     * @param request 入参结构体
-     */
-    public void peerToPeerConnectionRenewal(PeerToPeerConnectionRenewalRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
-        internalRequest.addParameter("purchaseReserved", null);
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
-        }
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
-     * prepaidPeerToPeerConnectionUnsubscribe
-     * 
-     * @param request 入参结构体
-     */
-    public void prepaidPeerToPeerConnectionUnsubscribe(PrepaidPeerToPeerConnectionUnsubscribeRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
-        internalRequest.addParameter("refund", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -2088,23 +2078,6 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
-     * queryTheListOfPeerConnections
-     * 
-     * @param request 入参结构体
-     * @return QueryTheListOfPeerConnectionsResponse
-     */
-    public QueryTheListOfPeerConnectionsResponse queryTheListOfPeerConnections(QueryTheListOfPeerConnectionsRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_PEERCONN);
-        if (request.getMarker() != null) {
-            internalRequest.addParameter("marker", request.getMarker());
-        }
-        if (request.getMaxKeys() != null) {
-            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
-        }
-        return invokeHttpClient(internalRequest, QueryTheListOfPeerConnectionsResponse.class);
-    }
-
-    /**
      * queryTheListOfRegularSecurityGroupsV2
      * 
      * @param request 入参结构体
@@ -2290,11 +2263,25 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
-     * rejectPeerToPeerConnectionRequest
+     * refundPeerConn
      * 
      * @param request 入参结构体
      */
-    public void rejectPeerToPeerConnectionRequest(RejectPeerToPeerConnectionRequestRequest request) {
+    public void refundPeerConn(RefundPeerConnRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
+        internalRequest.addParameter("refund", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * rejectPeerConn
+     * 
+     * @param request 入参结构体
+     */
+    public void rejectPeerConn(RejectPeerConnRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
         internalRequest.addParameter("reject", null);
         if (request.getClientToken() != null) {
@@ -2330,11 +2317,11 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
-     * releasePeerToPeerConnection
+     * releasePeerConn
      * 
      * @param request 入参结构体
      */
-    public void releasePeerToPeerConnection(ReleasePeerToPeerConnectionRequest request) {
+    public void releasePeerConn(ReleasePeerConnRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
@@ -2375,6 +2362,21 @@ public class VpcClient extends AbstractBceClient {
      */
     public void removeIpAddressGroupFromIpAddressFamily(RemoveIpAddressGroupFromIpAddressFamilyRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_IP_GROUP, request.getIpGroupId(), CONSTANT_UNBIND_IP_SET);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * renewPeerConn
+     * 
+     * @param request 入参结构体
+     */
+    public void renewPeerConn(RenewPeerConnRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
+        internalRequest.addParameter("purchaseReserved", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -2665,12 +2667,44 @@ public class VpcClient extends AbstractBceClient {
     }
 
     /**
-     * updatePeerToPeerConnectionReleaseProtectionSwitch
+     * updatePeerConn
      * 
      * @param request 入参结构体
      */
-    public void updatePeerToPeerConnectionReleaseProtectionSwitch(UpdatePeerToPeerConnectionReleaseProtectionSwitchRequest request) {
+    public void updatePeerConn(UpdatePeerConnRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updatePeerConnBandwidth
+     * 
+     * @param request 入参结构体
+     */
+    public void updatePeerConnBandwidth(UpdatePeerConnBandwidthRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
+        internalRequest.addParameter("resize", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updatePeerConnDeleteProtect
+     * 
+     * @param request 入参结构体
+     */
+    public void updatePeerConnDeleteProtect(UpdatePeerConnDeleteProtectRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId(), CONSTANT_DELETE_PROTECT);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
@@ -2761,17 +2795,6 @@ public class VpcClient extends AbstractBceClient {
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
-     * updateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnections
-     * 
-     * @param request 入参结构体
-     */
-    public void updateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnections(UpdateTheNameAndCommentsOfTheLocalInterfaceForPeerToPeerConnectionsRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
@@ -2903,20 +2926,6 @@ public class VpcClient extends AbstractBceClient {
             internalRequest.addParameter("maxKeys", request.getMaxKeys());
         }
         return invokeHttpClient(internalRequest, ViewGatewayLimitRulesResponse.class);
-    }
-
-    /**
-     * viewPeerToPeerConnectionDetails
-     * 
-     * @param request 入参结构体
-     * @return ViewPeerToPeerConnectionDetailsResponse
-     */
-    public ViewPeerToPeerConnectionDetailsResponse viewPeerToPeerConnectionDetails(ViewPeerToPeerConnectionDetailsRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_PEERCONN, request.getPeerConnId());
-        if (request.getRole() != null) {
-            internalRequest.addParameter("role", request.getRole());
-        }
-        return invokeHttpClient(internalRequest, ViewPeerToPeerConnectionDetailsResponse.class);
     }
 
     /**
