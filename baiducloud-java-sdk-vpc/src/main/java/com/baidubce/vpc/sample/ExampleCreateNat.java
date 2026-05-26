@@ -7,6 +7,7 @@ import com.baidubce.vpc.VpcClient;
 import com.baidubce.vpc.models.CreateNatRequest;
 import com.baidubce.vpc.models.Reservation;
 import com.baidubce.vpc.models.Billing;
+import com.baidubce.vpc.models.SessionConfig;
 import com.baidubce.vpc.models.CreateNatResponse;
 import java.util.ArrayList;
 
@@ -28,6 +29,11 @@ public class ExampleCreateNat {
 
         billing.setReservation(reservation);
 
+        SessionConfig sessionConfig = new SessionConfig();
+        sessionConfig.setTcpTimeout(0);
+        sessionConfig.setUdpTimeout(0);
+        sessionConfig.setIcmpTimeout(0);
+
         CreateNatRequest createNatRequest = new CreateNatRequest();
         createNatRequest.setClientToken("");
         createNatRequest.setName("");
@@ -36,6 +42,7 @@ public class ExampleCreateNat {
         createNatRequest.setIpVersion("");
         createNatRequest.setBindEips(new ArrayList<>());
         createNatRequest.setBilling(billing);
+        createNatRequest.setSessionConfig(sessionConfig);
         createNatRequest.setTags(new ArrayList<>());
         createNatRequest.setResourceGroupId("");
         createNatRequest.setDeleteProtect(false);

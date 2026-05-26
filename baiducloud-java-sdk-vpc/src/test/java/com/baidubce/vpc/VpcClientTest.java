@@ -747,6 +747,7 @@ public class VpcClientTest {
         createNatRequest.setIpVersion("");
         createNatRequest.setBindEips(new ArrayList<>());
         createNatRequest.setBilling(null);
+        createNatRequest.setSessionConfig(null);
         createNatRequest.setTags(new ArrayList<>());
         createNatRequest.setResourceGroupId("");
         createNatRequest.setDeleteProtect(false);

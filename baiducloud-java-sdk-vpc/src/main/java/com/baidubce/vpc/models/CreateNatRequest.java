@@ -45,6 +45,11 @@ public class CreateNatRequest extends BaseBceRequest {
     private Billing billing;
 
     /**
+    * sessionConfig
+    */
+    private SessionConfig sessionConfig;
+
+    /**
     * 待创建的标签键值对列表。
     */
     private List<TagModel> tags;
@@ -119,6 +124,15 @@ public class CreateNatRequest extends BaseBceRequest {
 
     public CreateNatRequest setBilling(Billing billing) {
         this.billing = billing;
+        return this;
+    }
+
+    public SessionConfig getSessionConfig() {
+        return sessionConfig;
+    }
+
+    public CreateNatRequest setSessionConfig(SessionConfig sessionConfig) {
+        this.sessionConfig = sessionConfig;
         return this;
     }
 
