@@ -52,7 +52,7 @@ public class AclRuleRequest {
     /**
      * 默认为4。如果添加IPv6规则，则该值为6必传
      */
-    private Integer ipversion;
+    private Integer ipVersion;
 
     /**
      * 策略，包括allow和deny
@@ -140,13 +140,13 @@ public class AclRuleRequest {
         return this.direction;
     }
 
-    public AclRuleRequest setIpversion(Integer ipversion) {
-        this.ipversion = ipversion;
+    public AclRuleRequest setIpVersion(Integer ipVersion) {
+        this.ipVersion = ipVersion;
         return this;
     }
 
-    public Integer getIpversion() {
-        return this.ipversion;
+    public Integer getIpVersion() {
+        return this.ipVersion;
     }
 
     public AclRuleRequest setAction(String action) {
@@ -162,7 +162,7 @@ public class AclRuleRequest {
     public String toString() {
         return "AclRuleRequest{" + "subnetId=" + subnetId + "\n" + "description=" + description + "\n" + "protocol=" + protocol + "\n" + "sourceIpAddress=" + sourceIpAddress
                 + "\n" + "destinationIpAddress=" + destinationIpAddress + "\n" + "sourcePort=" + sourcePort + "\n" + "destinationPort=" + destinationPort + "\n" + "position="
-                + position + "\n" + "direction=" + direction + "\n" + "ipversion=" + ipversion + "\n" + "action=" + action + "\n" + "}";
+                + position + "\n" + "direction=" + direction + "\n" + "ipVersion=" + ipVersion + "\n" + "action=" + action + "\n" + "}";
     }
 
 }

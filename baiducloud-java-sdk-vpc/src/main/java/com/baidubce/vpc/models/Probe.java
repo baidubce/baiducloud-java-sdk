@@ -24,7 +24,7 @@ public class Probe {
     /**
      * 目的端口
      */
-    private Integer destPort;
+    private String destPort;
 
     /**
      * 探测频率
@@ -93,12 +93,12 @@ public class Probe {
         return this.destIp;
     }
 
-    public Probe setDestPort(Integer destPort) {
+    public Probe setDestPort(String destPort) {
         this.destPort = destPort;
         return this;
     }
 
-    public Integer getDestPort() {
+    public String getDestPort() {
         return this.destPort;
     }
 

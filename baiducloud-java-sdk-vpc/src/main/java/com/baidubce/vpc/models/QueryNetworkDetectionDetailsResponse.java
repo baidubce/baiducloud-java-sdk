@@ -25,7 +25,7 @@ public class QueryNetworkDetectionDetailsResponse extends BaseBceResponse {
     /**
     * 目的端口
     */
-    private Integer destPort;
+    private String destPort;
 
     /**
     * 探测频率
@@ -94,11 +94,11 @@ public class QueryNetworkDetectionDetailsResponse extends BaseBceResponse {
         return this;
     }
 
-    public Integer getDestPort() {
+    public String getDestPort() {
         return destPort;
     }
 
-    public QueryNetworkDetectionDetailsResponse setDestPort(Integer destPort) {
+    public QueryNetworkDetectionDetailsResponse setDestPort(String destPort) {
         this.destPort = destPort;
         return this;
     }
