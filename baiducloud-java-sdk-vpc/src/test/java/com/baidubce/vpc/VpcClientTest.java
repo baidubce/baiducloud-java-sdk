@@ -380,8 +380,8 @@ public class VpcClientTest {
     @Test
     public void batchAddDnatRulesTest() {
         BatchAddDnatRulesRequest batchAddDnatRulesRequest = new BatchAddDnatRulesRequest();
-        batchAddDnatRulesRequest.setClientToken("");
         batchAddDnatRulesRequest.setNatId("");
+        batchAddDnatRulesRequest.setClientToken("");
         batchAddDnatRulesRequest.setRules(new ArrayList<>());
         BatchAddDnatRulesResponse response = vpcClient.batchAddDnatRules(batchAddDnatRulesRequest);
         System.out.println(response);
@@ -582,8 +582,8 @@ public class VpcClientTest {
     @Test
     public void createDnatRuleTest() {
         CreateDnatRuleRequest createDnatRuleRequest = new CreateDnatRuleRequest();
-        createDnatRuleRequest.setClientToken("");
         createDnatRuleRequest.setNatId("");
+        createDnatRuleRequest.setClientToken("");
         createDnatRuleRequest.setRuleName("");
         createDnatRuleRequest.setPublicIpAddress("");
         createDnatRuleRequest.setPrivateIpAddress("");
@@ -801,8 +801,8 @@ public class VpcClientTest {
     @Test
     public void createSnatRuleTest() {
         CreateSnatRuleRequest createSnatRuleRequest = new CreateSnatRuleRequest();
-        createSnatRuleRequest.setClientToken("");
         createSnatRuleRequest.setNatId("");
+        createSnatRuleRequest.setClientToken("");
         createSnatRuleRequest.setRuleName("");
         createSnatRuleRequest.setPublicIpsAddress(new ArrayList<>());
         createSnatRuleRequest.setSourceCIDR("");
@@ -936,9 +936,9 @@ public class VpcClientTest {
     @Test
     public void deleteDnatRuleTest() {
         DeleteDnatRuleRequest deleteDnatRuleRequest = new DeleteDnatRuleRequest();
-        deleteDnatRuleRequest.setClientToken("");
         deleteDnatRuleRequest.setNatId("");
         deleteDnatRuleRequest.setRuleId("");
+        deleteDnatRuleRequest.setClientToken("");
         vpcClient.deleteDnatRule(deleteDnatRuleRequest);
     }
     /**
@@ -1129,9 +1129,9 @@ public class VpcClientTest {
     @Test
     public void deleteSnatRuleTest() {
         DeleteSnatRuleRequest deleteSnatRuleRequest = new DeleteSnatRuleRequest();
-        deleteSnatRuleRequest.setClientToken("");
         deleteSnatRuleRequest.setNatId("");
         deleteSnatRuleRequest.setRuleId("");
+        deleteSnatRuleRequest.setClientToken("");
         vpcClient.deleteSnatRule(deleteSnatRuleRequest);
     }
     /**
@@ -2034,8 +2034,8 @@ public class VpcClientTest {
     @Test
     public void resizeNatTest() {
         ResizeNatRequest resizeNatRequest = new ResizeNatRequest();
-        resizeNatRequest.setClientToken("");
         resizeNatRequest.setNatId("");
+        resizeNatRequest.setClientToken("");
         resizeNatRequest.setCuNum(0);
         vpcClient.resizeNat(resizeNatRequest);
     }

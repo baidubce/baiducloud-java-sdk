@@ -17,8 +17,8 @@ public class ExampleResizeNat {
         config.setEndpoint(endpoint);
         VpcClient client = new VpcClient(config);
         ResizeNatRequest resizeNatRequest = new ResizeNatRequest();
-        resizeNatRequest.setClientToken("");
         resizeNatRequest.setNatId("");
+        resizeNatRequest.setClientToken("");
         resizeNatRequest.setCuNum(0);
         try {
             client.resizeNat(resizeNatRequest);

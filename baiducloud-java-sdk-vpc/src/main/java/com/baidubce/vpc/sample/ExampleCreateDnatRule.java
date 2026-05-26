@@ -18,8 +18,8 @@ public class ExampleCreateDnatRule {
         config.setEndpoint(endpoint);
         VpcClient client = new VpcClient(config);
         CreateDnatRuleRequest createDnatRuleRequest = new CreateDnatRuleRequest();
-        createDnatRuleRequest.setClientToken("");
         createDnatRuleRequest.setNatId("");
+        createDnatRuleRequest.setClientToken("");
         createDnatRuleRequest.setRuleName("");
         createDnatRuleRequest.setPublicIpAddress("");
         createDnatRuleRequest.setPrivateIpAddress("");

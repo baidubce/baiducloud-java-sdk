@@ -19,8 +19,8 @@ public class ExampleCreateSnatRule {
         config.setEndpoint(endpoint);
         VpcClient client = new VpcClient(config);
         CreateSnatRuleRequest createSnatRuleRequest = new CreateSnatRuleRequest();
-        createSnatRuleRequest.setClientToken("");
         createSnatRuleRequest.setNatId("");
+        createSnatRuleRequest.setClientToken("");
         createSnatRuleRequest.setRuleName("");
         createSnatRuleRequest.setPublicIpsAddress(new ArrayList<>());
         createSnatRuleRequest.setSourceCIDR("");

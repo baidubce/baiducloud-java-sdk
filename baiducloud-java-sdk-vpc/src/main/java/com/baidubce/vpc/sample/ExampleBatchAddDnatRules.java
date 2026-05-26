@@ -19,8 +19,8 @@ public class ExampleBatchAddDnatRules {
         config.setEndpoint(endpoint);
         VpcClient client = new VpcClient(config);
         BatchAddDnatRulesRequest batchAddDnatRulesRequest = new BatchAddDnatRulesRequest();
-        batchAddDnatRulesRequest.setClientToken("");
         batchAddDnatRulesRequest.setNatId("");
+        batchAddDnatRulesRequest.setClientToken("");
         batchAddDnatRulesRequest.setRules(new ArrayList<>());
         try {
             BatchAddDnatRulesResponse response = client.batchAddDnatRules(batchAddDnatRulesRequest);

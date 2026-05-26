@@ -17,9 +17,9 @@ public class ExampleDeleteDnatRule {
         config.setEndpoint(endpoint);
         VpcClient client = new VpcClient(config);
         DeleteDnatRuleRequest deleteDnatRuleRequest = new DeleteDnatRuleRequest();
-        deleteDnatRuleRequest.setClientToken("");
         deleteDnatRuleRequest.setNatId("");
         deleteDnatRuleRequest.setRuleId("");
+        deleteDnatRuleRequest.setClientToken("");
         try {
             client.deleteDnatRule(deleteDnatRuleRequest);
         } catch (BceClientException e) {
