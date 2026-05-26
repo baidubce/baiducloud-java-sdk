@@ -53,6 +53,11 @@ public class GetNatResponse extends BaseBceResponse {
     private String ipVersion;
 
     /**
+    * sessionConfig
+    */
+    private SessionConfig sessionConfig;
+
+    /**
     * 付费方式 预付费Prepaid 后付费Postpaid
     */
     private String paymentTiming;
@@ -158,6 +163,15 @@ public class GetNatResponse extends BaseBceResponse {
         return this;
     }
 
+    public SessionConfig getSessionConfig() {
+        return sessionConfig;
+    }
+
+    public GetNatResponse setSessionConfig(SessionConfig sessionConfig) {
+        this.sessionConfig = sessionConfig;
+        return this;
+    }
+
     public String getPaymentTiming() {
         return paymentTiming;
     }
@@ -206,8 +220,9 @@ public class GetNatResponse extends BaseBceResponse {
     @Override
     public String toString() {
         return "GetNatResponse{" + "id=" + id + "\n" + "name=" + name + "\n" + "natType=" + natType + "\n" + "vpcId=" + vpcId + "\n" + "spec=" + spec + "\n" + "cuNum=" + cuNum
-                + "\n" + "bindEips=" + bindEips + "\n" + "status=" + status + "\n" + "ipVersion=" + ipVersion + "\n" + "paymentTiming=" + paymentTiming + "\n" + "expiredTime="
-                + expiredTime + "\n" + "createTime=" + createTime + "\n" + "tags=" + tags + "\n" + "deleteProtect=" + deleteProtect + "\n" + "}";
+                + "\n" + "bindEips=" + bindEips + "\n" + "status=" + status + "\n" + "ipVersion=" + ipVersion + "\n" + "sessionConfig=" + sessionConfig + "\n" + "paymentTiming="
+                + paymentTiming + "\n" + "expiredTime=" + expiredTime + "\n" + "createTime=" + createTime + "\n" + "tags=" + tags + "\n" + "deleteProtect=" + deleteProtect + "\n"
+                + "}";
     }
 
 }
