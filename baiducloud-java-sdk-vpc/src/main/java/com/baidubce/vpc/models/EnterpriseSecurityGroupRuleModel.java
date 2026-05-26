@@ -15,7 +15,7 @@ public class EnterpriseSecurityGroupRuleModel {
     private String direction;
 
     /**
-     * 网络类型，取值IPv4或IPv6。值为空时表示默认取值IPv4。
+     * 网络类型，取值IPv4或IPv6。
      */
     private String ethertype;
 
@@ -30,7 +30,7 @@ public class EnterpriseSecurityGroupRuleModel {
     private String sourcePortRange;
 
     /**
-     * 协议类型，tcp、udp或icmp，值为空时默认取值all。
+     * 协议类型，tcp、udp或icmp。
      */
     private String protocol;
 
