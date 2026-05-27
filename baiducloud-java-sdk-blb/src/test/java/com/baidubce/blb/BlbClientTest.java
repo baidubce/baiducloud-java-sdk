@@ -1,5 +1,6 @@
 package com.baidubce.blb;
 
+import com.baidubce.blb.models.AddAppBlbServerGroupRsRequest;
 import com.baidubce.blb.models.BillingChangeCancelToPostBlbRequest;
 import com.baidubce.blb.models.BillingChangePostToPreBlbRequest;
 import com.baidubce.blb.models.BillingChangePostToPreBlbResponse;
@@ -12,6 +13,10 @@ import com.baidubce.blb.models.CreateAppBlbHttpsListenerRequest;
 import com.baidubce.blb.models.CreateAppBlbPolicyRequest;
 import com.baidubce.blb.models.CreateAppBlbRequest;
 import com.baidubce.blb.models.CreateAppBlbResponse;
+import com.baidubce.blb.models.CreateAppBlbServerGroupPortRequest;
+import com.baidubce.blb.models.CreateAppBlbServerGroupPortResponse;
+import com.baidubce.blb.models.CreateAppBlbServerGroupRequest;
+import com.baidubce.blb.models.CreateAppBlbServerGroupResponse;
 import com.baidubce.blb.models.CreateAppBlbSslListenerRequest;
 import com.baidubce.blb.models.CreateAppBlbTcpListenerRequest;
 import com.baidubce.blb.models.CreateAppBlbUdpListenerRequest;
@@ -19,6 +24,9 @@ import com.baidubce.blb.models.CreateBlbRequest;
 import com.baidubce.blb.models.CreateBlbResponse;
 import com.baidubce.blb.models.DeleteAppBlbListenerRequest;
 import com.baidubce.blb.models.DeleteAppBlbPolicyRequest;
+import com.baidubce.blb.models.DeleteAppBlbServerGroupPortRequest;
+import com.baidubce.blb.models.DeleteAppBlbServerGroupRequest;
+import com.baidubce.blb.models.DeleteAppBlbServerGroupRsRequest;
 import com.baidubce.blb.models.DescribeAppBlbHttpListenerRequest;
 import com.baidubce.blb.models.DescribeAppBlbHttpListenerResponse;
 import com.baidubce.blb.models.DescribeAppBlbHttpsListenerRequest;
@@ -29,6 +37,14 @@ import com.baidubce.blb.models.DescribeAppBlbPolicyRequest;
 import com.baidubce.blb.models.DescribeAppBlbPolicyResponse;
 import com.baidubce.blb.models.DescribeAppBlbRequest;
 import com.baidubce.blb.models.DescribeAppBlbResponse;
+import com.baidubce.blb.models.DescribeAppBlbServerGroupMountRsRequest;
+import com.baidubce.blb.models.DescribeAppBlbServerGroupMountRsResponse;
+import com.baidubce.blb.models.DescribeAppBlbServerGroupRequest;
+import com.baidubce.blb.models.DescribeAppBlbServerGroupResponse;
+import com.baidubce.blb.models.DescribeAppBlbServerGroupRsRequest;
+import com.baidubce.blb.models.DescribeAppBlbServerGroupRsResponse;
+import com.baidubce.blb.models.DescribeAppBlbServerGroupUnmountRsRequest;
+import com.baidubce.blb.models.DescribeAppBlbServerGroupUnmountRsResponse;
 import com.baidubce.blb.models.DescribeAppBlbSslListenerRequest;
 import com.baidubce.blb.models.DescribeAppBlbSslListenerResponse;
 import com.baidubce.blb.models.DescribeAppBlbTcpListenerRequest;
@@ -50,6 +66,9 @@ import com.baidubce.blb.models.UpdateAppBlbHttpListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbHttpsListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbPolicyRequest;
 import com.baidubce.blb.models.UpdateAppBlbRequest;
+import com.baidubce.blb.models.UpdateAppBlbServerGroupPortRequest;
+import com.baidubce.blb.models.UpdateAppBlbServerGroupRequest;
+import com.baidubce.blb.models.UpdateAppBlbServerGroupRsRequest;
 import com.baidubce.blb.models.UpdateAppBlbSslListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbTcpListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbUdpListenerRequest;
@@ -78,6 +97,19 @@ public class BlbClientTest {
         blbClient = new BlbClient(config);
     }
 
+    /**
+     * addAppBlbServerGroupRs
+     *
+     */
+    @Test
+    public void addAppBlbServerGroupRsTest() {
+        AddAppBlbServerGroupRsRequest addAppBlbServerGroupRsRequest = new AddAppBlbServerGroupRsRequest();
+        addAppBlbServerGroupRsRequest.setBlbId("");
+        addAppBlbServerGroupRsRequest.setClientToken("");
+        addAppBlbServerGroupRsRequest.setSgId("");
+        addAppBlbServerGroupRsRequest.setBackendServerList(new ArrayList<>());
+        blbClient.addAppBlbServerGroupRs(addAppBlbServerGroupRsRequest);
+    }
     /**
      * billingChangeCancelToPostBlb
      *
@@ -228,6 +260,47 @@ public class BlbClientTest {
         blbClient.createAppBlbPolicy(createAppBlbPolicyRequest);
     }
     /**
+     * createAppBlbServerGroup
+     *
+     */
+    @Test
+    public void createAppBlbServerGroupTest() {
+        CreateAppBlbServerGroupRequest createAppBlbServerGroupRequest = new CreateAppBlbServerGroupRequest();
+        createAppBlbServerGroupRequest.setBlbId("");
+        createAppBlbServerGroupRequest.setClientToken("");
+        createAppBlbServerGroupRequest.setName("");
+        createAppBlbServerGroupRequest.setDesc("");
+        createAppBlbServerGroupRequest.setBackendServerList(new ArrayList<>());
+        CreateAppBlbServerGroupResponse response = blbClient.createAppBlbServerGroup(createAppBlbServerGroupRequest);
+        System.out.println(response);
+    }
+    /**
+     * createAppBlbServerGroupPort
+     *
+     */
+    @Test
+    public void createAppBlbServerGroupPortTest() {
+        CreateAppBlbServerGroupPortRequest createAppBlbServerGroupPortRequest = new CreateAppBlbServerGroupPortRequest();
+        createAppBlbServerGroupPortRequest.setBlbId("");
+        createAppBlbServerGroupPortRequest.setClientToken("");
+        createAppBlbServerGroupPortRequest.setSgId("");
+        createAppBlbServerGroupPortRequest.setPort(0);
+        createAppBlbServerGroupPortRequest.setType("");
+        createAppBlbServerGroupPortRequest.setEnableHealthCheck(false);
+        createAppBlbServerGroupPortRequest.setHealthCheck("");
+        createAppBlbServerGroupPortRequest.setHealthCheckPort(0);
+        createAppBlbServerGroupPortRequest.setHealthCheckUrlPath("");
+        createAppBlbServerGroupPortRequest.setHealthCheckTimeoutInSecond(0);
+        createAppBlbServerGroupPortRequest.setHealthCheckIntervalInSecond(0);
+        createAppBlbServerGroupPortRequest.setHealthCheckDownRetry(0);
+        createAppBlbServerGroupPortRequest.setHealthCheckUpRetry(0);
+        createAppBlbServerGroupPortRequest.setHealthCheckNormalStatus("");
+        createAppBlbServerGroupPortRequest.setHealthCheckHost("");
+        createAppBlbServerGroupPortRequest.setUdpHealthCheckString("");
+        CreateAppBlbServerGroupPortResponse response = blbClient.createAppBlbServerGroupPort(createAppBlbServerGroupPortRequest);
+        System.out.println(response);
+    }
+    /**
      * createAppBlbSslListener
      *
      */
@@ -333,6 +406,44 @@ public class BlbClientTest {
         blbClient.deleteAppBlbPolicy(deleteAppBlbPolicyRequest);
     }
     /**
+     * deleteAppBlbServerGroup
+     *
+     */
+    @Test
+    public void deleteAppBlbServerGroupTest() {
+        DeleteAppBlbServerGroupRequest deleteAppBlbServerGroupRequest = new DeleteAppBlbServerGroupRequest();
+        deleteAppBlbServerGroupRequest.setBlbId("");
+        deleteAppBlbServerGroupRequest.setClientToken("");
+        deleteAppBlbServerGroupRequest.setSgId("");
+        blbClient.deleteAppBlbServerGroup(deleteAppBlbServerGroupRequest);
+    }
+    /**
+     * deleteAppBlbServerGroupPort
+     *
+     */
+    @Test
+    public void deleteAppBlbServerGroupPortTest() {
+        DeleteAppBlbServerGroupPortRequest deleteAppBlbServerGroupPortRequest = new DeleteAppBlbServerGroupPortRequest();
+        deleteAppBlbServerGroupPortRequest.setBlbId("");
+        deleteAppBlbServerGroupPortRequest.setClientToken("");
+        deleteAppBlbServerGroupPortRequest.setSgId("");
+        deleteAppBlbServerGroupPortRequest.setPortIdList(new ArrayList<>());
+        blbClient.deleteAppBlbServerGroupPort(deleteAppBlbServerGroupPortRequest);
+    }
+    /**
+     * deleteAppBlbServerGroupRs
+     *
+     */
+    @Test
+    public void deleteAppBlbServerGroupRsTest() {
+        DeleteAppBlbServerGroupRsRequest deleteAppBlbServerGroupRsRequest = new DeleteAppBlbServerGroupRsRequest();
+        deleteAppBlbServerGroupRsRequest.setBlbId("");
+        deleteAppBlbServerGroupRsRequest.setClientToken("");
+        deleteAppBlbServerGroupRsRequest.setSgId("");
+        deleteAppBlbServerGroupRsRequest.setBackendServerIdList(new ArrayList<>());
+        blbClient.deleteAppBlbServerGroupRs(deleteAppBlbServerGroupRsRequest);
+    }
+    /**
      * describeAppBlb
      *
      */
@@ -398,6 +509,59 @@ public class BlbClientTest {
         describeAppBlbPolicyRequest.setMarker("");
         describeAppBlbPolicyRequest.setMaxKeys(0);
         DescribeAppBlbPolicyResponse response = blbClient.describeAppBlbPolicy(describeAppBlbPolicyRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeAppBlbServerGroup
+     *
+     */
+    @Test
+    public void describeAppBlbServerGroupTest() {
+        DescribeAppBlbServerGroupRequest describeAppBlbServerGroupRequest = new DescribeAppBlbServerGroupRequest();
+        describeAppBlbServerGroupRequest.setBlbId("");
+        describeAppBlbServerGroupRequest.setName("");
+        describeAppBlbServerGroupRequest.setExactlyMatch(false);
+        describeAppBlbServerGroupRequest.setMarker("");
+        describeAppBlbServerGroupRequest.setMaxKeys(0);
+        DescribeAppBlbServerGroupResponse response = blbClient.describeAppBlbServerGroup(describeAppBlbServerGroupRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeAppBlbServerGroupMountRs
+     *
+     */
+    @Test
+    public void describeAppBlbServerGroupMountRsTest() {
+        DescribeAppBlbServerGroupMountRsRequest describeAppBlbServerGroupMountRsRequest = new DescribeAppBlbServerGroupMountRsRequest();
+        describeAppBlbServerGroupMountRsRequest.setBlbId("");
+        describeAppBlbServerGroupMountRsRequest.setSgId("");
+        DescribeAppBlbServerGroupMountRsResponse response = blbClient.describeAppBlbServerGroupMountRs(describeAppBlbServerGroupMountRsRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeAppBlbServerGroupRs
+     *
+     */
+    @Test
+    public void describeAppBlbServerGroupRsTest() {
+        DescribeAppBlbServerGroupRsRequest describeAppBlbServerGroupRsRequest = new DescribeAppBlbServerGroupRsRequest();
+        describeAppBlbServerGroupRsRequest.setBlbId("");
+        describeAppBlbServerGroupRsRequest.setSgId("");
+        describeAppBlbServerGroupRsRequest.setMarker("");
+        describeAppBlbServerGroupRsRequest.setMaxKeys(0);
+        DescribeAppBlbServerGroupRsResponse response = blbClient.describeAppBlbServerGroupRs(describeAppBlbServerGroupRsRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeAppBlbServerGroupUnmountRs
+     *
+     */
+    @Test
+    public void describeAppBlbServerGroupUnmountRsTest() {
+        DescribeAppBlbServerGroupUnmountRsRequest describeAppBlbServerGroupUnmountRsRequest = new DescribeAppBlbServerGroupUnmountRsRequest();
+        describeAppBlbServerGroupUnmountRsRequest.setBlbId("");
+        describeAppBlbServerGroupUnmountRsRequest.setSgId("");
+        DescribeAppBlbServerGroupUnmountRsResponse response = blbClient.describeAppBlbServerGroupUnmountRs(describeAppBlbServerGroupUnmountRsRequest);
         System.out.println(response);
     }
     /**
@@ -613,6 +777,57 @@ public class BlbClientTest {
         updateAppBlbPolicyRequest.setType("");
         updateAppBlbPolicyRequest.setPolicyList(new ArrayList<>());
         blbClient.updateAppBlbPolicy(updateAppBlbPolicyRequest);
+    }
+    /**
+     * updateAppBlbServerGroup
+     *
+     */
+    @Test
+    public void updateAppBlbServerGroupTest() {
+        UpdateAppBlbServerGroupRequest updateAppBlbServerGroupRequest = new UpdateAppBlbServerGroupRequest();
+        updateAppBlbServerGroupRequest.setBlbId("");
+        updateAppBlbServerGroupRequest.setClientToken("");
+        updateAppBlbServerGroupRequest.setSgId("");
+        updateAppBlbServerGroupRequest.setName("");
+        updateAppBlbServerGroupRequest.setDesc("");
+        blbClient.updateAppBlbServerGroup(updateAppBlbServerGroupRequest);
+    }
+    /**
+     * updateAppBlbServerGroupPort
+     *
+     */
+    @Test
+    public void updateAppBlbServerGroupPortTest() {
+        UpdateAppBlbServerGroupPortRequest updateAppBlbServerGroupPortRequest = new UpdateAppBlbServerGroupPortRequest();
+        updateAppBlbServerGroupPortRequest.setBlbId("");
+        updateAppBlbServerGroupPortRequest.setClientToken("");
+        updateAppBlbServerGroupPortRequest.setSgId("");
+        updateAppBlbServerGroupPortRequest.setPortId("");
+        updateAppBlbServerGroupPortRequest.setEnableHealthCheck(false);
+        updateAppBlbServerGroupPortRequest.setHealthCheck("");
+        updateAppBlbServerGroupPortRequest.setHealthCheckPort(0);
+        updateAppBlbServerGroupPortRequest.setHealthCheckUrlPath("");
+        updateAppBlbServerGroupPortRequest.setHealthCheckTimeoutInSecond(0);
+        updateAppBlbServerGroupPortRequest.setHealthCheckIntervalInSecond(0);
+        updateAppBlbServerGroupPortRequest.setHealthCheckDownRetry(0);
+        updateAppBlbServerGroupPortRequest.setHealthCheckUpRetry(0);
+        updateAppBlbServerGroupPortRequest.setHealthCheckNormalStatus("");
+        updateAppBlbServerGroupPortRequest.setHealthCheckHost("");
+        updateAppBlbServerGroupPortRequest.setUdpHealthCheckString("");
+        blbClient.updateAppBlbServerGroupPort(updateAppBlbServerGroupPortRequest);
+    }
+    /**
+     * updateAppBlbServerGroupRs
+     *
+     */
+    @Test
+    public void updateAppBlbServerGroupRsTest() {
+        UpdateAppBlbServerGroupRsRequest updateAppBlbServerGroupRsRequest = new UpdateAppBlbServerGroupRsRequest();
+        updateAppBlbServerGroupRsRequest.setBlbId("");
+        updateAppBlbServerGroupRsRequest.setClientToken("");
+        updateAppBlbServerGroupRsRequest.setSgId("");
+        updateAppBlbServerGroupRsRequest.setBackendServerList(new ArrayList<>());
+        blbClient.updateAppBlbServerGroupRs(updateAppBlbServerGroupRsRequest);
     }
     /**
      * updateAppBlbSslListener

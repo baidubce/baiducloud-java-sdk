@@ -13,6 +13,11 @@ public class DescribeAppBlbResponse extends BaseBceResponse {
     private String blbId;
 
     /**
+    * BLB 实例名称
+    */
+    private String name;
+
+    /**
     * BLB状态
     */
     private String status;
@@ -36,6 +41,11 @@ public class DescribeAppBlbResponse extends BaseBceResponse {
     * LoadBalancer所在网络cidr
     */
     private String cidr;
+
+    /**
+    * 所属VPC的ID
+    */
+    private String vpcId;
 
     /**
     * LoadBalancer所属vpc名称
@@ -122,12 +132,31 @@ public class DescribeAppBlbResponse extends BaseBceResponse {
     */
     private String eipV6RouteType;
 
+    /**
+    * IPv6 地址（为空字符串时表示未分配）
+    */
+    private String ipv6;
+
+    /**
+    * 该实例是否开启 ACL 访问控制，开启后负载均衡实例受ACL的访问控制
+    */
+    private Boolean supportAcl;
+
     public String getBlbId() {
         return blbId;
     }
 
     public DescribeAppBlbResponse setBlbId(String blbId) {
         this.blbId = blbId;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public DescribeAppBlbResponse setName(String name) {
+        this.name = name;
         return this;
     }
 
@@ -173,6 +202,15 @@ public class DescribeAppBlbResponse extends BaseBceResponse {
 
     public DescribeAppBlbResponse setCidr(String cidr) {
         this.cidr = cidr;
+        return this;
+    }
+
+    public String getVpcId() {
+        return vpcId;
+    }
+
+    public DescribeAppBlbResponse setVpcId(String vpcId) {
+        this.vpcId = vpcId;
         return this;
     }
 
@@ -329,14 +367,33 @@ public class DescribeAppBlbResponse extends BaseBceResponse {
         return this;
     }
 
+    public String getIpv6() {
+        return ipv6;
+    }
+
+    public DescribeAppBlbResponse setIpv6(String ipv6) {
+        this.ipv6 = ipv6;
+        return this;
+    }
+
+    public Boolean getSupportAcl() {
+        return supportAcl;
+    }
+
+    public DescribeAppBlbResponse setSupportAcl(Boolean supportAcl) {
+        this.supportAcl = supportAcl;
+        return this;
+    }
+
     @Override
     public String toString() {
-        return "DescribeAppBlbResponse{" + "blbId=" + blbId + "\n" + "status=" + status + "\n" + "desc=" + desc + "\n" + "address=" + address + "\n" + "publicIp=" + publicIp
-                + "\n" + "cidr=" + cidr + "\n" + "vpcName=" + vpcName + "\n" + "subnetCider=" + subnetCider + "\n" + "subnetName=" + subnetName + "\n" + "createTime=" + createTime
-                + "\n" + "releaseTime=" + releaseTime + "\n" + "listener=" + listener + "\n" + "tags=" + tags + "\n" + "allowDelete=" + allowDelete + "\n" + "allowModify="
-                + allowModify + "\n" + "modificationProtectionReason=" + modificationProtectionReason + "\n" + "paymentTiming=" + paymentTiming + "\n" + "billingMethod="
-                + billingMethod + "\n" + "performanceLevel=" + performanceLevel + "\n" + "expireTime=" + expireTime + "\n" + "eipRouteType=" + eipRouteType + "\n" + "publicIpv6="
-                + publicIpv6 + "\n" + "eipV6RouteType=" + eipV6RouteType + "\n" + "}";
+        return "DescribeAppBlbResponse{" + "blbId=" + blbId + "\n" + "name=" + name + "\n" + "status=" + status + "\n" + "desc=" + desc + "\n" + "address=" + address + "\n"
+                + "publicIp=" + publicIp + "\n" + "cidr=" + cidr + "\n" + "vpcId=" + vpcId + "\n" + "vpcName=" + vpcName + "\n" + "subnetCider=" + subnetCider + "\n"
+                + "subnetName=" + subnetName + "\n" + "createTime=" + createTime + "\n" + "releaseTime=" + releaseTime + "\n" + "listener=" + listener + "\n" + "tags=" + tags
+                + "\n" + "allowDelete=" + allowDelete + "\n" + "allowModify=" + allowModify + "\n" + "modificationProtectionReason=" + modificationProtectionReason + "\n"
+                + "paymentTiming=" + paymentTiming + "\n" + "billingMethod=" + billingMethod + "\n" + "performanceLevel=" + performanceLevel + "\n" + "expireTime=" + expireTime
+                + "\n" + "eipRouteType=" + eipRouteType + "\n" + "publicIpv6=" + publicIpv6 + "\n" + "eipV6RouteType=" + eipV6RouteType + "\n" + "ipv6=" + ipv6 + "\n"
+                + "supportAcl=" + supportAcl + "\n" + "}";
     }
 
 }
