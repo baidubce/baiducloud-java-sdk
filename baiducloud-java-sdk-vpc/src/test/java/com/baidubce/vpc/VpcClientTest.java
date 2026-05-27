@@ -3,60 +3,64 @@ package com.baidubce.vpc;
 import com.baidubce.vpc.models.AcceptPeerConnRequest;
 import com.baidubce.vpc.models.ActiveStandbySwitchoverRequest;
 import com.baidubce.vpc.models.AddAclRuleRequest;
-import com.baidubce.vpc.models.AddElasticNetworkCardAuxiliaryIpRequest;
-import com.baidubce.vpc.models.AddElasticNetworkCardAuxiliaryIpResponse;
-import com.baidubce.vpc.models.AddIpAddressGroupToIpAddressFamilyRequest;
-import com.baidubce.vpc.models.AddIpAddressesToTheIpAddressGroupRequest;
-import com.baidubce.vpc.models.AddIpv6OnlyOutboundAndNoInboundPolicyRequest;
-import com.baidubce.vpc.models.AddIpv6OnlyOutboundAndNoInboundPolicyResponse;
-import com.baidubce.vpc.models.AuthorizeRegularSecurityGroupRulesV2Request;
-import com.baidubce.vpc.models.AuthorizedEnterpriseSecurityGroupRulesRequest;
+import com.baidubce.vpc.models.AddEniIpRequest;
+import com.baidubce.vpc.models.AddEniIpResponse;
+import com.baidubce.vpc.models.AddIpAddressToIpGroupRequest;
+import com.baidubce.vpc.models.AddIpGroupToIpSetRequest;
+import com.baidubce.vpc.models.AttachEniInstanceRequest;
+import com.baidubce.vpc.models.AuthorizeEnterpriseSecurityGroupRulesRequest;
+import com.baidubce.vpc.models.AuthorizeSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.BatchAddDnatRulesRequest;
 import com.baidubce.vpc.models.BatchAddDnatRulesResponse;
+import com.baidubce.vpc.models.BatchAddEniIpRequest;
+import com.baidubce.vpc.models.BatchAddEniIpResponse;
 import com.baidubce.vpc.models.BatchAddSnatRulesRequest;
 import com.baidubce.vpc.models.BatchAddSnatRulesResponse;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersRequest;
 import com.baidubce.vpc.models.BatchCreateSslVpnUsersResponse;
-import com.baidubce.vpc.models.BatchDeleteElasticNetworkCardIntranetIpRequest;
-import com.baidubce.vpc.models.BatchIncreaseElasticNetworkCardIntranetIpRequest;
-import com.baidubce.vpc.models.BatchIncreaseElasticNetworkCardIntranetIpResponse;
+import com.baidubce.vpc.models.BatchDeleteEniIpRequest;
 import com.baidubce.vpc.models.BindEipRequest;
+import com.baidubce.vpc.models.BindEniEipRequest;
+import com.baidubce.vpc.models.BindHaVipEipRequest;
+import com.baidubce.vpc.models.BindHaVipInstanceRequest;
 import com.baidubce.vpc.models.BindPhysicalDedicatedLineRequest;
 import com.baidubce.vpc.models.ClosePeerConnSyncDnsRequest;
 import com.baidubce.vpc.models.CloseVpcRelayRequest;
-import com.baidubce.vpc.models.CreateAHighlyAvailableVirtualIpRequest;
-import com.baidubce.vpc.models.CreateAHighlyAvailableVirtualIpResponse;
-import com.baidubce.vpc.models.CreateARegularSecurityGroupV2Request;
-import com.baidubce.vpc.models.CreateARegularSecurityGroupV2Response;
-import com.baidubce.vpc.models.CreateAnIpv6GatewayRequest;
-import com.baidubce.vpc.models.CreateAnIpv6GatewayResponse;
 import com.baidubce.vpc.models.CreateDedicatedGatewayHealthCheckRequest;
 import com.baidubce.vpc.models.CreateDedicatedGatewayRequest;
 import com.baidubce.vpc.models.CreateDedicatedGatewayResponse;
 import com.baidubce.vpc.models.CreateDnatRuleRequest;
 import com.baidubce.vpc.models.CreateDnatRuleResponse;
-import com.baidubce.vpc.models.CreateElasticNetworkCardRequest;
-import com.baidubce.vpc.models.CreateElasticNetworkCardResponse;
+import com.baidubce.vpc.models.CreateEgressOnlyRuleRequest;
+import com.baidubce.vpc.models.CreateEgressOnlyRuleResponse;
+import com.baidubce.vpc.models.CreateEniRequest;
+import com.baidubce.vpc.models.CreateEniResponse;
 import com.baidubce.vpc.models.CreateEnterpriseSecurityGroupRequest;
 import com.baidubce.vpc.models.CreateEnterpriseSecurityGroupResponse;
 import com.baidubce.vpc.models.CreateGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.CreateGatewayLimitRulesResponse;
-import com.baidubce.vpc.models.CreateIpAddressFamilyRequest;
-import com.baidubce.vpc.models.CreateIpAddressFamilyResponse;
-import com.baidubce.vpc.models.CreateIpAddressGroupRequest;
-import com.baidubce.vpc.models.CreateIpAddressGroupResponse;
+import com.baidubce.vpc.models.CreateHaVipRequest;
+import com.baidubce.vpc.models.CreateHaVipResponse;
+import com.baidubce.vpc.models.CreateIpGroupRequest;
+import com.baidubce.vpc.models.CreateIpGroupResponse;
 import com.baidubce.vpc.models.CreateIpReservedRequest;
 import com.baidubce.vpc.models.CreateIpReservedResponse;
-import com.baidubce.vpc.models.CreateIpv6GatewaySpeedLimitPolicyRequest;
-import com.baidubce.vpc.models.CreateIpv6GatewaySpeedLimitPolicyResponse;
+import com.baidubce.vpc.models.CreateIpSetRequest;
+import com.baidubce.vpc.models.CreateIpSetResponse;
+import com.baidubce.vpc.models.CreateIpv6GatewayRequest;
+import com.baidubce.vpc.models.CreateIpv6GatewayResponse;
 import com.baidubce.vpc.models.CreateNatRequest;
 import com.baidubce.vpc.models.CreateNatResponse;
-import com.baidubce.vpc.models.CreateNetworkDetectionRequest;
-import com.baidubce.vpc.models.CreateNetworkDetectionResponse;
 import com.baidubce.vpc.models.CreatePeerConnRequest;
 import com.baidubce.vpc.models.CreatePeerConnResponse;
+import com.baidubce.vpc.models.CreateProbeRequest;
+import com.baidubce.vpc.models.CreateProbeResponse;
+import com.baidubce.vpc.models.CreateRateLimitRuleRequest;
+import com.baidubce.vpc.models.CreateRateLimitRuleResponse;
 import com.baidubce.vpc.models.CreateRoutingRulesRequest;
 import com.baidubce.vpc.models.CreateRoutingRulesResponse;
+import com.baidubce.vpc.models.CreateSecurityGroupRequest;
+import com.baidubce.vpc.models.CreateSecurityGroupResponse;
 import com.baidubce.vpc.models.CreateSnatRuleRequest;
 import com.baidubce.vpc.models.CreateSnatRuleResponse;
 import com.baidubce.vpc.models.CreateSslVpnServerRequest;
@@ -73,22 +77,21 @@ import com.baidubce.vpc.models.CreateVpnTunnelRequest;
 import com.baidubce.vpc.models.CreateVpnTunnelResponse;
 import com.baidubce.vpc.models.DeleteAclRuleRequest;
 import com.baidubce.vpc.models.DeleteDnatRuleRequest;
-import com.baidubce.vpc.models.DeleteElasticNetworkCardAuxiliaryIpRequest;
+import com.baidubce.vpc.models.DeleteEniIpRequest;
 import com.baidubce.vpc.models.DeleteEnterpriseSecurityGroupRequest;
 import com.baidubce.vpc.models.DeleteEnterpriseSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.DeleteGatewayLimitRuleRequest;
-import com.baidubce.vpc.models.DeleteHighlyAvailableVirtualIpRequest;
-import com.baidubce.vpc.models.DeleteIpAddressFamilyRequest;
-import com.baidubce.vpc.models.DeleteIpAddressFromIpAddressGroupRequest;
-import com.baidubce.vpc.models.DeleteIpAddressGroupRequest;
+import com.baidubce.vpc.models.DeleteHaVipRequest;
+import com.baidubce.vpc.models.DeleteIpGroupRequest;
 import com.baidubce.vpc.models.DeleteIpReserveRequest;
+import com.baidubce.vpc.models.DeleteIpSetRequest;
+import com.baidubce.vpc.models.DeleteIpv6GatewayEgressOnlyRuleRequest;
+import com.baidubce.vpc.models.DeleteIpv6GatewayRateLimitRuleRequest;
 import com.baidubce.vpc.models.DeleteIpv6GatewayRequest;
-import com.baidubce.vpc.models.DeleteIpv6GatewaySpeedLimitPolicyRequest;
-import com.baidubce.vpc.models.DeleteIpv6OnlyAccessPolicyRequest;
-import com.baidubce.vpc.models.DeleteNetworkDetectionRequest;
-import com.baidubce.vpc.models.DeleteRegularSecurityGroupRulesV2Request;
-import com.baidubce.vpc.models.DeleteRegularSecurityGroupV2Request;
+import com.baidubce.vpc.models.DeleteProbeRequest;
 import com.baidubce.vpc.models.DeleteRoutingRulesRequest;
+import com.baidubce.vpc.models.DeleteSecurityGroupRequest;
+import com.baidubce.vpc.models.DeleteSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.DeleteSnatRuleRequest;
 import com.baidubce.vpc.models.DeleteSslVpnServerRequest;
 import com.baidubce.vpc.models.DeleteSslVpnUserRequest;
@@ -96,31 +99,41 @@ import com.baidubce.vpc.models.DeleteSubnetRequest;
 import com.baidubce.vpc.models.DeleteUserGatewayRequest;
 import com.baidubce.vpc.models.DeleteVpcRequest;
 import com.baidubce.vpc.models.DeleteVpnTunnelRequest;
-import com.baidubce.vpc.models.ElasticNetworkCardBindingEipRequest;
-import com.baidubce.vpc.models.ElasticNetworkCardMountedCloudProductInstanceRequest;
-import com.baidubce.vpc.models.ElasticNetworkCardUnbindingEipRequest;
-import com.baidubce.vpc.models.ElasticNetworkCardUninstallationCloudProductInstanceRequest;
-import com.baidubce.vpc.models.ElasticNetworkCardUpdateEnterpriseSecurityGroupRequest;
-import com.baidubce.vpc.models.ElasticNetworkCardUpdatesRegularSecurityGroupRequest;
+import com.baidubce.vpc.models.DetachEniInstanceRequest;
+import com.baidubce.vpc.models.GetEniDetailRequest;
+import com.baidubce.vpc.models.GetEniDetailResponse;
+import com.baidubce.vpc.models.GetEniStatusRequest;
+import com.baidubce.vpc.models.GetEniStatusResponse;
+import com.baidubce.vpc.models.GetHaVipDetailRequest;
+import com.baidubce.vpc.models.GetHaVipDetailResponse;
 import com.baidubce.vpc.models.GetNatRequest;
 import com.baidubce.vpc.models.GetNatResponse;
 import com.baidubce.vpc.models.GetPeerConnRequest;
 import com.baidubce.vpc.models.GetPeerConnResponse;
+import com.baidubce.vpc.models.GetProbeDetailRequest;
+import com.baidubce.vpc.models.GetProbeDetailResponse;
+import com.baidubce.vpc.models.GetSecurityGroupDetailsRequest;
+import com.baidubce.vpc.models.GetSecurityGroupDetailsResponse;
 import com.baidubce.vpc.models.GetVpcResourceIpInfoRequest;
 import com.baidubce.vpc.models.GetVpcResourceIpInfoResponse;
-import com.baidubce.vpc.models.HighAvailabilityVirtualIpUnbindingEipRequest;
-import com.baidubce.vpc.models.HighAvailabilityVirtualIpUnbindingInstanceRequest;
-import com.baidubce.vpc.models.HighlyAvailableVirtualIpBindingEipRequest;
-import com.baidubce.vpc.models.HighlyAvailableVirtualIpBindingInstanceRequest;
-import com.baidubce.vpc.models.Ipv6GatewayBandwidthUpgradeAndDowngradeRequest;
 import com.baidubce.vpc.models.ListDnatRuleRequest;
 import com.baidubce.vpc.models.ListDnatRuleResponse;
+import com.baidubce.vpc.models.ListEgressOnlyRuleRequest;
+import com.baidubce.vpc.models.ListEgressOnlyRuleResponse;
+import com.baidubce.vpc.models.ListEniRequest;
+import com.baidubce.vpc.models.ListEniResponse;
+import com.baidubce.vpc.models.ListHaVipRequest;
+import com.baidubce.vpc.models.ListHaVipResponse;
 import com.baidubce.vpc.models.ListIpReserveRequest;
 import com.baidubce.vpc.models.ListIpReserveResponse;
 import com.baidubce.vpc.models.ListNatRequest;
 import com.baidubce.vpc.models.ListNatResponse;
 import com.baidubce.vpc.models.ListPeerConnRequest;
 import com.baidubce.vpc.models.ListPeerConnResponse;
+import com.baidubce.vpc.models.ListProbesRequest;
+import com.baidubce.vpc.models.ListProbesResponse;
+import com.baidubce.vpc.models.ListRateLimitRuleRequest;
+import com.baidubce.vpc.models.ListRateLimitRuleResponse;
 import com.baidubce.vpc.models.ListSnatRuleRequest;
 import com.baidubce.vpc.models.ListSnatRuleResponse;
 import com.baidubce.vpc.models.ModifyGatewayLimitRulesRequest;
@@ -134,18 +147,24 @@ import com.baidubce.vpc.models.QueryAclRequest;
 import com.baidubce.vpc.models.QueryAclResponse;
 import com.baidubce.vpc.models.QueryAclRulesRequest;
 import com.baidubce.vpc.models.QueryAclRulesResponse;
-import com.baidubce.vpc.models.QueryIpAddressFamilyListRequest;
-import com.baidubce.vpc.models.QueryIpAddressFamilyListResponse;
+import com.baidubce.vpc.models.QueryEnterpriseSecurityGroupListRequest;
+import com.baidubce.vpc.models.QueryEnterpriseSecurityGroupListResponse;
+import com.baidubce.vpc.models.QueryIpGroupDetailRequest;
+import com.baidubce.vpc.models.QueryIpGroupDetailResponse;
+import com.baidubce.vpc.models.QueryIpGroupListRequest;
+import com.baidubce.vpc.models.QueryIpGroupListResponse;
+import com.baidubce.vpc.models.QueryIpSetDetailRequest;
+import com.baidubce.vpc.models.QueryIpSetDetailResponse;
+import com.baidubce.vpc.models.QueryIpSetListRequest;
+import com.baidubce.vpc.models.QueryIpSetListResponse;
 import com.baidubce.vpc.models.QueryIpv6GatewayRequest;
 import com.baidubce.vpc.models.QueryIpv6GatewayResponse;
-import com.baidubce.vpc.models.QueryNetworkDetectionDetailsRequest;
-import com.baidubce.vpc.models.QueryNetworkDetectionDetailsResponse;
-import com.baidubce.vpc.models.QueryNetworkDetectionListRequest;
-import com.baidubce.vpc.models.QueryNetworkDetectionListResponse;
 import com.baidubce.vpc.models.QueryRoutingRulesRequest;
 import com.baidubce.vpc.models.QueryRoutingRulesResponse;
 import com.baidubce.vpc.models.QueryRoutingTableRequest;
 import com.baidubce.vpc.models.QueryRoutingTableResponse;
+import com.baidubce.vpc.models.QuerySecurityGroupsListRequest;
+import com.baidubce.vpc.models.QuerySecurityGroupsListResponse;
 import com.baidubce.vpc.models.QuerySpecifiedSubnetRequest;
 import com.baidubce.vpc.models.QuerySpecifiedSubnetResponse;
 import com.baidubce.vpc.models.QuerySpecifiedVpcRequest;
@@ -160,71 +179,54 @@ import com.baidubce.vpc.models.QueryTheDetailsOfTheDedicatedGatewayRequest;
 import com.baidubce.vpc.models.QueryTheDetailsOfTheDedicatedGatewayResponse;
 import com.baidubce.vpc.models.QueryTheListOfDedicatedLineGatewaysRequest;
 import com.baidubce.vpc.models.QueryTheListOfDedicatedLineGatewaysResponse;
-import com.baidubce.vpc.models.QueryTheListOfElasticNetworkCardsRequest;
-import com.baidubce.vpc.models.QueryTheListOfElasticNetworkCardsResponse;
-import com.baidubce.vpc.models.QueryTheListOfEnterpriseSecurityGroupsRequest;
-import com.baidubce.vpc.models.QueryTheListOfEnterpriseSecurityGroupsResponse;
-import com.baidubce.vpc.models.QueryTheListOfHighlyAvailableVirtualIpsRequest;
-import com.baidubce.vpc.models.QueryTheListOfHighlyAvailableVirtualIpsResponse;
-import com.baidubce.vpc.models.QueryTheListOfIpAddressGroupsRequest;
-import com.baidubce.vpc.models.QueryTheListOfIpAddressGroupsResponse;
-import com.baidubce.vpc.models.QueryTheListOfRegularSecurityGroupsV2Request;
-import com.baidubce.vpc.models.QueryTheListOfRegularSecurityGroupsV2Response;
-import com.baidubce.vpc.models.QueryTheListOfSpeedLimitPoliciesForIpv6GatewayRequest;
-import com.baidubce.vpc.models.QueryTheListOfSpeedLimitPoliciesForIpv6GatewayResponse;
-import com.baidubce.vpc.models.QueryTheSpecifiedElasticNetworkCardRequest;
-import com.baidubce.vpc.models.QueryTheSpecifiedElasticNetworkCardResponse;
-import com.baidubce.vpc.models.QueryTheSpecifiedHighlyAvailableVirtualIpRequest;
-import com.baidubce.vpc.models.QueryTheSpecifiedHighlyAvailableVirtualIpResponse;
-import com.baidubce.vpc.models.QueryTheSpecifiedIpAddressFamilyRequest;
-import com.baidubce.vpc.models.QueryTheSpecifiedIpAddressFamilyResponse;
-import com.baidubce.vpc.models.QueryTheSpecifiedIpAddressGroupRequest;
-import com.baidubce.vpc.models.QueryTheSpecifiedIpAddressGroupResponse;
-import com.baidubce.vpc.models.QueryTheStatusOfTheElasticNetworkCardRequest;
-import com.baidubce.vpc.models.QueryTheStatusOfTheElasticNetworkCardResponse;
 import com.baidubce.vpc.models.QueryVpcIntranetIpRequest;
 import com.baidubce.vpc.models.QueryVpcIntranetIpResponse;
 import com.baidubce.vpc.models.QueryVpcListRequest;
 import com.baidubce.vpc.models.QueryVpcListResponse;
 import com.baidubce.vpc.models.QueryVpnListRequest;
 import com.baidubce.vpc.models.QueryVpnListResponse;
-import com.baidubce.vpc.models.QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionRequest;
-import com.baidubce.vpc.models.QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionResponse;
 import com.baidubce.vpc.models.RefundPeerConnRequest;
 import com.baidubce.vpc.models.RejectPeerConnRequest;
 import com.baidubce.vpc.models.ReleaseDedicatedGatewayRequest;
 import com.baidubce.vpc.models.ReleaseNatRequest;
 import com.baidubce.vpc.models.ReleasePeerConnRequest;
 import com.baidubce.vpc.models.ReleaseVpnRequest;
-import com.baidubce.vpc.models.RemoveElasticNetworkCardRequest;
-import com.baidubce.vpc.models.RemoveIpAddressGroupFromIpAddressFamilyRequest;
+import com.baidubce.vpc.models.RemoveEniRequest;
+import com.baidubce.vpc.models.RemoveIpAddressFromIpGroupRequest;
+import com.baidubce.vpc.models.RemoveIpGroupFromIpSetRequest;
 import com.baidubce.vpc.models.RenewPeerConnRequest;
 import com.baidubce.vpc.models.RenewVpnRequest;
+import com.baidubce.vpc.models.ResizeIpv6GatewayRequest;
 import com.baidubce.vpc.models.ResizeNatRequest;
-import com.baidubce.vpc.models.RevokeRegularSecurityGroupRulesV2Request;
+import com.baidubce.vpc.models.RevokeSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.SearchForVpnDetailsRequest;
 import com.baidubce.vpc.models.SearchForVpnDetailsResponse;
 import com.baidubce.vpc.models.SearchVpnTunnelRequest;
 import com.baidubce.vpc.models.SearchVpnTunnelResponse;
 import com.baidubce.vpc.models.UnbindEipRequest;
+import com.baidubce.vpc.models.UnbindEniEipRequest;
+import com.baidubce.vpc.models.UnbindHaVipEipRequest;
+import com.baidubce.vpc.models.UnbindHaVipInstanceRequest;
 import com.baidubce.vpc.models.UnbindPhysicalDedicatedLineRequest;
 import com.baidubce.vpc.models.UpdateAclRulesRequest;
 import com.baidubce.vpc.models.UpdateDedicatedGatewayRequest;
+import com.baidubce.vpc.models.UpdateDeleteProtectRequest;
 import com.baidubce.vpc.models.UpdateDnatRuleRequest;
-import com.baidubce.vpc.models.UpdateElasticNetworkCardRequest;
+import com.baidubce.vpc.models.UpdateEniEnterpriseSecurityGroupRequest;
+import com.baidubce.vpc.models.UpdateEniRequest;
+import com.baidubce.vpc.models.UpdateEniSecurityGroupRequest;
 import com.baidubce.vpc.models.UpdateEnterpriseSecurityGroupRulesRequest;
-import com.baidubce.vpc.models.UpdateHighlyAvailableVirtualIpRequest;
-import com.baidubce.vpc.models.UpdateIpAddressFamilyRequest;
-import com.baidubce.vpc.models.UpdateIpAddressGroupRequest;
-import com.baidubce.vpc.models.UpdateIpv6GatewayReleaseProtectionSwitchRequest;
-import com.baidubce.vpc.models.UpdateIpv6GatewaySpeedLimitPolicyRequest;
+import com.baidubce.vpc.models.UpdateHaVipRequest;
+import com.baidubce.vpc.models.UpdateIpGroupRequest;
+import com.baidubce.vpc.models.UpdateIpSetRequest;
 import com.baidubce.vpc.models.UpdateNatReleaseProtectionSwitchRequest;
-import com.baidubce.vpc.models.UpdateNetworkDetectionRequest;
 import com.baidubce.vpc.models.UpdatePeerConnBandwidthRequest;
 import com.baidubce.vpc.models.UpdatePeerConnDeleteProtectRequest;
 import com.baidubce.vpc.models.UpdatePeerConnRequest;
-import com.baidubce.vpc.models.UpdateRegularSecurityGroupRulesV2Request;
+import com.baidubce.vpc.models.UpdateProbeRequest;
+import com.baidubce.vpc.models.UpdateRateLimitRuleRequest;
 import com.baidubce.vpc.models.UpdateRoutingRulesRequest;
+import com.baidubce.vpc.models.UpdateSecurityGroupRulesRequest;
 import com.baidubce.vpc.models.UpdateSnatRuleRequest;
 import com.baidubce.vpc.models.UpdateSslVpnServerRequest;
 import com.baidubce.vpc.models.UpdateSslVpnUsersRequest;
@@ -240,8 +242,6 @@ import com.baidubce.vpc.models.UserGatewayListRequest;
 import com.baidubce.vpc.models.UserGatewayListResponse;
 import com.baidubce.vpc.models.ViewGatewayLimitRulesRequest;
 import com.baidubce.vpc.models.ViewGatewayLimitRulesResponse;
-import com.baidubce.vpc.models.ViewSecurityGroupDetailsV2Request;
-import com.baidubce.vpc.models.ViewSecurityGroupDetailsV2Response;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -298,80 +298,80 @@ public class VpcClientTest {
         vpcClient.addAclRule(addAclRuleRequest);
     }
     /**
-     * addElasticNetworkCardAuxiliaryIp
+     * addEniIp
      *
      */
     @Test
-    public void addElasticNetworkCardAuxiliaryIpTest() {
-        AddElasticNetworkCardAuxiliaryIpRequest addElasticNetworkCardAuxiliaryIpRequest = new AddElasticNetworkCardAuxiliaryIpRequest();
-        addElasticNetworkCardAuxiliaryIpRequest.setEniId("");
-        addElasticNetworkCardAuxiliaryIpRequest.setClientToken("");
-        addElasticNetworkCardAuxiliaryIpRequest.setIsIpv6(false);
-        addElasticNetworkCardAuxiliaryIpRequest.setPrivateIpAddress("");
-        AddElasticNetworkCardAuxiliaryIpResponse response = vpcClient.addElasticNetworkCardAuxiliaryIp(addElasticNetworkCardAuxiliaryIpRequest);
+    public void addEniIpTest() {
+        AddEniIpRequest addEniIpRequest = new AddEniIpRequest();
+        addEniIpRequest.setEniId("");
+        addEniIpRequest.setClientToken("");
+        addEniIpRequest.setIsIpv6(false);
+        addEniIpRequest.setPrivateIpAddress("");
+        AddEniIpResponse response = vpcClient.addEniIp(addEniIpRequest);
         System.out.println(response);
     }
     /**
-     * addIpAddressGroupToIpAddressFamily
+     * addIpAddressToIpGroup
      *
      */
     @Test
-    public void addIpAddressGroupToIpAddressFamilyTest() {
-        AddIpAddressGroupToIpAddressFamilyRequest addIpAddressGroupToIpAddressFamilyRequest = new AddIpAddressGroupToIpAddressFamilyRequest();
-        addIpAddressGroupToIpAddressFamilyRequest.setIpGroupId("");
-        addIpAddressGroupToIpAddressFamilyRequest.setClientToken("");
-        addIpAddressGroupToIpAddressFamilyRequest.setIpSetIds(new ArrayList<>());
-        vpcClient.addIpAddressGroupToIpAddressFamily(addIpAddressGroupToIpAddressFamilyRequest);
+    public void addIpAddressToIpGroupTest() {
+        AddIpAddressToIpGroupRequest addIpAddressToIpGroupRequest = new AddIpAddressToIpGroupRequest();
+        addIpAddressToIpGroupRequest.setIpSetId("");
+        addIpAddressToIpGroupRequest.setClientToken("");
+        addIpAddressToIpGroupRequest.setIpAddressInfo(new ArrayList<>());
+        vpcClient.addIpAddressToIpGroup(addIpAddressToIpGroupRequest);
     }
     /**
-     * addIpAddressesToTheIpAddressGroup
+     * addIpGroupToIpSet
      *
      */
     @Test
-    public void addIpAddressesToTheIpAddressGroupTest() {
-        AddIpAddressesToTheIpAddressGroupRequest addIpAddressesToTheIpAddressGroupRequest = new AddIpAddressesToTheIpAddressGroupRequest();
-        addIpAddressesToTheIpAddressGroupRequest.setIpSetId("");
-        addIpAddressesToTheIpAddressGroupRequest.setClientToken("");
-        addIpAddressesToTheIpAddressGroupRequest.setIpAddressInfo(new ArrayList<>());
-        vpcClient.addIpAddressesToTheIpAddressGroup(addIpAddressesToTheIpAddressGroupRequest);
+    public void addIpGroupToIpSetTest() {
+        AddIpGroupToIpSetRequest addIpGroupToIpSetRequest = new AddIpGroupToIpSetRequest();
+        addIpGroupToIpSetRequest.setIpGroupId("");
+        addIpGroupToIpSetRequest.setClientToken("");
+        addIpGroupToIpSetRequest.setIpSetIds(new ArrayList<>());
+        vpcClient.addIpGroupToIpSet(addIpGroupToIpSetRequest);
     }
     /**
-     * addIpv6OnlyOutboundAndNoInboundPolicy
+     * attachEniInstance
      *
      */
     @Test
-    public void addIpv6OnlyOutboundAndNoInboundPolicyTest() {
-        AddIpv6OnlyOutboundAndNoInboundPolicyRequest addIpv6OnlyOutboundAndNoInboundPolicyRequest = new AddIpv6OnlyOutboundAndNoInboundPolicyRequest();
-        addIpv6OnlyOutboundAndNoInboundPolicyRequest.setGatewayId("");
-        addIpv6OnlyOutboundAndNoInboundPolicyRequest.setClientToken("");
-        addIpv6OnlyOutboundAndNoInboundPolicyRequest.setCidr("");
-        AddIpv6OnlyOutboundAndNoInboundPolicyResponse response = vpcClient.addIpv6OnlyOutboundAndNoInboundPolicy(addIpv6OnlyOutboundAndNoInboundPolicyRequest);
-        System.out.println(response);
+    public void attachEniInstanceTest() {
+        AttachEniInstanceRequest attachEniInstanceRequest = new AttachEniInstanceRequest();
+        attachEniInstanceRequest.setEniId("");
+        attachEniInstanceRequest.setClientToken("");
+        attachEniInstanceRequest.setInstanceId("");
+        attachEniInstanceRequest.setInstanceType("");
+        vpcClient.attachEniInstance(attachEniInstanceRequest);
     }
     /**
-     * authorizeRegularSecurityGroupRulesV2
+     * authorizeEnterpriseSecurityGroupRules
      *
      */
     @Test
-    public void authorizeRegularSecurityGroupRulesV2Test() {
-        AuthorizeRegularSecurityGroupRulesV2Request authorizeRegularSecurityGroupRulesV2Request = new AuthorizeRegularSecurityGroupRulesV2Request();
-        authorizeRegularSecurityGroupRulesV2Request.setSecurityGroupId("");
-        authorizeRegularSecurityGroupRulesV2Request.setSgVersion(0L);
-        authorizeRegularSecurityGroupRulesV2Request.setClientToken("");
-        authorizeRegularSecurityGroupRulesV2Request.setRule(null);
-        vpcClient.authorizeRegularSecurityGroupRulesV2(authorizeRegularSecurityGroupRulesV2Request);
+    public void authorizeEnterpriseSecurityGroupRulesTest() {
+        AuthorizeEnterpriseSecurityGroupRulesRequest authorizeEnterpriseSecurityGroupRulesRequest = new AuthorizeEnterpriseSecurityGroupRulesRequest();
+        authorizeEnterpriseSecurityGroupRulesRequest.setEnterpriseSecurityGroupId("");
+        authorizeEnterpriseSecurityGroupRulesRequest.setClientToken("");
+        authorizeEnterpriseSecurityGroupRulesRequest.setRules(new ArrayList<>());
+        vpcClient.authorizeEnterpriseSecurityGroupRules(authorizeEnterpriseSecurityGroupRulesRequest);
     }
     /**
-     * authorizedEnterpriseSecurityGroupRules
+     * authorizeSecurityGroupRules
      *
      */
     @Test
-    public void authorizedEnterpriseSecurityGroupRulesTest() {
-        AuthorizedEnterpriseSecurityGroupRulesRequest authorizedEnterpriseSecurityGroupRulesRequest = new AuthorizedEnterpriseSecurityGroupRulesRequest();
-        authorizedEnterpriseSecurityGroupRulesRequest.setEnterpriseSecurityGroupId("");
-        authorizedEnterpriseSecurityGroupRulesRequest.setClientToken("");
-        authorizedEnterpriseSecurityGroupRulesRequest.setRules(new ArrayList<>());
-        vpcClient.authorizedEnterpriseSecurityGroupRules(authorizedEnterpriseSecurityGroupRulesRequest);
+    public void authorizeSecurityGroupRulesTest() {
+        AuthorizeSecurityGroupRulesRequest authorizeSecurityGroupRulesRequest = new AuthorizeSecurityGroupRulesRequest();
+        authorizeSecurityGroupRulesRequest.setSecurityGroupId("");
+        authorizeSecurityGroupRulesRequest.setSgVersion(0L);
+        authorizeSecurityGroupRulesRequest.setClientToken("");
+        authorizeSecurityGroupRulesRequest.setRule(null);
+        vpcClient.authorizeSecurityGroupRules(authorizeSecurityGroupRulesRequest);
     }
     /**
      * batchAddDnatRules
@@ -384,6 +384,21 @@ public class VpcClientTest {
         batchAddDnatRulesRequest.setClientToken("");
         batchAddDnatRulesRequest.setRules(new ArrayList<>());
         BatchAddDnatRulesResponse response = vpcClient.batchAddDnatRules(batchAddDnatRulesRequest);
+        System.out.println(response);
+    }
+    /**
+     * batchAddEniIp
+     *
+     */
+    @Test
+    public void batchAddEniIpTest() {
+        BatchAddEniIpRequest batchAddEniIpRequest = new BatchAddEniIpRequest();
+        batchAddEniIpRequest.setEniId("");
+        batchAddEniIpRequest.setClientToken("");
+        batchAddEniIpRequest.setIsIpv6(false);
+        batchAddEniIpRequest.setPrivateIpAddresses(new ArrayList<>());
+        batchAddEniIpRequest.setPrivateIpAddressCount(0);
+        BatchAddEniIpResponse response = vpcClient.batchAddEniIp(batchAddEniIpRequest);
         System.out.println(response);
     }
     /**
@@ -413,31 +428,16 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
-     * batchDeleteElasticNetworkCardIntranetIp
+     * batchDeleteEniIp
      *
      */
     @Test
-    public void batchDeleteElasticNetworkCardIntranetIpTest() {
-        BatchDeleteElasticNetworkCardIntranetIpRequest batchDeleteElasticNetworkCardIntranetIpRequest = new BatchDeleteElasticNetworkCardIntranetIpRequest();
-        batchDeleteElasticNetworkCardIntranetIpRequest.setEniId("");
-        batchDeleteElasticNetworkCardIntranetIpRequest.setClientToken("");
-        batchDeleteElasticNetworkCardIntranetIpRequest.setPrivateIpAddresses(new ArrayList<>());
-        vpcClient.batchDeleteElasticNetworkCardIntranetIp(batchDeleteElasticNetworkCardIntranetIpRequest);
-    }
-    /**
-     * batchIncreaseElasticNetworkCardIntranetIp
-     *
-     */
-    @Test
-    public void batchIncreaseElasticNetworkCardIntranetIpTest() {
-        BatchIncreaseElasticNetworkCardIntranetIpRequest batchIncreaseElasticNetworkCardIntranetIpRequest = new BatchIncreaseElasticNetworkCardIntranetIpRequest();
-        batchIncreaseElasticNetworkCardIntranetIpRequest.setEniId("");
-        batchIncreaseElasticNetworkCardIntranetIpRequest.setClientToken("");
-        batchIncreaseElasticNetworkCardIntranetIpRequest.setIsIpv6(false);
-        batchIncreaseElasticNetworkCardIntranetIpRequest.setPrivateIpAddresses(new ArrayList<>());
-        batchIncreaseElasticNetworkCardIntranetIpRequest.setPrivateIpAddressCount(0);
-        BatchIncreaseElasticNetworkCardIntranetIpResponse response = vpcClient.batchIncreaseElasticNetworkCardIntranetIp(batchIncreaseElasticNetworkCardIntranetIpRequest);
-        System.out.println(response);
+    public void batchDeleteEniIpTest() {
+        BatchDeleteEniIpRequest batchDeleteEniIpRequest = new BatchDeleteEniIpRequest();
+        batchDeleteEniIpRequest.setEniId("");
+        batchDeleteEniIpRequest.setClientToken("");
+        batchDeleteEniIpRequest.setPrivateIpAddresses(new ArrayList<>());
+        vpcClient.batchDeleteEniIp(batchDeleteEniIpRequest);
     }
     /**
      * bindEip
@@ -450,6 +450,44 @@ public class VpcClientTest {
         bindEipRequest.setClientToken("");
         bindEipRequest.setEip("");
         vpcClient.bindEip(bindEipRequest);
+    }
+    /**
+     * bindEniEip
+     *
+     */
+    @Test
+    public void bindEniEipTest() {
+        BindEniEipRequest bindEniEipRequest = new BindEniEipRequest();
+        bindEniEipRequest.setEniId("");
+        bindEniEipRequest.setClientToken("");
+        bindEniEipRequest.setPrivateIpAddress("");
+        bindEniEipRequest.setPublicIpAddress("");
+        vpcClient.bindEniEip(bindEniEipRequest);
+    }
+    /**
+     * bindHaVipEip
+     *
+     */
+    @Test
+    public void bindHaVipEipTest() {
+        BindHaVipEipRequest bindHaVipEipRequest = new BindHaVipEipRequest();
+        bindHaVipEipRequest.setHaVipId("");
+        bindHaVipEipRequest.setClientToken("");
+        bindHaVipEipRequest.setPublicIpAddress("");
+        vpcClient.bindHaVipEip(bindHaVipEipRequest);
+    }
+    /**
+     * bindHaVipInstance
+     *
+     */
+    @Test
+    public void bindHaVipInstanceTest() {
+        BindHaVipInstanceRequest bindHaVipInstanceRequest = new BindHaVipInstanceRequest();
+        bindHaVipInstanceRequest.setHaVipId("");
+        bindHaVipInstanceRequest.setClientToken("");
+        bindHaVipInstanceRequest.setInstanceIds(new ArrayList<>());
+        bindHaVipInstanceRequest.setInstanceType("");
+        vpcClient.bindHaVipInstance(bindHaVipInstanceRequest);
     }
     /**
      * bindPhysicalDedicatedLine
@@ -487,55 +525,6 @@ public class VpcClientTest {
         closeVpcRelayRequest.setVpcId("");
         closeVpcRelayRequest.setClientToken("");
         vpcClient.closeVpcRelay(closeVpcRelayRequest);
-    }
-    /**
-     * createAHighlyAvailableVirtualIp
-     *
-     */
-    @Test
-    public void createAHighlyAvailableVirtualIpTest() {
-        CreateAHighlyAvailableVirtualIpRequest createAHighlyAvailableVirtualIpRequest = new CreateAHighlyAvailableVirtualIpRequest();
-        createAHighlyAvailableVirtualIpRequest.setClientToken("");
-        createAHighlyAvailableVirtualIpRequest.setName("");
-        createAHighlyAvailableVirtualIpRequest.setSubnetId("");
-        createAHighlyAvailableVirtualIpRequest.setPrivateIpAddress("");
-        createAHighlyAvailableVirtualIpRequest.setDescription("");
-        CreateAHighlyAvailableVirtualIpResponse response = vpcClient.createAHighlyAvailableVirtualIp(createAHighlyAvailableVirtualIpRequest);
-        System.out.println(response);
-    }
-    /**
-     * createARegularSecurityGroupV2
-     *
-     */
-    @Test
-    public void createARegularSecurityGroupV2Test() {
-        CreateARegularSecurityGroupV2Request createARegularSecurityGroupV2Request = new CreateARegularSecurityGroupV2Request();
-        createARegularSecurityGroupV2Request.setClientToken("");
-        createARegularSecurityGroupV2Request.setName("");
-        createARegularSecurityGroupV2Request.setVpcId("");
-        createARegularSecurityGroupV2Request.setDesc("");
-        createARegularSecurityGroupV2Request.setRules(new ArrayList<>());
-        createARegularSecurityGroupV2Request.setTags(new ArrayList<>());
-        CreateARegularSecurityGroupV2Response response = vpcClient.createARegularSecurityGroupV2(createARegularSecurityGroupV2Request);
-        System.out.println(response);
-    }
-    /**
-     * createAnIpv6Gateway
-     *
-     */
-    @Test
-    public void createAnIpv6GatewayTest() {
-        CreateAnIpv6GatewayRequest createAnIpv6GatewayRequest = new CreateAnIpv6GatewayRequest();
-        createAnIpv6GatewayRequest.setClientToken("");
-        createAnIpv6GatewayRequest.setVpcId("");
-        createAnIpv6GatewayRequest.setName("");
-        createAnIpv6GatewayRequest.setBandwidthInMbps(0);
-        createAnIpv6GatewayRequest.setBilling(null);
-        createAnIpv6GatewayRequest.setTags(new ArrayList<>());
-        createAnIpv6GatewayRequest.setResourceGroupId("");
-        createAnIpv6GatewayRequest.setDeleteProtect(false);
-        CreateAnIpv6GatewayResponse response = vpcClient.createAnIpv6Gateway(createAnIpv6GatewayRequest);
-        System.out.println(response);
     }
     /**
      * createDedicatedGateway
@@ -596,22 +585,35 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
-     * createElasticNetworkCard
+     * createEgressOnlyRule
      *
      */
     @Test
-    public void createElasticNetworkCardTest() {
-        CreateElasticNetworkCardRequest createElasticNetworkCardRequest = new CreateElasticNetworkCardRequest();
-        createElasticNetworkCardRequest.setClientToken("");
-        createElasticNetworkCardRequest.setName("");
-        createElasticNetworkCardRequest.setSubnetId("");
-        createElasticNetworkCardRequest.setSecurityGroupIds(new ArrayList<>());
-        createElasticNetworkCardRequest.setEnterpriseSecurityGroupIds(new ArrayList<>());
-        createElasticNetworkCardRequest.setPrivateIpSet(new ArrayList<>());
-        createElasticNetworkCardRequest.setIpv6PrivateIpSet(new ArrayList<>());
-        createElasticNetworkCardRequest.setDescription("");
-        createElasticNetworkCardRequest.setNetworkInterfaceTrafficMode("");
-        CreateElasticNetworkCardResponse response = vpcClient.createElasticNetworkCard(createElasticNetworkCardRequest);
+    public void createEgressOnlyRuleTest() {
+        CreateEgressOnlyRuleRequest createEgressOnlyRuleRequest = new CreateEgressOnlyRuleRequest();
+        createEgressOnlyRuleRequest.setGatewayId("");
+        createEgressOnlyRuleRequest.setClientToken("");
+        createEgressOnlyRuleRequest.setCidr("");
+        CreateEgressOnlyRuleResponse response = vpcClient.createEgressOnlyRule(createEgressOnlyRuleRequest);
+        System.out.println(response);
+    }
+    /**
+     * createEni
+     *
+     */
+    @Test
+    public void createEniTest() {
+        CreateEniRequest createEniRequest = new CreateEniRequest();
+        createEniRequest.setClientToken("");
+        createEniRequest.setName("");
+        createEniRequest.setSubnetId("");
+        createEniRequest.setSecurityGroupIds(new ArrayList<>());
+        createEniRequest.setEnterpriseSecurityGroupIds(new ArrayList<>());
+        createEniRequest.setPrivateIpSet(new ArrayList<>());
+        createEniRequest.setIpv6PrivateIpSet(new ArrayList<>());
+        createEniRequest.setDescription("");
+        createEniRequest.setNetworkInterfaceTrafficMode("");
+        CreateEniResponse response = vpcClient.createEni(createEniRequest);
         System.out.println(response);
     }
     /**
@@ -651,33 +653,33 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
-     * createIpAddressFamily
+     * createHaVip
      *
      */
     @Test
-    public void createIpAddressFamilyTest() {
-        CreateIpAddressFamilyRequest createIpAddressFamilyRequest = new CreateIpAddressFamilyRequest();
-        createIpAddressFamilyRequest.setClientToken("");
-        createIpAddressFamilyRequest.setName("");
-        createIpAddressFamilyRequest.setIpVersion("");
-        createIpAddressFamilyRequest.setIpSetIds(new ArrayList<>());
-        createIpAddressFamilyRequest.setDescription("");
-        CreateIpAddressFamilyResponse response = vpcClient.createIpAddressFamily(createIpAddressFamilyRequest);
+    public void createHaVipTest() {
+        CreateHaVipRequest createHaVipRequest = new CreateHaVipRequest();
+        createHaVipRequest.setClientToken("");
+        createHaVipRequest.setName("");
+        createHaVipRequest.setSubnetId("");
+        createHaVipRequest.setPrivateIpAddress("");
+        createHaVipRequest.setDescription("");
+        CreateHaVipResponse response = vpcClient.createHaVip(createHaVipRequest);
         System.out.println(response);
     }
     /**
-     * createIpAddressGroup
+     * createIpGroup
      *
      */
     @Test
-    public void createIpAddressGroupTest() {
-        CreateIpAddressGroupRequest createIpAddressGroupRequest = new CreateIpAddressGroupRequest();
-        createIpAddressGroupRequest.setClientToken("");
-        createIpAddressGroupRequest.setName("");
-        createIpAddressGroupRequest.setIpVersion("");
-        createIpAddressGroupRequest.setIpAddressInfo(new ArrayList<>());
-        createIpAddressGroupRequest.setDescription("");
-        CreateIpAddressGroupResponse response = vpcClient.createIpAddressGroup(createIpAddressGroupRequest);
+    public void createIpGroupTest() {
+        CreateIpGroupRequest createIpGroupRequest = new CreateIpGroupRequest();
+        createIpGroupRequest.setClientToken("");
+        createIpGroupRequest.setName("");
+        createIpGroupRequest.setIpVersion("");
+        createIpGroupRequest.setIpAddressInfo(new ArrayList<>());
+        createIpGroupRequest.setDescription("");
+        CreateIpGroupResponse response = vpcClient.createIpGroup(createIpGroupRequest);
         System.out.println(response);
     }
     /**
@@ -696,18 +698,36 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
-     * createIpv6GatewaySpeedLimitPolicy
+     * createIpSet
      *
      */
     @Test
-    public void createIpv6GatewaySpeedLimitPolicyTest() {
-        CreateIpv6GatewaySpeedLimitPolicyRequest createIpv6GatewaySpeedLimitPolicyRequest = new CreateIpv6GatewaySpeedLimitPolicyRequest();
-        createIpv6GatewaySpeedLimitPolicyRequest.setGatewayId("");
-        createIpv6GatewaySpeedLimitPolicyRequest.setClientToken("");
-        createIpv6GatewaySpeedLimitPolicyRequest.setIpv6Address("");
-        createIpv6GatewaySpeedLimitPolicyRequest.setIngressBandwidthInMbps(0);
-        createIpv6GatewaySpeedLimitPolicyRequest.setEgressBandwidthInMbps(0);
-        CreateIpv6GatewaySpeedLimitPolicyResponse response = vpcClient.createIpv6GatewaySpeedLimitPolicy(createIpv6GatewaySpeedLimitPolicyRequest);
+    public void createIpSetTest() {
+        CreateIpSetRequest createIpSetRequest = new CreateIpSetRequest();
+        createIpSetRequest.setClientToken("");
+        createIpSetRequest.setName("");
+        createIpSetRequest.setIpVersion("");
+        createIpSetRequest.setIpSetIds(new ArrayList<>());
+        createIpSetRequest.setDescription("");
+        CreateIpSetResponse response = vpcClient.createIpSet(createIpSetRequest);
+        System.out.println(response);
+    }
+    /**
+     * createIpv6Gateway
+     *
+     */
+    @Test
+    public void createIpv6GatewayTest() {
+        CreateIpv6GatewayRequest createIpv6GatewayRequest = new CreateIpv6GatewayRequest();
+        createIpv6GatewayRequest.setClientToken("");
+        createIpv6GatewayRequest.setVpcId("");
+        createIpv6GatewayRequest.setName("");
+        createIpv6GatewayRequest.setBandwidthInMbps(0);
+        createIpv6GatewayRequest.setBilling(null);
+        createIpv6GatewayRequest.setTags(new ArrayList<>());
+        createIpv6GatewayRequest.setResourceGroupId("");
+        createIpv6GatewayRequest.setDeleteProtect(false);
+        CreateIpv6GatewayResponse response = vpcClient.createIpv6Gateway(createIpv6GatewayRequest);
         System.out.println(response);
     }
     /**
@@ -729,28 +749,6 @@ public class VpcClientTest {
         createNatRequest.setResourceGroupId("");
         createNatRequest.setDeleteProtect(false);
         CreateNatResponse response = vpcClient.createNat(createNatRequest);
-        System.out.println(response);
-    }
-    /**
-     * createNetworkDetection
-     *
-     */
-    @Test
-    public void createNetworkDetectionTest() {
-        CreateNetworkDetectionRequest createNetworkDetectionRequest = new CreateNetworkDetectionRequest();
-        createNetworkDetectionRequest.setClientToken("");
-        createNetworkDetectionRequest.setName("");
-        createNetworkDetectionRequest.setDescription("");
-        createNetworkDetectionRequest.setVpcId("");
-        createNetworkDetectionRequest.setSubnetId("");
-        createNetworkDetectionRequest.setProtocol("");
-        createNetworkDetectionRequest.setFrequency(0);
-        createNetworkDetectionRequest.setSourceIps(new ArrayList<>());
-        createNetworkDetectionRequest.setSourceIpNum(0);
-        createNetworkDetectionRequest.setDestIp("");
-        createNetworkDetectionRequest.setDestPort(0);
-        createNetworkDetectionRequest.setPayload("");
-        CreateNetworkDetectionResponse response = vpcClient.createNetworkDetection(createNetworkDetectionRequest);
         System.out.println(response);
     }
     /**
@@ -777,6 +775,43 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
+     * createProbe
+     *
+     */
+    @Test
+    public void createProbeTest() {
+        CreateProbeRequest createProbeRequest = new CreateProbeRequest();
+        createProbeRequest.setClientToken("");
+        createProbeRequest.setName("");
+        createProbeRequest.setDescription("");
+        createProbeRequest.setVpcId("");
+        createProbeRequest.setSubnetId("");
+        createProbeRequest.setProtocol("");
+        createProbeRequest.setFrequency(0);
+        createProbeRequest.setSourceIps(new ArrayList<>());
+        createProbeRequest.setSourceIpNum(0);
+        createProbeRequest.setDestIp("");
+        createProbeRequest.setDestPort(0);
+        createProbeRequest.setPayload("");
+        CreateProbeResponse response = vpcClient.createProbe(createProbeRequest);
+        System.out.println(response);
+    }
+    /**
+     * createRateLimitRule
+     *
+     */
+    @Test
+    public void createRateLimitRuleTest() {
+        CreateRateLimitRuleRequest createRateLimitRuleRequest = new CreateRateLimitRuleRequest();
+        createRateLimitRuleRequest.setGatewayId("");
+        createRateLimitRuleRequest.setClientToken("");
+        createRateLimitRuleRequest.setIpv6Address("");
+        createRateLimitRuleRequest.setIngressBandwidthInMbps(0);
+        createRateLimitRuleRequest.setEgressBandwidthInMbps(0);
+        CreateRateLimitRuleResponse response = vpcClient.createRateLimitRule(createRateLimitRuleRequest);
+        System.out.println(response);
+    }
+    /**
      * createRoutingRules
      *
      */
@@ -792,6 +827,22 @@ public class VpcClientTest {
         createRoutingRulesRequest.setNextHopList(new ArrayList<>());
         createRoutingRulesRequest.setDescription("");
         CreateRoutingRulesResponse response = vpcClient.createRoutingRules(createRoutingRulesRequest);
+        System.out.println(response);
+    }
+    /**
+     * createSecurityGroup
+     *
+     */
+    @Test
+    public void createSecurityGroupTest() {
+        CreateSecurityGroupRequest createSecurityGroupRequest = new CreateSecurityGroupRequest();
+        createSecurityGroupRequest.setClientToken("");
+        createSecurityGroupRequest.setName("");
+        createSecurityGroupRequest.setVpcId("");
+        createSecurityGroupRequest.setDesc("");
+        createSecurityGroupRequest.setRules(new ArrayList<>());
+        createSecurityGroupRequest.setTags(new ArrayList<>());
+        CreateSecurityGroupResponse response = vpcClient.createSecurityGroup(createSecurityGroupRequest);
         System.out.println(response);
     }
     /**
@@ -942,16 +993,16 @@ public class VpcClientTest {
         vpcClient.deleteDnatRule(deleteDnatRuleRequest);
     }
     /**
-     * deleteElasticNetworkCardAuxiliaryIp
+     * deleteEniIp
      *
      */
     @Test
-    public void deleteElasticNetworkCardAuxiliaryIpTest() {
-        DeleteElasticNetworkCardAuxiliaryIpRequest deleteElasticNetworkCardAuxiliaryIpRequest = new DeleteElasticNetworkCardAuxiliaryIpRequest();
-        deleteElasticNetworkCardAuxiliaryIpRequest.setEniId("");
-        deleteElasticNetworkCardAuxiliaryIpRequest.setPrivateIpAddress("");
-        deleteElasticNetworkCardAuxiliaryIpRequest.setClientToken("");
-        vpcClient.deleteElasticNetworkCardAuxiliaryIp(deleteElasticNetworkCardAuxiliaryIpRequest);
+    public void deleteEniIpTest() {
+        DeleteEniIpRequest deleteEniIpRequest = new DeleteEniIpRequest();
+        deleteEniIpRequest.setEniId("");
+        deleteEniIpRequest.setPrivateIpAddress("");
+        deleteEniIpRequest.setClientToken("");
+        vpcClient.deleteEniIp(deleteEniIpRequest);
     }
     /**
      * deleteEnterpriseSecurityGroup
@@ -987,49 +1038,26 @@ public class VpcClientTest {
         vpcClient.deleteGatewayLimitRule(deleteGatewayLimitRuleRequest);
     }
     /**
-     * deleteHighlyAvailableVirtualIp
+     * deleteHaVip
      *
      */
     @Test
-    public void deleteHighlyAvailableVirtualIpTest() {
-        DeleteHighlyAvailableVirtualIpRequest deleteHighlyAvailableVirtualIpRequest = new DeleteHighlyAvailableVirtualIpRequest();
-        deleteHighlyAvailableVirtualIpRequest.setHaVipId("");
-        deleteHighlyAvailableVirtualIpRequest.setClientToken("");
-        vpcClient.deleteHighlyAvailableVirtualIp(deleteHighlyAvailableVirtualIpRequest);
+    public void deleteHaVipTest() {
+        DeleteHaVipRequest deleteHaVipRequest = new DeleteHaVipRequest();
+        deleteHaVipRequest.setHaVipId("");
+        deleteHaVipRequest.setClientToken("");
+        vpcClient.deleteHaVip(deleteHaVipRequest);
     }
     /**
-     * deleteIpAddressFamily
+     * deleteIpGroup
      *
      */
     @Test
-    public void deleteIpAddressFamilyTest() {
-        DeleteIpAddressFamilyRequest deleteIpAddressFamilyRequest = new DeleteIpAddressFamilyRequest();
-        deleteIpAddressFamilyRequest.setIpGroupId("");
-        deleteIpAddressFamilyRequest.setClientToken("");
-        vpcClient.deleteIpAddressFamily(deleteIpAddressFamilyRequest);
-    }
-    /**
-     * deleteIpAddressFromIpAddressGroup
-     *
-     */
-    @Test
-    public void deleteIpAddressFromIpAddressGroupTest() {
-        DeleteIpAddressFromIpAddressGroupRequest deleteIpAddressFromIpAddressGroupRequest = new DeleteIpAddressFromIpAddressGroupRequest();
-        deleteIpAddressFromIpAddressGroupRequest.setIpSetId("");
-        deleteIpAddressFromIpAddressGroupRequest.setClientToken("");
-        deleteIpAddressFromIpAddressGroupRequest.setIpAddressInfo(new ArrayList<>());
-        vpcClient.deleteIpAddressFromIpAddressGroup(deleteIpAddressFromIpAddressGroupRequest);
-    }
-    /**
-     * deleteIpAddressGroup
-     *
-     */
-    @Test
-    public void deleteIpAddressGroupTest() {
-        DeleteIpAddressGroupRequest deleteIpAddressGroupRequest = new DeleteIpAddressGroupRequest();
-        deleteIpAddressGroupRequest.setIpSetId("");
-        deleteIpAddressGroupRequest.setClientToken("");
-        vpcClient.deleteIpAddressGroup(deleteIpAddressGroupRequest);
+    public void deleteIpGroupTest() {
+        DeleteIpGroupRequest deleteIpGroupRequest = new DeleteIpGroupRequest();
+        deleteIpGroupRequest.setIpSetId("");
+        deleteIpGroupRequest.setClientToken("");
+        vpcClient.deleteIpGroup(deleteIpGroupRequest);
     }
     /**
      * deleteIpReserve
@@ -1043,6 +1071,17 @@ public class VpcClientTest {
         vpcClient.deleteIpReserve(deleteIpReserveRequest);
     }
     /**
+     * deleteIpSet
+     *
+     */
+    @Test
+    public void deleteIpSetTest() {
+        DeleteIpSetRequest deleteIpSetRequest = new DeleteIpSetRequest();
+        deleteIpSetRequest.setIpGroupId("");
+        deleteIpSetRequest.setClientToken("");
+        vpcClient.deleteIpSet(deleteIpSetRequest);
+    }
+    /**
      * deleteIpv6Gateway
      *
      */
@@ -1054,62 +1093,39 @@ public class VpcClientTest {
         vpcClient.deleteIpv6Gateway(deleteIpv6GatewayRequest);
     }
     /**
-     * deleteIpv6GatewaySpeedLimitPolicy
+     * deleteIpv6GatewayEgressOnlyRule
      *
      */
     @Test
-    public void deleteIpv6GatewaySpeedLimitPolicyTest() {
-        DeleteIpv6GatewaySpeedLimitPolicyRequest deleteIpv6GatewaySpeedLimitPolicyRequest = new DeleteIpv6GatewaySpeedLimitPolicyRequest();
-        deleteIpv6GatewaySpeedLimitPolicyRequest.setGatewayId("");
-        deleteIpv6GatewaySpeedLimitPolicyRequest.setRateLimitRuleId("");
-        deleteIpv6GatewaySpeedLimitPolicyRequest.setClientToken("");
-        vpcClient.deleteIpv6GatewaySpeedLimitPolicy(deleteIpv6GatewaySpeedLimitPolicyRequest);
+    public void deleteIpv6GatewayEgressOnlyRuleTest() {
+        DeleteIpv6GatewayEgressOnlyRuleRequest deleteIpv6GatewayEgressOnlyRuleRequest = new DeleteIpv6GatewayEgressOnlyRuleRequest();
+        deleteIpv6GatewayEgressOnlyRuleRequest.setGatewayId("");
+        deleteIpv6GatewayEgressOnlyRuleRequest.setEgressOnlyRuleId("");
+        deleteIpv6GatewayEgressOnlyRuleRequest.setClientToken("");
+        vpcClient.deleteIpv6GatewayEgressOnlyRule(deleteIpv6GatewayEgressOnlyRuleRequest);
     }
     /**
-     * deleteIpv6OnlyAccessPolicy
+     * deleteIpv6GatewayRateLimitRule
      *
      */
     @Test
-    public void deleteIpv6OnlyAccessPolicyTest() {
-        DeleteIpv6OnlyAccessPolicyRequest deleteIpv6OnlyAccessPolicyRequest = new DeleteIpv6OnlyAccessPolicyRequest();
-        deleteIpv6OnlyAccessPolicyRequest.setGatewayId("");
-        deleteIpv6OnlyAccessPolicyRequest.setEgressOnlyRuleId("");
-        deleteIpv6OnlyAccessPolicyRequest.setClientToken("");
-        vpcClient.deleteIpv6OnlyAccessPolicy(deleteIpv6OnlyAccessPolicyRequest);
+    public void deleteIpv6GatewayRateLimitRuleTest() {
+        DeleteIpv6GatewayRateLimitRuleRequest deleteIpv6GatewayRateLimitRuleRequest = new DeleteIpv6GatewayRateLimitRuleRequest();
+        deleteIpv6GatewayRateLimitRuleRequest.setGatewayId("");
+        deleteIpv6GatewayRateLimitRuleRequest.setRateLimitRuleId("");
+        deleteIpv6GatewayRateLimitRuleRequest.setClientToken("");
+        vpcClient.deleteIpv6GatewayRateLimitRule(deleteIpv6GatewayRateLimitRuleRequest);
     }
     /**
-     * deleteNetworkDetection
+     * deleteProbe
      *
      */
     @Test
-    public void deleteNetworkDetectionTest() {
-        DeleteNetworkDetectionRequest deleteNetworkDetectionRequest = new DeleteNetworkDetectionRequest();
-        deleteNetworkDetectionRequest.setProbeId("");
-        deleteNetworkDetectionRequest.setClientToken("");
-        vpcClient.deleteNetworkDetection(deleteNetworkDetectionRequest);
-    }
-    /**
-     * deleteRegularSecurityGroupRulesV2
-     *
-     */
-    @Test
-    public void deleteRegularSecurityGroupRulesV2Test() {
-        DeleteRegularSecurityGroupRulesV2Request deleteRegularSecurityGroupRulesV2Request = new DeleteRegularSecurityGroupRulesV2Request();
-        deleteRegularSecurityGroupRulesV2Request.setSecurityGroupRuleId("");
-        deleteRegularSecurityGroupRulesV2Request.setClientToken("");
-        deleteRegularSecurityGroupRulesV2Request.setSgVersion(0L);
-        vpcClient.deleteRegularSecurityGroupRulesV2(deleteRegularSecurityGroupRulesV2Request);
-    }
-    /**
-     * deleteRegularSecurityGroupV2
-     *
-     */
-    @Test
-    public void deleteRegularSecurityGroupV2Test() {
-        DeleteRegularSecurityGroupV2Request deleteRegularSecurityGroupV2Request = new DeleteRegularSecurityGroupV2Request();
-        deleteRegularSecurityGroupV2Request.setSecurityGroupId("");
-        deleteRegularSecurityGroupV2Request.setClientToken("");
-        vpcClient.deleteRegularSecurityGroupV2(deleteRegularSecurityGroupV2Request);
+    public void deleteProbeTest() {
+        DeleteProbeRequest deleteProbeRequest = new DeleteProbeRequest();
+        deleteProbeRequest.setProbeId("");
+        deleteProbeRequest.setClientToken("");
+        vpcClient.deleteProbe(deleteProbeRequest);
     }
     /**
      * deleteRoutingRules
@@ -1121,6 +1137,29 @@ public class VpcClientTest {
         deleteRoutingRulesRequest.setRouteRuleId("");
         deleteRoutingRulesRequest.setClientToken("");
         vpcClient.deleteRoutingRules(deleteRoutingRulesRequest);
+    }
+    /**
+     * deleteSecurityGroup
+     *
+     */
+    @Test
+    public void deleteSecurityGroupTest() {
+        DeleteSecurityGroupRequest deleteSecurityGroupRequest = new DeleteSecurityGroupRequest();
+        deleteSecurityGroupRequest.setSecurityGroupId("");
+        deleteSecurityGroupRequest.setClientToken("");
+        vpcClient.deleteSecurityGroup(deleteSecurityGroupRequest);
+    }
+    /**
+     * deleteSecurityGroupRules
+     *
+     */
+    @Test
+    public void deleteSecurityGroupRulesTest() {
+        DeleteSecurityGroupRulesRequest deleteSecurityGroupRulesRequest = new DeleteSecurityGroupRulesRequest();
+        deleteSecurityGroupRulesRequest.setSecurityGroupRuleId("");
+        deleteSecurityGroupRulesRequest.setClientToken("");
+        deleteSecurityGroupRulesRequest.setSgVersion(0L);
+        vpcClient.deleteSecurityGroupRules(deleteSecurityGroupRulesRequest);
     }
     /**
      * deleteSnatRule
@@ -1202,80 +1241,49 @@ public class VpcClientTest {
         vpcClient.deleteVpnTunnel(deleteVpnTunnelRequest);
     }
     /**
-     * elasticNetworkCardBindingEip
+     * detachEniInstance
      *
      */
     @Test
-    public void elasticNetworkCardBindingEipTest() {
-        ElasticNetworkCardBindingEipRequest elasticNetworkCardBindingEipRequest = new ElasticNetworkCardBindingEipRequest();
-        elasticNetworkCardBindingEipRequest.setEniId("");
-        elasticNetworkCardBindingEipRequest.setClientToken("");
-        elasticNetworkCardBindingEipRequest.setPrivateIpAddress("");
-        elasticNetworkCardBindingEipRequest.setPublicIpAddress("");
-        vpcClient.elasticNetworkCardBindingEip(elasticNetworkCardBindingEipRequest);
+    public void detachEniInstanceTest() {
+        DetachEniInstanceRequest detachEniInstanceRequest = new DetachEniInstanceRequest();
+        detachEniInstanceRequest.setEniId("");
+        detachEniInstanceRequest.setClientToken("");
+        detachEniInstanceRequest.setInstanceId("");
+        vpcClient.detachEniInstance(detachEniInstanceRequest);
     }
     /**
-     * elasticNetworkCardMountedCloudProductInstance
+     * getEniDetail
      *
      */
     @Test
-    public void elasticNetworkCardMountedCloudProductInstanceTest() {
-        ElasticNetworkCardMountedCloudProductInstanceRequest elasticNetworkCardMountedCloudProductInstanceRequest = new ElasticNetworkCardMountedCloudProductInstanceRequest();
-        elasticNetworkCardMountedCloudProductInstanceRequest.setEniId("");
-        elasticNetworkCardMountedCloudProductInstanceRequest.setClientToken("");
-        elasticNetworkCardMountedCloudProductInstanceRequest.setInstanceId("");
-        elasticNetworkCardMountedCloudProductInstanceRequest.setInstanceType("");
-        vpcClient.elasticNetworkCardMountedCloudProductInstance(elasticNetworkCardMountedCloudProductInstanceRequest);
+    public void getEniDetailTest() {
+        GetEniDetailRequest getEniDetailRequest = new GetEniDetailRequest();
+        getEniDetailRequest.setEniId("");
+        GetEniDetailResponse response = vpcClient.getEniDetail(getEniDetailRequest);
+        System.out.println(response);
     }
     /**
-     * elasticNetworkCardUnbindingEip
+     * getEniStatus
      *
      */
     @Test
-    public void elasticNetworkCardUnbindingEipTest() {
-        ElasticNetworkCardUnbindingEipRequest elasticNetworkCardUnbindingEipRequest = new ElasticNetworkCardUnbindingEipRequest();
-        elasticNetworkCardUnbindingEipRequest.setEniId("");
-        elasticNetworkCardUnbindingEipRequest.setClientToken("");
-        elasticNetworkCardUnbindingEipRequest.setPublicIpAddress("");
-        vpcClient.elasticNetworkCardUnbindingEip(elasticNetworkCardUnbindingEipRequest);
+    public void getEniStatusTest() {
+        GetEniStatusRequest getEniStatusRequest = new GetEniStatusRequest();
+        getEniStatusRequest.setEniId("");
+        GetEniStatusResponse response = vpcClient.getEniStatus(getEniStatusRequest);
+        System.out.println(response);
     }
     /**
-     * elasticNetworkCardUninstallationCloudProductInstance
+     * getHaVipDetail
      *
      */
     @Test
-    public void elasticNetworkCardUninstallationCloudProductInstanceTest() {
-        ElasticNetworkCardUninstallationCloudProductInstanceRequest elasticNetworkCardUninstallationCloudProductInstanceRequest =
-                new ElasticNetworkCardUninstallationCloudProductInstanceRequest();
-        elasticNetworkCardUninstallationCloudProductInstanceRequest.setEniId("");
-        elasticNetworkCardUninstallationCloudProductInstanceRequest.setClientToken("");
-        elasticNetworkCardUninstallationCloudProductInstanceRequest.setInstanceId("");
-        vpcClient.elasticNetworkCardUninstallationCloudProductInstance(elasticNetworkCardUninstallationCloudProductInstanceRequest);
-    }
-    /**
-     * elasticNetworkCardUpdateEnterpriseSecurityGroup
-     *
-     */
-    @Test
-    public void elasticNetworkCardUpdateEnterpriseSecurityGroupTest() {
-        ElasticNetworkCardUpdateEnterpriseSecurityGroupRequest elasticNetworkCardUpdateEnterpriseSecurityGroupRequest =
-                new ElasticNetworkCardUpdateEnterpriseSecurityGroupRequest();
-        elasticNetworkCardUpdateEnterpriseSecurityGroupRequest.setEniId("");
-        elasticNetworkCardUpdateEnterpriseSecurityGroupRequest.setClientToken("");
-        elasticNetworkCardUpdateEnterpriseSecurityGroupRequest.setEnterpriseSecurityGroupIds(new ArrayList<>());
-        vpcClient.elasticNetworkCardUpdateEnterpriseSecurityGroup(elasticNetworkCardUpdateEnterpriseSecurityGroupRequest);
-    }
-    /**
-     * elasticNetworkCardUpdatesRegularSecurityGroup
-     *
-     */
-    @Test
-    public void elasticNetworkCardUpdatesRegularSecurityGroupTest() {
-        ElasticNetworkCardUpdatesRegularSecurityGroupRequest elasticNetworkCardUpdatesRegularSecurityGroupRequest = new ElasticNetworkCardUpdatesRegularSecurityGroupRequest();
-        elasticNetworkCardUpdatesRegularSecurityGroupRequest.setEniId("");
-        elasticNetworkCardUpdatesRegularSecurityGroupRequest.setClientToken("");
-        elasticNetworkCardUpdatesRegularSecurityGroupRequest.setSecurityGroupIds(new ArrayList<>());
-        vpcClient.elasticNetworkCardUpdatesRegularSecurityGroup(elasticNetworkCardUpdatesRegularSecurityGroupRequest);
+    public void getHaVipDetailTest() {
+        GetHaVipDetailRequest getHaVipDetailRequest = new GetHaVipDetailRequest();
+        getHaVipDetailRequest.setHaVipId("");
+        GetHaVipDetailResponse response = vpcClient.getHaVipDetail(getHaVipDetailRequest);
+        System.out.println(response);
     }
     /**
      * getNat
@@ -1301,6 +1309,28 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
+     * getProbeDetail
+     *
+     */
+    @Test
+    public void getProbeDetailTest() {
+        GetProbeDetailRequest getProbeDetailRequest = new GetProbeDetailRequest();
+        getProbeDetailRequest.setProbeId("");
+        GetProbeDetailResponse response = vpcClient.getProbeDetail(getProbeDetailRequest);
+        System.out.println(response);
+    }
+    /**
+     * getSecurityGroupDetails
+     *
+     */
+    @Test
+    public void getSecurityGroupDetailsTest() {
+        GetSecurityGroupDetailsRequest getSecurityGroupDetailsRequest = new GetSecurityGroupDetailsRequest();
+        getSecurityGroupDetailsRequest.setSecurityGroupId("");
+        GetSecurityGroupDetailsResponse response = vpcClient.getSecurityGroupDetails(getSecurityGroupDetailsRequest);
+        System.out.println(response);
+    }
+    /**
      * getVpcResourceIpInfo
      *
      */
@@ -1316,67 +1346,6 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
-     * highAvailabilityVirtualIpUnbindingEip
-     *
-     */
-    @Test
-    public void highAvailabilityVirtualIpUnbindingEipTest() {
-        HighAvailabilityVirtualIpUnbindingEipRequest highAvailabilityVirtualIpUnbindingEipRequest = new HighAvailabilityVirtualIpUnbindingEipRequest();
-        highAvailabilityVirtualIpUnbindingEipRequest.setHaVipId("");
-        highAvailabilityVirtualIpUnbindingEipRequest.setClientToken("");
-        vpcClient.highAvailabilityVirtualIpUnbindingEip(highAvailabilityVirtualIpUnbindingEipRequest);
-    }
-    /**
-     * highAvailabilityVirtualIpUnbindingInstance
-     *
-     */
-    @Test
-    public void highAvailabilityVirtualIpUnbindingInstanceTest() {
-        HighAvailabilityVirtualIpUnbindingInstanceRequest highAvailabilityVirtualIpUnbindingInstanceRequest = new HighAvailabilityVirtualIpUnbindingInstanceRequest();
-        highAvailabilityVirtualIpUnbindingInstanceRequest.setHaVipId("");
-        highAvailabilityVirtualIpUnbindingInstanceRequest.setClientToken("");
-        highAvailabilityVirtualIpUnbindingInstanceRequest.setInstanceIds(new ArrayList<>());
-        highAvailabilityVirtualIpUnbindingInstanceRequest.setInstanceType("");
-        vpcClient.highAvailabilityVirtualIpUnbindingInstance(highAvailabilityVirtualIpUnbindingInstanceRequest);
-    }
-    /**
-     * highlyAvailableVirtualIpBindingEip
-     *
-     */
-    @Test
-    public void highlyAvailableVirtualIpBindingEipTest() {
-        HighlyAvailableVirtualIpBindingEipRequest highlyAvailableVirtualIpBindingEipRequest = new HighlyAvailableVirtualIpBindingEipRequest();
-        highlyAvailableVirtualIpBindingEipRequest.setHaVipId("");
-        highlyAvailableVirtualIpBindingEipRequest.setClientToken("");
-        highlyAvailableVirtualIpBindingEipRequest.setPublicIpAddress("");
-        vpcClient.highlyAvailableVirtualIpBindingEip(highlyAvailableVirtualIpBindingEipRequest);
-    }
-    /**
-     * highlyAvailableVirtualIpBindingInstance
-     *
-     */
-    @Test
-    public void highlyAvailableVirtualIpBindingInstanceTest() {
-        HighlyAvailableVirtualIpBindingInstanceRequest highlyAvailableVirtualIpBindingInstanceRequest = new HighlyAvailableVirtualIpBindingInstanceRequest();
-        highlyAvailableVirtualIpBindingInstanceRequest.setHaVipId("");
-        highlyAvailableVirtualIpBindingInstanceRequest.setClientToken("");
-        highlyAvailableVirtualIpBindingInstanceRequest.setInstanceIds(new ArrayList<>());
-        highlyAvailableVirtualIpBindingInstanceRequest.setInstanceType("");
-        vpcClient.highlyAvailableVirtualIpBindingInstance(highlyAvailableVirtualIpBindingInstanceRequest);
-    }
-    /**
-     * ipv6GatewayBandwidthUpgradeAndDowngrade
-     *
-     */
-    @Test
-    public void ipv6GatewayBandwidthUpgradeAndDowngradeTest() {
-        Ipv6GatewayBandwidthUpgradeAndDowngradeRequest ipv6GatewayBandwidthUpgradeAndDowngradeRequest = new Ipv6GatewayBandwidthUpgradeAndDowngradeRequest();
-        ipv6GatewayBandwidthUpgradeAndDowngradeRequest.setGatewayId("");
-        ipv6GatewayBandwidthUpgradeAndDowngradeRequest.setClientToken("");
-        ipv6GatewayBandwidthUpgradeAndDowngradeRequest.setBandwidthInMbps(0);
-        vpcClient.ipv6GatewayBandwidthUpgradeAndDowngrade(ipv6GatewayBandwidthUpgradeAndDowngradeRequest);
-    }
-    /**
      * listDnatRule
      *
      */
@@ -1387,6 +1356,48 @@ public class VpcClientTest {
         listDnatRuleRequest.setMarker("");
         listDnatRuleRequest.setMaxKeys(0);
         ListDnatRuleResponse response = vpcClient.listDnatRule(listDnatRuleRequest);
+        System.out.println(response);
+    }
+    /**
+     * listEgressOnlyRule
+     *
+     */
+    @Test
+    public void listEgressOnlyRuleTest() {
+        ListEgressOnlyRuleRequest listEgressOnlyRuleRequest = new ListEgressOnlyRuleRequest();
+        listEgressOnlyRuleRequest.setGatewayId("");
+        listEgressOnlyRuleRequest.setMarker("");
+        listEgressOnlyRuleRequest.setMaxKeys(0);
+        ListEgressOnlyRuleResponse response = vpcClient.listEgressOnlyRule(listEgressOnlyRuleRequest);
+        System.out.println(response);
+    }
+    /**
+     * listEni
+     *
+     */
+    @Test
+    public void listEniTest() {
+        ListEniRequest listEniRequest = new ListEniRequest();
+        listEniRequest.setVpcId("");
+        listEniRequest.setInstanceId("");
+        listEniRequest.setName("");
+        listEniRequest.setPrivateIpAddress(new ArrayList<>());
+        listEniRequest.setMarker("");
+        listEniRequest.setMaxKeys(0);
+        ListEniResponse response = vpcClient.listEni(listEniRequest);
+        System.out.println(response);
+    }
+    /**
+     * listHaVip
+     *
+     */
+    @Test
+    public void listHaVipTest() {
+        ListHaVipRequest listHaVipRequest = new ListHaVipRequest();
+        listHaVipRequest.setVpcId("");
+        listHaVipRequest.setMarker("");
+        listHaVipRequest.setMaxKeys(0);
+        ListHaVipResponse response = vpcClient.listHaVip(listHaVipRequest);
         System.out.println(response);
     }
     /**
@@ -1429,6 +1440,31 @@ public class VpcClientTest {
         listPeerConnRequest.setMarker("");
         listPeerConnRequest.setMaxKeys(0);
         ListPeerConnResponse response = vpcClient.listPeerConn(listPeerConnRequest);
+        System.out.println(response);
+    }
+    /**
+     * listProbes
+     *
+     */
+    @Test
+    public void listProbesTest() {
+        ListProbesRequest listProbesRequest = new ListProbesRequest();
+        listProbesRequest.setMarker("");
+        listProbesRequest.setMaxKeys(0);
+        ListProbesResponse response = vpcClient.listProbes(listProbesRequest);
+        System.out.println(response);
+    }
+    /**
+     * listRateLimitRule
+     *
+     */
+    @Test
+    public void listRateLimitRuleTest() {
+        ListRateLimitRuleRequest listRateLimitRuleRequest = new ListRateLimitRuleRequest();
+        listRateLimitRuleRequest.setGatewayId("");
+        listRateLimitRuleRequest.setMarker("");
+        listRateLimitRuleRequest.setMaxKeys(0);
+        ListRateLimitRuleResponse response = vpcClient.listRateLimitRule(listRateLimitRuleRequest);
         System.out.println(response);
     }
     /**
@@ -1554,16 +1590,64 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
-     * queryIpAddressFamilyList
+     * queryEnterpriseSecurityGroupList
      *
      */
     @Test
-    public void queryIpAddressFamilyListTest() {
-        QueryIpAddressFamilyListRequest queryIpAddressFamilyListRequest = new QueryIpAddressFamilyListRequest();
-        queryIpAddressFamilyListRequest.setIpVersion("");
-        queryIpAddressFamilyListRequest.setMarker("");
-        queryIpAddressFamilyListRequest.setMaxKeys(0);
-        QueryIpAddressFamilyListResponse response = vpcClient.queryIpAddressFamilyList(queryIpAddressFamilyListRequest);
+    public void queryEnterpriseSecurityGroupListTest() {
+        QueryEnterpriseSecurityGroupListRequest queryEnterpriseSecurityGroupListRequest = new QueryEnterpriseSecurityGroupListRequest();
+        queryEnterpriseSecurityGroupListRequest.setMarker("");
+        queryEnterpriseSecurityGroupListRequest.setMaxKeys(0);
+        queryEnterpriseSecurityGroupListRequest.setInstanceId("");
+        QueryEnterpriseSecurityGroupListResponse response = vpcClient.queryEnterpriseSecurityGroupList(queryEnterpriseSecurityGroupListRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryIpGroupDetail
+     *
+     */
+    @Test
+    public void queryIpGroupDetailTest() {
+        QueryIpGroupDetailRequest queryIpGroupDetailRequest = new QueryIpGroupDetailRequest();
+        queryIpGroupDetailRequest.setIpSetId("");
+        QueryIpGroupDetailResponse response = vpcClient.queryIpGroupDetail(queryIpGroupDetailRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryIpGroupList
+     *
+     */
+    @Test
+    public void queryIpGroupListTest() {
+        QueryIpGroupListRequest queryIpGroupListRequest = new QueryIpGroupListRequest();
+        queryIpGroupListRequest.setIpVersion("");
+        queryIpGroupListRequest.setMarker("");
+        queryIpGroupListRequest.setMaxKeys(0);
+        QueryIpGroupListResponse response = vpcClient.queryIpGroupList(queryIpGroupListRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryIpSetDetail
+     *
+     */
+    @Test
+    public void queryIpSetDetailTest() {
+        QueryIpSetDetailRequest queryIpSetDetailRequest = new QueryIpSetDetailRequest();
+        queryIpSetDetailRequest.setIpGroupId("");
+        QueryIpSetDetailResponse response = vpcClient.queryIpSetDetail(queryIpSetDetailRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryIpSetList
+     *
+     */
+    @Test
+    public void queryIpSetListTest() {
+        QueryIpSetListRequest queryIpSetListRequest = new QueryIpSetListRequest();
+        queryIpSetListRequest.setIpVersion("");
+        queryIpSetListRequest.setMarker("");
+        queryIpSetListRequest.setMaxKeys(0);
+        QueryIpSetListResponse response = vpcClient.queryIpSetList(queryIpSetListRequest);
         System.out.println(response);
     }
     /**
@@ -1575,29 +1659,6 @@ public class VpcClientTest {
         QueryIpv6GatewayRequest queryIpv6GatewayRequest = new QueryIpv6GatewayRequest();
         queryIpv6GatewayRequest.setVpcId("");
         QueryIpv6GatewayResponse response = vpcClient.queryIpv6Gateway(queryIpv6GatewayRequest);
-        System.out.println(response);
-    }
-    /**
-     * queryNetworkDetectionDetails
-     *
-     */
-    @Test
-    public void queryNetworkDetectionDetailsTest() {
-        QueryNetworkDetectionDetailsRequest queryNetworkDetectionDetailsRequest = new QueryNetworkDetectionDetailsRequest();
-        queryNetworkDetectionDetailsRequest.setProbeId("");
-        QueryNetworkDetectionDetailsResponse response = vpcClient.queryNetworkDetectionDetails(queryNetworkDetectionDetailsRequest);
-        System.out.println(response);
-    }
-    /**
-     * queryNetworkDetectionList
-     *
-     */
-    @Test
-    public void queryNetworkDetectionListTest() {
-        QueryNetworkDetectionListRequest queryNetworkDetectionListRequest = new QueryNetworkDetectionListRequest();
-        queryNetworkDetectionListRequest.setMarker("");
-        queryNetworkDetectionListRequest.setMaxKeys(0);
-        QueryNetworkDetectionListResponse response = vpcClient.queryNetworkDetectionList(queryNetworkDetectionListRequest);
         System.out.println(response);
     }
     /**
@@ -1624,6 +1685,22 @@ public class VpcClientTest {
         queryRoutingTableRequest.setRouteTableId("");
         queryRoutingTableRequest.setVpcId("");
         QueryRoutingTableResponse response = vpcClient.queryRoutingTable(queryRoutingTableRequest);
+        System.out.println(response);
+    }
+    /**
+     * querySecurityGroupsList
+     *
+     */
+    @Test
+    public void querySecurityGroupsListTest() {
+        QuerySecurityGroupsListRequest querySecurityGroupsListRequest = new QuerySecurityGroupsListRequest();
+        querySecurityGroupsListRequest.setMarker("");
+        querySecurityGroupsListRequest.setMaxKeys(0);
+        querySecurityGroupsListRequest.setInstanceId("");
+        querySecurityGroupsListRequest.setVpcId("");
+        querySecurityGroupsListRequest.setSecurityGroupId("");
+        querySecurityGroupsListRequest.setSecurityGroupIds("");
+        QuerySecurityGroupsListResponse response = vpcClient.querySecurityGroupsList(querySecurityGroupsListRequest);
         System.out.println(response);
     }
     /**
@@ -1718,146 +1795,6 @@ public class VpcClientTest {
         System.out.println(response);
     }
     /**
-     * queryTheListOfElasticNetworkCards
-     *
-     */
-    @Test
-    public void queryTheListOfElasticNetworkCardsTest() {
-        QueryTheListOfElasticNetworkCardsRequest queryTheListOfElasticNetworkCardsRequest = new QueryTheListOfElasticNetworkCardsRequest();
-        queryTheListOfElasticNetworkCardsRequest.setVpcId("");
-        queryTheListOfElasticNetworkCardsRequest.setInstanceId("");
-        queryTheListOfElasticNetworkCardsRequest.setName("");
-        queryTheListOfElasticNetworkCardsRequest.setPrivateIpAddress(new ArrayList<>());
-        queryTheListOfElasticNetworkCardsRequest.setMarker("");
-        queryTheListOfElasticNetworkCardsRequest.setMaxKeys(0);
-        QueryTheListOfElasticNetworkCardsResponse response = vpcClient.queryTheListOfElasticNetworkCards(queryTheListOfElasticNetworkCardsRequest);
-        System.out.println(response);
-    }
-    /**
-     * queryTheListOfEnterpriseSecurityGroups
-     *
-     */
-    @Test
-    public void queryTheListOfEnterpriseSecurityGroupsTest() {
-        QueryTheListOfEnterpriseSecurityGroupsRequest queryTheListOfEnterpriseSecurityGroupsRequest = new QueryTheListOfEnterpriseSecurityGroupsRequest();
-        queryTheListOfEnterpriseSecurityGroupsRequest.setMarker("");
-        queryTheListOfEnterpriseSecurityGroupsRequest.setMaxKeys(0);
-        queryTheListOfEnterpriseSecurityGroupsRequest.setInstanceId("");
-        QueryTheListOfEnterpriseSecurityGroupsResponse response = vpcClient.queryTheListOfEnterpriseSecurityGroups(queryTheListOfEnterpriseSecurityGroupsRequest);
-        System.out.println(response);
-    }
-    /**
-     * queryTheListOfHighlyAvailableVirtualIps
-     *
-     */
-    @Test
-    public void queryTheListOfHighlyAvailableVirtualIpsTest() {
-        QueryTheListOfHighlyAvailableVirtualIpsRequest queryTheListOfHighlyAvailableVirtualIpsRequest = new QueryTheListOfHighlyAvailableVirtualIpsRequest();
-        queryTheListOfHighlyAvailableVirtualIpsRequest.setVpcId("");
-        queryTheListOfHighlyAvailableVirtualIpsRequest.setMarker("");
-        queryTheListOfHighlyAvailableVirtualIpsRequest.setMaxKeys(0);
-        QueryTheListOfHighlyAvailableVirtualIpsResponse response = vpcClient.queryTheListOfHighlyAvailableVirtualIps(queryTheListOfHighlyAvailableVirtualIpsRequest);
-        System.out.println(response);
-    }
-    /**
-     * queryTheListOfIpAddressGroups
-     *
-     */
-    @Test
-    public void queryTheListOfIpAddressGroupsTest() {
-        QueryTheListOfIpAddressGroupsRequest queryTheListOfIpAddressGroupsRequest = new QueryTheListOfIpAddressGroupsRequest();
-        queryTheListOfIpAddressGroupsRequest.setIpVersion("");
-        queryTheListOfIpAddressGroupsRequest.setMarker("");
-        queryTheListOfIpAddressGroupsRequest.setMaxKeys(0);
-        QueryTheListOfIpAddressGroupsResponse response = vpcClient.queryTheListOfIpAddressGroups(queryTheListOfIpAddressGroupsRequest);
-        System.out.println(response);
-    }
-    /**
-     * queryTheListOfRegularSecurityGroupsV2
-     *
-     */
-    @Test
-    public void queryTheListOfRegularSecurityGroupsV2Test() {
-        QueryTheListOfRegularSecurityGroupsV2Request queryTheListOfRegularSecurityGroupsV2Request = new QueryTheListOfRegularSecurityGroupsV2Request();
-        queryTheListOfRegularSecurityGroupsV2Request.setMarker("");
-        queryTheListOfRegularSecurityGroupsV2Request.setMaxKeys(0);
-        queryTheListOfRegularSecurityGroupsV2Request.setInstanceId("");
-        queryTheListOfRegularSecurityGroupsV2Request.setVpcId("");
-        queryTheListOfRegularSecurityGroupsV2Request.setSecurityGroupId("");
-        queryTheListOfRegularSecurityGroupsV2Request.setSecurityGroupIds("");
-        QueryTheListOfRegularSecurityGroupsV2Response response = vpcClient.queryTheListOfRegularSecurityGroupsV2(queryTheListOfRegularSecurityGroupsV2Request);
-        System.out.println(response);
-    }
-    /**
-     * queryTheListOfSpeedLimitPoliciesForIpv6Gateway
-     *
-     */
-    @Test
-    public void queryTheListOfSpeedLimitPoliciesForIpv6GatewayTest() {
-        QueryTheListOfSpeedLimitPoliciesForIpv6GatewayRequest queryTheListOfSpeedLimitPoliciesForIpv6GatewayRequest = new QueryTheListOfSpeedLimitPoliciesForIpv6GatewayRequest();
-        queryTheListOfSpeedLimitPoliciesForIpv6GatewayRequest.setGatewayId("");
-        queryTheListOfSpeedLimitPoliciesForIpv6GatewayRequest.setMarker("");
-        queryTheListOfSpeedLimitPoliciesForIpv6GatewayRequest.setMaxKeys(0);
-        QueryTheListOfSpeedLimitPoliciesForIpv6GatewayResponse response =
-                vpcClient.queryTheListOfSpeedLimitPoliciesForIpv6Gateway(queryTheListOfSpeedLimitPoliciesForIpv6GatewayRequest);
-        System.out.println(response);
-    }
-    /**
-     * queryTheSpecifiedElasticNetworkCard
-     *
-     */
-    @Test
-    public void queryTheSpecifiedElasticNetworkCardTest() {
-        QueryTheSpecifiedElasticNetworkCardRequest queryTheSpecifiedElasticNetworkCardRequest = new QueryTheSpecifiedElasticNetworkCardRequest();
-        queryTheSpecifiedElasticNetworkCardRequest.setEniId("");
-        QueryTheSpecifiedElasticNetworkCardResponse response = vpcClient.queryTheSpecifiedElasticNetworkCard(queryTheSpecifiedElasticNetworkCardRequest);
-        System.out.println(response);
-    }
-    /**
-     * queryTheSpecifiedHighlyAvailableVirtualIp
-     *
-     */
-    @Test
-    public void queryTheSpecifiedHighlyAvailableVirtualIpTest() {
-        QueryTheSpecifiedHighlyAvailableVirtualIpRequest queryTheSpecifiedHighlyAvailableVirtualIpRequest = new QueryTheSpecifiedHighlyAvailableVirtualIpRequest();
-        queryTheSpecifiedHighlyAvailableVirtualIpRequest.setHaVipId("");
-        QueryTheSpecifiedHighlyAvailableVirtualIpResponse response = vpcClient.queryTheSpecifiedHighlyAvailableVirtualIp(queryTheSpecifiedHighlyAvailableVirtualIpRequest);
-        System.out.println(response);
-    }
-    /**
-     * queryTheSpecifiedIpAddressFamily
-     *
-     */
-    @Test
-    public void queryTheSpecifiedIpAddressFamilyTest() {
-        QueryTheSpecifiedIpAddressFamilyRequest queryTheSpecifiedIpAddressFamilyRequest = new QueryTheSpecifiedIpAddressFamilyRequest();
-        queryTheSpecifiedIpAddressFamilyRequest.setIpGroupId("");
-        QueryTheSpecifiedIpAddressFamilyResponse response = vpcClient.queryTheSpecifiedIpAddressFamily(queryTheSpecifiedIpAddressFamilyRequest);
-        System.out.println(response);
-    }
-    /**
-     * queryTheSpecifiedIpAddressGroup
-     *
-     */
-    @Test
-    public void queryTheSpecifiedIpAddressGroupTest() {
-        QueryTheSpecifiedIpAddressGroupRequest queryTheSpecifiedIpAddressGroupRequest = new QueryTheSpecifiedIpAddressGroupRequest();
-        queryTheSpecifiedIpAddressGroupRequest.setIpSetId("");
-        QueryTheSpecifiedIpAddressGroupResponse response = vpcClient.queryTheSpecifiedIpAddressGroup(queryTheSpecifiedIpAddressGroupRequest);
-        System.out.println(response);
-    }
-    /**
-     * queryTheStatusOfTheElasticNetworkCard
-     *
-     */
-    @Test
-    public void queryTheStatusOfTheElasticNetworkCardTest() {
-        QueryTheStatusOfTheElasticNetworkCardRequest queryTheStatusOfTheElasticNetworkCardRequest = new QueryTheStatusOfTheElasticNetworkCardRequest();
-        queryTheStatusOfTheElasticNetworkCardRequest.setEniId("");
-        QueryTheStatusOfTheElasticNetworkCardResponse response = vpcClient.queryTheStatusOfTheElasticNetworkCard(queryTheStatusOfTheElasticNetworkCardRequest);
-        System.out.println(response);
-    }
-    /**
      * queryVpcIntranetIp
      *
      */
@@ -1897,21 +1834,6 @@ public class VpcClientTest {
         queryVpnListRequest.setEip("");
         queryVpnListRequest.setType("");
         QueryVpnListResponse response = vpcClient.queryVpnList(queryVpnListRequest);
-        System.out.println(response);
-    }
-    /**
-     * queryingTheIpv6PolicyListWithOnlyOutputAndNoInclusion
-     *
-     */
-    @Test
-    public void queryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionTest() {
-        QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionRequest queryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionRequest =
-                new QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionRequest();
-        queryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionRequest.setGatewayId("");
-        queryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionRequest.setMarker("");
-        queryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionRequest.setMaxKeys(0);
-        QueryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionResponse response =
-                vpcClient.queryingTheIpv6PolicyListWithOnlyOutputAndNoInclusion(queryingTheIpv6PolicyListWithOnlyOutputAndNoInclusionRequest);
         System.out.println(response);
     }
     /**
@@ -1981,27 +1903,39 @@ public class VpcClientTest {
         vpcClient.releaseVpn(releaseVpnRequest);
     }
     /**
-     * removeElasticNetworkCard
+     * removeEni
      *
      */
     @Test
-    public void removeElasticNetworkCardTest() {
-        RemoveElasticNetworkCardRequest removeElasticNetworkCardRequest = new RemoveElasticNetworkCardRequest();
-        removeElasticNetworkCardRequest.setEniId("");
-        removeElasticNetworkCardRequest.setClientToken("");
-        vpcClient.removeElasticNetworkCard(removeElasticNetworkCardRequest);
+    public void removeEniTest() {
+        RemoveEniRequest removeEniRequest = new RemoveEniRequest();
+        removeEniRequest.setEniId("");
+        removeEniRequest.setClientToken("");
+        vpcClient.removeEni(removeEniRequest);
     }
     /**
-     * removeIpAddressGroupFromIpAddressFamily
+     * removeIpAddressFromIpGroup
      *
      */
     @Test
-    public void removeIpAddressGroupFromIpAddressFamilyTest() {
-        RemoveIpAddressGroupFromIpAddressFamilyRequest removeIpAddressGroupFromIpAddressFamilyRequest = new RemoveIpAddressGroupFromIpAddressFamilyRequest();
-        removeIpAddressGroupFromIpAddressFamilyRequest.setIpGroupId("");
-        removeIpAddressGroupFromIpAddressFamilyRequest.setClientToken("");
-        removeIpAddressGroupFromIpAddressFamilyRequest.setIpSetIds(new ArrayList<>());
-        vpcClient.removeIpAddressGroupFromIpAddressFamily(removeIpAddressGroupFromIpAddressFamilyRequest);
+    public void removeIpAddressFromIpGroupTest() {
+        RemoveIpAddressFromIpGroupRequest removeIpAddressFromIpGroupRequest = new RemoveIpAddressFromIpGroupRequest();
+        removeIpAddressFromIpGroupRequest.setIpSetId("");
+        removeIpAddressFromIpGroupRequest.setClientToken("");
+        removeIpAddressFromIpGroupRequest.setIpAddressInfo(new ArrayList<>());
+        vpcClient.removeIpAddressFromIpGroup(removeIpAddressFromIpGroupRequest);
+    }
+    /**
+     * removeIpGroupFromIpSet
+     *
+     */
+    @Test
+    public void removeIpGroupFromIpSetTest() {
+        RemoveIpGroupFromIpSetRequest removeIpGroupFromIpSetRequest = new RemoveIpGroupFromIpSetRequest();
+        removeIpGroupFromIpSetRequest.setIpGroupId("");
+        removeIpGroupFromIpSetRequest.setClientToken("");
+        removeIpGroupFromIpSetRequest.setIpSetIds(new ArrayList<>());
+        vpcClient.removeIpGroupFromIpSet(removeIpGroupFromIpSetRequest);
     }
     /**
      * renewPeerConn
@@ -2028,6 +1962,18 @@ public class VpcClientTest {
         vpcClient.renewVpn(renewVpnRequest);
     }
     /**
+     * resizeIpv6Gateway
+     *
+     */
+    @Test
+    public void resizeIpv6GatewayTest() {
+        ResizeIpv6GatewayRequest resizeIpv6GatewayRequest = new ResizeIpv6GatewayRequest();
+        resizeIpv6GatewayRequest.setGatewayId("");
+        resizeIpv6GatewayRequest.setClientToken("");
+        resizeIpv6GatewayRequest.setBandwidthInMbps(0);
+        vpcClient.resizeIpv6Gateway(resizeIpv6GatewayRequest);
+    }
+    /**
      * resizeNat
      *
      */
@@ -2040,17 +1986,17 @@ public class VpcClientTest {
         vpcClient.resizeNat(resizeNatRequest);
     }
     /**
-     * revokeRegularSecurityGroupRulesV2
+     * revokeSecurityGroupRules
      *
      */
     @Test
-    public void revokeRegularSecurityGroupRulesV2Test() {
-        RevokeRegularSecurityGroupRulesV2Request revokeRegularSecurityGroupRulesV2Request = new RevokeRegularSecurityGroupRulesV2Request();
-        revokeRegularSecurityGroupRulesV2Request.setSecurityGroupId("");
-        revokeRegularSecurityGroupRulesV2Request.setClientToken("");
-        revokeRegularSecurityGroupRulesV2Request.setSgVersion(0L);
-        revokeRegularSecurityGroupRulesV2Request.setRule(null);
-        vpcClient.revokeRegularSecurityGroupRulesV2(revokeRegularSecurityGroupRulesV2Request);
+    public void revokeSecurityGroupRulesTest() {
+        RevokeSecurityGroupRulesRequest revokeSecurityGroupRulesRequest = new RevokeSecurityGroupRulesRequest();
+        revokeSecurityGroupRulesRequest.setSecurityGroupId("");
+        revokeSecurityGroupRulesRequest.setClientToken("");
+        revokeSecurityGroupRulesRequest.setSgVersion(0L);
+        revokeSecurityGroupRulesRequest.setRule(null);
+        vpcClient.revokeSecurityGroupRules(revokeSecurityGroupRulesRequest);
     }
     /**
      * searchForVpnDetails
@@ -2085,6 +2031,42 @@ public class VpcClientTest {
         unbindEipRequest.setVpnId("");
         unbindEipRequest.setClientToken("");
         vpcClient.unbindEip(unbindEipRequest);
+    }
+    /**
+     * unbindEniEip
+     *
+     */
+    @Test
+    public void unbindEniEipTest() {
+        UnbindEniEipRequest unbindEniEipRequest = new UnbindEniEipRequest();
+        unbindEniEipRequest.setEniId("");
+        unbindEniEipRequest.setClientToken("");
+        unbindEniEipRequest.setPublicIpAddress("");
+        vpcClient.unbindEniEip(unbindEniEipRequest);
+    }
+    /**
+     * unbindHaVipEip
+     *
+     */
+    @Test
+    public void unbindHaVipEipTest() {
+        UnbindHaVipEipRequest unbindHaVipEipRequest = new UnbindHaVipEipRequest();
+        unbindHaVipEipRequest.setHaVipId("");
+        unbindHaVipEipRequest.setClientToken("");
+        vpcClient.unbindHaVipEip(unbindHaVipEipRequest);
+    }
+    /**
+     * unbindHaVipInstance
+     *
+     */
+    @Test
+    public void unbindHaVipInstanceTest() {
+        UnbindHaVipInstanceRequest unbindHaVipInstanceRequest = new UnbindHaVipInstanceRequest();
+        unbindHaVipInstanceRequest.setHaVipId("");
+        unbindHaVipInstanceRequest.setClientToken("");
+        unbindHaVipInstanceRequest.setInstanceIds(new ArrayList<>());
+        unbindHaVipInstanceRequest.setInstanceType("");
+        vpcClient.unbindHaVipInstance(unbindHaVipInstanceRequest);
     }
     /**
      * unbindPhysicalDedicatedLine
@@ -2134,6 +2116,18 @@ public class VpcClientTest {
         vpcClient.updateDedicatedGateway(updateDedicatedGatewayRequest);
     }
     /**
+     * updateDeleteProtect
+     *
+     */
+    @Test
+    public void updateDeleteProtectTest() {
+        UpdateDeleteProtectRequest updateDeleteProtectRequest = new UpdateDeleteProtectRequest();
+        updateDeleteProtectRequest.setGatewayId("");
+        updateDeleteProtectRequest.setClientToken("");
+        updateDeleteProtectRequest.setDeleteProtect(0);
+        vpcClient.updateDeleteProtect(updateDeleteProtectRequest);
+    }
+    /**
      * updateDnatRule
      *
      */
@@ -2154,17 +2148,41 @@ public class VpcClientTest {
         vpcClient.updateDnatRule(updateDnatRuleRequest);
     }
     /**
-     * updateElasticNetworkCard
+     * updateEni
      *
      */
     @Test
-    public void updateElasticNetworkCardTest() {
-        UpdateElasticNetworkCardRequest updateElasticNetworkCardRequest = new UpdateElasticNetworkCardRequest();
-        updateElasticNetworkCardRequest.setEniId("");
-        updateElasticNetworkCardRequest.setClientToken("");
-        updateElasticNetworkCardRequest.setName("");
-        updateElasticNetworkCardRequest.setDescription("");
-        vpcClient.updateElasticNetworkCard(updateElasticNetworkCardRequest);
+    public void updateEniTest() {
+        UpdateEniRequest updateEniRequest = new UpdateEniRequest();
+        updateEniRequest.setEniId("");
+        updateEniRequest.setClientToken("");
+        updateEniRequest.setName("");
+        updateEniRequest.setDescription("");
+        vpcClient.updateEni(updateEniRequest);
+    }
+    /**
+     * updateEniEnterpriseSecurityGroup
+     *
+     */
+    @Test
+    public void updateEniEnterpriseSecurityGroupTest() {
+        UpdateEniEnterpriseSecurityGroupRequest updateEniEnterpriseSecurityGroupRequest = new UpdateEniEnterpriseSecurityGroupRequest();
+        updateEniEnterpriseSecurityGroupRequest.setEniId("");
+        updateEniEnterpriseSecurityGroupRequest.setClientToken("");
+        updateEniEnterpriseSecurityGroupRequest.setEnterpriseSecurityGroupIds(new ArrayList<>());
+        vpcClient.updateEniEnterpriseSecurityGroup(updateEniEnterpriseSecurityGroupRequest);
+    }
+    /**
+     * updateEniSecurityGroup
+     *
+     */
+    @Test
+    public void updateEniSecurityGroupTest() {
+        UpdateEniSecurityGroupRequest updateEniSecurityGroupRequest = new UpdateEniSecurityGroupRequest();
+        updateEniSecurityGroupRequest.setEniId("");
+        updateEniSecurityGroupRequest.setClientToken("");
+        updateEniSecurityGroupRequest.setSecurityGroupIds(new ArrayList<>());
+        vpcClient.updateEniSecurityGroup(updateEniSecurityGroupRequest);
     }
     /**
      * updateEnterpriseSecurityGroupRules
@@ -2189,69 +2207,43 @@ public class VpcClientTest {
         vpcClient.updateEnterpriseSecurityGroupRules(updateEnterpriseSecurityGroupRulesRequest);
     }
     /**
-     * updateHighlyAvailableVirtualIp
+     * updateHaVip
      *
      */
     @Test
-    public void updateHighlyAvailableVirtualIpTest() {
-        UpdateHighlyAvailableVirtualIpRequest updateHighlyAvailableVirtualIpRequest = new UpdateHighlyAvailableVirtualIpRequest();
-        updateHighlyAvailableVirtualIpRequest.setHaVipId("");
-        updateHighlyAvailableVirtualIpRequest.setClientToken("");
-        updateHighlyAvailableVirtualIpRequest.setName("");
-        updateHighlyAvailableVirtualIpRequest.setDescription("");
-        vpcClient.updateHighlyAvailableVirtualIp(updateHighlyAvailableVirtualIpRequest);
+    public void updateHaVipTest() {
+        UpdateHaVipRequest updateHaVipRequest = new UpdateHaVipRequest();
+        updateHaVipRequest.setHaVipId("");
+        updateHaVipRequest.setClientToken("");
+        updateHaVipRequest.setName("");
+        updateHaVipRequest.setDescription("");
+        vpcClient.updateHaVip(updateHaVipRequest);
     }
     /**
-     * updateIpAddressFamily
+     * updateIpGroup
      *
      */
     @Test
-    public void updateIpAddressFamilyTest() {
-        UpdateIpAddressFamilyRequest updateIpAddressFamilyRequest = new UpdateIpAddressFamilyRequest();
-        updateIpAddressFamilyRequest.setIpGroupId("");
-        updateIpAddressFamilyRequest.setClientToken("");
-        updateIpAddressFamilyRequest.setName("");
-        updateIpAddressFamilyRequest.setDescription("");
-        vpcClient.updateIpAddressFamily(updateIpAddressFamilyRequest);
+    public void updateIpGroupTest() {
+        UpdateIpGroupRequest updateIpGroupRequest = new UpdateIpGroupRequest();
+        updateIpGroupRequest.setIpSetId("");
+        updateIpGroupRequest.setClientToken("");
+        updateIpGroupRequest.setName("");
+        updateIpGroupRequest.setDescription("");
+        vpcClient.updateIpGroup(updateIpGroupRequest);
     }
     /**
-     * updateIpAddressGroup
+     * updateIpSet
      *
      */
     @Test
-    public void updateIpAddressGroupTest() {
-        UpdateIpAddressGroupRequest updateIpAddressGroupRequest = new UpdateIpAddressGroupRequest();
-        updateIpAddressGroupRequest.setIpSetId("");
-        updateIpAddressGroupRequest.setClientToken("");
-        updateIpAddressGroupRequest.setName("");
-        updateIpAddressGroupRequest.setDescription("");
-        vpcClient.updateIpAddressGroup(updateIpAddressGroupRequest);
-    }
-    /**
-     * updateIpv6GatewayReleaseProtectionSwitch
-     *
-     */
-    @Test
-    public void updateIpv6GatewayReleaseProtectionSwitchTest() {
-        UpdateIpv6GatewayReleaseProtectionSwitchRequest updateIpv6GatewayReleaseProtectionSwitchRequest = new UpdateIpv6GatewayReleaseProtectionSwitchRequest();
-        updateIpv6GatewayReleaseProtectionSwitchRequest.setGatewayId("");
-        updateIpv6GatewayReleaseProtectionSwitchRequest.setClientToken("");
-        updateIpv6GatewayReleaseProtectionSwitchRequest.setDeleteProtect(0);
-        vpcClient.updateIpv6GatewayReleaseProtectionSwitch(updateIpv6GatewayReleaseProtectionSwitchRequest);
-    }
-    /**
-     * updateIpv6GatewaySpeedLimitPolicy
-     *
-     */
-    @Test
-    public void updateIpv6GatewaySpeedLimitPolicyTest() {
-        UpdateIpv6GatewaySpeedLimitPolicyRequest updateIpv6GatewaySpeedLimitPolicyRequest = new UpdateIpv6GatewaySpeedLimitPolicyRequest();
-        updateIpv6GatewaySpeedLimitPolicyRequest.setGatewayId("");
-        updateIpv6GatewaySpeedLimitPolicyRequest.setRateLimitRuleId("");
-        updateIpv6GatewaySpeedLimitPolicyRequest.setClientToken("");
-        updateIpv6GatewaySpeedLimitPolicyRequest.setIngressBandwidthInMbps(0);
-        updateIpv6GatewaySpeedLimitPolicyRequest.setEgressBandwidthInMbps(0);
-        vpcClient.updateIpv6GatewaySpeedLimitPolicy(updateIpv6GatewaySpeedLimitPolicyRequest);
+    public void updateIpSetTest() {
+        UpdateIpSetRequest updateIpSetRequest = new UpdateIpSetRequest();
+        updateIpSetRequest.setIpGroupId("");
+        updateIpSetRequest.setClientToken("");
+        updateIpSetRequest.setName("");
+        updateIpSetRequest.setDescription("");
+        vpcClient.updateIpSet(updateIpSetRequest);
     }
     /**
      * updateNatReleaseProtectionSwitch
@@ -2264,21 +2256,6 @@ public class VpcClientTest {
         updateNatReleaseProtectionSwitchRequest.setClientToken("");
         updateNatReleaseProtectionSwitchRequest.setDeleteProtect(false);
         vpcClient.updateNatReleaseProtectionSwitch(updateNatReleaseProtectionSwitchRequest);
-    }
-    /**
-     * updateNetworkDetection
-     *
-     */
-    @Test
-    public void updateNetworkDetectionTest() {
-        UpdateNetworkDetectionRequest updateNetworkDetectionRequest = new UpdateNetworkDetectionRequest();
-        updateNetworkDetectionRequest.setProbeId("");
-        updateNetworkDetectionRequest.setClientToken("");
-        updateNetworkDetectionRequest.setName("");
-        updateNetworkDetectionRequest.setDescription("");
-        updateNetworkDetectionRequest.setDestIp("");
-        updateNetworkDetectionRequest.setDestPort(0);
-        vpcClient.updateNetworkDetection(updateNetworkDetectionRequest);
     }
     /**
      * updatePeerConn
@@ -2319,23 +2296,33 @@ public class VpcClientTest {
         vpcClient.updatePeerConnDeleteProtect(updatePeerConnDeleteProtectRequest);
     }
     /**
-     * updateRegularSecurityGroupRulesV2
+     * updateProbe
      *
      */
     @Test
-    public void updateRegularSecurityGroupRulesV2Test() {
-        UpdateRegularSecurityGroupRulesV2Request updateRegularSecurityGroupRulesV2Request = new UpdateRegularSecurityGroupRulesV2Request();
-        updateRegularSecurityGroupRulesV2Request.setClientToken("");
-        updateRegularSecurityGroupRulesV2Request.setSgVersion(0L);
-        updateRegularSecurityGroupRulesV2Request.setSecurityGroupRuleId("");
-        updateRegularSecurityGroupRulesV2Request.setRemark("");
-        updateRegularSecurityGroupRulesV2Request.setPortRange("");
-        updateRegularSecurityGroupRulesV2Request.setSourceIp("");
-        updateRegularSecurityGroupRulesV2Request.setSourceGroupId("");
-        updateRegularSecurityGroupRulesV2Request.setDestIp("");
-        updateRegularSecurityGroupRulesV2Request.setDestGroupId("");
-        updateRegularSecurityGroupRulesV2Request.setProtocol("");
-        vpcClient.updateRegularSecurityGroupRulesV2(updateRegularSecurityGroupRulesV2Request);
+    public void updateProbeTest() {
+        UpdateProbeRequest updateProbeRequest = new UpdateProbeRequest();
+        updateProbeRequest.setProbeId("");
+        updateProbeRequest.setClientToken("");
+        updateProbeRequest.setName("");
+        updateProbeRequest.setDescription("");
+        updateProbeRequest.setDestIp("");
+        updateProbeRequest.setDestPort(0);
+        vpcClient.updateProbe(updateProbeRequest);
+    }
+    /**
+     * updateRateLimitRule
+     *
+     */
+    @Test
+    public void updateRateLimitRuleTest() {
+        UpdateRateLimitRuleRequest updateRateLimitRuleRequest = new UpdateRateLimitRuleRequest();
+        updateRateLimitRuleRequest.setGatewayId("");
+        updateRateLimitRuleRequest.setRateLimitRuleId("");
+        updateRateLimitRuleRequest.setClientToken("");
+        updateRateLimitRuleRequest.setIngressBandwidthInMbps(0);
+        updateRateLimitRuleRequest.setEgressBandwidthInMbps(0);
+        vpcClient.updateRateLimitRule(updateRateLimitRuleRequest);
     }
     /**
      * updateRoutingRules
@@ -2351,6 +2338,25 @@ public class VpcClientTest {
         updateRoutingRulesRequest.setNexthopId("");
         updateRoutingRulesRequest.setDescription("");
         vpcClient.updateRoutingRules(updateRoutingRulesRequest);
+    }
+    /**
+     * updateSecurityGroupRules
+     *
+     */
+    @Test
+    public void updateSecurityGroupRulesTest() {
+        UpdateSecurityGroupRulesRequest updateSecurityGroupRulesRequest = new UpdateSecurityGroupRulesRequest();
+        updateSecurityGroupRulesRequest.setClientToken("");
+        updateSecurityGroupRulesRequest.setSgVersion(0L);
+        updateSecurityGroupRulesRequest.setSecurityGroupRuleId("");
+        updateSecurityGroupRulesRequest.setRemark("");
+        updateSecurityGroupRulesRequest.setPortRange("");
+        updateSecurityGroupRulesRequest.setSourceIp("");
+        updateSecurityGroupRulesRequest.setSourceGroupId("");
+        updateSecurityGroupRulesRequest.setDestIp("");
+        updateSecurityGroupRulesRequest.setDestGroupId("");
+        updateSecurityGroupRulesRequest.setProtocol("");
+        vpcClient.updateSecurityGroupRules(updateSecurityGroupRulesRequest);
     }
     /**
      * updateSnatRule
@@ -2522,17 +2528,6 @@ public class VpcClientTest {
         viewGatewayLimitRulesRequest.setMarker("");
         viewGatewayLimitRulesRequest.setMaxKeys("");
         ViewGatewayLimitRulesResponse response = vpcClient.viewGatewayLimitRules(viewGatewayLimitRulesRequest);
-        System.out.println(response);
-    }
-    /**
-     * viewSecurityGroupDetailsV2
-     *
-     */
-    @Test
-    public void viewSecurityGroupDetailsV2Test() {
-        ViewSecurityGroupDetailsV2Request viewSecurityGroupDetailsV2Request = new ViewSecurityGroupDetailsV2Request();
-        viewSecurityGroupDetailsV2Request.setSecurityGroupId("");
-        ViewSecurityGroupDetailsV2Response response = vpcClient.viewSecurityGroupDetailsV2(viewSecurityGroupDetailsV2Request);
         System.out.println(response);
     }
 }
