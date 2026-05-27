@@ -1,10 +1,11 @@
 package com.baidubce.privatezone.models;
 
+import com.baidubce.common.BaseBceRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SearchForDetailsOfPrivatzoneRequest {
+public class GetPrivateZoneRequest extends BaseBceRequest {
 
     /**
     * zoneId
@@ -16,7 +17,7 @@ public class SearchForDetailsOfPrivatzoneRequest {
         return zoneId;
     }
 
-    public SearchForDetailsOfPrivatzoneRequest setZoneId(String zoneId) {
+    public GetPrivateZoneRequest setZoneId(String zoneId) {
         this.zoneId = zoneId;
         return this;
     }

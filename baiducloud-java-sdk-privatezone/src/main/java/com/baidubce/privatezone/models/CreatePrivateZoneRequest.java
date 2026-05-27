@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreateAPrivateZoneRequest extends BaseBceRequest {
+public class CreatePrivateZoneRequest extends BaseBceRequest {
 
     /**
     * clientToken
@@ -22,7 +22,7 @@ public class CreateAPrivateZoneRequest extends BaseBceRequest {
         return clientToken;
     }
 
-    public CreateAPrivateZoneRequest setClientToken(String clientToken) {
+    public CreatePrivateZoneRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
@@ -31,7 +31,7 @@ public class CreateAPrivateZoneRequest extends BaseBceRequest {
         return zoneName;
     }
 
-    public CreateAPrivateZoneRequest setZoneName(String zoneName) {
+    public CreatePrivateZoneRequest setZoneName(String zoneName) {
         this.zoneName = zoneName;
         return this;
     }

@@ -6,7 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DisassociateVpcRequest extends BaseBceRequest {
+public class UnbindVpcRequest extends BaseBceRequest {
 
     /**
     * zoneId
@@ -40,7 +40,7 @@ public class DisassociateVpcRequest extends BaseBceRequest {
         return zoneId;
     }
 
-    public DisassociateVpcRequest setZoneId(String zoneId) {
+    public UnbindVpcRequest setZoneId(String zoneId) {
         this.zoneId = zoneId;
         return this;
     }
@@ -49,7 +49,7 @@ public class DisassociateVpcRequest extends BaseBceRequest {
         return action;
     }
 
-    public DisassociateVpcRequest setAction(String action) {
+    public UnbindVpcRequest setAction(String action) {
         this.action = action;
         return this;
     }
@@ -58,7 +58,7 @@ public class DisassociateVpcRequest extends BaseBceRequest {
         return clientToken;
     }
 
-    public DisassociateVpcRequest setClientToken(String clientToken) {
+    public UnbindVpcRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
@@ -67,7 +67,7 @@ public class DisassociateVpcRequest extends BaseBceRequest {
         return region;
     }
 
-    public DisassociateVpcRequest setRegion(String region) {
+    public UnbindVpcRequest setRegion(String region) {
         this.region = region;
         return this;
     }
@@ -76,7 +76,7 @@ public class DisassociateVpcRequest extends BaseBceRequest {
         return vpcIds;
     }
 
-    public DisassociateVpcRequest setVpcIds(List<String> vpcIds) {
+    public UnbindVpcRequest setVpcIds(List<String> vpcIds) {
         this.vpcIds = vpcIds;
         return this;
     }

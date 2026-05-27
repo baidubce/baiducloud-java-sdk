@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AddParsingRecordsRequest extends BaseBceRequest {
+public class AddRecordRequest extends BaseBceRequest {
 
     /**
     * zoneId
@@ -53,7 +53,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return zoneId;
     }
 
-    public AddParsingRecordsRequest setZoneId(String zoneId) {
+    public AddRecordRequest setZoneId(String zoneId) {
         this.zoneId = zoneId;
         return this;
     }
@@ -62,7 +62,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return clientToken;
     }
 
-    public AddParsingRecordsRequest setClientToken(String clientToken) {
+    public AddRecordRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
@@ -71,7 +71,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return rr;
     }
 
-    public AddParsingRecordsRequest setRr(String rr) {
+    public AddRecordRequest setRr(String rr) {
         this.rr = rr;
         return this;
     }
@@ -80,7 +80,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return value;
     }
 
-    public AddParsingRecordsRequest setValue(String value) {
+    public AddRecordRequest setValue(String value) {
         this.value = value;
         return this;
     }
@@ -89,7 +89,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return type;
     }
 
-    public AddParsingRecordsRequest setType(String type) {
+    public AddRecordRequest setType(String type) {
         this.type = type;
         return this;
     }
@@ -98,7 +98,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return priority;
     }
 
-    public AddParsingRecordsRequest setPriority(Integer priority) {
+    public AddRecordRequest setPriority(Integer priority) {
         this.priority = priority;
         return this;
     }
@@ -107,7 +107,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return ttl;
     }
 
-    public AddParsingRecordsRequest setTtl(Integer ttl) {
+    public AddRecordRequest setTtl(Integer ttl) {
         this.ttl = ttl;
         return this;
     }
@@ -116,7 +116,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return description;
     }
 
-    public AddParsingRecordsRequest setDescription(String description) {
+    public AddRecordRequest setDescription(String description) {
         this.description = description;
         return this;
     }

@@ -4,10 +4,10 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.privatezone.PrivatezoneClient;
-import com.baidubce.privatezone.models.CreateAPrivateZoneRequest;
-import com.baidubce.privatezone.models.CreateAPrivateZoneResponse;
+import com.baidubce.privatezone.models.AddRecordRequest;
+import com.baidubce.privatezone.models.AddRecordResponse;
 
-public class ExampleCreateAPrivateZone {
+public class ExampleAddRecord {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -17,11 +17,17 @@ public class ExampleCreateAPrivateZone {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
-        CreateAPrivateZoneRequest createAPrivateZoneRequest = new CreateAPrivateZoneRequest();
-        createAPrivateZoneRequest.setClientToken("");
-        createAPrivateZoneRequest.setZoneName("");
+        AddRecordRequest addRecordRequest = new AddRecordRequest();
+        addRecordRequest.setZoneId("");
+        addRecordRequest.setClientToken("");
+        addRecordRequest.setRr("");
+        addRecordRequest.setValue("");
+        addRecordRequest.setType("");
+        addRecordRequest.setPriority(0);
+        addRecordRequest.setTtl(0);
+        addRecordRequest.setDescription("");
         try {
-            CreateAPrivateZoneResponse response = client.createAPrivateZone(createAPrivateZoneRequest);
+            AddRecordResponse response = client.addRecord(addRecordRequest);
             System.out.println(response.toJsonString());
         } catch (BceClientException e) {
             System.out.println(e.getMessage());

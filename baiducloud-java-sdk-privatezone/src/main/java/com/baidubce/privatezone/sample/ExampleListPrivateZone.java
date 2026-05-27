@@ -4,10 +4,10 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.privatezone.PrivatezoneClient;
-import com.baidubce.privatezone.models.AssociateVpcRequest;
-import java.util.ArrayList;
+import com.baidubce.privatezone.models.ListPrivateZoneRequest;
+import com.baidubce.privatezone.models.ListPrivateZoneResponse;
 
-public class ExampleAssociateVpc {
+public class ExampleListPrivateZone {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -17,16 +17,13 @@ public class ExampleAssociateVpc {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
-        AssociateVpcRequest associateVpcRequest = new AssociateVpcRequest();
-        associateVpcRequest.setZoneId("");
-        associateVpcRequest.setAction("");
-        associateVpcRequest.setClientToken("");
-        associateVpcRequest.setRegion("");
-        associateVpcRequest.setVpcIds(new ArrayList<>());
+        ListPrivateZoneRequest listPrivateZoneRequest = new ListPrivateZoneRequest();
+        listPrivateZoneRequest.setMarker("");
+        listPrivateZoneRequest.setMaxKeys(0);
         try {
-            client.associateVpc(associateVpcRequest);
+            ListPrivateZoneResponse response = client.listPrivateZone(listPrivateZoneRequest);
+            System.out.println(response.toJsonString());
         } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

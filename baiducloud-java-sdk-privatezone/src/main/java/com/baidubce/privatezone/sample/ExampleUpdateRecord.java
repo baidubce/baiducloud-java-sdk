@@ -4,9 +4,9 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.privatezone.PrivatezoneClient;
-import com.baidubce.privatezone.models.SetParsingRecordStatusRequest;
+import com.baidubce.privatezone.models.UpdateRecordRequest;
 
-public class ExampleSetParsingRecordStatus {
+public class ExampleUpdateRecord {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -16,12 +16,17 @@ public class ExampleSetParsingRecordStatus {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
-        SetParsingRecordStatusRequest setParsingRecordStatusRequest = new SetParsingRecordStatusRequest();
-        setParsingRecordStatusRequest.setRecordId("");
-        setParsingRecordStatusRequest.setAction("");
-        setParsingRecordStatusRequest.setClientToken("");
+        UpdateRecordRequest updateRecordRequest = new UpdateRecordRequest();
+        updateRecordRequest.setRecordId("");
+        updateRecordRequest.setClientToken("");
+        updateRecordRequest.setRr("");
+        updateRecordRequest.setValue("");
+        updateRecordRequest.setType("");
+        updateRecordRequest.setTtl(0);
+        updateRecordRequest.setPriority(0);
+        updateRecordRequest.setDescription("");
         try {
-            client.setParsingRecordStatus(setParsingRecordStatusRequest);
+            client.updateRecord(updateRecordRequest);
         } catch (BceClientException e) {
             // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());

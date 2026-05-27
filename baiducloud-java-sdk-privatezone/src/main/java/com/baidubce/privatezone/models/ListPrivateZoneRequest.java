@@ -1,10 +1,11 @@
 package com.baidubce.privatezone.models;
 
+import com.baidubce.common.BaseBceRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class QueryTheListOfPrivateZonesRequest {
+public class ListPrivateZoneRequest extends BaseBceRequest {
 
     /**
     * marker
@@ -22,7 +23,7 @@ public class QueryTheListOfPrivateZonesRequest {
         return marker;
     }
 
-    public QueryTheListOfPrivateZonesRequest setMarker(String marker) {
+    public ListPrivateZoneRequest setMarker(String marker) {
         this.marker = marker;
         return this;
     }
@@ -31,7 +32,7 @@ public class QueryTheListOfPrivateZonesRequest {
         return maxKeys;
     }
 
-    public QueryTheListOfPrivateZonesRequest setMaxKeys(Integer maxKeys) {
+    public ListPrivateZoneRequest setMaxKeys(Integer maxKeys) {
         this.maxKeys = maxKeys;
         return this;
     }

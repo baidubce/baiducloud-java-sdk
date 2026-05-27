@@ -4,9 +4,9 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.privatezone.PrivatezoneClient;
-import com.baidubce.privatezone.models.DeleteParsingRecordsRequest;
+import com.baidubce.privatezone.models.DeleteRecordRequest;
 
-public class ExampleDeleteParsingRecords {
+public class ExampleDeleteRecord {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -16,11 +16,11 @@ public class ExampleDeleteParsingRecords {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
-        DeleteParsingRecordsRequest deleteParsingRecordsRequest = new DeleteParsingRecordsRequest();
-        deleteParsingRecordsRequest.setRecordId("");
-        deleteParsingRecordsRequest.setClientToken("");
+        DeleteRecordRequest deleteRecordRequest = new DeleteRecordRequest();
+        deleteRecordRequest.setRecordId("");
+        deleteRecordRequest.setClientToken("");
         try {
-            client.deleteParsingRecords(deleteParsingRecordsRequest);
+            client.deleteRecord(deleteRecordRequest);
         } catch (BceClientException e) {
             // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());

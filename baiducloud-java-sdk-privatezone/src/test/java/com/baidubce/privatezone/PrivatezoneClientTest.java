@@ -1,21 +1,22 @@
 package com.baidubce.privatezone;
 
-import com.baidubce.privatezone.models.AddParsingRecordsRequest;
-import com.baidubce.privatezone.models.AddParsingRecordsResponse;
-import com.baidubce.privatezone.models.AssociateVpcRequest;
-import com.baidubce.privatezone.models.CreateAPrivateZoneRequest;
-import com.baidubce.privatezone.models.CreateAPrivateZoneResponse;
-import com.baidubce.privatezone.models.DeleteParsingRecordsRequest;
+import com.baidubce.privatezone.models.AddRecordRequest;
+import com.baidubce.privatezone.models.AddRecordResponse;
+import com.baidubce.privatezone.models.BindVpcRequest;
+import com.baidubce.privatezone.models.CreatePrivateZoneRequest;
+import com.baidubce.privatezone.models.CreatePrivateZoneResponse;
 import com.baidubce.privatezone.models.DeletePrivateZoneRequest;
-import com.baidubce.privatezone.models.DisassociateVpcRequest;
-import com.baidubce.privatezone.models.ModifyParsingRecordsRequest;
-import com.baidubce.privatezone.models.QueryAndParseRecordListRequest;
-import com.baidubce.privatezone.models.QueryAndParseRecordListResponse;
-import com.baidubce.privatezone.models.QueryTheListOfPrivateZonesRequest;
-import com.baidubce.privatezone.models.QueryTheListOfPrivateZonesResponse;
-import com.baidubce.privatezone.models.SearchForDetailsOfPrivatzoneRequest;
-import com.baidubce.privatezone.models.SearchForDetailsOfPrivatzoneResponse;
-import com.baidubce.privatezone.models.SetParsingRecordStatusRequest;
+import com.baidubce.privatezone.models.DeleteRecordRequest;
+import com.baidubce.privatezone.models.DisableRecordRequest;
+import com.baidubce.privatezone.models.EnableRecordRequest;
+import com.baidubce.privatezone.models.GetPrivateZoneRequest;
+import com.baidubce.privatezone.models.GetPrivateZoneResponse;
+import com.baidubce.privatezone.models.ListPrivateZoneRequest;
+import com.baidubce.privatezone.models.ListPrivateZoneResponse;
+import com.baidubce.privatezone.models.ListRecordRequest;
+import com.baidubce.privatezone.models.ListRecordResponse;
+import com.baidubce.privatezone.models.UnbindVpcRequest;
+import com.baidubce.privatezone.models.UpdateRecordRequest;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -39,59 +40,48 @@ public class PrivatezoneClientTest {
     }
 
     /**
-     * addParsingRecords
+     * addRecord
      *
      */
     @Test
-    public void addParsingRecordsTest() {
-        AddParsingRecordsRequest addParsingRecordsRequest = new AddParsingRecordsRequest();
-        addParsingRecordsRequest.setZoneId("");
-        addParsingRecordsRequest.setClientToken("");
-        addParsingRecordsRequest.setRr("");
-        addParsingRecordsRequest.setValue("");
-        addParsingRecordsRequest.setType("");
-        addParsingRecordsRequest.setPriority(0);
-        addParsingRecordsRequest.setTtl(0);
-        addParsingRecordsRequest.setDescription("");
-        AddParsingRecordsResponse response = privatezoneClient.addParsingRecords(addParsingRecordsRequest);
+    public void addRecordTest() {
+        AddRecordRequest addRecordRequest = new AddRecordRequest();
+        addRecordRequest.setZoneId("");
+        addRecordRequest.setClientToken("");
+        addRecordRequest.setRr("");
+        addRecordRequest.setValue("");
+        addRecordRequest.setType("");
+        addRecordRequest.setPriority(0);
+        addRecordRequest.setTtl(0);
+        addRecordRequest.setDescription("");
+        AddRecordResponse response = privatezoneClient.addRecord(addRecordRequest);
         System.out.println(response);
     }
     /**
-     * associateVpc
+     * bindVpc
      *
      */
     @Test
-    public void associateVpcTest() {
-        AssociateVpcRequest associateVpcRequest = new AssociateVpcRequest();
-        associateVpcRequest.setZoneId("");
-        associateVpcRequest.setAction("");
-        associateVpcRequest.setClientToken("");
-        associateVpcRequest.setRegion("");
-        associateVpcRequest.setVpcIds(new ArrayList<>());
-        privatezoneClient.associateVpc(associateVpcRequest);
+    public void bindVpcTest() {
+        BindVpcRequest bindVpcRequest = new BindVpcRequest();
+        bindVpcRequest.setZoneId("");
+        bindVpcRequest.setAction("");
+        bindVpcRequest.setClientToken("");
+        bindVpcRequest.setRegion("");
+        bindVpcRequest.setVpcIds(new ArrayList<>());
+        privatezoneClient.bindVpc(bindVpcRequest);
     }
     /**
-     * createAPrivateZone
+     * createPrivateZone
      *
      */
     @Test
-    public void createAPrivateZoneTest() {
-        CreateAPrivateZoneRequest createAPrivateZoneRequest = new CreateAPrivateZoneRequest();
-        createAPrivateZoneRequest.setClientToken("");
-        createAPrivateZoneRequest.setZoneName("");
-        CreateAPrivateZoneResponse response = privatezoneClient.createAPrivateZone(createAPrivateZoneRequest);
+    public void createPrivateZoneTest() {
+        CreatePrivateZoneRequest createPrivateZoneRequest = new CreatePrivateZoneRequest();
+        createPrivateZoneRequest.setClientToken("");
+        createPrivateZoneRequest.setZoneName("");
+        CreatePrivateZoneResponse response = privatezoneClient.createPrivateZone(createPrivateZoneRequest);
         System.out.println(response);
-    }
-    /**
-     * deleteParsingRecords
-     *
-     */
-    @Test
-    public void deleteParsingRecordsTest() {
-        DeleteParsingRecordsRequest deleteParsingRecordsRequest = new DeleteParsingRecordsRequest();
-        deleteParsingRecordsRequest.setRecordId("");
-        deleteParsingRecordsRequest.setClientToken("");
-        privatezoneClient.deleteParsingRecords(deleteParsingRecordsRequest);
     }
     /**
      * deletePrivateZone
@@ -105,86 +95,111 @@ public class PrivatezoneClientTest {
         privatezoneClient.deletePrivateZone(deletePrivateZoneRequest);
     }
     /**
-     * disassociateVpc
+     * deleteRecord
      *
      */
     @Test
-    public void disassociateVpcTest() {
-        DisassociateVpcRequest disassociateVpcRequest = new DisassociateVpcRequest();
-        disassociateVpcRequest.setZoneId("");
-        disassociateVpcRequest.setAction("");
-        disassociateVpcRequest.setClientToken("");
-        disassociateVpcRequest.setRegion("");
-        disassociateVpcRequest.setVpcIds(new ArrayList<>());
-        privatezoneClient.disassociateVpc(disassociateVpcRequest);
+    public void deleteRecordTest() {
+        DeleteRecordRequest deleteRecordRequest = new DeleteRecordRequest();
+        deleteRecordRequest.setRecordId("");
+        deleteRecordRequest.setClientToken("");
+        privatezoneClient.deleteRecord(deleteRecordRequest);
     }
     /**
-     * modifyParsingRecords
+     * disableRecord
      *
      */
     @Test
-    public void modifyParsingRecordsTest() {
-        ModifyParsingRecordsRequest modifyParsingRecordsRequest = new ModifyParsingRecordsRequest();
-        modifyParsingRecordsRequest.setRecordId("");
-        modifyParsingRecordsRequest.setClientToken("");
-        modifyParsingRecordsRequest.setRr("");
-        modifyParsingRecordsRequest.setValue("");
-        modifyParsingRecordsRequest.setType("");
-        modifyParsingRecordsRequest.setTtl(0);
-        modifyParsingRecordsRequest.setPriority(0);
-        modifyParsingRecordsRequest.setDescription("");
-        privatezoneClient.modifyParsingRecords(modifyParsingRecordsRequest);
-    }
-    /**
-     * queryAndParseRecordList
-     *
-     */
-    @Test
-    public void queryAndParseRecordListTest() {
-        QueryAndParseRecordListRequest queryAndParseRecordListRequest = new QueryAndParseRecordListRequest();
-        queryAndParseRecordListRequest.setZoneId("");
-        queryAndParseRecordListRequest.setMarker("");
-        queryAndParseRecordListRequest.setMaxKeys(0);
-        queryAndParseRecordListRequest.setRr("");
-        queryAndParseRecordListRequest.setSearchMode("");
-        queryAndParseRecordListRequest.setType("");
-        queryAndParseRecordListRequest.setValue("");
-        QueryAndParseRecordListResponse response = privatezoneClient.queryAndParseRecordList(queryAndParseRecordListRequest);
+    public void disableRecordTest() {
+        DisableRecordRequest disableRecordRequest = new DisableRecordRequest();
+        disableRecordRequest.setRecordId("");
+        disableRecordRequest.setAction("");
+        disableRecordRequest.setClientToken("");
+        Object response = privatezoneClient.disableRecord(disableRecordRequest);
         System.out.println(response);
     }
     /**
-     * queryTheListOfPrivateZones
+     * enableRecord
      *
      */
     @Test
-    public void queryTheListOfPrivateZonesTest() {
-        QueryTheListOfPrivateZonesRequest queryTheListOfPrivateZonesRequest = new QueryTheListOfPrivateZonesRequest();
-        queryTheListOfPrivateZonesRequest.setMarker("");
-        queryTheListOfPrivateZonesRequest.setMaxKeys(0);
-        QueryTheListOfPrivateZonesResponse response = privatezoneClient.queryTheListOfPrivateZones(queryTheListOfPrivateZonesRequest);
+    public void enableRecordTest() {
+        EnableRecordRequest enableRecordRequest = new EnableRecordRequest();
+        enableRecordRequest.setRecordId("");
+        enableRecordRequest.setAction("");
+        enableRecordRequest.setClientToken("");
+        Object response = privatezoneClient.enableRecord(enableRecordRequest);
         System.out.println(response);
     }
     /**
-     * searchForDetailsOfPrivatzone
+     * getPrivateZone
      *
      */
     @Test
-    public void searchForDetailsOfPrivatzoneTest() {
-        SearchForDetailsOfPrivatzoneRequest searchForDetailsOfPrivatzoneRequest = new SearchForDetailsOfPrivatzoneRequest();
-        searchForDetailsOfPrivatzoneRequest.setZoneId("");
-        SearchForDetailsOfPrivatzoneResponse response = privatezoneClient.searchForDetailsOfPrivatzone(searchForDetailsOfPrivatzoneRequest);
+    public void getPrivateZoneTest() {
+        GetPrivateZoneRequest getPrivateZoneRequest = new GetPrivateZoneRequest();
+        getPrivateZoneRequest.setZoneId("");
+        GetPrivateZoneResponse response = privatezoneClient.getPrivateZone(getPrivateZoneRequest);
         System.out.println(response);
     }
     /**
-     * setParsingRecordStatus
+     * listPrivateZone
      *
      */
     @Test
-    public void setParsingRecordStatusTest() {
-        SetParsingRecordStatusRequest setParsingRecordStatusRequest = new SetParsingRecordStatusRequest();
-        setParsingRecordStatusRequest.setRecordId("");
-        setParsingRecordStatusRequest.setAction("");
-        setParsingRecordStatusRequest.setClientToken("");
-        privatezoneClient.setParsingRecordStatus(setParsingRecordStatusRequest);
+    public void listPrivateZoneTest() {
+        ListPrivateZoneRequest listPrivateZoneRequest = new ListPrivateZoneRequest();
+        listPrivateZoneRequest.setMarker("");
+        listPrivateZoneRequest.setMaxKeys(0);
+        ListPrivateZoneResponse response = privatezoneClient.listPrivateZone(listPrivateZoneRequest);
+        System.out.println(response);
+    }
+    /**
+     * listRecord
+     *
+     */
+    @Test
+    public void listRecordTest() {
+        ListRecordRequest listRecordRequest = new ListRecordRequest();
+        listRecordRequest.setZoneId("");
+        listRecordRequest.setMarker("");
+        listRecordRequest.setMaxKeys(0);
+        listRecordRequest.setRr("");
+        listRecordRequest.setSearchMode("");
+        listRecordRequest.setType("");
+        listRecordRequest.setValue("");
+        ListRecordResponse response = privatezoneClient.listRecord(listRecordRequest);
+        System.out.println(response);
+    }
+    /**
+     * unbindVpc
+     *
+     */
+    @Test
+    public void unbindVpcTest() {
+        UnbindVpcRequest unbindVpcRequest = new UnbindVpcRequest();
+        unbindVpcRequest.setZoneId("");
+        unbindVpcRequest.setAction("");
+        unbindVpcRequest.setClientToken("");
+        unbindVpcRequest.setRegion("");
+        unbindVpcRequest.setVpcIds(new ArrayList<>());
+        privatezoneClient.unbindVpc(unbindVpcRequest);
+    }
+    /**
+     * updateRecord
+     *
+     */
+    @Test
+    public void updateRecordTest() {
+        UpdateRecordRequest updateRecordRequest = new UpdateRecordRequest();
+        updateRecordRequest.setRecordId("");
+        updateRecordRequest.setClientToken("");
+        updateRecordRequest.setRr("");
+        updateRecordRequest.setValue("");
+        updateRecordRequest.setType("");
+        updateRecordRequest.setTtl(0);
+        updateRecordRequest.setPriority(0);
+        updateRecordRequest.setDescription("");
+        privatezoneClient.updateRecord(updateRecordRequest);
     }
 }

@@ -4,10 +4,10 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.privatezone.PrivatezoneClient;
-import com.baidubce.privatezone.models.QueryTheListOfPrivateZonesRequest;
-import com.baidubce.privatezone.models.QueryTheListOfPrivateZonesResponse;
+import com.baidubce.privatezone.models.GetPrivateZoneRequest;
+import com.baidubce.privatezone.models.GetPrivateZoneResponse;
 
-public class ExampleQueryTheListOfPrivateZones {
+public class ExampleGetPrivateZone {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -17,11 +17,10 @@ public class ExampleQueryTheListOfPrivateZones {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
-        QueryTheListOfPrivateZonesRequest queryTheListOfPrivateZonesRequest = new QueryTheListOfPrivateZonesRequest();
-        queryTheListOfPrivateZonesRequest.setMarker("");
-        queryTheListOfPrivateZonesRequest.setMaxKeys(0);
+        GetPrivateZoneRequest getPrivateZoneRequest = new GetPrivateZoneRequest();
+        getPrivateZoneRequest.setZoneId("");
         try {
-            QueryTheListOfPrivateZonesResponse response = client.queryTheListOfPrivateZones(queryTheListOfPrivateZonesRequest);
+            GetPrivateZoneResponse response = client.getPrivateZone(getPrivateZoneRequest);
             System.out.println(response.toJsonString());
         } catch (BceClientException e) {
             System.out.println(e.getMessage());

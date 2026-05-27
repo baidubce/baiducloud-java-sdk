@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ModifyParsingRecordsRequest extends BaseBceRequest {
+public class UpdateRecordRequest extends BaseBceRequest {
 
     /**
     * recordId
@@ -53,7 +53,7 @@ public class ModifyParsingRecordsRequest extends BaseBceRequest {
         return recordId;
     }
 
-    public ModifyParsingRecordsRequest setRecordId(String recordId) {
+    public UpdateRecordRequest setRecordId(String recordId) {
         this.recordId = recordId;
         return this;
     }
@@ -62,7 +62,7 @@ public class ModifyParsingRecordsRequest extends BaseBceRequest {
         return clientToken;
     }
 
-    public ModifyParsingRecordsRequest setClientToken(String clientToken) {
+    public UpdateRecordRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
@@ -71,7 +71,7 @@ public class ModifyParsingRecordsRequest extends BaseBceRequest {
         return rr;
     }
 
-    public ModifyParsingRecordsRequest setRr(String rr) {
+    public UpdateRecordRequest setRr(String rr) {
         this.rr = rr;
         return this;
     }
@@ -80,7 +80,7 @@ public class ModifyParsingRecordsRequest extends BaseBceRequest {
         return value;
     }
 
-    public ModifyParsingRecordsRequest setValue(String value) {
+    public UpdateRecordRequest setValue(String value) {
         this.value = value;
         return this;
     }
@@ -89,7 +89,7 @@ public class ModifyParsingRecordsRequest extends BaseBceRequest {
         return type;
     }
 
-    public ModifyParsingRecordsRequest setType(String type) {
+    public UpdateRecordRequest setType(String type) {
         this.type = type;
         return this;
     }
@@ -98,7 +98,7 @@ public class ModifyParsingRecordsRequest extends BaseBceRequest {
         return ttl;
     }
 
-    public ModifyParsingRecordsRequest setTtl(Integer ttl) {
+    public UpdateRecordRequest setTtl(Integer ttl) {
         this.ttl = ttl;
         return this;
     }
@@ -107,7 +107,7 @@ public class ModifyParsingRecordsRequest extends BaseBceRequest {
         return priority;
     }
 
-    public ModifyParsingRecordsRequest setPriority(Integer priority) {
+    public UpdateRecordRequest setPriority(Integer priority) {
         this.priority = priority;
         return this;
     }
@@ -116,7 +116,7 @@ public class ModifyParsingRecordsRequest extends BaseBceRequest {
         return description;
     }
 
-    public ModifyParsingRecordsRequest setDescription(String description) {
+    public UpdateRecordRequest setDescription(String description) {
         this.description = description;
         return this;
     }

@@ -4,10 +4,10 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.privatezone.PrivatezoneClient;
-import com.baidubce.privatezone.models.QueryAndParseRecordListRequest;
-import com.baidubce.privatezone.models.QueryAndParseRecordListResponse;
+import com.baidubce.privatezone.models.BindVpcRequest;
+import java.util.ArrayList;
 
-public class ExampleQueryAndParseRecordList {
+public class ExampleBindVpc {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -17,18 +17,16 @@ public class ExampleQueryAndParseRecordList {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
-        QueryAndParseRecordListRequest queryAndParseRecordListRequest = new QueryAndParseRecordListRequest();
-        queryAndParseRecordListRequest.setZoneId("");
-        queryAndParseRecordListRequest.setMarker("");
-        queryAndParseRecordListRequest.setMaxKeys(0);
-        queryAndParseRecordListRequest.setRr("");
-        queryAndParseRecordListRequest.setSearchMode("");
-        queryAndParseRecordListRequest.setType("");
-        queryAndParseRecordListRequest.setValue("");
+        BindVpcRequest bindVpcRequest = new BindVpcRequest();
+        bindVpcRequest.setZoneId("");
+        bindVpcRequest.setAction("");
+        bindVpcRequest.setClientToken("");
+        bindVpcRequest.setRegion("");
+        bindVpcRequest.setVpcIds(new ArrayList<>());
         try {
-            QueryAndParseRecordListResponse response = client.queryAndParseRecordList(queryAndParseRecordListRequest);
-            System.out.println(response.toJsonString());
+            client.bindVpc(bindVpcRequest);
         } catch (BceClientException e) {
+            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

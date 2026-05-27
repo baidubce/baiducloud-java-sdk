@@ -9,47 +9,36 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.internal.InternalRequest;
 import com.baidubce.http.HttpMethodName;
 import com.baidubce.model.AbstractBceRequest;
-import com.baidubce.util.HttpUtils;
-import java.net.URI;
-import com.baidubce.util.JsonUtils;
-import java.io.UnsupportedEncodingException;
-import com.baidubce.BceClientException;
 import com.baidubce.auth.SignOptions;
-import com.baidubce.http.Headers;
-import com.baidubce.internal.RestartableInputStream;
-import com.baidubce.common.BaseBceRequest;
-import com.baidubce.common.BaseBceResponse;
-
-import com.baidubce.privatezone.models.AddParsingRecordsRequest;
-import com.baidubce.privatezone.models.AddParsingRecordsResponse;
-import com.baidubce.privatezone.models.AssociateVpcRequest;
-import com.baidubce.privatezone.models.CreateAPrivateZoneRequest;
-import com.baidubce.privatezone.models.CreateAPrivateZoneResponse;
-import com.baidubce.privatezone.models.DeleteParsingRecordsRequest;
-import com.baidubce.privatezone.models.DeletePrivateZoneRequest;
-import com.baidubce.privatezone.models.DisassociateVpcRequest;
-import com.baidubce.privatezone.models.ModifyParsingRecordsRequest;
-import com.baidubce.privatezone.models.QueryAndParseRecordListRequest;
-import com.baidubce.privatezone.models.QueryAndParseRecordListResponse;
-import com.baidubce.privatezone.models.QueryTheListOfPrivateZonesRequest;
-import com.baidubce.privatezone.models.QueryTheListOfPrivateZonesResponse;
-import com.baidubce.privatezone.models.SearchForDetailsOfPrivatzoneRequest;
-import com.baidubce.privatezone.models.SearchForDetailsOfPrivatzoneResponse;
-import com.baidubce.privatezone.models.SetParsingRecordStatusRequest;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.baidubce.util.RequestBodyUtils;
 import java.util.Arrays;
 import java.util.HashSet;
+import com.baidubce.common.BaseBceResponse;
+
+import com.baidubce.privatezone.models.AddRecordRequest;
+import com.baidubce.privatezone.models.AddRecordResponse;
+import com.baidubce.privatezone.models.BindVpcRequest;
+import com.baidubce.privatezone.models.CreatePrivateZoneRequest;
+import com.baidubce.privatezone.models.CreatePrivateZoneResponse;
+import com.baidubce.privatezone.models.DeletePrivateZoneRequest;
+import com.baidubce.privatezone.models.DeleteRecordRequest;
+import com.baidubce.privatezone.models.DisableRecordRequest;
+import com.baidubce.privatezone.models.EnableRecordRequest;
+import com.baidubce.privatezone.models.GetPrivateZoneRequest;
+import com.baidubce.privatezone.models.GetPrivateZoneResponse;
+import com.baidubce.privatezone.models.ListPrivateZoneRequest;
+import com.baidubce.privatezone.models.ListPrivateZoneResponse;
+import com.baidubce.privatezone.models.ListRecordRequest;
+import com.baidubce.privatezone.models.ListRecordResponse;
+import com.baidubce.privatezone.models.UnbindVpcRequest;
+import com.baidubce.privatezone.models.UpdateRecordRequest;
 
 public class PrivatezoneClient extends AbstractBceClient {
 
     private static final String[] HEADERS_TO_SIGN = {"host", "x-bce-date"};
 
     private static final String VERSION_V1 = "v1";
-
     private static final String CONSTANT_PRIVATEZONE = "privatezone";
-
     private static final String CONSTANT_RECORD = "record";
 
     /**
@@ -72,62 +61,48 @@ public class PrivatezoneClient extends AbstractBceClient {
     }
 
     /**
-     * addParsingRecords
+     * addRecord
      * 
      * @param request 入参结构体
-     * @return AddParsingRecordsResponse
+     * @return AddRecordResponse
      */
-    public AddParsingRecordsResponse addParsingRecords(AddParsingRecordsRequest request) {
+    public AddRecordResponse addRecord(AddRecordRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_PRIVATEZONE, request.getZoneId(), CONSTANT_RECORD);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
-        fillPayload(internalRequest, request);
-        return invokeHttpClient(internalRequest, AddParsingRecordsResponse.class);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, AddRecordResponse.class);
     }
 
     /**
-     * associateVpc
+     * bindVpc
      * 
      * @param request 入参结构体
      */
-    public void associateVpc(AssociateVpcRequest request) {
+    public void bindVpc(BindVpcRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, request.getZoneId());
         internalRequest.addParameter(request.getAction(), null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
-        fillPayload(internalRequest, request);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
-     * createAPrivateZone
+     * createPrivateZone
      * 
      * @param request 入参结构体
-     * @return CreateAPrivateZoneResponse
+     * @return CreatePrivateZoneResponse
      */
-    public CreateAPrivateZoneResponse createAPrivateZone(CreateAPrivateZoneRequest request) {
+    public CreatePrivateZoneResponse createPrivateZone(CreatePrivateZoneRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_PRIVATEZONE);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
-        fillPayload(internalRequest, request);
-        return invokeHttpClient(internalRequest, CreateAPrivateZoneResponse.class);
-    }
-
-    /**
-     * deleteParsingRecords
-     * 
-     * @param request 入参结构体
-     */
-    public void deleteParsingRecords(DeleteParsingRecordsRequest request) {
-        InternalRequest internalRequest =
-                this.createRequest(new BaseBceRequest(), HttpMethodName.DELETE, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RECORD, request.getRecordId());
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
-        }
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreatePrivateZoneResponse.class);
     }
 
     /**
@@ -136,7 +111,7 @@ public class PrivatezoneClient extends AbstractBceClient {
      * @param request 入参结构体
      */
     public void deletePrivateZone(DeletePrivateZoneRequest request) {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.DELETE, VERSION_V1, CONSTANT_PRIVATEZONE, request.getZoneId());
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_PRIVATEZONE, request.getZoneId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -144,42 +119,90 @@ public class PrivatezoneClient extends AbstractBceClient {
     }
 
     /**
-     * disassociateVpc
+     * deleteRecord
      * 
      * @param request 入参结构体
      */
-    public void disassociateVpc(DisassociateVpcRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, request.getZoneId());
-        internalRequest.addParameter(request.getAction(), null);
+    public void deleteRecord(DeleteRecordRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RECORD, request.getRecordId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
-        fillPayload(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
-     * modifyParsingRecords
+     * disableRecord
      * 
      * @param request 入参结构体
+     * @return Object
      */
-    public void modifyParsingRecords(ModifyParsingRecordsRequest request) {
+    public Object disableRecord(DisableRecordRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RECORD, request.getRecordId());
+        internalRequest.addParameter("disable", null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
-        fillPayload(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, Object.class);
     }
 
     /**
-     * queryAndParseRecordList
+     * enableRecord
      * 
      * @param request 入参结构体
-     * @return QueryAndParseRecordListResponse
+     * @return Object
      */
-    public QueryAndParseRecordListResponse queryAndParseRecordList(QueryAndParseRecordListRequest request) {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_PRIVATEZONE, request.getZoneId(), CONSTANT_RECORD);
+    public Object enableRecord(EnableRecordRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RECORD, request.getRecordId());
+        internalRequest.addParameter("enable", null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        return invokeHttpClient(internalRequest, Object.class);
+    }
+
+    /**
+     * getPrivateZone
+     * 
+     * @param request 入参结构体
+     * @return GetPrivateZoneResponse
+     */
+    public GetPrivateZoneResponse getPrivateZone(GetPrivateZoneRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_PRIVATEZONE, request.getZoneId());
+        return invokeHttpClient(internalRequest, GetPrivateZoneResponse.class);
+    }
+
+    /**
+     * listPrivateZone
+     * 
+     * @param request 入参结构体
+     * @return ListPrivateZoneResponse
+     */
+    public ListPrivateZoneResponse listPrivateZone(ListPrivateZoneRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_PRIVATEZONE);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, ListPrivateZoneResponse.class);
+    }
+
+    /**
+     * listRecord
+     * 
+     * @param request 入参结构体
+     * @return ListRecordResponse
+     */
+    public ListRecordResponse listRecord(ListRecordRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_PRIVATEZONE, request.getZoneId(), CONSTANT_RECORD);
         if (request.getMarker() != null) {
             internalRequest.addParameter("marker", request.getMarker());
         }
@@ -198,96 +221,59 @@ public class PrivatezoneClient extends AbstractBceClient {
         if (request.getValue() != null) {
             internalRequest.addParameter("value", request.getValue());
         }
-        return invokeHttpClient(internalRequest, QueryAndParseRecordListResponse.class);
+        return invokeHttpClient(internalRequest, ListRecordResponse.class);
     }
 
     /**
-     * queryTheListOfPrivateZones
-     * 
-     * @param request 入参结构体
-     * @return QueryTheListOfPrivateZonesResponse
-     */
-    public QueryTheListOfPrivateZonesResponse queryTheListOfPrivateZones(QueryTheListOfPrivateZonesRequest request) {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_PRIVATEZONE);
-        if (request.getMarker() != null) {
-            internalRequest.addParameter("marker", request.getMarker());
-        }
-        if (request.getMaxKeys() != null) {
-            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
-        }
-        return invokeHttpClient(internalRequest, QueryTheListOfPrivateZonesResponse.class);
-    }
-
-    /**
-     * searchForDetailsOfPrivatzone
-     * 
-     * @param request 入参结构体
-     * @return SearchForDetailsOfPrivatzoneResponse
-     */
-    public SearchForDetailsOfPrivatzoneResponse searchForDetailsOfPrivatzone(SearchForDetailsOfPrivatzoneRequest request) {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_PRIVATEZONE, request.getZoneId());
-        return invokeHttpClient(internalRequest, SearchForDetailsOfPrivatzoneResponse.class);
-    }
-
-    /**
-     * setParsingRecordStatus
+     * unbindVpc
      * 
      * @param request 入参结构体
      */
-    public void setParsingRecordStatus(SetParsingRecordStatusRequest request) {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RECORD, request.getRecordId());
+    public void unbindVpc(UnbindVpcRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, request.getZoneId());
         internalRequest.addParameter(request.getAction(), null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateRecord
+     * 
+     * @param request 入参结构体
+     */
+    public void updateRecord(UpdateRecordRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RECORD, request.getRecordId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
     * Creates and initializes a new request object for the specified resource.
     *
-    * @param bceRequest The original BCE request created by the user.
-    * @param httpMethod The HTTP method to use when sending the request.
+    * @param bceRequest    The original BCE request created by the user.
+    * @param httpMethod    The HTTP method to use when sending the request.
     * @param pathVariables The optional variables used in the URI path.
     * @return A new request object populated with endpoint, resource path and specific
     *         parameters to send.
     */
-    private InternalRequest createRequest(AbstractBceRequest bceRequest, HttpMethodName httpMethod, String... pathVariables) {
-        List<String> path = new ArrayList<String>();
-        if (pathVariables != null) {
-            for (String pathVariable : pathVariables) {
-                path.add(pathVariable);
-            }
-        }
-        URI uri = HttpUtils.appendUri(this.getEndpoint(), path.toArray(new String[path.size()]));
-        InternalRequest request = new InternalRequest(httpMethod, uri);
-        SignOptions signOptions = new SignOptions();
-        signOptions.setHeadersToSign(new HashSet<String>(Arrays.asList(HEADERS_TO_SIGN)));
-        request.setSignOptions(signOptions);
-        request.setCredentials(bceRequest.getRequestCredentials());
-        return request;
+    protected InternalRequest createRequest(AbstractBceRequest bceRequest, HttpMethodName httpMethod, String... pathVariables) {
+        return super.createRequest(bceRequest, httpMethod, createSignOptions(), pathVariables);
     }
 
     /**
-    * the method to fill the internalRequest's content field with bceRequest
-    * only support HttpMethodName.POST or HttpMethodName.PUT
+    * 创建签名选项
     *
-    * @param internalRequest A request object, populated with endpoint, resource path, ready for callers to populate
-    * any additional headers or parameters, and execute.
-    * @param bceRequest The original request, as created by the user.
+    * @return 配置了服务所需签名头的 SignOptions
     */
-    protected void fillPayload(InternalRequest internalRequest, AbstractBceRequest bceRequest) {
-        if (internalRequest.getHttpMethod() == HttpMethodName.POST || internalRequest.getHttpMethod() == HttpMethodName.PUT) {
-            String strJson = JsonUtils.toJsonString(bceRequest);
-            byte[] requestJson = null;
-            try {
-                requestJson = strJson.getBytes(DEFAULT_ENCODING);
-            } catch (UnsupportedEncodingException e) {
-                throw new BceClientException("Unsupported encode.", e);
-            }
-            internalRequest.addHeader(Headers.CONTENT_LENGTH, String.valueOf(requestJson.length));
-            internalRequest.addHeader(Headers.CONTENT_TYPE, DEFAULT_CONTENT_TYPE);
-            internalRequest.setContent(RestartableInputStream.wrap(requestJson));
-        }
+    private SignOptions createSignOptions() {
+        SignOptions signOptions = new SignOptions();
+        signOptions.setHeadersToSign(new HashSet<String>(Arrays.asList(HEADERS_TO_SIGN)));
+        return signOptions;
     }
 }

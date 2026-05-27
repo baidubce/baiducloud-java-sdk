@@ -1,10 +1,11 @@
 package com.baidubce.privatezone.models;
 
+import com.baidubce.common.BaseBceRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class QueryAndParseRecordListRequest {
+public class ListRecordRequest extends BaseBceRequest {
 
     /**
     * zoneId
@@ -52,7 +53,7 @@ public class QueryAndParseRecordListRequest {
         return zoneId;
     }
 
-    public QueryAndParseRecordListRequest setZoneId(String zoneId) {
+    public ListRecordRequest setZoneId(String zoneId) {
         this.zoneId = zoneId;
         return this;
     }
@@ -61,7 +62,7 @@ public class QueryAndParseRecordListRequest {
         return marker;
     }
 
-    public QueryAndParseRecordListRequest setMarker(String marker) {
+    public ListRecordRequest setMarker(String marker) {
         this.marker = marker;
         return this;
     }
@@ -70,7 +71,7 @@ public class QueryAndParseRecordListRequest {
         return maxKeys;
     }
 
-    public QueryAndParseRecordListRequest setMaxKeys(Integer maxKeys) {
+    public ListRecordRequest setMaxKeys(Integer maxKeys) {
         this.maxKeys = maxKeys;
         return this;
     }
@@ -79,7 +80,7 @@ public class QueryAndParseRecordListRequest {
         return rr;
     }
 
-    public QueryAndParseRecordListRequest setRr(String rr) {
+    public ListRecordRequest setRr(String rr) {
         this.rr = rr;
         return this;
     }
@@ -88,7 +89,7 @@ public class QueryAndParseRecordListRequest {
         return searchMode;
     }
 
-    public QueryAndParseRecordListRequest setSearchMode(String searchMode) {
+    public ListRecordRequest setSearchMode(String searchMode) {
         this.searchMode = searchMode;
         return this;
     }
@@ -97,7 +98,7 @@ public class QueryAndParseRecordListRequest {
         return type;
     }
 
-    public QueryAndParseRecordListRequest setType(String type) {
+    public ListRecordRequest setType(String type) {
         this.type = type;
         return this;
     }
@@ -106,7 +107,7 @@ public class QueryAndParseRecordListRequest {
         return value;
     }
 
-    public QueryAndParseRecordListRequest setValue(String value) {
+    public ListRecordRequest setValue(String value) {
         this.value = value;
         return this;
     }

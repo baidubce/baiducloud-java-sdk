@@ -1,10 +1,11 @@
 package com.baidubce.privatezone.models;
 
+import com.baidubce.common.BaseBceRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SetParsingRecordStatusRequest {
+public class DisableRecordRequest extends BaseBceRequest {
 
     /**
     * recordId
@@ -28,7 +29,7 @@ public class SetParsingRecordStatusRequest {
         return recordId;
     }
 
-    public SetParsingRecordStatusRequest setRecordId(String recordId) {
+    public DisableRecordRequest setRecordId(String recordId) {
         this.recordId = recordId;
         return this;
     }
@@ -37,7 +38,7 @@ public class SetParsingRecordStatusRequest {
         return clientToken;
     }
 
-    public SetParsingRecordStatusRequest setClientToken(String clientToken) {
+    public DisableRecordRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
@@ -46,7 +47,7 @@ public class SetParsingRecordStatusRequest {
         return action;
     }
 
-    public SetParsingRecordStatusRequest setAction(String action) {
+    public DisableRecordRequest setAction(String action) {
         this.action = action;
         return this;
     }
