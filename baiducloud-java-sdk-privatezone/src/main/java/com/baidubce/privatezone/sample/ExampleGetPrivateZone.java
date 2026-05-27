@@ -18,7 +18,7 @@ public class ExampleGetPrivateZone {
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
         GetPrivateZoneRequest getPrivateZoneRequest = new GetPrivateZoneRequest();
-        getPrivateZoneRequest.setZoneId("");
+        getPrivateZoneRequest.setZoneId("zone-kbz79tdi1q7c");
         try {
             GetPrivateZoneResponse response = client.getPrivateZone(getPrivateZoneRequest);
             System.out.println(response.toJsonString());

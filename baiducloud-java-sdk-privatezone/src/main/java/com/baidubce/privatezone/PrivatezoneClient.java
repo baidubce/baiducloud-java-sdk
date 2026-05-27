@@ -135,9 +135,8 @@ public class PrivatezoneClient extends AbstractBceClient {
      * disableRecord
      * 
      * @param request 入参结构体
-     * @return Object
      */
-    public Object disableRecord(DisableRecordRequest request) {
+    public void disableRecord(DisableRecordRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RECORD, request.getRecordId());
         internalRequest.addParameter("disable", null);
         if (request.getAction() != null) {
@@ -146,16 +145,15 @@ public class PrivatezoneClient extends AbstractBceClient {
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
-        return invokeHttpClient(internalRequest, Object.class);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
      * enableRecord
      * 
      * @param request 入参结构体
-     * @return Object
      */
-    public Object enableRecord(EnableRecordRequest request) {
+    public void enableRecord(EnableRecordRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RECORD, request.getRecordId());
         internalRequest.addParameter("enable", null);
         if (request.getAction() != null) {
@@ -164,7 +162,7 @@ public class PrivatezoneClient extends AbstractBceClient {
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
-        return invokeHttpClient(internalRequest, Object.class);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**

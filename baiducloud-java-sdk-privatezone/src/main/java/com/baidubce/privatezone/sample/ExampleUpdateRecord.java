@@ -19,10 +19,10 @@ public class ExampleUpdateRecord {
         UpdateRecordRequest updateRecordRequest = new UpdateRecordRequest();
         updateRecordRequest.setRecordId("");
         updateRecordRequest.setClientToken("");
-        updateRecordRequest.setRr("");
-        updateRecordRequest.setValue("");
-        updateRecordRequest.setType("");
-        updateRecordRequest.setTtl(0);
+        updateRecordRequest.setRr("bcd");
+        updateRecordRequest.setValue("2.2.2.2");
+        updateRecordRequest.setType("A");
+        updateRecordRequest.setTtl(300);
         updateRecordRequest.setPriority(0);
         updateRecordRequest.setDescription("");
         try {

@@ -18,13 +18,13 @@ public class ExampleAddRecord {
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
         AddRecordRequest addRecordRequest = new AddRecordRequest();
-        addRecordRequest.setZoneId("");
+        addRecordRequest.setZoneId("zone-3k8dt2sy97u5");
         addRecordRequest.setClientToken("");
         addRecordRequest.setRr("");
         addRecordRequest.setValue("");
         addRecordRequest.setType("");
         addRecordRequest.setPriority(0);
-        addRecordRequest.setTtl(0);
+        addRecordRequest.setTtl(300);
         addRecordRequest.setDescription("");
         try {
             AddRecordResponse response = client.addRecord(addRecordRequest);

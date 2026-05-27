@@ -5,7 +5,6 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.privatezone.PrivatezoneClient;
 import com.baidubce.privatezone.models.DisableRecordRequest;
-import com.baidubce.privatezone.models.Object;
 
 public class ExampleDisableRecord {
     public static void main(String[] args) {
@@ -18,13 +17,13 @@ public class ExampleDisableRecord {
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
         DisableRecordRequest disableRecordRequest = new DisableRecordRequest();
-        disableRecordRequest.setRecordId("");
-        disableRecordRequest.setAction("");
+        disableRecordRequest.setRecordId("rc-rfykpdb7xs93");
+        disableRecordRequest.setAction("disable");
         disableRecordRequest.setClientToken("");
         try {
-            Object response = client.disableRecord(disableRecordRequest);
-            System.out.println(response.toJsonString());
+            client.disableRecord(disableRecordRequest);
         } catch (BceClientException e) {
+            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

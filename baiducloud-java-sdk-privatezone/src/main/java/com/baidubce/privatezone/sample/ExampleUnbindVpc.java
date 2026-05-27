@@ -5,7 +5,8 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.privatezone.PrivatezoneClient;
 import com.baidubce.privatezone.models.UnbindVpcRequest;
-import java.util.ArrayList;
+
+import java.util.*;
 
 public class ExampleUnbindVpc {
     public static void main(String[] args) {
@@ -18,8 +19,8 @@ public class ExampleUnbindVpc {
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
         UnbindVpcRequest unbindVpcRequest = new UnbindVpcRequest();
-        unbindVpcRequest.setZoneId("");
-        unbindVpcRequest.setAction("");
+        unbindVpcRequest.setZoneId("zone-3k8dt2sy97u5");
+        unbindVpcRequest.setAction("unbind");
         unbindVpcRequest.setClientToken("");
         unbindVpcRequest.setRegion("");
         unbindVpcRequest.setVpcIds(new ArrayList<>());

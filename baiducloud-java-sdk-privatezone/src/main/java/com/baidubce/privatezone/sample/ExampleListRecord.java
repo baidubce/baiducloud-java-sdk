@@ -18,9 +18,9 @@ public class ExampleListRecord {
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
         ListRecordRequest listRecordRequest = new ListRecordRequest();
-        listRecordRequest.setZoneId("");
+        listRecordRequest.setZoneId("zone-kbz79tdi1q7c");
         listRecordRequest.setMarker("");
-        listRecordRequest.setMaxKeys(0);
+        listRecordRequest.setMaxKeys(10);
         listRecordRequest.setRr("");
         listRecordRequest.setSearchMode("");
         listRecordRequest.setType("");
