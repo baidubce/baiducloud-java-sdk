@@ -124,7 +124,7 @@ public class CsnClient extends AbstractBceClient {
      */
     public void attachCsnInstance(AttachCsnInstanceRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_CSN, request.getCsnId());
-        internalRequest.addParameter(request.getAction(), null);
+        internalRequest.addParameter("attach", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -139,7 +139,7 @@ public class CsnClient extends AbstractBceClient {
      */
     public void bindCsnBp(BindCsnBpRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_CSN, CONSTANT_BP, request.getCsnBpId());
-        internalRequest.addParameter(request.getAction(), null);
+        internalRequest.addParameter("bind", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -327,7 +327,7 @@ public class CsnClient extends AbstractBceClient {
      */
     public void detachCsnInstance(DetachCsnInstanceRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_CSN, request.getCsnId());
-        internalRequest.addParameter(request.getAction(), null);
+        internalRequest.addParameter("detach", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -542,7 +542,7 @@ public class CsnClient extends AbstractBceClient {
      */
     public void resizeCsnBp(ResizeCsnBpRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_CSN, CONSTANT_BP, request.getCsnBpId());
-        internalRequest.addParameter(request.getAction(), null);
+        internalRequest.addParameter("resize", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -557,7 +557,7 @@ public class CsnClient extends AbstractBceClient {
      */
     public void unbindCsnBp(UnbindCsnBpRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_CSN, CONSTANT_BP, request.getCsnBpId());
-        internalRequest.addParameter(request.getAction(), null);
+        internalRequest.addParameter("unbind", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }

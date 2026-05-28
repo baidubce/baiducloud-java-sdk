@@ -18,7 +18,6 @@ public class ExampleDetachCsnInstance {
         CsnClient client = new CsnClient(config);
         DetachCsnInstanceRequest detachCsnInstanceRequest = new DetachCsnInstanceRequest();
         detachCsnInstanceRequest.setCsnId("");
-        detachCsnInstanceRequest.setAction("");
         detachCsnInstanceRequest.setClientToken("");
         detachCsnInstanceRequest.setInstanceType("");
         detachCsnInstanceRequest.setInstanceId("");

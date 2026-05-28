@@ -20,12 +20,6 @@ public class ResizeCsnBpRequest extends BaseBceRequest {
     private String clientToken;
 
     /**
-    * action
-    */
-    @JsonIgnore
-    private String action;
-
-    /**
     * 升降级的带宽值，最大值为10000
     */
     private Integer bandwidth;
@@ -45,15 +39,6 @@ public class ResizeCsnBpRequest extends BaseBceRequest {
 
     public ResizeCsnBpRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
-        return this;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public ResizeCsnBpRequest setAction(String action) {
-        this.action = action;
         return this;
     }
 

@@ -18,7 +18,6 @@ public class ExampleAttachCsnInstance {
         CsnClient client = new CsnClient(config);
         AttachCsnInstanceRequest attachCsnInstanceRequest = new AttachCsnInstanceRequest();
         attachCsnInstanceRequest.setCsnId("");
-        attachCsnInstanceRequest.setAction("");
         attachCsnInstanceRequest.setClientToken("");
         attachCsnInstanceRequest.setInstanceType("");
         attachCsnInstanceRequest.setInstanceId("");

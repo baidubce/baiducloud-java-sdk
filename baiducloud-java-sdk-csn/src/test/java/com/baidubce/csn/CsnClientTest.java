@@ -95,7 +95,6 @@ public class CsnClientTest {
     public void attachCsnInstanceTest() {
         AttachCsnInstanceRequest attachCsnInstanceRequest = new AttachCsnInstanceRequest();
         attachCsnInstanceRequest.setCsnId("");
-        attachCsnInstanceRequest.setAction("");
         attachCsnInstanceRequest.setClientToken("");
         attachCsnInstanceRequest.setInstanceType("");
         attachCsnInstanceRequest.setInstanceId("");
@@ -111,7 +110,6 @@ public class CsnClientTest {
     public void bindCsnBpTest() {
         BindCsnBpRequest bindCsnBpRequest = new BindCsnBpRequest();
         bindCsnBpRequest.setCsnBpId("");
-        bindCsnBpRequest.setAction("");
         bindCsnBpRequest.setClientToken("");
         bindCsnBpRequest.setCsnId("");
         csnClient.bindCsnBp(bindCsnBpRequest);
@@ -267,7 +265,6 @@ public class CsnClientTest {
     public void detachCsnInstanceTest() {
         DetachCsnInstanceRequest detachCsnInstanceRequest = new DetachCsnInstanceRequest();
         detachCsnInstanceRequest.setCsnId("");
-        detachCsnInstanceRequest.setAction("");
         detachCsnInstanceRequest.setClientToken("");
         detachCsnInstanceRequest.setInstanceType("");
         detachCsnInstanceRequest.setInstanceId("");
@@ -454,7 +451,6 @@ public class CsnClientTest {
     public void resizeCsnBpTest() {
         ResizeCsnBpRequest resizeCsnBpRequest = new ResizeCsnBpRequest();
         resizeCsnBpRequest.setCsnBpId("");
-        resizeCsnBpRequest.setAction("");
         resizeCsnBpRequest.setClientToken("");
         resizeCsnBpRequest.setBandwidth(0);
         csnClient.resizeCsnBp(resizeCsnBpRequest);
@@ -467,7 +463,6 @@ public class CsnClientTest {
     public void unbindCsnBpTest() {
         UnbindCsnBpRequest unbindCsnBpRequest = new UnbindCsnBpRequest();
         unbindCsnBpRequest.setCsnBpId("");
-        unbindCsnBpRequest.setAction("");
         unbindCsnBpRequest.setClientToken("");
         unbindCsnBpRequest.setCsnId("");
         csnClient.unbindCsnBp(unbindCsnBpRequest);

@@ -18,7 +18,6 @@ public class ExampleBindCsnBp {
         CsnClient client = new CsnClient(config);
         BindCsnBpRequest bindCsnBpRequest = new BindCsnBpRequest();
         bindCsnBpRequest.setCsnBpId("");
-        bindCsnBpRequest.setAction("");
         bindCsnBpRequest.setClientToken("");
         bindCsnBpRequest.setCsnId("");
         try {

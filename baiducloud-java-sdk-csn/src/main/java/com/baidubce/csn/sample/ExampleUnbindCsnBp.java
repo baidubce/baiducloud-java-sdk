@@ -18,7 +18,6 @@ public class ExampleUnbindCsnBp {
         CsnClient client = new CsnClient(config);
         UnbindCsnBpRequest unbindCsnBpRequest = new UnbindCsnBpRequest();
         unbindCsnBpRequest.setCsnBpId("");
-        unbindCsnBpRequest.setAction("");
         unbindCsnBpRequest.setClientToken("");
         unbindCsnBpRequest.setCsnId("");
         try {

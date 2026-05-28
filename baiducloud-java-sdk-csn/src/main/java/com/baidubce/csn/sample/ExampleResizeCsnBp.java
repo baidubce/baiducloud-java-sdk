@@ -18,7 +18,6 @@ public class ExampleResizeCsnBp {
         CsnClient client = new CsnClient(config);
         ResizeCsnBpRequest resizeCsnBpRequest = new ResizeCsnBpRequest();
         resizeCsnBpRequest.setCsnBpId("");
-        resizeCsnBpRequest.setAction("");
         resizeCsnBpRequest.setClientToken("");
         resizeCsnBpRequest.setBandwidth(0);
         try {

@@ -20,12 +20,6 @@ public class BindCsnBpRequest extends BaseBceRequest {
     private String clientToken;
 
     /**
-    * action
-    */
-    @JsonIgnore
-    private String action;
-
-    /**
     * 云智能网的ID
     */
     private String csnId;
@@ -45,15 +39,6 @@ public class BindCsnBpRequest extends BaseBceRequest {
 
     public BindCsnBpRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
-        return this;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public BindCsnBpRequest setAction(String action) {
-        this.action = action;
         return this;
     }
 

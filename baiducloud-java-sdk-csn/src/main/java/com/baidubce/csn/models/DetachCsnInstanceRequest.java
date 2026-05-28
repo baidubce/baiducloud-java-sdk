@@ -20,12 +20,6 @@ public class DetachCsnInstanceRequest extends BaseBceRequest {
     private String clientToken;
 
     /**
-    * action
-    */
-    @JsonIgnore
-    private String action;
-
-    /**
     * 加载的实例类型，取值 [ vpc \| channel \| bec_vpc ]，分别表示私有网络、专线通道、边缘网络
     */
     private String instanceType;
@@ -60,15 +54,6 @@ public class DetachCsnInstanceRequest extends BaseBceRequest {
 
     public DetachCsnInstanceRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
-        return this;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public DetachCsnInstanceRequest setAction(String action) {
-        this.action = action;
         return this;
     }
 
