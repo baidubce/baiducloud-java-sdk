@@ -7,6 +7,8 @@ import com.baidubce.blb.models.BillingChangePostToPreBlbRequest;
 import com.baidubce.blb.models.BillingChangePostToPreBlbResponse;
 import com.baidubce.blb.models.BillingChangePreToPostBlbRequest;
 import com.baidubce.blb.models.BillingChangePreToPostBlbResponse;
+import com.baidubce.blb.models.BindBlbEnterpriseSecurityGroupRequest;
+import com.baidubce.blb.models.BindBlbSecurityGroupRequest;
 import com.baidubce.blb.models.BlbInquiryRequest;
 import com.baidubce.blb.models.BlbInquiryResponse;
 import com.baidubce.blb.models.CreateAppBlbHttpListenerRequest;
@@ -61,6 +63,8 @@ import com.baidubce.blb.models.DescribeAppBlbUdpListenerRequest;
 import com.baidubce.blb.models.DescribeAppBlbUdpListenerResponse;
 import com.baidubce.blb.models.DescribeAppBlbsRequest;
 import com.baidubce.blb.models.DescribeAppBlbsResponse;
+import com.baidubce.blb.models.DescribeBlbEnterpriseSecurityGroupsRequest;
+import com.baidubce.blb.models.DescribeBlbEnterpriseSecurityGroupsResponse;
 import com.baidubce.blb.models.DescribeBlbHttpListenerRequest;
 import com.baidubce.blb.models.DescribeBlbHttpListenerResponse;
 import com.baidubce.blb.models.DescribeBlbHttpsListenerRequest;
@@ -69,6 +73,8 @@ import com.baidubce.blb.models.DescribeBlbListenerRequest;
 import com.baidubce.blb.models.DescribeBlbListenerResponse;
 import com.baidubce.blb.models.DescribeBlbRequest;
 import com.baidubce.blb.models.DescribeBlbResponse;
+import com.baidubce.blb.models.DescribeBlbSecurityGroupsRequest;
+import com.baidubce.blb.models.DescribeBlbSecurityGroupsResponse;
 import com.baidubce.blb.models.DescribeBlbServerHealthRequest;
 import com.baidubce.blb.models.DescribeBlbServerHealthResponse;
 import com.baidubce.blb.models.DescribeBlbServersRequest;
@@ -86,6 +92,8 @@ import com.baidubce.blb.models.ReleaseAppBlbRequest;
 import com.baidubce.blb.models.ReleaseBlbRequest;
 import com.baidubce.blb.models.ResizeBlbRequest;
 import com.baidubce.blb.models.ResizeBlbResponse;
+import com.baidubce.blb.models.UnbindBlbEnterpriseSecurityGroupRequest;
+import com.baidubce.blb.models.UnbindBlbSecurityGroupRequest;
 import com.baidubce.blb.models.UpdateAppBlbHttpListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbHttpsListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbPolicyRequest;
@@ -192,6 +200,30 @@ public class BlbClientTest {
         billingChangePreToPostBlbRequest.setEffectiveImmediately(false);
         BillingChangePreToPostBlbResponse response = blbClient.billingChangePreToPostBlb(billingChangePreToPostBlbRequest);
         System.out.println(response);
+    }
+    /**
+     * bindBlbEnterpriseSecurityGroup
+     *
+     */
+    @Test
+    public void bindBlbEnterpriseSecurityGroupTest() {
+        BindBlbEnterpriseSecurityGroupRequest bindBlbEnterpriseSecurityGroupRequest = new BindBlbEnterpriseSecurityGroupRequest();
+        bindBlbEnterpriseSecurityGroupRequest.setBlbId("");
+        bindBlbEnterpriseSecurityGroupRequest.setClientToken("");
+        bindBlbEnterpriseSecurityGroupRequest.setEnterpriseSecurityGroupIds(new ArrayList<>());
+        blbClient.bindBlbEnterpriseSecurityGroup(bindBlbEnterpriseSecurityGroupRequest);
+    }
+    /**
+     * bindBlbSecurityGroup
+     *
+     */
+    @Test
+    public void bindBlbSecurityGroupTest() {
+        BindBlbSecurityGroupRequest bindBlbSecurityGroupRequest = new BindBlbSecurityGroupRequest();
+        bindBlbSecurityGroupRequest.setBlbId("");
+        bindBlbSecurityGroupRequest.setClientToken("");
+        bindBlbSecurityGroupRequest.setSecurityGroupIds(new ArrayList<>());
+        blbClient.bindBlbSecurityGroup(bindBlbSecurityGroupRequest);
     }
     /**
      * blbInquiry
@@ -839,6 +871,17 @@ public class BlbClientTest {
         System.out.println(response);
     }
     /**
+     * describeBlbEnterpriseSecurityGroups
+     *
+     */
+    @Test
+    public void describeBlbEnterpriseSecurityGroupsTest() {
+        DescribeBlbEnterpriseSecurityGroupsRequest describeBlbEnterpriseSecurityGroupsRequest = new DescribeBlbEnterpriseSecurityGroupsRequest();
+        describeBlbEnterpriseSecurityGroupsRequest.setBlbId("");
+        DescribeBlbEnterpriseSecurityGroupsResponse response = blbClient.describeBlbEnterpriseSecurityGroups(describeBlbEnterpriseSecurityGroupsRequest);
+        System.out.println(response);
+    }
+    /**
      * describeBlbHttpListener
      *
      */
@@ -878,6 +921,17 @@ public class BlbClientTest {
         describeBlbListenerRequest.setMarker("");
         describeBlbListenerRequest.setMaxKeys(0);
         DescribeBlbListenerResponse response = blbClient.describeBlbListener(describeBlbListenerRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeBlbSecurityGroups
+     *
+     */
+    @Test
+    public void describeBlbSecurityGroupsTest() {
+        DescribeBlbSecurityGroupsRequest describeBlbSecurityGroupsRequest = new DescribeBlbSecurityGroupsRequest();
+        describeBlbSecurityGroupsRequest.setBlbId("");
+        DescribeBlbSecurityGroupsResponse response = blbClient.describeBlbSecurityGroups(describeBlbSecurityGroupsRequest);
         System.out.println(response);
     }
     /**
@@ -1011,6 +1065,30 @@ public class BlbClientTest {
         resizeBlbRequest.setPerformanceLevel("");
         ResizeBlbResponse response = blbClient.resizeBlb(resizeBlbRequest);
         System.out.println(response);
+    }
+    /**
+     * unbindBlbEnterpriseSecurityGroup
+     *
+     */
+    @Test
+    public void unbindBlbEnterpriseSecurityGroupTest() {
+        UnbindBlbEnterpriseSecurityGroupRequest unbindBlbEnterpriseSecurityGroupRequest = new UnbindBlbEnterpriseSecurityGroupRequest();
+        unbindBlbEnterpriseSecurityGroupRequest.setBlbId("");
+        unbindBlbEnterpriseSecurityGroupRequest.setClientToken("");
+        unbindBlbEnterpriseSecurityGroupRequest.setEnterpriseSecurityGroupIds(new ArrayList<>());
+        blbClient.unbindBlbEnterpriseSecurityGroup(unbindBlbEnterpriseSecurityGroupRequest);
+    }
+    /**
+     * unbindBlbSecurityGroup
+     *
+     */
+    @Test
+    public void unbindBlbSecurityGroupTest() {
+        UnbindBlbSecurityGroupRequest unbindBlbSecurityGroupRequest = new UnbindBlbSecurityGroupRequest();
+        unbindBlbSecurityGroupRequest.setBlbId("");
+        unbindBlbSecurityGroupRequest.setClientToken("");
+        unbindBlbSecurityGroupRequest.setSecurityGroupIds(new ArrayList<>());
+        blbClient.unbindBlbSecurityGroup(unbindBlbSecurityGroupRequest);
     }
     /**
      * updateAppBlb
