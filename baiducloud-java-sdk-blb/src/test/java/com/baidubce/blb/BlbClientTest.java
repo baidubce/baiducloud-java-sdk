@@ -1,6 +1,7 @@
 package com.baidubce.blb;
 
 import com.baidubce.blb.models.AddAppBlbServerGroupRsRequest;
+import com.baidubce.blb.models.AddBlbServerRequest;
 import com.baidubce.blb.models.BillingChangeCancelToPostBlbRequest;
 import com.baidubce.blb.models.BillingChangePostToPreBlbRequest;
 import com.baidubce.blb.models.BillingChangePostToPreBlbResponse;
@@ -33,6 +34,7 @@ import com.baidubce.blb.models.DeleteAppBlbServerGroupPortRequest;
 import com.baidubce.blb.models.DeleteAppBlbServerGroupRequest;
 import com.baidubce.blb.models.DeleteAppBlbServerGroupRsRequest;
 import com.baidubce.blb.models.DeleteBlbListenerRequest;
+import com.baidubce.blb.models.DeleteBlbServerRequest;
 import com.baidubce.blb.models.DescribeAppBlbHttpListenerRequest;
 import com.baidubce.blb.models.DescribeAppBlbHttpListenerResponse;
 import com.baidubce.blb.models.DescribeAppBlbHttpsListenerRequest;
@@ -67,6 +69,10 @@ import com.baidubce.blb.models.DescribeBlbListenerRequest;
 import com.baidubce.blb.models.DescribeBlbListenerResponse;
 import com.baidubce.blb.models.DescribeBlbRequest;
 import com.baidubce.blb.models.DescribeBlbResponse;
+import com.baidubce.blb.models.DescribeBlbServerHealthRequest;
+import com.baidubce.blb.models.DescribeBlbServerHealthResponse;
+import com.baidubce.blb.models.DescribeBlbServersRequest;
+import com.baidubce.blb.models.DescribeBlbServersResponse;
 import com.baidubce.blb.models.DescribeBlbSslListenerRequest;
 import com.baidubce.blb.models.DescribeBlbSslListenerResponse;
 import com.baidubce.blb.models.DescribeBlbTcpListenerRequest;
@@ -95,6 +101,7 @@ import com.baidubce.blb.models.UpdateBlbHttpListenerRequest;
 import com.baidubce.blb.models.UpdateBlbHttpsListenerRequest;
 import com.baidubce.blb.models.UpdateBlbModifyProtectionRequest;
 import com.baidubce.blb.models.UpdateBlbRequest;
+import com.baidubce.blb.models.UpdateBlbServerRequest;
 import com.baidubce.blb.models.UpdateBlbSslListenerRequest;
 import com.baidubce.blb.models.UpdateBlbTcpListenerRequest;
 import com.baidubce.blb.models.UpdateBlbUdpListenerRequest;
@@ -132,6 +139,18 @@ public class BlbClientTest {
         addAppBlbServerGroupRsRequest.setSgId("");
         addAppBlbServerGroupRsRequest.setBackendServerList(new ArrayList<>());
         blbClient.addAppBlbServerGroupRs(addAppBlbServerGroupRsRequest);
+    }
+    /**
+     * addBlbServer
+     *
+     */
+    @Test
+    public void addBlbServerTest() {
+        AddBlbServerRequest addBlbServerRequest = new AddBlbServerRequest();
+        addBlbServerRequest.setBlbId("");
+        addBlbServerRequest.setClientToken("");
+        addBlbServerRequest.setBackendServerList(new ArrayList<>());
+        blbClient.addBlbServer(addBlbServerRequest);
     }
     /**
      * billingChangeCancelToPostBlb
@@ -616,6 +635,18 @@ public class BlbClientTest {
         blbClient.deleteBlbListener(deleteBlbListenerRequest);
     }
     /**
+     * deleteBlbServer
+     *
+     */
+    @Test
+    public void deleteBlbServerTest() {
+        DeleteBlbServerRequest deleteBlbServerRequest = new DeleteBlbServerRequest();
+        deleteBlbServerRequest.setBlbId("");
+        deleteBlbServerRequest.setClientToken("");
+        deleteBlbServerRequest.setBackendServerList(new ArrayList<>());
+        blbClient.deleteBlbServer(deleteBlbServerRequest);
+    }
+    /**
      * describeAppBlb
      *
      */
@@ -847,6 +878,33 @@ public class BlbClientTest {
         describeBlbListenerRequest.setMarker("");
         describeBlbListenerRequest.setMaxKeys(0);
         DescribeBlbListenerResponse response = blbClient.describeBlbListener(describeBlbListenerRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeBlbServerHealth
+     *
+     */
+    @Test
+    public void describeBlbServerHealthTest() {
+        DescribeBlbServerHealthRequest describeBlbServerHealthRequest = new DescribeBlbServerHealthRequest();
+        describeBlbServerHealthRequest.setBlbId("");
+        describeBlbServerHealthRequest.setListenerPort(0);
+        describeBlbServerHealthRequest.setMarker("");
+        describeBlbServerHealthRequest.setMaxKeys(0);
+        DescribeBlbServerHealthResponse response = blbClient.describeBlbServerHealth(describeBlbServerHealthRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeBlbServers
+     *
+     */
+    @Test
+    public void describeBlbServersTest() {
+        DescribeBlbServersRequest describeBlbServersRequest = new DescribeBlbServersRequest();
+        describeBlbServersRequest.setBlbId("");
+        describeBlbServersRequest.setMarker("");
+        describeBlbServersRequest.setMaxKeys(0);
+        DescribeBlbServersResponse response = blbClient.describeBlbServers(describeBlbServersRequest);
         System.out.println(response);
     }
     /**
@@ -1240,6 +1298,18 @@ public class BlbClientTest {
         updateBlbModifyProtectionRequest.setAllowModify(false);
         updateBlbModifyProtectionRequest.setModificationProtectionReason("");
         blbClient.updateBlbModifyProtection(updateBlbModifyProtectionRequest);
+    }
+    /**
+     * updateBlbServer
+     *
+     */
+    @Test
+    public void updateBlbServerTest() {
+        UpdateBlbServerRequest updateBlbServerRequest = new UpdateBlbServerRequest();
+        updateBlbServerRequest.setBlbId("");
+        updateBlbServerRequest.setClientToken("");
+        updateBlbServerRequest.setBackendServerList(new ArrayList<>());
+        blbClient.updateBlbServer(updateBlbServerRequest);
     }
     /**
      * updateBlbSslListener
