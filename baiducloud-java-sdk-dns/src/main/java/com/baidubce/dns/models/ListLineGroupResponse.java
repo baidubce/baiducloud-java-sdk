@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class QueryAndParseRecordListResponse extends BaseBceResponse {
+public class ListLineGroupResponse extends BaseBceResponse {
 
     /**
     * 标记查询的起始位置。
@@ -18,7 +18,7 @@ public class QueryAndParseRecordListResponse extends BaseBceResponse {
     private Boolean isTruncated;
 
     /**
-    * 获取下一页所需要传递的marker值。当isTruncated为false时，该域不出现。
+    * 获取下一页所需要传递的marker值，当isTruncated为false时，该域不出现。
     */
     private String nextMarker;
 
@@ -28,15 +28,15 @@ public class QueryAndParseRecordListResponse extends BaseBceResponse {
     private Integer maxKeys;
 
     /**
-    * 包含查询结果的解析记录列表。
+    * 包含查询结果的线路组列表。
     */
-    private List<PublicRecord> records;
+    private List<Line> lineList;
 
     public String getMarker() {
         return marker;
     }
 
-    public QueryAndParseRecordListResponse setMarker(String marker) {
+    public ListLineGroupResponse setMarker(String marker) {
         this.marker = marker;
         return this;
     }
@@ -45,7 +45,7 @@ public class QueryAndParseRecordListResponse extends BaseBceResponse {
         return isTruncated;
     }
 
-    public QueryAndParseRecordListResponse setIsTruncated(Boolean isTruncated) {
+    public ListLineGroupResponse setIsTruncated(Boolean isTruncated) {
         this.isTruncated = isTruncated;
         return this;
     }
@@ -54,7 +54,7 @@ public class QueryAndParseRecordListResponse extends BaseBceResponse {
         return nextMarker;
     }
 
-    public QueryAndParseRecordListResponse setNextMarker(String nextMarker) {
+    public ListLineGroupResponse setNextMarker(String nextMarker) {
         this.nextMarker = nextMarker;
         return this;
     }
@@ -63,24 +63,24 @@ public class QueryAndParseRecordListResponse extends BaseBceResponse {
         return maxKeys;
     }
 
-    public QueryAndParseRecordListResponse setMaxKeys(Integer maxKeys) {
+    public ListLineGroupResponse setMaxKeys(Integer maxKeys) {
         this.maxKeys = maxKeys;
         return this;
     }
 
-    public List<PublicRecord> getRecords() {
-        return records;
+    public List<Line> getLineList() {
+        return lineList;
     }
 
-    public QueryAndParseRecordListResponse setRecords(List<PublicRecord> records) {
-        this.records = records;
+    public ListLineGroupResponse setLineList(List<Line> lineList) {
+        this.lineList = lineList;
         return this;
     }
 
     @Override
     public String toString() {
-        return "QueryAndParseRecordListResponse{" + "marker=" + marker + "\n" + "isTruncated=" + isTruncated + "\n" + "nextMarker=" + nextMarker + "\n" + "maxKeys=" + maxKeys
-                + "\n" + "records=" + records + "\n" + "}";
+        return "ListLineGroupResponse{" + "marker=" + marker + "\n" + "isTruncated=" + isTruncated + "\n" + "nextMarker=" + nextMarker + "\n" + "maxKeys=" + maxKeys + "\n"
+                + "lineList=" + lineList + "\n" + "}";
     }
 
 }

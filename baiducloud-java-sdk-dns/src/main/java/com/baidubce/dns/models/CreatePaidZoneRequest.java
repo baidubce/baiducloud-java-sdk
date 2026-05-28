@@ -5,15 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UpgradeTheFreeDomainNameToTheUniversalVersionRequest extends BaseBceRequest {
-
-    /**
-    * action
-    */
-    @JsonIgnore
-    private String action;
+public class CreatePaidZoneRequest extends BaseBceRequest {
 
     /**
     * clientToken
@@ -27,24 +20,20 @@ public class UpgradeTheFreeDomainNameToTheUniversalVersionRequest extends BaseBc
     private List<String> names;
 
     /**
-    * 计费信息。
+    * 购买的产品版本，包含：普惠版（“discount”）、企业版（“flagship”）。
+    */
+    private String productVersion;
+
+    /**
+    * billing
     */
     private Billing billing;
-
-    public String getAction() {
-        return action;
-    }
-
-    public UpgradeTheFreeDomainNameToTheUniversalVersionRequest setAction(String action) {
-        this.action = action;
-        return this;
-    }
 
     public String getClientToken() {
         return clientToken;
     }
 
-    public UpgradeTheFreeDomainNameToTheUniversalVersionRequest setClientToken(String clientToken) {
+    public CreatePaidZoneRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
@@ -53,8 +42,17 @@ public class UpgradeTheFreeDomainNameToTheUniversalVersionRequest extends BaseBc
         return names;
     }
 
-    public UpgradeTheFreeDomainNameToTheUniversalVersionRequest setNames(List<String> names) {
+    public CreatePaidZoneRequest setNames(List<String> names) {
         this.names = names;
+        return this;
+    }
+
+    public String getProductVersion() {
+        return productVersion;
+    }
+
+    public CreatePaidZoneRequest setProductVersion(String productVersion) {
+        this.productVersion = productVersion;
         return this;
     }
 
@@ -62,7 +60,7 @@ public class UpgradeTheFreeDomainNameToTheUniversalVersionRequest extends BaseBc
         return billing;
     }
 
-    public UpgradeTheFreeDomainNameToTheUniversalVersionRequest setBilling(Billing billing) {
+    public CreatePaidZoneRequest setBilling(Billing billing) {
         this.billing = billing;
         return this;
     }

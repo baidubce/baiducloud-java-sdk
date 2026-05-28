@@ -1,26 +1,24 @@
 package com.baidubce.dns;
 
-import com.baidubce.dns.models.AddDomainNameRequest;
 import com.baidubce.dns.models.AddLineGroupRequest;
-import com.baidubce.dns.models.AddParsingRecordsRequest;
+import com.baidubce.dns.models.CreatePaidZoneRequest;
+import com.baidubce.dns.models.CreateRecordRequest;
+import com.baidubce.dns.models.CreateZoneRequest;
 import com.baidubce.dns.models.DeleteLineGroupRequest;
-import com.baidubce.dns.models.DeleteParsingRecordsRequest;
-import com.baidubce.dns.models.DomainNameRenewalRequest;
-import com.baidubce.dns.models.ModifyParsingRecordsRequest;
-import com.baidubce.dns.models.ModifyTheParsingRecordStatusRequest;
-import com.baidubce.dns.models.PurchaseAPaidDomainNameRequest;
-import com.baidubce.dns.models.QueryAndParseRecordListRequest;
-import com.baidubce.dns.models.QueryAndParseRecordListResponse;
-import com.baidubce.dns.models.QueryDomainNameListRequest;
-import com.baidubce.dns.models.QueryDomainNameListResponse;
-import com.baidubce.dns.models.QueryTheListOfLineGroupsRequest;
-import com.baidubce.dns.models.QueryTheListOfLineGroupsResponse;
-import com.baidubce.dns.models.RemoveDomainNameRequest;
+import com.baidubce.dns.models.DeleteRecordRequest;
+import com.baidubce.dns.models.DeleteZoneRequest;
+import com.baidubce.dns.models.ListLineGroupRequest;
+import com.baidubce.dns.models.ListLineGroupResponse;
+import com.baidubce.dns.models.ListRecordRequest;
+import com.baidubce.dns.models.ListRecordResponse;
+import com.baidubce.dns.models.ListZoneRequest;
+import com.baidubce.dns.models.ListZoneResponse;
+import com.baidubce.dns.models.RenewZoneRequest;
 import com.baidubce.dns.models.UpdateLineGroupRequest;
-import com.baidubce.dns.models.UpgradeTheFreeDomainNameToTheUniversalVersionRequest;
-import com.baidubce.dns.models.Billing;
-import com.baidubce.dns.models.BillingForRenew;
-import com.baidubce.dns.models.Reservation;
+import com.baidubce.dns.models.UpdateRecordDisableRequest;
+import com.baidubce.dns.models.UpdateRecordEnableRequest;
+import com.baidubce.dns.models.UpdateRecordRequest;
+import com.baidubce.dns.models.UpgradeZoneRequest;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -44,17 +42,6 @@ public class DnsClientTest {
     }
 
     /**
-     * addDomainName
-     *
-     */
-    @Test
-    public void addDomainNameTest() {
-        AddDomainNameRequest addDomainNameRequest = new AddDomainNameRequest();
-        addDomainNameRequest.setClientToken("");
-        addDomainNameRequest.setName("");
-        dnsClient.addDomainName(addDomainNameRequest);
-    }
-    /**
      * addLineGroup
      *
      */
@@ -67,22 +54,46 @@ public class DnsClientTest {
         dnsClient.addLineGroup(addLineGroupRequest);
     }
     /**
-     * addParsingRecords
+     * createPaidZone
      *
      */
     @Test
-    public void addParsingRecordsTest() {
-        AddParsingRecordsRequest addParsingRecordsRequest = new AddParsingRecordsRequest();
-        addParsingRecordsRequest.setZoneName("");
-        addParsingRecordsRequest.setClientToken("");
-        addParsingRecordsRequest.setRr("");
-        addParsingRecordsRequest.setType("");
-        addParsingRecordsRequest.setValue("");
-        addParsingRecordsRequest.setTtl(0);
-        addParsingRecordsRequest.setLine("");
-        addParsingRecordsRequest.setDescription("");
-        addParsingRecordsRequest.setPriority(0);
-        dnsClient.addParsingRecords(addParsingRecordsRequest);
+    public void createPaidZoneTest() {
+        CreatePaidZoneRequest createPaidZoneRequest = new CreatePaidZoneRequest();
+        createPaidZoneRequest.setClientToken("");
+        createPaidZoneRequest.setNames(new ArrayList<>());
+        createPaidZoneRequest.setProductVersion("");
+        createPaidZoneRequest.setBilling(null);
+        dnsClient.createPaidZone(createPaidZoneRequest);
+    }
+    /**
+     * createRecord
+     *
+     */
+    @Test
+    public void createRecordTest() {
+        CreateRecordRequest createRecordRequest = new CreateRecordRequest();
+        createRecordRequest.setZoneName("");
+        createRecordRequest.setClientToken("");
+        createRecordRequest.setRr("");
+        createRecordRequest.setType("");
+        createRecordRequest.setValue("");
+        createRecordRequest.setTtl(0);
+        createRecordRequest.setLine("");
+        createRecordRequest.setDescription("");
+        createRecordRequest.setPriority(0);
+        dnsClient.createRecord(createRecordRequest);
+    }
+    /**
+     * createZone
+     *
+     */
+    @Test
+    public void createZoneTest() {
+        CreateZoneRequest createZoneRequest = new CreateZoneRequest();
+        createZoneRequest.setClientToken("");
+        createZoneRequest.setName("");
+        dnsClient.createZone(createZoneRequest);
     }
     /**
      * deleteLineGroup
@@ -96,127 +107,80 @@ public class DnsClientTest {
         dnsClient.deleteLineGroup(deleteLineGroupRequest);
     }
     /**
-     * deleteParsingRecords
+     * deleteRecord
      *
      */
     @Test
-    public void deleteParsingRecordsTest() {
-        DeleteParsingRecordsRequest deleteParsingRecordsRequest = new DeleteParsingRecordsRequest();
-        deleteParsingRecordsRequest.setZoneName("");
-        deleteParsingRecordsRequest.setRecordId("");
-        deleteParsingRecordsRequest.setClientToken("");
-        dnsClient.deleteParsingRecords(deleteParsingRecordsRequest);
+    public void deleteRecordTest() {
+        DeleteRecordRequest deleteRecordRequest = new DeleteRecordRequest();
+        deleteRecordRequest.setZoneName("");
+        deleteRecordRequest.setRecordId("");
+        deleteRecordRequest.setClientToken("");
+        dnsClient.deleteRecord(deleteRecordRequest);
     }
     /**
-     * domainNameRenewal
+     * deleteZone
      *
      */
     @Test
-    public void domainNameRenewalTest() {
-        DomainNameRenewalRequest domainNameRenewalRequest = new DomainNameRenewalRequest();
-        domainNameRenewalRequest.setName("");
-        domainNameRenewalRequest.setAction("");
-        domainNameRenewalRequest.setClientToken("");
-        domainNameRenewalRequest.setBilling(new BillingForRenew()
-                .setReservation(new Reservation().setReservationLength(1)));
-        dnsClient.domainNameRenewal(domainNameRenewalRequest);
+    public void deleteZoneTest() {
+        DeleteZoneRequest deleteZoneRequest = new DeleteZoneRequest();
+        deleteZoneRequest.setZoneName("");
+        deleteZoneRequest.setClientToken("");
+        dnsClient.deleteZone(deleteZoneRequest);
     }
     /**
-     * modifyParsingRecords
+     * listLineGroup
      *
      */
     @Test
-    public void modifyParsingRecordsTest() {
-        ModifyParsingRecordsRequest modifyParsingRecordsRequest = new ModifyParsingRecordsRequest();
-        modifyParsingRecordsRequest.setZoneName("");
-        modifyParsingRecordsRequest.setRecordId("");
-        modifyParsingRecordsRequest.setClientToken("");
-        modifyParsingRecordsRequest.setRr("");
-        modifyParsingRecordsRequest.setType("");
-        modifyParsingRecordsRequest.setValue("");
-        modifyParsingRecordsRequest.setTtl(0);
-        modifyParsingRecordsRequest.setDescription("");
-        modifyParsingRecordsRequest.setPriority(0);
-        dnsClient.modifyParsingRecords(modifyParsingRecordsRequest);
-    }
-    /**
-     * modifyTheParsingRecordStatus
-     *
-     */
-    @Test
-    public void modifyTheParsingRecordStatusTest() {
-        ModifyTheParsingRecordStatusRequest modifyTheParsingRecordStatusRequest = new ModifyTheParsingRecordStatusRequest();
-        modifyTheParsingRecordStatusRequest.setZoneName("");
-        modifyTheParsingRecordStatusRequest.setRecordId("");
-        modifyTheParsingRecordStatusRequest.setAction("");
-        modifyTheParsingRecordStatusRequest.setClientToken("");
-        dnsClient.modifyTheParsingRecordStatus(modifyTheParsingRecordStatusRequest);
-    }
-    /**
-     * purchaseAPaidDomainName
-     *
-     */
-    @Test
-    public void purchaseAPaidDomainNameTest() {
-        PurchaseAPaidDomainNameRequest purchaseAPaidDomainNameRequest = new PurchaseAPaidDomainNameRequest();
-        purchaseAPaidDomainNameRequest.setClientToken("");
-        purchaseAPaidDomainNameRequest.setNames(new ArrayList<>());
-        purchaseAPaidDomainNameRequest.setProductVersion("");
-        purchaseAPaidDomainNameRequest.setBilling(new Billing()
-                .setPaymentTiming("Prepaid")
-                .setReservation(new Reservation().setReservationLength(1)));
-        dnsClient.purchaseAPaidDomainName(purchaseAPaidDomainNameRequest);
-    }
-    /**
-     * queryAndParseRecordList
-     *
-     */
-    @Test
-    public void queryAndParseRecordListTest() {
-        QueryAndParseRecordListRequest queryAndParseRecordListRequest = new QueryAndParseRecordListRequest();
-        queryAndParseRecordListRequest.setZoneName("");
-        queryAndParseRecordListRequest.setRr("");
-        queryAndParseRecordListRequest.setId("");
-        queryAndParseRecordListRequest.setMarker("");
-        queryAndParseRecordListRequest.setMaxKeys(0);
-        QueryAndParseRecordListResponse response = dnsClient.queryAndParseRecordList(queryAndParseRecordListRequest);
+    public void listLineGroupTest() {
+        ListLineGroupRequest listLineGroupRequest = new ListLineGroupRequest();
+        listLineGroupRequest.setMarker("");
+        listLineGroupRequest.setMaxKeys(0);
+        ListLineGroupResponse response = dnsClient.listLineGroup(listLineGroupRequest);
         System.out.println(response);
     }
     /**
-     * queryDomainNameList
+     * listRecord
      *
      */
     @Test
-    public void queryDomainNameListTest() {
-        QueryDomainNameListRequest queryDomainNameListRequest = new QueryDomainNameListRequest();
-        queryDomainNameListRequest.setName("");
-        queryDomainNameListRequest.setMarker("");
-        queryDomainNameListRequest.setMaxKeys(0);
-        QueryDomainNameListResponse response = dnsClient.queryDomainNameList(queryDomainNameListRequest);
+    public void listRecordTest() {
+        ListRecordRequest listRecordRequest = new ListRecordRequest();
+        listRecordRequest.setZoneName("");
+        listRecordRequest.setRr("");
+        listRecordRequest.setId("");
+        listRecordRequest.setMarker("");
+        listRecordRequest.setMaxKeys(0);
+        ListRecordResponse response = dnsClient.listRecord(listRecordRequest);
         System.out.println(response);
     }
     /**
-     * queryTheListOfLineGroups
+     * listZone
      *
      */
     @Test
-    public void queryTheListOfLineGroupsTest() {
-        QueryTheListOfLineGroupsRequest queryTheListOfLineGroupsRequest = new QueryTheListOfLineGroupsRequest();
-        queryTheListOfLineGroupsRequest.setMarker("");
-        queryTheListOfLineGroupsRequest.setMaxKeys(0);
-        QueryTheListOfLineGroupsResponse response = dnsClient.queryTheListOfLineGroups(queryTheListOfLineGroupsRequest);
+    public void listZoneTest() {
+        ListZoneRequest listZoneRequest = new ListZoneRequest();
+        listZoneRequest.setName("");
+        listZoneRequest.setMarker("");
+        listZoneRequest.setMaxKeys(0);
+        ListZoneResponse response = dnsClient.listZone(listZoneRequest);
         System.out.println(response);
     }
     /**
-     * removeDomainName
+     * renewZone
      *
      */
     @Test
-    public void removeDomainNameTest() {
-        RemoveDomainNameRequest removeDomainNameRequest = new RemoveDomainNameRequest();
-        removeDomainNameRequest.setZoneName("");
-        removeDomainNameRequest.setClientToken("");
-        dnsClient.removeDomainName(removeDomainNameRequest);
+    public void renewZoneTest() {
+        RenewZoneRequest renewZoneRequest = new RenewZoneRequest();
+        renewZoneRequest.setName("");
+        renewZoneRequest.setAction("");
+        renewZoneRequest.setClientToken("");
+        renewZoneRequest.setBilling(null);
+        dnsClient.renewZone(renewZoneRequest);
     }
     /**
      * updateLineGroup
@@ -225,25 +189,65 @@ public class DnsClientTest {
     @Test
     public void updateLineGroupTest() {
         UpdateLineGroupRequest updateLineGroupRequest = new UpdateLineGroupRequest();
-        updateLineGroupRequest.setLineId("");
+        updateLineGroupRequest.setLineId(0);
         updateLineGroupRequest.setClientToken("");
         updateLineGroupRequest.setName("");
         updateLineGroupRequest.setLines(new ArrayList<>());
         dnsClient.updateLineGroup(updateLineGroupRequest);
     }
     /**
-     * upgradeTheFreeDomainNameToTheUniversalVersion
+     * updateRecord
      *
      */
     @Test
-    public void upgradeTheFreeDomainNameToTheUniversalVersionTest() {
-        UpgradeTheFreeDomainNameToTheUniversalVersionRequest upgradeTheFreeDomainNameToTheUniversalVersionRequest = new UpgradeTheFreeDomainNameToTheUniversalVersionRequest();
-        upgradeTheFreeDomainNameToTheUniversalVersionRequest.setAction("");
-        upgradeTheFreeDomainNameToTheUniversalVersionRequest.setClientToken("");
-        upgradeTheFreeDomainNameToTheUniversalVersionRequest.setNames(new ArrayList<>());
-        upgradeTheFreeDomainNameToTheUniversalVersionRequest.setBilling(new Billing()
-                .setPaymentTiming("Prepaid")
-                .setReservation(new Reservation().setReservationLength(1)));
-        dnsClient.upgradeTheFreeDomainNameToTheUniversalVersion(upgradeTheFreeDomainNameToTheUniversalVersionRequest);
+    public void updateRecordTest() {
+        UpdateRecordRequest updateRecordRequest = new UpdateRecordRequest();
+        updateRecordRequest.setZoneName("");
+        updateRecordRequest.setRecordId("");
+        updateRecordRequest.setClientToken("");
+        updateRecordRequest.setRr("");
+        updateRecordRequest.setType("");
+        updateRecordRequest.setValue("");
+        updateRecordRequest.setTtl(0);
+        updateRecordRequest.setDescription("");
+        updateRecordRequest.setPriority(0);
+        dnsClient.updateRecord(updateRecordRequest);
+    }
+    /**
+     * updateRecordDisable
+     *
+     */
+    @Test
+    public void updateRecordDisableTest() {
+        UpdateRecordDisableRequest updateRecordDisableRequest = new UpdateRecordDisableRequest();
+        updateRecordDisableRequest.setZoneName("");
+        updateRecordDisableRequest.setRecordId("");
+        updateRecordDisableRequest.setClientToken("");
+        dnsClient.updateRecordDisable(updateRecordDisableRequest);
+    }
+    /**
+     * updateRecordEnable
+     *
+     */
+    @Test
+    public void updateRecordEnableTest() {
+        UpdateRecordEnableRequest updateRecordEnableRequest = new UpdateRecordEnableRequest();
+        updateRecordEnableRequest.setZoneName("");
+        updateRecordEnableRequest.setRecordId("");
+        updateRecordEnableRequest.setClientToken("");
+        dnsClient.updateRecordEnable(updateRecordEnableRequest);
+    }
+    /**
+     * upgradeZone
+     *
+     */
+    @Test
+    public void upgradeZoneTest() {
+        UpgradeZoneRequest upgradeZoneRequest = new UpgradeZoneRequest();
+        upgradeZoneRequest.setAction("");
+        upgradeZoneRequest.setClientToken("");
+        upgradeZoneRequest.setNames(new ArrayList<>());
+        upgradeZoneRequest.setBilling(null);
+        dnsClient.upgradeZone(upgradeZoneRequest);
     }
 }

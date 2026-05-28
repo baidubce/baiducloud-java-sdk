@@ -4,9 +4,10 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.dns.DnsClient;
-import com.baidubce.dns.models.ModifyTheParsingRecordStatusRequest;
+import com.baidubce.dns.models.ListZoneRequest;
+import com.baidubce.dns.models.ListZoneResponse;
 
-public class ExampleModifyTheParsingRecordStatus {
+public class ExampleListZone {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -16,13 +17,13 @@ public class ExampleModifyTheParsingRecordStatus {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         DnsClient client = new DnsClient(config);
-        ModifyTheParsingRecordStatusRequest modifyTheParsingRecordStatusRequest = new ModifyTheParsingRecordStatusRequest();
-        modifyTheParsingRecordStatusRequest.setZoneName("");
-        modifyTheParsingRecordStatusRequest.setRecordId("");
-        modifyTheParsingRecordStatusRequest.setAction("");
-        modifyTheParsingRecordStatusRequest.setClientToken("");
+        ListZoneRequest listZoneRequest = new ListZoneRequest();
+        listZoneRequest.setName("");
+        listZoneRequest.setMarker("");
+        listZoneRequest.setMaxKeys(0);
         try {
-            client.modifyTheParsingRecordStatus(modifyTheParsingRecordStatusRequest);
+            ListZoneResponse response = client.listZone(listZoneRequest);
+            System.out.println(response.toJsonString());
         } catch (BceClientException e) {
             System.out.println(e.getMessage());
         }

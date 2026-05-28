@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DomainNameRenewalRequest extends BaseBceRequest {
+public class RenewZoneRequest extends BaseBceRequest {
 
     /**
     * name
@@ -26,7 +26,7 @@ public class DomainNameRenewalRequest extends BaseBceRequest {
     private String clientToken;
 
     /**
-    * 计费信息。
+    * billing
     */
     private BillingForRenew billing;
 
@@ -34,7 +34,7 @@ public class DomainNameRenewalRequest extends BaseBceRequest {
         return name;
     }
 
-    public DomainNameRenewalRequest setName(String name) {
+    public RenewZoneRequest setName(String name) {
         this.name = name;
         return this;
     }
@@ -43,7 +43,7 @@ public class DomainNameRenewalRequest extends BaseBceRequest {
         return action;
     }
 
-    public DomainNameRenewalRequest setAction(String action) {
+    public RenewZoneRequest setAction(String action) {
         this.action = action;
         return this;
     }
@@ -52,7 +52,7 @@ public class DomainNameRenewalRequest extends BaseBceRequest {
         return clientToken;
     }
 
-    public DomainNameRenewalRequest setClientToken(String clientToken) {
+    public RenewZoneRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
@@ -61,7 +61,7 @@ public class DomainNameRenewalRequest extends BaseBceRequest {
         return billing;
     }
 
-    public DomainNameRenewalRequest setBilling(BillingForRenew billing) {
+    public RenewZoneRequest setBilling(BillingForRenew billing) {
         this.billing = billing;
         return this;
     }

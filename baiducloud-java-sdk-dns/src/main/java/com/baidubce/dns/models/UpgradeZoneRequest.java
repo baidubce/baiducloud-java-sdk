@@ -6,7 +6,13 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PurchaseAPaidDomainNameRequest extends BaseBceRequest {
+public class UpgradeZoneRequest extends BaseBceRequest {
+
+    /**
+    * action
+    */
+    @JsonIgnore
+    private String action;
 
     /**
     * clientToken
@@ -20,20 +26,24 @@ public class PurchaseAPaidDomainNameRequest extends BaseBceRequest {
     private List<String> names;
 
     /**
-    * 购买的产品版本，包含：普惠版（“discount”）、企业版（“flagship”）。
-    */
-    private String productVersion;
-
-    /**
-    * 计费信息。
+    * billing
     */
     private Billing billing;
+
+    public String getAction() {
+        return action;
+    }
+
+    public UpgradeZoneRequest setAction(String action) {
+        this.action = action;
+        return this;
+    }
 
     public String getClientToken() {
         return clientToken;
     }
 
-    public PurchaseAPaidDomainNameRequest setClientToken(String clientToken) {
+    public UpgradeZoneRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
@@ -42,17 +52,8 @@ public class PurchaseAPaidDomainNameRequest extends BaseBceRequest {
         return names;
     }
 
-    public PurchaseAPaidDomainNameRequest setNames(List<String> names) {
+    public UpgradeZoneRequest setNames(List<String> names) {
         this.names = names;
-        return this;
-    }
-
-    public String getProductVersion() {
-        return productVersion;
-    }
-
-    public PurchaseAPaidDomainNameRequest setProductVersion(String productVersion) {
-        this.productVersion = productVersion;
         return this;
     }
 
@@ -60,7 +61,7 @@ public class PurchaseAPaidDomainNameRequest extends BaseBceRequest {
         return billing;
     }
 
-    public PurchaseAPaidDomainNameRequest setBilling(Billing billing) {
+    public UpgradeZoneRequest setBilling(Billing billing) {
         this.billing = billing;
         return this;
     }

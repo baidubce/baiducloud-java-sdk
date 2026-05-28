@@ -4,10 +4,9 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.dns.DnsClient;
-import com.baidubce.dns.models.QueryTheListOfLineGroupsRequest;
-import com.baidubce.dns.models.QueryTheListOfLineGroupsResponse;
+import com.baidubce.dns.models.CreateRecordRequest;
 
-public class ExampleQueryTheListOfLineGroups {
+public class ExampleCreateRecord {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -17,13 +16,20 @@ public class ExampleQueryTheListOfLineGroups {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         DnsClient client = new DnsClient(config);
-        QueryTheListOfLineGroupsRequest queryTheListOfLineGroupsRequest = new QueryTheListOfLineGroupsRequest();
-        queryTheListOfLineGroupsRequest.setMarker("");
-        queryTheListOfLineGroupsRequest.setMaxKeys(10);
+        CreateRecordRequest createRecordRequest = new CreateRecordRequest();
+        createRecordRequest.setZoneName("");
+        createRecordRequest.setClientToken("");
+        createRecordRequest.setRr("");
+        createRecordRequest.setType("");
+        createRecordRequest.setValue("");
+        createRecordRequest.setTtl(0);
+        createRecordRequest.setLine("");
+        createRecordRequest.setDescription("");
+        createRecordRequest.setPriority(0);
         try {
-            QueryTheListOfLineGroupsResponse response = client.queryTheListOfLineGroups(queryTheListOfLineGroupsRequest);
-            System.out.println(response.toJsonString());
+            client.createRecord(createRecordRequest);
         } catch (BceClientException e) {
+            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

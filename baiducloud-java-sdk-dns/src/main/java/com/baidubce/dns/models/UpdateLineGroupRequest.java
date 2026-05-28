@@ -12,7 +12,7 @@ public class UpdateLineGroupRequest extends BaseBceRequest {
     * lineId
     */
     @JsonIgnore
-    private String lineId;
+    private Integer lineId;
 
     /**
     * clientToken
@@ -30,11 +30,11 @@ public class UpdateLineGroupRequest extends BaseBceRequest {
     */
     private List<String> lines;
 
-    public String getLineId() {
+    public Integer getLineId() {
         return lineId;
     }
 
-    public UpdateLineGroupRequest setLineId(String lineId) {
+    public UpdateLineGroupRequest setLineId(Integer lineId) {
         this.lineId = lineId;
         return this;
     }

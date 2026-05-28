@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class QueryDomainNameListRequest extends BaseBceRequest {
+public class ListZoneRequest extends BaseBceRequest {
 
     /**
     * name
@@ -29,7 +29,7 @@ public class QueryDomainNameListRequest extends BaseBceRequest {
         return name;
     }
 
-    public QueryDomainNameListRequest setName(String name) {
+    public ListZoneRequest setName(String name) {
         this.name = name;
         return this;
     }
@@ -38,7 +38,7 @@ public class QueryDomainNameListRequest extends BaseBceRequest {
         return marker;
     }
 
-    public QueryDomainNameListRequest setMarker(String marker) {
+    public ListZoneRequest setMarker(String marker) {
         this.marker = marker;
         return this;
     }
@@ -47,7 +47,7 @@ public class QueryDomainNameListRequest extends BaseBceRequest {
         return maxKeys;
     }
 
-    public QueryDomainNameListRequest setMaxKeys(Integer maxKeys) {
+    public ListZoneRequest setMaxKeys(Integer maxKeys) {
         this.maxKeys = maxKeys;
         return this;
     }

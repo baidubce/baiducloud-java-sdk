@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ModifyTheParsingRecordStatusRequest extends BaseBceRequest {
+public class UpdateRecordEnableRequest extends BaseBceRequest {
 
     /**
     * zoneName
@@ -20,12 +20,6 @@ public class ModifyTheParsingRecordStatusRequest extends BaseBceRequest {
     private String recordId;
 
     /**
-    * action
-    */
-    @JsonIgnore
-    private String action;
-
-    /**
     * clientToken
     */
     @JsonIgnore
@@ -35,7 +29,7 @@ public class ModifyTheParsingRecordStatusRequest extends BaseBceRequest {
         return zoneName;
     }
 
-    public ModifyTheParsingRecordStatusRequest setZoneName(String zoneName) {
+    public UpdateRecordEnableRequest setZoneName(String zoneName) {
         this.zoneName = zoneName;
         return this;
     }
@@ -44,17 +38,8 @@ public class ModifyTheParsingRecordStatusRequest extends BaseBceRequest {
         return recordId;
     }
 
-    public ModifyTheParsingRecordStatusRequest setRecordId(String recordId) {
+    public UpdateRecordEnableRequest setRecordId(String recordId) {
         this.recordId = recordId;
-        return this;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public ModifyTheParsingRecordStatusRequest setAction(String action) {
-        this.action = action;
         return this;
     }
 
@@ -62,7 +47,7 @@ public class ModifyTheParsingRecordStatusRequest extends BaseBceRequest {
         return clientToken;
     }
 
-    public ModifyTheParsingRecordStatusRequest setClientToken(String clientToken) {
+    public UpdateRecordEnableRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }

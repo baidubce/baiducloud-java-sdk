@@ -4,10 +4,12 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.dns.DnsClient;
-import com.baidubce.dns.models.AddLineGroupRequest;
+import com.baidubce.dns.models.UpgradeZoneRequest;
+import com.baidubce.dns.models.Reservation;
+import com.baidubce.dns.models.Billing;
 import java.util.ArrayList;
 
-public class ExampleAddLineGroup {
+public class ExampleUpgradeZone {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -17,12 +19,20 @@ public class ExampleAddLineGroup {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         DnsClient client = new DnsClient(config);
-        AddLineGroupRequest addLineGroupRequest = new AddLineGroupRequest();
-        addLineGroupRequest.setClientToken("");
-        addLineGroupRequest.setName("");
-        addLineGroupRequest.setLines(new ArrayList<>());
+        Billing billing = new Billing();
+        billing.setPaymentTiming("");
+        Reservation reservation = new Reservation();
+        reservation.setReservationLength(0);
+
+        billing.setReservation(reservation);
+
+        UpgradeZoneRequest upgradeZoneRequest = new UpgradeZoneRequest();
+        upgradeZoneRequest.setAction("");
+        upgradeZoneRequest.setClientToken("");
+        upgradeZoneRequest.setNames(new ArrayList<>());
+        upgradeZoneRequest.setBilling(billing);
         try {
-            client.addLineGroup(addLineGroupRequest);
+            client.upgradeZone(upgradeZoneRequest);
         } catch (BceClientException e) {
             // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());

@@ -5,13 +5,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RemoveDomainNameRequest extends BaseBceRequest {
+public class UpdateRecordDisableRequest extends BaseBceRequest {
 
     /**
     * zoneName
     */
     @JsonIgnore
     private String zoneName;
+
+    /**
+    * recordId
+    */
+    @JsonIgnore
+    private String recordId;
 
     /**
     * clientToken
@@ -23,8 +29,17 @@ public class RemoveDomainNameRequest extends BaseBceRequest {
         return zoneName;
     }
 
-    public RemoveDomainNameRequest setZoneName(String zoneName) {
+    public UpdateRecordDisableRequest setZoneName(String zoneName) {
         this.zoneName = zoneName;
+        return this;
+    }
+
+    public String getRecordId() {
+        return recordId;
+    }
+
+    public UpdateRecordDisableRequest setRecordId(String recordId) {
+        this.recordId = recordId;
         return this;
     }
 
@@ -32,7 +47,7 @@ public class RemoveDomainNameRequest extends BaseBceRequest {
         return clientToken;
     }
 
-    public RemoveDomainNameRequest setClientToken(String clientToken) {
+    public UpdateRecordDisableRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }

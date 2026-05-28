@@ -5,19 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DeleteParsingRecordsRequest extends BaseBceRequest {
+public class DeleteZoneRequest extends BaseBceRequest {
 
     /**
     * zoneName
     */
     @JsonIgnore
     private String zoneName;
-
-    /**
-    * recordId
-    */
-    @JsonIgnore
-    private String recordId;
 
     /**
     * clientToken
@@ -29,17 +23,8 @@ public class DeleteParsingRecordsRequest extends BaseBceRequest {
         return zoneName;
     }
 
-    public DeleteParsingRecordsRequest setZoneName(String zoneName) {
+    public DeleteZoneRequest setZoneName(String zoneName) {
         this.zoneName = zoneName;
-        return this;
-    }
-
-    public String getRecordId() {
-        return recordId;
-    }
-
-    public DeleteParsingRecordsRequest setRecordId(String recordId) {
-        this.recordId = recordId;
         return this;
     }
 
@@ -47,7 +32,7 @@ public class DeleteParsingRecordsRequest extends BaseBceRequest {
         return clientToken;
     }
 
-    public DeleteParsingRecordsRequest setClientToken(String clientToken) {
+    public DeleteZoneRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }

@@ -15,24 +15,25 @@ import java.util.Arrays;
 import java.util.HashSet;
 import com.baidubce.common.BaseBceResponse;
 
-import com.baidubce.dns.models.AddDomainNameRequest;
 import com.baidubce.dns.models.AddLineGroupRequest;
-import com.baidubce.dns.models.AddParsingRecordsRequest;
+import com.baidubce.dns.models.CreatePaidZoneRequest;
+import com.baidubce.dns.models.CreateRecordRequest;
+import com.baidubce.dns.models.CreateZoneRequest;
 import com.baidubce.dns.models.DeleteLineGroupRequest;
-import com.baidubce.dns.models.DeleteParsingRecordsRequest;
-import com.baidubce.dns.models.DomainNameRenewalRequest;
-import com.baidubce.dns.models.ModifyParsingRecordsRequest;
-import com.baidubce.dns.models.ModifyTheParsingRecordStatusRequest;
-import com.baidubce.dns.models.PurchaseAPaidDomainNameRequest;
-import com.baidubce.dns.models.QueryAndParseRecordListRequest;
-import com.baidubce.dns.models.QueryAndParseRecordListResponse;
-import com.baidubce.dns.models.QueryDomainNameListRequest;
-import com.baidubce.dns.models.QueryDomainNameListResponse;
-import com.baidubce.dns.models.QueryTheListOfLineGroupsRequest;
-import com.baidubce.dns.models.QueryTheListOfLineGroupsResponse;
-import com.baidubce.dns.models.RemoveDomainNameRequest;
+import com.baidubce.dns.models.DeleteRecordRequest;
+import com.baidubce.dns.models.DeleteZoneRequest;
+import com.baidubce.dns.models.ListLineGroupRequest;
+import com.baidubce.dns.models.ListLineGroupResponse;
+import com.baidubce.dns.models.ListRecordRequest;
+import com.baidubce.dns.models.ListRecordResponse;
+import com.baidubce.dns.models.ListZoneRequest;
+import com.baidubce.dns.models.ListZoneResponse;
+import com.baidubce.dns.models.RenewZoneRequest;
 import com.baidubce.dns.models.UpdateLineGroupRequest;
-import com.baidubce.dns.models.UpgradeTheFreeDomainNameToTheUniversalVersionRequest;
+import com.baidubce.dns.models.UpdateRecordDisableRequest;
+import com.baidubce.dns.models.UpdateRecordEnableRequest;
+import com.baidubce.dns.models.UpdateRecordRequest;
+import com.baidubce.dns.models.UpgradeZoneRequest;
 
 public class DnsClient extends AbstractBceClient {
 
@@ -41,9 +42,9 @@ public class DnsClient extends AbstractBceClient {
     private static final String VERSION_V1 = "v1";
     private static final String CONSTANT_DNS = "dns";
     private static final String CONSTANT_ZONE = "zone";
-    private static final String CONSTANT_RECORD = "record";
-    private static final String CONSTANT_CUSTOMLINE = "customline";
     private static final String CONSTANT_ORDER = "order";
+    private static final String CONSTANT_CUSTOMLINE = "customline";
+    private static final String CONSTANT_RECORD = "record";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -65,20 +66,6 @@ public class DnsClient extends AbstractBceClient {
     }
 
     /**
-     * addDomainName
-     * 
-     * @param request 入参结构体
-     */
-    public void addDomainName(AddDomainNameRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE);
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
-        }
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
      * addLineGroup
      * 
      * @param request 入参结构体
@@ -93,12 +80,40 @@ public class DnsClient extends AbstractBceClient {
     }
 
     /**
-     * addParsingRecords
+     * createPaidZone
      * 
      * @param request 入参结构体
      */
-    public void addParsingRecords(AddParsingRecordsRequest request) {
+    public void createPaidZone(CreatePaidZoneRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, CONSTANT_ORDER);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * createRecord
+     * 
+     * @param request 入参结构体
+     */
+    public void createRecord(CreateRecordRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, request.getZoneName(), CONSTANT_RECORD);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * createZone
+     * 
+     * @param request 入参结构体
+     */
+    public void createZone(CreateZoneRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -120,11 +135,11 @@ public class DnsClient extends AbstractBceClient {
     }
 
     /**
-     * deleteParsingRecords
+     * deleteRecord
      * 
      * @param request 入参结构体
      */
-    public void deleteParsingRecords(DeleteParsingRecordsRequest request) {
+    public void deleteRecord(DeleteRecordRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, request.getZoneName(), CONSTANT_RECORD, request.getRecordId());
         if (request.getClientToken() != null) {
@@ -134,44 +149,12 @@ public class DnsClient extends AbstractBceClient {
     }
 
     /**
-     * domainNameRenewal
+     * deleteZone
      * 
      * @param request 入参结构体
      */
-    public void domainNameRenewal(DomainNameRenewalRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, CONSTANT_ORDER, request.getName());
-        internalRequest.addParameter(request.getAction(), null);
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
-        }
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
-     * modifyParsingRecords
-     * 
-     * @param request 入参结构体
-     */
-    public void modifyParsingRecords(ModifyParsingRecordsRequest request) {
-        InternalRequest internalRequest =
-                this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, request.getZoneName(), CONSTANT_RECORD, request.getRecordId());
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
-        }
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
-     * modifyTheParsingRecordStatus
-     * 
-     * @param request 入参结构体
-     */
-    public void modifyTheParsingRecordStatus(ModifyTheParsingRecordStatusRequest request) {
-        InternalRequest internalRequest =
-                this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, request.getZoneName(), CONSTANT_RECORD, request.getRecordId());
-        internalRequest.addParameter(request.getAction(), null);
+    public void deleteZone(DeleteZoneRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, request.getZoneName());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -179,26 +162,29 @@ public class DnsClient extends AbstractBceClient {
     }
 
     /**
-     * purchaseAPaidDomainName
+     * listLineGroup
      * 
      * @param request 入参结构体
+     * @return ListLineGroupResponse
      */
-    public void purchaseAPaidDomainName(PurchaseAPaidDomainNameRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, CONSTANT_ORDER);
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
+    public ListLineGroupResponse listLineGroup(ListLineGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_DNS, CONSTANT_CUSTOMLINE);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
         }
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, ListLineGroupResponse.class);
     }
 
     /**
-     * queryAndParseRecordList
+     * listRecord
      * 
      * @param request 入参结构体
-     * @return QueryAndParseRecordListResponse
+     * @return ListRecordResponse
      */
-    public QueryAndParseRecordListResponse queryAndParseRecordList(QueryAndParseRecordListRequest request) {
+    public ListRecordResponse listRecord(ListRecordRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, request.getZoneName(), CONSTANT_RECORD);
         if (request.getRr() != null) {
             internalRequest.addParameter("rr", request.getRr());
@@ -212,16 +198,16 @@ public class DnsClient extends AbstractBceClient {
         if (request.getMaxKeys() != null) {
             internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
         }
-        return invokeHttpClient(internalRequest, QueryAndParseRecordListResponse.class);
+        return invokeHttpClient(internalRequest, ListRecordResponse.class);
     }
 
     /**
-     * queryDomainNameList
+     * listZone
      * 
      * @param request 入参结构体
-     * @return QueryDomainNameListResponse
+     * @return ListZoneResponse
      */
-    public QueryDomainNameListResponse queryDomainNameList(QueryDomainNameListRequest request) {
+    public ListZoneResponse listZone(ListZoneRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE);
         if (request.getName() != null) {
             internalRequest.addParameter("name", request.getName());
@@ -232,36 +218,24 @@ public class DnsClient extends AbstractBceClient {
         if (request.getMaxKeys() != null) {
             internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
         }
-        return invokeHttpClient(internalRequest, QueryDomainNameListResponse.class);
+        return invokeHttpClient(internalRequest, ListZoneResponse.class);
     }
 
     /**
-     * queryTheListOfLineGroups
-     * 
-     * @param request 入参结构体
-     * @return QueryTheListOfLineGroupsResponse
-     */
-    public QueryTheListOfLineGroupsResponse queryTheListOfLineGroups(QueryTheListOfLineGroupsRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_DNS, CONSTANT_CUSTOMLINE);
-        if (request.getMarker() != null) {
-            internalRequest.addParameter("marker", request.getMarker());
-        }
-        if (request.getMaxKeys() != null) {
-            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
-        }
-        return invokeHttpClient(internalRequest, QueryTheListOfLineGroupsResponse.class);
-    }
-
-    /**
-     * removeDomainName
+     * renewZone
      * 
      * @param request 入参结构体
      */
-    public void removeDomainName(RemoveDomainNameRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, request.getZoneName());
+    public void renewZone(RenewZoneRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, CONSTANT_ORDER, request.getName());
+        internalRequest.addParameter("purchaseReserved", null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
@@ -280,13 +254,61 @@ public class DnsClient extends AbstractBceClient {
     }
 
     /**
-     * upgradeTheFreeDomainNameToTheUniversalVersion
+     * updateRecord
      * 
      * @param request 入参结构体
      */
-    public void upgradeTheFreeDomainNameToTheUniversalVersion(UpgradeTheFreeDomainNameToTheUniversalVersionRequest request) {
+    public void updateRecord(UpdateRecordRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, request.getZoneName(), CONSTANT_RECORD, request.getRecordId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateRecordDisable
+     * 
+     * @param request 入参结构体
+     */
+    public void updateRecordDisable(UpdateRecordDisableRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, request.getZoneName(), CONSTANT_RECORD, request.getRecordId());
+        internalRequest.addParameter("disable", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateRecordEnable
+     * 
+     * @param request 入参结构体
+     */
+    public void updateRecordEnable(UpdateRecordEnableRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, request.getZoneName(), CONSTANT_RECORD, request.getRecordId());
+        internalRequest.addParameter("enable", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * upgradeZone
+     * 
+     * @param request 入参结构体
+     */
+    public void upgradeZone(UpgradeZoneRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_DNS, CONSTANT_ZONE, CONSTANT_ORDER);
-        internalRequest.addParameter(request.getAction(), null);
+        internalRequest.addParameter("upgradeToDiscount", null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }

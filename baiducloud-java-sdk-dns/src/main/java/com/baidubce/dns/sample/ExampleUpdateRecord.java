@@ -4,9 +4,9 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.dns.DnsClient;
-import com.baidubce.dns.models.AddParsingRecordsRequest;
+import com.baidubce.dns.models.UpdateRecordRequest;
 
-public class ExampleAddParsingRecords {
+public class ExampleUpdateRecord {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -16,19 +16,20 @@ public class ExampleAddParsingRecords {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         DnsClient client = new DnsClient(config);
-        AddParsingRecordsRequest addParsingRecordsRequest = new AddParsingRecordsRequest();
-        addParsingRecordsRequest.setZoneName("");
-        addParsingRecordsRequest.setClientToken("");
-        addParsingRecordsRequest.setRr("");
-        addParsingRecordsRequest.setType("");
-        addParsingRecordsRequest.setValue("");
-        addParsingRecordsRequest.setTtl(0);
-        addParsingRecordsRequest.setLine("");
-        addParsingRecordsRequest.setDescription("");
-        addParsingRecordsRequest.setPriority(0);
+        UpdateRecordRequest updateRecordRequest = new UpdateRecordRequest();
+        updateRecordRequest.setZoneName("");
+        updateRecordRequest.setRecordId("");
+        updateRecordRequest.setClientToken("");
+        updateRecordRequest.setRr("");
+        updateRecordRequest.setType("");
+        updateRecordRequest.setValue("");
+        updateRecordRequest.setTtl(0);
+        updateRecordRequest.setDescription("");
+        updateRecordRequest.setPriority(0);
         try {
-            client.addParsingRecords(addParsingRecordsRequest);
+            client.updateRecord(updateRecordRequest);
         } catch (BceClientException e) {
+            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AddParsingRecordsRequest extends BaseBceRequest {
+public class CreateRecordRequest extends BaseBceRequest {
 
     /**
     * zoneName
@@ -58,7 +58,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return zoneName;
     }
 
-    public AddParsingRecordsRequest setZoneName(String zoneName) {
+    public CreateRecordRequest setZoneName(String zoneName) {
         this.zoneName = zoneName;
         return this;
     }
@@ -67,7 +67,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return clientToken;
     }
 
-    public AddParsingRecordsRequest setClientToken(String clientToken) {
+    public CreateRecordRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }
@@ -76,7 +76,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return rr;
     }
 
-    public AddParsingRecordsRequest setRr(String rr) {
+    public CreateRecordRequest setRr(String rr) {
         this.rr = rr;
         return this;
     }
@@ -85,7 +85,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return type;
     }
 
-    public AddParsingRecordsRequest setType(String type) {
+    public CreateRecordRequest setType(String type) {
         this.type = type;
         return this;
     }
@@ -94,7 +94,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return value;
     }
 
-    public AddParsingRecordsRequest setValue(String value) {
+    public CreateRecordRequest setValue(String value) {
         this.value = value;
         return this;
     }
@@ -103,7 +103,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return ttl;
     }
 
-    public AddParsingRecordsRequest setTtl(Integer ttl) {
+    public CreateRecordRequest setTtl(Integer ttl) {
         this.ttl = ttl;
         return this;
     }
@@ -112,7 +112,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return line;
     }
 
-    public AddParsingRecordsRequest setLine(String line) {
+    public CreateRecordRequest setLine(String line) {
         this.line = line;
         return this;
     }
@@ -121,7 +121,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return description;
     }
 
-    public AddParsingRecordsRequest setDescription(String description) {
+    public CreateRecordRequest setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -130,7 +130,7 @@ public class AddParsingRecordsRequest extends BaseBceRequest {
         return priority;
     }
 
-    public AddParsingRecordsRequest setPriority(Integer priority) {
+    public CreateRecordRequest setPriority(Integer priority) {
         this.priority = priority;
         return this;
     }

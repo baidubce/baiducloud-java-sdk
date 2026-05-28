@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class QueryAndParseRecordListRequest extends BaseBceRequest {
+public class ListRecordRequest extends BaseBceRequest {
 
     /**
     * zoneName
@@ -41,7 +41,7 @@ public class QueryAndParseRecordListRequest extends BaseBceRequest {
         return zoneName;
     }
 
-    public QueryAndParseRecordListRequest setZoneName(String zoneName) {
+    public ListRecordRequest setZoneName(String zoneName) {
         this.zoneName = zoneName;
         return this;
     }
@@ -50,7 +50,7 @@ public class QueryAndParseRecordListRequest extends BaseBceRequest {
         return rr;
     }
 
-    public QueryAndParseRecordListRequest setRr(String rr) {
+    public ListRecordRequest setRr(String rr) {
         this.rr = rr;
         return this;
     }
@@ -59,7 +59,7 @@ public class QueryAndParseRecordListRequest extends BaseBceRequest {
         return id;
     }
 
-    public QueryAndParseRecordListRequest setId(String id) {
+    public ListRecordRequest setId(String id) {
         this.id = id;
         return this;
     }
@@ -68,7 +68,7 @@ public class QueryAndParseRecordListRequest extends BaseBceRequest {
         return marker;
     }
 
-    public QueryAndParseRecordListRequest setMarker(String marker) {
+    public ListRecordRequest setMarker(String marker) {
         this.marker = marker;
         return this;
     }
@@ -77,7 +77,7 @@ public class QueryAndParseRecordListRequest extends BaseBceRequest {
         return maxKeys;
     }
 
-    public QueryAndParseRecordListRequest setMaxKeys(Integer maxKeys) {
+    public ListRecordRequest setMaxKeys(Integer maxKeys) {
         this.maxKeys = maxKeys;
         return this;
     }
