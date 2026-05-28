@@ -22,7 +22,7 @@ public class ExampleListRecord {
         listRecordRequest.setRr("");
         listRecordRequest.setId("");
         listRecordRequest.setMarker("");
-        listRecordRequest.setMaxKeys(0);
+        listRecordRequest.setMaxKeys(10);
         try {
             ListRecordResponse response = client.listRecord(listRecordRequest);
             System.out.println(response.toJsonString());

@@ -245,7 +245,7 @@ public class DnsClient extends AbstractBceClient {
      * @param request 入参结构体
      */
     public void updateLineGroup(UpdateLineGroupRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_DNS, CONSTANT_CUSTOMLINE, request.getLineId());
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_DNS, CONSTANT_CUSTOMLINE, String.valueOf(request.getLineId()));
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
