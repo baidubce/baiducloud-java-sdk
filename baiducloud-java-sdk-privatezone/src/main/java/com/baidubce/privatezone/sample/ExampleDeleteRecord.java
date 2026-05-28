@@ -17,7 +17,7 @@ public class ExampleDeleteRecord {
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
         DeleteRecordRequest deleteRecordRequest = new DeleteRecordRequest();
-        deleteRecordRequest.setRecordId("rc-z53sjq4btc0e");
+        deleteRecordRequest.setRecordId("");
         deleteRecordRequest.setClientToken("");
         try {
             client.deleteRecord(deleteRecordRequest);

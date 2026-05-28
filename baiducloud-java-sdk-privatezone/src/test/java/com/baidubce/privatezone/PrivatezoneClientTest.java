@@ -65,7 +65,6 @@ public class PrivatezoneClientTest {
     public void bindVpcTest() {
         BindVpcRequest bindVpcRequest = new BindVpcRequest();
         bindVpcRequest.setZoneId("");
-        bindVpcRequest.setAction("");
         bindVpcRequest.setClientToken("");
         bindVpcRequest.setRegion("");
         bindVpcRequest.setVpcIds(new ArrayList<>());
@@ -113,10 +112,8 @@ public class PrivatezoneClientTest {
     public void disableRecordTest() {
         DisableRecordRequest disableRecordRequest = new DisableRecordRequest();
         disableRecordRequest.setRecordId("");
-        disableRecordRequest.setAction("");
         disableRecordRequest.setClientToken("");
-        Object response = privatezoneClient.disableRecord(disableRecordRequest);
-        System.out.println(response);
+        privatezoneClient.disableRecord(disableRecordRequest);
     }
     /**
      * enableRecord
@@ -128,8 +125,7 @@ public class PrivatezoneClientTest {
         enableRecordRequest.setRecordId("");
         enableRecordRequest.setAction("");
         enableRecordRequest.setClientToken("");
-        Object response = privatezoneClient.enableRecord(enableRecordRequest);
-        System.out.println(response);
+        privatezoneClient.enableRecord(enableRecordRequest);
     }
     /**
      * getPrivateZone

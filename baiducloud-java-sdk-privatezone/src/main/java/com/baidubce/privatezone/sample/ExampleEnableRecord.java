@@ -17,8 +17,8 @@ public class ExampleEnableRecord {
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
         EnableRecordRequest enableRecordRequest = new EnableRecordRequest();
-        enableRecordRequest.setRecordId("rc-rfykpdb7xs93");
-        enableRecordRequest.setAction("enable");
+        enableRecordRequest.setRecordId("");
+        enableRecordRequest.setAction("");
         enableRecordRequest.setClientToken("");
         try {
             client.enableRecord(enableRecordRequest);

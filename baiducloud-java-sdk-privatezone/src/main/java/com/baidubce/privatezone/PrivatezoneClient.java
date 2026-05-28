@@ -82,7 +82,7 @@ public class PrivatezoneClient extends AbstractBceClient {
      */
     public void bindVpc(BindVpcRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, request.getZoneId());
-        internalRequest.addParameter(request.getAction(), null);
+        internalRequest.addParameter("bind", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -139,9 +139,6 @@ public class PrivatezoneClient extends AbstractBceClient {
     public void disableRecord(DisableRecordRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RECORD, request.getRecordId());
         internalRequest.addParameter("disable", null);
-        if (request.getAction() != null) {
-            internalRequest.addParameter("action", request.getAction());
-        }
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }

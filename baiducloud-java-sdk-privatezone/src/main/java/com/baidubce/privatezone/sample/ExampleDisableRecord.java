@@ -17,8 +17,7 @@ public class ExampleDisableRecord {
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
         DisableRecordRequest disableRecordRequest = new DisableRecordRequest();
-        disableRecordRequest.setRecordId("rc-rfykpdb7xs93");
-        disableRecordRequest.setAction("disable");
+        disableRecordRequest.setRecordId("");
         disableRecordRequest.setClientToken("");
         try {
             client.disableRecord(disableRecordRequest);

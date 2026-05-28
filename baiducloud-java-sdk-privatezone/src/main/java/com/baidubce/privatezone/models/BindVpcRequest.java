@@ -15,12 +15,6 @@ public class BindVpcRequest extends BaseBceRequest {
     private String zoneId;
 
     /**
-    * action
-    */
-    @JsonIgnore
-    private String action;
-
-    /**
     * clientToken
     */
     @JsonIgnore
@@ -42,15 +36,6 @@ public class BindVpcRequest extends BaseBceRequest {
 
     public BindVpcRequest setZoneId(String zoneId) {
         this.zoneId = zoneId;
-        return this;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public BindVpcRequest setAction(String action) {
-        this.action = action;
         return this;
     }
 
