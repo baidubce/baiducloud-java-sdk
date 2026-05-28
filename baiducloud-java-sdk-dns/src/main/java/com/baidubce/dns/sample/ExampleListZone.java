@@ -20,7 +20,7 @@ public class ExampleListZone {
         ListZoneRequest listZoneRequest = new ListZoneRequest();
         listZoneRequest.setName("");
         listZoneRequest.setMarker("");
-        listZoneRequest.setMaxKeys(0);
+        listZoneRequest.setMaxKeys(10);
         try {
             ListZoneResponse response = client.listZone(listZoneRequest);
             System.out.println(response.toJsonString());

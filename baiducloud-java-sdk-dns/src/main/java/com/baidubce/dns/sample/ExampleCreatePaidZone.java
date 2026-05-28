@@ -7,6 +7,8 @@ import com.baidubce.dns.DnsClient;
 import com.baidubce.dns.models.CreatePaidZoneRequest;
 import com.baidubce.dns.models.Reservation;
 import com.baidubce.dns.models.Billing;
+
+import java.util.Arrays;
 import java.util.ArrayList;
 
 public class ExampleCreatePaidZone {
@@ -20,16 +22,16 @@ public class ExampleCreatePaidZone {
         config.setEndpoint(endpoint);
         DnsClient client = new DnsClient(config);
         Billing billing = new Billing();
-        billing.setPaymentTiming("");
+        billing.setPaymentTiming("Prepaid");
         Reservation reservation = new Reservation();
-        reservation.setReservationLength(0);
+        reservation.setReservationLength(1);
 
         billing.setReservation(reservation);
 
         CreatePaidZoneRequest createPaidZoneRequest = new CreatePaidZoneRequest();
         createPaidZoneRequest.setClientToken("");
-        createPaidZoneRequest.setNames(new ArrayList<>());
-        createPaidZoneRequest.setProductVersion("");
+        createPaidZoneRequest.setNames(new ArrayList<>(Arrays.asList("testtcreatepaidzone.com")));
+        createPaidZoneRequest.setProductVersion("discount");
         createPaidZoneRequest.setBilling(billing);
         try {
             client.createPaidZone(createPaidZoneRequest);

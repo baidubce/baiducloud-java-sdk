@@ -18,7 +18,7 @@ public class ExampleUpdateLineGroup {
         config.setEndpoint(endpoint);
         DnsClient client = new DnsClient(config);
         UpdateLineGroupRequest updateLineGroupRequest = new UpdateLineGroupRequest();
-        updateLineGroupRequest.setLineId(0);
+        updateLineGroupRequest.setLineId(1);
         updateLineGroupRequest.setClientToken("");
         updateLineGroupRequest.setName("");
         updateLineGroupRequest.setLines(new ArrayList<>());

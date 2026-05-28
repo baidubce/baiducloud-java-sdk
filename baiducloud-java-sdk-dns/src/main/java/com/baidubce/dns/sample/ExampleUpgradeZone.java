@@ -20,14 +20,14 @@ public class ExampleUpgradeZone {
         config.setEndpoint(endpoint);
         DnsClient client = new DnsClient(config);
         Billing billing = new Billing();
-        billing.setPaymentTiming("");
+        billing.setPaymentTiming("Prepaid");
         Reservation reservation = new Reservation();
-        reservation.setReservationLength(0);
+        reservation.setReservationLength(1);
 
         billing.setReservation(reservation);
 
         UpgradeZoneRequest upgradeZoneRequest = new UpgradeZoneRequest();
-        upgradeZoneRequest.setAction("");
+        upgradeZoneRequest.setAction("upgradeToDiscount");
         upgradeZoneRequest.setClientToken("");
         upgradeZoneRequest.setNames(new ArrayList<>());
         upgradeZoneRequest.setBilling(billing);
