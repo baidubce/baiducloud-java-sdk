@@ -20,13 +20,19 @@ import com.baidubce.blb.models.CreateAppBlbServerGroupResponse;
 import com.baidubce.blb.models.CreateAppBlbSslListenerRequest;
 import com.baidubce.blb.models.CreateAppBlbTcpListenerRequest;
 import com.baidubce.blb.models.CreateAppBlbUdpListenerRequest;
+import com.baidubce.blb.models.CreateBlbHttpListenerRequest;
+import com.baidubce.blb.models.CreateBlbHttpsListenerRequest;
 import com.baidubce.blb.models.CreateBlbRequest;
 import com.baidubce.blb.models.CreateBlbResponse;
+import com.baidubce.blb.models.CreateBlbSslListenerRequest;
+import com.baidubce.blb.models.CreateBlbTcpListenerRequest;
+import com.baidubce.blb.models.CreateBlbUdpListenerRequest;
 import com.baidubce.blb.models.DeleteAppBlbListenerRequest;
 import com.baidubce.blb.models.DeleteAppBlbPolicyRequest;
 import com.baidubce.blb.models.DeleteAppBlbServerGroupPortRequest;
 import com.baidubce.blb.models.DeleteAppBlbServerGroupRequest;
 import com.baidubce.blb.models.DeleteAppBlbServerGroupRsRequest;
+import com.baidubce.blb.models.DeleteBlbListenerRequest;
 import com.baidubce.blb.models.DescribeAppBlbHttpListenerRequest;
 import com.baidubce.blb.models.DescribeAppBlbHttpListenerResponse;
 import com.baidubce.blb.models.DescribeAppBlbHttpsListenerRequest;
@@ -53,8 +59,20 @@ import com.baidubce.blb.models.DescribeAppBlbUdpListenerRequest;
 import com.baidubce.blb.models.DescribeAppBlbUdpListenerResponse;
 import com.baidubce.blb.models.DescribeAppBlbsRequest;
 import com.baidubce.blb.models.DescribeAppBlbsResponse;
+import com.baidubce.blb.models.DescribeBlbHttpListenerRequest;
+import com.baidubce.blb.models.DescribeBlbHttpListenerResponse;
+import com.baidubce.blb.models.DescribeBlbHttpsListenerRequest;
+import com.baidubce.blb.models.DescribeBlbHttpsListenerResponse;
+import com.baidubce.blb.models.DescribeBlbListenerRequest;
+import com.baidubce.blb.models.DescribeBlbListenerResponse;
 import com.baidubce.blb.models.DescribeBlbRequest;
 import com.baidubce.blb.models.DescribeBlbResponse;
+import com.baidubce.blb.models.DescribeBlbSslListenerRequest;
+import com.baidubce.blb.models.DescribeBlbSslListenerResponse;
+import com.baidubce.blb.models.DescribeBlbTcpListenerRequest;
+import com.baidubce.blb.models.DescribeBlbTcpListenerResponse;
+import com.baidubce.blb.models.DescribeBlbUdpListenerRequest;
+import com.baidubce.blb.models.DescribeBlbUdpListenerResponse;
 import com.baidubce.blb.models.DescribeBlbsRequest;
 import com.baidubce.blb.models.DescribeBlbsResponse;
 import com.baidubce.blb.models.RefundBlbRequest;
@@ -73,8 +91,13 @@ import com.baidubce.blb.models.UpdateAppBlbSslListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbTcpListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbUdpListenerRequest;
 import com.baidubce.blb.models.UpdateBlbAclRequest;
+import com.baidubce.blb.models.UpdateBlbHttpListenerRequest;
+import com.baidubce.blb.models.UpdateBlbHttpsListenerRequest;
 import com.baidubce.blb.models.UpdateBlbModifyProtectionRequest;
 import com.baidubce.blb.models.UpdateBlbRequest;
+import com.baidubce.blb.models.UpdateBlbSslListenerRequest;
+import com.baidubce.blb.models.UpdateBlbTcpListenerRequest;
+import com.baidubce.blb.models.UpdateBlbUdpListenerRequest;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -379,6 +402,142 @@ public class BlbClientTest {
         System.out.println(response);
     }
     /**
+     * createBlbHttpListener
+     *
+     */
+    @Test
+    public void createBlbHttpListenerTest() {
+        CreateBlbHttpListenerRequest createBlbHttpListenerRequest = new CreateBlbHttpListenerRequest();
+        createBlbHttpListenerRequest.setBlbId("");
+        createBlbHttpListenerRequest.setListenerPort(0);
+        createBlbHttpListenerRequest.setBackendPort(0);
+        createBlbHttpListenerRequest.setScheduler("");
+        createBlbHttpListenerRequest.setKeepSession(false);
+        createBlbHttpListenerRequest.setKeepSessionType("");
+        createBlbHttpListenerRequest.setKeepSessionDuration(0);
+        createBlbHttpListenerRequest.setKeepSessionCookieName("");
+        createBlbHttpListenerRequest.setXForwardFor(false);
+        createBlbHttpListenerRequest.setXForwardedProto(false);
+        createBlbHttpListenerRequest.setAdditionalAttributes(null);
+        createBlbHttpListenerRequest.setHealthCheckType("");
+        createBlbHttpListenerRequest.setHealthCheckPort(0);
+        createBlbHttpListenerRequest.setHealthCheckURI("");
+        createBlbHttpListenerRequest.setHealthCheckTimeoutInSecond(0);
+        createBlbHttpListenerRequest.setHealthCheckInterval(0);
+        createBlbHttpListenerRequest.setUnhealthyThreshold(0);
+        createBlbHttpListenerRequest.setHealthyThreshold(0);
+        createBlbHttpListenerRequest.setHealthCheckNormalStatus("");
+        createBlbHttpListenerRequest.setHealthCheckHost("");
+        createBlbHttpListenerRequest.setServerTimeout(0);
+        createBlbHttpListenerRequest.setRedirectPort(0);
+        blbClient.createBlbHttpListener(createBlbHttpListenerRequest);
+    }
+    /**
+     * createBlbHttpsListener
+     *
+     */
+    @Test
+    public void createBlbHttpsListenerTest() {
+        CreateBlbHttpsListenerRequest createBlbHttpsListenerRequest = new CreateBlbHttpsListenerRequest();
+        createBlbHttpsListenerRequest.setBlbId("");
+        createBlbHttpsListenerRequest.setClientToken("");
+        createBlbHttpsListenerRequest.setListenerPort(0);
+        createBlbHttpsListenerRequest.setBackendPort(0);
+        createBlbHttpsListenerRequest.setScheduler("");
+        createBlbHttpsListenerRequest.setKeepSession(false);
+        createBlbHttpsListenerRequest.setKeepSessionType("");
+        createBlbHttpsListenerRequest.setKeepSessionDuration(0);
+        createBlbHttpsListenerRequest.setKeepSessionCookieName(0);
+        createBlbHttpsListenerRequest.setXForwardFor(false);
+        createBlbHttpsListenerRequest.setXForwardedProto(false);
+        createBlbHttpsListenerRequest.setAdditionalAttributes(null);
+        createBlbHttpsListenerRequest.setHealthCheckType("");
+        createBlbHttpsListenerRequest.setHealthCheckPort(0);
+        createBlbHttpsListenerRequest.setHealthCheckURI("");
+        createBlbHttpsListenerRequest.setHealthCheckTimeoutInSecond(0);
+        createBlbHttpsListenerRequest.setHealthCheckInterval(0);
+        createBlbHttpsListenerRequest.setUnhealthyThreshold(0);
+        createBlbHttpsListenerRequest.setHealthyThreshold(0);
+        createBlbHttpsListenerRequest.setHealthCheckNormalStatus("");
+        createBlbHttpsListenerRequest.setHealthCheckHost("");
+        createBlbHttpsListenerRequest.setServerTimeout(0);
+        createBlbHttpsListenerRequest.setCertIds(new ArrayList<>());
+        createBlbHttpsListenerRequest.setEncryptionType("");
+        createBlbHttpsListenerRequest.setEncryptionProtocols(new ArrayList<>());
+        createBlbHttpsListenerRequest.setAppliedCiphers("");
+        createBlbHttpsListenerRequest.setDualAuth(false);
+        createBlbHttpsListenerRequest.setClientCertIds(new ArrayList<>());
+        createBlbHttpsListenerRequest.setAdditionalCertDomains(new ArrayList<>());
+        blbClient.createBlbHttpsListener(createBlbHttpsListenerRequest);
+    }
+    /**
+     * createBlbSslListener
+     *
+     */
+    @Test
+    public void createBlbSslListenerTest() {
+        CreateBlbSslListenerRequest createBlbSslListenerRequest = new CreateBlbSslListenerRequest();
+        createBlbSslListenerRequest.setBlbId("");
+        createBlbSslListenerRequest.setClientToken("");
+        createBlbSslListenerRequest.setListenerPort(0);
+        createBlbSslListenerRequest.setBackendPort(0);
+        createBlbSslListenerRequest.setScheduler("");
+        createBlbSslListenerRequest.setHealthCheckType("");
+        createBlbSslListenerRequest.setServerTimeout(0);
+        createBlbSslListenerRequest.setHealthCheckTimeoutInSecond(0);
+        createBlbSslListenerRequest.setHealthCheckInterval(0);
+        createBlbSslListenerRequest.setUnhealthyThreshold(0);
+        createBlbSslListenerRequest.setHealthyThreshold(0);
+        createBlbSslListenerRequest.setCertIds(new ArrayList<>());
+        createBlbSslListenerRequest.setEncryptionType("");
+        createBlbSslListenerRequest.setEncryptionProtocols(new ArrayList<>());
+        createBlbSslListenerRequest.setAppliedCiphers("");
+        createBlbSslListenerRequest.setDualAuth(false);
+        createBlbSslListenerRequest.setClientCertIds(new ArrayList<>());
+        blbClient.createBlbSslListener(createBlbSslListenerRequest);
+    }
+    /**
+     * createBlbTcpListener
+     *
+     */
+    @Test
+    public void createBlbTcpListenerTest() {
+        CreateBlbTcpListenerRequest createBlbTcpListenerRequest = new CreateBlbTcpListenerRequest();
+        createBlbTcpListenerRequest.setBlbId("");
+        createBlbTcpListenerRequest.setListenerPort(0);
+        createBlbTcpListenerRequest.setBackendPort(0);
+        createBlbTcpListenerRequest.setScheduler("");
+        createBlbTcpListenerRequest.setTcpSessionTimeout(0);
+        createBlbTcpListenerRequest.setHealthCheckType("");
+        createBlbTcpListenerRequest.setHealthCheckTimeoutInSecond(0);
+        createBlbTcpListenerRequest.setHealthCheckInterval(0);
+        createBlbTcpListenerRequest.setUnhealthyThreshold(0);
+        createBlbTcpListenerRequest.setHealthyThreshold(0);
+        blbClient.createBlbTcpListener(createBlbTcpListenerRequest);
+    }
+    /**
+     * createBlbUdpListener
+     *
+     */
+    @Test
+    public void createBlbUdpListenerTest() {
+        CreateBlbUdpListenerRequest createBlbUdpListenerRequest = new CreateBlbUdpListenerRequest();
+        createBlbUdpListenerRequest.setBlbId("");
+        createBlbUdpListenerRequest.setClientToken("");
+        createBlbUdpListenerRequest.setListenerPort(0);
+        createBlbUdpListenerRequest.setBackendPort(0);
+        createBlbUdpListenerRequest.setScheduler("");
+        createBlbUdpListenerRequest.setHealthCheckType("");
+        createBlbUdpListenerRequest.setHealthCheckPort(0);
+        createBlbUdpListenerRequest.setHealthCheckString("");
+        createBlbUdpListenerRequest.setHealthCheckTimeoutInSecond(0);
+        createBlbUdpListenerRequest.setHealthCheckInterval(0);
+        createBlbUdpListenerRequest.setUnhealthyThreshold(0);
+        createBlbUdpListenerRequest.setHealthyThreshold(0);
+        createBlbUdpListenerRequest.setUdpSessionTimeout(0);
+        blbClient.createBlbUdpListener(createBlbUdpListenerRequest);
+    }
+    /**
      * deleteAppBlbListener
      *
      */
@@ -442,6 +601,19 @@ public class BlbClientTest {
         deleteAppBlbServerGroupRsRequest.setSgId("");
         deleteAppBlbServerGroupRsRequest.setBackendServerIdList(new ArrayList<>());
         blbClient.deleteAppBlbServerGroupRs(deleteAppBlbServerGroupRsRequest);
+    }
+    /**
+     * deleteBlbListener
+     *
+     */
+    @Test
+    public void deleteBlbListenerTest() {
+        DeleteBlbListenerRequest deleteBlbListenerRequest = new DeleteBlbListenerRequest();
+        deleteBlbListenerRequest.setBlbId("");
+        deleteBlbListenerRequest.setClientToken("");
+        deleteBlbListenerRequest.setPortList(new ArrayList<>());
+        deleteBlbListenerRequest.setPortTypeList(new ArrayList<>());
+        blbClient.deleteBlbListener(deleteBlbListenerRequest);
     }
     /**
      * describeAppBlb
@@ -633,6 +805,90 @@ public class BlbClientTest {
         describeBlbRequest.setBlbId("");
         describeBlbRequest.setType("");
         DescribeBlbResponse response = blbClient.describeBlb(describeBlbRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeBlbHttpListener
+     *
+     */
+    @Test
+    public void describeBlbHttpListenerTest() {
+        DescribeBlbHttpListenerRequest describeBlbHttpListenerRequest = new DescribeBlbHttpListenerRequest();
+        describeBlbHttpListenerRequest.setBlbId("");
+        describeBlbHttpListenerRequest.setListenerPort(0);
+        describeBlbHttpListenerRequest.setMarker("");
+        describeBlbHttpListenerRequest.setMaxKeys(0);
+        DescribeBlbHttpListenerResponse response = blbClient.describeBlbHttpListener(describeBlbHttpListenerRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeBlbHttpsListener
+     *
+     */
+    @Test
+    public void describeBlbHttpsListenerTest() {
+        DescribeBlbHttpsListenerRequest describeBlbHttpsListenerRequest = new DescribeBlbHttpsListenerRequest();
+        describeBlbHttpsListenerRequest.setBlbId("");
+        describeBlbHttpsListenerRequest.setListenerPort(0);
+        describeBlbHttpsListenerRequest.setMarker("");
+        describeBlbHttpsListenerRequest.setMaxKeys(0);
+        DescribeBlbHttpsListenerResponse response = blbClient.describeBlbHttpsListener(describeBlbHttpsListenerRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeBlbListener
+     *
+     */
+    @Test
+    public void describeBlbListenerTest() {
+        DescribeBlbListenerRequest describeBlbListenerRequest = new DescribeBlbListenerRequest();
+        describeBlbListenerRequest.setBlbId("");
+        describeBlbListenerRequest.setListenerPort(0);
+        describeBlbListenerRequest.setMarker("");
+        describeBlbListenerRequest.setMaxKeys(0);
+        DescribeBlbListenerResponse response = blbClient.describeBlbListener(describeBlbListenerRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeBlbSslListener
+     *
+     */
+    @Test
+    public void describeBlbSslListenerTest() {
+        DescribeBlbSslListenerRequest describeBlbSslListenerRequest = new DescribeBlbSslListenerRequest();
+        describeBlbSslListenerRequest.setBlbId("");
+        describeBlbSslListenerRequest.setListenerPort(0);
+        describeBlbSslListenerRequest.setMarker("");
+        describeBlbSslListenerRequest.setMaxKeys(0);
+        DescribeBlbSslListenerResponse response = blbClient.describeBlbSslListener(describeBlbSslListenerRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeBlbTcpListener
+     *
+     */
+    @Test
+    public void describeBlbTcpListenerTest() {
+        DescribeBlbTcpListenerRequest describeBlbTcpListenerRequest = new DescribeBlbTcpListenerRequest();
+        describeBlbTcpListenerRequest.setBlbId("");
+        describeBlbTcpListenerRequest.setListenerPort(0);
+        describeBlbTcpListenerRequest.setMarker("");
+        describeBlbTcpListenerRequest.setMaxKeys(0);
+        DescribeBlbTcpListenerResponse response = blbClient.describeBlbTcpListener(describeBlbTcpListenerRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeBlbUdpListener
+     *
+     */
+    @Test
+    public void describeBlbUdpListenerTest() {
+        DescribeBlbUdpListenerRequest describeBlbUdpListenerRequest = new DescribeBlbUdpListenerRequest();
+        describeBlbUdpListenerRequest.setBlbId("");
+        describeBlbUdpListenerRequest.setListenerPort(0);
+        describeBlbUdpListenerRequest.setMarker("");
+        describeBlbUdpListenerRequest.setMaxKeys(0);
+        DescribeBlbUdpListenerResponse response = blbClient.describeBlbUdpListener(describeBlbUdpListenerRequest);
         System.out.println(response);
     }
     /**
@@ -907,6 +1163,72 @@ public class BlbClientTest {
         blbClient.updateBlbAcl(updateBlbAclRequest);
     }
     /**
+     * updateBlbHttpListener
+     *
+     */
+    @Test
+    public void updateBlbHttpListenerTest() {
+        UpdateBlbHttpListenerRequest updateBlbHttpListenerRequest = new UpdateBlbHttpListenerRequest();
+        updateBlbHttpListenerRequest.setBlbId("");
+        updateBlbHttpListenerRequest.setListenerPort(0);
+        updateBlbHttpListenerRequest.setBackendPort(0);
+        updateBlbHttpListenerRequest.setScheduler("");
+        updateBlbHttpListenerRequest.setKeepSession(false);
+        updateBlbHttpListenerRequest.setKeepSessionType("");
+        updateBlbHttpListenerRequest.setKeepSessionDuration(0);
+        updateBlbHttpListenerRequest.setKeepSessionCookieName("");
+        updateBlbHttpListenerRequest.setXForwardFor(false);
+        updateBlbHttpListenerRequest.setXForwardedProto(false);
+        updateBlbHttpListenerRequest.setAdditionalAttributes(null);
+        updateBlbHttpListenerRequest.setHealthCheckType("");
+        updateBlbHttpListenerRequest.setHealthCheckPort(0);
+        updateBlbHttpListenerRequest.setHealthCheckURI("");
+        updateBlbHttpListenerRequest.setHealthCheckTimeoutInSecond(0);
+        updateBlbHttpListenerRequest.setHealthCheckInterval(0);
+        updateBlbHttpListenerRequest.setUnhealthyThreshold(0);
+        updateBlbHttpListenerRequest.setHealthyThreshold(0);
+        updateBlbHttpListenerRequest.setHealthCheckNormalStatus("");
+        updateBlbHttpListenerRequest.setHealthCheckHost("");
+        updateBlbHttpListenerRequest.setServerTimeout(0);
+        updateBlbHttpListenerRequest.setRedirectPort(0);
+        blbClient.updateBlbHttpListener(updateBlbHttpListenerRequest);
+    }
+    /**
+     * updateBlbHttpsListener
+     *
+     */
+    @Test
+    public void updateBlbHttpsListenerTest() {
+        UpdateBlbHttpsListenerRequest updateBlbHttpsListenerRequest = new UpdateBlbHttpsListenerRequest();
+        updateBlbHttpsListenerRequest.setBlbId("");
+        updateBlbHttpsListenerRequest.setListenerPort(0);
+        updateBlbHttpsListenerRequest.setBackendPort(0);
+        updateBlbHttpsListenerRequest.setScheduler("");
+        updateBlbHttpsListenerRequest.setKeepSession(false);
+        updateBlbHttpsListenerRequest.setKeepSessionType("");
+        updateBlbHttpsListenerRequest.setKeepSessionDuration(0);
+        updateBlbHttpsListenerRequest.setKeepSessionCookieName("");
+        updateBlbHttpsListenerRequest.setXForwardFor(false);
+        updateBlbHttpsListenerRequest.setXForwardedProto(false);
+        updateBlbHttpsListenerRequest.setAdditionalAttributes(null);
+        updateBlbHttpsListenerRequest.setHealthCheckType("");
+        updateBlbHttpsListenerRequest.setHealthCheckPort(0);
+        updateBlbHttpsListenerRequest.setHealthCheckURI("");
+        updateBlbHttpsListenerRequest.setHealthCheckTimeoutInSecond(0);
+        updateBlbHttpsListenerRequest.setHealthCheckInterval(0);
+        updateBlbHttpsListenerRequest.setUnhealthyThreshold(0);
+        updateBlbHttpsListenerRequest.setHealthyThreshold(0);
+        updateBlbHttpsListenerRequest.setHealthCheckNormalStatus("");
+        updateBlbHttpsListenerRequest.setHealthCheckHost("");
+        updateBlbHttpsListenerRequest.setServerTimeout(0);
+        updateBlbHttpsListenerRequest.setCertIds(new ArrayList<>());
+        updateBlbHttpsListenerRequest.setAdditionalCertDomains(new ArrayList<>());
+        updateBlbHttpsListenerRequest.setEncryptionType("");
+        updateBlbHttpsListenerRequest.setEncryptionProtocols(new ArrayList<>());
+        updateBlbHttpsListenerRequest.setAppliedCiphers("");
+        blbClient.updateBlbHttpsListener(updateBlbHttpsListenerRequest);
+    }
+    /**
      * updateBlbModifyProtection
      *
      */
@@ -918,5 +1240,68 @@ public class BlbClientTest {
         updateBlbModifyProtectionRequest.setAllowModify(false);
         updateBlbModifyProtectionRequest.setModificationProtectionReason("");
         blbClient.updateBlbModifyProtection(updateBlbModifyProtectionRequest);
+    }
+    /**
+     * updateBlbSslListener
+     *
+     */
+    @Test
+    public void updateBlbSslListenerTest() {
+        UpdateBlbSslListenerRequest updateBlbSslListenerRequest = new UpdateBlbSslListenerRequest();
+        updateBlbSslListenerRequest.setBlbId("");
+        updateBlbSslListenerRequest.setListenerPort(0);
+        updateBlbSslListenerRequest.setBackendPort(0);
+        updateBlbSslListenerRequest.setScheduler("");
+        updateBlbSslListenerRequest.setHealthCheckType("");
+        updateBlbSslListenerRequest.setHealthCheckTimeoutInSecond(0);
+        updateBlbSslListenerRequest.setHealthCheckInterval(0);
+        updateBlbSslListenerRequest.setUnhealthyThreshold(0);
+        updateBlbSslListenerRequest.setHealthyThreshold(0);
+        updateBlbSslListenerRequest.setCertIds(new ArrayList<>());
+        updateBlbSslListenerRequest.setEncryptionType("");
+        updateBlbSslListenerRequest.setEncryptionProtocols(new ArrayList<>());
+        updateBlbSslListenerRequest.setAppliedCiphers("");
+        updateBlbSslListenerRequest.setDualAuth(false);
+        updateBlbSslListenerRequest.setClientCertIds(new ArrayList<>());
+        blbClient.updateBlbSslListener(updateBlbSslListenerRequest);
+    }
+    /**
+     * updateBlbTcpListener
+     *
+     */
+    @Test
+    public void updateBlbTcpListenerTest() {
+        UpdateBlbTcpListenerRequest updateBlbTcpListenerRequest = new UpdateBlbTcpListenerRequest();
+        updateBlbTcpListenerRequest.setBlbId("");
+        updateBlbTcpListenerRequest.setListenerPort(0);
+        updateBlbTcpListenerRequest.setBackendPort(0);
+        updateBlbTcpListenerRequest.setScheduler("");
+        updateBlbTcpListenerRequest.setHealthCheckType("");
+        updateBlbTcpListenerRequest.setHealthCheckTimeoutInSecond(0);
+        updateBlbTcpListenerRequest.setHealthCheckInterval(0);
+        updateBlbTcpListenerRequest.setUnhealthyThreshold(0);
+        updateBlbTcpListenerRequest.setHealthyThreshold(0);
+        blbClient.updateBlbTcpListener(updateBlbTcpListenerRequest);
+    }
+    /**
+     * updateBlbUdpListener
+     *
+     */
+    @Test
+    public void updateBlbUdpListenerTest() {
+        UpdateBlbUdpListenerRequest updateBlbUdpListenerRequest = new UpdateBlbUdpListenerRequest();
+        updateBlbUdpListenerRequest.setBlbId("");
+        updateBlbUdpListenerRequest.setListenerPort(0);
+        updateBlbUdpListenerRequest.setBackendPort(0);
+        updateBlbUdpListenerRequest.setScheduler("");
+        updateBlbUdpListenerRequest.setHealthCheckType("");
+        updateBlbUdpListenerRequest.setHealthCheckPort(0);
+        updateBlbUdpListenerRequest.setHealthCheckTimeoutInSecond(0);
+        updateBlbUdpListenerRequest.setHealthCheckInterval(0);
+        updateBlbUdpListenerRequest.setUnhealthyThreshold(0);
+        updateBlbUdpListenerRequest.setHealthyThreshold(0);
+        updateBlbUdpListenerRequest.setHealthCheckString("");
+        updateBlbUdpListenerRequest.setUdpSessionTimeout(0);
+        blbClient.updateBlbUdpListener(updateBlbUdpListenerRequest);
     }
 }
