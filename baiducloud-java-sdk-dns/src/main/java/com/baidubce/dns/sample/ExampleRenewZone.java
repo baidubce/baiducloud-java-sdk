@@ -20,7 +20,7 @@ public class ExampleRenewZone {
         DnsClient client = new DnsClient(config);
         BillingForRenew billing = new BillingForRenew();
         Reservation reservation = new Reservation();
-        reservation.setReservationLength(0);
+        reservation.setReservationLength(1);
 
         billing.setReservation(reservation);
 

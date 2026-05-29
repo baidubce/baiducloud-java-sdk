@@ -1,13 +1,12 @@
-package com.baidubce.dns.sample;
+package com.baidubce.blb.sample;
 
 import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
-import com.baidubce.dns.DnsClient;
-import com.baidubce.dns.models.UpdateLineGroupRequest;
-import java.util.ArrayList;
+import com.baidubce.blb.BlbClient;
+import com.baidubce.blb.models.DeleteAppBlbIpGroupRequest;
 
-public class ExampleUpdateLineGroup {
+public class ExampleDeleteAppBlbIpGroup {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -16,14 +15,13 @@ public class ExampleUpdateLineGroup {
         BceClientConfiguration config = new BceClientConfiguration();
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
-        DnsClient client = new DnsClient(config);
-        UpdateLineGroupRequest updateLineGroupRequest = new UpdateLineGroupRequest();
-        updateLineGroupRequest.setLineId(1);
-        updateLineGroupRequest.setClientToken("");
-        updateLineGroupRequest.setName("");
-        updateLineGroupRequest.setLines(new ArrayList<>());
+        BlbClient client = new BlbClient(config);
+        DeleteAppBlbIpGroupRequest deleteAppBlbIpGroupRequest = new DeleteAppBlbIpGroupRequest();
+        deleteAppBlbIpGroupRequest.setBlbId("");
+        deleteAppBlbIpGroupRequest.setClientToken("");
+        deleteAppBlbIpGroupRequest.setIpGroupId("");
         try {
-            client.updateLineGroup(updateLineGroupRequest);
+            client.deleteAppBlbIpGroup(deleteAppBlbIpGroupRequest);
         } catch (BceClientException e) {
             // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
