@@ -309,9 +309,6 @@ public class CfsClient extends AbstractBceClient {
     public void updateFileSystemLabels(UpdateFileSystemLabelsRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_CFS);
         internalRequest.addParameter("tag", null);
-        if (request.getTag() != null) {
-            internalRequest.addParameter("tag", request.getTag());
-        }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }

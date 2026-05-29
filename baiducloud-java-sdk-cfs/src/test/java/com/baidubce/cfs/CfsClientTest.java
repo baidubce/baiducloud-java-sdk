@@ -262,7 +262,6 @@ public class CfsClientTest {
     @Test
     public void updateFileSystemLabelsTest() {
         UpdateFileSystemLabelsRequest updateFileSystemLabelsRequest = new UpdateFileSystemLabelsRequest();
-        updateFileSystemLabelsRequest.setTag("");
         updateFileSystemLabelsRequest.setFsId(new ArrayList<>());
         updateFileSystemLabelsRequest.setTags(new ArrayList<>());
         cfsClient.updateFileSystemLabels(updateFileSystemLabelsRequest);

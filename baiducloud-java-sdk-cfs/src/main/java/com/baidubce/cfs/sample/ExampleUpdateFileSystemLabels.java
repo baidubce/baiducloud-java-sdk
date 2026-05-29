@@ -18,7 +18,6 @@ public class ExampleUpdateFileSystemLabels {
         config.setEndpoint(endpoint);
         CfsClient client = new CfsClient(config);
         UpdateFileSystemLabelsRequest updateFileSystemLabelsRequest = new UpdateFileSystemLabelsRequest();
-        updateFileSystemLabelsRequest.setTag("");
         updateFileSystemLabelsRequest.setFsId(new ArrayList<>());
         updateFileSystemLabelsRequest.setTags(new ArrayList<>());
         try {
