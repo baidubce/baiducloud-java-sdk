@@ -13,6 +13,10 @@ import com.baidubce.blb.models.BlbInquiryRequest;
 import com.baidubce.blb.models.BlbInquiryResponse;
 import com.baidubce.blb.models.CreateAppBlbHttpListenerRequest;
 import com.baidubce.blb.models.CreateAppBlbHttpsListenerRequest;
+import com.baidubce.blb.models.CreateAppBlbIpGroupMemberRequest;
+import com.baidubce.blb.models.CreateAppBlbIpGroupProtocolRequest;
+import com.baidubce.blb.models.CreateAppBlbIpGroupRequest;
+import com.baidubce.blb.models.CreateAppBlbIpGroupResponse;
 import com.baidubce.blb.models.CreateAppBlbPolicyRequest;
 import com.baidubce.blb.models.CreateAppBlbRequest;
 import com.baidubce.blb.models.CreateAppBlbResponse;
@@ -30,6 +34,9 @@ import com.baidubce.blb.models.CreateBlbResponse;
 import com.baidubce.blb.models.CreateBlbSslListenerRequest;
 import com.baidubce.blb.models.CreateBlbTcpListenerRequest;
 import com.baidubce.blb.models.CreateBlbUdpListenerRequest;
+import com.baidubce.blb.models.DeleteAppBlbIpGroupMemberRequest;
+import com.baidubce.blb.models.DeleteAppBlbIpGroupProtocolRequest;
+import com.baidubce.blb.models.DeleteAppBlbIpGroupRequest;
 import com.baidubce.blb.models.DeleteAppBlbListenerRequest;
 import com.baidubce.blb.models.DeleteAppBlbPolicyRequest;
 import com.baidubce.blb.models.DeleteAppBlbServerGroupPortRequest;
@@ -41,6 +48,10 @@ import com.baidubce.blb.models.DescribeAppBlbHttpListenerRequest;
 import com.baidubce.blb.models.DescribeAppBlbHttpListenerResponse;
 import com.baidubce.blb.models.DescribeAppBlbHttpsListenerRequest;
 import com.baidubce.blb.models.DescribeAppBlbHttpsListenerResponse;
+import com.baidubce.blb.models.DescribeAppBlbIpGroupMemberRequest;
+import com.baidubce.blb.models.DescribeAppBlbIpGroupMemberResponse;
+import com.baidubce.blb.models.DescribeAppBlbIpGroupRequest;
+import com.baidubce.blb.models.DescribeAppBlbIpGroupResponse;
 import com.baidubce.blb.models.DescribeAppBlbListenerRequest;
 import com.baidubce.blb.models.DescribeAppBlbListenerResponse;
 import com.baidubce.blb.models.DescribeAppBlbPolicyRequest;
@@ -96,6 +107,9 @@ import com.baidubce.blb.models.UnbindBlbEnterpriseSecurityGroupRequest;
 import com.baidubce.blb.models.UnbindBlbSecurityGroupRequest;
 import com.baidubce.blb.models.UpdateAppBlbHttpListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbHttpsListenerRequest;
+import com.baidubce.blb.models.UpdateAppBlbIpGroupMemberRequest;
+import com.baidubce.blb.models.UpdateAppBlbIpGroupProtocolRequest;
+import com.baidubce.blb.models.UpdateAppBlbIpGroupRequest;
 import com.baidubce.blb.models.UpdateAppBlbPolicyRequest;
 import com.baidubce.blb.models.UpdateAppBlbRequest;
 import com.baidubce.blb.models.UpdateAppBlbServerGroupPortRequest;
@@ -318,6 +332,57 @@ public class BlbClientTest {
         createAppBlbHttpsListenerRequest.setAdditionalCertDomains(new ArrayList<>());
         createAppBlbHttpsListenerRequest.setDescription("");
         blbClient.createAppBlbHttpsListener(createAppBlbHttpsListenerRequest);
+    }
+    /**
+     * createAppBlbIpGroup
+     *
+     */
+    @Test
+    public void createAppBlbIpGroupTest() {
+        CreateAppBlbIpGroupRequest createAppBlbIpGroupRequest = new CreateAppBlbIpGroupRequest();
+        createAppBlbIpGroupRequest.setBlbId("");
+        createAppBlbIpGroupRequest.setClientToken("");
+        createAppBlbIpGroupRequest.setName("");
+        createAppBlbIpGroupRequest.setDesc("");
+        createAppBlbIpGroupRequest.setMemberList(new ArrayList<>());
+        CreateAppBlbIpGroupResponse response = blbClient.createAppBlbIpGroup(createAppBlbIpGroupRequest);
+        System.out.println(response);
+    }
+    /**
+     * createAppBlbIpGroupMember
+     *
+     */
+    @Test
+    public void createAppBlbIpGroupMemberTest() {
+        CreateAppBlbIpGroupMemberRequest createAppBlbIpGroupMemberRequest = new CreateAppBlbIpGroupMemberRequest();
+        createAppBlbIpGroupMemberRequest.setBlbId("");
+        createAppBlbIpGroupMemberRequest.setClientToken("");
+        createAppBlbIpGroupMemberRequest.setIpGroupId("");
+        createAppBlbIpGroupMemberRequest.setMemberList(new ArrayList<>());
+        blbClient.createAppBlbIpGroupMember(createAppBlbIpGroupMemberRequest);
+    }
+    /**
+     * createAppBlbIpGroupProtocol
+     *
+     */
+    @Test
+    public void createAppBlbIpGroupProtocolTest() {
+        CreateAppBlbIpGroupProtocolRequest createAppBlbIpGroupProtocolRequest = new CreateAppBlbIpGroupProtocolRequest();
+        createAppBlbIpGroupProtocolRequest.setBlbId("");
+        createAppBlbIpGroupProtocolRequest.setClientToken("");
+        createAppBlbIpGroupProtocolRequest.setIpGroupId("");
+        createAppBlbIpGroupProtocolRequest.setType("");
+        createAppBlbIpGroupProtocolRequest.setHealthCheck("");
+        createAppBlbIpGroupProtocolRequest.setHealthCheckPort(0);
+        createAppBlbIpGroupProtocolRequest.setHealthCheckUrlPath("");
+        createAppBlbIpGroupProtocolRequest.setHealthCheckTimeoutInSecond(0);
+        createAppBlbIpGroupProtocolRequest.setHealthCheckIntervalInSecond(0);
+        createAppBlbIpGroupProtocolRequest.setHealthCheckDownRetry(0);
+        createAppBlbIpGroupProtocolRequest.setHealthCheckUpRetry(0);
+        createAppBlbIpGroupProtocolRequest.setHealthCheckNormalStatus("");
+        createAppBlbIpGroupProtocolRequest.setHealthCheckHost("");
+        createAppBlbIpGroupProtocolRequest.setUdpHealthCheckString("");
+        blbClient.createAppBlbIpGroupProtocol(createAppBlbIpGroupProtocolRequest);
     }
     /**
      * createAppBlbPolicy
@@ -589,6 +654,44 @@ public class BlbClientTest {
         blbClient.createBlbUdpListener(createBlbUdpListenerRequest);
     }
     /**
+     * deleteAppBlbIpGroup
+     *
+     */
+    @Test
+    public void deleteAppBlbIpGroupTest() {
+        DeleteAppBlbIpGroupRequest deleteAppBlbIpGroupRequest = new DeleteAppBlbIpGroupRequest();
+        deleteAppBlbIpGroupRequest.setBlbId("");
+        deleteAppBlbIpGroupRequest.setClientToken("");
+        deleteAppBlbIpGroupRequest.setIpGroupId("");
+        blbClient.deleteAppBlbIpGroup(deleteAppBlbIpGroupRequest);
+    }
+    /**
+     * deleteAppBlbIpGroupMember
+     *
+     */
+    @Test
+    public void deleteAppBlbIpGroupMemberTest() {
+        DeleteAppBlbIpGroupMemberRequest deleteAppBlbIpGroupMemberRequest = new DeleteAppBlbIpGroupMemberRequest();
+        deleteAppBlbIpGroupMemberRequest.setBlbId("");
+        deleteAppBlbIpGroupMemberRequest.setClientToken("");
+        deleteAppBlbIpGroupMemberRequest.setIpGroupId("");
+        deleteAppBlbIpGroupMemberRequest.setMemberIdList(new ArrayList<>());
+        blbClient.deleteAppBlbIpGroupMember(deleteAppBlbIpGroupMemberRequest);
+    }
+    /**
+     * deleteAppBlbIpGroupProtocol
+     *
+     */
+    @Test
+    public void deleteAppBlbIpGroupProtocolTest() {
+        DeleteAppBlbIpGroupProtocolRequest deleteAppBlbIpGroupProtocolRequest = new DeleteAppBlbIpGroupProtocolRequest();
+        deleteAppBlbIpGroupProtocolRequest.setBlbId("");
+        deleteAppBlbIpGroupProtocolRequest.setClientToken("");
+        deleteAppBlbIpGroupProtocolRequest.setIpGroupId("");
+        deleteAppBlbIpGroupProtocolRequest.setBackendPolicyIdList(new ArrayList<>());
+        blbClient.deleteAppBlbIpGroupProtocol(deleteAppBlbIpGroupProtocolRequest);
+    }
+    /**
      * deleteAppBlbListener
      *
      */
@@ -715,6 +818,35 @@ public class BlbClientTest {
         describeAppBlbHttpsListenerRequest.setMarker("");
         describeAppBlbHttpsListenerRequest.setMaxKeys(0);
         DescribeAppBlbHttpsListenerResponse response = blbClient.describeAppBlbHttpsListener(describeAppBlbHttpsListenerRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeAppBlbIpGroup
+     *
+     */
+    @Test
+    public void describeAppBlbIpGroupTest() {
+        DescribeAppBlbIpGroupRequest describeAppBlbIpGroupRequest = new DescribeAppBlbIpGroupRequest();
+        describeAppBlbIpGroupRequest.setBlbId("");
+        describeAppBlbIpGroupRequest.setName("");
+        describeAppBlbIpGroupRequest.setExactlyMatch(false);
+        describeAppBlbIpGroupRequest.setMarker("");
+        describeAppBlbIpGroupRequest.setMaxKeys(0);
+        DescribeAppBlbIpGroupResponse response = blbClient.describeAppBlbIpGroup(describeAppBlbIpGroupRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeAppBlbIpGroupMember
+     *
+     */
+    @Test
+    public void describeAppBlbIpGroupMemberTest() {
+        DescribeAppBlbIpGroupMemberRequest describeAppBlbIpGroupMemberRequest = new DescribeAppBlbIpGroupMemberRequest();
+        describeAppBlbIpGroupMemberRequest.setBlbId("");
+        describeAppBlbIpGroupMemberRequest.setIpGroupId("");
+        describeAppBlbIpGroupMemberRequest.setMarker("");
+        describeAppBlbIpGroupMemberRequest.setMaxKeys(0);
+        DescribeAppBlbIpGroupMemberResponse response = blbClient.describeAppBlbIpGroupMember(describeAppBlbIpGroupMemberRequest);
         System.out.println(response);
     }
     /**
@@ -1155,6 +1287,56 @@ public class BlbClientTest {
         updateAppBlbHttpsListenerRequest.setAdditionalCertDomains(new ArrayList<>());
         updateAppBlbHttpsListenerRequest.setDescription("");
         blbClient.updateAppBlbHttpsListener(updateAppBlbHttpsListenerRequest);
+    }
+    /**
+     * updateAppBlbIpGroup
+     *
+     */
+    @Test
+    public void updateAppBlbIpGroupTest() {
+        UpdateAppBlbIpGroupRequest updateAppBlbIpGroupRequest = new UpdateAppBlbIpGroupRequest();
+        updateAppBlbIpGroupRequest.setBlbId("");
+        updateAppBlbIpGroupRequest.setClientToken("");
+        updateAppBlbIpGroupRequest.setIpGroupId("");
+        updateAppBlbIpGroupRequest.setName("");
+        updateAppBlbIpGroupRequest.setDesc("");
+        blbClient.updateAppBlbIpGroup(updateAppBlbIpGroupRequest);
+    }
+    /**
+     * updateAppBlbIpGroupMember
+     *
+     */
+    @Test
+    public void updateAppBlbIpGroupMemberTest() {
+        UpdateAppBlbIpGroupMemberRequest updateAppBlbIpGroupMemberRequest = new UpdateAppBlbIpGroupMemberRequest();
+        updateAppBlbIpGroupMemberRequest.setBlbId("");
+        updateAppBlbIpGroupMemberRequest.setClientToken("");
+        updateAppBlbIpGroupMemberRequest.setIpGroupId("");
+        updateAppBlbIpGroupMemberRequest.setMemberList(new ArrayList<>());
+        blbClient.updateAppBlbIpGroupMember(updateAppBlbIpGroupMemberRequest);
+    }
+    /**
+     * updateAppBlbIpGroupProtocol
+     *
+     */
+    @Test
+    public void updateAppBlbIpGroupProtocolTest() {
+        UpdateAppBlbIpGroupProtocolRequest updateAppBlbIpGroupProtocolRequest = new UpdateAppBlbIpGroupProtocolRequest();
+        updateAppBlbIpGroupProtocolRequest.setBlbId("");
+        updateAppBlbIpGroupProtocolRequest.setClientToken("");
+        updateAppBlbIpGroupProtocolRequest.setIpGroupId("");
+        updateAppBlbIpGroupProtocolRequest.setId("");
+        updateAppBlbIpGroupProtocolRequest.setHealthCheck("");
+        updateAppBlbIpGroupProtocolRequest.setHealthCheckPort(0);
+        updateAppBlbIpGroupProtocolRequest.setHealthCheckUrlPath("");
+        updateAppBlbIpGroupProtocolRequest.setHealthCheckTimeoutInSecond(0);
+        updateAppBlbIpGroupProtocolRequest.setHealthCheckIntervalInSecond(0);
+        updateAppBlbIpGroupProtocolRequest.setHealthCheckDownRetry(0);
+        updateAppBlbIpGroupProtocolRequest.setHealthCheckUpRetry(0);
+        updateAppBlbIpGroupProtocolRequest.setHealthCheckNormalStatus("");
+        updateAppBlbIpGroupProtocolRequest.setHealthCheckHost("");
+        updateAppBlbIpGroupProtocolRequest.setUdpHealthCheckString("");
+        blbClient.updateAppBlbIpGroupProtocol(updateAppBlbIpGroupProtocolRequest);
     }
     /**
      * updateAppBlbPolicy
