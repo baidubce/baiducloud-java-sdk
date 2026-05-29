@@ -1,18 +1,11 @@
 package com.baidubce.cfs.models;
 
 import com.baidubce.common.BaseBceRequest;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UpdateFileSystemLabelsRequest extends BaseBceRequest {
-
-    /**
-    * tag
-    */
-    @JsonIgnore
-    private String tag;
 
     /**
     * FileSystem ID 列表
@@ -23,15 +16,6 @@ public class UpdateFileSystemLabelsRequest extends BaseBceRequest {
     * tags
     */
     private List<Tag> tags;
-
-    public String getTag() {
-        return tag;
-    }
-
-    public UpdateFileSystemLabelsRequest setTag(String tag) {
-        this.tag = tag;
-        return this;
-    }
 
     public List<String> getFsId() {
         return fsId;
