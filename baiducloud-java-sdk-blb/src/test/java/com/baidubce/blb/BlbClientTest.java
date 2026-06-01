@@ -2,6 +2,7 @@ package com.baidubce.blb;
 
 import com.baidubce.blb.models.AddAppBlbServerGroupRsRequest;
 import com.baidubce.blb.models.AddBlbServerRequest;
+import com.baidubce.blb.models.AddServiceAuthRequest;
 import com.baidubce.blb.models.BillingChangeCancelToPostBlbRequest;
 import com.baidubce.blb.models.BillingChangePostToPreBlbRequest;
 import com.baidubce.blb.models.BillingChangePostToPreBlbResponse;
@@ -9,6 +10,7 @@ import com.baidubce.blb.models.BillingChangePreToPostBlbRequest;
 import com.baidubce.blb.models.BillingChangePreToPostBlbResponse;
 import com.baidubce.blb.models.BindBlbEnterpriseSecurityGroupRequest;
 import com.baidubce.blb.models.BindBlbSecurityGroupRequest;
+import com.baidubce.blb.models.BindInstanceToServiceRequest;
 import com.baidubce.blb.models.BlbInquiryRequest;
 import com.baidubce.blb.models.BlbInquiryResponse;
 import com.baidubce.blb.models.CreateAppBlbHttpListenerRequest;
@@ -34,6 +36,8 @@ import com.baidubce.blb.models.CreateBlbResponse;
 import com.baidubce.blb.models.CreateBlbSslListenerRequest;
 import com.baidubce.blb.models.CreateBlbTcpListenerRequest;
 import com.baidubce.blb.models.CreateBlbUdpListenerRequest;
+import com.baidubce.blb.models.CreateServiceRequest;
+import com.baidubce.blb.models.CreateServiceResponse;
 import com.baidubce.blb.models.DeleteAppBlbIpGroupMemberRequest;
 import com.baidubce.blb.models.DeleteAppBlbIpGroupProtocolRequest;
 import com.baidubce.blb.models.DeleteAppBlbIpGroupRequest;
@@ -44,6 +48,8 @@ import com.baidubce.blb.models.DeleteAppBlbServerGroupRequest;
 import com.baidubce.blb.models.DeleteAppBlbServerGroupRsRequest;
 import com.baidubce.blb.models.DeleteBlbListenerRequest;
 import com.baidubce.blb.models.DeleteBlbServerRequest;
+import com.baidubce.blb.models.DeleteServiceAuthRequest;
+import com.baidubce.blb.models.DeleteServiceRequest;
 import com.baidubce.blb.models.DescribeAppBlbHttpListenerRequest;
 import com.baidubce.blb.models.DescribeAppBlbHttpListenerResponse;
 import com.baidubce.blb.models.DescribeAppBlbHttpsListenerRequest;
@@ -98,6 +104,10 @@ import com.baidubce.blb.models.DescribeBlbUdpListenerRequest;
 import com.baidubce.blb.models.DescribeBlbUdpListenerResponse;
 import com.baidubce.blb.models.DescribeBlbsRequest;
 import com.baidubce.blb.models.DescribeBlbsResponse;
+import com.baidubce.blb.models.DescribeServiceRequest;
+import com.baidubce.blb.models.DescribeServiceResponse;
+import com.baidubce.blb.models.DescribeServicesRequest;
+import com.baidubce.blb.models.DescribeServicesResponse;
 import com.baidubce.blb.models.RefundBlbRequest;
 import com.baidubce.blb.models.ReleaseAppBlbRequest;
 import com.baidubce.blb.models.ReleaseBlbRequest;
@@ -105,6 +115,7 @@ import com.baidubce.blb.models.ResizeBlbRequest;
 import com.baidubce.blb.models.ResizeBlbResponse;
 import com.baidubce.blb.models.UnbindBlbEnterpriseSecurityGroupRequest;
 import com.baidubce.blb.models.UnbindBlbSecurityGroupRequest;
+import com.baidubce.blb.models.UnbindInstanceFromServiceRequest;
 import com.baidubce.blb.models.UpdateAppBlbHttpListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbHttpsListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbIpGroupMemberRequest;
@@ -127,6 +138,8 @@ import com.baidubce.blb.models.UpdateBlbServerRequest;
 import com.baidubce.blb.models.UpdateBlbSslListenerRequest;
 import com.baidubce.blb.models.UpdateBlbTcpListenerRequest;
 import com.baidubce.blb.models.UpdateBlbUdpListenerRequest;
+import com.baidubce.blb.models.UpdateServiceAuthRequest;
+import com.baidubce.blb.models.UpdateServiceRequest;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -173,6 +186,18 @@ public class BlbClientTest {
         addBlbServerRequest.setClientToken("");
         addBlbServerRequest.setBackendServerList(new ArrayList<>());
         blbClient.addBlbServer(addBlbServerRequest);
+    }
+    /**
+     * addServiceAuth
+     *
+     */
+    @Test
+    public void addServiceAuthTest() {
+        AddServiceAuthRequest addServiceAuthRequest = new AddServiceAuthRequest();
+        addServiceAuthRequest.setService("");
+        addServiceAuthRequest.setClientToken("");
+        addServiceAuthRequest.setAuthList(new ArrayList<>());
+        blbClient.addServiceAuth(addServiceAuthRequest);
     }
     /**
      * billingChangeCancelToPostBlb
@@ -238,6 +263,18 @@ public class BlbClientTest {
         bindBlbSecurityGroupRequest.setClientToken("");
         bindBlbSecurityGroupRequest.setSecurityGroupIds(new ArrayList<>());
         blbClient.bindBlbSecurityGroup(bindBlbSecurityGroupRequest);
+    }
+    /**
+     * bindInstanceToService
+     *
+     */
+    @Test
+    public void bindInstanceToServiceTest() {
+        BindInstanceToServiceRequest bindInstanceToServiceRequest = new BindInstanceToServiceRequest();
+        bindInstanceToServiceRequest.setService("");
+        bindInstanceToServiceRequest.setClientToken("");
+        bindInstanceToServiceRequest.setInstanceId("");
+        blbClient.bindInstanceToService(bindInstanceToServiceRequest);
     }
     /**
      * blbInquiry
@@ -654,6 +691,22 @@ public class BlbClientTest {
         blbClient.createBlbUdpListener(createBlbUdpListenerRequest);
     }
     /**
+     * createService
+     *
+     */
+    @Test
+    public void createServiceTest() {
+        CreateServiceRequest createServiceRequest = new CreateServiceRequest();
+        createServiceRequest.setClientToken("");
+        createServiceRequest.setName("");
+        createServiceRequest.setDescription("");
+        createServiceRequest.setServiceName("");
+        createServiceRequest.setInstanceId("");
+        createServiceRequest.setAuthList(new ArrayList<>());
+        CreateServiceResponse response = blbClient.createService(createServiceRequest);
+        System.out.println(response);
+    }
+    /**
      * deleteAppBlbIpGroup
      *
      */
@@ -780,6 +833,30 @@ public class BlbClientTest {
         deleteBlbServerRequest.setClientToken("");
         deleteBlbServerRequest.setBackendServerList(new ArrayList<>());
         blbClient.deleteBlbServer(deleteBlbServerRequest);
+    }
+    /**
+     * deleteService
+     *
+     */
+    @Test
+    public void deleteServiceTest() {
+        DeleteServiceRequest deleteServiceRequest = new DeleteServiceRequest();
+        deleteServiceRequest.setService("");
+        deleteServiceRequest.setClientToken("");
+        blbClient.deleteService(deleteServiceRequest);
+    }
+    /**
+     * deleteServiceAuth
+     *
+     */
+    @Test
+    public void deleteServiceAuthTest() {
+        DeleteServiceAuthRequest deleteServiceAuthRequest = new DeleteServiceAuthRequest();
+        deleteServiceAuthRequest.setService("");
+        deleteServiceAuthRequest.setAction("");
+        deleteServiceAuthRequest.setClientToken("");
+        deleteServiceAuthRequest.setUidList(new ArrayList<>());
+        blbClient.deleteServiceAuth(deleteServiceAuthRequest);
     }
     /**
      * describeAppBlb
@@ -1154,6 +1231,28 @@ public class BlbClientTest {
         System.out.println(response);
     }
     /**
+     * describeService
+     *
+     */
+    @Test
+    public void describeServiceTest() {
+        DescribeServiceRequest describeServiceRequest = new DescribeServiceRequest();
+        describeServiceRequest.setService("");
+        DescribeServiceResponse response = blbClient.describeService(describeServiceRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeServices
+     *
+     */
+    @Test
+    public void describeServicesTest() {
+        DescribeServicesRequest describeServicesRequest = new DescribeServicesRequest();
+        describeServicesRequest.setMarker("");
+        DescribeServicesResponse response = blbClient.describeServices(describeServicesRequest);
+        System.out.println(response);
+    }
+    /**
      * refundBlb
      *
      */
@@ -1221,6 +1320,17 @@ public class BlbClientTest {
         unbindBlbSecurityGroupRequest.setClientToken("");
         unbindBlbSecurityGroupRequest.setSecurityGroupIds(new ArrayList<>());
         blbClient.unbindBlbSecurityGroup(unbindBlbSecurityGroupRequest);
+    }
+    /**
+     * unbindInstanceFromService
+     *
+     */
+    @Test
+    public void unbindInstanceFromServiceTest() {
+        UnbindInstanceFromServiceRequest unbindInstanceFromServiceRequest = new UnbindInstanceFromServiceRequest();
+        unbindInstanceFromServiceRequest.setService("");
+        unbindInstanceFromServiceRequest.setClientToken("");
+        blbClient.unbindInstanceFromService(unbindInstanceFromServiceRequest);
     }
     /**
      * updateAppBlb
@@ -1633,5 +1743,30 @@ public class BlbClientTest {
         updateBlbUdpListenerRequest.setHealthCheckString("");
         updateBlbUdpListenerRequest.setUdpSessionTimeout(0);
         blbClient.updateBlbUdpListener(updateBlbUdpListenerRequest);
+    }
+    /**
+     * updateService
+     *
+     */
+    @Test
+    public void updateServiceTest() {
+        UpdateServiceRequest updateServiceRequest = new UpdateServiceRequest();
+        updateServiceRequest.setService("");
+        updateServiceRequest.setClientToken("");
+        updateServiceRequest.setName("");
+        updateServiceRequest.setDescription("");
+        blbClient.updateService(updateServiceRequest);
+    }
+    /**
+     * updateServiceAuth
+     *
+     */
+    @Test
+    public void updateServiceAuthTest() {
+        UpdateServiceAuthRequest updateServiceAuthRequest = new UpdateServiceAuthRequest();
+        updateServiceAuthRequest.setService("");
+        updateServiceAuthRequest.setClientToken("");
+        updateServiceAuthRequest.setAuthList(new ArrayList<>());
+        blbClient.updateServiceAuth(updateServiceAuthRequest);
     }
 }
