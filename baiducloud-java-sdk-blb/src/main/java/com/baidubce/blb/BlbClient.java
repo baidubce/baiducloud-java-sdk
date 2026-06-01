@@ -17,6 +17,7 @@ import com.baidubce.common.BaseBceResponse;
 
 import com.baidubce.blb.models.AddAppBlbServerGroupRsRequest;
 import com.baidubce.blb.models.AddBlbServerRequest;
+import com.baidubce.blb.models.AddServiceAuthRequest;
 import com.baidubce.blb.models.BillingChangeCancelToPostBlbRequest;
 import com.baidubce.blb.models.BillingChangePostToPreBlbRequest;
 import com.baidubce.blb.models.BillingChangePostToPreBlbResponse;
@@ -24,6 +25,7 @@ import com.baidubce.blb.models.BillingChangePreToPostBlbRequest;
 import com.baidubce.blb.models.BillingChangePreToPostBlbResponse;
 import com.baidubce.blb.models.BindBlbEnterpriseSecurityGroupRequest;
 import com.baidubce.blb.models.BindBlbSecurityGroupRequest;
+import com.baidubce.blb.models.BindInstanceToServiceRequest;
 import com.baidubce.blb.models.BlbInquiryRequest;
 import com.baidubce.blb.models.BlbInquiryResponse;
 import com.baidubce.blb.models.CreateAppBlbHttpListenerRequest;
@@ -49,6 +51,8 @@ import com.baidubce.blb.models.CreateBlbResponse;
 import com.baidubce.blb.models.CreateBlbSslListenerRequest;
 import com.baidubce.blb.models.CreateBlbTcpListenerRequest;
 import com.baidubce.blb.models.CreateBlbUdpListenerRequest;
+import com.baidubce.blb.models.CreateServiceRequest;
+import com.baidubce.blb.models.CreateServiceResponse;
 import com.baidubce.blb.models.DeleteAppBlbIpGroupMemberRequest;
 import com.baidubce.blb.models.DeleteAppBlbIpGroupProtocolRequest;
 import com.baidubce.blb.models.DeleteAppBlbIpGroupRequest;
@@ -59,6 +63,8 @@ import com.baidubce.blb.models.DeleteAppBlbServerGroupRequest;
 import com.baidubce.blb.models.DeleteAppBlbServerGroupRsRequest;
 import com.baidubce.blb.models.DeleteBlbListenerRequest;
 import com.baidubce.blb.models.DeleteBlbServerRequest;
+import com.baidubce.blb.models.DeleteServiceAuthRequest;
+import com.baidubce.blb.models.DeleteServiceRequest;
 import com.baidubce.blb.models.DescribeAppBlbHttpListenerRequest;
 import com.baidubce.blb.models.DescribeAppBlbHttpListenerResponse;
 import com.baidubce.blb.models.DescribeAppBlbHttpsListenerRequest;
@@ -113,6 +119,10 @@ import com.baidubce.blb.models.DescribeBlbUdpListenerRequest;
 import com.baidubce.blb.models.DescribeBlbUdpListenerResponse;
 import com.baidubce.blb.models.DescribeBlbsRequest;
 import com.baidubce.blb.models.DescribeBlbsResponse;
+import com.baidubce.blb.models.DescribeServiceRequest;
+import com.baidubce.blb.models.DescribeServiceResponse;
+import com.baidubce.blb.models.DescribeServicesRequest;
+import com.baidubce.blb.models.DescribeServicesResponse;
 import com.baidubce.blb.models.RefundBlbRequest;
 import com.baidubce.blb.models.ReleaseAppBlbRequest;
 import com.baidubce.blb.models.ReleaseBlbRequest;
@@ -120,6 +130,7 @@ import com.baidubce.blb.models.ResizeBlbRequest;
 import com.baidubce.blb.models.ResizeBlbResponse;
 import com.baidubce.blb.models.UnbindBlbEnterpriseSecurityGroupRequest;
 import com.baidubce.blb.models.UnbindBlbSecurityGroupRequest;
+import com.baidubce.blb.models.UnbindInstanceFromServiceRequest;
 import com.baidubce.blb.models.UpdateAppBlbHttpListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbHttpsListenerRequest;
 import com.baidubce.blb.models.UpdateAppBlbIpGroupMemberRequest;
@@ -142,6 +153,8 @@ import com.baidubce.blb.models.UpdateBlbServerRequest;
 import com.baidubce.blb.models.UpdateBlbSslListenerRequest;
 import com.baidubce.blb.models.UpdateBlbTcpListenerRequest;
 import com.baidubce.blb.models.UpdateBlbUdpListenerRequest;
+import com.baidubce.blb.models.UpdateServiceAuthRequest;
+import com.baidubce.blb.models.UpdateServiceRequest;
 
 public class BlbClient extends AbstractBceClient {
 
@@ -152,26 +165,27 @@ public class BlbClient extends AbstractBceClient {
     private static final String CONSTANT_SECURITYGROUP = "securitygroup";
     private static final String CONSTANT_ENTERPRISE = "enterprise";
     private static final String CONSTANT_APPBLB = "appblb";
-    private static final String CONSTANT_IPGROUP = "ipgroup";
-    private static final String CONSTANT_S_S_LLISTENER = "SSLlistener";
     private static final String CONSTANT_APPSERVERGROUP = "appservergroup";
+    private static final String CONSTANT_SERVICE = "service";
     private static final String CONSTANT_H_T_T_P_SLISTENER = "HTTPSlistener";
-    private static final String CONSTANT_H_T_T_PLISTENER = "HTTPlistener";
     private static final String CONSTANT_BACKENDSERVER = "backendserver";
+    private static final String CONSTANT_IPGROUP = "ipgroup";
     private static final String CONSTANT_MEMBER = "member";
     private static final String CONSTANT_CHARGE = "charge";
     private static final String CONSTANT_T_C_PLISTENER = "TCPlistener";
-    private static final String CONSTANT_LISTENER = "listener";
-    private static final String CONSTANT_BLBRS = "blbrs";
     private static final String CONSTANT_U_D_PLISTENER = "UDPlistener";
+    private static final String CONSTANT_S_S_LLISTENER = "SSLlistener";
+    private static final String CONSTANT_LISTENER = "listener";
     private static final String CONSTANT_BACKENDPOLICY = "backendpolicy";
     private static final String CONSTANT_APPSERVERGROUPPORT = "appservergroupport";
     private static final String CONSTANT_REFUND = "refund";
-    private static final String CONSTANT_PRICE = "price";
+    private static final String CONSTANT_BLBRS = "blbrs";
+    private static final String CONSTANT_H_T_T_PLISTENER = "HTTPlistener";
     private static final String CONSTANT_MODIFICATION_PROTECTION = "modification_protection";
     private static final String CONSTANT_ACL = "acl";
-    private static final String CONSTANT_BLBRSUNMOUNT = "blbrsunmount";
     private static final String CONSTANT_POLICYS = "policys";
+    private static final String CONSTANT_PRICE = "price";
+    private static final String CONSTANT_BLBRSUNMOUNT = "blbrsunmount";
     private static final String CONSTANT_BLBRSMOUNT = "blbrsmount";
 
     /**
@@ -214,6 +228,21 @@ public class BlbClient extends AbstractBceClient {
      */
     public void addBlbServer(AddBlbServerRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_BLB, request.getBlbId(), CONSTANT_BACKENDSERVER);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * addServiceAuth
+     * 
+     * @param request 入参结构体
+     */
+    public void addServiceAuth(AddServiceAuthRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_SERVICE, request.getService());
+        internalRequest.addParameter("addAuth", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -290,6 +319,21 @@ public class BlbClient extends AbstractBceClient {
      */
     public void bindBlbSecurityGroup(BindBlbSecurityGroupRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_BLB, request.getBlbId(), CONSTANT_SECURITYGROUP);
+        internalRequest.addParameter("bind", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * bindInstanceToService
+     * 
+     * @param request 入参结构体
+     */
+    public void bindInstanceToService(BindInstanceToServiceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_SERVICE, request.getService());
         internalRequest.addParameter("bind", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
@@ -563,6 +607,21 @@ public class BlbClient extends AbstractBceClient {
     }
 
     /**
+     * createService
+     * 
+     * @param request 入参结构体
+     * @return CreateServiceResponse
+     */
+    public CreateServiceResponse createService(CreateServiceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_SERVICE);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateServiceResponse.class);
+    }
+
+    /**
      * deleteAppBlbIpGroup
      * 
      * @param request 入参结构体
@@ -705,6 +764,37 @@ public class BlbClient extends AbstractBceClient {
      */
     public void deleteBlbServer(DeleteBlbServerRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_BLB, request.getBlbId(), CONSTANT_BACKENDSERVER);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteService
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteService(DeleteServiceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_SERVICE, request.getService());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteServiceAuth
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteServiceAuth(DeleteServiceAuthRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_SERVICE, request.getService());
+        internalRequest.addParameter("removeAuth", null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -1242,6 +1332,32 @@ public class BlbClient extends AbstractBceClient {
     }
 
     /**
+     * describeService
+     * 
+     * @param request 入参结构体
+     * @return DescribeServiceResponse
+     */
+    public DescribeServiceResponse describeService(DescribeServiceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_SERVICE, request.getService());
+        return invokeHttpClient(internalRequest, DescribeServiceResponse.class);
+    }
+
+    /**
+     * describeServices
+     * 
+     * @param request 入参结构体
+     * @return DescribeServicesResponse
+     */
+    public DescribeServicesResponse describeServices(DescribeServicesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_SERVICE);
+        internalRequest.addParameter("maxKeys", "1");
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        return invokeHttpClient(internalRequest, DescribeServicesResponse.class);
+    }
+
+    /**
      * refundBlb
      * 
      * @param request 入参结构体
@@ -1321,6 +1437,20 @@ public class BlbClient extends AbstractBceClient {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * unbindInstanceFromService
+     * 
+     * @param request 入参结构体
+     */
+    public void unbindInstanceFromService(UnbindInstanceFromServiceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_SERVICE, request.getService());
+        internalRequest.addParameter("unbind", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
@@ -1645,6 +1775,36 @@ public class BlbClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_BLB, request.getBlbId(), CONSTANT_U_D_PLISTENER);
         if (request.getListenerPort() != null) {
             internalRequest.addParameter("listenerPort", String.valueOf(request.getListenerPort()));
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateService
+     * 
+     * @param request 入参结构体
+     */
+    public void updateService(UpdateServiceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_SERVICE, request.getService());
+        internalRequest.addParameter("modifyAttribute", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateServiceAuth
+     * 
+     * @param request 入参结构体
+     */
+    public void updateServiceAuth(UpdateServiceAuthRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_SERVICE, request.getService());
+        internalRequest.addParameter("editAuth", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
