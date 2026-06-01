@@ -11,6 +11,7 @@ import com.baidubce.apm.models.MllmResourceDumpConfig;
 import com.baidubce.apm.models.LoggingConfig;
 import com.baidubce.apm.models.ServiceTopoConfig;
 import com.baidubce.apm.models.ServiceRequestConfig;
+import com.baidubce.apm.models.SampleProcessor;
 import java.util.ArrayList;
 
 public class ExampleUpdateServiceConfig {
