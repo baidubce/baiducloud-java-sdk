@@ -8,6 +8,7 @@ import com.baidubce.apm.models.ApmUpdateAlarmPolicyRequest;
 import com.baidubce.apm.models.AlarmRule;
 import com.baidubce.apm.models.ApmUpdateAlarmPolicyResponse;
 import com.baidubce.apm.models.AlarmTarget;
+import com.baidubce.apm.models.Tag;
 import java.util.ArrayList;
 
 public class ExampleApmUpdateAlarmPolicy {
