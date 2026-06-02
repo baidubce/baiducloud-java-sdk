@@ -20,15 +20,18 @@ import com.baidubce.pfs.models.CreatePfsResponse;
 import com.baidubce.pfs.models.DeletePfsRequest;
 import com.baidubce.pfs.models.DescPfsRequest;
 import com.baidubce.pfs.models.DescPfsResponse;
+import com.baidubce.pfs.models.InstanceListClientsRequest;
+import com.baidubce.pfs.models.InstanceListClientsResponse;
 import com.baidubce.pfs.models.ListPfsRequest;
 import com.baidubce.pfs.models.ListPfsResponse;
+import com.baidubce.pfs.models.MountTargetListClientsRequest;
+import com.baidubce.pfs.models.MountTargetListClientsResponse;
 import com.baidubce.pfs.models.UpdatePFSTagRequest;
 
 public class PfsClient extends AbstractBceClient {
 
     private static final String[] HEADERS_TO_SIGN = {"host", "x-bce-date"};
 
-    private static final String VERSION_V1 = "v1";
     private static final String CONSTANT_V1 = "v1";
     private static final String CONSTANT_PFS = "pfs";
     private static final String CONSTANT_INSTANCE = "instance";
@@ -93,6 +96,20 @@ public class PfsClient extends AbstractBceClient {
     }
 
     /**
+     * instanceListClients
+     * 
+     * @param request 入参结构体
+     * @return InstanceListClientsResponse
+     */
+    public InstanceListClientsResponse instanceListClients(InstanceListClientsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "InstanceListClients");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, InstanceListClientsResponse.class);
+    }
+
+    /**
      * listPfs
      * 
      * @param request 入参结构体
@@ -111,6 +128,20 @@ public class PfsClient extends AbstractBceClient {
             internalRequest.addParameter("filterTag", request.getFilterTag());
         }
         return invokeHttpClient(internalRequest, ListPfsResponse.class);
+    }
+
+    /**
+     * mountTargetListClients
+     * 
+     * @param request 入参结构体
+     * @return MountTargetListClientsResponse
+     */
+    public MountTargetListClientsResponse mountTargetListClients(MountTargetListClientsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "MountTargetListClients");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, MountTargetListClientsResponse.class);
     }
 
     /**

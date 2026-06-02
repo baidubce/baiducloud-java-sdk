@@ -5,8 +5,12 @@ import com.baidubce.pfs.models.CreatePfsResponse;
 import com.baidubce.pfs.models.DeletePfsRequest;
 import com.baidubce.pfs.models.DescPfsRequest;
 import com.baidubce.pfs.models.DescPfsResponse;
+import com.baidubce.pfs.models.InstanceListClientsRequest;
+import com.baidubce.pfs.models.InstanceListClientsResponse;
 import com.baidubce.pfs.models.ListPfsRequest;
 import com.baidubce.pfs.models.ListPfsResponse;
+import com.baidubce.pfs.models.MountTargetListClientsRequest;
+import com.baidubce.pfs.models.MountTargetListClientsResponse;
 import com.baidubce.pfs.models.UpdatePFSTagRequest;
 import org.junit.Test;
 import org.junit.Before;
@@ -68,6 +72,20 @@ public class PfsClientTest {
         System.out.println(response);
     }
     /**
+     * instanceListClients
+     *
+     */
+    @Test
+    public void instanceListClientsTest() {
+        InstanceListClientsRequest instanceListClientsRequest = new InstanceListClientsRequest();
+        instanceListClientsRequest.setInstanceId("");
+        instanceListClientsRequest.setMaxKeys(0);
+        instanceListClientsRequest.setManner("");
+        instanceListClientsRequest.setMarker("");
+        InstanceListClientsResponse response = pfsClient.instanceListClients(instanceListClientsRequest);
+        System.out.println(response);
+    }
+    /**
      * listPfs
      *
      */
@@ -78,6 +96,20 @@ public class PfsClientTest {
         listPfsRequest.setMarker("");
         listPfsRequest.setFilterTag("");
         ListPfsResponse response = pfsClient.listPfs(listPfsRequest);
+        System.out.println(response);
+    }
+    /**
+     * mountTargetListClients
+     *
+     */
+    @Test
+    public void mountTargetListClientsTest() {
+        MountTargetListClientsRequest mountTargetListClientsRequest = new MountTargetListClientsRequest();
+        mountTargetListClientsRequest.setMountTargetId("");
+        mountTargetListClientsRequest.setMaxKeys(0);
+        mountTargetListClientsRequest.setManner("");
+        mountTargetListClientsRequest.setMarker("");
+        MountTargetListClientsResponse response = pfsClient.mountTargetListClients(mountTargetListClientsRequest);
         System.out.println(response);
     }
     /**
