@@ -15,17 +15,27 @@ import java.util.Arrays;
 import java.util.HashSet;
 import com.baidubce.common.BaseBceResponse;
 
+import com.baidubce.pfs.models.CreateFilesetRequest;
+import com.baidubce.pfs.models.CreateFilesetResponse;
 import com.baidubce.pfs.models.CreatePfsRequest;
 import com.baidubce.pfs.models.CreatePfsResponse;
+import com.baidubce.pfs.models.DeleteFilesetRequest;
+import com.baidubce.pfs.models.DeleteFilesetResponse;
 import com.baidubce.pfs.models.DeletePfsRequest;
+import com.baidubce.pfs.models.DescFilesetRequest;
+import com.baidubce.pfs.models.DescFilesetResponse;
 import com.baidubce.pfs.models.DescPfsRequest;
 import com.baidubce.pfs.models.DescPfsResponse;
 import com.baidubce.pfs.models.InstanceListClientsRequest;
 import com.baidubce.pfs.models.InstanceListClientsResponse;
+import com.baidubce.pfs.models.ListFilesetRequest;
+import com.baidubce.pfs.models.ListFilesetResponse;
 import com.baidubce.pfs.models.ListPfsRequest;
 import com.baidubce.pfs.models.ListPfsResponse;
 import com.baidubce.pfs.models.MountTargetListClientsRequest;
 import com.baidubce.pfs.models.MountTargetListClientsResponse;
+import com.baidubce.pfs.models.UpdateFilesetRequest;
+import com.baidubce.pfs.models.UpdateFilesetResponse;
 import com.baidubce.pfs.models.UpdatePFSTagRequest;
 
 public class PfsClient extends AbstractBceClient {
@@ -57,6 +67,20 @@ public class PfsClient extends AbstractBceClient {
     }
 
     /**
+     * createFileset
+     * 
+     * @param request 入参结构体
+     * @return CreateFilesetResponse
+     */
+    public CreateFilesetResponse createFileset(CreateFilesetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "CreateFileset");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateFilesetResponse.class);
+    }
+
+    /**
      * createPfs
      * 
      * @param request 入参结构体
@@ -66,6 +90,20 @@ public class PfsClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_PFS, CONSTANT_INSTANCE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreatePfsResponse.class);
+    }
+
+    /**
+     * deleteFileset
+     * 
+     * @param request 入参结构体
+     * @return DeleteFilesetResponse
+     */
+    public DeleteFilesetResponse deleteFileset(DeleteFilesetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DeleteFileset");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DeleteFilesetResponse.class);
     }
 
     /**
@@ -79,6 +117,20 @@ public class PfsClient extends AbstractBceClient {
             internalRequest.addParameter("instanceId", request.getInstanceId());
         }
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * descFileset
+     * 
+     * @param request 入参结构体
+     * @return DescFilesetResponse
+     */
+    public DescFilesetResponse descFileset(DescFilesetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DescribeFileset");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescFilesetResponse.class);
     }
 
     /**
@@ -107,6 +159,20 @@ public class PfsClient extends AbstractBceClient {
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, InstanceListClientsResponse.class);
+    }
+
+    /**
+     * listFileset
+     * 
+     * @param request 入参结构体
+     * @return ListFilesetResponse
+     */
+    public ListFilesetResponse listFileset(ListFilesetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "ListFileset");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ListFilesetResponse.class);
     }
 
     /**
@@ -142,6 +208,20 @@ public class PfsClient extends AbstractBceClient {
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, MountTargetListClientsResponse.class);
+    }
+
+    /**
+     * updateFileset
+     * 
+     * @param request 入参结构体
+     * @return UpdateFilesetResponse
+     */
+    public UpdateFilesetResponse updateFileset(UpdateFilesetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "UpdateFileset");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, UpdateFilesetResponse.class);
     }
 
     /**

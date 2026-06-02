@@ -1,16 +1,26 @@
 package com.baidubce.pfs;
 
+import com.baidubce.pfs.models.CreateFilesetRequest;
+import com.baidubce.pfs.models.CreateFilesetResponse;
 import com.baidubce.pfs.models.CreatePfsRequest;
 import com.baidubce.pfs.models.CreatePfsResponse;
+import com.baidubce.pfs.models.DeleteFilesetRequest;
+import com.baidubce.pfs.models.DeleteFilesetResponse;
 import com.baidubce.pfs.models.DeletePfsRequest;
+import com.baidubce.pfs.models.DescFilesetRequest;
+import com.baidubce.pfs.models.DescFilesetResponse;
 import com.baidubce.pfs.models.DescPfsRequest;
 import com.baidubce.pfs.models.DescPfsResponse;
 import com.baidubce.pfs.models.InstanceListClientsRequest;
 import com.baidubce.pfs.models.InstanceListClientsResponse;
+import com.baidubce.pfs.models.ListFilesetRequest;
+import com.baidubce.pfs.models.ListFilesetResponse;
 import com.baidubce.pfs.models.ListPfsRequest;
 import com.baidubce.pfs.models.ListPfsResponse;
 import com.baidubce.pfs.models.MountTargetListClientsRequest;
 import com.baidubce.pfs.models.MountTargetListClientsResponse;
+import com.baidubce.pfs.models.UpdateFilesetRequest;
+import com.baidubce.pfs.models.UpdateFilesetResponse;
 import com.baidubce.pfs.models.UpdatePFSTagRequest;
 import org.junit.Test;
 import org.junit.Before;
@@ -35,6 +45,23 @@ public class PfsClientTest {
     }
 
     /**
+     * createFileset
+     *
+     */
+    @Test
+    public void createFilesetTest() {
+        CreateFilesetRequest createFilesetRequest = new CreateFilesetRequest();
+        createFilesetRequest.setInstanceId("");
+        createFilesetRequest.setFilesetName("");
+        createFilesetRequest.setFilesetPath("");
+        createFilesetRequest.setBlockQuota(0);
+        createFilesetRequest.setFilesQuota(0L);
+        createFilesetRequest.setQpsLimit(0);
+        createFilesetRequest.setBandwidthLimitMb(0);
+        CreateFilesetResponse response = pfsClient.createFileset(createFilesetRequest);
+        System.out.println(response);
+    }
+    /**
      * createPfs
      *
      */
@@ -51,6 +78,18 @@ public class PfsClientTest {
         System.out.println(response);
     }
     /**
+     * deleteFileset
+     *
+     */
+    @Test
+    public void deleteFilesetTest() {
+        DeleteFilesetRequest deleteFilesetRequest = new DeleteFilesetRequest();
+        deleteFilesetRequest.setInstanceId("");
+        deleteFilesetRequest.setFilesetId("");
+        DeleteFilesetResponse response = pfsClient.deleteFileset(deleteFilesetRequest);
+        System.out.println(response);
+    }
+    /**
      * deletePfs
      *
      */
@@ -59,6 +98,18 @@ public class PfsClientTest {
         DeletePfsRequest deletePfsRequest = new DeletePfsRequest();
         deletePfsRequest.setInstanceId("");
         pfsClient.deletePfs(deletePfsRequest);
+    }
+    /**
+     * descFileset
+     *
+     */
+    @Test
+    public void descFilesetTest() {
+        DescFilesetRequest descFilesetRequest = new DescFilesetRequest();
+        descFilesetRequest.setInstanceId("");
+        descFilesetRequest.setFilesetId("");
+        DescFilesetResponse response = pfsClient.descFileset(descFilesetRequest);
+        System.out.println(response);
     }
     /**
      * descPfs
@@ -86,6 +137,24 @@ public class PfsClientTest {
         System.out.println(response);
     }
     /**
+     * listFileset
+     *
+     */
+    @Test
+    public void listFilesetTest() {
+        ListFilesetRequest listFilesetRequest = new ListFilesetRequest();
+        listFilesetRequest.setInstanceId("");
+        listFilesetRequest.setFilesetId("");
+        listFilesetRequest.setFilesetName("");
+        listFilesetRequest.setManner("");
+        listFilesetRequest.setOrder("");
+        listFilesetRequest.setOrderBy("");
+        listFilesetRequest.setPageNo(0);
+        listFilesetRequest.setPageSize(0);
+        ListFilesetResponse response = pfsClient.listFileset(listFilesetRequest);
+        System.out.println(response);
+    }
+    /**
      * listPfs
      *
      */
@@ -110,6 +179,23 @@ public class PfsClientTest {
         mountTargetListClientsRequest.setManner("");
         mountTargetListClientsRequest.setMarker("");
         MountTargetListClientsResponse response = pfsClient.mountTargetListClients(mountTargetListClientsRequest);
+        System.out.println(response);
+    }
+    /**
+     * updateFileset
+     *
+     */
+    @Test
+    public void updateFilesetTest() {
+        UpdateFilesetRequest updateFilesetRequest = new UpdateFilesetRequest();
+        updateFilesetRequest.setInstanceId("");
+        updateFilesetRequest.setFilesetId("");
+        updateFilesetRequest.setFilesetName("");
+        updateFilesetRequest.setBlockQuota(0);
+        updateFilesetRequest.setFilesQuota(0L);
+        updateFilesetRequest.setQpsLimit(0);
+        updateFilesetRequest.setBandwidthLimitMb(0);
+        UpdateFilesetResponse response = pfsClient.updateFileset(updateFilesetRequest);
         System.out.println(response);
     }
     /**
