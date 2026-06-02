@@ -36,6 +36,8 @@ import com.baidubce.blb.models.CreateBlbResponse;
 import com.baidubce.blb.models.CreateBlbSslListenerRequest;
 import com.baidubce.blb.models.CreateBlbTcpListenerRequest;
 import com.baidubce.blb.models.CreateBlbUdpListenerRequest;
+import com.baidubce.blb.models.CreateLbdcRequest;
+import com.baidubce.blb.models.CreateLbdcResponse;
 import com.baidubce.blb.models.CreateServiceRequest;
 import com.baidubce.blb.models.CreateServiceResponse;
 import com.baidubce.blb.models.DeleteAppBlbIpGroupMemberRequest;
@@ -104,6 +106,12 @@ import com.baidubce.blb.models.DescribeBlbUdpListenerRequest;
 import com.baidubce.blb.models.DescribeBlbUdpListenerResponse;
 import com.baidubce.blb.models.DescribeBlbsRequest;
 import com.baidubce.blb.models.DescribeBlbsResponse;
+import com.baidubce.blb.models.DescribeLbdcBlbRequest;
+import com.baidubce.blb.models.DescribeLbdcBlbResponse;
+import com.baidubce.blb.models.DescribeLbdcRequest;
+import com.baidubce.blb.models.DescribeLbdcResponse;
+import com.baidubce.blb.models.DescribeLbdcsRequest;
+import com.baidubce.blb.models.DescribeLbdcsResponse;
 import com.baidubce.blb.models.DescribeServiceRequest;
 import com.baidubce.blb.models.DescribeServiceResponse;
 import com.baidubce.blb.models.DescribeServicesRequest;
@@ -111,6 +119,7 @@ import com.baidubce.blb.models.DescribeServicesResponse;
 import com.baidubce.blb.models.RefundBlbRequest;
 import com.baidubce.blb.models.ReleaseAppBlbRequest;
 import com.baidubce.blb.models.ReleaseBlbRequest;
+import com.baidubce.blb.models.RenewLbdcRequest;
 import com.baidubce.blb.models.ResizeBlbRequest;
 import com.baidubce.blb.models.ResizeBlbResponse;
 import com.baidubce.blb.models.UnbindBlbEnterpriseSecurityGroupRequest;
@@ -138,8 +147,10 @@ import com.baidubce.blb.models.UpdateBlbServerRequest;
 import com.baidubce.blb.models.UpdateBlbSslListenerRequest;
 import com.baidubce.blb.models.UpdateBlbTcpListenerRequest;
 import com.baidubce.blb.models.UpdateBlbUdpListenerRequest;
+import com.baidubce.blb.models.UpdateLbdcRequest;
 import com.baidubce.blb.models.UpdateServiceAuthRequest;
 import com.baidubce.blb.models.UpdateServiceRequest;
+import com.baidubce.blb.models.UpgradeLbdcRequest;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -691,6 +702,24 @@ public class BlbClientTest {
         blbClient.createBlbUdpListener(createBlbUdpListenerRequest);
     }
     /**
+     * createLbdc
+     *
+     */
+    @Test
+    public void createLbdcTest() {
+        CreateLbdcRequest createLbdcRequest = new CreateLbdcRequest();
+        createLbdcRequest.setClientToken("");
+        createLbdcRequest.setName("");
+        createLbdcRequest.setType("");
+        createLbdcRequest.setCcuCount(0);
+        createLbdcRequest.setDesc("");
+        createLbdcRequest.setBilling(null);
+        createLbdcRequest.setRenewReservation(null);
+        createLbdcRequest.setTags(new ArrayList<>());
+        CreateLbdcResponse response = blbClient.createLbdc(createLbdcRequest);
+        System.out.println(response);
+    }
+    /**
      * createService
      *
      */
@@ -1231,6 +1260,40 @@ public class BlbClientTest {
         System.out.println(response);
     }
     /**
+     * describeLbdc
+     *
+     */
+    @Test
+    public void describeLbdcTest() {
+        DescribeLbdcRequest describeLbdcRequest = new DescribeLbdcRequest();
+        describeLbdcRequest.setId("");
+        DescribeLbdcResponse response = blbClient.describeLbdc(describeLbdcRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeLbdcBlb
+     *
+     */
+    @Test
+    public void describeLbdcBlbTest() {
+        DescribeLbdcBlbRequest describeLbdcBlbRequest = new DescribeLbdcBlbRequest();
+        describeLbdcBlbRequest.setId("");
+        DescribeLbdcBlbResponse response = blbClient.describeLbdcBlb(describeLbdcBlbRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeLbdcs
+     *
+     */
+    @Test
+    public void describeLbdcsTest() {
+        DescribeLbdcsRequest describeLbdcsRequest = new DescribeLbdcsRequest();
+        describeLbdcsRequest.setId("");
+        describeLbdcsRequest.setName("");
+        DescribeLbdcsResponse response = blbClient.describeLbdcs(describeLbdcsRequest);
+        System.out.println(response);
+    }
+    /**
      * describeService
      *
      */
@@ -1283,6 +1346,18 @@ public class BlbClientTest {
         releaseBlbRequest.setBlbId("");
         releaseBlbRequest.setClientToken("");
         blbClient.releaseBlb(releaseBlbRequest);
+    }
+    /**
+     * renewLbdc
+     *
+     */
+    @Test
+    public void renewLbdcTest() {
+        RenewLbdcRequest renewLbdcRequest = new RenewLbdcRequest();
+        renewLbdcRequest.setId("");
+        renewLbdcRequest.setClientToken("");
+        renewLbdcRequest.setBilling(null);
+        blbClient.renewLbdc(renewLbdcRequest);
     }
     /**
      * resizeBlb
@@ -1745,6 +1820,19 @@ public class BlbClientTest {
         blbClient.updateBlbUdpListener(updateBlbUdpListenerRequest);
     }
     /**
+     * updateLbdc
+     *
+     */
+    @Test
+    public void updateLbdcTest() {
+        UpdateLbdcRequest updateLbdcRequest = new UpdateLbdcRequest();
+        updateLbdcRequest.setId("");
+        updateLbdcRequest.setClientToken("");
+        updateLbdcRequest.setName("");
+        updateLbdcRequest.setDesc("");
+        blbClient.updateLbdc(updateLbdcRequest);
+    }
+    /**
      * updateService
      *
      */
@@ -1768,5 +1856,17 @@ public class BlbClientTest {
         updateServiceAuthRequest.setClientToken("");
         updateServiceAuthRequest.setAuthList(new ArrayList<>());
         blbClient.updateServiceAuth(updateServiceAuthRequest);
+    }
+    /**
+     * upgradeLbdc
+     *
+     */
+    @Test
+    public void upgradeLbdcTest() {
+        UpgradeLbdcRequest upgradeLbdcRequest = new UpgradeLbdcRequest();
+        upgradeLbdcRequest.setId("");
+        upgradeLbdcRequest.setClientToken("");
+        upgradeLbdcRequest.setCcuCount(0);
+        blbClient.upgradeLbdc(upgradeLbdcRequest);
     }
 }
