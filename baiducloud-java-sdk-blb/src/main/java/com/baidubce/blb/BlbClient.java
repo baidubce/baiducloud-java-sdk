@@ -51,6 +51,8 @@ import com.baidubce.blb.models.CreateBlbResponse;
 import com.baidubce.blb.models.CreateBlbSslListenerRequest;
 import com.baidubce.blb.models.CreateBlbTcpListenerRequest;
 import com.baidubce.blb.models.CreateBlbUdpListenerRequest;
+import com.baidubce.blb.models.CreateLbdcRequest;
+import com.baidubce.blb.models.CreateLbdcResponse;
 import com.baidubce.blb.models.CreateServiceRequest;
 import com.baidubce.blb.models.CreateServiceResponse;
 import com.baidubce.blb.models.DeleteAppBlbIpGroupMemberRequest;
@@ -119,6 +121,12 @@ import com.baidubce.blb.models.DescribeBlbUdpListenerRequest;
 import com.baidubce.blb.models.DescribeBlbUdpListenerResponse;
 import com.baidubce.blb.models.DescribeBlbsRequest;
 import com.baidubce.blb.models.DescribeBlbsResponse;
+import com.baidubce.blb.models.DescribeLbdcBlbRequest;
+import com.baidubce.blb.models.DescribeLbdcBlbResponse;
+import com.baidubce.blb.models.DescribeLbdcRequest;
+import com.baidubce.blb.models.DescribeLbdcResponse;
+import com.baidubce.blb.models.DescribeLbdcsRequest;
+import com.baidubce.blb.models.DescribeLbdcsResponse;
 import com.baidubce.blb.models.DescribeServiceRequest;
 import com.baidubce.blb.models.DescribeServiceResponse;
 import com.baidubce.blb.models.DescribeServicesRequest;
@@ -126,6 +134,7 @@ import com.baidubce.blb.models.DescribeServicesResponse;
 import com.baidubce.blb.models.RefundBlbRequest;
 import com.baidubce.blb.models.ReleaseAppBlbRequest;
 import com.baidubce.blb.models.ReleaseBlbRequest;
+import com.baidubce.blb.models.RenewLbdcRequest;
 import com.baidubce.blb.models.ResizeBlbRequest;
 import com.baidubce.blb.models.ResizeBlbResponse;
 import com.baidubce.blb.models.UnbindBlbEnterpriseSecurityGroupRequest;
@@ -153,8 +162,10 @@ import com.baidubce.blb.models.UpdateBlbServerRequest;
 import com.baidubce.blb.models.UpdateBlbSslListenerRequest;
 import com.baidubce.blb.models.UpdateBlbTcpListenerRequest;
 import com.baidubce.blb.models.UpdateBlbUdpListenerRequest;
+import com.baidubce.blb.models.UpdateLbdcRequest;
 import com.baidubce.blb.models.UpdateServiceAuthRequest;
 import com.baidubce.blb.models.UpdateServiceRequest;
+import com.baidubce.blb.models.UpgradeLbdcRequest;
 
 public class BlbClient extends AbstractBceClient {
 
@@ -166,6 +177,7 @@ public class BlbClient extends AbstractBceClient {
     private static final String CONSTANT_ENTERPRISE = "enterprise";
     private static final String CONSTANT_APPBLB = "appblb";
     private static final String CONSTANT_APPSERVERGROUP = "appservergroup";
+    private static final String CONSTANT_LBDC = "lbdc";
     private static final String CONSTANT_SERVICE = "service";
     private static final String CONSTANT_H_T_T_P_SLISTENER = "HTTPSlistener";
     private static final String CONSTANT_BACKENDSERVER = "backendserver";
@@ -604,6 +616,21 @@ public class BlbClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * createLbdc
+     * 
+     * @param request 入参结构体
+     * @return CreateLbdcResponse
+     */
+    public CreateLbdcResponse createLbdc(CreateLbdcRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_LBDC);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateLbdcResponse.class);
     }
 
     /**
@@ -1332,6 +1359,45 @@ public class BlbClient extends AbstractBceClient {
     }
 
     /**
+     * describeLbdc
+     * 
+     * @param request 入参结构体
+     * @return DescribeLbdcResponse
+     */
+    public DescribeLbdcResponse describeLbdc(DescribeLbdcRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_LBDC, request.getId());
+        return invokeHttpClient(internalRequest, DescribeLbdcResponse.class);
+    }
+
+    /**
+     * describeLbdcBlb
+     * 
+     * @param request 入参结构体
+     * @return DescribeLbdcBlbResponse
+     */
+    public DescribeLbdcBlbResponse describeLbdcBlb(DescribeLbdcBlbRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_LBDC, request.getId(), CONSTANT_BLB);
+        return invokeHttpClient(internalRequest, DescribeLbdcBlbResponse.class);
+    }
+
+    /**
+     * describeLbdcs
+     * 
+     * @param request 入参结构体
+     * @return DescribeLbdcsResponse
+     */
+    public DescribeLbdcsResponse describeLbdcs(DescribeLbdcsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_LBDC);
+        if (request.getId() != null) {
+            internalRequest.addParameter("id", request.getId());
+        }
+        if (request.getName() != null) {
+            internalRequest.addParameter("name", request.getName());
+        }
+        return invokeHttpClient(internalRequest, DescribeLbdcsResponse.class);
+    }
+
+    /**
      * describeService
      * 
      * @param request 入参结构体
@@ -1390,6 +1456,21 @@ public class BlbClient extends AbstractBceClient {
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * renewLbdc
+     * 
+     * @param request 入参结构体
+     */
+    public void renewLbdc(RenewLbdcRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_LBDC, request.getId());
+        internalRequest.addParameter("purchaseReserved", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
@@ -1781,6 +1862,20 @@ public class BlbClient extends AbstractBceClient {
     }
 
     /**
+     * updateLbdc
+     * 
+     * @param request 入参结构体
+     */
+    public void updateLbdc(UpdateLbdcRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_LBDC, request.getId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * updateService
      * 
      * @param request 入参结构体
@@ -1803,6 +1898,21 @@ public class BlbClient extends AbstractBceClient {
     public void updateServiceAuth(UpdateServiceAuthRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_SERVICE, request.getService());
         internalRequest.addParameter("editAuth", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * upgradeLbdc
+     * 
+     * @param request 入参结构体
+     */
+    public void upgradeLbdc(UpgradeLbdcRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_LBDC, request.getId());
+        internalRequest.addParameter("resize", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
