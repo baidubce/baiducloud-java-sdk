@@ -37,31 +37,6 @@ public class NodeInfo {
     private String vpcName;
 
     /**
-     * 节点挂载后端集群list
-     */
-    private List<String> instanceIdList;
-
-    /**
-     * 
-     */
-    private String nodeStatus;
-
-    /**
-     * BBC/BCC/AIHC/HPAS
-     */
-    private String nodeType;
-
-    /**
-     * 
-     */
-    private String mountStatus;
-
-    /**
-     * 节点密码
-     */
-    private String passwd;
-
-    /**
      * 挂载服务名称
      */
     private String mtName;
@@ -75,6 +50,31 @@ public class NodeInfo {
      * 节点的挂载路径
      */
     private String mtPath;
+
+    /**
+     * BBC/BCC/AIHC/HPAS
+     */
+    private String nodeType;
+
+    /**
+     * 节点挂载后端集群list
+     */
+    private List<String> instanceIdList;
+
+    /**
+     * 
+     */
+    private String nodeStatus;
+
+    /**
+     * 
+     */
+    private String mountStatus;
+
+    /**
+     * 节点密码
+     */
+    private String passwd;
 
     public NodeInfo setNodeId(String nodeId) {
         this.nodeId = nodeId;
@@ -130,51 +130,6 @@ public class NodeInfo {
         return this.vpcName;
     }
 
-    public NodeInfo setInstanceIdList(List<String> instanceIdList) {
-        this.instanceIdList = instanceIdList;
-        return this;
-    }
-
-    public List<String> getInstanceIdList() {
-        return this.instanceIdList;
-    }
-
-    public NodeInfo setNodeStatus(String nodeStatus) {
-        this.nodeStatus = nodeStatus;
-        return this;
-    }
-
-    public String getNodeStatus() {
-        return this.nodeStatus;
-    }
-
-    public NodeInfo setNodeType(String nodeType) {
-        this.nodeType = nodeType;
-        return this;
-    }
-
-    public String getNodeType() {
-        return this.nodeType;
-    }
-
-    public NodeInfo setMountStatus(String mountStatus) {
-        this.mountStatus = mountStatus;
-        return this;
-    }
-
-    public String getMountStatus() {
-        return this.mountStatus;
-    }
-
-    public NodeInfo setPasswd(String passwd) {
-        this.passwd = passwd;
-        return this;
-    }
-
-    public String getPasswd() {
-        return this.passwd;
-    }
-
     public NodeInfo setMtName(String mtName) {
         this.mtName = mtName;
         return this;
@@ -202,11 +157,56 @@ public class NodeInfo {
         return this.mtPath;
     }
 
+    public NodeInfo setNodeType(String nodeType) {
+        this.nodeType = nodeType;
+        return this;
+    }
+
+    public String getNodeType() {
+        return this.nodeType;
+    }
+
+    public NodeInfo setInstanceIdList(List<String> instanceIdList) {
+        this.instanceIdList = instanceIdList;
+        return this;
+    }
+
+    public List<String> getInstanceIdList() {
+        return this.instanceIdList;
+    }
+
+    public NodeInfo setNodeStatus(String nodeStatus) {
+        this.nodeStatus = nodeStatus;
+        return this;
+    }
+
+    public String getNodeStatus() {
+        return this.nodeStatus;
+    }
+
+    public NodeInfo setMountStatus(String mountStatus) {
+        this.mountStatus = mountStatus;
+        return this;
+    }
+
+    public String getMountStatus() {
+        return this.mountStatus;
+    }
+
+    public NodeInfo setPasswd(String passwd) {
+        this.passwd = passwd;
+        return this;
+    }
+
+    public String getPasswd() {
+        return this.passwd;
+    }
+
     @Override
     public String toString() {
         return "NodeInfo{" + "nodeId=" + nodeId + "\n" + "nodeName=" + nodeName + "\n" + "internalIp=" + internalIp + "\n" + "zoneName=" + zoneName + "\n" + "vpcId=" + vpcId
-                + "\n" + "vpcName=" + vpcName + "\n" + "instanceIdList=" + instanceIdList + "\n" + "nodeStatus=" + nodeStatus + "\n" + "nodeType=" + nodeType + "\n"
-                + "mountStatus=" + mountStatus + "\n" + "passwd=" + passwd + "\n" + "mtName=" + mtName + "\n" + "mtId=" + mtId + "\n" + "mtPath=" + mtPath + "\n" + "}";
+                + "\n" + "vpcName=" + vpcName + "\n" + "mtName=" + mtName + "\n" + "mtId=" + mtId + "\n" + "mtPath=" + mtPath + "\n" + "nodeType=" + nodeType + "\n"
+                + "instanceIdList=" + instanceIdList + "\n" + "nodeStatus=" + nodeStatus + "\n" + "mountStatus=" + mountStatus + "\n" + "passwd=" + passwd + "\n" + "}";
     }
 
 }

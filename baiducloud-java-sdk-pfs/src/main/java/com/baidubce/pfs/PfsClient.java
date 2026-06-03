@@ -15,27 +15,59 @@ import java.util.Arrays;
 import java.util.HashSet;
 import com.baidubce.common.BaseBceResponse;
 
+import com.baidubce.pfs.models.CancelL2BucketLinkRequest;
+import com.baidubce.pfs.models.CancelL2BucketLinkResponse;
 import com.baidubce.pfs.models.CreateFilesetRequest;
 import com.baidubce.pfs.models.CreateFilesetResponse;
+import com.baidubce.pfs.models.CreateL2BucketLinkRequest;
+import com.baidubce.pfs.models.CreateL2BucketLinkResponse;
+import com.baidubce.pfs.models.CreateL2PolicyRequest;
+import com.baidubce.pfs.models.CreateL2PolicyResponse;
 import com.baidubce.pfs.models.CreatePfsRequest;
 import com.baidubce.pfs.models.CreatePfsResponse;
 import com.baidubce.pfs.models.DeleteFilesetRequest;
 import com.baidubce.pfs.models.DeleteFilesetResponse;
+import com.baidubce.pfs.models.DeleteL2BucketLinkRequest;
+import com.baidubce.pfs.models.DeleteL2BucketLinkResponse;
+import com.baidubce.pfs.models.DeleteL2PolicyRequest;
+import com.baidubce.pfs.models.DeleteL2PolicyResponse;
 import com.baidubce.pfs.models.DeletePfsRequest;
 import com.baidubce.pfs.models.DescFilesetRequest;
 import com.baidubce.pfs.models.DescFilesetResponse;
+import com.baidubce.pfs.models.DescL2BucketLinkRequest;
+import com.baidubce.pfs.models.DescL2BucketLinkResponse;
+import com.baidubce.pfs.models.DescL2PolicyRequest;
+import com.baidubce.pfs.models.DescL2PolicyResponse;
 import com.baidubce.pfs.models.DescPfsRequest;
 import com.baidubce.pfs.models.DescPfsResponse;
 import com.baidubce.pfs.models.InstanceListClientsRequest;
 import com.baidubce.pfs.models.InstanceListClientsResponse;
 import com.baidubce.pfs.models.ListFilesetRequest;
 import com.baidubce.pfs.models.ListFilesetResponse;
+import com.baidubce.pfs.models.ListL2BucketLinkRequest;
+import com.baidubce.pfs.models.ListL2BucketLinkResponse;
+import com.baidubce.pfs.models.ListL2PolicyRequest;
+import com.baidubce.pfs.models.ListL2PolicyResponse;
 import com.baidubce.pfs.models.ListPfsRequest;
 import com.baidubce.pfs.models.ListPfsResponse;
+import com.baidubce.pfs.models.LstPerL2BktLnkExecLogRequest;
+import com.baidubce.pfs.models.LstPerL2BktLnkExecLogResponse;
 import com.baidubce.pfs.models.MountTargetListClientsRequest;
 import com.baidubce.pfs.models.MountTargetListClientsResponse;
+import com.baidubce.pfs.models.PauseL2BucketLinkRequest;
+import com.baidubce.pfs.models.PauseL2BucketLinkResponse;
+import com.baidubce.pfs.models.QryL2PolExecDetailRequest;
+import com.baidubce.pfs.models.QryL2PolExecDetailResponse;
+import com.baidubce.pfs.models.QryL2PolExecLogRequest;
+import com.baidubce.pfs.models.QryL2PolExecLogResponse;
+import com.baidubce.pfs.models.ResumeL2BucketLinkRequest;
+import com.baidubce.pfs.models.ResumeL2BucketLinkResponse;
+import com.baidubce.pfs.models.UpdPerL2BktLnkInfoRequest;
+import com.baidubce.pfs.models.UpdPerL2BktLnkInfoResponse;
 import com.baidubce.pfs.models.UpdateFilesetRequest;
 import com.baidubce.pfs.models.UpdateFilesetResponse;
+import com.baidubce.pfs.models.UpdateL2PolicyRequest;
+import com.baidubce.pfs.models.UpdateL2PolicyResponse;
 import com.baidubce.pfs.models.UpdatePFSTagRequest;
 
 public class PfsClient extends AbstractBceClient {
@@ -67,6 +99,20 @@ public class PfsClient extends AbstractBceClient {
     }
 
     /**
+     * cancelL2BucketLink
+     * 
+     * @param request 入参结构体
+     * @return CancelL2BucketLinkResponse
+     */
+    public CancelL2BucketLinkResponse cancelL2BucketLink(CancelL2BucketLinkRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "CancelL2BucketLink");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CancelL2BucketLinkResponse.class);
+    }
+
+    /**
      * createFileset
      * 
      * @param request 入参结构体
@@ -78,6 +124,34 @@ public class PfsClient extends AbstractBceClient {
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateFilesetResponse.class);
+    }
+
+    /**
+     * createL2BucketLink
+     * 
+     * @param request 入参结构体
+     * @return CreateL2BucketLinkResponse
+     */
+    public CreateL2BucketLinkResponse createL2BucketLink(CreateL2BucketLinkRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "CreateL2BucketLink");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateL2BucketLinkResponse.class);
+    }
+
+    /**
+     * createL2Policy
+     * 
+     * @param request 入参结构体
+     * @return CreateL2PolicyResponse
+     */
+    public CreateL2PolicyResponse createL2Policy(CreateL2PolicyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "CreateL2Policy");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateL2PolicyResponse.class);
     }
 
     /**
@@ -107,6 +181,34 @@ public class PfsClient extends AbstractBceClient {
     }
 
     /**
+     * deleteL2BucketLink
+     * 
+     * @param request 入参结构体
+     * @return DeleteL2BucketLinkResponse
+     */
+    public DeleteL2BucketLinkResponse deleteL2BucketLink(DeleteL2BucketLinkRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DeleteL2BucketLink");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DeleteL2BucketLinkResponse.class);
+    }
+
+    /**
+     * deleteL2Policy
+     * 
+     * @param request 入参结构体
+     * @return DeleteL2PolicyResponse
+     */
+    public DeleteL2PolicyResponse deleteL2Policy(DeleteL2PolicyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DeleteL2Policy");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DeleteL2PolicyResponse.class);
+    }
+
+    /**
      * deletePfs
      * 
      * @param request 入参结构体
@@ -131,6 +233,34 @@ public class PfsClient extends AbstractBceClient {
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, DescFilesetResponse.class);
+    }
+
+    /**
+     * descL2BucketLink
+     * 
+     * @param request 入参结构体
+     * @return DescL2BucketLinkResponse
+     */
+    public DescL2BucketLinkResponse descL2BucketLink(DescL2BucketLinkRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DescribeL2BucketLink");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescL2BucketLinkResponse.class);
+    }
+
+    /**
+     * descL2Policy
+     * 
+     * @param request 入参结构体
+     * @return DescL2PolicyResponse
+     */
+    public DescL2PolicyResponse descL2Policy(DescL2PolicyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DescribeL2Policy");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescL2PolicyResponse.class);
     }
 
     /**
@@ -176,6 +306,34 @@ public class PfsClient extends AbstractBceClient {
     }
 
     /**
+     * listL2BucketLink
+     * 
+     * @param request 入参结构体
+     * @return ListL2BucketLinkResponse
+     */
+    public ListL2BucketLinkResponse listL2BucketLink(ListL2BucketLinkRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "ListL2BucketLink");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ListL2BucketLinkResponse.class);
+    }
+
+    /**
+     * listL2Policy
+     * 
+     * @param request 入参结构体
+     * @return ListL2PolicyResponse
+     */
+    public ListL2PolicyResponse listL2Policy(ListL2PolicyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "ListL2Policy");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ListL2PolicyResponse.class);
+    }
+
+    /**
      * listPfs
      * 
      * @param request 入参结构体
@@ -197,6 +355,20 @@ public class PfsClient extends AbstractBceClient {
     }
 
     /**
+     * lstPerL2BktLnkExecLog
+     * 
+     * @param request 入参结构体
+     * @return LstPerL2BktLnkExecLogResponse
+     */
+    public LstPerL2BktLnkExecLogResponse lstPerL2BktLnkExecLog(LstPerL2BktLnkExecLogRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "ListPeriodL2BucketLinkExecuteLog");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, LstPerL2BktLnkExecLogResponse.class);
+    }
+
+    /**
      * mountTargetListClients
      * 
      * @param request 入参结构体
@@ -211,6 +383,76 @@ public class PfsClient extends AbstractBceClient {
     }
 
     /**
+     * pauseL2BucketLink
+     * 
+     * @param request 入参结构体
+     * @return PauseL2BucketLinkResponse
+     */
+    public PauseL2BucketLinkResponse pauseL2BucketLink(PauseL2BucketLinkRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "PauseL2BucketLink");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, PauseL2BucketLinkResponse.class);
+    }
+
+    /**
+     * qryL2PolExecDetail
+     * 
+     * @param request 入参结构体
+     * @return QryL2PolExecDetailResponse
+     */
+    public QryL2PolExecDetailResponse qryL2PolExecDetail(QryL2PolExecDetailRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "QueryL2PolicyExecuteDetail");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, QryL2PolExecDetailResponse.class);
+    }
+
+    /**
+     * qryL2PolExecLog
+     * 
+     * @param request 入参结构体
+     * @return QryL2PolExecLogResponse
+     */
+    public QryL2PolExecLogResponse qryL2PolExecLog(QryL2PolExecLogRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "QueryL2PolicyExecuteLog");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, QryL2PolExecLogResponse.class);
+    }
+
+    /**
+     * resumeL2BucketLink
+     * 
+     * @param request 入参结构体
+     * @return ResumeL2BucketLinkResponse
+     */
+    public ResumeL2BucketLinkResponse resumeL2BucketLink(ResumeL2BucketLinkRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "ResumeL2BucketLink");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ResumeL2BucketLinkResponse.class);
+    }
+
+    /**
+     * updPerL2BktLnkInfo
+     * 
+     * @param request 入参结构体
+     * @return UpdPerL2BktLnkInfoResponse
+     */
+    public UpdPerL2BktLnkInfoResponse updPerL2BktLnkInfo(UpdPerL2BktLnkInfoRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "UpdatePeriodL2BucketLinkInfo");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, UpdPerL2BktLnkInfoResponse.class);
+    }
+
+    /**
      * updateFileset
      * 
      * @param request 入参结构体
@@ -222,6 +464,20 @@ public class PfsClient extends AbstractBceClient {
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, UpdateFilesetResponse.class);
+    }
+
+    /**
+     * updateL2Policy
+     * 
+     * @param request 入参结构体
+     * @return UpdateL2PolicyResponse
+     */
+    public UpdateL2PolicyResponse updateL2Policy(UpdateL2PolicyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "UpdateL2Policy");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, UpdateL2PolicyResponse.class);
     }
 
     /**
