@@ -40,23 +40,23 @@ public class CreateInstanceRequest extends BaseBceRequest {
     private String subnetId;
 
     /**
-    * RapidFS 实例部署模式，枚举值：* FullyManaged：全托管部署模式，适合无闲置存储资源、超大规模或追求高稳定性的业务。该模式下，RapidFS 产品完全管理实例，无需用户运维；* MasterManaged：Master 托管部署模式，适合有闲置存储资源、成本敏感且具备一定运维能力的业务。
+    * RapidFS 实例部署模式，枚举值：<br> • FullyManaged：全托管部署模式，适合无闲置存储资源、超大规模或追求高稳定性的业务。该模式下，RapidFS 产品完全管理实例，无需用户运维；<br> • MasterManaged：Master 托管部署模式，适合有闲置存储资源、成本敏感且具备一定运维能力的业务。
     */
     private String managedMode;
 
     /**
-    * 元数据规格，当前仅在 MasterManaged 部署模式下生效，枚举值：* M1：适用于文件数在 10 亿，Cache节点上限 50 个，单个Cache节点可挂载数据盘上限 4 个的场景；* M2：适用于文件数在 50 亿，Cache节点上限 400 个，单个Cache节点可挂载数据盘上限 8 个的场景。
+    * 元数据规格，当前仅在 MasterManaged 部署模式下生效，枚举值：<br> • M1：适用于文件数在 10 亿，Cache节点上限 50 个，单个Cache节点可挂载数据盘上限 4 个的场景；<br> • M2：适用于文件数在 50 亿，Cache节点上限 400 个，单个Cache节点可挂载数据盘上限 8 个的场景。
     */
     private String metaSpec;
 
     /**
-    * 数据规格，当前仅在 FullyManaged 部署模式下生效，枚举值：* Basic：数据性能基线为 100MB/s/TiB；* Capacity：数据性能基线为 200MB/s/TiB；
+    * 数据规格，当前仅在 FullyManaged 部署模式下生效，枚举值：<br> • Basic：数据性能基线为 100MB/s/TiB；<br> • Capacity：数据性能基线为 200MB/s/TiB；
     */
     private String dataSpec;
 
     /**
-    * MasterManaged 部署模式下，用户运维管理的缓存接入类型，仅 MasterManaged 部署模式时有效，枚举值如下：* BCC：云服务器 BCC，表示用户的缓存节点直接部署在云服务器 BCC 上；* IDC：自建数据中心，表示用户的缓存节点直接部署在用户 IDC 服务器上；；* CCE：Cloud Container Engine,
-    * 容器引擎 CCE，表示用户的缓存节点通过容器形式部署在 CCE 集群中；* K8S：自有 Kubernetes 容器服务，厂内 EKS/自建 K8s，表示用户的缓存节点通过容器形式部署在厂内 EKS/自建 K8s 集群中；* AIHC：AI Heterogeneous Compute，百舸
+    * MasterManaged 部署模式下，用户运维管理的缓存接入类型，仅 MasterManaged 部署模式时有效，枚举值如下：<br> • BCC：云服务器 BCC，表示用户的缓存节点直接部署在云服务器 BCC 上；<br> • IDC：自建数据中心，表示用户的缓存节点直接部署在用户 IDC 服务器上；；<br> • CCE：Cloud
+    * Container Engine, 容器引擎 CCE，表示用户的缓存节点通过容器形式部署在 CCE 集群中；<br> • K8S：自有 Kubernetes 容器服务，厂内 EKS/自建 K8s，表示用户的缓存节点通过容器形式部署在厂内 EKS/自建 K8s 集群中；<br> • AIHC：AI Heterogeneous Compute，百舸
     * AIHC，表示用户的缓存节点通过容器形式部署在百舸集群中，当前仅支持百舸全托管资源池。
     */
     private String type;

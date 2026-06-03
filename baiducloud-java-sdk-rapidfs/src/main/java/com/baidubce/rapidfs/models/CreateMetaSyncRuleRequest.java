@@ -29,7 +29,7 @@ public class CreateMetaSyncRuleRequest extends BaseBceRequest {
     private String metaSyncRuleName;
 
     /**
-    * 元数据同步规则类型，枚举值：* MANUAL：单次同步，手动执行；* PERIODIC：周期同步，自动执行
+    * 元数据同步规则类型，枚举值：<br> • MANUAL：单次同步，手动执行；<br> • PERIODIC：周期同步，自动执行
     */
     private String type;
 

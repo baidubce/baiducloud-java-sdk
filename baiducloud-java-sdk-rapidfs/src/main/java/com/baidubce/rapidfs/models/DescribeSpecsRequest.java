@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class DescribeSpecsRequest extends BaseBceRequest {
 
     /**
-    * 条件筛选，见附录 Filter，多组 filter 之间为条件与关系，多个 value 之间为条件或关系。当前支持字段：- name=managedMode，按部署类型筛选，例如 value=["FullyManaged"]；- name=metaSpec，按元数据规格筛选，按例如 value=["M2"]；-
+    * 条件筛选，见附录 Filter，多组 filter 之间为条件与关系，多个 value 之间为条件或关系。当前支持字段：<br> • name=managedMode，按部署类型筛选，例如 value=["FullyManaged"]；<br> • name=metaSpec，按元数据规格筛选，按例如 value=["M2"]；<br> •
     * name=dataSpec，按数据规格筛选，例如 value=["Basic"]
     */
     private List<Filter> filters;

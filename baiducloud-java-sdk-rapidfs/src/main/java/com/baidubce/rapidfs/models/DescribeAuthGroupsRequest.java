@@ -13,7 +13,7 @@ public class DescribeAuthGroupsRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * 条件筛选，见附录 Filter，多组 filter 之间为条件与关系，多个 value 之间为条件或关系。当前支持字段:* name=authGroupId，例如 value=["ag-AOLmxozuEqas", "ag-MuzHGS8WtjHq"]
+    * 条件筛选，见附录 Filter，多组 filter 之间为条件与关系，多个 value 之间为条件或关系。当前支持字段:<br> • name=authGroupId，例如 value=["ag-AOLmxozuEqas", "ag-MuzHGS8WtjHq"]
     */
     private List<Filter> filters;
 

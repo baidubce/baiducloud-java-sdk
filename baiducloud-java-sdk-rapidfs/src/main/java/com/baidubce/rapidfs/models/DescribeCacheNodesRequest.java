@@ -13,8 +13,8 @@ public class DescribeCacheNodesRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * 条件筛选，见附录 Filter，多组 filter 之间为条件与关系，多个 value 之间为条件或关系。当前支持字段:* name=cacheNodeId，例如 value=["wn-LVWFONLJei7W-DFfmSUFht1zt", "wn-LVWFONLJei7W-CKVxoBV6soGW"]；* name=ip，例如
-    * value=["192.168.0.1", "192.168.0.2"]；* name=zone，例如 value=["zoneA", "zoneB"]；* name=status，可选枚举值参考 CacheNodeStatus，例如 value=["RUNNING","ADDING"]；*
+    * 条件筛选，见附录 Filter，多组 filter 之间为条件与关系，多个 value 之间为条件或关系。当前支持字段:<br> • name=cacheNodeId，例如 value=["wn-LVWFONLJei7W-DFfmSUFht1zt", "wn-LVWFONLJei7W-CKVxoBV6soGW"]；<br> •
+    * name=ip，例如 value=["192.168.0.1", "192.168.0.2"]；<br> • name=zone，例如 value=["zoneA", "zoneB"]；<br> • name=status，可选枚举值参考 CacheNodeStatus，例如 value=["RUNNING","ADDING"]；<br> •
     * name=cacheDeployGroupName，仅缓存接入类型为 K8S/CCE/AIHC 时支持，例如 value=["test-cache-deploy-group", "test-cdp"]
     */
     private List<Filter> filters;

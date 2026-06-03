@@ -13,7 +13,7 @@ public class DescribeDataSrcsRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * 条件筛选，见附录 Filter，多组 filter 之间为条件与关系，多个 value 之间为条件或关系。当前支持字段:* name=dataSrcId，例如 value=["ds-AOLmxozuEqas", "ds-kykIYfOmY9ZU"]
+    * 条件筛选，见附录 Filter，多组 filter 之间为条件与关系，多个 value 之间为条件或关系。当前支持字段:<br> • name=dataSrcId，例如 value=["ds-AOLmxozuEqas", "ds-kykIYfOmY9ZU"]
     */
     private List<Filter> filters;
 

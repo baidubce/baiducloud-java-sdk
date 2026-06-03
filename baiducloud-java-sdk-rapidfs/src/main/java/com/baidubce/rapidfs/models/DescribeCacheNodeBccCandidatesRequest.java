@@ -18,8 +18,8 @@ public class DescribeCacheNodeBccCandidatesRequest extends BaseBceRequest {
     private String vpcId;
 
     /**
-    * 条件筛选，见附录 Filter，多组 filter 之间为条件与关系，多个 value 之间为条件或关系。当前支持字段:* name=bccId，按 BCC Id 筛选，例如 value=["i-RC35eAcH", "i-5si77yc4"]；* name=bccName，按 BCC 名称筛选，例如 value=["name1",
-    * "name2"]；* name=bccIp，按 BCC ip 筛选，例如 value=["192.168.0.1", "192.168.0.2"]；* name=tag，按 BCC 绑定标签批量筛选，例如 value=["tagkey:tagvalue", "tagkey"]
+    * 条件筛选，见附录 Filter，多组 filter 之间为条件与关系，多个 value 之间为条件或关系。当前支持字段:<br> • name=bccId，按 BCC Id 筛选，例如 value=["i-RC35eAcH", "i-5si77yc4"]；<br> • name=bccName，按 BCC 名称筛选，例如
+    * value=["name1", "name2"]；<br> • name=bccIp，按 BCC ip 筛选，例如 value=["192.168.0.1", "192.168.0.2"]；<br> • name=tag，按 BCC 绑定标签批量筛选，例如 value=["tagkey:tagvalue", "tagkey"]
     */
     private List<Filter> filters;
 
