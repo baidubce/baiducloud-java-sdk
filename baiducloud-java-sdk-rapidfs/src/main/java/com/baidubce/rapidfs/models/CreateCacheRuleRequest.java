@@ -29,7 +29,7 @@ public class CreateCacheRuleRequest extends BaseBceRequest {
     private String cacheRuleName;
 
     /**
-    * 缓存管理规则类型：* WARMUP：缓存预热，将缓存从持久存储预热到 RapidFS 实例内；* EVICTION：缓存淘汰，将已预热到 RapidFS 实例的缓存淘汰
+    * 缓存管理规则类型：<br> • WARMUP：缓存预热，将缓存从持久存储预热到 RapidFS 实例内；<br> • EVICTION：缓存淘汰，将已预热到 RapidFS 实例的缓存淘汰
     */
     private String type;
 

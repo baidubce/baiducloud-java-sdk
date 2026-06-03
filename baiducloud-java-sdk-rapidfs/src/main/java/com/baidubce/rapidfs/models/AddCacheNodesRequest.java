@@ -20,7 +20,7 @@ public class AddCacheNodesRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * MasterManaged 部署模式下，用户待添加的缓存接入类型，当前仅支持：* BCC：云服务器 BCC；* IDC：自建数据中心
+    * MasterManaged 部署模式下，用户待添加的缓存接入类型，当前仅支持：<br> • BCC：云服务器 BCC；<br> • IDC：自建数据中心
     */
     private String type;
 

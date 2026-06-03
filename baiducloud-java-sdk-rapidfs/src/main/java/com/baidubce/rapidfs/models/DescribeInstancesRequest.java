@@ -8,9 +8,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class DescribeInstancesRequest extends BaseBceRequest {
 
     /**
-    * 条件筛选，见附录 Filter，多组 filter 之间为条件与关系，多个 value 之间为条件或关系。当前支持字段:* name=instanceId，例如 value=["rapidfs-wKEltVDfQwgO", "rapidfs-Lp1yaDO582fz"]；* name=instanceName，例如
-    * value=["filter-name", "test-name"]；* name=status, 状态枚举值参考附录 InstanceStatus，例如 value=["RUNNING", "CREATING"]；* name=aihcResourcePoolId/cceClusterId/k8sControllerId，例如
-    * value=["aihc-hk25ilq7xcfd", "cce-gv45s2cp"]
+    * 条件筛选，见附录 Filter，多组 filter 之间为条件与关系，多个 value 之间为条件或关系。当前支持字段:<br> • name=instanceId，例如 value=["rapidfs-wKEltVDfQwgO", "rapidfs-Lp1yaDO582fz"]；<br> • name=instanceName，例如
+    * value=["filter-name", "test-name"]；<br> • name=status, 状态枚举值参考附录 InstanceStatus，例如 value=["RUNNING", "CREATING"]；<br> •
+    * name=aihcResourcePoolId/cceClusterId/k8sControllerId，例如 value=["aihc-hk25ilq7xcfd", "cce-gv45s2cp"]
     */
     private List<Filter> filters;
 

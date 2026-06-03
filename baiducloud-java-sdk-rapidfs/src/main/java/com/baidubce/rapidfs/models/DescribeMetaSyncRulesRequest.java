@@ -13,7 +13,7 @@ public class DescribeMetaSyncRulesRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * 条件筛选，见附录 Filter，多组 filter 之间为条件与关系，多个 value 之间为条件或关系。当前支持字段:* name=dataSrcId，按数据源 ID 筛选，例如 value=["ds-AOLmxozuEqas",  "ds-kykIYfOmY9ZU"]；* name=metaSyncRuleId，例如
+    * 条件筛选，见附录 Filter，多组 filter 之间为条件与关系，多个 value 之间为条件或关系。当前支持字段:<br> • name=dataSrcId，按数据源 ID 筛选，例如 value=["ds-AOLmxozuEqas",  "ds-kykIYfOmY9ZU"]；<br> • name=metaSyncRuleId，例如
     * value=["ms-HljnqUtZBazs", "ms-Jz6lAqoiYJxI"]
     */
     private List<Filter> filters;

@@ -19,7 +19,7 @@ public class DeleteInstanceRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * * 首次调用：当参数为空或未传值时，系统会生成并返回一个临时  token；* 第二次调用：必填，传入首次调用返回的 token时，系统会进行校验，并根据校验结果决定是否接受释放操作
+    * <br> • 首次调用：当参数为空或未传值时，系统会生成并返回一个临时  token；<br> • 第二次调用：必填，传入首次调用返回的 token时，系统会进行校验，并根据校验结果决定是否接受释放操作
     */
     private String token;
 
