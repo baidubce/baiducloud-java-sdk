@@ -1,0 +1,31 @@
+package com.baidubce.ccr.sample;
+
+import com.baidubce.BceClientConfiguration;
+import com.baidubce.BceClientException;
+import com.baidubce.auth.DefaultBceCredentials;
+import com.baidubce.ccr.CcrClient;
+import com.baidubce.ccr.models.GetRepositoryRequest;
+import com.baidubce.ccr.models.GetRepositoryResponse;
+
+public class ExampleGetRepository {
+    public static void main(String[] args) {
+        // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
+        String ak = "Your Ak";
+        String sk = "Your Sk";
+        String endpoint = "Endpoint";
+        BceClientConfiguration config = new BceClientConfiguration();
+        config.setCredentials(new DefaultBceCredentials(ak, sk));
+        config.setEndpoint(endpoint);
+        CcrClient client = new CcrClient(config);
+        GetRepositoryRequest getRepositoryRequest = new GetRepositoryRequest();
+        getRepositoryRequest.setInstanceId("");
+        getRepositoryRequest.setProjectName("");
+        getRepositoryRequest.setRepositoryName("");
+        try {
+            GetRepositoryResponse response = client.getRepository(getRepositoryRequest);
+            System.out.println(response.toJsonString());
+        } catch (BceClientException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
