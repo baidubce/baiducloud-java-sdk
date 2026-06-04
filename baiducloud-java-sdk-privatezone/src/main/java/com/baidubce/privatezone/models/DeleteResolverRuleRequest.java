@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class EnableRecordRequest extends BaseBceRequest {
+public class DeleteResolverRuleRequest extends BaseBceRequest {
 
     /**
-    * recordId
+    * ruleId
     */
     @JsonIgnore
-    private String recordId;
+    private String ruleId;
 
     /**
     * clientToken
@@ -19,12 +19,12 @@ public class EnableRecordRequest extends BaseBceRequest {
     @JsonIgnore
     private String clientToken;
 
-    public String getRecordId() {
-        return recordId;
+    public String getRuleId() {
+        return ruleId;
     }
 
-    public EnableRecordRequest setRecordId(String recordId) {
-        this.recordId = recordId;
+    public DeleteResolverRuleRequest setRuleId(String ruleId) {
+        this.ruleId = ruleId;
         return this;
     }
 
@@ -32,7 +32,7 @@ public class EnableRecordRequest extends BaseBceRequest {
         return clientToken;
     }
 
-    public EnableRecordRequest setClientToken(String clientToken) {
+    public DeleteResolverRuleRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
         return this;
     }

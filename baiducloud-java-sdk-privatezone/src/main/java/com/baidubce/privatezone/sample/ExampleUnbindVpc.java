@@ -19,7 +19,6 @@ public class ExampleUnbindVpc {
         PrivatezoneClient client = new PrivatezoneClient(config);
         UnbindVpcRequest unbindVpcRequest = new UnbindVpcRequest();
         unbindVpcRequest.setZoneId("");
-        unbindVpcRequest.setAction("");
         unbindVpcRequest.setClientToken("");
         unbindVpcRequest.setRegion("");
         unbindVpcRequest.setVpcIds(new ArrayList<>());

@@ -4,9 +4,9 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.privatezone.PrivatezoneClient;
-import com.baidubce.privatezone.models.EnableRecordRequest;
+import com.baidubce.privatezone.models.DeleteResolverRequest;
 
-public class ExampleEnableRecord {
+public class ExampleDeleteResolver {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -16,11 +16,11 @@ public class ExampleEnableRecord {
         config.setCredentials(new DefaultBceCredentials(ak, sk));
         config.setEndpoint(endpoint);
         PrivatezoneClient client = new PrivatezoneClient(config);
-        EnableRecordRequest enableRecordRequest = new EnableRecordRequest();
-        enableRecordRequest.setRecordId("");
-        enableRecordRequest.setClientToken("");
+        DeleteResolverRequest deleteResolverRequest = new DeleteResolverRequest();
+        deleteResolverRequest.setResolverId("");
+        deleteResolverRequest.setClientToken("");
         try {
-            client.enableRecord(enableRecordRequest);
+            client.deleteResolver(deleteResolverRequest);
         } catch (BceClientException e) {
             // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
