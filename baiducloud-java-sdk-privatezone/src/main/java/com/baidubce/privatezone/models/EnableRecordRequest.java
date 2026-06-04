@@ -19,12 +19,6 @@ public class EnableRecordRequest extends BaseBceRequest {
     @JsonIgnore
     private String clientToken;
 
-    /**
-    * action
-    */
-    @JsonIgnore
-    private String action;
-
     public String getRecordId() {
         return recordId;
     }
@@ -40,15 +34,6 @@ public class EnableRecordRequest extends BaseBceRequest {
 
     public EnableRecordRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
-        return this;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public EnableRecordRequest setAction(String action) {
-        this.action = action;
         return this;
     }
 

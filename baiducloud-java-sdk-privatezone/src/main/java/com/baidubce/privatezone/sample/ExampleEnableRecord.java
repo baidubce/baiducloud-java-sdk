@@ -18,7 +18,6 @@ public class ExampleEnableRecord {
         PrivatezoneClient client = new PrivatezoneClient(config);
         EnableRecordRequest enableRecordRequest = new EnableRecordRequest();
         enableRecordRequest.setRecordId("");
-        enableRecordRequest.setAction("");
         enableRecordRequest.setClientToken("");
         try {
             client.enableRecord(enableRecordRequest);

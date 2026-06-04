@@ -18,12 +18,27 @@ import com.baidubce.common.BaseBceResponse;
 import com.baidubce.privatezone.models.AddRecordRequest;
 import com.baidubce.privatezone.models.AddRecordResponse;
 import com.baidubce.privatezone.models.BindVpcRequest;
+import com.baidubce.privatezone.models.BindVpcToRuleRequest;
 import com.baidubce.privatezone.models.CreatePrivateZoneRequest;
 import com.baidubce.privatezone.models.CreatePrivateZoneResponse;
+import com.baidubce.privatezone.models.CreateResolverRequest;
+import com.baidubce.privatezone.models.CreateResolverResponse;
+import com.baidubce.privatezone.models.CreateResolverRuleRequest;
+import com.baidubce.privatezone.models.CreateResolverRuleResponse;
 import com.baidubce.privatezone.models.DeletePrivateZoneRequest;
 import com.baidubce.privatezone.models.DeleteRecordRequest;
+import com.baidubce.privatezone.models.DeleteResolverRequest;
+import com.baidubce.privatezone.models.DeleteResolverRuleRequest;
 import com.baidubce.privatezone.models.DisableRecordRequest;
 import com.baidubce.privatezone.models.EnableRecordRequest;
+import com.baidubce.privatezone.models.GetDnsResolverDetailRequest;
+import com.baidubce.privatezone.models.GetDnsResolverDetailResponse;
+import com.baidubce.privatezone.models.GetDnsResolverListRequest;
+import com.baidubce.privatezone.models.GetDnsResolverListResponse;
+import com.baidubce.privatezone.models.GetDnsResolverRuleDetailRequest;
+import com.baidubce.privatezone.models.GetDnsResolverRuleDetailResponse;
+import com.baidubce.privatezone.models.GetDnsResolverRuleListRequest;
+import com.baidubce.privatezone.models.GetDnsResolverRuleListResponse;
 import com.baidubce.privatezone.models.GetPrivateZoneRequest;
 import com.baidubce.privatezone.models.GetPrivateZoneResponse;
 import com.baidubce.privatezone.models.ListPrivateZoneRequest;
@@ -31,7 +46,10 @@ import com.baidubce.privatezone.models.ListPrivateZoneResponse;
 import com.baidubce.privatezone.models.ListRecordRequest;
 import com.baidubce.privatezone.models.ListRecordResponse;
 import com.baidubce.privatezone.models.UnbindVpcRequest;
+import com.baidubce.privatezone.models.UnbindVpcToRuleRequest;
+import com.baidubce.privatezone.models.UpdateDnsParserRequest;
 import com.baidubce.privatezone.models.UpdateRecordRequest;
+import com.baidubce.privatezone.models.UpdateResolverRuleRequest;
 
 public class PrivatezoneClient extends AbstractBceClient {
 
@@ -39,7 +57,11 @@ public class PrivatezoneClient extends AbstractBceClient {
 
     private static final String VERSION_V1 = "v1";
     private static final String CONSTANT_PRIVATEZONE = "privatezone";
+    private static final String CONSTANT_RESOLVER = "resolver";
     private static final String CONSTANT_RECORD = "record";
+    private static final String CONSTANT_RULE = "rule";
+    private static final String CONSTANT_UNBIND = "unbind";
+    private static final String CONSTANT_BIND = "bind";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -91,6 +113,21 @@ public class PrivatezoneClient extends AbstractBceClient {
     }
 
     /**
+     * bindVpcToRule
+     * 
+     * @param request 入参结构体
+     */
+    public void bindVpcToRule(BindVpcToRuleRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER, CONSTANT_RULE, request.getRuleId(), CONSTANT_BIND);
+        if (request.getClienToken() != null) {
+            internalRequest.addParameter("clienToken", request.getClienToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * createPrivateZone
      * 
      * @param request 入参结构体
@@ -103,6 +140,36 @@ public class PrivatezoneClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreatePrivateZoneResponse.class);
+    }
+
+    /**
+     * createResolver
+     * 
+     * @param request 入参结构体
+     * @return CreateResolverResponse
+     */
+    public CreateResolverResponse createResolver(CreateResolverRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateResolverResponse.class);
+    }
+
+    /**
+     * createResolverRule
+     * 
+     * @param request 入参结构体
+     * @return CreateResolverRuleResponse
+     */
+    public CreateResolverRuleResponse createResolverRule(CreateResolverRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER, CONSTANT_RULE);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateResolverRuleResponse.class);
     }
 
     /**
@@ -132,6 +199,33 @@ public class PrivatezoneClient extends AbstractBceClient {
     }
 
     /**
+     * deleteResolver
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteResolver(DeleteResolverRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER, request.getResolverId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteResolverRule
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteResolverRule(DeleteResolverRuleRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER, CONSTANT_RULE, request.getRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * disableRecord
      * 
      * @param request 入参结构体
@@ -153,13 +247,72 @@ public class PrivatezoneClient extends AbstractBceClient {
     public void enableRecord(EnableRecordRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RECORD, request.getRecordId());
         internalRequest.addParameter("enable", null);
-        if (request.getAction() != null) {
-            internalRequest.addParameter("action", request.getAction());
-        }
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * getDnsResolverDetail
+     * 
+     * @param request 入参结构体
+     * @return GetDnsResolverDetailResponse
+     */
+    public GetDnsResolverDetailResponse getDnsResolverDetail(GetDnsResolverDetailRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER, request.getResolverId());
+        return invokeHttpClient(internalRequest, GetDnsResolverDetailResponse.class);
+    }
+
+    /**
+     * getDnsResolverList
+     * 
+     * @param request 入参结构体
+     * @return GetDnsResolverListResponse
+     */
+    public GetDnsResolverListResponse getDnsResolverList(GetDnsResolverListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", request.getMaxKeys());
+        }
+        if (request.getStatus() != null) {
+            internalRequest.addParameter("status", request.getStatus());
+        }
+        return invokeHttpClient(internalRequest, GetDnsResolverListResponse.class);
+    }
+
+    /**
+     * getDnsResolverRuleDetail
+     * 
+     * @param request 入参结构体
+     * @return GetDnsResolverRuleDetailResponse
+     */
+    public GetDnsResolverRuleDetailResponse getDnsResolverRuleDetail(GetDnsResolverRuleDetailRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER, CONSTANT_RULE, request.getRuleId());
+        return invokeHttpClient(internalRequest, GetDnsResolverRuleDetailResponse.class);
+    }
+
+    /**
+     * getDnsResolverRuleList
+     * 
+     * @param request 入参结构体
+     * @return GetDnsResolverRuleListResponse
+     */
+    public GetDnsResolverRuleListResponse getDnsResolverRuleList(GetDnsResolverRuleListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER, CONSTANT_RULE);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", request.getMaxKeys());
+        }
+        if (request.getStatus() != null) {
+            internalRequest.addParameter("status", request.getStatus());
+        }
+        return invokeHttpClient(internalRequest, GetDnsResolverRuleListResponse.class);
     }
 
     /**
@@ -226,7 +379,36 @@ public class PrivatezoneClient extends AbstractBceClient {
      */
     public void unbindVpc(UnbindVpcRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, request.getZoneId());
-        internalRequest.addParameter(request.getAction(), null);
+        internalRequest.addParameter("unbind", null);
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * unbindVpcToRule
+     * 
+     * @param request 入参结构体
+     */
+    public void unbindVpcToRule(UnbindVpcToRuleRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER, CONSTANT_RULE, request.getRuleId(), CONSTANT_UNBIND);
+        if (request.getClienToken() != null) {
+            internalRequest.addParameter("clienToken", request.getClienToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateDnsParser
+     * 
+     * @param request 入参结构体
+     */
+    public void updateDnsParser(UpdateDnsParserRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER, request.getResolverId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -241,6 +423,20 @@ public class PrivatezoneClient extends AbstractBceClient {
      */
     public void updateRecord(UpdateRecordRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RECORD, request.getRecordId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateResolverRule
+     * 
+     * @param request 入参结构体
+     */
+    public void updateResolverRule(UpdateResolverRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER, CONSTANT_RULE, request.getReluId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
