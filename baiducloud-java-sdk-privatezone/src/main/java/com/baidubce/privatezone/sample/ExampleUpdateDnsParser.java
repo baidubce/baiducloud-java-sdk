@@ -19,7 +19,7 @@ public class ExampleUpdateDnsParser {
         UpdateDnsParserRequest updateDnsParserRequest = new UpdateDnsParserRequest();
         updateDnsParserRequest.setResolverId("");
         updateDnsParserRequest.setClientToken("");
-        updateDnsParserRequest.setName("");
+        updateDnsParserRequest.setName("test1");
         updateDnsParserRequest.setDescription("");
         try {
             client.updateDnsParser(updateDnsParserRequest);

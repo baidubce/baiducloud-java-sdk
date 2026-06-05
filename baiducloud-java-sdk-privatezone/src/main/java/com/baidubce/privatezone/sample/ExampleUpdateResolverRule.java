@@ -4,8 +4,11 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.privatezone.PrivatezoneClient;
+import com.baidubce.privatezone.models.DnsServerConfig;
 import com.baidubce.privatezone.models.UpdateResolverRuleRequest;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExampleUpdateResolverRule {
     public static void main(String[] args) {
@@ -22,7 +25,12 @@ public class ExampleUpdateResolverRule {
         updateResolverRuleRequest.setClientToken("");
         updateResolverRuleRequest.setName("");
         updateResolverRuleRequest.setDescription("");
-        updateResolverRuleRequest.setDnsServerConfigs(new ArrayList<>());
+        List<DnsServerConfig> dnsServerConfigs = new ArrayList<>();
+        DnsServerConfig dnsServerConfig = new DnsServerConfig();
+        dnsServerConfig.setIp("12.29.2.4");
+        dnsServerConfig.setPort(53);
+        dnsServerConfigs.add(dnsServerConfig);
+        updateResolverRuleRequest.setDnsServerConfigs(dnsServerConfigs);
         try {
             client.updateResolverRule(updateResolverRuleRequest);
         } catch (BceClientException e) {

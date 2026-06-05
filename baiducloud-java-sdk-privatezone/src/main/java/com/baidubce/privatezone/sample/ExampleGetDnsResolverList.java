@@ -26,6 +26,7 @@ public class ExampleGetDnsResolverList {
             System.out.println(response.toJsonString());
         } catch (BceClientException e) {
             System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 }

@@ -5,7 +5,10 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.privatezone.PrivatezoneClient;
 import com.baidubce.privatezone.models.BindVpcToRuleRequest;
+import com.baidubce.privatezone.models.VpcRegion;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExampleBindVpcToRule {
     public static void main(String[] args) {
@@ -20,7 +23,14 @@ public class ExampleBindVpcToRule {
         BindVpcToRuleRequest bindVpcToRuleRequest = new BindVpcToRuleRequest();
         bindVpcToRuleRequest.setRuleId("");
         bindVpcToRuleRequest.setClienToken("");
-        bindVpcToRuleRequest.setVpcRegions(new ArrayList<>());
+        List<VpcRegion> vpcRegions = new ArrayList<>();
+        VpcRegion vpcRegion = new VpcRegion();
+        List<String> vpcIds = new ArrayList<>();
+        vpcIds.add("");
+        vpcRegion.setVpcIds(vpcIds);
+        vpcRegion.setRegion("");
+        vpcRegions.add(vpcRegion);
+        bindVpcToRuleRequest.setVpcRegions(vpcRegions);
         try {
             client.bindVpcToRule(bindVpcToRuleRequest);
         } catch (BceClientException e) {
