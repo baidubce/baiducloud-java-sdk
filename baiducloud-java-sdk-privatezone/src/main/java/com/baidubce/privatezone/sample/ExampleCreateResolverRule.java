@@ -6,7 +6,10 @@ import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.privatezone.PrivatezoneClient;
 import com.baidubce.privatezone.models.CreateResolverRuleRequest;
 import com.baidubce.privatezone.models.CreateResolverRuleResponse;
+import com.baidubce.privatezone.models.DnsServerConfig;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExampleCreateResolverRule {
     public static void main(String[] args) {
@@ -24,7 +27,12 @@ public class ExampleCreateResolverRule {
         createResolverRuleRequest.setDescription("");
         createResolverRuleRequest.setZone("");
         createResolverRuleRequest.setResolverId("");
-        createResolverRuleRequest.setDnsServerConfigs(new ArrayList<>());
+        List<DnsServerConfig> dnsServerConfigs = new ArrayList<>();
+        DnsServerConfig dnsServerConfig = new DnsServerConfig();
+        dnsServerConfig.setIp("");
+        dnsServerConfig.setPort(42);
+        dnsServerConfigs.add(dnsServerConfig);
+        createResolverRuleRequest.setDnsServerConfigs(dnsServerConfigs);
         try {
             CreateResolverRuleResponse response = client.createResolverRule(createResolverRuleRequest);
             System.out.println(response.toJsonString());

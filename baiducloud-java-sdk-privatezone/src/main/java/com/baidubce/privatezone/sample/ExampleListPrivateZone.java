@@ -19,7 +19,7 @@ public class ExampleListPrivateZone {
         PrivatezoneClient client = new PrivatezoneClient(config);
         ListPrivateZoneRequest listPrivateZoneRequest = new ListPrivateZoneRequest();
         listPrivateZoneRequest.setMarker("");
-        listPrivateZoneRequest.setMaxKeys(0);
+        listPrivateZoneRequest.setMaxKeys(10);
         try {
             ListPrivateZoneResponse response = client.listPrivateZone(listPrivateZoneRequest);
             System.out.println(response.toJsonString());

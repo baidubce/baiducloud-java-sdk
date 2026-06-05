@@ -6,7 +6,10 @@ import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.privatezone.PrivatezoneClient;
 import com.baidubce.privatezone.models.CreateResolverRequest;
 import com.baidubce.privatezone.models.CreateResolverResponse;
+import com.baidubce.privatezone.models.IpModel;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExampleCreateResolver {
     public static void main(String[] args) {
@@ -24,8 +27,17 @@ public class ExampleCreateResolver {
         createResolverRequest.setDescription("");
         createResolverRequest.setVpcId("");
         createResolverRequest.setVpcRegion("");
-        createResolverRequest.setIpModels(new ArrayList<>());
-        createResolverRequest.setType("");
+        List<IpModel> ipModels = new ArrayList<>();
+        IpModel ipModel1 = new IpModel();
+        ipModel1.setSubnetId("");
+        ipModel1.setIpAddress("");
+        IpModel ipModel2 = new IpModel();
+        ipModel2.setSubnetId("");
+        ipModel2.setIpAddress("");
+        ipModels.add(ipModel1);
+        ipModels.add(ipModel2);
+        createResolverRequest.setIpModels(ipModels);
+        createResolverRequest.setType("outbound");
         try {
             CreateResolverResponse response = client.createResolver(createResolverRequest);
             System.out.println(response.toJsonString());
