@@ -49,6 +49,12 @@ public class DescribeAppBlbsRequest extends BaseBceRequest {
     @JsonIgnore
     private Integer maxKeys;
 
+    /**
+    * type
+    */
+    @JsonIgnore
+    private String type;
+
     public String getAddress() {
         return address;
     }
@@ -109,6 +115,15 @@ public class DescribeAppBlbsRequest extends BaseBceRequest {
 
     public DescribeAppBlbsRequest setMaxKeys(Integer maxKeys) {
         this.maxKeys = maxKeys;
+        return this;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public DescribeAppBlbsRequest setType(String type) {
+        this.type = type;
         return this;
     }
 

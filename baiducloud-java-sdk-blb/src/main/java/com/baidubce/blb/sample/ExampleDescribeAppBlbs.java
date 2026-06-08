@@ -25,6 +25,7 @@ public class ExampleDescribeAppBlbs {
         describeAppBlbsRequest.setExactlyMatch(false);
         describeAppBlbsRequest.setMarker("");
         describeAppBlbsRequest.setMaxKeys(0);
+        describeAppBlbsRequest.setType("");
         try {
             DescribeAppBlbsResponse response = client.describeAppBlbs(describeAppBlbsRequest);
             System.out.println(response.toJsonString());

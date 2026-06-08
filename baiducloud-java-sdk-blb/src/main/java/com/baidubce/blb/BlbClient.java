@@ -1126,6 +1126,9 @@ public class BlbClient extends AbstractBceClient {
         if (request.getMaxKeys() != null) {
             internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
         }
+        if (request.getType() != null) {
+            internalRequest.addParameter("type", request.getType());
+        }
         return invokeHttpClient(internalRequest, DescribeAppBlbsResponse.class);
     }
 

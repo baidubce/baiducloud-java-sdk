@@ -20,7 +20,7 @@ public class CreateAppBlbRequest extends BaseBceRequest {
     private String name;
 
     /**
-    * LoaBalancer的类型，此处取值"application"(默认)
+    * 指定负载均衡实例的类型，不传默认为应用型，传"ipv6Application"代表创建ipv6类型的应用型BLB。
     */
     private String type;
 

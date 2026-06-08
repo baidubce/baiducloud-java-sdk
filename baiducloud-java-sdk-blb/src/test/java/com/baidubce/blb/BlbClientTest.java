@@ -1093,6 +1093,7 @@ public class BlbClientTest {
         describeAppBlbsRequest.setExactlyMatch(false);
         describeAppBlbsRequest.setMarker("");
         describeAppBlbsRequest.setMaxKeys(0);
+        describeAppBlbsRequest.setType("");
         DescribeAppBlbsResponse response = blbClient.describeAppBlbs(describeAppBlbsRequest);
         System.out.println(response);
     }
