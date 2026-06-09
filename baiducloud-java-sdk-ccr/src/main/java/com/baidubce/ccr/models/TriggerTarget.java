@@ -1,5 +1,7 @@
 package com.baidubce.ccr.models;
 
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -12,7 +14,7 @@ public class TriggerTarget {
     /**
      * 自定义 Header 信息<br>Header Key 仅支持 `Authorization`
      */
-    private Object headers;
+    private Map<String, String> headers;
 
     public TriggerTarget setAddress(String address) {
         this.address = address;
@@ -23,12 +25,12 @@ public class TriggerTarget {
         return this.address;
     }
 
-    public TriggerTarget setHeaders(Object headers) {
+    public TriggerTarget setHeaders(Map<String, String> headers) {
         this.headers = headers;
         return this;
     }
 
-    public Object getHeaders() {
+    public Map<String, String> getHeaders() {
         return this.headers;
     }
 
