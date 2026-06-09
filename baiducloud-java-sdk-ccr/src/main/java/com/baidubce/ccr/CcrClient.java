@@ -20,6 +20,8 @@ import com.baidubce.ccr.models.AddVpcLinkRequest;
 import com.baidubce.ccr.models.CreateAcceleratorFilterRequest;
 import com.baidubce.ccr.models.CreateImageMigrationRuleRequest;
 import com.baidubce.ccr.models.CreateInstanceSyncRequest;
+import com.baidubce.ccr.models.CreateProjectRequest;
+import com.baidubce.ccr.models.CreateProjectResponse;
 import com.baidubce.ccr.models.CreateRobotAccountRequest;
 import com.baidubce.ccr.models.CreateRobotAccountResponse;
 import com.baidubce.ccr.models.CreateTemporaryPasswordRequest;
@@ -61,6 +63,8 @@ import com.baidubce.ccr.models.GetInstanceSyncDetailResponse;
 import com.baidubce.ccr.models.GetInstanceSyncExecutionDetailRequest;
 import com.baidubce.ccr.models.GetInstanceSyncExecutionDetailResponse;
 import com.baidubce.ccr.models.GetInstanceSyncTaskLogsRequest;
+import com.baidubce.ccr.models.GetProjectDetailRequest;
+import com.baidubce.ccr.models.GetProjectDetailResponse;
 import com.baidubce.ccr.models.GetPublicNetworkConfigRequest;
 import com.baidubce.ccr.models.GetPublicNetworkConfigResponse;
 import com.baidubce.ccr.models.GetRepositoryRequest;
@@ -127,6 +131,8 @@ import com.baidubce.ccr.models.UpdateInstanceNameRequest;
 import com.baidubce.ccr.models.UpdateInstanceNameResponse;
 import com.baidubce.ccr.models.UpdateInstanceSyncRequest;
 import com.baidubce.ccr.models.UpdateInstanceTagsRequest;
+import com.baidubce.ccr.models.UpdateProjectRequest;
+import com.baidubce.ccr.models.UpdateProjectResponse;
 import com.baidubce.ccr.models.UpdatePublicNetworkRequest;
 import com.baidubce.ccr.models.UpdateRepositoryRequest;
 import com.baidubce.ccr.models.UpdateRepositoryResponse;
@@ -140,11 +146,11 @@ public class CcrClient extends AbstractBceClient {
     private static final String CONSTANT_V1 = "v1";
     private static final String CONSTANT_INSTANCES = "instances";
     private static final String CONSTANT_CREDENTIAL = "credential";
+    private static final String CONSTANT_PROJECTS = "projects";
     private static final String CONSTANT_ACCELERATORS = "accelerators";
     private static final String CONSTANT_POLICIES = "policies";
     private static final String CONSTANT_FILTERS = "filters";
     private static final String CONSTANT_SYNCS = "syncs";
-    private static final String CONSTANT_PROJECTS = "projects";
     private static final String CONSTANT_REPOSITORIES = "repositories";
     private static final String CONSTANT_TAGS = "tags";
     private static final String CONSTANT_BUILDHISTORY = "buildhistory";
@@ -244,6 +250,18 @@ public class CcrClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_INSTANCES, request.getInstanceId(), CONSTANT_SYNCS);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * createProject
+     * 
+     * @param request 入参结构体
+     * @return CreateProjectResponse
+     */
+    public CreateProjectResponse createProject(CreateProjectRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_INSTANCES, request.getInstanceId(), CONSTANT_PROJECTS);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateProjectResponse.class);
     }
 
     /**
@@ -752,6 +770,18 @@ public class CcrClient extends AbstractBceClient {
                         request.getTaskId(),
                         CONSTANT_LOG);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * getProjectDetail
+     * 
+     * @param request 入参结构体
+     * @return GetProjectDetailResponse
+     */
+    public GetProjectDetailResponse getProjectDetail(GetProjectDetailRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.GET, CONSTANT_V1, CONSTANT_INSTANCES, request.getInstanceId(), CONSTANT_PROJECTS, request.getProjectName());
+        return invokeHttpClient(internalRequest, GetProjectDetailResponse.class);
     }
 
     /**
@@ -1521,6 +1551,19 @@ public class CcrClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, CONSTANT_V1, CONSTANT_INSTANCES, request.getInstanceId(), CONSTANT_TAGS);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateProject
+     * 
+     * @param request 入参结构体
+     * @return UpdateProjectResponse
+     */
+    public UpdateProjectResponse updateProject(UpdateProjectRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, CONSTANT_V1, CONSTANT_INSTANCES, request.getInstanceId(), CONSTANT_PROJECTS, request.getProjectName());
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, UpdateProjectResponse.class);
     }
 
     /**

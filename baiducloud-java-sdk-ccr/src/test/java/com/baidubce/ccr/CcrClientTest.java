@@ -5,6 +5,8 @@ import com.baidubce.ccr.models.AddVpcLinkRequest;
 import com.baidubce.ccr.models.CreateAcceleratorFilterRequest;
 import com.baidubce.ccr.models.CreateImageMigrationRuleRequest;
 import com.baidubce.ccr.models.CreateInstanceSyncRequest;
+import com.baidubce.ccr.models.CreateProjectRequest;
+import com.baidubce.ccr.models.CreateProjectResponse;
 import com.baidubce.ccr.models.CreateRobotAccountRequest;
 import com.baidubce.ccr.models.CreateRobotAccountResponse;
 import com.baidubce.ccr.models.CreateTemporaryPasswordRequest;
@@ -46,6 +48,8 @@ import com.baidubce.ccr.models.GetInstanceSyncDetailResponse;
 import com.baidubce.ccr.models.GetInstanceSyncExecutionDetailRequest;
 import com.baidubce.ccr.models.GetInstanceSyncExecutionDetailResponse;
 import com.baidubce.ccr.models.GetInstanceSyncTaskLogsRequest;
+import com.baidubce.ccr.models.GetProjectDetailRequest;
+import com.baidubce.ccr.models.GetProjectDetailResponse;
 import com.baidubce.ccr.models.GetPublicNetworkConfigRequest;
 import com.baidubce.ccr.models.GetPublicNetworkConfigResponse;
 import com.baidubce.ccr.models.GetRepositoryRequest;
@@ -112,6 +116,8 @@ import com.baidubce.ccr.models.UpdateInstanceNameRequest;
 import com.baidubce.ccr.models.UpdateInstanceNameResponse;
 import com.baidubce.ccr.models.UpdateInstanceSyncRequest;
 import com.baidubce.ccr.models.UpdateInstanceTagsRequest;
+import com.baidubce.ccr.models.UpdateProjectRequest;
+import com.baidubce.ccr.models.UpdateProjectResponse;
 import com.baidubce.ccr.models.UpdatePublicNetworkRequest;
 import com.baidubce.ccr.models.UpdateRepositoryRequest;
 import com.baidubce.ccr.models.UpdateRepositoryResponse;
@@ -217,6 +223,19 @@ public class CcrClientTest {
         createInstanceSyncRequest.setSyncType("");
         createInstanceSyncRequest.setTrigger(null);
         ccrClient.createInstanceSync(createInstanceSyncRequest);
+    }
+    /**
+     * createProject
+     *
+     */
+    @Test
+    public void createProjectTest() {
+        CreateProjectRequest createProjectRequest = new CreateProjectRequest();
+        createProjectRequest.setInstanceId("");
+        createProjectRequest.setProjectName("");
+        createProjectRequest.setCcrPublic("");
+        CreateProjectResponse response = ccrClient.createProject(createProjectRequest);
+        System.out.println(response);
     }
     /**
      * createRobotAccount
@@ -612,6 +631,18 @@ public class CcrClientTest {
         getInstanceSyncTaskLogsRequest.setExecutionId("");
         getInstanceSyncTaskLogsRequest.setTaskId("");
         ccrClient.getInstanceSyncTaskLogs(getInstanceSyncTaskLogsRequest);
+    }
+    /**
+     * getProjectDetail
+     *
+     */
+    @Test
+    public void getProjectDetailTest() {
+        GetProjectDetailRequest getProjectDetailRequest = new GetProjectDetailRequest();
+        getProjectDetailRequest.setInstanceId("");
+        getProjectDetailRequest.setProjectName("");
+        GetProjectDetailResponse response = ccrClient.getProjectDetail(getProjectDetailRequest);
+        System.out.println(response);
     }
     /**
      * getPublicNetworkConfig
@@ -1140,6 +1171,20 @@ public class CcrClientTest {
         updateInstanceTagsRequest.setInstanceId("");
         updateInstanceTagsRequest.setTags(new ArrayList<>());
         ccrClient.updateInstanceTags(updateInstanceTagsRequest);
+    }
+    /**
+     * updateProject
+     *
+     */
+    @Test
+    public void updateProjectTest() {
+        UpdateProjectRequest updateProjectRequest = new UpdateProjectRequest();
+        updateProjectRequest.setInstanceId("");
+        updateProjectRequest.setProjectName("");
+        updateProjectRequest.setAutoScan("");
+        updateProjectRequest.setCcrPublic("");
+        UpdateProjectResponse response = ccrClient.updateProject(updateProjectRequest);
+        System.out.println(response);
     }
     /**
      * updatePublicNetwork

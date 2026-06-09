@@ -1,5 +1,7 @@
 package com.baidubce.ccr.models;
 
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -37,7 +39,7 @@ public class TagScanOverview {
     /**
      * 不同严重程度的漏洞数量
      */
-    private Object summary;
+    private Map<String, Integer> summary;
 
     /**
      * 发现的漏洞总数
@@ -98,12 +100,12 @@ public class TagScanOverview {
         return this.startTime;
     }
 
-    public TagScanOverview setSummary(Object summary) {
+    public TagScanOverview setSummary(Map<String, Integer> summary) {
         this.summary = summary;
         return this;
     }
 
-    public Object getSummary() {
+    public Map<String, Integer> getSummary() {
         return this.summary;
     }
 
