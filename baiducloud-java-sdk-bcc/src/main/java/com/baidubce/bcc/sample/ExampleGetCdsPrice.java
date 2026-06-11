@@ -13,10 +13,10 @@ public class ExampleGetCdsPrice {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        BccClient client = new BccClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        BccClient client = new BccClient(bceClientConfig);
         GetCdsPriceRequest getCdsPriceRequest = new GetCdsPriceRequest();
         getCdsPriceRequest.setStorageType("");
         getCdsPriceRequest.setCdsSizeInGB(0);

@@ -2,18 +2,35 @@ package com.baidubce.bcc;
 
 import com.baidubce.bcc.models.AttachVolumeRequest;
 import com.baidubce.bcc.models.AttachVolumeResponse;
+import com.baidubce.bcc.models.BindTagImageRequest;
 import com.baidubce.bcc.models.BindTagVolumeRequest;
+import com.baidubce.bcc.models.CancelRemoteCopyImageRequest;
+import com.baidubce.bcc.models.CreateImageRequest;
+import com.baidubce.bcc.models.CreateImageResponse;
 import com.baidubce.bcc.models.CreateVolumeRequest;
 import com.baidubce.bcc.models.CreateVolumeResponse;
+import com.baidubce.bcc.models.DeleteImageRequest;
 import com.baidubce.bcc.models.DetachVolumeRequest;
+import com.baidubce.bcc.models.GetAvailableImagesBySpecRequest;
+import com.baidubce.bcc.models.GetAvailableImagesBySpecResponse;
 import com.baidubce.bcc.models.GetCdsPriceRequest;
 import com.baidubce.bcc.models.GetCdsPriceResponse;
 import com.baidubce.bcc.models.GetDiskQuotaRequest;
 import com.baidubce.bcc.models.GetDiskQuotaResponse;
+import com.baidubce.bcc.models.GetImageRequest;
+import com.baidubce.bcc.models.GetImageResponse;
 import com.baidubce.bcc.models.GetVolumeRequest;
 import com.baidubce.bcc.models.GetVolumeResizeProgressRequest;
 import com.baidubce.bcc.models.GetVolumeResizeProgressResponse;
 import com.baidubce.bcc.models.GetVolumeResponse;
+import com.baidubce.bcc.models.ImportImageRequest;
+import com.baidubce.bcc.models.ImportImageResponse;
+import com.baidubce.bcc.models.ListImagesRequest;
+import com.baidubce.bcc.models.ListImagesResponse;
+import com.baidubce.bcc.models.ListOsRequest;
+import com.baidubce.bcc.models.ListOsResponse;
+import com.baidubce.bcc.models.ListSharedUserRequest;
+import com.baidubce.bcc.models.ListSharedUserResponse;
 import com.baidubce.bcc.models.ListVolumesRequest;
 import com.baidubce.bcc.models.ListVolumesResponse;
 import com.baidubce.bcc.models.ModifyCdsAttributeRequest;
@@ -21,10 +38,16 @@ import com.baidubce.bcc.models.ModifyVolumeChargeTypeRequest;
 import com.baidubce.bcc.models.PurchaseReservedVolumeRequest;
 import com.baidubce.bcc.models.PurchaseReservedVolumeResponse;
 import com.baidubce.bcc.models.ReleaseVolumeRequest;
+import com.baidubce.bcc.models.RemoteCopyImageRequest;
+import com.baidubce.bcc.models.RemoteCopyImageResponse;
+import com.baidubce.bcc.models.RenameImageRequest;
 import com.baidubce.bcc.models.RenameVolumeRequest;
 import com.baidubce.bcc.models.ResizeVolumeRequest;
 import com.baidubce.bcc.models.ResizeVolumeResponse;
 import com.baidubce.bcc.models.RollbackVolumeRequest;
+import com.baidubce.bcc.models.ShareImageRequest;
+import com.baidubce.bcc.models.UnShareImageRequest;
+import com.baidubce.bcc.models.UnbindTagImageRequest;
 import com.baidubce.bcc.models.UnbindTagVolumeRequest;
 import org.junit.Test;
 import org.junit.Before;
@@ -63,6 +86,17 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * bindTagImage
+     *
+     */
+    @Test
+    public void bindTagImageTest() {
+        BindTagImageRequest bindTagImageRequest = new BindTagImageRequest();
+        bindTagImageRequest.setImageId("");
+        bindTagImageRequest.setChangeTags(new ArrayList<>());
+        bccClient.bindTagImage(bindTagImageRequest);
+    }
+    /**
      * bindTagVolume
      *
      */
@@ -72,6 +106,32 @@ public class BccClientTest {
         bindTagVolumeRequest.setVolumeId("");
         bindTagVolumeRequest.setChangeTags(new ArrayList<>());
         bccClient.bindTagVolume(bindTagVolumeRequest);
+    }
+    /**
+     * cancelRemoteCopyImage
+     *
+     */
+    @Test
+    public void cancelRemoteCopyImageTest() {
+        CancelRemoteCopyImageRequest cancelRemoteCopyImageRequest = new CancelRemoteCopyImageRequest();
+        cancelRemoteCopyImageRequest.setImageId("");
+        bccClient.cancelRemoteCopyImage(cancelRemoteCopyImageRequest);
+    }
+    /**
+     * createImage
+     *
+     */
+    @Test
+    public void createImageTest() {
+        CreateImageRequest createImageRequest = new CreateImageRequest();
+        createImageRequest.setImageName("");
+        createImageRequest.setInstanceId("");
+        createImageRequest.setSnapshotId("");
+        createImageRequest.setEncryptKey("");
+        createImageRequest.setRelateCds(false);
+        createImageRequest.setDetection(false);
+        CreateImageResponse response = bccClient.createImage(createImageRequest);
+        System.out.println(response);
     }
     /**
      * createVolume
@@ -107,6 +167,16 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * deleteImage
+     *
+     */
+    @Test
+    public void deleteImageTest() {
+        DeleteImageRequest deleteImageRequest = new DeleteImageRequest();
+        deleteImageRequest.setImageId("");
+        bccClient.deleteImage(deleteImageRequest);
+    }
+    /**
      * detachVolume
      *
      */
@@ -116,6 +186,20 @@ public class BccClientTest {
         detachVolumeRequest.setVolumeId("");
         detachVolumeRequest.setInstanceId("");
         bccClient.detachVolume(detachVolumeRequest);
+    }
+    /**
+     * getAvailableImagesBySpec
+     *
+     */
+    @Test
+    public void getAvailableImagesBySpecTest() {
+        GetAvailableImagesBySpecRequest getAvailableImagesBySpecRequest = new GetAvailableImagesBySpecRequest();
+        getAvailableImagesBySpecRequest.setSpec("");
+        getAvailableImagesBySpecRequest.setMarker("");
+        getAvailableImagesBySpecRequest.setMaxKeys(0);
+        getAvailableImagesBySpecRequest.setOsName("");
+        GetAvailableImagesBySpecResponse response = bccClient.getAvailableImagesBySpec(getAvailableImagesBySpecRequest);
+        System.out.println(response);
     }
     /**
      * getCdsPrice
@@ -146,6 +230,17 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * getImage
+     *
+     */
+    @Test
+    public void getImageTest() {
+        GetImageRequest getImageRequest = new GetImageRequest();
+        getImageRequest.setImageId("");
+        GetImageResponse response = bccClient.getImage(getImageRequest);
+        System.out.println(response);
+    }
+    /**
      * getVolume
      *
      */
@@ -165,6 +260,60 @@ public class BccClientTest {
         GetVolumeResizeProgressRequest getVolumeResizeProgressRequest = new GetVolumeResizeProgressRequest();
         getVolumeResizeProgressRequest.setVolumeId("");
         GetVolumeResizeProgressResponse response = bccClient.getVolumeResizeProgress(getVolumeResizeProgressRequest);
+        System.out.println(response);
+    }
+    /**
+     * importImage
+     *
+     */
+    @Test
+    public void importImageTest() {
+        ImportImageRequest importImageRequest = new ImportImageRequest();
+        importImageRequest.setOsName("");
+        importImageRequest.setOsArch("");
+        importImageRequest.setOsType("");
+        importImageRequest.setOsVersion("");
+        importImageRequest.setName("");
+        importImageRequest.setBosUrl("");
+        importImageRequest.setDetection(false);
+        importImageRequest.setGenerationType("");
+        ImportImageResponse response = bccClient.importImage(importImageRequest);
+        System.out.println(response);
+    }
+    /**
+     * listImages
+     *
+     */
+    @Test
+    public void listImagesTest() {
+        ListImagesRequest listImagesRequest = new ListImagesRequest();
+        listImagesRequest.setMarker("");
+        listImagesRequest.setMaxKeys(0);
+        listImagesRequest.setImageType("");
+        listImagesRequest.setImageName("");
+        ListImagesResponse response = bccClient.listImages(listImagesRequest);
+        System.out.println(response);
+    }
+    /**
+     * listOs
+     *
+     */
+    @Test
+    public void listOsTest() {
+        ListOsRequest listOsRequest = new ListOsRequest();
+        listOsRequest.setInstanceIds(new ArrayList<>());
+        ListOsResponse response = bccClient.listOs(listOsRequest);
+        System.out.println(response);
+    }
+    /**
+     * listSharedUser
+     *
+     */
+    @Test
+    public void listSharedUserTest() {
+        ListSharedUserRequest listSharedUserRequest = new ListSharedUserRequest();
+        listSharedUserRequest.setImageId("");
+        ListSharedUserResponse response = bccClient.listSharedUser(listSharedUserRequest);
         System.out.println(response);
     }
     /**
@@ -240,6 +389,30 @@ public class BccClientTest {
         bccClient.releaseVolume(releaseVolumeRequest);
     }
     /**
+     * remoteCopyImage
+     *
+     */
+    @Test
+    public void remoteCopyImageTest() {
+        RemoteCopyImageRequest remoteCopyImageRequest = new RemoteCopyImageRequest();
+        remoteCopyImageRequest.setImageId("");
+        remoteCopyImageRequest.setName("");
+        remoteCopyImageRequest.setDestRegion(new ArrayList<>());
+        RemoteCopyImageResponse response = bccClient.remoteCopyImage(remoteCopyImageRequest);
+        System.out.println(response);
+    }
+    /**
+     * renameImage
+     *
+     */
+    @Test
+    public void renameImageTest() {
+        RenameImageRequest renameImageRequest = new RenameImageRequest();
+        renameImageRequest.setImageIds(new ArrayList<>());
+        renameImageRequest.setName("");
+        bccClient.renameImage(renameImageRequest);
+    }
+    /**
      * renameVolume
      *
      */
@@ -274,6 +447,43 @@ public class BccClientTest {
         rollbackVolumeRequest.setVolumeId("");
         rollbackVolumeRequest.setSnapshotId("");
         bccClient.rollbackVolume(rollbackVolumeRequest);
+    }
+    /**
+     * shareImage
+     *
+     */
+    @Test
+    public void shareImageTest() {
+        ShareImageRequest shareImageRequest = new ShareImageRequest();
+        shareImageRequest.setImageId("");
+        shareImageRequest.setAccount("");
+        shareImageRequest.setAccountId("");
+        shareImageRequest.setUcAccount("");
+        bccClient.shareImage(shareImageRequest);
+    }
+    /**
+     * unShareImage
+     *
+     */
+    @Test
+    public void unShareImageTest() {
+        UnShareImageRequest unShareImageRequest = new UnShareImageRequest();
+        unShareImageRequest.setImageId("");
+        unShareImageRequest.setAccount("");
+        unShareImageRequest.setAccountId("");
+        unShareImageRequest.setUcAccount("");
+        bccClient.unShareImage(unShareImageRequest);
+    }
+    /**
+     * unbindTagImage
+     *
+     */
+    @Test
+    public void unbindTagImageTest() {
+        UnbindTagImageRequest unbindTagImageRequest = new UnbindTagImageRequest();
+        unbindTagImageRequest.setImageId("");
+        unbindTagImageRequest.setChangeTags(new ArrayList<>());
+        bccClient.unbindTagImage(unbindTagImageRequest);
     }
     /**
      * unbindTagVolume
