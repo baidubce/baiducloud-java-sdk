@@ -17,18 +17,35 @@ import com.baidubce.common.BaseBceResponse;
 
 import com.baidubce.bcc.models.AttachVolumeRequest;
 import com.baidubce.bcc.models.AttachVolumeResponse;
+import com.baidubce.bcc.models.BindTagImageRequest;
 import com.baidubce.bcc.models.BindTagVolumeRequest;
+import com.baidubce.bcc.models.CancelRemoteCopyImageRequest;
+import com.baidubce.bcc.models.CreateImageRequest;
+import com.baidubce.bcc.models.CreateImageResponse;
 import com.baidubce.bcc.models.CreateVolumeRequest;
 import com.baidubce.bcc.models.CreateVolumeResponse;
+import com.baidubce.bcc.models.DeleteImageRequest;
 import com.baidubce.bcc.models.DetachVolumeRequest;
+import com.baidubce.bcc.models.GetAvailableImagesBySpecRequest;
+import com.baidubce.bcc.models.GetAvailableImagesBySpecResponse;
 import com.baidubce.bcc.models.GetCdsPriceRequest;
 import com.baidubce.bcc.models.GetCdsPriceResponse;
 import com.baidubce.bcc.models.GetDiskQuotaRequest;
 import com.baidubce.bcc.models.GetDiskQuotaResponse;
+import com.baidubce.bcc.models.GetImageRequest;
+import com.baidubce.bcc.models.GetImageResponse;
 import com.baidubce.bcc.models.GetVolumeRequest;
 import com.baidubce.bcc.models.GetVolumeResizeProgressRequest;
 import com.baidubce.bcc.models.GetVolumeResizeProgressResponse;
 import com.baidubce.bcc.models.GetVolumeResponse;
+import com.baidubce.bcc.models.ImportImageRequest;
+import com.baidubce.bcc.models.ImportImageResponse;
+import com.baidubce.bcc.models.ListImagesRequest;
+import com.baidubce.bcc.models.ListImagesResponse;
+import com.baidubce.bcc.models.ListOsRequest;
+import com.baidubce.bcc.models.ListOsResponse;
+import com.baidubce.bcc.models.ListSharedUserRequest;
+import com.baidubce.bcc.models.ListSharedUserResponse;
 import com.baidubce.bcc.models.ListVolumesRequest;
 import com.baidubce.bcc.models.ListVolumesResponse;
 import com.baidubce.bcc.models.ModifyCdsAttributeRequest;
@@ -36,10 +53,16 @@ import com.baidubce.bcc.models.ModifyVolumeChargeTypeRequest;
 import com.baidubce.bcc.models.PurchaseReservedVolumeRequest;
 import com.baidubce.bcc.models.PurchaseReservedVolumeResponse;
 import com.baidubce.bcc.models.ReleaseVolumeRequest;
+import com.baidubce.bcc.models.RemoteCopyImageRequest;
+import com.baidubce.bcc.models.RemoteCopyImageResponse;
+import com.baidubce.bcc.models.RenameImageRequest;
 import com.baidubce.bcc.models.RenameVolumeRequest;
 import com.baidubce.bcc.models.ResizeVolumeRequest;
 import com.baidubce.bcc.models.ResizeVolumeResponse;
 import com.baidubce.bcc.models.RollbackVolumeRequest;
+import com.baidubce.bcc.models.ShareImageRequest;
+import com.baidubce.bcc.models.UnShareImageRequest;
+import com.baidubce.bcc.models.UnbindTagImageRequest;
 import com.baidubce.bcc.models.UnbindTagVolumeRequest;
 
 public class BccClient extends AbstractBceClient {
@@ -47,12 +70,18 @@ public class BccClient extends AbstractBceClient {
     private static final String[] HEADERS_TO_SIGN = {"host", "x-bce-date"};
 
     private static final String VERSION_V2 = "v2";
-    private static final String CONSTANT_VOLUME = "volume";
+    private static final String CONSTANT_IMAGE = "image";
     private static final String CONSTANT_TAG = "tag";
+    private static final String CONSTANT_VOLUME = "volume";
     private static final String CONSTANT_PROGRESS = "progress";
     private static final String CONSTANT_DISK = "disk";
     private static final String CONSTANT_QUOTA = "quota";
     private static final String CONSTANT_GET_PRICE = "getPrice";
+    private static final String CONSTANT_GET_AVAILABLE_IMAGES_BY_SPEC = "getAvailableImagesBySpec";
+    private static final String CONSTANT_RENAME = "rename";
+    private static final String CONSTANT_IMPORT = "import";
+    private static final String CONSTANT_OS = "os";
+    private static final String CONSTANT_SHARED_USERS = "sharedUsers";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -87,6 +116,18 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * bindTagImage
+     * 
+     * @param request 入参结构体
+     */
+    public void bindTagImage(BindTagImageRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_IMAGE, request.getImageId(), CONSTANT_TAG);
+        internalRequest.addParameter("bind", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * bindTagVolume
      * 
      * @param request 入参结构体
@@ -96,6 +137,29 @@ public class BccClient extends AbstractBceClient {
         internalRequest.addParameter("bind", null);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * cancelRemoteCopyImage
+     * 
+     * @param request 入参结构体
+     */
+    public void cancelRemoteCopyImage(CancelRemoteCopyImageRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_IMAGE, request.getImageId());
+        internalRequest.addParameter("cancelRemoteCopy", null);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * createImage
+     * 
+     * @param request 入参结构体
+     * @return CreateImageResponse
+     */
+    public CreateImageResponse createImage(CreateImageRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_IMAGE);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateImageResponse.class);
     }
 
     /**
@@ -111,6 +175,16 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * deleteImage
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteImage(DeleteImageRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V2, CONSTANT_IMAGE, request.getImageId());
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * detachVolume
      * 
      * @param request 入参结构体
@@ -120,6 +194,29 @@ public class BccClient extends AbstractBceClient {
         internalRequest.addParameter("detach", null);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * getAvailableImagesBySpec
+     * 
+     * @param request 入参结构体
+     * @return GetAvailableImagesBySpecResponse
+     */
+    public GetAvailableImagesBySpecResponse getAvailableImagesBySpec(GetAvailableImagesBySpecRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_IMAGE, CONSTANT_GET_AVAILABLE_IMAGES_BY_SPEC);
+        if (request.getSpec() != null) {
+            internalRequest.addParameter("spec", request.getSpec());
+        }
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        if (request.getOsName() != null) {
+            internalRequest.addParameter("osName", request.getOsName());
+        }
+        return invokeHttpClient(internalRequest, GetAvailableImagesBySpecResponse.class);
     }
 
     /**
@@ -149,6 +246,17 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * getImage
+     * 
+     * @param request 入参结构体
+     * @return GetImageResponse
+     */
+    public GetImageResponse getImage(GetImageRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_IMAGE, request.getImageId());
+        return invokeHttpClient(internalRequest, GetImageResponse.class);
+    }
+
+    /**
      * getVolume
      * 
      * @param request 入参结构体
@@ -168,6 +276,64 @@ public class BccClient extends AbstractBceClient {
     public GetVolumeResizeProgressResponse getVolumeResizeProgress(GetVolumeResizeProgressRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_VOLUME, CONSTANT_PROGRESS, request.getVolumeId());
         return invokeHttpClient(internalRequest, GetVolumeResizeProgressResponse.class);
+    }
+
+    /**
+     * importImage
+     * 
+     * @param request 入参结构体
+     * @return ImportImageResponse
+     */
+    public ImportImageResponse importImage(ImportImageRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_IMAGE, CONSTANT_IMPORT);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ImportImageResponse.class);
+    }
+
+    /**
+     * listImages
+     * 
+     * @param request 入参结构体
+     * @return ListImagesResponse
+     */
+    public ListImagesResponse listImages(ListImagesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_IMAGE);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        if (request.getImageType() != null) {
+            internalRequest.addParameter("imageType", request.getImageType());
+        }
+        if (request.getImageName() != null) {
+            internalRequest.addParameter("imageName", request.getImageName());
+        }
+        return invokeHttpClient(internalRequest, ListImagesResponse.class);
+    }
+
+    /**
+     * listOs
+     * 
+     * @param request 入参结构体
+     * @return ListOsResponse
+     */
+    public ListOsResponse listOs(ListOsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_IMAGE, CONSTANT_OS);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ListOsResponse.class);
+    }
+
+    /**
+     * listSharedUser
+     * 
+     * @param request 入参结构体
+     * @return ListSharedUserResponse
+     */
+    public ListSharedUserResponse listSharedUser(ListSharedUserRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_IMAGE, request.getImageId(), CONSTANT_SHARED_USERS);
+        return invokeHttpClient(internalRequest, ListSharedUserResponse.class);
     }
 
     /**
@@ -257,6 +423,30 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * remoteCopyImage
+     * 
+     * @param request 入参结构体
+     * @return RemoteCopyImageResponse
+     */
+    public RemoteCopyImageResponse remoteCopyImage(RemoteCopyImageRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_IMAGE, request.getImageId());
+        internalRequest.addParameter("remoteCopy", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, RemoteCopyImageResponse.class);
+    }
+
+    /**
+     * renameImage
+     * 
+     * @param request 入参结构体
+     */
+    public void renameImage(RenameImageRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_IMAGE, CONSTANT_RENAME);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * renameVolume
      * 
      * @param request 入参结构体
@@ -289,6 +479,42 @@ public class BccClient extends AbstractBceClient {
     public void rollbackVolume(RollbackVolumeRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_VOLUME, request.getVolumeId());
         internalRequest.addParameter("rollback", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * shareImage
+     * 
+     * @param request 入参结构体
+     */
+    public void shareImage(ShareImageRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_IMAGE, request.getImageId());
+        internalRequest.addParameter("share", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * unShareImage
+     * 
+     * @param request 入参结构体
+     */
+    public void unShareImage(UnShareImageRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_IMAGE, request.getImageId());
+        internalRequest.addParameter("unshare", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * unbindTagImage
+     * 
+     * @param request 入参结构体
+     */
+    public void unbindTagImage(UnbindTagImageRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_IMAGE, request.getImageId(), CONSTANT_TAG);
+        internalRequest.addParameter("unbind", null);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }

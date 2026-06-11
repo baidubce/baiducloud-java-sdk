@@ -13,10 +13,10 @@ public class ExampleListVolumes {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        BccClient client = new BccClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        BccClient client = new BccClient(bceClientConfig);
         ListVolumesRequest listVolumesRequest = new ListVolumesRequest();
         listVolumesRequest.setMarker("");
         listVolumesRequest.setMaxKeys(0);
