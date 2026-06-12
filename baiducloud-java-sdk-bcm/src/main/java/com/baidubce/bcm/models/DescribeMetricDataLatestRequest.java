@@ -6,7 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DescribeMetricDataRequest extends BaseBceRequest {
+public class DescribeMetricDataLatestRequest extends BaseBceRequest {
 
     /**
     * action
@@ -28,11 +28,6 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
     * 地域
     */
     private String region;
-
-    /**
-    * 开始时间，UTC时间，如 2024-10-11T10:10:10Z
-    */
-    private String beginDatetime;
 
     /**
     * 结束时间，UTC时间，如 2024-10-11T10:25:10Z
@@ -60,7 +55,7 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
     private Integer offset;
 
     /**
-    * 周期，单位：秒，默认值：根据查询时间范围自适应
+    * 周期，单位：秒，默认值：60
     */
     private Integer periodSeconds;
 
@@ -73,7 +68,7 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return action;
     }
 
-    public DescribeMetricDataRequest setAction(String action) {
+    public DescribeMetricDataLatestRequest setAction(String action) {
         this.action = action;
         return this;
     }
@@ -82,7 +77,7 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return scope;
     }
 
-    public DescribeMetricDataRequest setScope(String scope) {
+    public DescribeMetricDataLatestRequest setScope(String scope) {
         this.scope = scope;
         return this;
     }
@@ -91,7 +86,7 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return resourceType;
     }
 
-    public DescribeMetricDataRequest setResourceType(String resourceType) {
+    public DescribeMetricDataLatestRequest setResourceType(String resourceType) {
         this.resourceType = resourceType;
         return this;
     }
@@ -100,17 +95,8 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return region;
     }
 
-    public DescribeMetricDataRequest setRegion(String region) {
+    public DescribeMetricDataLatestRequest setRegion(String region) {
         this.region = region;
-        return this;
-    }
-
-    public String getBeginDatetime() {
-        return beginDatetime;
-    }
-
-    public DescribeMetricDataRequest setBeginDatetime(String beginDatetime) {
-        this.beginDatetime = beginDatetime;
         return this;
     }
 
@@ -118,7 +104,7 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return endDatetime;
     }
 
-    public DescribeMetricDataRequest setEndDatetime(String endDatetime) {
+    public DescribeMetricDataLatestRequest setEndDatetime(String endDatetime) {
         this.endDatetime = endDatetime;
         return this;
     }
@@ -127,7 +113,7 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return metricName;
     }
 
-    public DescribeMetricDataRequest setMetricName(String metricName) {
+    public DescribeMetricDataLatestRequest setMetricName(String metricName) {
         this.metricName = metricName;
         return this;
     }
@@ -136,7 +122,7 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return filters;
     }
 
-    public DescribeMetricDataRequest setFilters(List<Filter> filters) {
+    public DescribeMetricDataLatestRequest setFilters(List<Filter> filters) {
         this.filters = filters;
         return this;
     }
@@ -145,7 +131,7 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return limit;
     }
 
-    public DescribeMetricDataRequest setLimit(Integer limit) {
+    public DescribeMetricDataLatestRequest setLimit(Integer limit) {
         this.limit = limit;
         return this;
     }
@@ -154,7 +140,7 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return offset;
     }
 
-    public DescribeMetricDataRequest setOffset(Integer offset) {
+    public DescribeMetricDataLatestRequest setOffset(Integer offset) {
         this.offset = offset;
         return this;
     }
@@ -163,7 +149,7 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return periodSeconds;
     }
 
-    public DescribeMetricDataRequest setPeriodSeconds(Integer periodSeconds) {
+    public DescribeMetricDataLatestRequest setPeriodSeconds(Integer periodSeconds) {
         this.periodSeconds = periodSeconds;
         return this;
     }
@@ -172,7 +158,7 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return aggregationOverTime;
     }
 
-    public DescribeMetricDataRequest setAggregationOverTime(List<String> aggregationOverTime) {
+    public DescribeMetricDataLatestRequest setAggregationOverTime(List<String> aggregationOverTime) {
         this.aggregationOverTime = aggregationOverTime;
         return this;
     }

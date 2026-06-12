@@ -9,30 +9,25 @@ public class Timeseries {
     /**
      * 指标名
      */
-    private String metric;
+    private String metricName;
 
     /**
-     * 维度列表，对应请求中的groupBy字段
+     * 维度列表，对应请求中的filters字段
      */
     private List<Dimension> dimensions;
 
     /**
-     * 指标值序列，每个元素为 [时间戳（秒）, 指标值]
+     * 指标数据点列表
      */
-    private List<List<Float>> data;
+    private List<DataPoint> dataPoints;
 
-    /**
-     * 同比数据，每组同比为三元组列表 [时间戳, 值, 同比率]
-     */
-    private List<List<List<Float>>> compareTo;
-
-    public Timeseries setMetric(String metric) {
-        this.metric = metric;
+    public Timeseries setMetricName(String metricName) {
+        this.metricName = metricName;
         return this;
     }
 
-    public String getMetric() {
-        return this.metric;
+    public String getMetricName() {
+        return this.metricName;
     }
 
     public Timeseries setDimensions(List<Dimension> dimensions) {
@@ -44,27 +39,18 @@ public class Timeseries {
         return this.dimensions;
     }
 
-    public Timeseries setData(List<List<Float>> data) {
-        this.data = data;
+    public Timeseries setDataPoints(List<DataPoint> dataPoints) {
+        this.dataPoints = dataPoints;
         return this;
     }
 
-    public List<List<Float>> getData() {
-        return this.data;
-    }
-
-    public Timeseries setCompareTo(List<List<List<Float>>> compareTo) {
-        this.compareTo = compareTo;
-        return this;
-    }
-
-    public List<List<List<Float>>> getCompareTo() {
-        return this.compareTo;
+    public List<DataPoint> getDataPoints() {
+        return this.dataPoints;
     }
 
     @Override
     public String toString() {
-        return "Timeseries{" + "metric=" + metric + "\n" + "dimensions=" + dimensions + "\n" + "data=" + data + "\n" + "compareTo=" + compareTo + "\n" + "}";
+        return "Timeseries{" + "metricName=" + metricName + "\n" + "dimensions=" + dimensions + "\n" + "dataPoints=" + dataPoints + "\n" + "}";
     }
 
 }

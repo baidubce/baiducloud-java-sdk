@@ -14,51 +14,57 @@ import com.baidubce.util.RequestBodyUtils;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import com.baidubce.bcm.models.DescribeDbStatementV3Request;
-import com.baidubce.bcm.models.DescribeDbStatementV3Response;
+import com.baidubce.bcm.models.AddAlarmPolicyActionsRequest;
+import com.baidubce.bcm.models.AddAlarmPolicyActionsResponse;
+import com.baidubce.bcm.models.CreateAlarmMaskingRequest;
+import com.baidubce.bcm.models.CreateAlarmMaskingResponse;
+import com.baidubce.bcm.models.CreateAlarmPolicyRequest;
+import com.baidubce.bcm.models.CreateAlarmPolicyResponse;
+import com.baidubce.bcm.models.DeleteAlarmMaskingsRequest;
+import com.baidubce.bcm.models.DeleteAlarmMaskingsResponse;
+import com.baidubce.bcm.models.DeleteAlarmPoliciesRequest;
+import com.baidubce.bcm.models.DeleteAlarmPoliciesResponse;
+import com.baidubce.bcm.models.DeleteAlarmPolicyActionsRequest;
+import com.baidubce.bcm.models.DeleteAlarmPolicyActionsResponse;
+import com.baidubce.bcm.models.DescribeAlarmMaskingRequest;
+import com.baidubce.bcm.models.DescribeAlarmMaskingResponse;
+import com.baidubce.bcm.models.DescribeAlarmMaskingsRequest;
+import com.baidubce.bcm.models.DescribeAlarmMaskingsResponse;
+import com.baidubce.bcm.models.DescribeAlarmPoliciesRequest;
+import com.baidubce.bcm.models.DescribeAlarmPoliciesResponse;
+import com.baidubce.bcm.models.DescribeAlarmPolicyRequest;
+import com.baidubce.bcm.models.DescribeAlarmPolicyResponse;
+import com.baidubce.bcm.models.DescribeAlarmRequest;
+import com.baidubce.bcm.models.DescribeAlarmResponse;
+import com.baidubce.bcm.models.DescribeAlarmsRequest;
+import com.baidubce.bcm.models.DescribeAlarmsResponse;
 import com.baidubce.bcm.models.DescribeDimensionValuesRequest;
 import com.baidubce.bcm.models.DescribeDimensionValuesResponse;
-import com.baidubce.bcm.models.DescribeExceptionsV3Request;
-import com.baidubce.bcm.models.DescribeExceptionsV3Response;
-import com.baidubce.bcm.models.DescribeLLMDimensionValuesV3Request;
-import com.baidubce.bcm.models.DescribeLLMDimensionValuesV3Response;
-import com.baidubce.bcm.models.DescribeLLMMetricDataV3Request;
-import com.baidubce.bcm.models.DescribeLLMServicesV3Request;
-import com.baidubce.bcm.models.DescribeLLMServicesV3Response;
-import com.baidubce.bcm.models.DescribeLLMSessionV3Request;
-import com.baidubce.bcm.models.DescribeLLMSessionV3Response;
-import com.baidubce.bcm.models.DescribeLLMSessionsStatisticsV3Request;
-import com.baidubce.bcm.models.DescribeLLMSessionsStatisticsV3Response;
-import com.baidubce.bcm.models.DescribeLLMSessionsV3Request;
-import com.baidubce.bcm.models.DescribeLLMSessionsV3Response;
-import com.baidubce.bcm.models.DescribeLLMSpansV3Request;
-import com.baidubce.bcm.models.DescribeLLMSpansV3Response;
-import com.baidubce.bcm.models.DescribeLLMTraceV3Request;
-import com.baidubce.bcm.models.DescribeLLMTraceV3Response;
-import com.baidubce.bcm.models.DescribeLLMTracesStatisticsV3Request;
-import com.baidubce.bcm.models.DescribeLLMTracesStatisticsV3Response;
-import com.baidubce.bcm.models.DescribeLLMTracesV3Request;
-import com.baidubce.bcm.models.DescribeLLMTracesV3Response;
+import com.baidubce.bcm.models.DescribeMetricDataLatestRequest;
+import com.baidubce.bcm.models.DescribeMetricDataLatestResponse;
+import com.baidubce.bcm.models.DescribeMetricDataLatestTopRequest;
+import com.baidubce.bcm.models.DescribeMetricDataLatestTopResponse;
 import com.baidubce.bcm.models.DescribeMetricDataRequest;
 import com.baidubce.bcm.models.DescribeMetricDataResponse;
-import com.baidubce.bcm.models.DescribeSpanFieldValuesV3Request;
-import com.baidubce.bcm.models.DescribeSpanFieldValuesV3Response;
-import com.baidubce.bcm.models.DescribeSpansV3Request;
-import com.baidubce.bcm.models.DescribeSpansV3Response;
-import com.baidubce.bcm.models.DescribeTopologyV3Request;
-import com.baidubce.bcm.models.DescribeTopologyV3Response;
-import com.baidubce.bcm.models.DescribeTraceMetricDataV3Request;
-import com.baidubce.bcm.models.DescribeTraceMetricDataV3Response;
-import com.baidubce.bcm.models.DescribeTraceV3Request;
-import com.baidubce.bcm.models.DescribeTraceV3Response;
+import com.baidubce.bcm.models.UpdateAlarmMaskingRequest;
+import com.baidubce.bcm.models.UpdateAlarmMaskingResponse;
+import com.baidubce.bcm.models.UpdateAlarmMaskingStatesRequest;
+import com.baidubce.bcm.models.UpdateAlarmMaskingStatesResponse;
+import com.baidubce.bcm.models.UpdateAlarmPolicyNotifyEnabledRequest;
+import com.baidubce.bcm.models.UpdateAlarmPolicyNotifyEnabledResponse;
+import com.baidubce.bcm.models.UpdateAlarmPolicyRequest;
+import com.baidubce.bcm.models.UpdateAlarmPolicyResponse;
+import com.baidubce.bcm.models.UpdateAlarmPolicyStateRequest;
+import com.baidubce.bcm.models.UpdateAlarmPolicyStateResponse;
 
 public class BcmClient extends AbstractBceClient {
 
     private static final String[] HEADERS_TO_SIGN = {"host", "x-bce-date"};
 
-    private static final String VERSION_V1 = "v1";
-    private static final String CONSTANT_V1 = "v1";
-    private static final String CONSTANT_APM = "apm";
+    private static final String CONSTANT_V3 = "v3";
+    private static final String CONSTANT_BCM = "bcm";
+    private static final String CONSTANT_QUERY = "query";
+    private static final String CONSTANT_AH = "ah";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -80,16 +86,159 @@ public class BcmClient extends AbstractBceClient {
     }
 
     /**
-     * describeDbStatementV3
+     * addAlarmPolicyActions
      * 
      * @param request 入参结构体
-     * @return DescribeDbStatementV3Response
+     * @return AddAlarmPolicyActionsResponse
      */
-    public DescribeDbStatementV3Response describeDbStatementV3(DescribeDbStatementV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeDbStatement");
+    public AddAlarmPolicyActionsResponse addAlarmPolicyActions(AddAlarmPolicyActionsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "AddAlarmPolicyActions");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeDbStatementV3Response.class);
+        return invokeHttpClient(internalRequest, AddAlarmPolicyActionsResponse.class);
+    }
+
+    /**
+     * createAlarmMasking
+     * 
+     * @param request 入参结构体
+     * @return CreateAlarmMaskingResponse
+     */
+    public CreateAlarmMaskingResponse createAlarmMasking(CreateAlarmMaskingRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "CreateAlarmMasking");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateAlarmMaskingResponse.class);
+    }
+
+    /**
+     * createAlarmPolicy
+     * 
+     * @param request 入参结构体
+     * @return CreateAlarmPolicyResponse
+     */
+    public CreateAlarmPolicyResponse createAlarmPolicy(CreateAlarmPolicyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "CreateAlarmPolicy");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateAlarmPolicyResponse.class);
+    }
+
+    /**
+     * deleteAlarmMaskings
+     * 
+     * @param request 入参结构体
+     * @return DeleteAlarmMaskingsResponse
+     */
+    public DeleteAlarmMaskingsResponse deleteAlarmMaskings(DeleteAlarmMaskingsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "DeleteAlarmMaskings");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DeleteAlarmMaskingsResponse.class);
+    }
+
+    /**
+     * deleteAlarmPolicies
+     * 
+     * @param request 入参结构体
+     * @return DeleteAlarmPoliciesResponse
+     */
+    public DeleteAlarmPoliciesResponse deleteAlarmPolicies(DeleteAlarmPoliciesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "DeleteAlarmPolicies");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DeleteAlarmPoliciesResponse.class);
+    }
+
+    /**
+     * deleteAlarmPolicyActions
+     * 
+     * @param request 入参结构体
+     * @return DeleteAlarmPolicyActionsResponse
+     */
+    public DeleteAlarmPolicyActionsResponse deleteAlarmPolicyActions(DeleteAlarmPolicyActionsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "DeleteAlarmPolicyActions");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DeleteAlarmPolicyActionsResponse.class);
+    }
+
+    /**
+     * describeAlarm
+     * 
+     * @param request 入参结构体
+     * @return DescribeAlarmResponse
+     */
+    public DescribeAlarmResponse describeAlarm(DescribeAlarmRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM, CONSTANT_AH);
+        internalRequest.addParameter("action", "DescribeAlarm");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeAlarmResponse.class);
+    }
+
+    /**
+     * describeAlarmMasking
+     * 
+     * @param request 入参结构体
+     * @return DescribeAlarmMaskingResponse
+     */
+    public DescribeAlarmMaskingResponse describeAlarmMasking(DescribeAlarmMaskingRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "DescribeAlarmMasking");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeAlarmMaskingResponse.class);
+    }
+
+    /**
+     * describeAlarmMaskings
+     * 
+     * @param request 入参结构体
+     * @return DescribeAlarmMaskingsResponse
+     */
+    public DescribeAlarmMaskingsResponse describeAlarmMaskings(DescribeAlarmMaskingsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "DescribeAlarmMaskings");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeAlarmMaskingsResponse.class);
+    }
+
+    /**
+     * describeAlarmPolicies
+     * 
+     * @param request 入参结构体
+     * @return DescribeAlarmPoliciesResponse
+     */
+    public DescribeAlarmPoliciesResponse describeAlarmPolicies(DescribeAlarmPoliciesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "DescribeAlarmPolicies");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeAlarmPoliciesResponse.class);
+    }
+
+    /**
+     * describeAlarmPolicy
+     * 
+     * @param request 入参结构体
+     * @return DescribeAlarmPolicyResponse
+     */
+    public DescribeAlarmPolicyResponse describeAlarmPolicy(DescribeAlarmPolicyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "DescribeAlarmPolicy");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeAlarmPolicyResponse.class);
+    }
+
+    /**
+     * describeAlarms
+     * 
+     * @param request 入参结构体
+     * @return DescribeAlarmsResponse
+     */
+    public DescribeAlarmsResponse describeAlarms(DescribeAlarmsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM, CONSTANT_AH);
+        internalRequest.addParameter("action", "DescribeAlarms");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeAlarmsResponse.class);
     }
 
     /**
@@ -99,153 +248,10 @@ public class BcmClient extends AbstractBceClient {
      * @return DescribeDimensionValuesResponse
      */
     public DescribeDimensionValuesResponse describeDimensionValues(DescribeDimensionValuesRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM, CONSTANT_QUERY);
         internalRequest.addParameter("action", "DescribeDimensionValues");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, DescribeDimensionValuesResponse.class);
-    }
-
-    /**
-     * describeExceptionsV3
-     * 
-     * @param request 入参结构体
-     * @return DescribeExceptionsV3Response
-     */
-    public DescribeExceptionsV3Response describeExceptionsV3(DescribeExceptionsV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeExceptions");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeExceptionsV3Response.class);
-    }
-
-    /**
-     * describeLLMDimensionValuesV3
-     * 
-     * @param request 入参结构体
-     * @return DescribeLLMDimensionValuesV3Response
-     */
-    public DescribeLLMDimensionValuesV3Response describeLLMDimensionValuesV3(DescribeLLMDimensionValuesV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeLLMDimensionValues");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeLLMDimensionValuesV3Response.class);
-    }
-
-    /**
-     * describeLLMMetricDataV3
-     * 
-     * @param request 入参结构体
-     * @return DescribeTraceMetricDataV3Response
-     */
-    public DescribeTraceMetricDataV3Response describeLLMMetricDataV3(DescribeLLMMetricDataV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeLLMMetricData");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeTraceMetricDataV3Response.class);
-    }
-
-    /**
-     * describeLLMServicesV3
-     * 
-     * @param request 入参结构体
-     * @return DescribeLLMServicesV3Response
-     */
-    public DescribeLLMServicesV3Response describeLLMServicesV3(DescribeLLMServicesV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeLLMServices");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeLLMServicesV3Response.class);
-    }
-
-    /**
-     * describeLLMSessionV3
-     * 
-     * @param request 入参结构体
-     * @return DescribeLLMSessionV3Response
-     */
-    public DescribeLLMSessionV3Response describeLLMSessionV3(DescribeLLMSessionV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeLLMSession");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeLLMSessionV3Response.class);
-    }
-
-    /**
-     * describeLLMSessionsStatisticsV3
-     * 
-     * @param request 入参结构体
-     * @return DescribeLLMSessionsStatisticsV3Response
-     */
-    public DescribeLLMSessionsStatisticsV3Response describeLLMSessionsStatisticsV3(DescribeLLMSessionsStatisticsV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeLLMSessionsStatistics");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeLLMSessionsStatisticsV3Response.class);
-    }
-
-    /**
-     * describeLLMSessionsV3
-     * 
-     * @param request 入参结构体
-     * @return DescribeLLMSessionsV3Response
-     */
-    public DescribeLLMSessionsV3Response describeLLMSessionsV3(DescribeLLMSessionsV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeLLMSessions");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeLLMSessionsV3Response.class);
-    }
-
-    /**
-     * describeLLMSpansV3
-     * 
-     * @param request 入参结构体
-     * @return DescribeLLMSpansV3Response
-     */
-    public DescribeLLMSpansV3Response describeLLMSpansV3(DescribeLLMSpansV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeLLMSpans");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeLLMSpansV3Response.class);
-    }
-
-    /**
-     * describeLLMTraceV3
-     * 
-     * @param request 入参结构体
-     * @return DescribeLLMTraceV3Response
-     */
-    public DescribeLLMTraceV3Response describeLLMTraceV3(DescribeLLMTraceV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeLLMTrace");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeLLMTraceV3Response.class);
-    }
-
-    /**
-     * describeLLMTracesStatisticsV3
-     * 
-     * @param request 入参结构体
-     * @return DescribeLLMTracesStatisticsV3Response
-     */
-    public DescribeLLMTracesStatisticsV3Response describeLLMTracesStatisticsV3(DescribeLLMTracesStatisticsV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeLLMTracesStatistics");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeLLMTracesStatisticsV3Response.class);
-    }
-
-    /**
-     * describeLLMTracesV3
-     * 
-     * @param request 入参结构体
-     * @return DescribeLLMTracesV3Response
-     */
-    public DescribeLLMTracesV3Response describeLLMTracesV3(DescribeLLMTracesV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeLLMTraces");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeLLMTracesV3Response.class);
     }
 
     /**
@@ -255,75 +261,101 @@ public class BcmClient extends AbstractBceClient {
      * @return DescribeMetricDataResponse
      */
     public DescribeMetricDataResponse describeMetricData(DescribeMetricDataRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM, CONSTANT_QUERY);
         internalRequest.addParameter("action", "DescribeMetricData");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, DescribeMetricDataResponse.class);
     }
 
     /**
-     * describeSpanFieldValuesV3
+     * describeMetricDataLatest
      * 
      * @param request 入参结构体
-     * @return DescribeSpanFieldValuesV3Response
+     * @return DescribeMetricDataLatestResponse
      */
-    public DescribeSpanFieldValuesV3Response describeSpanFieldValuesV3(DescribeSpanFieldValuesV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeSpanFieldValues");
+    public DescribeMetricDataLatestResponse describeMetricDataLatest(DescribeMetricDataLatestRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM, CONSTANT_QUERY);
+        internalRequest.addParameter("action", "DescribeMetricDataLatest");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeSpanFieldValuesV3Response.class);
+        return invokeHttpClient(internalRequest, DescribeMetricDataLatestResponse.class);
     }
 
     /**
-     * describeSpansV3
+     * describeMetricDataLatestTop
      * 
      * @param request 入参结构体
-     * @return DescribeSpansV3Response
+     * @return DescribeMetricDataLatestTopResponse
      */
-    public DescribeSpansV3Response describeSpansV3(DescribeSpansV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeSpans");
+    public DescribeMetricDataLatestTopResponse describeMetricDataLatestTop(DescribeMetricDataLatestTopRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM, CONSTANT_QUERY);
+        internalRequest.addParameter("action", "DescribeMetricDataLatestTop");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeSpansV3Response.class);
+        return invokeHttpClient(internalRequest, DescribeMetricDataLatestTopResponse.class);
     }
 
     /**
-     * describeTopologyV3
+     * updateAlarmMasking
      * 
      * @param request 入参结构体
-     * @return DescribeTopologyV3Response
+     * @return UpdateAlarmMaskingResponse
      */
-    public DescribeTopologyV3Response describeTopologyV3(DescribeTopologyV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeTopology");
+    public UpdateAlarmMaskingResponse updateAlarmMasking(UpdateAlarmMaskingRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "UpdateAlarmMasking");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeTopologyV3Response.class);
+        return invokeHttpClient(internalRequest, UpdateAlarmMaskingResponse.class);
     }
 
     /**
-     * describeTraceMetricDataV3
+     * updateAlarmMaskingStates
      * 
      * @param request 入参结构体
-     * @return DescribeTraceMetricDataV3Response
+     * @return UpdateAlarmMaskingStatesResponse
      */
-    public DescribeTraceMetricDataV3Response describeTraceMetricDataV3(DescribeTraceMetricDataV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeTraceMetricData");
+    public UpdateAlarmMaskingStatesResponse updateAlarmMaskingStates(UpdateAlarmMaskingStatesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "UpdateAlarmMaskingStates");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeTraceMetricDataV3Response.class);
+        return invokeHttpClient(internalRequest, UpdateAlarmMaskingStatesResponse.class);
     }
 
     /**
-     * describeTraceV3
+     * updateAlarmPolicy
      * 
      * @param request 入参结构体
-     * @return DescribeTraceV3Response
+     * @return UpdateAlarmPolicyResponse
      */
-    public DescribeTraceV3Response describeTraceV3(DescribeTraceV3Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_APM);
-        internalRequest.addParameter("action", "DescribeTrace");
+    public UpdateAlarmPolicyResponse updateAlarmPolicy(UpdateAlarmPolicyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "UpdateAlarmPolicy");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, DescribeTraceV3Response.class);
+        return invokeHttpClient(internalRequest, UpdateAlarmPolicyResponse.class);
+    }
+
+    /**
+     * updateAlarmPolicyNotifyEnabled
+     * 
+     * @param request 入参结构体
+     * @return UpdateAlarmPolicyNotifyEnabledResponse
+     */
+    public UpdateAlarmPolicyNotifyEnabledResponse updateAlarmPolicyNotifyEnabled(UpdateAlarmPolicyNotifyEnabledRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "UpdateAlarmPolicyNotifyEnabled");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, UpdateAlarmPolicyNotifyEnabledResponse.class);
+    }
+
+    /**
+     * updateAlarmPolicyState
+     * 
+     * @param request 入参结构体
+     * @return UpdateAlarmPolicyStateResponse
+     */
+    public UpdateAlarmPolicyStateResponse updateAlarmPolicyState(UpdateAlarmPolicyStateRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "UpdateAlarmPolicyState");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, UpdateAlarmPolicyStateResponse.class);
     }
 
     /**

@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Dimension {
     /**
-     * 维度名
+     * 维度key
      */
     private String key;
 
     /**
-     * 维度值
+     * 维度value
      */
     private String value;
 

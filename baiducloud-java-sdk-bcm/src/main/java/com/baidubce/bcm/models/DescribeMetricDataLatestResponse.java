@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DescribeMetricDataResponse extends BaseBceResponse {
+public class DescribeMetricDataLatestResponse extends BaseBceResponse {
 
     /**
     * 请求是否成功
@@ -23,7 +23,7 @@ public class DescribeMetricDataResponse extends BaseBceResponse {
     private String message;
 
     /**
-    * 时序数据列表
+    * 时序数据列表，每条曲线只包含最新的一个数据点
     */
     private List<Timeseries> timeseries;
 
@@ -31,7 +31,7 @@ public class DescribeMetricDataResponse extends BaseBceResponse {
         return success;
     }
 
-    public DescribeMetricDataResponse setSuccess(Boolean success) {
+    public DescribeMetricDataLatestResponse setSuccess(Boolean success) {
         this.success = success;
         return this;
     }
@@ -40,7 +40,7 @@ public class DescribeMetricDataResponse extends BaseBceResponse {
         return code;
     }
 
-    public DescribeMetricDataResponse setCode(String code) {
+    public DescribeMetricDataLatestResponse setCode(String code) {
         this.code = code;
         return this;
     }
@@ -49,7 +49,7 @@ public class DescribeMetricDataResponse extends BaseBceResponse {
         return message;
     }
 
-    public DescribeMetricDataResponse setMessage(String message) {
+    public DescribeMetricDataLatestResponse setMessage(String message) {
         this.message = message;
         return this;
     }
@@ -58,14 +58,14 @@ public class DescribeMetricDataResponse extends BaseBceResponse {
         return timeseries;
     }
 
-    public DescribeMetricDataResponse setTimeseries(List<Timeseries> timeseries) {
+    public DescribeMetricDataLatestResponse setTimeseries(List<Timeseries> timeseries) {
         this.timeseries = timeseries;
         return this;
     }
 
     @Override
     public String toString() {
-        return "DescribeMetricDataResponse{" + "success=" + success + "\n" + "code=" + code + "\n" + "message=" + message + "\n" + "timeseries=" + timeseries + "\n" + "}";
+        return "DescribeMetricDataLatestResponse{" + "success=" + success + "\n" + "code=" + code + "\n" + "message=" + message + "\n" + "timeseries=" + timeseries + "\n" + "}";
     }
 
 }

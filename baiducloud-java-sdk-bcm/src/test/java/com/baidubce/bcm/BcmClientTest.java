@@ -1,42 +1,47 @@
 package com.baidubce.bcm;
 
-import com.baidubce.bcm.models.DescribeDbStatementV3Request;
-import com.baidubce.bcm.models.DescribeDbStatementV3Response;
+import com.baidubce.bcm.models.AddAlarmPolicyActionsRequest;
+import com.baidubce.bcm.models.AddAlarmPolicyActionsResponse;
+import com.baidubce.bcm.models.CreateAlarmMaskingRequest;
+import com.baidubce.bcm.models.CreateAlarmMaskingResponse;
+import com.baidubce.bcm.models.CreateAlarmPolicyRequest;
+import com.baidubce.bcm.models.CreateAlarmPolicyResponse;
+import com.baidubce.bcm.models.DeleteAlarmMaskingsRequest;
+import com.baidubce.bcm.models.DeleteAlarmMaskingsResponse;
+import com.baidubce.bcm.models.DeleteAlarmPoliciesRequest;
+import com.baidubce.bcm.models.DeleteAlarmPoliciesResponse;
+import com.baidubce.bcm.models.DeleteAlarmPolicyActionsRequest;
+import com.baidubce.bcm.models.DeleteAlarmPolicyActionsResponse;
+import com.baidubce.bcm.models.DescribeAlarmMaskingRequest;
+import com.baidubce.bcm.models.DescribeAlarmMaskingResponse;
+import com.baidubce.bcm.models.DescribeAlarmMaskingsRequest;
+import com.baidubce.bcm.models.DescribeAlarmMaskingsResponse;
+import com.baidubce.bcm.models.DescribeAlarmPoliciesRequest;
+import com.baidubce.bcm.models.DescribeAlarmPoliciesResponse;
+import com.baidubce.bcm.models.DescribeAlarmPolicyRequest;
+import com.baidubce.bcm.models.DescribeAlarmPolicyResponse;
+import com.baidubce.bcm.models.DescribeAlarmRequest;
+import com.baidubce.bcm.models.DescribeAlarmResponse;
+import com.baidubce.bcm.models.DescribeAlarmsRequest;
+import com.baidubce.bcm.models.DescribeAlarmsResponse;
 import com.baidubce.bcm.models.DescribeDimensionValuesRequest;
 import com.baidubce.bcm.models.DescribeDimensionValuesResponse;
-import com.baidubce.bcm.models.DescribeExceptionsV3Request;
-import com.baidubce.bcm.models.DescribeExceptionsV3Response;
-import com.baidubce.bcm.models.DescribeLLMDimensionValuesV3Request;
-import com.baidubce.bcm.models.DescribeLLMDimensionValuesV3Response;
-import com.baidubce.bcm.models.DescribeLLMMetricDataV3Request;
-import com.baidubce.bcm.models.DescribeLLMServicesV3Request;
-import com.baidubce.bcm.models.DescribeLLMServicesV3Response;
-import com.baidubce.bcm.models.DescribeLLMSessionV3Request;
-import com.baidubce.bcm.models.DescribeLLMSessionV3Response;
-import com.baidubce.bcm.models.DescribeLLMSessionsStatisticsV3Request;
-import com.baidubce.bcm.models.DescribeLLMSessionsStatisticsV3Response;
-import com.baidubce.bcm.models.DescribeLLMSessionsV3Request;
-import com.baidubce.bcm.models.DescribeLLMSessionsV3Response;
-import com.baidubce.bcm.models.DescribeLLMSpansV3Request;
-import com.baidubce.bcm.models.DescribeLLMSpansV3Response;
-import com.baidubce.bcm.models.DescribeLLMTraceV3Request;
-import com.baidubce.bcm.models.DescribeLLMTraceV3Response;
-import com.baidubce.bcm.models.DescribeLLMTracesStatisticsV3Request;
-import com.baidubce.bcm.models.DescribeLLMTracesStatisticsV3Response;
-import com.baidubce.bcm.models.DescribeLLMTracesV3Request;
-import com.baidubce.bcm.models.DescribeLLMTracesV3Response;
+import com.baidubce.bcm.models.DescribeMetricDataLatestRequest;
+import com.baidubce.bcm.models.DescribeMetricDataLatestResponse;
+import com.baidubce.bcm.models.DescribeMetricDataLatestTopRequest;
+import com.baidubce.bcm.models.DescribeMetricDataLatestTopResponse;
 import com.baidubce.bcm.models.DescribeMetricDataRequest;
 import com.baidubce.bcm.models.DescribeMetricDataResponse;
-import com.baidubce.bcm.models.DescribeSpanFieldValuesV3Request;
-import com.baidubce.bcm.models.DescribeSpanFieldValuesV3Response;
-import com.baidubce.bcm.models.DescribeSpansV3Request;
-import com.baidubce.bcm.models.DescribeSpansV3Response;
-import com.baidubce.bcm.models.DescribeTopologyV3Request;
-import com.baidubce.bcm.models.DescribeTopologyV3Response;
-import com.baidubce.bcm.models.DescribeTraceMetricDataV3Request;
-import com.baidubce.bcm.models.DescribeTraceMetricDataV3Response;
-import com.baidubce.bcm.models.DescribeTraceV3Request;
-import com.baidubce.bcm.models.DescribeTraceV3Response;
+import com.baidubce.bcm.models.UpdateAlarmMaskingRequest;
+import com.baidubce.bcm.models.UpdateAlarmMaskingResponse;
+import com.baidubce.bcm.models.UpdateAlarmMaskingStatesRequest;
+import com.baidubce.bcm.models.UpdateAlarmMaskingStatesResponse;
+import com.baidubce.bcm.models.UpdateAlarmPolicyNotifyEnabledRequest;
+import com.baidubce.bcm.models.UpdateAlarmPolicyNotifyEnabledResponse;
+import com.baidubce.bcm.models.UpdateAlarmPolicyRequest;
+import com.baidubce.bcm.models.UpdateAlarmPolicyResponse;
+import com.baidubce.bcm.models.UpdateAlarmPolicyStateRequest;
+import com.baidubce.bcm.models.UpdateAlarmPolicyStateResponse;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -60,17 +65,191 @@ public class BcmClientTest {
     }
 
     /**
-     * describeDbStatementV3
+     * addAlarmPolicyActions
      *
      */
     @Test
-    public void describeDbStatementV3Test() {
-        DescribeDbStatementV3Request describeDbStatementV3Request = new DescribeDbStatementV3Request();
-        describeDbStatementV3Request.setBeginDatetime("");
-        describeDbStatementV3Request.setEndDatetime("");
-        describeDbStatementV3Request.setService("");
-        describeDbStatementV3Request.setStatements(new ArrayList<>());
-        DescribeDbStatementV3Response response = bcmClient.describeDbStatementV3(describeDbStatementV3Request);
+    public void addAlarmPolicyActionsTest() {
+        AddAlarmPolicyActionsRequest addAlarmPolicyActionsRequest = new AddAlarmPolicyActionsRequest();
+        addAlarmPolicyActionsRequest.setId("");
+        addAlarmPolicyActionsRequest.setActions(new ArrayList<>());
+        AddAlarmPolicyActionsResponse response = bcmClient.addAlarmPolicyActions(addAlarmPolicyActionsRequest);
+        System.out.println(response);
+    }
+    /**
+     * createAlarmMasking
+     *
+     */
+    @Test
+    public void createAlarmMaskingTest() {
+        CreateAlarmMaskingRequest createAlarmMaskingRequest = new CreateAlarmMaskingRequest();
+        createAlarmMaskingRequest.setName("");
+        createAlarmMaskingRequest.setScope("");
+        createAlarmMaskingRequest.setResourceType("");
+        createAlarmMaskingRequest.setPolicyId("");
+        createAlarmMaskingRequest.setInstances(new ArrayList<>());
+        createAlarmMaskingRequest.setRegion("");
+        createAlarmMaskingRequest.setMetricNames(new ArrayList<>());
+        createAlarmMaskingRequest.setPeriodType("");
+        createAlarmMaskingRequest.setBeginTime("");
+        createAlarmMaskingRequest.setEndTime("");
+        createAlarmMaskingRequest.setTz("");
+        createAlarmMaskingRequest.setDailyBeginTimestamp(0);
+        createAlarmMaskingRequest.setDailyEndTimestamp(0);
+        CreateAlarmMaskingResponse response = bcmClient.createAlarmMasking(createAlarmMaskingRequest);
+        System.out.println(response);
+    }
+    /**
+     * createAlarmPolicy
+     *
+     */
+    @Test
+    public void createAlarmPolicyTest() {
+        CreateAlarmPolicyRequest createAlarmPolicyRequest = new CreateAlarmPolicyRequest();
+        createAlarmPolicyRequest.setName("");
+        createAlarmPolicyRequest.setScope("");
+        createAlarmPolicyRequest.setResourceType("");
+        createAlarmPolicyRequest.setTarget(null);
+        createAlarmPolicyRequest.setRules(new ArrayList<>());
+        createAlarmPolicyRequest.setPendingCount(0);
+        createAlarmPolicyRequest.setOnMissingData("");
+        createAlarmPolicyRequest.setNoDataNotifyPendingMinutes(0);
+        createAlarmPolicyRequest.setType("");
+        createAlarmPolicyRequest.setLevel("");
+        createAlarmPolicyRequest.setActions(new ArrayList<>());
+        createAlarmPolicyRequest.setNotifyEnabled(false);
+        createAlarmPolicyRequest.setCallbacks(new ArrayList<>());
+        createAlarmPolicyRequest.setRenotifyCount(0);
+        createAlarmPolicyRequest.setRenotifyIntervalMinutes(0);
+        createAlarmPolicyRequest.setNotifyMergeWindowSeconds(0);
+        CreateAlarmPolicyResponse response = bcmClient.createAlarmPolicy(createAlarmPolicyRequest);
+        System.out.println(response);
+    }
+    /**
+     * deleteAlarmMaskings
+     *
+     */
+    @Test
+    public void deleteAlarmMaskingsTest() {
+        DeleteAlarmMaskingsRequest deleteAlarmMaskingsRequest = new DeleteAlarmMaskingsRequest();
+        deleteAlarmMaskingsRequest.setIds(new ArrayList<>());
+        DeleteAlarmMaskingsResponse response = bcmClient.deleteAlarmMaskings(deleteAlarmMaskingsRequest);
+        System.out.println(response);
+    }
+    /**
+     * deleteAlarmPolicies
+     *
+     */
+    @Test
+    public void deleteAlarmPoliciesTest() {
+        DeleteAlarmPoliciesRequest deleteAlarmPoliciesRequest = new DeleteAlarmPoliciesRequest();
+        deleteAlarmPoliciesRequest.setIds(new ArrayList<>());
+        DeleteAlarmPoliciesResponse response = bcmClient.deleteAlarmPolicies(deleteAlarmPoliciesRequest);
+        System.out.println(response);
+    }
+    /**
+     * deleteAlarmPolicyActions
+     *
+     */
+    @Test
+    public void deleteAlarmPolicyActionsTest() {
+        DeleteAlarmPolicyActionsRequest deleteAlarmPolicyActionsRequest = new DeleteAlarmPolicyActionsRequest();
+        deleteAlarmPolicyActionsRequest.setId("");
+        deleteAlarmPolicyActionsRequest.setActions(new ArrayList<>());
+        DeleteAlarmPolicyActionsResponse response = bcmClient.deleteAlarmPolicyActions(deleteAlarmPolicyActionsRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeAlarm
+     *
+     */
+    @Test
+    public void describeAlarmTest() {
+        DescribeAlarmRequest describeAlarmRequest = new DescribeAlarmRequest();
+        describeAlarmRequest.setId("");
+        DescribeAlarmResponse response = bcmClient.describeAlarm(describeAlarmRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeAlarmMasking
+     *
+     */
+    @Test
+    public void describeAlarmMaskingTest() {
+        DescribeAlarmMaskingRequest describeAlarmMaskingRequest = new DescribeAlarmMaskingRequest();
+        describeAlarmMaskingRequest.setId("");
+        DescribeAlarmMaskingResponse response = bcmClient.describeAlarmMasking(describeAlarmMaskingRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeAlarmMaskings
+     *
+     */
+    @Test
+    public void describeAlarmMaskingsTest() {
+        DescribeAlarmMaskingsRequest describeAlarmMaskingsRequest = new DescribeAlarmMaskingsRequest();
+        describeAlarmMaskingsRequest.setMaskingName("");
+        describeAlarmMaskingsRequest.setMaskingId("");
+        describeAlarmMaskingsRequest.setOrder("");
+        describeAlarmMaskingsRequest.setOrderBy("");
+        describeAlarmMaskingsRequest.setPageNo(0);
+        describeAlarmMaskingsRequest.setPageSize(0);
+        DescribeAlarmMaskingsResponse response = bcmClient.describeAlarmMaskings(describeAlarmMaskingsRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeAlarmPolicies
+     *
+     */
+    @Test
+    public void describeAlarmPoliciesTest() {
+        DescribeAlarmPoliciesRequest describeAlarmPoliciesRequest = new DescribeAlarmPoliciesRequest();
+        describeAlarmPoliciesRequest.setPolicyName("");
+        describeAlarmPoliciesRequest.setPolicyId("");
+        describeAlarmPoliciesRequest.setScope("");
+        describeAlarmPoliciesRequest.setResourceType("");
+        describeAlarmPoliciesRequest.setRecursive(false);
+        describeAlarmPoliciesRequest.setSubResourceType("");
+        describeAlarmPoliciesRequest.setNotifyEnabled(false);
+        describeAlarmPoliciesRequest.setType("");
+        describeAlarmPoliciesRequest.setOrder("");
+        describeAlarmPoliciesRequest.setOrderBy("");
+        describeAlarmPoliciesRequest.setPageNo(0);
+        describeAlarmPoliciesRequest.setPageSize(0);
+        DescribeAlarmPoliciesResponse response = bcmClient.describeAlarmPolicies(describeAlarmPoliciesRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeAlarmPolicy
+     *
+     */
+    @Test
+    public void describeAlarmPolicyTest() {
+        DescribeAlarmPolicyRequest describeAlarmPolicyRequest = new DescribeAlarmPolicyRequest();
+        describeAlarmPolicyRequest.setId("");
+        describeAlarmPolicyRequest.setRequireSubResourceType(false);
+        DescribeAlarmPolicyResponse response = bcmClient.describeAlarmPolicy(describeAlarmPolicyRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeAlarms
+     *
+     */
+    @Test
+    public void describeAlarmsTest() {
+        DescribeAlarmsRequest describeAlarmsRequest = new DescribeAlarmsRequest();
+        describeAlarmsRequest.setStartTime("");
+        describeAlarmsRequest.setEndTime("");
+        describeAlarmsRequest.setPolicyName("");
+        describeAlarmsRequest.setScope("");
+        describeAlarmsRequest.setResourceType("");
+        describeAlarmsRequest.setState("");
+        describeAlarmsRequest.setType("");
+        describeAlarmsRequest.setOrder("");
+        describeAlarmsRequest.setOrderBy("");
+        describeAlarmsRequest.setPageNo(0);
+        describeAlarmsRequest.setPageSize(0);
+        DescribeAlarmsResponse response = bcmClient.describeAlarms(describeAlarmsRequest);
         System.out.println(response);
     }
     /**
@@ -81,182 +260,15 @@ public class BcmClientTest {
     public void describeDimensionValuesTest() {
         DescribeDimensionValuesRequest describeDimensionValuesRequest = new DescribeDimensionValuesRequest();
         describeDimensionValuesRequest.setAction("");
+        describeDimensionValuesRequest.setScope("");
+        describeDimensionValuesRequest.setResourceType("");
+        describeDimensionValuesRequest.setRegion("");
         describeDimensionValuesRequest.setBeginDatetime("");
         describeDimensionValuesRequest.setEndDatetime("");
+        describeDimensionValuesRequest.setMetricName("");
         describeDimensionValuesRequest.setDimensionKey("");
         describeDimensionValuesRequest.setFilters(new ArrayList<>());
         DescribeDimensionValuesResponse response = bcmClient.describeDimensionValues(describeDimensionValuesRequest);
-        System.out.println(response);
-    }
-    /**
-     * describeExceptionsV3
-     *
-     */
-    @Test
-    public void describeExceptionsV3Test() {
-        DescribeExceptionsV3Request describeExceptionsV3Request = new DescribeExceptionsV3Request();
-        describeExceptionsV3Request.setBeginDatetime("");
-        describeExceptionsV3Request.setEndDatetime("");
-        describeExceptionsV3Request.setService("");
-        describeExceptionsV3Request.setExceptions(new ArrayList<>());
-        DescribeExceptionsV3Response response = bcmClient.describeExceptionsV3(describeExceptionsV3Request);
-        System.out.println(response);
-    }
-    /**
-     * describeLLMDimensionValuesV3
-     *
-     */
-    @Test
-    public void describeLLMDimensionValuesV3Test() {
-        DescribeLLMDimensionValuesV3Request describeLLMDimensionValuesV3Request = new DescribeLLMDimensionValuesV3Request();
-        describeLLMDimensionValuesV3Request.setBeginDatetime("");
-        describeLLMDimensionValuesV3Request.setEndDatetime("");
-        describeLLMDimensionValuesV3Request.setKey("");
-        describeLLMDimensionValuesV3Request.setFilters(new ArrayList<>());
-        DescribeLLMDimensionValuesV3Response response = bcmClient.describeLLMDimensionValuesV3(describeLLMDimensionValuesV3Request);
-        System.out.println(response);
-    }
-    /**
-     * describeLLMMetricDataV3
-     *
-     */
-    @Test
-    public void describeLLMMetricDataV3Test() {
-        DescribeLLMMetricDataV3Request describeLLMMetricDataV3Request = new DescribeLLMMetricDataV3Request();
-        describeLLMMetricDataV3Request.setBeginDatetime("");
-        describeLLMMetricDataV3Request.setEndDatetime("");
-        describeLLMMetricDataV3Request.setMetrics(new ArrayList<>());
-        describeLLMMetricDataV3Request.setFilters(new ArrayList<>());
-        describeLLMMetricDataV3Request.setGroupBy(new ArrayList<>());
-        describeLLMMetricDataV3Request.setOrderBy("");
-        describeLLMMetricDataV3Request.setOrder("");
-        describeLLMMetricDataV3Request.setLimit(0);
-        describeLLMMetricDataV3Request.setPeriodSeconds(0);
-        describeLLMMetricDataV3Request.setAggregate(new ArrayList<>());
-        DescribeTraceMetricDataV3Response response = bcmClient.describeLLMMetricDataV3(describeLLMMetricDataV3Request);
-        System.out.println(response);
-    }
-    /**
-     * describeLLMServicesV3
-     *
-     */
-    @Test
-    public void describeLLMServicesV3Test() {
-        DescribeLLMServicesV3Request describeLLMServicesV3Request = new DescribeLLMServicesV3Request();
-        describeLLMServicesV3Request.setBeginDatetime("");
-        describeLLMServicesV3Request.setEndDatetime("");
-        describeLLMServicesV3Request.setServiceName("");
-        describeLLMServicesV3Request.setServiceId("");
-        describeLLMServicesV3Request.setEnv("");
-        describeLLMServicesV3Request.setTag(null);
-        describeLLMServicesV3Request.setOrderBy("");
-        describeLLMServicesV3Request.setOrder("");
-        DescribeLLMServicesV3Response response = bcmClient.describeLLMServicesV3(describeLLMServicesV3Request);
-        System.out.println(response);
-    }
-    /**
-     * describeLLMSessionV3
-     *
-     */
-    @Test
-    public void describeLLMSessionV3Test() {
-        DescribeLLMSessionV3Request describeLLMSessionV3Request = new DescribeLLMSessionV3Request();
-        describeLLMSessionV3Request.setSessionID("");
-        describeLLMSessionV3Request.setBeginDatetime("");
-        describeLLMSessionV3Request.setEndDatetime("");
-        DescribeLLMSessionV3Response response = bcmClient.describeLLMSessionV3(describeLLMSessionV3Request);
-        System.out.println(response);
-    }
-    /**
-     * describeLLMSessionsStatisticsV3
-     *
-     */
-    @Test
-    public void describeLLMSessionsStatisticsV3Test() {
-        DescribeLLMSessionsStatisticsV3Request describeLLMSessionsStatisticsV3Request = new DescribeLLMSessionsStatisticsV3Request();
-        describeLLMSessionsStatisticsV3Request.setBeginDatetime("");
-        describeLLMSessionsStatisticsV3Request.setEndDatetime("");
-        describeLLMSessionsStatisticsV3Request.setFilters(new ArrayList<>());
-        DescribeLLMSessionsStatisticsV3Response response = bcmClient.describeLLMSessionsStatisticsV3(describeLLMSessionsStatisticsV3Request);
-        System.out.println(response);
-    }
-    /**
-     * describeLLMSessionsV3
-     *
-     */
-    @Test
-    public void describeLLMSessionsV3Test() {
-        DescribeLLMSessionsV3Request describeLLMSessionsV3Request = new DescribeLLMSessionsV3Request();
-        describeLLMSessionsV3Request.setBeginDatetime("");
-        describeLLMSessionsV3Request.setEndDatetime("");
-        describeLLMSessionsV3Request.setFilters(new ArrayList<>());
-        describeLLMSessionsV3Request.setOrderBy("");
-        describeLLMSessionsV3Request.setOrder("");
-        describeLLMSessionsV3Request.setPageNo(0);
-        describeLLMSessionsV3Request.setPageSize(0);
-        DescribeLLMSessionsV3Response response = bcmClient.describeLLMSessionsV3(describeLLMSessionsV3Request);
-        System.out.println(response);
-    }
-    /**
-     * describeLLMSpansV3
-     *
-     */
-    @Test
-    public void describeLLMSpansV3Test() {
-        DescribeLLMSpansV3Request describeLLMSpansV3Request = new DescribeLLMSpansV3Request();
-        describeLLMSpansV3Request.setBeginDatetime("");
-        describeLLMSpansV3Request.setEndDatetime("");
-        describeLLMSpansV3Request.setParseLLMInputOutput(false);
-        describeLLMSpansV3Request.setFilters(new ArrayList<>());
-        describeLLMSpansV3Request.setOrderBy("");
-        describeLLMSpansV3Request.setOrder("");
-        describeLLMSpansV3Request.setMarker("");
-        DescribeLLMSpansV3Response response = bcmClient.describeLLMSpansV3(describeLLMSpansV3Request);
-        System.out.println(response);
-    }
-    /**
-     * describeLLMTraceV3
-     *
-     */
-    @Test
-    public void describeLLMTraceV3Test() {
-        DescribeLLMTraceV3Request describeLLMTraceV3Request = new DescribeLLMTraceV3Request();
-        describeLLMTraceV3Request.setBeginDatetime("");
-        describeLLMTraceV3Request.setEndDatetime("");
-        describeLLMTraceV3Request.setTraceId("");
-        describeLLMTraceV3Request.setFilters(new ArrayList<>());
-        describeLLMTraceV3Request.setReturnHeight(false);
-        DescribeLLMTraceV3Response response = bcmClient.describeLLMTraceV3(describeLLMTraceV3Request);
-        System.out.println(response);
-    }
-    /**
-     * describeLLMTracesStatisticsV3
-     *
-     */
-    @Test
-    public void describeLLMTracesStatisticsV3Test() {
-        DescribeLLMTracesStatisticsV3Request describeLLMTracesStatisticsV3Request = new DescribeLLMTracesStatisticsV3Request();
-        describeLLMTracesStatisticsV3Request.setBeginDatetime("");
-        describeLLMTracesStatisticsV3Request.setEndDatetime("");
-        describeLLMTracesStatisticsV3Request.setFilters(new ArrayList<>());
-        DescribeLLMTracesStatisticsV3Response response = bcmClient.describeLLMTracesStatisticsV3(describeLLMTracesStatisticsV3Request);
-        System.out.println(response);
-    }
-    /**
-     * describeLLMTracesV3
-     *
-     */
-    @Test
-    public void describeLLMTracesV3Test() {
-        DescribeLLMTracesV3Request describeLLMTracesV3Request = new DescribeLLMTracesV3Request();
-        describeLLMTracesV3Request.setBeginDatetime("");
-        describeLLMTracesV3Request.setEndDatetime("");
-        describeLLMTracesV3Request.setFilters(new ArrayList<>());
-        describeLLMTracesV3Request.setOrderBy("");
-        describeLLMTracesV3Request.setOrder("");
-        describeLLMTracesV3Request.setPageNo(0);
-        describeLLMTracesV3Request.setPageSize(0);
-        DescribeLLMTracesV3Response response = bcmClient.describeLLMTracesV3(describeLLMTracesV3Request);
         System.out.println(response);
     }
     /**
@@ -267,103 +279,148 @@ public class BcmClientTest {
     public void describeMetricDataTest() {
         DescribeMetricDataRequest describeMetricDataRequest = new DescribeMetricDataRequest();
         describeMetricDataRequest.setAction("");
-        describeMetricDataRequest.setMetrics(new ArrayList<>());
-        describeMetricDataRequest.setMetricsName("");
-        describeMetricDataRequest.setMetricsCompareTo(new ArrayList<>());
-        describeMetricDataRequest.setMetricsFilters(new ArrayList<>());
+        describeMetricDataRequest.setScope("");
+        describeMetricDataRequest.setResourceType("");
+        describeMetricDataRequest.setRegion("");
         describeMetricDataRequest.setBeginDatetime("");
         describeMetricDataRequest.setEndDatetime("");
+        describeMetricDataRequest.setMetricName("");
         describeMetricDataRequest.setFilters(new ArrayList<>());
-        describeMetricDataRequest.setGroupBy(new ArrayList<>());
-        describeMetricDataRequest.setOrderBy("");
-        describeMetricDataRequest.setOrder("");
         describeMetricDataRequest.setLimit(0);
+        describeMetricDataRequest.setOffset(0);
         describeMetricDataRequest.setPeriodSeconds(0);
-        describeMetricDataRequest.setReserveEmptyDimensions(false);
+        describeMetricDataRequest.setAggregationOverTime(new ArrayList<>());
         DescribeMetricDataResponse response = bcmClient.describeMetricData(describeMetricDataRequest);
         System.out.println(response);
     }
     /**
-     * describeSpanFieldValuesV3
+     * describeMetricDataLatest
      *
      */
     @Test
-    public void describeSpanFieldValuesV3Test() {
-        DescribeSpanFieldValuesV3Request describeSpanFieldValuesV3Request = new DescribeSpanFieldValuesV3Request();
-        describeSpanFieldValuesV3Request.setAction("");
-        describeSpanFieldValuesV3Request.setBeginDatetime("");
-        describeSpanFieldValuesV3Request.setEndDatetime("");
-        describeSpanFieldValuesV3Request.setKey("");
-        describeSpanFieldValuesV3Request.setFilters(new ArrayList<>());
-        DescribeSpanFieldValuesV3Response response = bcmClient.describeSpanFieldValuesV3(describeSpanFieldValuesV3Request);
+    public void describeMetricDataLatestTest() {
+        DescribeMetricDataLatestRequest describeMetricDataLatestRequest = new DescribeMetricDataLatestRequest();
+        describeMetricDataLatestRequest.setAction("");
+        describeMetricDataLatestRequest.setScope("");
+        describeMetricDataLatestRequest.setResourceType("");
+        describeMetricDataLatestRequest.setRegion("");
+        describeMetricDataLatestRequest.setEndDatetime("");
+        describeMetricDataLatestRequest.setMetricName("");
+        describeMetricDataLatestRequest.setFilters(new ArrayList<>());
+        describeMetricDataLatestRequest.setLimit(0);
+        describeMetricDataLatestRequest.setOffset(0);
+        describeMetricDataLatestRequest.setPeriodSeconds(0);
+        describeMetricDataLatestRequest.setAggregationOverTime(new ArrayList<>());
+        DescribeMetricDataLatestResponse response = bcmClient.describeMetricDataLatest(describeMetricDataLatestRequest);
         System.out.println(response);
     }
     /**
-     * describeSpansV3
+     * describeMetricDataLatestTop
      *
      */
     @Test
-    public void describeSpansV3Test() {
-        DescribeSpansV3Request describeSpansV3Request = new DescribeSpansV3Request();
-        describeSpansV3Request.setAction("");
-        describeSpansV3Request.setBeginDatetime("");
-        describeSpansV3Request.setEndDatetime("");
-        describeSpansV3Request.setFilters(new ArrayList<>());
-        describeSpansV3Request.setOrderBy("");
-        describeSpansV3Request.setOrder("");
-        describeSpansV3Request.setMarker("");
-        DescribeSpansV3Response response = bcmClient.describeSpansV3(describeSpansV3Request);
+    public void describeMetricDataLatestTopTest() {
+        DescribeMetricDataLatestTopRequest describeMetricDataLatestTopRequest = new DescribeMetricDataLatestTopRequest();
+        describeMetricDataLatestTopRequest.setAction("");
+        describeMetricDataLatestTopRequest.setScope("");
+        describeMetricDataLatestTopRequest.setRegion("");
+        describeMetricDataLatestTopRequest.setEndDatetime("");
+        describeMetricDataLatestTopRequest.setMetricName("");
+        describeMetricDataLatestTopRequest.setFilters(new ArrayList<>());
+        describeMetricDataLatestTopRequest.setLimit(0);
+        describeMetricDataLatestTopRequest.setAsc(false);
+        describeMetricDataLatestTopRequest.setPeriodSeconds(0);
+        describeMetricDataLatestTopRequest.setAggregationOverTime("");
+        DescribeMetricDataLatestTopResponse response = bcmClient.describeMetricDataLatestTop(describeMetricDataLatestTopRequest);
         System.out.println(response);
     }
     /**
-     * describeTopologyV3
+     * updateAlarmMasking
      *
      */
     @Test
-    public void describeTopologyV3Test() {
-        DescribeTopologyV3Request describeTopologyV3Request = new DescribeTopologyV3Request();
-        describeTopologyV3Request.setAction("");
-        describeTopologyV3Request.setServiceName("");
-        describeTopologyV3Request.setEnv("");
-        describeTopologyV3Request.setBeginDatetime("");
-        describeTopologyV3Request.setEndDatetime("");
-        DescribeTopologyV3Response response = bcmClient.describeTopologyV3(describeTopologyV3Request);
+    public void updateAlarmMaskingTest() {
+        UpdateAlarmMaskingRequest updateAlarmMaskingRequest = new UpdateAlarmMaskingRequest();
+        updateAlarmMaskingRequest.setId("");
+        updateAlarmMaskingRequest.setState("");
+        updateAlarmMaskingRequest.setName("");
+        updateAlarmMaskingRequest.setScope("");
+        updateAlarmMaskingRequest.setResourceType("");
+        updateAlarmMaskingRequest.setPolicyId("");
+        updateAlarmMaskingRequest.setInstances(new ArrayList<>());
+        updateAlarmMaskingRequest.setRegion("");
+        updateAlarmMaskingRequest.setMetricNames(new ArrayList<>());
+        updateAlarmMaskingRequest.setPeriodType("");
+        updateAlarmMaskingRequest.setBeginTime("");
+        updateAlarmMaskingRequest.setEndTime("");
+        updateAlarmMaskingRequest.setTz("");
+        updateAlarmMaskingRequest.setDailyBeginTimestamp(0);
+        updateAlarmMaskingRequest.setDailyEndTimestamp(0);
+        UpdateAlarmMaskingResponse response = bcmClient.updateAlarmMasking(updateAlarmMaskingRequest);
         System.out.println(response);
     }
     /**
-     * describeTraceMetricDataV3
+     * updateAlarmMaskingStates
      *
      */
     @Test
-    public void describeTraceMetricDataV3Test() {
-        DescribeTraceMetricDataV3Request describeTraceMetricDataV3Request = new DescribeTraceMetricDataV3Request();
-        describeTraceMetricDataV3Request.setAction("");
-        describeTraceMetricDataV3Request.setBeginDatetime("");
-        describeTraceMetricDataV3Request.setEndDatetime("");
-        describeTraceMetricDataV3Request.setMetrics(new ArrayList<>());
-        describeTraceMetricDataV3Request.setMetricsName("");
-        describeTraceMetricDataV3Request.setFilters(new ArrayList<>());
-        describeTraceMetricDataV3Request.setGroupBy(new ArrayList<>());
-        describeTraceMetricDataV3Request.setPeriodSeconds(0);
-        describeTraceMetricDataV3Request.setAggregate(new ArrayList<>());
-        DescribeTraceMetricDataV3Response response = bcmClient.describeTraceMetricDataV3(describeTraceMetricDataV3Request);
+    public void updateAlarmMaskingStatesTest() {
+        UpdateAlarmMaskingStatesRequest updateAlarmMaskingStatesRequest = new UpdateAlarmMaskingStatesRequest();
+        updateAlarmMaskingStatesRequest.setIds(new ArrayList<>());
+        updateAlarmMaskingStatesRequest.setState("");
+        UpdateAlarmMaskingStatesResponse response = bcmClient.updateAlarmMaskingStates(updateAlarmMaskingStatesRequest);
         System.out.println(response);
     }
     /**
-     * describeTraceV3
+     * updateAlarmPolicy
      *
      */
     @Test
-    public void describeTraceV3Test() {
-        DescribeTraceV3Request describeTraceV3Request = new DescribeTraceV3Request();
-        describeTraceV3Request.setAction("");
-        describeTraceV3Request.setSpanDatetime("");
-        describeTraceV3Request.setBeginDatetime("");
-        describeTraceV3Request.setEndDatetime("");
-        describeTraceV3Request.setTraceId("");
-        describeTraceV3Request.setFilters(new ArrayList<>());
-        describeTraceV3Request.setReturnHeight(false);
-        DescribeTraceV3Response response = bcmClient.describeTraceV3(describeTraceV3Request);
+    public void updateAlarmPolicyTest() {
+        UpdateAlarmPolicyRequest updateAlarmPolicyRequest = new UpdateAlarmPolicyRequest();
+        updateAlarmPolicyRequest.setId("");
+        updateAlarmPolicyRequest.setState("");
+        updateAlarmPolicyRequest.setName("");
+        updateAlarmPolicyRequest.setScope("");
+        updateAlarmPolicyRequest.setResourceType("");
+        updateAlarmPolicyRequest.setTarget(null);
+        updateAlarmPolicyRequest.setRules(new ArrayList<>());
+        updateAlarmPolicyRequest.setPendingCount(0);
+        updateAlarmPolicyRequest.setOnMissingData("");
+        updateAlarmPolicyRequest.setNoDataNotifyPendingMinutes(0);
+        updateAlarmPolicyRequest.setType("");
+        updateAlarmPolicyRequest.setLevel("");
+        updateAlarmPolicyRequest.setActions(new ArrayList<>());
+        updateAlarmPolicyRequest.setNotifyEnabled(false);
+        updateAlarmPolicyRequest.setCallbacks(new ArrayList<>());
+        updateAlarmPolicyRequest.setRenotifyCount(0);
+        updateAlarmPolicyRequest.setRenotifyIntervalMinutes(0);
+        updateAlarmPolicyRequest.setNotifyMergeWindowSeconds(0);
+        UpdateAlarmPolicyResponse response = bcmClient.updateAlarmPolicy(updateAlarmPolicyRequest);
+        System.out.println(response);
+    }
+    /**
+     * updateAlarmPolicyNotifyEnabled
+     *
+     */
+    @Test
+    public void updateAlarmPolicyNotifyEnabledTest() {
+        UpdateAlarmPolicyNotifyEnabledRequest updateAlarmPolicyNotifyEnabledRequest = new UpdateAlarmPolicyNotifyEnabledRequest();
+        updateAlarmPolicyNotifyEnabledRequest.setIds(new ArrayList<>());
+        updateAlarmPolicyNotifyEnabledRequest.setNotifyEnabled(false);
+        UpdateAlarmPolicyNotifyEnabledResponse response = bcmClient.updateAlarmPolicyNotifyEnabled(updateAlarmPolicyNotifyEnabledRequest);
+        System.out.println(response);
+    }
+    /**
+     * updateAlarmPolicyState
+     *
+     */
+    @Test
+    public void updateAlarmPolicyStateTest() {
+        UpdateAlarmPolicyStateRequest updateAlarmPolicyStateRequest = new UpdateAlarmPolicyStateRequest();
+        updateAlarmPolicyStateRequest.setIds(new ArrayList<>());
+        updateAlarmPolicyStateRequest.setState("");
+        UpdateAlarmPolicyStateResponse response = bcmClient.updateAlarmPolicyState(updateAlarmPolicyStateRequest);
         System.out.println(response);
     }
 }

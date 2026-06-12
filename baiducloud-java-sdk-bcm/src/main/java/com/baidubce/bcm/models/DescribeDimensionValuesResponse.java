@@ -18,7 +18,7 @@ public class DescribeDimensionValuesResponse extends BaseBceResponse {
     private String code;
 
     /**
-    * 错误信息
+    * 若发生错误，返回错误信息
     */
     private String message;
 

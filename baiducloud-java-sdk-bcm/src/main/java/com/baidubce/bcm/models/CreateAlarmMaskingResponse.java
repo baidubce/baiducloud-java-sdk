@@ -2,10 +2,9 @@ package com.baidubce.bcm.models;
 
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DescribeMetricDataResponse extends BaseBceResponse {
+public class CreateAlarmMaskingResponse extends BaseBceResponse {
 
     /**
     * 请求是否成功
@@ -18,20 +17,20 @@ public class DescribeMetricDataResponse extends BaseBceResponse {
     private String code;
 
     /**
-    * 若发生错误，返回错误信息
+    * 描述信息
     */
     private String message;
 
     /**
-    * 时序数据列表
+    * 创建的屏蔽规则ID
     */
-    private List<Timeseries> timeseries;
+    private String id;
 
     public Boolean getSuccess() {
         return success;
     }
 
-    public DescribeMetricDataResponse setSuccess(Boolean success) {
+    public CreateAlarmMaskingResponse setSuccess(Boolean success) {
         this.success = success;
         return this;
     }
@@ -40,7 +39,7 @@ public class DescribeMetricDataResponse extends BaseBceResponse {
         return code;
     }
 
-    public DescribeMetricDataResponse setCode(String code) {
+    public CreateAlarmMaskingResponse setCode(String code) {
         this.code = code;
         return this;
     }
@@ -49,23 +48,23 @@ public class DescribeMetricDataResponse extends BaseBceResponse {
         return message;
     }
 
-    public DescribeMetricDataResponse setMessage(String message) {
+    public CreateAlarmMaskingResponse setMessage(String message) {
         this.message = message;
         return this;
     }
 
-    public List<Timeseries> getTimeseries() {
-        return timeseries;
+    public String getId() {
+        return id;
     }
 
-    public DescribeMetricDataResponse setTimeseries(List<Timeseries> timeseries) {
-        this.timeseries = timeseries;
+    public CreateAlarmMaskingResponse setId(String id) {
+        this.id = id;
         return this;
     }
 
     @Override
     public String toString() {
-        return "DescribeMetricDataResponse{" + "success=" + success + "\n" + "code=" + code + "\n" + "message=" + message + "\n" + "timeseries=" + timeseries + "\n" + "}";
+        return "CreateAlarmMaskingResponse{" + "success=" + success + "\n" + "code=" + code + "\n" + "message=" + message + "\n" + "id=" + id + "\n" + "}";
     }
 
 }
