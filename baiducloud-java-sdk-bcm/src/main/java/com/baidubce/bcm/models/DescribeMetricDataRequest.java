@@ -15,69 +15,59 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
     private String action;
 
     /**
-    * 指标名列表
+    * 云产品类型，如BCE_BCC
     */
-    private List<MetricQuery> metrics;
+    private String scope;
 
     /**
-    * 指标名
+    * 云产品资源类型，如Instance。目前不参与查询条件，仅用于检查filters中必需包含resourceType对应的全部identifiers属性
     */
-    private String metricsName;
+    private String resourceType;
 
     /**
-    * 同比数据，不填写表示不查询同比数据。可选值：5m（周期环比，支持m和h）、yesterday（昨日同比）、lastweek（上周同比）、YYYY-mm-dd（指定日期同比，UTC时间）
+    * 地域
     */
-    private List<String> metricsCompareTo;
+    private String region;
 
     /**
-    * 该指标的特殊过滤条件，会与全局过滤项列表进行合并
-    */
-    private List<Filter> metricsFilters;
-
-    /**
-    * 开始时间，UTC时间
+    * 开始时间，UTC时间，如 2024-10-11T10:10:10Z
     */
     private String beginDatetime;
 
     /**
-    * 结束时间，UTC时间
+    * 结束时间，UTC时间，如 2024-10-11T10:25:10Z
     */
     private String endDatetime;
 
     /**
-    * 过滤项列表，所有指标共享
+    * 指标名
+    */
+    private String metricName;
+
+    /**
+    * 维度过滤项列表，必须包含该资源类型下所有的Resource.Identifiers维度
     */
     private List<Filter> filters;
 
     /**
-    * GroupBy列表
-    */
-    private List<String> groupBy;
-
-    /**
-    * 排序字段
-    */
-    private String orderBy;
-
-    /**
-    * 排序方式，可选值：asc、desc
-    */
-    private String order;
-
-    /**
-    * 返回数量限制，若未设置，后端服务将返回尽可能多的数据
+    * 若查询命中多条曲线，则最多返回limit条曲线，默认值：10，最大值：100
     */
     private Integer limit;
 
     /**
-    * 聚合周期，单位：秒。每periodSeconds秒计算一个聚合点。若为0或未设置，表示从起止时间只计算一个聚合点。默认值：0
+    * 偏移量，用于翻页查询，默认值：0
+    */
+    private Integer offset;
+
+    /**
+    * 周期，单位：秒，默认值：根据查询时间范围自适应
     */
     private Integer periodSeconds;
 
     /**
-    * 当dimensions为空时，是否保留对应的时间序列。默认值：false
+    * 统计方式（时间轴聚合方式），默认值：["avg"]，可选值：avg / sum / max / min / count
     */
-    private Boolean reserveEmptyDimensions;
+    private List<String> aggregationOverTime;
 
     public String getAction() {
         return action;
@@ -88,39 +78,30 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return this;
     }
 
-    public List<MetricQuery> getMetrics() {
-        return metrics;
+    public String getScope() {
+        return scope;
     }
 
-    public DescribeMetricDataRequest setMetrics(List<MetricQuery> metrics) {
-        this.metrics = metrics;
+    public DescribeMetricDataRequest setScope(String scope) {
+        this.scope = scope;
         return this;
     }
 
-    public String getMetricsName() {
-        return metricsName;
+    public String getResourceType() {
+        return resourceType;
     }
 
-    public DescribeMetricDataRequest setMetricsName(String metricsName) {
-        this.metricsName = metricsName;
+    public DescribeMetricDataRequest setResourceType(String resourceType) {
+        this.resourceType = resourceType;
         return this;
     }
 
-    public List<String> getMetricsCompareTo() {
-        return metricsCompareTo;
+    public String getRegion() {
+        return region;
     }
 
-    public DescribeMetricDataRequest setMetricsCompareTo(List<String> metricsCompareTo) {
-        this.metricsCompareTo = metricsCompareTo;
-        return this;
-    }
-
-    public List<Filter> getMetricsFilters() {
-        return metricsFilters;
-    }
-
-    public DescribeMetricDataRequest setMetricsFilters(List<Filter> metricsFilters) {
-        this.metricsFilters = metricsFilters;
+    public DescribeMetricDataRequest setRegion(String region) {
+        this.region = region;
         return this;
     }
 
@@ -142,39 +123,21 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return this;
     }
 
+    public String getMetricName() {
+        return metricName;
+    }
+
+    public DescribeMetricDataRequest setMetricName(String metricName) {
+        this.metricName = metricName;
+        return this;
+    }
+
     public List<Filter> getFilters() {
         return filters;
     }
 
     public DescribeMetricDataRequest setFilters(List<Filter> filters) {
         this.filters = filters;
-        return this;
-    }
-
-    public List<String> getGroupBy() {
-        return groupBy;
-    }
-
-    public DescribeMetricDataRequest setGroupBy(List<String> groupBy) {
-        this.groupBy = groupBy;
-        return this;
-    }
-
-    public String getOrderBy() {
-        return orderBy;
-    }
-
-    public DescribeMetricDataRequest setOrderBy(String orderBy) {
-        this.orderBy = orderBy;
-        return this;
-    }
-
-    public String getOrder() {
-        return order;
-    }
-
-    public DescribeMetricDataRequest setOrder(String order) {
-        this.order = order;
         return this;
     }
 
@@ -187,6 +150,15 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return this;
     }
 
+    public Integer getOffset() {
+        return offset;
+    }
+
+    public DescribeMetricDataRequest setOffset(Integer offset) {
+        this.offset = offset;
+        return this;
+    }
+
     public Integer getPeriodSeconds() {
         return periodSeconds;
     }
@@ -196,12 +168,12 @@ public class DescribeMetricDataRequest extends BaseBceRequest {
         return this;
     }
 
-    public Boolean getReserveEmptyDimensions() {
-        return reserveEmptyDimensions;
+    public List<String> getAggregationOverTime() {
+        return aggregationOverTime;
     }
 
-    public DescribeMetricDataRequest setReserveEmptyDimensions(Boolean reserveEmptyDimensions) {
-        this.reserveEmptyDimensions = reserveEmptyDimensions;
+    public DescribeMetricDataRequest setAggregationOverTime(List<String> aggregationOverTime) {
+        this.aggregationOverTime = aggregationOverTime;
         return this;
     }
 

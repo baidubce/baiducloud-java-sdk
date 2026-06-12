@@ -7,22 +7,22 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Filter {
     /**
-     * 过滤字段名
+     * 过滤字段名，如 InstanceId
      */
     private String key;
 
     /**
-     * 过滤操作，可选项：`=` - 等于，`:` - 等于，`!=` - 不等于，`contains` - 包含，`in` - 在数组中，`>` - 大于，`>=` - 大于等于，`<` - 小于，`<=` - 小于等于
+     * 过滤操作，可选值：= / != / in
      */
     private String op;
 
     /**
-     * 单值，可用于操作符: =, !=, contains, >, >=, <, <=
+     * 单值，可用于操作符: =, !=
      */
     private String value;
 
     /**
-     * 多值，可用于操作符: in
+     * 多值，可用于操作符：in
      */
     private List<String> values;
 

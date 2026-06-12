@@ -14,14 +14,18 @@ public class ExampleDescribeDimensionValues {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        BcmClient client = new BcmClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        BcmClient client = new BcmClient(bceClientConfig);
         DescribeDimensionValuesRequest describeDimensionValuesRequest = new DescribeDimensionValuesRequest();
         describeDimensionValuesRequest.setAction("");
+        describeDimensionValuesRequest.setScope("");
+        describeDimensionValuesRequest.setResourceType("");
+        describeDimensionValuesRequest.setRegion("");
         describeDimensionValuesRequest.setBeginDatetime("");
         describeDimensionValuesRequest.setEndDatetime("");
+        describeDimensionValuesRequest.setMetricName("");
         describeDimensionValuesRequest.setDimensionKey("");
         describeDimensionValuesRequest.setFilters(new ArrayList<>());
         try {
