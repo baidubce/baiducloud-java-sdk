@@ -16,24 +16,24 @@ import java.util.HashSet;
 import com.baidubce.common.BaseBceRequest;
 import com.baidubce.common.BaseBceResponse;
 
-import com.baidubce.aihc.models.CreateADatasetV2Request;
-import com.baidubce.aihc.models.CreateADatasetV2Response;
-import com.baidubce.aihc.models.CreateAModelV2Request;
-import com.baidubce.aihc.models.CreateAModelV2Response;
-import com.baidubce.aihc.models.CreateDatasetVersionV2Request;
-import com.baidubce.aihc.models.CreateDatasetVersionV2Response;
-import com.baidubce.aihc.models.GetAListOfModelVersionsV2Response;
-import com.baidubce.aihc.models.GetDatasetDetailsV2Response;
-import com.baidubce.aihc.models.GetDatasetVersionDetailsV2Response;
-import com.baidubce.aihc.models.GetModelDetailsV2Response;
-import com.baidubce.aihc.models.GetModelListV2Response;
-import com.baidubce.aihc.models.GetModelVersionDetailsV2Response;
-import com.baidubce.aihc.models.ModifyDatasetV2Request;
-import com.baidubce.aihc.models.ModifyTheModelV2Request;
-import com.baidubce.aihc.models.NewModelVersionV2Request;
-import com.baidubce.aihc.models.NewModelVersionV2Response;
-import com.baidubce.aihc.models.RetrieveTheDatasetListV2Response;
-import com.baidubce.aihc.models.RetrieveTheDatasetVersionListV2Response;
+import com.baidubce.aihc.models.CreateDatasetRequest;
+import com.baidubce.aihc.models.CreateDatasetResponse;
+import com.baidubce.aihc.models.CreateDatasetVersionRequest;
+import com.baidubce.aihc.models.CreateDatasetVersionResponse;
+import com.baidubce.aihc.models.CreateModelRequest;
+import com.baidubce.aihc.models.CreateModelResponse;
+import com.baidubce.aihc.models.CreateModelVersionRequest;
+import com.baidubce.aihc.models.CreateModelVersionResponse;
+import com.baidubce.aihc.models.DescribeDatasetResponse;
+import com.baidubce.aihc.models.DescribeDatasetVersionResponse;
+import com.baidubce.aihc.models.DescribeDatasetVersionsResponse;
+import com.baidubce.aihc.models.DescribeDatasetsResponse;
+import com.baidubce.aihc.models.DescribeModelResponse;
+import com.baidubce.aihc.models.DescribeModelVersionResponse;
+import com.baidubce.aihc.models.DescribeModelVersionsResponse;
+import com.baidubce.aihc.models.DescribeModelsResponse;
+import com.baidubce.aihc.models.ModifyDatasetRequest;
+import com.baidubce.aihc.models.ModifyModelRequest;
 
 public class AihcClient extends AbstractBceClient {
 
@@ -59,215 +59,161 @@ public class AihcClient extends AbstractBceClient {
     }
 
     /**
-     * createADatasetV2
+     * createDataset
      * 
      * @param request 入参结构体
-     * @return CreateADatasetV2Response
+     * @return CreateDatasetResponse
      */
-    public CreateADatasetV2Response createADatasetV2(CreateADatasetV2Request request) {
+    public CreateDatasetResponse createDataset(CreateDatasetRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
         internalRequest.addParameter("action", "CreateDataset");
+        internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, CreateADatasetV2Response.class);
+        return invokeHttpClient(internalRequest, CreateDatasetResponse.class);
     }
 
     /**
-     * createAModelV2
+     * createDatasetVersion
      * 
      * @param request 入参结构体
-     * @return CreateAModelV2Response
+     * @return CreateDatasetVersionResponse
      */
-    public CreateAModelV2Response createAModelV2(CreateAModelV2Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
-        internalRequest.addParameter("action", "CreateModel");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, CreateAModelV2Response.class);
-    }
-
-    /**
-     * createDatasetVersionV2
-     * 
-     * @param request 入参结构体
-     * @return CreateDatasetVersionV2Response
-     */
-    public CreateDatasetVersionV2Response createDatasetVersionV2(CreateDatasetVersionV2Request request) {
+    public CreateDatasetVersionResponse createDatasetVersion(CreateDatasetVersionRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
         internalRequest.addParameter("action", "CreateDatasetVersion");
         internalRequest.addParameter("datasetId", "xxx");
+        internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, CreateDatasetVersionV2Response.class);
+        return invokeHttpClient(internalRequest, CreateDatasetVersionResponse.class);
     }
 
     /**
-     * deleteDatasetV2
+     * createModel
+     * 
+     * @param request 入参结构体
+     * @return CreateModelResponse
+     */
+    public CreateModelResponse createModel(CreateModelRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "CreateModel");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateModelResponse.class);
+    }
+
+    /**
+     * createModelVersion
+     * 
+     * @param request 入参结构体
+     * @return CreateModelVersionResponse
+     */
+    public CreateModelVersionResponse createModelVersion(CreateModelVersionRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "CreateModelVersion");
+        internalRequest.addParameter("modelId", "xxx");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateModelVersionResponse.class);
+    }
+
+    /**
+     * deleteDataset
      * 
      */
-    public void deleteDatasetV2() {
+    public void deleteDataset() {
         InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.POST, null);
         internalRequest.addParameter("action", "DeleteDataset");
         internalRequest.addParameter("datasetId", "xxx");
+        internalRequest.addHeader("Version", "v2");
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
-     * deleteDatasetVersionV2
+     * deleteDatasetVersion
      * 
      */
-    public void deleteDatasetVersionV2() {
+    public void deleteDatasetVersion() {
         InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.POST, null);
         internalRequest.addParameter("action", "DeleteDatasetVersion");
         internalRequest.addParameter("datasetId", "xxx");
         internalRequest.addParameter("versionId", "xxx");
+        internalRequest.addHeader("Version", "v2");
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
-     * deleteModelV2
+     * deleteModel
      * 
      */
-    public void deleteModelV2() {
+    public void deleteModel() {
         InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.POST, null);
         internalRequest.addParameter("action", "DeleteModel");
         internalRequest.addParameter("modelId", "xxx");
+        internalRequest.addHeader("Version", "v2");
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
-     * deleteModelVersionV2
+     * deleteModelVersion
      * 
      */
-    public void deleteModelVersionV2() {
+    public void deleteModelVersion() {
         InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.POST, null);
         internalRequest.addParameter("action", "DeleteModelVersion");
         internalRequest.addParameter("modelId", "xxx");
         internalRequest.addParameter("versionId", "xxx");
+        internalRequest.addHeader("Version", "v2");
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
-     * getAListOfModelVersionsV2
+     * describeDataset
      * 
-     * @return GetAListOfModelVersionsV2Response
+     * @return DescribeDatasetResponse
      */
-    public GetAListOfModelVersionsV2Response getAListOfModelVersionsV2() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
-        internalRequest.addParameter("action", "DescribeModelVersions");
-        internalRequest.addParameter("modelId", "xxx");
-        internalRequest.addParameter("pageNumber", "xxx");
-        internalRequest.addParameter("pageSize", "xxx");
-        return invokeHttpClient(internalRequest, GetAListOfModelVersionsV2Response.class);
-    }
-
-    /**
-     * getDatasetDetailsV2
-     * 
-     * @return GetDatasetDetailsV2Response
-     */
-    public GetDatasetDetailsV2Response getDatasetDetailsV2() {
+    public DescribeDatasetResponse describeDataset() {
         InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
         internalRequest.addParameter("action", "DescribeDataset");
         internalRequest.addParameter("datasetId", "xxx");
-        return invokeHttpClient(internalRequest, GetDatasetDetailsV2Response.class);
+        internalRequest.addHeader("Version", "v2");
+        return invokeHttpClient(internalRequest, DescribeDatasetResponse.class);
     }
 
     /**
-     * getDatasetVersionDetailsV2
+     * describeDatasetVersion
      * 
-     * @return GetDatasetVersionDetailsV2Response
+     * @return DescribeDatasetVersionResponse
      */
-    public GetDatasetVersionDetailsV2Response getDatasetVersionDetailsV2() {
+    public DescribeDatasetVersionResponse describeDatasetVersion() {
         InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
         internalRequest.addParameter("action", "DescribeDatasetVersion");
         internalRequest.addParameter("datasetId", "xxx");
         internalRequest.addParameter("versionId", "xxx");
-        return invokeHttpClient(internalRequest, GetDatasetVersionDetailsV2Response.class);
+        internalRequest.addHeader("Version", "v2");
+        return invokeHttpClient(internalRequest, DescribeDatasetVersionResponse.class);
     }
 
     /**
-     * getModelDetailsV2
+     * describeDatasetVersions
      * 
-     * @return GetModelDetailsV2Response
+     * @return DescribeDatasetVersionsResponse
      */
-    public GetModelDetailsV2Response getModelDetailsV2() {
+    public DescribeDatasetVersionsResponse describeDatasetVersions() {
         InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
-        internalRequest.addParameter("action", "DescribeModel");
-        internalRequest.addParameter("modelId", "xxx");
-        return invokeHttpClient(internalRequest, GetModelDetailsV2Response.class);
-    }
-
-    /**
-     * getModelListV2
-     * 
-     * @return GetModelListV2Response
-     */
-    public GetModelListV2Response getModelListV2() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
-        internalRequest.addParameter("action", "DescribeModels");
-        internalRequest.addParameter("keyword", "xxx");
+        internalRequest.addParameter("action", "DescribeDatasetVersions");
+        internalRequest.addParameter("datasetId", "xxx");
         internalRequest.addParameter("pageNumber", "xxx");
         internalRequest.addParameter("pageSize", "xxx");
-        return invokeHttpClient(internalRequest, GetModelListV2Response.class);
+        internalRequest.addHeader("Version", "v2");
+        return invokeHttpClient(internalRequest, DescribeDatasetVersionsResponse.class);
     }
 
     /**
-     * getModelVersionDetailsV2
+     * describeDatasets
      * 
-     * @return GetModelVersionDetailsV2Response
+     * @return DescribeDatasetsResponse
      */
-    public GetModelVersionDetailsV2Response getModelVersionDetailsV2() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
-        internalRequest.addParameter("action", "DescribeModelVersion");
-        internalRequest.addParameter("modelId", "xxx");
-        internalRequest.addParameter("versionId", "xxx");
-        return invokeHttpClient(internalRequest, GetModelVersionDetailsV2Response.class);
-    }
-
-    /**
-     * modifyDatasetV2
-     * 
-     * @param request 入参结构体
-     */
-    public void modifyDatasetV2(ModifyDatasetV2Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
-        internalRequest.addParameter("action", "ModifyDataset");
-        internalRequest.addParameter("datasetId", "xxx");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
-     * modifyTheModelV2
-     * 
-     * @param request 入参结构体
-     */
-    public void modifyTheModelV2(ModifyTheModelV2Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
-        internalRequest.addParameter("action", "ModifyModel");
-        internalRequest.addParameter("modelId", "xxx");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
-     * newModelVersionV2
-     * 
-     * @param request 入参结构体
-     * @return NewModelVersionV2Response
-     */
-    public NewModelVersionV2Response newModelVersionV2(NewModelVersionV2Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
-        internalRequest.addParameter("action", "CreateModelVersion");
-        internalRequest.addParameter("modelId", "xxx");
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, NewModelVersionV2Response.class);
-    }
-
-    /**
-     * retrieveTheDatasetListV2
-     * 
-     * @return RetrieveTheDatasetListV2Response
-     */
-    public RetrieveTheDatasetListV2Response retrieveTheDatasetListV2() {
+    public DescribeDatasetsResponse describeDatasets() {
         InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
         internalRequest.addParameter("action", "DescribeDatasets");
         internalRequest.addParameter("keyword", "xxx");
@@ -276,21 +222,93 @@ public class AihcClient extends AbstractBceClient {
         internalRequest.addParameter("importFormat", "xxx");
         internalRequest.addParameter("pageNumber", "xxx");
         internalRequest.addParameter("pageSize", "xxx");
-        return invokeHttpClient(internalRequest, RetrieveTheDatasetListV2Response.class);
+        internalRequest.addHeader("Version", "v2");
+        return invokeHttpClient(internalRequest, DescribeDatasetsResponse.class);
     }
 
     /**
-     * retrieveTheDatasetVersionListV2
+     * describeModel
      * 
-     * @return RetrieveTheDatasetVersionListV2Response
+     * @return DescribeModelResponse
      */
-    public RetrieveTheDatasetVersionListV2Response retrieveTheDatasetVersionListV2() {
+    public DescribeModelResponse describeModel() {
         InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
-        internalRequest.addParameter("action", "DescribeDatasetVersions");
-        internalRequest.addParameter("datasetId", "xxx");
+        internalRequest.addParameter("action", "DescribeModel");
+        internalRequest.addParameter("modelId", "xxx");
+        internalRequest.addHeader("Version", "v2");
+        return invokeHttpClient(internalRequest, DescribeModelResponse.class);
+    }
+
+    /**
+     * describeModelVersion
+     * 
+     * @return DescribeModelVersionResponse
+     */
+    public DescribeModelVersionResponse describeModelVersion() {
+        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
+        internalRequest.addParameter("action", "DescribeModelVersion");
+        internalRequest.addParameter("modelId", "xxx");
+        internalRequest.addParameter("versionId", "xxx");
+        internalRequest.addHeader("Version", "v2");
+        return invokeHttpClient(internalRequest, DescribeModelVersionResponse.class);
+    }
+
+    /**
+     * describeModelVersions
+     * 
+     * @return DescribeModelVersionsResponse
+     */
+    public DescribeModelVersionsResponse describeModelVersions() {
+        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
+        internalRequest.addParameter("action", "DescribeModelVersions");
+        internalRequest.addParameter("modelId", "xxx");
         internalRequest.addParameter("pageNumber", "xxx");
         internalRequest.addParameter("pageSize", "xxx");
-        return invokeHttpClient(internalRequest, RetrieveTheDatasetVersionListV2Response.class);
+        internalRequest.addHeader("Version", "v2");
+        return invokeHttpClient(internalRequest, DescribeModelVersionsResponse.class);
+    }
+
+    /**
+     * describeModels
+     * 
+     * @return DescribeModelsResponse
+     */
+    public DescribeModelsResponse describeModels() {
+        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
+        internalRequest.addParameter("action", "DescribeModels");
+        internalRequest.addParameter("keyword", "xxx");
+        internalRequest.addParameter("pageNumber", "xxx");
+        internalRequest.addParameter("pageSize", "xxx");
+        internalRequest.addHeader("Version", "v2");
+        return invokeHttpClient(internalRequest, DescribeModelsResponse.class);
+    }
+
+    /**
+     * modifyDataset
+     * 
+     * @param request 入参结构体
+     */
+    public void modifyDataset(ModifyDatasetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "ModifyDataset");
+        internalRequest.addParameter("datasetId", "xxx");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * modifyModel
+     * 
+     * @param request 入参结构体
+     */
+    public void modifyModel(ModifyModelRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "ModifyModel");
+        internalRequest.addParameter("modelId", "xxx");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**

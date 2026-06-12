@@ -5,37 +5,37 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ModelVersionEntry {
     /**
-     * 否
+     * 模型版本ID。新建版本时，无需指定ID。
      */
     private String id;
 
     /**
-     * 否
+     * 版本号。新建版本时，无需指定版本号。
      */
     private String version;
 
     /**
-     * 是
+     * 该版本模型的来源UserUpload：用户上传
      */
     private String source;
 
     /**
-     * 是
+     * 模型存储的BOS桶
      */
     private String storageBucket;
 
     /**
-     * 是
+     * BOS桶中的存储路径
      */
     private String storagePath;
 
     /**
-     * 否
+     * 
      */
     private String modelMetrics;
 
     /**
-     * 否
+     * 版本描述
      */
     private String description;
 

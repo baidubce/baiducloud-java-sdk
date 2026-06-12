@@ -1,23 +1,23 @@
 package com.baidubce.aihc;
 
-import com.baidubce.aihc.models.CreateADatasetV2Request;
-import com.baidubce.aihc.models.CreateADatasetV2Response;
-import com.baidubce.aihc.models.CreateAModelV2Request;
-import com.baidubce.aihc.models.CreateAModelV2Response;
-import com.baidubce.aihc.models.CreateDatasetVersionV2Request;
-import com.baidubce.aihc.models.CreateDatasetVersionV2Response;
-import com.baidubce.aihc.models.GetAListOfModelVersionsV2Response;
-import com.baidubce.aihc.models.GetDatasetDetailsV2Response;
-import com.baidubce.aihc.models.GetDatasetVersionDetailsV2Response;
-import com.baidubce.aihc.models.GetModelDetailsV2Response;
-import com.baidubce.aihc.models.GetModelListV2Response;
-import com.baidubce.aihc.models.GetModelVersionDetailsV2Response;
-import com.baidubce.aihc.models.ModifyDatasetV2Request;
-import com.baidubce.aihc.models.ModifyTheModelV2Request;
-import com.baidubce.aihc.models.NewModelVersionV2Request;
-import com.baidubce.aihc.models.NewModelVersionV2Response;
-import com.baidubce.aihc.models.RetrieveTheDatasetListV2Response;
-import com.baidubce.aihc.models.RetrieveTheDatasetVersionListV2Response;
+import com.baidubce.aihc.models.CreateDatasetRequest;
+import com.baidubce.aihc.models.CreateDatasetResponse;
+import com.baidubce.aihc.models.CreateDatasetVersionRequest;
+import com.baidubce.aihc.models.CreateDatasetVersionResponse;
+import com.baidubce.aihc.models.CreateModelRequest;
+import com.baidubce.aihc.models.CreateModelResponse;
+import com.baidubce.aihc.models.CreateModelVersionRequest;
+import com.baidubce.aihc.models.CreateModelVersionResponse;
+import com.baidubce.aihc.models.DescribeDatasetResponse;
+import com.baidubce.aihc.models.DescribeDatasetVersionResponse;
+import com.baidubce.aihc.models.DescribeDatasetVersionsResponse;
+import com.baidubce.aihc.models.DescribeDatasetsResponse;
+import com.baidubce.aihc.models.DescribeModelResponse;
+import com.baidubce.aihc.models.DescribeModelVersionResponse;
+import com.baidubce.aihc.models.DescribeModelVersionsResponse;
+import com.baidubce.aihc.models.DescribeModelsResponse;
+import com.baidubce.aihc.models.ModifyDatasetRequest;
+import com.baidubce.aihc.models.ModifyModelRequest;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -41,196 +41,196 @@ public class AihcClientTest {
     }
 
     /**
-     * createADatasetV2
+     * createDataset
      *
      */
     @Test
-    public void createADatasetV2Test() {
-        CreateADatasetV2Request createADatasetV2Request = new CreateADatasetV2Request();
-        createADatasetV2Request.setName("");
-        createADatasetV2Request.setStorageType("");
-        createADatasetV2Request.setStorageInstance("");
-        createADatasetV2Request.setImportFormat("");
-        createADatasetV2Request.setDescription("");
-        createADatasetV2Request.setOwner("");
-        createADatasetV2Request.setVisibilityScope("");
-        createADatasetV2Request.setVisibilityUser(new ArrayList<>());
-        createADatasetV2Request.setVisibilityGroup(new ArrayList<>());
-        createADatasetV2Request.setInitVersionEntry(null);
-        CreateADatasetV2Response response = aihcClient.createADatasetV2(createADatasetV2Request);
+    public void createDatasetTest() {
+        CreateDatasetRequest createDatasetRequest = new CreateDatasetRequest();
+        createDatasetRequest.setName("");
+        createDatasetRequest.setStorageType("");
+        createDatasetRequest.setStorageInstance("");
+        createDatasetRequest.setImportFormat("");
+        createDatasetRequest.setDescription("");
+        createDatasetRequest.setOwner("");
+        createDatasetRequest.setVisibilityScope("");
+        createDatasetRequest.setVisibilityUser(new ArrayList<>());
+        createDatasetRequest.setVisibilityGroup(new ArrayList<>());
+        createDatasetRequest.setInitVersionEntry(null);
+        CreateDatasetResponse response = aihcClient.createDataset(createDatasetRequest);
         System.out.println(response);
     }
     /**
-     * createAModelV2
+     * createDatasetVersion
      *
      */
     @Test
-    public void createAModelV2Test() {
-        CreateAModelV2Request createAModelV2Request = new CreateAModelV2Request();
-        createAModelV2Request.setName("");
-        createAModelV2Request.setDescription("");
-        createAModelV2Request.setModelFormat("");
-        createAModelV2Request.setOwner("");
-        createAModelV2Request.setVisibilityScope("");
-        createAModelV2Request.setInitVersionEntry(null);
-        CreateAModelV2Response response = aihcClient.createAModelV2(createAModelV2Request);
+    public void createDatasetVersionTest() {
+        CreateDatasetVersionRequest createDatasetVersionRequest = new CreateDatasetVersionRequest();
+        createDatasetVersionRequest.setDescription("");
+        createDatasetVersionRequest.setStoragePath("");
+        createDatasetVersionRequest.setMountPath("");
+        CreateDatasetVersionResponse response = aihcClient.createDatasetVersion(createDatasetVersionRequest);
         System.out.println(response);
     }
     /**
-     * createDatasetVersionV2
+     * createModel
      *
      */
     @Test
-    public void createDatasetVersionV2Test() {
-        CreateDatasetVersionV2Request createDatasetVersionV2Request = new CreateDatasetVersionV2Request();
-        createDatasetVersionV2Request.setDescription("");
-        createDatasetVersionV2Request.setStoragePath("");
-        createDatasetVersionV2Request.setMountPath("");
-        CreateDatasetVersionV2Response response = aihcClient.createDatasetVersionV2(createDatasetVersionV2Request);
+    public void createModelTest() {
+        CreateModelRequest createModelRequest = new CreateModelRequest();
+        createModelRequest.setName("");
+        createModelRequest.setDescription("");
+        createModelRequest.setModelFormat("");
+        createModelRequest.setOwner("");
+        createModelRequest.setVisibilityScope("");
+        createModelRequest.setInitVersionEntry(null);
+        CreateModelResponse response = aihcClient.createModel(createModelRequest);
         System.out.println(response);
     }
     /**
-     * deleteDatasetV2
+     * createModelVersion
      *
      */
     @Test
-    public void deleteDatasetV2Test() {
-        aihcClient.deleteDatasetV2();
-    }
-    /**
-     * deleteDatasetVersionV2
-     *
-     */
-    @Test
-    public void deleteDatasetVersionV2Test() {
-        aihcClient.deleteDatasetVersionV2();
-    }
-    /**
-     * deleteModelV2
-     *
-     */
-    @Test
-    public void deleteModelV2Test() {
-        aihcClient.deleteModelV2();
-    }
-    /**
-     * deleteModelVersionV2
-     *
-     */
-    @Test
-    public void deleteModelVersionV2Test() {
-        aihcClient.deleteModelVersionV2();
-    }
-    /**
-     * getAListOfModelVersionsV2
-     *
-     */
-    @Test
-    public void getAListOfModelVersionsV2Test() {
-        GetAListOfModelVersionsV2Response response = aihcClient.getAListOfModelVersionsV2();
+    public void createModelVersionTest() {
+        CreateModelVersionRequest createModelVersionRequest = new CreateModelVersionRequest();
+        createModelVersionRequest.setStorageBucket("");
+        createModelVersionRequest.setStoragePath("");
+        createModelVersionRequest.setDescription("");
+        createModelVersionRequest.setSource("");
+        createModelVersionRequest.setModelMetrics("");
+        CreateModelVersionResponse response = aihcClient.createModelVersion(createModelVersionRequest);
         System.out.println(response);
     }
     /**
-     * getDatasetDetailsV2
+     * deleteDataset
      *
      */
     @Test
-    public void getDatasetDetailsV2Test() {
-        GetDatasetDetailsV2Response response = aihcClient.getDatasetDetailsV2();
+    public void deleteDatasetTest() {
+        aihcClient.deleteDataset();
+    }
+    /**
+     * deleteDatasetVersion
+     *
+     */
+    @Test
+    public void deleteDatasetVersionTest() {
+        aihcClient.deleteDatasetVersion();
+    }
+    /**
+     * deleteModel
+     *
+     */
+    @Test
+    public void deleteModelTest() {
+        aihcClient.deleteModel();
+    }
+    /**
+     * deleteModelVersion
+     *
+     */
+    @Test
+    public void deleteModelVersionTest() {
+        aihcClient.deleteModelVersion();
+    }
+    /**
+     * describeDataset
+     *
+     */
+    @Test
+    public void describeDatasetTest() {
+        DescribeDatasetResponse response = aihcClient.describeDataset();
         System.out.println(response);
     }
     /**
-     * getDatasetVersionDetailsV2
+     * describeDatasetVersion
      *
      */
     @Test
-    public void getDatasetVersionDetailsV2Test() {
-        GetDatasetVersionDetailsV2Response response = aihcClient.getDatasetVersionDetailsV2();
+    public void describeDatasetVersionTest() {
+        DescribeDatasetVersionResponse response = aihcClient.describeDatasetVersion();
         System.out.println(response);
     }
     /**
-     * getModelDetailsV2
+     * describeDatasetVersions
      *
      */
     @Test
-    public void getModelDetailsV2Test() {
-        GetModelDetailsV2Response response = aihcClient.getModelDetailsV2();
+    public void describeDatasetVersionsTest() {
+        DescribeDatasetVersionsResponse response = aihcClient.describeDatasetVersions();
         System.out.println(response);
     }
     /**
-     * getModelListV2
+     * describeDatasets
      *
      */
     @Test
-    public void getModelListV2Test() {
-        GetModelListV2Response response = aihcClient.getModelListV2();
+    public void describeDatasetsTest() {
+        DescribeDatasetsResponse response = aihcClient.describeDatasets();
         System.out.println(response);
     }
     /**
-     * getModelVersionDetailsV2
+     * describeModel
      *
      */
     @Test
-    public void getModelVersionDetailsV2Test() {
-        GetModelVersionDetailsV2Response response = aihcClient.getModelVersionDetailsV2();
+    public void describeModelTest() {
+        DescribeModelResponse response = aihcClient.describeModel();
         System.out.println(response);
     }
     /**
-     * modifyDatasetV2
+     * describeModelVersion
      *
      */
     @Test
-    public void modifyDatasetV2Test() {
-        ModifyDatasetV2Request modifyDatasetV2Request = new ModifyDatasetV2Request();
-        modifyDatasetV2Request.setName("");
-        modifyDatasetV2Request.setDescription("");
-        modifyDatasetV2Request.setVisibilityScope("");
-        modifyDatasetV2Request.setVisibilityUser(new ArrayList<>());
-        modifyDatasetV2Request.setVisibilityGroup(new ArrayList<>());
-        aihcClient.modifyDatasetV2(modifyDatasetV2Request);
-    }
-    /**
-     * modifyTheModelV2
-     *
-     */
-    @Test
-    public void modifyTheModelV2Test() {
-        ModifyTheModelV2Request modifyTheModelV2Request = new ModifyTheModelV2Request();
-        modifyTheModelV2Request.setName("");
-        modifyTheModelV2Request.setDescription("");
-        aihcClient.modifyTheModelV2(modifyTheModelV2Request);
-    }
-    /**
-     * newModelVersionV2
-     *
-     */
-    @Test
-    public void newModelVersionV2Test() {
-        NewModelVersionV2Request newModelVersionV2Request = new NewModelVersionV2Request();
-        newModelVersionV2Request.setStorageBucket("");
-        newModelVersionV2Request.setStoragePath("");
-        newModelVersionV2Request.setDescription("");
-        newModelVersionV2Request.setSource("");
-        newModelVersionV2Request.setModelMetrics("");
-        NewModelVersionV2Response response = aihcClient.newModelVersionV2(newModelVersionV2Request);
+    public void describeModelVersionTest() {
+        DescribeModelVersionResponse response = aihcClient.describeModelVersion();
         System.out.println(response);
     }
     /**
-     * retrieveTheDatasetListV2
+     * describeModelVersions
      *
      */
     @Test
-    public void retrieveTheDatasetListV2Test() {
-        RetrieveTheDatasetListV2Response response = aihcClient.retrieveTheDatasetListV2();
+    public void describeModelVersionsTest() {
+        DescribeModelVersionsResponse response = aihcClient.describeModelVersions();
         System.out.println(response);
     }
     /**
-     * retrieveTheDatasetVersionListV2
+     * describeModels
      *
      */
     @Test
-    public void retrieveTheDatasetVersionListV2Test() {
-        RetrieveTheDatasetVersionListV2Response response = aihcClient.retrieveTheDatasetVersionListV2();
+    public void describeModelsTest() {
+        DescribeModelsResponse response = aihcClient.describeModels();
         System.out.println(response);
+    }
+    /**
+     * modifyDataset
+     *
+     */
+    @Test
+    public void modifyDatasetTest() {
+        ModifyDatasetRequest modifyDatasetRequest = new ModifyDatasetRequest();
+        modifyDatasetRequest.setName("");
+        modifyDatasetRequest.setDescription("");
+        modifyDatasetRequest.setVisibilityScope("");
+        modifyDatasetRequest.setVisibilityUser(new ArrayList<>());
+        modifyDatasetRequest.setVisibilityGroup(new ArrayList<>());
+        aihcClient.modifyDataset(modifyDatasetRequest);
+    }
+    /**
+     * modifyModel
+     *
+     */
+    @Test
+    public void modifyModelTest() {
+        ModifyModelRequest modifyModelRequest = new ModifyModelRequest();
+        modifyModelRequest.setName("");
+        modifyModelRequest.setDescription("");
+        aihcClient.modifyModel(modifyModelRequest);
     }
 }
