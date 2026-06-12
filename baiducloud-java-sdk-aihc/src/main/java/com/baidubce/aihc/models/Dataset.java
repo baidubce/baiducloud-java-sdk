@@ -7,82 +7,82 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Dataset {
     /**
-     * 是
+     * 数据集ID。新建数据集时，无需指定ID。
      */
     private String id;
 
     /**
-     * 是
+     * 数据集名称
      */
     private String name;
 
     /**
-     * 是
+     * 存储类型PFS：并行存储PFSBOS：对象存储BOS
      */
     private String storageType;
 
     /**
-     * 是
+     * 存储实例
      */
     private String storageInstance;
 
     /**
-     * 是
+     * 导入格式FILE：文件FOLDER：文件夹
      */
     private String importFormat;
 
     /**
-     * 否
+     * 描述
      */
     private String description;
 
     /**
-     * 是
+     * 所有者
      */
     private String owner;
 
     /**
-     * 是
+     * 所有者名称
      */
     private String ownerName;
 
     /**
-     * 是
+     * 可见范围ALL_PEOPLE：所有人可见ONLY_OWNER：仅所有者可读写USER_GROUP：指定范围可用
      */
     private String visibilityScope;
 
     /**
-     * 否
+     * 
      */
     private List<PermissionEntry> visibilityUser;
 
     /**
-     * 否
+     * 
      */
     private List<PermissionEntry> visibilityGroup;
 
     /**
-     * 是
+     * 当前用户拥有的读写权限：r：只读rw：读写
      */
     private String permission;
 
     /**
-     * 否
+     * 最新版本ID
      */
     private String latestVersionId;
 
     /**
-     * 否
+     * 最新版本号
      */
     private String latestVersion;
 
     /**
-     * 是
+     * 创建时间
      */
     private String createdAt;
 
     /**
-     * 是
+     * 更新时间
      */
     private String updatedAt;
 

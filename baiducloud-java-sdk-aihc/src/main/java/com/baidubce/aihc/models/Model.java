@@ -5,62 +5,62 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Model {
     /**
-     * 否
+     * 模型ID。新建模型时，无需指定ID。
      */
     private String id;
 
     /**
-     * 是
+     * 模型名称
      */
     private String name;
 
     /**
-     * 是
+     * 模型创建时的来源UserUpload：用户上传
      */
     private String initSource;
 
     /**
-     * 否
+     * 最新版本
      */
     private String latestVersion;
 
     /**
-     * 否
+     * 最新版本ID
      */
     private String latestVersionId;
 
     /**
-     * 是
+     * 模型格式
      */
     private String modelFormat;
 
     /**
-     * 否
+     * 描述
      */
     private String description;
 
     /**
-     * 否
+     * 更新时间
      */
     private String updatedAt;
 
     /**
-     * 否
+     * 创建时间
      */
     private String createdAt;
 
     /**
-     * 是
+     * 所有者
      */
     private String owner;
 
     /**
-     * 是
+     * 所有者名称
      */
     private String ownerName;
 
     /**
-     * 是
+     * 可见范围
      */
     private String visibilityScope;
 

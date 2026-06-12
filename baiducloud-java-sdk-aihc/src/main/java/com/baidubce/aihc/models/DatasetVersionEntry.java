@@ -5,32 +5,32 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DatasetVersionEntry {
     /**
-     * 否
+     * 数据集版本ID。新建版本时，无需指定ID。
      */
     private String id;
 
     /**
-     * 否
+     * 版本号。新建版本时，无需指定版本号。
      */
     private String version;
 
     /**
-     * 否
+     * 版本描述
      */
     private String description;
 
     /**
-     * 是
+     * 存储路径
      */
     private String storagePath;
 
     /**
-     * 是
+     * 默认挂载路径
      */
     private String mountPath;
 
     /**
-     * 否
+     * 创建用户
      */
     private String createUser;
 

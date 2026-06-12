@@ -5,17 +5,17 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PermissionEntry {
     /**
-     * 是
+     * 用户或用户组ID
      */
     private String id;
 
     /**
-     * 是
+     * 用户或用户组名
      */
     private String name;
 
     /**
-     * 是
+     * 权限，枚举值：r：只读rw：读写
      */
     private String permission;
 
