@@ -6,12 +6,26 @@ import com.baidubce.bcm.models.CreateAlarmMaskingRequest;
 import com.baidubce.bcm.models.CreateAlarmMaskingResponse;
 import com.baidubce.bcm.models.CreateAlarmPolicyRequest;
 import com.baidubce.bcm.models.CreateAlarmPolicyResponse;
+import com.baidubce.bcm.models.CreateAlarmTemplateRequest;
+import com.baidubce.bcm.models.CreateAlarmTemplateResponse;
+import com.baidubce.bcm.models.CreateInstanceGroupRequest;
+import com.baidubce.bcm.models.CreateInstanceGroupResponse;
+import com.baidubce.bcm.models.CreateNotifyTemplateRequest;
+import com.baidubce.bcm.models.CreateNotifyTemplateResponse;
 import com.baidubce.bcm.models.DeleteAlarmMaskingsRequest;
 import com.baidubce.bcm.models.DeleteAlarmMaskingsResponse;
 import com.baidubce.bcm.models.DeleteAlarmPoliciesRequest;
 import com.baidubce.bcm.models.DeleteAlarmPoliciesResponse;
 import com.baidubce.bcm.models.DeleteAlarmPolicyActionsRequest;
 import com.baidubce.bcm.models.DeleteAlarmPolicyActionsResponse;
+import com.baidubce.bcm.models.DeleteAlarmTemplatesRequest;
+import com.baidubce.bcm.models.DeleteAlarmTemplatesResponse;
+import com.baidubce.bcm.models.DeleteInstanceGroupInstancesRequest;
+import com.baidubce.bcm.models.DeleteInstanceGroupInstancesResponse;
+import com.baidubce.bcm.models.DeleteInstanceGroupRequest;
+import com.baidubce.bcm.models.DeleteInstanceGroupResponse;
+import com.baidubce.bcm.models.DeleteNotifyTemplateRequest;
+import com.baidubce.bcm.models.DeleteNotifyTemplateResponse;
 import com.baidubce.bcm.models.DescribeAlarmMaskingRequest;
 import com.baidubce.bcm.models.DescribeAlarmMaskingResponse;
 import com.baidubce.bcm.models.DescribeAlarmMaskingsRequest;
@@ -22,16 +36,36 @@ import com.baidubce.bcm.models.DescribeAlarmPolicyRequest;
 import com.baidubce.bcm.models.DescribeAlarmPolicyResponse;
 import com.baidubce.bcm.models.DescribeAlarmRequest;
 import com.baidubce.bcm.models.DescribeAlarmResponse;
+import com.baidubce.bcm.models.DescribeAlarmTemplateRequest;
+import com.baidubce.bcm.models.DescribeAlarmTemplateResponse;
+import com.baidubce.bcm.models.DescribeAlarmTemplatesRequest;
+import com.baidubce.bcm.models.DescribeAlarmTemplatesResponse;
 import com.baidubce.bcm.models.DescribeAlarmsRequest;
 import com.baidubce.bcm.models.DescribeAlarmsResponse;
 import com.baidubce.bcm.models.DescribeDimensionValuesRequest;
 import com.baidubce.bcm.models.DescribeDimensionValuesResponse;
+import com.baidubce.bcm.models.DescribeInstanceGroupRequest;
+import com.baidubce.bcm.models.DescribeInstanceGroupResponse;
+import com.baidubce.bcm.models.DescribeInstanceGroupsRequest;
+import com.baidubce.bcm.models.DescribeInstanceGroupsResponse;
 import com.baidubce.bcm.models.DescribeMetricDataLatestRequest;
 import com.baidubce.bcm.models.DescribeMetricDataLatestResponse;
 import com.baidubce.bcm.models.DescribeMetricDataLatestTopRequest;
 import com.baidubce.bcm.models.DescribeMetricDataLatestTopResponse;
 import com.baidubce.bcm.models.DescribeMetricDataRequest;
 import com.baidubce.bcm.models.DescribeMetricDataResponse;
+import com.baidubce.bcm.models.DescribeNotifyTemplateRequest;
+import com.baidubce.bcm.models.DescribeNotifyTemplateResponse;
+import com.baidubce.bcm.models.DescribeNotifyTemplatesRequest;
+import com.baidubce.bcm.models.DescribeNotifyTemplatesResponse;
+import com.baidubce.bcm.models.DescribeReceiversRequest;
+import com.baidubce.bcm.models.DescribeReceiversResponse;
+import com.baidubce.bcm.models.DescribeSystemTemplateRulesRequest;
+import com.baidubce.bcm.models.DescribeSystemTemplateRulesResponse;
+import com.baidubce.bcm.models.ExportAlarmTemplatesRequest;
+import com.baidubce.bcm.models.ExportAlarmTemplatesResponse;
+import com.baidubce.bcm.models.ImportAlarmTemplatesRequest;
+import com.baidubce.bcm.models.ImportAlarmTemplatesResponse;
 import com.baidubce.bcm.models.UpdateAlarmMaskingRequest;
 import com.baidubce.bcm.models.UpdateAlarmMaskingResponse;
 import com.baidubce.bcm.models.UpdateAlarmMaskingStatesRequest;
@@ -42,6 +76,12 @@ import com.baidubce.bcm.models.UpdateAlarmPolicyRequest;
 import com.baidubce.bcm.models.UpdateAlarmPolicyResponse;
 import com.baidubce.bcm.models.UpdateAlarmPolicyStateRequest;
 import com.baidubce.bcm.models.UpdateAlarmPolicyStateResponse;
+import com.baidubce.bcm.models.UpdateAlarmTemplateRequest;
+import com.baidubce.bcm.models.UpdateAlarmTemplateResponse;
+import com.baidubce.bcm.models.UpdateInstanceGroupRequest;
+import com.baidubce.bcm.models.UpdateInstanceGroupResponse;
+import com.baidubce.bcm.models.UpdateNotifyTemplateRequest;
+import com.baidubce.bcm.models.UpdateNotifyTemplateResponse;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -126,6 +166,50 @@ public class BcmClientTest {
         System.out.println(response);
     }
     /**
+     * createAlarmTemplate
+     *
+     */
+    @Test
+    public void createAlarmTemplateTest() {
+        CreateAlarmTemplateRequest createAlarmTemplateRequest = new CreateAlarmTemplateRequest();
+        createAlarmTemplateRequest.setScope("");
+        createAlarmTemplateRequest.setResourceType("");
+        createAlarmTemplateRequest.setSubResourceType("");
+        createAlarmTemplateRequest.setName("");
+        createAlarmTemplateRequest.setComment("");
+        createAlarmTemplateRequest.setRules(new ArrayList<>());
+        CreateAlarmTemplateResponse response = bcmClient.createAlarmTemplate(createAlarmTemplateRequest);
+        System.out.println(response);
+    }
+    /**
+     * createInstanceGroup
+     *
+     */
+    @Test
+    public void createInstanceGroupTest() {
+        CreateInstanceGroupRequest createInstanceGroupRequest = new CreateInstanceGroupRequest();
+        createInstanceGroupRequest.setScope("");
+        createInstanceGroupRequest.setResourceType("");
+        createInstanceGroupRequest.setName("");
+        createInstanceGroupRequest.setInstances(new ArrayList<>());
+        CreateInstanceGroupResponse response = bcmClient.createInstanceGroup(createInstanceGroupRequest);
+        System.out.println(response);
+    }
+    /**
+     * createNotifyTemplate
+     *
+     */
+    @Test
+    public void createNotifyTemplateTest() {
+        CreateNotifyTemplateRequest createNotifyTemplateRequest = new CreateNotifyTemplateRequest();
+        createNotifyTemplateRequest.setName("");
+        createNotifyTemplateRequest.setSilencePeriods(new ArrayList<>());
+        createNotifyTemplateRequest.setReceivers(new ArrayList<>());
+        createNotifyTemplateRequest.setCallbacks(new ArrayList<>());
+        CreateNotifyTemplateResponse response = bcmClient.createNotifyTemplate(createNotifyTemplateRequest);
+        System.out.println(response);
+    }
+    /**
      * deleteAlarmMaskings
      *
      */
@@ -157,6 +241,51 @@ public class BcmClientTest {
         deleteAlarmPolicyActionsRequest.setId("");
         deleteAlarmPolicyActionsRequest.setActions(new ArrayList<>());
         DeleteAlarmPolicyActionsResponse response = bcmClient.deleteAlarmPolicyActions(deleteAlarmPolicyActionsRequest);
+        System.out.println(response);
+    }
+    /**
+     * deleteAlarmTemplates
+     *
+     */
+    @Test
+    public void deleteAlarmTemplatesTest() {
+        DeleteAlarmTemplatesRequest deleteAlarmTemplatesRequest = new DeleteAlarmTemplatesRequest();
+        deleteAlarmTemplatesRequest.setIds(new ArrayList<>());
+        DeleteAlarmTemplatesResponse response = bcmClient.deleteAlarmTemplates(deleteAlarmTemplatesRequest);
+        System.out.println(response);
+    }
+    /**
+     * deleteInstanceGroup
+     *
+     */
+    @Test
+    public void deleteInstanceGroupTest() {
+        DeleteInstanceGroupRequest deleteInstanceGroupRequest = new DeleteInstanceGroupRequest();
+        deleteInstanceGroupRequest.setId("");
+        DeleteInstanceGroupResponse response = bcmClient.deleteInstanceGroup(deleteInstanceGroupRequest);
+        System.out.println(response);
+    }
+    /**
+     * deleteInstanceGroupInstances
+     *
+     */
+    @Test
+    public void deleteInstanceGroupInstancesTest() {
+        DeleteInstanceGroupInstancesRequest deleteInstanceGroupInstancesRequest = new DeleteInstanceGroupInstancesRequest();
+        deleteInstanceGroupInstancesRequest.setId("");
+        deleteInstanceGroupInstancesRequest.setInstances(new ArrayList<>());
+        DeleteInstanceGroupInstancesResponse response = bcmClient.deleteInstanceGroupInstances(deleteInstanceGroupInstancesRequest);
+        System.out.println(response);
+    }
+    /**
+     * deleteNotifyTemplate
+     *
+     */
+    @Test
+    public void deleteNotifyTemplateTest() {
+        DeleteNotifyTemplateRequest deleteNotifyTemplateRequest = new DeleteNotifyTemplateRequest();
+        deleteNotifyTemplateRequest.setNotifyId("");
+        DeleteNotifyTemplateResponse response = bcmClient.deleteNotifyTemplate(deleteNotifyTemplateRequest);
         System.out.println(response);
     }
     /**
@@ -232,6 +361,35 @@ public class BcmClientTest {
         System.out.println(response);
     }
     /**
+     * describeAlarmTemplate
+     *
+     */
+    @Test
+    public void describeAlarmTemplateTest() {
+        DescribeAlarmTemplateRequest describeAlarmTemplateRequest = new DescribeAlarmTemplateRequest();
+        describeAlarmTemplateRequest.setId("");
+        DescribeAlarmTemplateResponse response = bcmClient.describeAlarmTemplate(describeAlarmTemplateRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeAlarmTemplates
+     *
+     */
+    @Test
+    public void describeAlarmTemplatesTest() {
+        DescribeAlarmTemplatesRequest describeAlarmTemplatesRequest = new DescribeAlarmTemplatesRequest();
+        describeAlarmTemplatesRequest.setName("");
+        describeAlarmTemplatesRequest.setScope("");
+        describeAlarmTemplatesRequest.setResourceType("");
+        describeAlarmTemplatesRequest.setSubResourceType("");
+        describeAlarmTemplatesRequest.setOrder("");
+        describeAlarmTemplatesRequest.setOrderBy("");
+        describeAlarmTemplatesRequest.setPageNo(0);
+        describeAlarmTemplatesRequest.setPageSize(0);
+        DescribeAlarmTemplatesResponse response = bcmClient.describeAlarmTemplates(describeAlarmTemplatesRequest);
+        System.out.println(response);
+    }
+    /**
      * describeAlarms
      *
      */
@@ -269,6 +427,34 @@ public class BcmClientTest {
         describeDimensionValuesRequest.setDimensionKey("");
         describeDimensionValuesRequest.setFilters(new ArrayList<>());
         DescribeDimensionValuesResponse response = bcmClient.describeDimensionValues(describeDimensionValuesRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeInstanceGroup
+     *
+     */
+    @Test
+    public void describeInstanceGroupTest() {
+        DescribeInstanceGroupRequest describeInstanceGroupRequest = new DescribeInstanceGroupRequest();
+        describeInstanceGroupRequest.setId("");
+        DescribeInstanceGroupResponse response = bcmClient.describeInstanceGroup(describeInstanceGroupRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeInstanceGroups
+     *
+     */
+    @Test
+    public void describeInstanceGroupsTest() {
+        DescribeInstanceGroupsRequest describeInstanceGroupsRequest = new DescribeInstanceGroupsRequest();
+        describeInstanceGroupsRequest.setScope("");
+        describeInstanceGroupsRequest.setResourceType("");
+        describeInstanceGroupsRequest.setName("");
+        describeInstanceGroupsRequest.setOrder("");
+        describeInstanceGroupsRequest.setOrderBy("");
+        describeInstanceGroupsRequest.setPageNo(0);
+        describeInstanceGroupsRequest.setPageSize(0);
+        DescribeInstanceGroupsResponse response = bcmClient.describeInstanceGroups(describeInstanceGroupsRequest);
         System.out.println(response);
     }
     /**
@@ -332,6 +518,84 @@ public class BcmClientTest {
         describeMetricDataLatestTopRequest.setPeriodSeconds(0);
         describeMetricDataLatestTopRequest.setAggregationOverTime("");
         DescribeMetricDataLatestTopResponse response = bcmClient.describeMetricDataLatestTop(describeMetricDataLatestTopRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeNotifyTemplate
+     *
+     */
+    @Test
+    public void describeNotifyTemplateTest() {
+        DescribeNotifyTemplateRequest describeNotifyTemplateRequest = new DescribeNotifyTemplateRequest();
+        describeNotifyTemplateRequest.setId("");
+        DescribeNotifyTemplateResponse response = bcmClient.describeNotifyTemplate(describeNotifyTemplateRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeNotifyTemplates
+     *
+     */
+    @Test
+    public void describeNotifyTemplatesTest() {
+        DescribeNotifyTemplatesRequest describeNotifyTemplatesRequest = new DescribeNotifyTemplatesRequest();
+        describeNotifyTemplatesRequest.setName("");
+        describeNotifyTemplatesRequest.setPolicyId("");
+        describeNotifyTemplatesRequest.setOrder("");
+        describeNotifyTemplatesRequest.setOrderBy("");
+        describeNotifyTemplatesRequest.setPageNo(0);
+        describeNotifyTemplatesRequest.setPageSize(0);
+        DescribeNotifyTemplatesResponse response = bcmClient.describeNotifyTemplates(describeNotifyTemplatesRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeReceivers
+     *
+     */
+    @Test
+    public void describeReceiversTest() {
+        DescribeReceiversRequest describeReceiversRequest = new DescribeReceiversRequest();
+        describeReceiversRequest.setType("");
+        describeReceiversRequest.setName("");
+        describeReceiversRequest.setPageNo(0);
+        describeReceiversRequest.setPageSize(0);
+        DescribeReceiversResponse response = bcmClient.describeReceivers(describeReceiversRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeSystemTemplateRules
+     *
+     */
+    @Test
+    public void describeSystemTemplateRulesTest() {
+        DescribeSystemTemplateRulesRequest describeSystemTemplateRulesRequest = new DescribeSystemTemplateRulesRequest();
+        describeSystemTemplateRulesRequest.setScope("");
+        describeSystemTemplateRulesRequest.setResourceType("");
+        describeSystemTemplateRulesRequest.setSubResourceType("");
+        describeSystemTemplateRulesRequest.setSource("");
+        DescribeSystemTemplateRulesResponse response = bcmClient.describeSystemTemplateRules(describeSystemTemplateRulesRequest);
+        System.out.println(response);
+    }
+    /**
+     * exportAlarmTemplates
+     *
+     */
+    @Test
+    public void exportAlarmTemplatesTest() {
+        ExportAlarmTemplatesRequest exportAlarmTemplatesRequest = new ExportAlarmTemplatesRequest();
+        exportAlarmTemplatesRequest.setNames(new ArrayList<>());
+        ExportAlarmTemplatesResponse response = bcmClient.exportAlarmTemplates(exportAlarmTemplatesRequest);
+        System.out.println(response);
+    }
+    /**
+     * importAlarmTemplates
+     *
+     */
+    @Test
+    public void importAlarmTemplatesTest() {
+        ImportAlarmTemplatesRequest importAlarmTemplatesRequest = new ImportAlarmTemplatesRequest();
+        importAlarmTemplatesRequest.setOverwrite(false);
+        importAlarmTemplatesRequest.setTemplates(new ArrayList<>());
+        ImportAlarmTemplatesResponse response = bcmClient.importAlarmTemplates(importAlarmTemplatesRequest);
         System.out.println(response);
     }
     /**
@@ -421,6 +685,53 @@ public class BcmClientTest {
         updateAlarmPolicyStateRequest.setIds(new ArrayList<>());
         updateAlarmPolicyStateRequest.setState("");
         UpdateAlarmPolicyStateResponse response = bcmClient.updateAlarmPolicyState(updateAlarmPolicyStateRequest);
+        System.out.println(response);
+    }
+    /**
+     * updateAlarmTemplate
+     *
+     */
+    @Test
+    public void updateAlarmTemplateTest() {
+        UpdateAlarmTemplateRequest updateAlarmTemplateRequest = new UpdateAlarmTemplateRequest();
+        updateAlarmTemplateRequest.setId("");
+        updateAlarmTemplateRequest.setScope("");
+        updateAlarmTemplateRequest.setResourceType("");
+        updateAlarmTemplateRequest.setSubResourceType("");
+        updateAlarmTemplateRequest.setName("");
+        updateAlarmTemplateRequest.setComment("");
+        updateAlarmTemplateRequest.setRules(new ArrayList<>());
+        UpdateAlarmTemplateResponse response = bcmClient.updateAlarmTemplate(updateAlarmTemplateRequest);
+        System.out.println(response);
+    }
+    /**
+     * updateInstanceGroup
+     *
+     */
+    @Test
+    public void updateInstanceGroupTest() {
+        UpdateInstanceGroupRequest updateInstanceGroupRequest = new UpdateInstanceGroupRequest();
+        updateInstanceGroupRequest.setId("");
+        updateInstanceGroupRequest.setScope("");
+        updateInstanceGroupRequest.setResourceType("");
+        updateInstanceGroupRequest.setName("");
+        updateInstanceGroupRequest.setInstances(new ArrayList<>());
+        UpdateInstanceGroupResponse response = bcmClient.updateInstanceGroup(updateInstanceGroupRequest);
+        System.out.println(response);
+    }
+    /**
+     * updateNotifyTemplate
+     *
+     */
+    @Test
+    public void updateNotifyTemplateTest() {
+        UpdateNotifyTemplateRequest updateNotifyTemplateRequest = new UpdateNotifyTemplateRequest();
+        updateNotifyTemplateRequest.setId("");
+        updateNotifyTemplateRequest.setName("");
+        updateNotifyTemplateRequest.setSilencePeriods(new ArrayList<>());
+        updateNotifyTemplateRequest.setReceivers(new ArrayList<>());
+        updateNotifyTemplateRequest.setCallbacks(new ArrayList<>());
+        UpdateNotifyTemplateResponse response = bcmClient.updateNotifyTemplate(updateNotifyTemplateRequest);
         System.out.println(response);
     }
 }
