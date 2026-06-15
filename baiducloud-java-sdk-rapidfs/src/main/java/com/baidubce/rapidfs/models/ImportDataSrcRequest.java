@@ -29,7 +29,7 @@ public class ImportDataSrcRequest extends BaseBceRequest {
     private String bucket;
 
     /**
-    * 是否为其他资源账号的 bucket，若为true则需要提供导入 Bucket 带读写权限的AK/SK，默认 false
+    * 是否为其他账号的 bucket，若为true则需要提供导入 Bucket 带读写权限的AK/SK，默认 false
     */
     private Boolean otherAccount;
 
@@ -51,12 +51,12 @@ public class ImportDataSrcRequest extends BaseBceRequest {
     private String bucketStsToken;
 
     /**
-    * BOS Bucket的目录前缀，默认值为/。例如，用户想要导入bos:/bucket_name/model_data/2025/下所有对象，则dirPredix值为/model_data/2025/
+    * BOS Bucket的目录前缀，默认值为/。例如，用户想要导入bos:/bucket_name/model_data/2025/下所有对象，则dirPrefix值为/model_data/2025/
     */
     private String dirPrefix;
 
     /**
-    * 是否保留 BOS 软链，保留软链会降低创建数据源导入效率，以及后续增量元数据同步效率，默认 false
+    * 是否保留 BOS 软链，保留软链会降低数据源导入效率，以及后续增量元数据同步效率，默认 false
     */
     private Boolean keepSymlink;
 

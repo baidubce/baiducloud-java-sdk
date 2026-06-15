@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AuthInfo {
     /**
-     * 权限地址，ip/ip 段，请确保格式正确有效，如：127.0.0.1，127.0.0.0/28
+     * 权限地址，IP/IP 段，请确保格式正确有效，如：127.0.0.1，127.0.0.0/28
      */
     private String cidr;
 
     /**
-     * 权限类型，枚举值：ReadOnly：只读；ReadWrite：可读写；Forbid：禁止访问
+     * 权限类型，枚举值：* ReadOnly：只读；* ReadWrite：可读写；* Forbid：禁止访问
      */
     private String mode;
 

@@ -13,10 +13,10 @@ public class ExampleCreateMetaSyncRule {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        RapidfsClient client = new RapidfsClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        RapidfsClient client = new RapidfsClient(bceClientConfig);
         CreateMetaSyncRuleRequest createMetaSyncRuleRequest = new CreateMetaSyncRuleRequest();
         createMetaSyncRuleRequest.setClientToken("");
         createMetaSyncRuleRequest.setInstanceId("");

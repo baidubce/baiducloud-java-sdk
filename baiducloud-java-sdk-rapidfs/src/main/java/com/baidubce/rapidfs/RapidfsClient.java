@@ -170,7 +170,7 @@ public class RapidfsClient extends AbstractBceClient {
      */
     public void cancelCacheRuleJob(CancelCacheRuleJobRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_CACHERULE);
-        internalRequest.addParameter("action", "CancelCacheRuleJob");
+        internalRequest.addParameter("action", "CancelCacheJob");
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -510,7 +510,7 @@ public class RapidfsClient extends AbstractBceClient {
      */
     public DescribeCacheRuleJobsResponse describeCacheRuleJobs(DescribeCacheRuleJobsRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_CACHERULE);
-        internalRequest.addParameter("action", "DescribeCacheRuleJobs");
+        internalRequest.addParameter("action", "DescribeCacheJobs");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, DescribeCacheRuleJobsResponse.class);
     }
@@ -732,7 +732,7 @@ public class RapidfsClient extends AbstractBceClient {
      */
     public void executeCacheRuleJob(ExecuteCacheRuleJobRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_CACHERULE);
-        internalRequest.addParameter("action", "ExecuteCacheRuleJob");
+        internalRequest.addParameter("action", "ExecuteCacheJob");
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }

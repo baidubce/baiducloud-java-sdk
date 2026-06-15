@@ -17,7 +17,7 @@ public class AddCacheNodeInfo {
     private String config;
 
     /**
-     * 加入节点磁盘的信息，见附录 DiskInfo。其中 format 表示磁盘加入前是否进行格式化；为 true 时必须给出需要格式化的 dev 设备；为 false 时必须给出指定路径的 diskQuotaGiB 容量
+     * 
      */
     private List<DiskInfo> diskInfos;
 

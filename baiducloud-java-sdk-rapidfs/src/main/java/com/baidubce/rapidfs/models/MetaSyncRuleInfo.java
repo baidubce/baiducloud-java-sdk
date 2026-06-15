@@ -55,7 +55,7 @@ public class MetaSyncRuleInfo {
     private String status;
 
     /**
-     * 创建时间，例如 2026-06-01T23:00:10Z"
+     * 创建时间，例如 2026-06-01T23:00:10Z
      */
     private String createTime;
 
@@ -70,12 +70,12 @@ public class MetaSyncRuleInfo {
     private String lastJobStatus;
 
     /**
-     * 最近一次任务开始时间，例如 2026-06-01T23:00:10Z"
+     * 最近一次任务开始时间，例如 2026-06-01T23:00:10Z
      */
     private String lastJobStartTime;
 
     /**
-     * 最近一次任务结束时间，例如 2026-06-01T23:00:10Z"
+     * 最近一次任务结束时间，例如 2026-06-01T23:00:10Z
      */
     private String lastJobEndTime;
 

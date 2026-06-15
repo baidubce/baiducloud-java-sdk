@@ -66,7 +66,7 @@ public class CheckBeforeCreateInstanceRequest extends BaseBceRequest {
 
     /**
     * MasterManaged 部署模式下，用户运维管理的缓存接入类型 type 为 K8S 时必填，为 K8s 集群内 RapidFS 缓存控制器 Token；需要在 controller 安装之后，通过 K8s 命令行 get controller 查询获取：`kubectl get cm -n kube-system
-    * rapidfs-cache-service-config -o yaml`需要基于请求 header x-bce-accesskey 对应的 secretkey
+    * rapidfs-cache-service-config -o yaml`该字段需要需要基于请求 header x-bce-accesskey 对应的 secretkey
     * 进行加密传输，详见[密码加密传输规范定义](https://cloud.baidu.com/doc/BCC/s/ojwvynrqn#%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E4%BC%A0%E8%BE%93%E8%A7%84%E8%8C%83)。可参考
     * [bce-python-sdk](https://cloud.baidu.com/doc/Developer/index.html) aes128_encrypt_16char_key()函数实现。
     */

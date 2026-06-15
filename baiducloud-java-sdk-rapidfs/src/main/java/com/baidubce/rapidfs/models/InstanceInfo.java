@@ -27,12 +27,12 @@ public class InstanceInfo {
     private String status;
 
     /**
-     * 地域缩写，bd，bj ……
+     * 地域缩写，例如 bd，bj ……
      */
     private String region;
 
     /**
-     * 可用区，ZoneA，ZoneB ……
+     * 可用区，例如 ZoneA，ZoneB ……
      */
     private String zone;
 
@@ -82,7 +82,7 @@ public class InstanceInfo {
     private String type;
 
     /**
-     * RapidFS实例扩缩容状态，见 ResizeStatus：状态非 Normal 时需要用户发起二次确认
+     * RapidFS实例扩缩容状态，见 ResizeStatus
      */
     private String resizeStatus;
 
@@ -112,7 +112,7 @@ public class InstanceInfo {
     private List<Tag> tags;
 
     /**
-     * RapidFS 实例创建时间，例如 2026-06-01T23:00:10Z"
+     * RapidFS 实例创建时间，例如 2026-06-01T23:00:10Z
      */
     private String createTime;
 

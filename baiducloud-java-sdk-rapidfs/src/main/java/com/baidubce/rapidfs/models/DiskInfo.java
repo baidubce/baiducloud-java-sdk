@@ -20,12 +20,12 @@ public class DiskInfo {
     private Long diskQuotaGiB;
 
     /**
-     * 是否格式化：format=true 时必须给出 dev；format=false 时必须给出 diskQuotaGiB
+     * 是否格式化，枚举值：* true：添加节点时格式化 dev 设备；* false：添加节点时未格式化设备
      */
     private Boolean format;
 
     /**
-     * 磁盘类型（可选）
+     * 磁盘类型
      */
     private String diskType;
 

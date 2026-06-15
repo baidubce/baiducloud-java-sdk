@@ -24,7 +24,7 @@ public class ModifyDataSrcRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * 是否保留 BOS 软链，保留软链会降低创建数据源导入效率，以及后续增量元数据同步效率
+    * 是否保留 BOS 软链，保留软链会降低数据源导入效率，以及后续增量元数据同步效率
     */
     private Boolean keepSymlink;
 

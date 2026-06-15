@@ -30,8 +30,8 @@ public class CreateAuthGroupRequest extends BaseBceRequest {
     private String description;
 
     /**
-    * 待创建权限组具体权限列表，AuthInfo结构详见附录。如果请求 authInfos 不包含任何cidr等于"0.0.0.0/0"的权限，则产品后端会**额外**创建默认权限规则 { cidr: "0.0.0.0/0" mode: "ReadWrite" description: "allow read/write in default,
-    * cannot be deleted" }
+    * 待创建权限组具体权限列表，AuthInfo结构详见附录。如果请求中的 authInfos 不包含 cidr 为 "0.0.0.0/0" 的权限规则，则产品后端会**额外**创建默认权限规则 { cidr: "0.0.0.0/0" mode: "ReadWrite" description: "allow read/write in
+    * default, cannot be deleted" }
     */
     private List<AuthInfo> authInfos;
 

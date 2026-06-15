@@ -52,22 +52,22 @@ public class CacheDeployGroupInfo {
     private Double capacityUsedPercentage;
 
     /**
-     * 部署路径
+     * 缓存节点服务部署路径
      */
     private String deployPath;
 
     /**
-     * 配置信息，json 格式的字符串：{  "systemConfig": {},  "resourceConfig": {},  "serviceConfig": {}}
+     * 配置信息，JSON 格式的字符串：{  "systemConfig": {},  "resourceConfig": {},  "serviceConfig": {}}
      */
     private String config;
 
     /**
-     * 创建时间，例如 2026-06-01T23:00:10Z"
+     * 创建时间，例如 2026-06-01T23:00:10Z
      */
     private String createTime;
 
     /**
-     * 修改时间，例如 2026-06-01T23:00:10Z"
+     * 修改时间，例如 2026-06-01T23:00:10Z
      */
     private String modifyTime;
 

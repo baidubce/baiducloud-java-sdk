@@ -12,7 +12,7 @@ public class DescribeDataSrcRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * 待修改的数据源 ID
+    * 待查询的数据源 ID
     */
     private String dataSrcId;
 

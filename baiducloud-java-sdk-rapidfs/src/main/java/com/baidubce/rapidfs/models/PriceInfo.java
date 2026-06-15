@@ -20,7 +20,7 @@ public class PriceInfo {
     private String chargeType;
 
     /**
-     * 计价单元，后付费模式使用，枚举值：* Hour：每小时计费：* GiB_Hour：每 GiB 每小时计费，Master 部署模式时存在容量费用
+     * 计价单元，后付费模式使用，枚举值：* Hour：每小时计费；* GiB_Hour：每 GiB 每小时计费，Master 托管部署模式时存在容量费用
      */
     private String chargeUnit;
 
