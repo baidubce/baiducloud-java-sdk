@@ -107,6 +107,11 @@ public class VolumeModel {
     private String description;
 
     /**
+     * 描述信息（查询磁盘详情返回）
+     */
+    private String desc;
+
+    /**
      * 付费方式，包括Postpaid(按量付费)，Prepaid(包年包月)两种。（查询磁盘列表、查询磁盘详情返回）
      */
     private String paymentTiming;
@@ -115,41 +120,6 @@ public class VolumeModel {
      * 可用区信息（查询磁盘列表、查询磁盘详情返回）
      */
     private String zoneName;
-
-    /**
-     * CDS专属集群ID（查询磁盘列表、查询磁盘详情返回）
-     */
-    private String clusterId;
-
-    /**
-     * 是否加密（查询磁盘列表、查询磁盘详情返回）
-     */
-    private Boolean encrypted;
-
-    /**
-     * 磁盘随实例删除，仅后付费类型的数据盘返回（查询磁盘列表、查询磁盘详情返回）
-     */
-    private Boolean deleteWithInstance;
-
-    /**
-     * 自动快照随磁盘删除，任何类型的磁盘都会返回（查询磁盘列表、查询磁盘详情返回）
-     */
-    private Boolean deleteAutoSnapshot;
-
-    /**
-     * 挂载设备信息列表，磁盘未挂载时该值为空。（查询磁盘列表、查询磁盘详情返回）
-     */
-    private List<VolumeAttachmentModel> attachments;
-
-    /**
-     * 多挂载信息列表（查询磁盘列表、查询磁盘详情返回）
-     */
-    private List<VolumeMultiAttachInfo> multiAttachInfos;
-
-    /**
-     * 描述信息（查询磁盘详情返回）
-     */
-    private String desc;
 
     /**
      * 所在region（查询磁盘详情返回）
@@ -165,6 +135,11 @@ public class VolumeModel {
      * 磁盘当前具有的快照数量（查询磁盘详情返回）
      */
     private String snapshotNum;
+
+    /**
+     * CDS专属集群ID（查询磁盘列表、查询磁盘详情返回）
+     */
+    private String clusterId;
 
     /**
      * 磁盘当前绑定的资源组（查询磁盘详情返回）
@@ -190,6 +165,31 @@ public class VolumeModel {
      * 加密密钥规格（查询磁盘详情返回）
      */
     private String encryptKeySpec;
+
+    /**
+     * 是否加密（查询磁盘列表、查询磁盘详情返回）
+     */
+    private Boolean encrypted;
+
+    /**
+     * 磁盘随实例删除，仅后付费类型的数据盘返回（查询磁盘列表、查询磁盘详情返回）
+     */
+    private Boolean deleteWithInstance;
+
+    /**
+     * 自动快照随磁盘删除，任何类型的磁盘都会返回（查询磁盘列表、查询磁盘详情返回）
+     */
+    private Boolean deleteAutoSnapshot;
+
+    /**
+     * 挂载设备信息列表，磁盘未挂载时该值为空。（查询磁盘列表、查询磁盘详情返回）
+     */
+    private List<VolumeAttachmentModel> attachments;
+
+    /**
+     * 多挂载信息列表（查询磁盘列表、查询磁盘详情返回）
+     */
+    private List<VolumeMultiAttachInfo> multiAttachInfos;
 
     /**
      * 是否支持多挂载（查询指定实例详情）
@@ -381,6 +381,15 @@ public class VolumeModel {
         return this.description;
     }
 
+    public VolumeModel setDesc(String desc) {
+        this.desc = desc;
+        return this;
+    }
+
+    public String getDesc() {
+        return this.desc;
+    }
+
     public VolumeModel setPaymentTiming(String paymentTiming) {
         this.paymentTiming = paymentTiming;
         return this;
@@ -397,69 +406,6 @@ public class VolumeModel {
 
     public String getZoneName() {
         return this.zoneName;
-    }
-
-    public VolumeModel setClusterId(String clusterId) {
-        this.clusterId = clusterId;
-        return this;
-    }
-
-    public String getClusterId() {
-        return this.clusterId;
-    }
-
-    public VolumeModel setEncrypted(Boolean encrypted) {
-        this.encrypted = encrypted;
-        return this;
-    }
-
-    public Boolean getEncrypted() {
-        return this.encrypted;
-    }
-
-    public VolumeModel setDeleteWithInstance(Boolean deleteWithInstance) {
-        this.deleteWithInstance = deleteWithInstance;
-        return this;
-    }
-
-    public Boolean getDeleteWithInstance() {
-        return this.deleteWithInstance;
-    }
-
-    public VolumeModel setDeleteAutoSnapshot(Boolean deleteAutoSnapshot) {
-        this.deleteAutoSnapshot = deleteAutoSnapshot;
-        return this;
-    }
-
-    public Boolean getDeleteAutoSnapshot() {
-        return this.deleteAutoSnapshot;
-    }
-
-    public VolumeModel setAttachments(List<VolumeAttachmentModel> attachments) {
-        this.attachments = attachments;
-        return this;
-    }
-
-    public List<VolumeAttachmentModel> getAttachments() {
-        return this.attachments;
-    }
-
-    public VolumeModel setMultiAttachInfos(List<VolumeMultiAttachInfo> multiAttachInfos) {
-        this.multiAttachInfos = multiAttachInfos;
-        return this;
-    }
-
-    public List<VolumeMultiAttachInfo> getMultiAttachInfos() {
-        return this.multiAttachInfos;
-    }
-
-    public VolumeModel setDesc(String desc) {
-        this.desc = desc;
-        return this;
-    }
-
-    public String getDesc() {
-        return this.desc;
     }
 
     public VolumeModel setRegionId(String regionId) {
@@ -487,6 +433,15 @@ public class VolumeModel {
 
     public String getSnapshotNum() {
         return this.snapshotNum;
+    }
+
+    public VolumeModel setClusterId(String clusterId) {
+        this.clusterId = clusterId;
+        return this;
+    }
+
+    public String getClusterId() {
+        return this.clusterId;
     }
 
     public VolumeModel setResGroupInfos(List<GroupInfo> resGroupInfos) {
@@ -534,6 +489,51 @@ public class VolumeModel {
         return this.encryptKeySpec;
     }
 
+    public VolumeModel setEncrypted(Boolean encrypted) {
+        this.encrypted = encrypted;
+        return this;
+    }
+
+    public Boolean getEncrypted() {
+        return this.encrypted;
+    }
+
+    public VolumeModel setDeleteWithInstance(Boolean deleteWithInstance) {
+        this.deleteWithInstance = deleteWithInstance;
+        return this;
+    }
+
+    public Boolean getDeleteWithInstance() {
+        return this.deleteWithInstance;
+    }
+
+    public VolumeModel setDeleteAutoSnapshot(Boolean deleteAutoSnapshot) {
+        this.deleteAutoSnapshot = deleteAutoSnapshot;
+        return this;
+    }
+
+    public Boolean getDeleteAutoSnapshot() {
+        return this.deleteAutoSnapshot;
+    }
+
+    public VolumeModel setAttachments(List<VolumeAttachmentModel> attachments) {
+        this.attachments = attachments;
+        return this;
+    }
+
+    public List<VolumeAttachmentModel> getAttachments() {
+        return this.attachments;
+    }
+
+    public VolumeModel setMultiAttachInfos(List<VolumeMultiAttachInfo> multiAttachInfos) {
+        this.multiAttachInfos = multiAttachInfos;
+        return this;
+    }
+
+    public List<VolumeMultiAttachInfo> getMultiAttachInfos() {
+        return this.multiAttachInfos;
+    }
+
     public VolumeModel setMultiAttach(Boolean multiAttach) {
         this.multiAttach = multiAttach;
         return this;
@@ -558,12 +558,12 @@ public class VolumeModel {
                 + diskSizeInGB + "\n" + "cdsExtraIo=" + cdsExtraIo + "\n" + "failureStatus=" + failureStatus + "\n" + "createTime=" + createTime + "\n" + "expireTime="
                 + expireTime + "\n" + "status=" + status + "\n" + "shareSnapshotId=" + shareSnapshotId + "\n" + "enableDeleteProtection=" + enableDeleteProtection + "\n"
                 + "ebcDiskSize=" + ebcDiskSize + "\n" + "enableAutoRenew=" + enableAutoRenew + "\n" + "autoRenewTime=" + autoRenewTime + "\n" + "tags=" + tags + "\n" + "type="
-                + type + "\n" + "storageType=" + storageType + "\n" + "isSystemVolume=" + isSystemVolume + "\n" + "description=" + description + "\n" + "paymentTiming="
-                + paymentTiming + "\n" + "zoneName=" + zoneName + "\n" + "clusterId=" + clusterId + "\n" + "encrypted=" + encrypted + "\n" + "deleteWithInstance="
-                + deleteWithInstance + "\n" + "deleteAutoSnapshot=" + deleteAutoSnapshot + "\n" + "attachments=" + attachments + "\n" + "multiAttachInfos=" + multiAttachInfos
-                + "\n" + "desc=" + desc + "\n" + "regionId=" + regionId + "\n" + "sourceSnapshotId=" + sourceSnapshotId + "\n" + "snapshotNum=" + snapshotNum + "\n"
-                + "resGroupInfos=" + resGroupInfos + "\n" + "autoSnapshotPolicy=" + autoSnapshotPolicy + "\n" + "autoSnapshotPolicyInfos=" + autoSnapshotPolicyInfos + "\n"
-                + "encryptKey=" + encryptKey + "\n" + "encryptKeySpec=" + encryptKeySpec + "\n" + "multiAttach=" + multiAttach + "\n" + "volumeId=" + volumeId + "\n" + "}";
+                + type + "\n" + "storageType=" + storageType + "\n" + "isSystemVolume=" + isSystemVolume + "\n" + "description=" + description + "\n" + "desc=" + desc + "\n"
+                + "paymentTiming=" + paymentTiming + "\n" + "zoneName=" + zoneName + "\n" + "regionId=" + regionId + "\n" + "sourceSnapshotId=" + sourceSnapshotId + "\n"
+                + "snapshotNum=" + snapshotNum + "\n" + "clusterId=" + clusterId + "\n" + "resGroupInfos=" + resGroupInfos + "\n" + "autoSnapshotPolicy=" + autoSnapshotPolicy
+                + "\n" + "autoSnapshotPolicyInfos=" + autoSnapshotPolicyInfos + "\n" + "encryptKey=" + encryptKey + "\n" + "encryptKeySpec=" + encryptKeySpec + "\n" + "encrypted="
+                + encrypted + "\n" + "deleteWithInstance=" + deleteWithInstance + "\n" + "deleteAutoSnapshot=" + deleteAutoSnapshot + "\n" + "attachments=" + attachments + "\n"
+                + "multiAttachInfos=" + multiAttachInfos + "\n" + "multiAttach=" + multiAttach + "\n" + "volumeId=" + volumeId + "\n" + "}";
     }
 
 }
