@@ -3,14 +3,14 @@ package com.baidubce.rapidfs.models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CacheRuleJobInfo {
+public class CacheJobInfo {
     /**
      * 缓存管理任务 ID
      */
-    private String cacheRuleJobId;
+    private String cacheJobId;
 
     /**
-     * 任务状态，见 CacheRuleJobStatus
+     * 任务状态，见 CacheJobStatus
      */
     private String status;
 
@@ -20,25 +20,25 @@ public class CacheRuleJobInfo {
     private Long size;
 
     /**
-     * 任务开始时间，例如 2026-06-01T23:00:10Z"
+     * 任务开始时间，例如 2026-06-01T23:00:10Z
      */
     private String startTime;
 
     /**
-     * 任务结束时间，例如 2026-06-01T23:00:10Z"
+     * 任务结束时间，例如 2026-06-01T23:00:10Z
      */
     private String endTime;
 
-    public CacheRuleJobInfo setCacheRuleJobId(String cacheRuleJobId) {
-        this.cacheRuleJobId = cacheRuleJobId;
+    public CacheJobInfo setCacheJobId(String cacheJobId) {
+        this.cacheJobId = cacheJobId;
         return this;
     }
 
-    public String getCacheRuleJobId() {
-        return this.cacheRuleJobId;
+    public String getCacheJobId() {
+        return this.cacheJobId;
     }
 
-    public CacheRuleJobInfo setStatus(String status) {
+    public CacheJobInfo setStatus(String status) {
         this.status = status;
         return this;
     }
@@ -47,7 +47,7 @@ public class CacheRuleJobInfo {
         return this.status;
     }
 
-    public CacheRuleJobInfo setSize(Long size) {
+    public CacheJobInfo setSize(Long size) {
         this.size = size;
         return this;
     }
@@ -56,7 +56,7 @@ public class CacheRuleJobInfo {
         return this.size;
     }
 
-    public CacheRuleJobInfo setStartTime(String startTime) {
+    public CacheJobInfo setStartTime(String startTime) {
         this.startTime = startTime;
         return this;
     }
@@ -65,7 +65,7 @@ public class CacheRuleJobInfo {
         return this.startTime;
     }
 
-    public CacheRuleJobInfo setEndTime(String endTime) {
+    public CacheJobInfo setEndTime(String endTime) {
         this.endTime = endTime;
         return this;
     }
@@ -76,8 +76,8 @@ public class CacheRuleJobInfo {
 
     @Override
     public String toString() {
-        return "CacheRuleJobInfo{" + "cacheRuleJobId=" + cacheRuleJobId + "\n" + "status=" + status + "\n" + "size=" + size + "\n" + "startTime=" + startTime + "\n" + "endTime="
-                + endTime + "\n" + "}";
+        return "CacheJobInfo{" + "cacheJobId=" + cacheJobId + "\n" + "status=" + status + "\n" + "size=" + size + "\n" + "startTime=" + startTime + "\n" + "endTime=" + endTime
+                + "\n" + "}";
     }
 
 }

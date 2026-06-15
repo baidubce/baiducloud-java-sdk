@@ -42,22 +42,22 @@ public class CacheNodeInfo {
     private String description;
 
     /**
-     * 创建时间，例如 2026-06-01T23:00:10Z"
+     * 创建时间，例如 2026-06-01T23:00:10Z
      */
     private String createTime;
 
     /**
-     * 缓存节点最近一次心跳上报时间，例如 2026-06-01T23:00:10Z"
+     * 缓存节点最近一次心跳上报时间，例如 2026-06-01T23:00:10Z
      */
     private String reportTime;
 
     /**
-     * 总容量（MiB）
+     * 总容量，单位 MiB
      */
     private Long capacityMiB;
 
     /**
-     * 已使用容量（MiB）
+     * 已使用容量，单位 MiB
      */
     private Long capacityUsedMiB;
 
@@ -77,7 +77,7 @@ public class CacheNodeInfo {
     private List<DiskInfo> diskInfos;
 
     /**
-     * 部署路径
+     * 缓存节点服务部署路径
      */
     private String deployPath;
 

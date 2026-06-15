@@ -8,9 +8,9 @@ import java.util.List;
 public class DescribeCacheRuleJobsResponse extends BaseBceResponse {
 
     /**
-    * 缓存管理任务信息列表，见附录 CacheRuleJobInfo
+    * 缓存管理任务信息列表，见附录 CacheJobInfo
     */
-    private List<CacheRuleJobInfo> cacheRuleJobInfos;
+    private List<CacheJobInfo> cacheJobInfos;
 
     /**
     * 当前查询起始位置
@@ -32,12 +32,12 @@ public class DescribeCacheRuleJobsResponse extends BaseBceResponse {
     */
     private Integer maxKeys;
 
-    public List<CacheRuleJobInfo> getCacheRuleJobInfos() {
-        return cacheRuleJobInfos;
+    public List<CacheJobInfo> getCacheJobInfos() {
+        return cacheJobInfos;
     }
 
-    public DescribeCacheRuleJobsResponse setCacheRuleJobInfos(List<CacheRuleJobInfo> cacheRuleJobInfos) {
-        this.cacheRuleJobInfos = cacheRuleJobInfos;
+    public DescribeCacheRuleJobsResponse setCacheJobInfos(List<CacheJobInfo> cacheJobInfos) {
+        this.cacheJobInfos = cacheJobInfos;
         return this;
     }
 
@@ -79,7 +79,7 @@ public class DescribeCacheRuleJobsResponse extends BaseBceResponse {
 
     @Override
     public String toString() {
-        return "DescribeCacheRuleJobsResponse{" + "cacheRuleJobInfos=" + cacheRuleJobInfos + "\n" + "marker=" + marker + "\n" + "isTruncated=" + isTruncated + "\n" + "nextMarker="
+        return "DescribeCacheRuleJobsResponse{" + "cacheJobInfos=" + cacheJobInfos + "\n" + "marker=" + marker + "\n" + "isTruncated=" + isTruncated + "\n" + "nextMarker="
                 + nextMarker + "\n" + "maxKeys=" + maxKeys + "\n" + "}";
     }
 

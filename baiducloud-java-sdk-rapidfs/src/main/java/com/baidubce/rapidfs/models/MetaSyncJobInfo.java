@@ -15,12 +15,12 @@ public class MetaSyncJobInfo {
     private String status;
 
     /**
-     * 任务开始时间，例如 2026-06-01T23:00:10Z"
+     * 任务开始时间，例如 2026-06-01T23:00:10Z
      */
     private String startTime;
 
     /**
-     * 任务结束时间，例如 2026-06-01T23:00:10Z"
+     * 任务结束时间，例如 2026-06-01T23:00:10Z
      */
     private String endTime;
 

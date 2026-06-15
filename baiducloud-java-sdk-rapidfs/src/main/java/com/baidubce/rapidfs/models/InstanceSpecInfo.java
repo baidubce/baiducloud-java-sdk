@@ -17,22 +17,22 @@ public class InstanceSpecInfo {
     private String metaSpec;
 
     /**
-     * 数据规格，当前 FullyManaged 部署模式提供性能基线规格：* Basic，100MB/s/TiB；* Capacity，200MB/s/TiB
+     * 数据规格，当前 FullyManaged 部署模式提供性能基线规格枚举值：* Basic，100MB/s/TiB；* Capacity，200MB/s/TiB
      */
     private String dataSpec;
 
     /**
-     * 全部署模式下，某个数据规格的最小缓存容量，单位 TiB
+     * 全托管部署模式下，某个数据规格的最小缓存容量，单位 TiB
      */
     private Integer minCapacityTiB;
 
     /**
-     * 全部署模式下，某个数据规格的缓存步长容量，单位 TiB
+     * 全托管部署模式下，某个数据规格的缓存步长容量，单位 TiB
      */
     private Integer stepCapacityTiB;
 
     /**
-     * 全部署模式下，某个数据规格的最大缓存容量，单位 TiB
+     * 全托管部署模式下，某个数据规格的最大缓存容量，单位 TiB
      */
     private Integer maxCapacityTiB;
 

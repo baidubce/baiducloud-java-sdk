@@ -20,7 +20,7 @@ public class TokenInfo {
     private String tokenValue;
 
     /**
-     * Token更新周期，单位分钟，0 表示永不更新，最大值 43200 分钟
+     * Token更新周期，单位分钟，0 表示永不更新，取值范围：[0，43200]
      */
     private Integer tokenRefreshIntervalMinutes;
 

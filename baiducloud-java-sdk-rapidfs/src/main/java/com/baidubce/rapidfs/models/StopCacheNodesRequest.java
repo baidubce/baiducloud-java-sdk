@@ -25,7 +25,7 @@ public class StopCacheNodesRequest extends BaseBceRequest {
     private List<String> cacheNodeIds;
 
     /**
-    * 停止节点时是否迁移数据，默认 true。不迁移数据直接停止缓存节点会导致正在读取作业的缓存命中率降低，除非有特殊情况，一般都建议先迁移数据再停止
+    * 停止节点时是否迁移数据，默认 true。不迁移数据而直接停止缓存节点，可能降低运行中作业读取的缓存命中率。除非有特殊情况，建议先迁移数据再停止。
     */
     private Boolean migrateDataBeforeStop;
 

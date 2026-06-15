@@ -27,7 +27,7 @@ public class DescribeCacheRuleJobsRequest extends BaseBceRequest {
     private Integer maxKeys;
 
     /**
-    * 批量获取列表的查询的起始位置，返回列表按 cacheRuleJobId 字典序排序，取值为上一次返回的 nextMarker
+    * 批量获取列表的查询的起始位置，返回列表按 cacheJobId 字典序排序，取值为上一次返回的 nextMarker
     */
     private String marker;
 
