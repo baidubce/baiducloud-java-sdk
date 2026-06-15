@@ -16,10 +16,10 @@ public class ExampleApplyPhysicalDedicatedLine {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        EtClient client = new EtClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        EtClient client = new EtClient(bceClientConfig);
         Billing billing = new Billing();
         billing.setPaymentTiming("");
         Reservation reservation = new Reservation();
