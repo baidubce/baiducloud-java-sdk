@@ -13,6 +13,7 @@ import com.baidubce.et.models.CreateDedicatedChannelUserObjectRequest;
 import com.baidubce.et.models.DeleteDedicatedChannelBfdRequest;
 import com.baidubce.et.models.DeleteDedicatedChannelRequest;
 import com.baidubce.et.models.DeleteDedicatedChannelRouteRulesRequest;
+import com.baidubce.et.models.DeletePhysicalDedicatedLineRequest;
 import com.baidubce.et.models.DisableDedicatedChannelIpv6Request;
 import com.baidubce.et.models.EnableDedicatedChannelIpv6Request;
 import com.baidubce.et.models.QueryDedicatedChannelRequest;
@@ -215,6 +216,17 @@ public class EtClientTest {
         deleteDedicatedChannelRouteRulesRequest.setRouteRuleId("");
         deleteDedicatedChannelRouteRulesRequest.setClientToken("");
         etClient.deleteDedicatedChannelRouteRules(deleteDedicatedChannelRouteRulesRequest);
+    }
+    /**
+     * deletePhysicalDedicatedLine
+     *
+     */
+    @Test
+    public void deletePhysicalDedicatedLineTest() {
+        DeletePhysicalDedicatedLineRequest deletePhysicalDedicatedLineRequest = new DeletePhysicalDedicatedLineRequest();
+        deletePhysicalDedicatedLineRequest.setDcphyId("");
+        deletePhysicalDedicatedLineRequest.setClientToken("");
+        etClient.deletePhysicalDedicatedLine(deletePhysicalDedicatedLineRequest);
     }
     /**
      * disableDedicatedChannelIpv6

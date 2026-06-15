@@ -12,10 +12,10 @@ public class ExampleUpdatePhysicalDedicatedLine {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        EtClient client = new EtClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        EtClient client = new EtClient(bceClientConfig);
         UpdatePhysicalDedicatedLineRequest updatePhysicalDedicatedLineRequest = new UpdatePhysicalDedicatedLineRequest();
         updatePhysicalDedicatedLineRequest.setDcphyId("");
         updatePhysicalDedicatedLineRequest.setClientToken("");

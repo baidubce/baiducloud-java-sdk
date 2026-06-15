@@ -28,6 +28,7 @@ import com.baidubce.et.models.CreateDedicatedChannelUserObjectRequest;
 import com.baidubce.et.models.DeleteDedicatedChannelBfdRequest;
 import com.baidubce.et.models.DeleteDedicatedChannelRequest;
 import com.baidubce.et.models.DeleteDedicatedChannelRouteRulesRequest;
+import com.baidubce.et.models.DeletePhysicalDedicatedLineRequest;
 import com.baidubce.et.models.DisableDedicatedChannelIpv6Request;
 import com.baidubce.et.models.EnableDedicatedChannelIpv6Request;
 import com.baidubce.et.models.QueryDedicatedChannelRequest;
@@ -239,6 +240,19 @@ public class EtClient extends AbstractBceClient {
                         CONSTANT_ROUTE,
                         CONSTANT_RULE,
                         request.getRouteRuleId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deletePhysicalDedicatedLine
+     * 
+     * @param request 入参结构体
+     */
+    public void deletePhysicalDedicatedLine(DeletePhysicalDedicatedLineRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_ET, request.getDcphyId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }

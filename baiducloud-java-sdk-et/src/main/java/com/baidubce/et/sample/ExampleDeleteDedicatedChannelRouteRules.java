@@ -12,10 +12,10 @@ public class ExampleDeleteDedicatedChannelRouteRules {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        EtClient client = new EtClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        EtClient client = new EtClient(bceClientConfig);
         DeleteDedicatedChannelRouteRulesRequest deleteDedicatedChannelRouteRulesRequest = new DeleteDedicatedChannelRouteRulesRequest();
         deleteDedicatedChannelRouteRulesRequest.setEtId("");
         deleteDedicatedChannelRouteRulesRequest.setEtChannelId("");
