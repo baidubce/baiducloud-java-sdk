@@ -18,6 +18,7 @@ public class ExampleCreateDatasetVersion {
         bceClientConfig.setEndpoint(endpoint);
         AihcClient client = new AihcClient(bceClientConfig);
         CreateDatasetVersionRequest createDatasetVersionRequest = new CreateDatasetVersionRequest();
+        createDatasetVersionRequest.setDatasetId("");
         createDatasetVersionRequest.setDescription("");
         createDatasetVersionRequest.setStoragePath("");
         createDatasetVersionRequest.setMountPath("");

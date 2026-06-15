@@ -1,10 +1,17 @@
 package com.baidubce.aihc.models;
 
 import com.baidubce.common.BaseBceRequest;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateModelVersionRequest extends BaseBceRequest {
+
+    /**
+    * modelId
+    */
+    @JsonIgnore
+    private String modelId;
 
     /**
     * 模型存储的BOS桶
@@ -30,6 +37,15 @@ public class CreateModelVersionRequest extends BaseBceRequest {
     * 模型指标，JSON格式。格式如下，其中 Metrics、Dataset 中的内容用户可自定义填写：{"Results":[{"Metrics":{"loss":2.13,"lr":0.0005},"Dataset":{"DatasetId":"ds-xxx"}}]}
     */
     private String modelMetrics;
+
+    public String getModelId() {
+        return modelId;
+    }
+
+    public CreateModelVersionRequest setModelId(String modelId) {
+        this.modelId = modelId;
+        return this;
+    }
 
     public String getStorageBucket() {
         return storageBucket;

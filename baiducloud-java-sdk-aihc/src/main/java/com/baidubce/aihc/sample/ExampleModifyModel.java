@@ -17,6 +17,7 @@ public class ExampleModifyModel {
         bceClientConfig.setEndpoint(endpoint);
         AihcClient client = new AihcClient(bceClientConfig);
         ModifyModelRequest modifyModelRequest = new ModifyModelRequest();
+        modifyModelRequest.setModelId("");
         modifyModelRequest.setName("");
         modifyModelRequest.setDescription("");
         try {

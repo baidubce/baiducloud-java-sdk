@@ -18,6 +18,7 @@ public class ExampleCreateModelVersion {
         bceClientConfig.setEndpoint(endpoint);
         AihcClient client = new AihcClient(bceClientConfig);
         CreateModelVersionRequest createModelVersionRequest = new CreateModelVersionRequest();
+        createModelVersionRequest.setModelId("");
         createModelVersionRequest.setStorageBucket("");
         createModelVersionRequest.setStoragePath("");
         createModelVersionRequest.setDescription("");

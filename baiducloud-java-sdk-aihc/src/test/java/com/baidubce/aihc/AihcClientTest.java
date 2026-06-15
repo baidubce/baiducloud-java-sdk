@@ -8,13 +8,25 @@ import com.baidubce.aihc.models.CreateModelRequest;
 import com.baidubce.aihc.models.CreateModelResponse;
 import com.baidubce.aihc.models.CreateModelVersionRequest;
 import com.baidubce.aihc.models.CreateModelVersionResponse;
+import com.baidubce.aihc.models.DeleteDatasetRequest;
+import com.baidubce.aihc.models.DeleteDatasetVersionRequest;
+import com.baidubce.aihc.models.DeleteModelRequest;
+import com.baidubce.aihc.models.DeleteModelVersionRequest;
+import com.baidubce.aihc.models.DescribeDatasetRequest;
 import com.baidubce.aihc.models.DescribeDatasetResponse;
+import com.baidubce.aihc.models.DescribeDatasetVersionRequest;
 import com.baidubce.aihc.models.DescribeDatasetVersionResponse;
+import com.baidubce.aihc.models.DescribeDatasetVersionsRequest;
 import com.baidubce.aihc.models.DescribeDatasetVersionsResponse;
+import com.baidubce.aihc.models.DescribeDatasetsRequest;
 import com.baidubce.aihc.models.DescribeDatasetsResponse;
+import com.baidubce.aihc.models.DescribeModelRequest;
 import com.baidubce.aihc.models.DescribeModelResponse;
+import com.baidubce.aihc.models.DescribeModelVersionRequest;
 import com.baidubce.aihc.models.DescribeModelVersionResponse;
+import com.baidubce.aihc.models.DescribeModelVersionsRequest;
 import com.baidubce.aihc.models.DescribeModelVersionsResponse;
+import com.baidubce.aihc.models.DescribeModelsRequest;
 import com.baidubce.aihc.models.DescribeModelsResponse;
 import com.baidubce.aihc.models.ModifyDatasetRequest;
 import com.baidubce.aihc.models.ModifyModelRequest;
@@ -67,6 +79,7 @@ public class AihcClientTest {
     @Test
     public void createDatasetVersionTest() {
         CreateDatasetVersionRequest createDatasetVersionRequest = new CreateDatasetVersionRequest();
+        createDatasetVersionRequest.setDatasetId("");
         createDatasetVersionRequest.setDescription("");
         createDatasetVersionRequest.setStoragePath("");
         createDatasetVersionRequest.setMountPath("");
@@ -96,6 +109,7 @@ public class AihcClientTest {
     @Test
     public void createModelVersionTest() {
         CreateModelVersionRequest createModelVersionRequest = new CreateModelVersionRequest();
+        createModelVersionRequest.setModelId("");
         createModelVersionRequest.setStorageBucket("");
         createModelVersionRequest.setStoragePath("");
         createModelVersionRequest.setDescription("");
@@ -110,7 +124,9 @@ public class AihcClientTest {
      */
     @Test
     public void deleteDatasetTest() {
-        aihcClient.deleteDataset();
+        DeleteDatasetRequest deleteDatasetRequest = new DeleteDatasetRequest();
+        deleteDatasetRequest.setDatasetId("");
+        aihcClient.deleteDataset(deleteDatasetRequest);
     }
     /**
      * deleteDatasetVersion
@@ -118,7 +134,10 @@ public class AihcClientTest {
      */
     @Test
     public void deleteDatasetVersionTest() {
-        aihcClient.deleteDatasetVersion();
+        DeleteDatasetVersionRequest deleteDatasetVersionRequest = new DeleteDatasetVersionRequest();
+        deleteDatasetVersionRequest.setDatasetId("");
+        deleteDatasetVersionRequest.setVersionId("");
+        aihcClient.deleteDatasetVersion(deleteDatasetVersionRequest);
     }
     /**
      * deleteModel
@@ -126,7 +145,9 @@ public class AihcClientTest {
      */
     @Test
     public void deleteModelTest() {
-        aihcClient.deleteModel();
+        DeleteModelRequest deleteModelRequest = new DeleteModelRequest();
+        deleteModelRequest.setModelId("");
+        aihcClient.deleteModel(deleteModelRequest);
     }
     /**
      * deleteModelVersion
@@ -134,7 +155,10 @@ public class AihcClientTest {
      */
     @Test
     public void deleteModelVersionTest() {
-        aihcClient.deleteModelVersion();
+        DeleteModelVersionRequest deleteModelVersionRequest = new DeleteModelVersionRequest();
+        deleteModelVersionRequest.setModelId("");
+        deleteModelVersionRequest.setVersionId("");
+        aihcClient.deleteModelVersion(deleteModelVersionRequest);
     }
     /**
      * describeDataset
@@ -142,7 +166,9 @@ public class AihcClientTest {
      */
     @Test
     public void describeDatasetTest() {
-        DescribeDatasetResponse response = aihcClient.describeDataset();
+        DescribeDatasetRequest describeDatasetRequest = new DescribeDatasetRequest();
+        describeDatasetRequest.setDatasetId("");
+        DescribeDatasetResponse response = aihcClient.describeDataset(describeDatasetRequest);
         System.out.println(response);
     }
     /**
@@ -151,7 +177,10 @@ public class AihcClientTest {
      */
     @Test
     public void describeDatasetVersionTest() {
-        DescribeDatasetVersionResponse response = aihcClient.describeDatasetVersion();
+        DescribeDatasetVersionRequest describeDatasetVersionRequest = new DescribeDatasetVersionRequest();
+        describeDatasetVersionRequest.setDatasetId("");
+        describeDatasetVersionRequest.setVersionId("");
+        DescribeDatasetVersionResponse response = aihcClient.describeDatasetVersion(describeDatasetVersionRequest);
         System.out.println(response);
     }
     /**
@@ -160,7 +189,11 @@ public class AihcClientTest {
      */
     @Test
     public void describeDatasetVersionsTest() {
-        DescribeDatasetVersionsResponse response = aihcClient.describeDatasetVersions();
+        DescribeDatasetVersionsRequest describeDatasetVersionsRequest = new DescribeDatasetVersionsRequest();
+        describeDatasetVersionsRequest.setDatasetId("");
+        describeDatasetVersionsRequest.setPageNumber(0);
+        describeDatasetVersionsRequest.setPageSize(0);
+        DescribeDatasetVersionsResponse response = aihcClient.describeDatasetVersions(describeDatasetVersionsRequest);
         System.out.println(response);
     }
     /**
@@ -169,7 +202,14 @@ public class AihcClientTest {
      */
     @Test
     public void describeDatasetsTest() {
-        DescribeDatasetsResponse response = aihcClient.describeDatasets();
+        DescribeDatasetsRequest describeDatasetsRequest = new DescribeDatasetsRequest();
+        describeDatasetsRequest.setKeyword("");
+        describeDatasetsRequest.setStorageType("");
+        describeDatasetsRequest.setStorageInstances("");
+        describeDatasetsRequest.setImportFormat("");
+        describeDatasetsRequest.setPageNumber(0);
+        describeDatasetsRequest.setPageSize(0);
+        DescribeDatasetsResponse response = aihcClient.describeDatasets(describeDatasetsRequest);
         System.out.println(response);
     }
     /**
@@ -178,7 +218,9 @@ public class AihcClientTest {
      */
     @Test
     public void describeModelTest() {
-        DescribeModelResponse response = aihcClient.describeModel();
+        DescribeModelRequest describeModelRequest = new DescribeModelRequest();
+        describeModelRequest.setModelId("");
+        DescribeModelResponse response = aihcClient.describeModel(describeModelRequest);
         System.out.println(response);
     }
     /**
@@ -187,7 +229,10 @@ public class AihcClientTest {
      */
     @Test
     public void describeModelVersionTest() {
-        DescribeModelVersionResponse response = aihcClient.describeModelVersion();
+        DescribeModelVersionRequest describeModelVersionRequest = new DescribeModelVersionRequest();
+        describeModelVersionRequest.setModelId("");
+        describeModelVersionRequest.setVersionId("");
+        DescribeModelVersionResponse response = aihcClient.describeModelVersion(describeModelVersionRequest);
         System.out.println(response);
     }
     /**
@@ -196,7 +241,11 @@ public class AihcClientTest {
      */
     @Test
     public void describeModelVersionsTest() {
-        DescribeModelVersionsResponse response = aihcClient.describeModelVersions();
+        DescribeModelVersionsRequest describeModelVersionsRequest = new DescribeModelVersionsRequest();
+        describeModelVersionsRequest.setModelId("");
+        describeModelVersionsRequest.setPageNumber(0);
+        describeModelVersionsRequest.setPageSize(0);
+        DescribeModelVersionsResponse response = aihcClient.describeModelVersions(describeModelVersionsRequest);
         System.out.println(response);
     }
     /**
@@ -205,7 +254,11 @@ public class AihcClientTest {
      */
     @Test
     public void describeModelsTest() {
-        DescribeModelsResponse response = aihcClient.describeModels();
+        DescribeModelsRequest describeModelsRequest = new DescribeModelsRequest();
+        describeModelsRequest.setKeyword("");
+        describeModelsRequest.setPageNumber(0);
+        describeModelsRequest.setPageSize(0);
+        DescribeModelsResponse response = aihcClient.describeModels(describeModelsRequest);
         System.out.println(response);
     }
     /**
@@ -215,6 +268,7 @@ public class AihcClientTest {
     @Test
     public void modifyDatasetTest() {
         ModifyDatasetRequest modifyDatasetRequest = new ModifyDatasetRequest();
+        modifyDatasetRequest.setDatasetId("");
         modifyDatasetRequest.setName("");
         modifyDatasetRequest.setDescription("");
         modifyDatasetRequest.setVisibilityScope("");
@@ -229,6 +283,7 @@ public class AihcClientTest {
     @Test
     public void modifyModelTest() {
         ModifyModelRequest modifyModelRequest = new ModifyModelRequest();
+        modifyModelRequest.setModelId("");
         modifyModelRequest.setName("");
         modifyModelRequest.setDescription("");
         aihcClient.modifyModel(modifyModelRequest);
