@@ -18,6 +18,7 @@ public class ExampleModifyDataset {
         bceClientConfig.setEndpoint(endpoint);
         AihcClient client = new AihcClient(bceClientConfig);
         ModifyDatasetRequest modifyDatasetRequest = new ModifyDatasetRequest();
+        modifyDatasetRequest.setDatasetId("");
         modifyDatasetRequest.setName("");
         modifyDatasetRequest.setDescription("");
         modifyDatasetRequest.setVisibilityScope("");

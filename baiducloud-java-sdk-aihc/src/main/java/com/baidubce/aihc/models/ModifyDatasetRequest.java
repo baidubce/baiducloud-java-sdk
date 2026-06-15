@@ -1,11 +1,18 @@
 package com.baidubce.aihc.models;
 
 import com.baidubce.common.BaseBceRequest;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ModifyDatasetRequest extends BaseBceRequest {
+
+    /**
+    * datasetId
+    */
+    @JsonIgnore
+    private String datasetId;
 
     /**
     * 数据集名称
@@ -31,6 +38,15 @@ public class ModifyDatasetRequest extends BaseBceRequest {
     * 用户组权限列表<br>[{"id": "xxx", "name": "xxx", "permission": "r"}, {"id": "yyy", "name": "xxx", "permission": "rw"}]
     */
     private List<PermissionEntry> visibilityGroup;
+
+    public String getDatasetId() {
+        return datasetId;
+    }
+
+    public ModifyDatasetRequest setDatasetId(String datasetId) {
+        this.datasetId = datasetId;
+        return this;
+    }
 
     public String getName() {
         return name;

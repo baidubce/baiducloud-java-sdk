@@ -4,6 +4,7 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.aihc.AihcClient;
+import com.baidubce.aihc.models.DeleteModelVersionRequest;
 
 public class ExampleDeleteModelVersion {
     public static void main(String[] args) {
@@ -15,8 +16,11 @@ public class ExampleDeleteModelVersion {
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
         bceClientConfig.setEndpoint(endpoint);
         AihcClient client = new AihcClient(bceClientConfig);
+        DeleteModelVersionRequest deleteModelVersionRequest = new DeleteModelVersionRequest();
+        deleteModelVersionRequest.setModelId("");
+        deleteModelVersionRequest.setVersionId("");
         try {
-            client.deleteModelVersion();
+            client.deleteModelVersion(deleteModelVersionRequest);
         } catch (BceClientException e) {
             // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());

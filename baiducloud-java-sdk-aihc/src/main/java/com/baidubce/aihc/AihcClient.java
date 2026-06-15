@@ -13,7 +13,6 @@ import com.baidubce.auth.SignOptions;
 import com.baidubce.util.RequestBodyUtils;
 import java.util.Arrays;
 import java.util.HashSet;
-import com.baidubce.common.BaseBceRequest;
 import com.baidubce.common.BaseBceResponse;
 
 import com.baidubce.aihc.models.CreateDatasetRequest;
@@ -24,13 +23,25 @@ import com.baidubce.aihc.models.CreateModelRequest;
 import com.baidubce.aihc.models.CreateModelResponse;
 import com.baidubce.aihc.models.CreateModelVersionRequest;
 import com.baidubce.aihc.models.CreateModelVersionResponse;
+import com.baidubce.aihc.models.DeleteDatasetRequest;
+import com.baidubce.aihc.models.DeleteDatasetVersionRequest;
+import com.baidubce.aihc.models.DeleteModelRequest;
+import com.baidubce.aihc.models.DeleteModelVersionRequest;
+import com.baidubce.aihc.models.DescribeDatasetRequest;
 import com.baidubce.aihc.models.DescribeDatasetResponse;
+import com.baidubce.aihc.models.DescribeDatasetVersionRequest;
 import com.baidubce.aihc.models.DescribeDatasetVersionResponse;
+import com.baidubce.aihc.models.DescribeDatasetVersionsRequest;
 import com.baidubce.aihc.models.DescribeDatasetVersionsResponse;
+import com.baidubce.aihc.models.DescribeDatasetsRequest;
 import com.baidubce.aihc.models.DescribeDatasetsResponse;
+import com.baidubce.aihc.models.DescribeModelRequest;
 import com.baidubce.aihc.models.DescribeModelResponse;
+import com.baidubce.aihc.models.DescribeModelVersionRequest;
 import com.baidubce.aihc.models.DescribeModelVersionResponse;
+import com.baidubce.aihc.models.DescribeModelVersionsRequest;
 import com.baidubce.aihc.models.DescribeModelVersionsResponse;
+import com.baidubce.aihc.models.DescribeModelsRequest;
 import com.baidubce.aihc.models.DescribeModelsResponse;
 import com.baidubce.aihc.models.ModifyDatasetRequest;
 import com.baidubce.aihc.models.ModifyModelRequest;
@@ -81,7 +92,9 @@ public class AihcClient extends AbstractBceClient {
     public CreateDatasetVersionResponse createDatasetVersion(CreateDatasetVersionRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
         internalRequest.addParameter("action", "CreateDatasetVersion");
-        internalRequest.addParameter("datasetId", "xxx");
+        if (request.getDatasetId() != null) {
+            internalRequest.addParameter("datasetId", request.getDatasetId());
+        }
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateDatasetVersionResponse.class);
@@ -110,7 +123,9 @@ public class AihcClient extends AbstractBceClient {
     public CreateModelVersionResponse createModelVersion(CreateModelVersionRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
         internalRequest.addParameter("action", "CreateModelVersion");
-        internalRequest.addParameter("modelId", "xxx");
+        if (request.getModelId() != null) {
+            internalRequest.addParameter("modelId", request.getModelId());
+        }
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateModelVersionResponse.class);
@@ -119,11 +134,14 @@ public class AihcClient extends AbstractBceClient {
     /**
      * deleteDataset
      * 
+     * @param request 入参结构体
      */
-    public void deleteDataset() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.POST, null);
+    public void deleteDataset(DeleteDatasetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
         internalRequest.addParameter("action", "DeleteDataset");
-        internalRequest.addParameter("datasetId", "xxx");
+        if (request.getDatasetId() != null) {
+            internalRequest.addParameter("datasetId", request.getDatasetId());
+        }
         internalRequest.addHeader("Version", "v2");
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
@@ -131,12 +149,17 @@ public class AihcClient extends AbstractBceClient {
     /**
      * deleteDatasetVersion
      * 
+     * @param request 入参结构体
      */
-    public void deleteDatasetVersion() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.POST, null);
+    public void deleteDatasetVersion(DeleteDatasetVersionRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
         internalRequest.addParameter("action", "DeleteDatasetVersion");
-        internalRequest.addParameter("datasetId", "xxx");
-        internalRequest.addParameter("versionId", "xxx");
+        if (request.getDatasetId() != null) {
+            internalRequest.addParameter("datasetId", request.getDatasetId());
+        }
+        if (request.getVersionId() != null) {
+            internalRequest.addParameter("versionId", request.getVersionId());
+        }
         internalRequest.addHeader("Version", "v2");
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
@@ -144,11 +167,14 @@ public class AihcClient extends AbstractBceClient {
     /**
      * deleteModel
      * 
+     * @param request 入参结构体
      */
-    public void deleteModel() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.POST, null);
+    public void deleteModel(DeleteModelRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
         internalRequest.addParameter("action", "DeleteModel");
-        internalRequest.addParameter("modelId", "xxx");
+        if (request.getModelId() != null) {
+            internalRequest.addParameter("modelId", request.getModelId());
+        }
         internalRequest.addHeader("Version", "v2");
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
@@ -156,12 +182,17 @@ public class AihcClient extends AbstractBceClient {
     /**
      * deleteModelVersion
      * 
+     * @param request 入参结构体
      */
-    public void deleteModelVersion() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.POST, null);
+    public void deleteModelVersion(DeleteModelVersionRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
         internalRequest.addParameter("action", "DeleteModelVersion");
-        internalRequest.addParameter("modelId", "xxx");
-        internalRequest.addParameter("versionId", "xxx");
+        if (request.getModelId() != null) {
+            internalRequest.addParameter("modelId", request.getModelId());
+        }
+        if (request.getVersionId() != null) {
+            internalRequest.addParameter("versionId", request.getVersionId());
+        }
         internalRequest.addHeader("Version", "v2");
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
@@ -169,12 +200,15 @@ public class AihcClient extends AbstractBceClient {
     /**
      * describeDataset
      * 
+     * @param request 入参结构体
      * @return DescribeDatasetResponse
      */
-    public DescribeDatasetResponse describeDataset() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
+    public DescribeDatasetResponse describeDataset(DescribeDatasetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, null);
         internalRequest.addParameter("action", "DescribeDataset");
-        internalRequest.addParameter("datasetId", "xxx");
+        if (request.getDatasetId() != null) {
+            internalRequest.addParameter("datasetId", request.getDatasetId());
+        }
         internalRequest.addHeader("Version", "v2");
         return invokeHttpClient(internalRequest, DescribeDatasetResponse.class);
     }
@@ -182,13 +216,18 @@ public class AihcClient extends AbstractBceClient {
     /**
      * describeDatasetVersion
      * 
+     * @param request 入参结构体
      * @return DescribeDatasetVersionResponse
      */
-    public DescribeDatasetVersionResponse describeDatasetVersion() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
+    public DescribeDatasetVersionResponse describeDatasetVersion(DescribeDatasetVersionRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, null);
         internalRequest.addParameter("action", "DescribeDatasetVersion");
-        internalRequest.addParameter("datasetId", "xxx");
-        internalRequest.addParameter("versionId", "xxx");
+        if (request.getDatasetId() != null) {
+            internalRequest.addParameter("datasetId", request.getDatasetId());
+        }
+        if (request.getVersionId() != null) {
+            internalRequest.addParameter("versionId", request.getVersionId());
+        }
         internalRequest.addHeader("Version", "v2");
         return invokeHttpClient(internalRequest, DescribeDatasetVersionResponse.class);
     }
@@ -196,14 +235,21 @@ public class AihcClient extends AbstractBceClient {
     /**
      * describeDatasetVersions
      * 
+     * @param request 入参结构体
      * @return DescribeDatasetVersionsResponse
      */
-    public DescribeDatasetVersionsResponse describeDatasetVersions() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
+    public DescribeDatasetVersionsResponse describeDatasetVersions(DescribeDatasetVersionsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, null);
         internalRequest.addParameter("action", "DescribeDatasetVersions");
-        internalRequest.addParameter("datasetId", "xxx");
-        internalRequest.addParameter("pageNumber", "xxx");
-        internalRequest.addParameter("pageSize", "xxx");
+        if (request.getDatasetId() != null) {
+            internalRequest.addParameter("datasetId", request.getDatasetId());
+        }
+        if (request.getPageNumber() != null) {
+            internalRequest.addParameter("pageNumber", String.valueOf(request.getPageNumber()));
+        }
+        if (request.getPageSize() != null) {
+            internalRequest.addParameter("pageSize", String.valueOf(request.getPageSize()));
+        }
         internalRequest.addHeader("Version", "v2");
         return invokeHttpClient(internalRequest, DescribeDatasetVersionsResponse.class);
     }
@@ -211,17 +257,30 @@ public class AihcClient extends AbstractBceClient {
     /**
      * describeDatasets
      * 
+     * @param request 入参结构体
      * @return DescribeDatasetsResponse
      */
-    public DescribeDatasetsResponse describeDatasets() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
+    public DescribeDatasetsResponse describeDatasets(DescribeDatasetsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, null);
         internalRequest.addParameter("action", "DescribeDatasets");
-        internalRequest.addParameter("keyword", "xxx");
-        internalRequest.addParameter("storageType", "xxx");
-        internalRequest.addParameter("storageInstances", "xxx");
-        internalRequest.addParameter("importFormat", "xxx");
-        internalRequest.addParameter("pageNumber", "xxx");
-        internalRequest.addParameter("pageSize", "xxx");
+        if (request.getKeyword() != null) {
+            internalRequest.addParameter("keyword", request.getKeyword());
+        }
+        if (request.getStorageType() != null) {
+            internalRequest.addParameter("storageType", request.getStorageType());
+        }
+        if (request.getStorageInstances() != null) {
+            internalRequest.addParameter("storageInstances", request.getStorageInstances());
+        }
+        if (request.getImportFormat() != null) {
+            internalRequest.addParameter("importFormat", request.getImportFormat());
+        }
+        if (request.getPageNumber() != null) {
+            internalRequest.addParameter("pageNumber", String.valueOf(request.getPageNumber()));
+        }
+        if (request.getPageSize() != null) {
+            internalRequest.addParameter("pageSize", String.valueOf(request.getPageSize()));
+        }
         internalRequest.addHeader("Version", "v2");
         return invokeHttpClient(internalRequest, DescribeDatasetsResponse.class);
     }
@@ -229,12 +288,15 @@ public class AihcClient extends AbstractBceClient {
     /**
      * describeModel
      * 
+     * @param request 入参结构体
      * @return DescribeModelResponse
      */
-    public DescribeModelResponse describeModel() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
+    public DescribeModelResponse describeModel(DescribeModelRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, null);
         internalRequest.addParameter("action", "DescribeModel");
-        internalRequest.addParameter("modelId", "xxx");
+        if (request.getModelId() != null) {
+            internalRequest.addParameter("modelId", request.getModelId());
+        }
         internalRequest.addHeader("Version", "v2");
         return invokeHttpClient(internalRequest, DescribeModelResponse.class);
     }
@@ -242,13 +304,18 @@ public class AihcClient extends AbstractBceClient {
     /**
      * describeModelVersion
      * 
+     * @param request 入参结构体
      * @return DescribeModelVersionResponse
      */
-    public DescribeModelVersionResponse describeModelVersion() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
+    public DescribeModelVersionResponse describeModelVersion(DescribeModelVersionRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, null);
         internalRequest.addParameter("action", "DescribeModelVersion");
-        internalRequest.addParameter("modelId", "xxx");
-        internalRequest.addParameter("versionId", "xxx");
+        if (request.getModelId() != null) {
+            internalRequest.addParameter("modelId", request.getModelId());
+        }
+        if (request.getVersionId() != null) {
+            internalRequest.addParameter("versionId", request.getVersionId());
+        }
         internalRequest.addHeader("Version", "v2");
         return invokeHttpClient(internalRequest, DescribeModelVersionResponse.class);
     }
@@ -256,14 +323,21 @@ public class AihcClient extends AbstractBceClient {
     /**
      * describeModelVersions
      * 
+     * @param request 入参结构体
      * @return DescribeModelVersionsResponse
      */
-    public DescribeModelVersionsResponse describeModelVersions() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
+    public DescribeModelVersionsResponse describeModelVersions(DescribeModelVersionsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, null);
         internalRequest.addParameter("action", "DescribeModelVersions");
-        internalRequest.addParameter("modelId", "xxx");
-        internalRequest.addParameter("pageNumber", "xxx");
-        internalRequest.addParameter("pageSize", "xxx");
+        if (request.getModelId() != null) {
+            internalRequest.addParameter("modelId", request.getModelId());
+        }
+        if (request.getPageNumber() != null) {
+            internalRequest.addParameter("pageNumber", String.valueOf(request.getPageNumber()));
+        }
+        if (request.getPageSize() != null) {
+            internalRequest.addParameter("pageSize", String.valueOf(request.getPageSize()));
+        }
         internalRequest.addHeader("Version", "v2");
         return invokeHttpClient(internalRequest, DescribeModelVersionsResponse.class);
     }
@@ -271,14 +345,21 @@ public class AihcClient extends AbstractBceClient {
     /**
      * describeModels
      * 
+     * @param request 入参结构体
      * @return DescribeModelsResponse
      */
-    public DescribeModelsResponse describeModels() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, null);
+    public DescribeModelsResponse describeModels(DescribeModelsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, null);
         internalRequest.addParameter("action", "DescribeModels");
-        internalRequest.addParameter("keyword", "xxx");
-        internalRequest.addParameter("pageNumber", "xxx");
-        internalRequest.addParameter("pageSize", "xxx");
+        if (request.getKeyword() != null) {
+            internalRequest.addParameter("keyword", request.getKeyword());
+        }
+        if (request.getPageNumber() != null) {
+            internalRequest.addParameter("pageNumber", String.valueOf(request.getPageNumber()));
+        }
+        if (request.getPageSize() != null) {
+            internalRequest.addParameter("pageSize", String.valueOf(request.getPageSize()));
+        }
         internalRequest.addHeader("Version", "v2");
         return invokeHttpClient(internalRequest, DescribeModelsResponse.class);
     }
@@ -291,7 +372,9 @@ public class AihcClient extends AbstractBceClient {
     public void modifyDataset(ModifyDatasetRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
         internalRequest.addParameter("action", "ModifyDataset");
-        internalRequest.addParameter("datasetId", "xxx");
+        if (request.getDatasetId() != null) {
+            internalRequest.addParameter("datasetId", request.getDatasetId());
+        }
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
@@ -305,7 +388,9 @@ public class AihcClient extends AbstractBceClient {
     public void modifyModel(ModifyModelRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
         internalRequest.addParameter("action", "ModifyModel");
-        internalRequest.addParameter("modelId", "xxx");
+        if (request.getModelId() != null) {
+            internalRequest.addParameter("modelId", request.getModelId());
+        }
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);

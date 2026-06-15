@@ -1,10 +1,17 @@
 package com.baidubce.aihc.models;
 
 import com.baidubce.common.BaseBceRequest;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateDatasetVersionRequest extends BaseBceRequest {
+
+    /**
+    * datasetId
+    */
+    @JsonIgnore
+    private String datasetId;
 
     /**
     * 版本描述
@@ -20,6 +27,15 @@ public class CreateDatasetVersionRequest extends BaseBceRequest {
     * 默认挂载路径
     */
     private String mountPath;
+
+    public String getDatasetId() {
+        return datasetId;
+    }
+
+    public CreateDatasetVersionRequest setDatasetId(String datasetId) {
+        this.datasetId = datasetId;
+        return this;
+    }
 
     public String getDescription() {
         return description;

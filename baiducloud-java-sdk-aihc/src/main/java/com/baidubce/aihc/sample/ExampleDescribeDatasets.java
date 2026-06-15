@@ -4,6 +4,7 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.aihc.AihcClient;
+import com.baidubce.aihc.models.DescribeDatasetsRequest;
 import com.baidubce.aihc.models.DescribeDatasetsResponse;
 
 public class ExampleDescribeDatasets {
@@ -16,8 +17,15 @@ public class ExampleDescribeDatasets {
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
         bceClientConfig.setEndpoint(endpoint);
         AihcClient client = new AihcClient(bceClientConfig);
+        DescribeDatasetsRequest describeDatasetsRequest = new DescribeDatasetsRequest();
+        describeDatasetsRequest.setKeyword("");
+        describeDatasetsRequest.setStorageType("");
+        describeDatasetsRequest.setStorageInstances("");
+        describeDatasetsRequest.setImportFormat("");
+        describeDatasetsRequest.setPageNumber(0);
+        describeDatasetsRequest.setPageSize(0);
         try {
-            DescribeDatasetsResponse response = client.describeDatasets();
+            DescribeDatasetsResponse response = client.describeDatasets(describeDatasetsRequest);
             System.out.println(response.toJsonString());
         } catch (BceClientException e) {
             System.out.println(e.getMessage());
