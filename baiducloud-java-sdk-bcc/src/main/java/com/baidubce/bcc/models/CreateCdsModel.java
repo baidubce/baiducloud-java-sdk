@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateCdsModel {
     /**
-     * CDS磁盘存储类型，包括SSD_Enhanced (增强型SSD)，cloud_hp1（通用型SD），hp1 (高性能云磁盘)和hdd (通用型HDD) 共四种磁盘类型，默认 hp1。（查询磁盘列表、查询磁盘详情返回）
+     * CDS磁盘存储类型，默认是hp1(高性能云磁盘)。（创建实例、创建抢占实例、查询抢占实例市场价）
      */
     private String storageType;
 
