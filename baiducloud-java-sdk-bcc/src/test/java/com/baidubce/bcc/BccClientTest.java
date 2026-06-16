@@ -2,8 +2,11 @@ package com.baidubce.bcc;
 
 import com.baidubce.bcc.models.AddIpv6Request;
 import com.baidubce.bcc.models.AddIpv6Response;
+import com.baidubce.bcc.models.AttachAspRequest;
+import com.baidubce.bcc.models.AttachKeypairRequest;
 import com.baidubce.bcc.models.AttachVolumeRequest;
 import com.baidubce.bcc.models.AttachVolumeResponse;
+import com.baidubce.bcc.models.AuthorizeSecurityGroupRuleRequest;
 import com.baidubce.bcc.models.AutoReleaseInstanceRequest;
 import com.baidubce.bcc.models.BatchAddIpRequest;
 import com.baidubce.bcc.models.BatchChangeToPostpaidRequest;
@@ -15,39 +18,75 @@ import com.baidubce.bcc.models.BatchRefundResourceRequest;
 import com.baidubce.bcc.models.BatchRefundResourceResponse;
 import com.baidubce.bcc.models.BatchStartInstanceRequest;
 import com.baidubce.bcc.models.BatchStopInstanceRequest;
+import com.baidubce.bcc.models.BindInstanceSecurityGroupRequest;
+import com.baidubce.bcc.models.BindInstanceSecurityGroupResponse;
 import com.baidubce.bcc.models.BindInstanceToSecurityGroupRequest;
 import com.baidubce.bcc.models.BindInstanceToTagsRequest;
 import com.baidubce.bcc.models.BindRoleRequest;
 import com.baidubce.bcc.models.BindRoleResponse;
 import com.baidubce.bcc.models.BindTagImageRequest;
+import com.baidubce.bcc.models.BindTagSnapchainRequest;
 import com.baidubce.bcc.models.BindTagVolumeRequest;
+import com.baidubce.bcc.models.CancelBidOrderRequest;
+import com.baidubce.bcc.models.CancelBidOrderResponse;
 import com.baidubce.bcc.models.CancelRemoteCopyImageRequest;
+import com.baidubce.bcc.models.CancelSnapshotShareRequest;
+import com.baidubce.bcc.models.CancelSnapshotShareResponse;
 import com.baidubce.bcc.models.ChangeToPrepaidRequest;
 import com.baidubce.bcc.models.ChangeToPrepaidResponse;
 import com.baidubce.bcc.models.ChangeVpcRequest;
+import com.baidubce.bcc.models.CreateAspRequest;
+import com.baidubce.bcc.models.CreateAspResponse;
 import com.baidubce.bcc.models.CreateAutoRenewRuleRequest;
+import com.baidubce.bcc.models.CreateBidInstanceRequest;
+import com.baidubce.bcc.models.CreateBidInstanceResponse;
+import com.baidubce.bcc.models.CreateDeploySetRequest;
+import com.baidubce.bcc.models.CreateDeploySetResponse;
 import com.baidubce.bcc.models.CreateImageRequest;
 import com.baidubce.bcc.models.CreateImageResponse;
 import com.baidubce.bcc.models.CreateInstanceBySpecRequest;
 import com.baidubce.bcc.models.CreateInstanceBySpecResponse;
+import com.baidubce.bcc.models.CreateKeypairRequest;
+import com.baidubce.bcc.models.CreateKeypairResponse;
+import com.baidubce.bcc.models.CreateSecurityGroupRequest;
+import com.baidubce.bcc.models.CreateSecurityGroupResponse;
+import com.baidubce.bcc.models.CreateSnapshotRequest;
+import com.baidubce.bcc.models.CreateSnapshotResponse;
+import com.baidubce.bcc.models.CreateSnapshotShareRequest;
+import com.baidubce.bcc.models.CreateSnapshotShareResponse;
 import com.baidubce.bcc.models.CreateVolumeRequest;
 import com.baidubce.bcc.models.CreateVolumeResponse;
 import com.baidubce.bcc.models.DelIpv6Request;
+import com.baidubce.bcc.models.DeleteAspRequest;
 import com.baidubce.bcc.models.DeleteAutoRenewRuleRequest;
+import com.baidubce.bcc.models.DeleteDeploySetRequest;
 import com.baidubce.bcc.models.DeleteImageRequest;
 import com.baidubce.bcc.models.DeleteInstanceDeploySetRequest;
+import com.baidubce.bcc.models.DeleteKeypairRequest;
 import com.baidubce.bcc.models.DeletePrepayInstanceRequest;
 import com.baidubce.bcc.models.DeletePrepayInstanceResponse;
 import com.baidubce.bcc.models.DeleteRecycledInstanceRequest;
+import com.baidubce.bcc.models.DeleteSecurityGroupRequest;
+import com.baidubce.bcc.models.DeleteSecurityGroupRuleRequest;
+import com.baidubce.bcc.models.DeleteSnapshotRequest;
+import com.baidubce.bcc.models.DeletesInstanceDeploySetRequest;
+import com.baidubce.bcc.models.DetachAspRequest;
+import com.baidubce.bcc.models.DetachKeypairRequest;
 import com.baidubce.bcc.models.DetachVolumeRequest;
 import com.baidubce.bcc.models.EnterRescueModeRequest;
 import com.baidubce.bcc.models.EnterRescueModeResponse;
 import com.baidubce.bcc.models.ExitRescueModeRequest;
 import com.baidubce.bcc.models.ExitRescueModeResponse;
+import com.baidubce.bcc.models.GetAspRequest;
+import com.baidubce.bcc.models.GetAspResponse;
 import com.baidubce.bcc.models.GetAvailableImagesBySpecRequest;
 import com.baidubce.bcc.models.GetAvailableImagesBySpecResponse;
+import com.baidubce.bcc.models.GetBidInstancePriceRequest;
+import com.baidubce.bcc.models.GetBidInstancePriceResponse;
 import com.baidubce.bcc.models.GetCdsPriceRequest;
 import com.baidubce.bcc.models.GetCdsPriceResponse;
+import com.baidubce.bcc.models.GetDeploySetRequest;
+import com.baidubce.bcc.models.GetDeploySetResponse;
 import com.baidubce.bcc.models.GetDiskQuotaRequest;
 import com.baidubce.bcc.models.GetDiskQuotaResponse;
 import com.baidubce.bcc.models.GetImageRequest;
@@ -61,18 +100,28 @@ import com.baidubce.bcc.models.GetInstanceUserDataInfoResponse;
 import com.baidubce.bcc.models.GetInstanceVncRequest;
 import com.baidubce.bcc.models.GetInstanceVncResponse;
 import com.baidubce.bcc.models.GetRoleListResponse;
+import com.baidubce.bcc.models.GetSnapshotRequest;
+import com.baidubce.bcc.models.GetSnapshotResponse;
 import com.baidubce.bcc.models.GetVolumeRequest;
 import com.baidubce.bcc.models.GetVolumeResizeProgressRequest;
 import com.baidubce.bcc.models.GetVolumeResizeProgressResponse;
 import com.baidubce.bcc.models.GetVolumeResponse;
 import com.baidubce.bcc.models.ImportImageRequest;
 import com.baidubce.bcc.models.ImportImageResponse;
+import com.baidubce.bcc.models.ImportKeypairRequest;
+import com.baidubce.bcc.models.ImportKeypairResponse;
 import com.baidubce.bcc.models.InstanceBatchResizeBySpecRequest;
 import com.baidubce.bcc.models.InstanceBatchResizeBySpecResponse;
 import com.baidubce.bcc.models.InstanceDeletionProtectionRequest;
 import com.baidubce.bcc.models.InstanceRecoveryRequest;
+import com.baidubce.bcc.models.KeypairDetailRequest;
+import com.baidubce.bcc.models.KeypairDetailResponse;
+import com.baidubce.bcc.models.ListAspsRequest;
+import com.baidubce.bcc.models.ListAspsResponse;
 import com.baidubce.bcc.models.ListAvailableResizeSpecRequest;
 import com.baidubce.bcc.models.ListAvailableResizeSpecResponse;
+import com.baidubce.bcc.models.ListBidFlavorResponse;
+import com.baidubce.bcc.models.ListDeploySetResponse;
 import com.baidubce.bcc.models.ListImagesRequest;
 import com.baidubce.bcc.models.ListImagesResponse;
 import com.baidubce.bcc.models.ListInstanceByIdsRequest;
@@ -81,12 +130,22 @@ import com.baidubce.bcc.models.ListInstanceEnisRequest;
 import com.baidubce.bcc.models.ListInstanceEnisResponse;
 import com.baidubce.bcc.models.ListInstancesRequest;
 import com.baidubce.bcc.models.ListInstancesResponse;
+import com.baidubce.bcc.models.ListKeypairRequest;
+import com.baidubce.bcc.models.ListKeypairResponse;
 import com.baidubce.bcc.models.ListOsRequest;
 import com.baidubce.bcc.models.ListOsResponse;
 import com.baidubce.bcc.models.ListRecycleInstanceRequest;
 import com.baidubce.bcc.models.ListRecycleInstanceResponse;
+import com.baidubce.bcc.models.ListSecurityGroupsRequest;
+import com.baidubce.bcc.models.ListSecurityGroupsResponse;
 import com.baidubce.bcc.models.ListSharedUserRequest;
 import com.baidubce.bcc.models.ListSharedUserResponse;
+import com.baidubce.bcc.models.ListSnapchainRequest;
+import com.baidubce.bcc.models.ListSnapchainResponse;
+import com.baidubce.bcc.models.ListSnapshotShareRequest;
+import com.baidubce.bcc.models.ListSnapshotShareResponse;
+import com.baidubce.bcc.models.ListSnapshotsRequest;
+import com.baidubce.bcc.models.ListSnapshotsResponse;
 import com.baidubce.bcc.models.ListVolumesRequest;
 import com.baidubce.bcc.models.ListVolumesResponse;
 import com.baidubce.bcc.models.ModifyCdsAttributeRequest;
@@ -108,11 +167,17 @@ import com.baidubce.bcc.models.ReleaseMultipleInstanceByPostRequest;
 import com.baidubce.bcc.models.ReleaseVolumeRequest;
 import com.baidubce.bcc.models.RemoteCopyImageRequest;
 import com.baidubce.bcc.models.RemoteCopyImageResponse;
+import com.baidubce.bcc.models.RemoteCopySnapshotRequest;
+import com.baidubce.bcc.models.RemoteCopySnapshotResponse;
 import com.baidubce.bcc.models.RenameImageRequest;
+import com.baidubce.bcc.models.RenameKeypairRequest;
 import com.baidubce.bcc.models.RenameVolumeRequest;
+import com.baidubce.bcc.models.ReplaceInstanceSecurityGroupRequest;
+import com.baidubce.bcc.models.ReplaceInstanceSecurityGroupResponse;
 import com.baidubce.bcc.models.ResizeInstanceBySpecRequest;
 import com.baidubce.bcc.models.ResizeVolumeRequest;
 import com.baidubce.bcc.models.ResizeVolumeResponse;
+import com.baidubce.bcc.models.RevokeSecurityGroupRuleRequest;
 import com.baidubce.bcc.models.RollbackVolumeRequest;
 import com.baidubce.bcc.models.ShareImageRequest;
 import com.baidubce.bcc.models.StartInstanceRequest;
@@ -120,11 +185,20 @@ import com.baidubce.bcc.models.StopInstanceRequest;
 import com.baidubce.bcc.models.UnShareImageRequest;
 import com.baidubce.bcc.models.UnbindInstanceFromSecurityGroupRequest;
 import com.baidubce.bcc.models.UnbindInstanceFromTagsRequest;
+import com.baidubce.bcc.models.UnbindInstanceSecurityGroupRequest;
+import com.baidubce.bcc.models.UnbindInstanceSecurityGroupResponse;
 import com.baidubce.bcc.models.UnbindRoleRequest;
 import com.baidubce.bcc.models.UnbindRoleResponse;
 import com.baidubce.bcc.models.UnbindTagImageRequest;
+import com.baidubce.bcc.models.UnbindTagSnapchainRequest;
 import com.baidubce.bcc.models.UnbindTagVolumeRequest;
+import com.baidubce.bcc.models.UpdateAspRequest;
+import com.baidubce.bcc.models.UpdateDeploySetRelationRequest;
+import com.baidubce.bcc.models.UpdateDeploySetRelationResponse;
+import com.baidubce.bcc.models.UpdateDeploySetRequest;
 import com.baidubce.bcc.models.UpdateInstanceSubnetRequest;
+import com.baidubce.bcc.models.UpdateKeypairDescriptionRequest;
+import com.baidubce.bcc.models.UpdateSecurityGroupRuleRequest;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -161,6 +235,29 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * attachAsp
+     *
+     */
+    @Test
+    public void attachAspTest() {
+        AttachAspRequest attachAspRequest = new AttachAspRequest();
+        attachAspRequest.setAspId("");
+        attachAspRequest.setVolumeIds(new ArrayList<>());
+        attachAspRequest.setDeleteAutoSnapshot(false);
+        bccClient.attachAsp(attachAspRequest);
+    }
+    /**
+     * attachKeypair
+     *
+     */
+    @Test
+    public void attachKeypairTest() {
+        AttachKeypairRequest attachKeypairRequest = new AttachKeypairRequest();
+        attachKeypairRequest.setKeypairId("");
+        attachKeypairRequest.setInstanceIds(new ArrayList<>());
+        bccClient.attachKeypair(attachKeypairRequest);
+    }
+    /**
      * attachVolume
      *
      */
@@ -173,6 +270,18 @@ public class BccClientTest {
         attachVolumeRequest.setDeleteAutoSnapshot(false);
         AttachVolumeResponse response = bccClient.attachVolume(attachVolumeRequest);
         System.out.println(response);
+    }
+    /**
+     * authorizeSecurityGroupRule
+     *
+     */
+    @Test
+    public void authorizeSecurityGroupRuleTest() {
+        AuthorizeSecurityGroupRuleRequest authorizeSecurityGroupRuleRequest = new AuthorizeSecurityGroupRuleRequest();
+        authorizeSecurityGroupRuleRequest.setSecurityGroupId("");
+        authorizeSecurityGroupRuleRequest.setSgVersion(0);
+        authorizeSecurityGroupRuleRequest.setRule(null);
+        bccClient.authorizeSecurityGroupRule(authorizeSecurityGroupRuleRequest);
     }
     /**
      * autoReleaseInstance
@@ -269,6 +378,19 @@ public class BccClientTest {
         bccClient.batchStopInstance(batchStopInstanceRequest);
     }
     /**
+     * bindInstanceSecurityGroup
+     *
+     */
+    @Test
+    public void bindInstanceSecurityGroupTest() {
+        BindInstanceSecurityGroupRequest bindInstanceSecurityGroupRequest = new BindInstanceSecurityGroupRequest();
+        bindInstanceSecurityGroupRequest.setInstanceIds(new ArrayList<>());
+        bindInstanceSecurityGroupRequest.setSecurityGroupIds(new ArrayList<>());
+        bindInstanceSecurityGroupRequest.setSecurityGroupType("");
+        BindInstanceSecurityGroupResponse response = bccClient.bindInstanceSecurityGroup(bindInstanceSecurityGroupRequest);
+        System.out.println(response);
+    }
+    /**
      * bindInstanceToSecurityGroup
      *
      */
@@ -315,6 +437,17 @@ public class BccClientTest {
         bccClient.bindTagImage(bindTagImageRequest);
     }
     /**
+     * bindTagSnapchain
+     *
+     */
+    @Test
+    public void bindTagSnapchainTest() {
+        BindTagSnapchainRequest bindTagSnapchainRequest = new BindTagSnapchainRequest();
+        bindTagSnapchainRequest.setChainId("");
+        bindTagSnapchainRequest.setChangeTags(new ArrayList<>());
+        bccClient.bindTagSnapchain(bindTagSnapchainRequest);
+    }
+    /**
      * bindTagVolume
      *
      */
@@ -326,6 +459,17 @@ public class BccClientTest {
         bccClient.bindTagVolume(bindTagVolumeRequest);
     }
     /**
+     * cancelBidOrder
+     *
+     */
+    @Test
+    public void cancelBidOrderTest() {
+        CancelBidOrderRequest cancelBidOrderRequest = new CancelBidOrderRequest();
+        cancelBidOrderRequest.setOrderId("");
+        CancelBidOrderResponse response = bccClient.cancelBidOrder(cancelBidOrderRequest);
+        System.out.println(response);
+    }
+    /**
      * cancelRemoteCopyImage
      *
      */
@@ -334,6 +478,19 @@ public class BccClientTest {
         CancelRemoteCopyImageRequest cancelRemoteCopyImageRequest = new CancelRemoteCopyImageRequest();
         cancelRemoteCopyImageRequest.setImageId("");
         bccClient.cancelRemoteCopyImage(cancelRemoteCopyImageRequest);
+    }
+    /**
+     * cancelSnapshotShare
+     *
+     */
+    @Test
+    public void cancelSnapshotShareTest() {
+        CancelSnapshotShareRequest cancelSnapshotShareRequest = new CancelSnapshotShareRequest();
+        cancelSnapshotShareRequest.setSourceSnapshotId("");
+        cancelSnapshotShareRequest.setAccountIds(new ArrayList<>());
+        cancelSnapshotShareRequest.setShareSnapshotId("");
+        CancelSnapshotShareResponse response = bccClient.cancelSnapshotShare(cancelSnapshotShareRequest);
+        System.out.println(response);
     }
     /**
      * changeToPrepaid
@@ -366,6 +523,20 @@ public class BccClientTest {
         bccClient.changeVpc(changeVpcRequest);
     }
     /**
+     * createAsp
+     *
+     */
+    @Test
+    public void createAspTest() {
+        CreateAspRequest createAspRequest = new CreateAspRequest();
+        createAspRequest.setName("");
+        createAspRequest.setTimePoints(new ArrayList<>());
+        createAspRequest.setRepeatWeekdays(new ArrayList<>());
+        createAspRequest.setRetentionDays("");
+        CreateAspResponse response = bccClient.createAsp(createAspRequest);
+        System.out.println(response);
+    }
+    /**
      * createAutoRenewRule
      *
      */
@@ -377,6 +548,65 @@ public class BccClientTest {
         createAutoRenewRuleRequest.setRenewTime(0);
         createAutoRenewRuleRequest.setRenewEip(false);
         bccClient.createAutoRenewRule(createAutoRenewRuleRequest);
+    }
+    /**
+     * createBidInstance
+     *
+     */
+    @Test
+    public void createBidInstanceTest() {
+        CreateBidInstanceRequest createBidInstanceRequest = new CreateBidInstanceRequest();
+        createBidInstanceRequest.setSpec("");
+        createBidInstanceRequest.setImageId("");
+        createBidInstanceRequest.setBilling(null);
+        createBidInstanceRequest.setBidModel("");
+        createBidInstanceRequest.setBidPrice("");
+        createBidInstanceRequest.setCpuCount(0);
+        createBidInstanceRequest.setMemoryCapacityInGB(0);
+        createBidInstanceRequest.setRootDiskSizeInGb(0);
+        createBidInstanceRequest.setRootDiskStorageType("");
+        createBidInstanceRequest.setCreateCdsList(new ArrayList<>());
+        createBidInstanceRequest.setEphemeralDisks(new ArrayList<>());
+        createBidInstanceRequest.setNetworkCapacityInMbps(0);
+        createBidInstanceRequest.setInternetChargeType("");
+        createBidInstanceRequest.setEipName("");
+        createBidInstanceRequest.setPurchaseCount(0);
+        createBidInstanceRequest.setName("");
+        createBidInstanceRequest.setHostname("");
+        createBidInstanceRequest.setAutoSeqSuffix(false);
+        createBidInstanceRequest.setIsOpenHostnameDomain(false);
+        createBidInstanceRequest.setAdminPass("");
+        createBidInstanceRequest.setKeypairId("");
+        createBidInstanceRequest.setUserData("");
+        createBidInstanceRequest.setZoneName("");
+        createBidInstanceRequest.setSubnetId("");
+        createBidInstanceRequest.setSecurityGroupId("");
+        createBidInstanceRequest.setEnterpriseSecurityGroupId("");
+        createBidInstanceRequest.setIsomerismCard("");
+        createBidInstanceRequest.setDeletionProtection(0);
+        createBidInstanceRequest.setRelationTag(false);
+        createBidInstanceRequest.setIsOpenIpv6(false);
+        createBidInstanceRequest.setTags(new ArrayList<>());
+        createBidInstanceRequest.setAspId("");
+        createBidInstanceRequest.setFileSystems(new ArrayList<>());
+        createBidInstanceRequest.setIsEipAutoRelatedDelete(false);
+        createBidInstanceRequest.setResGroupId("");
+        CreateBidInstanceResponse response = bccClient.createBidInstance(createBidInstanceRequest);
+        System.out.println(response);
+    }
+    /**
+     * createDeploySet
+     *
+     */
+    @Test
+    public void createDeploySetTest() {
+        CreateDeploySetRequest createDeploySetRequest = new CreateDeploySetRequest();
+        createDeploySetRequest.setName("");
+        createDeploySetRequest.setDesc("");
+        createDeploySetRequest.setStrategy("");
+        createDeploySetRequest.setConcurrency(0);
+        CreateDeploySetResponse response = bccClient.createDeploySet(createDeploySetRequest);
+        System.out.println(response);
     }
     /**
      * createImage
@@ -467,6 +697,60 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * createKeypair
+     *
+     */
+    @Test
+    public void createKeypairTest() {
+        CreateKeypairRequest createKeypairRequest = new CreateKeypairRequest();
+        createKeypairRequest.setName("");
+        createKeypairRequest.setDescription("");
+        CreateKeypairResponse response = bccClient.createKeypair(createKeypairRequest);
+        System.out.println(response);
+    }
+    /**
+     * createSecurityGroup
+     *
+     */
+    @Test
+    public void createSecurityGroupTest() {
+        CreateSecurityGroupRequest createSecurityGroupRequest = new CreateSecurityGroupRequest();
+        createSecurityGroupRequest.setName("");
+        createSecurityGroupRequest.setDesc("");
+        createSecurityGroupRequest.setVpcId("");
+        createSecurityGroupRequest.setTags(new ArrayList<>());
+        createSecurityGroupRequest.setRules(new ArrayList<>());
+        CreateSecurityGroupResponse response = bccClient.createSecurityGroup(createSecurityGroupRequest);
+        System.out.println(response);
+    }
+    /**
+     * createSnapshot
+     *
+     */
+    @Test
+    public void createSnapshotTest() {
+        CreateSnapshotRequest createSnapshotRequest = new CreateSnapshotRequest();
+        createSnapshotRequest.setVolumeId("");
+        createSnapshotRequest.setSnapshotName("");
+        createSnapshotRequest.setDesc("");
+        createSnapshotRequest.setTags(new ArrayList<>());
+        createSnapshotRequest.setRetentionInDays(0);
+        CreateSnapshotResponse response = bccClient.createSnapshot(createSnapshotRequest);
+        System.out.println(response);
+    }
+    /**
+     * createSnapshotShare
+     *
+     */
+    @Test
+    public void createSnapshotShareTest() {
+        CreateSnapshotShareRequest createSnapshotShareRequest = new CreateSnapshotShareRequest();
+        createSnapshotShareRequest.setSnapshotId("");
+        createSnapshotShareRequest.setAccountIds(new ArrayList<>());
+        CreateSnapshotShareResponse response = bccClient.createSnapshotShare(createSnapshotShareRequest);
+        System.out.println(response);
+    }
+    /**
      * createVolume
      *
      */
@@ -512,6 +796,16 @@ public class BccClientTest {
         bccClient.delIpv6(delIpv6Request);
     }
     /**
+     * deleteAsp
+     *
+     */
+    @Test
+    public void deleteAspTest() {
+        DeleteAspRequest deleteAspRequest = new DeleteAspRequest();
+        deleteAspRequest.setAspId("");
+        bccClient.deleteAsp(deleteAspRequest);
+    }
+    /**
      * deleteAutoRenewRule
      *
      */
@@ -521,6 +815,16 @@ public class BccClientTest {
         deleteAutoRenewRuleRequest.setInstanceId("");
         deleteAutoRenewRuleRequest.setRenewEip(false);
         bccClient.deleteAutoRenewRule(deleteAutoRenewRuleRequest);
+    }
+    /**
+     * deleteDeploySet
+     *
+     */
+    @Test
+    public void deleteDeploySetTest() {
+        DeleteDeploySetRequest deleteDeploySetRequest = new DeleteDeploySetRequest();
+        deleteDeploySetRequest.setDeployId("");
+        bccClient.deleteDeploySet(deleteDeploySetRequest);
     }
     /**
      * deleteImage
@@ -542,6 +846,16 @@ public class BccClientTest {
         deleteInstanceDeploySetRequest.setDeployId("");
         deleteInstanceDeploySetRequest.setInstanceIdList(new ArrayList<>());
         bccClient.deleteInstanceDeploySet(deleteInstanceDeploySetRequest);
+    }
+    /**
+     * deleteKeypair
+     *
+     */
+    @Test
+    public void deleteKeypairTest() {
+        DeleteKeypairRequest deleteKeypairRequest = new DeleteKeypairRequest();
+        deleteKeypairRequest.setKeypairId("");
+        bccClient.deleteKeypair(deleteKeypairRequest);
     }
     /**
      * deletePrepayInstance
@@ -566,6 +880,71 @@ public class BccClientTest {
         DeleteRecycledInstanceRequest deleteRecycledInstanceRequest = new DeleteRecycledInstanceRequest();
         deleteRecycledInstanceRequest.setInstanceId("");
         bccClient.deleteRecycledInstance(deleteRecycledInstanceRequest);
+    }
+    /**
+     * deleteSecurityGroup
+     *
+     */
+    @Test
+    public void deleteSecurityGroupTest() {
+        DeleteSecurityGroupRequest deleteSecurityGroupRequest = new DeleteSecurityGroupRequest();
+        deleteSecurityGroupRequest.setSecurityGroupId("");
+        bccClient.deleteSecurityGroup(deleteSecurityGroupRequest);
+    }
+    /**
+     * deleteSecurityGroupRule
+     *
+     */
+    @Test
+    public void deleteSecurityGroupRuleTest() {
+        DeleteSecurityGroupRuleRequest deleteSecurityGroupRuleRequest = new DeleteSecurityGroupRuleRequest();
+        deleteSecurityGroupRuleRequest.setSecurityGroupRuleId("");
+        deleteSecurityGroupRuleRequest.setSgVersion(0);
+        bccClient.deleteSecurityGroupRule(deleteSecurityGroupRuleRequest);
+    }
+    /**
+     * deleteSnapshot
+     *
+     */
+    @Test
+    public void deleteSnapshotTest() {
+        DeleteSnapshotRequest deleteSnapshotRequest = new DeleteSnapshotRequest();
+        deleteSnapshotRequest.setSnapshotId("");
+        bccClient.deleteSnapshot(deleteSnapshotRequest);
+    }
+    /**
+     * deletesInstanceDeploySet
+     *
+     */
+    @Test
+    public void deletesInstanceDeploySetTest() {
+        DeletesInstanceDeploySetRequest deletesInstanceDeploySetRequest = new DeletesInstanceDeploySetRequest();
+        deletesInstanceDeploySetRequest.setDeployId("");
+        deletesInstanceDeploySetRequest.setInstanceIdList(new ArrayList<>());
+        bccClient.deletesInstanceDeploySet(deletesInstanceDeploySetRequest);
+    }
+    /**
+     * detachAsp
+     *
+     */
+    @Test
+    public void detachAspTest() {
+        DetachAspRequest detachAspRequest = new DetachAspRequest();
+        detachAspRequest.setAspId("");
+        detachAspRequest.setVolumeIds(new ArrayList<>());
+        detachAspRequest.setDeleteAutoSnapshot(false);
+        bccClient.detachAsp(detachAspRequest);
+    }
+    /**
+     * detachKeypair
+     *
+     */
+    @Test
+    public void detachKeypairTest() {
+        DetachKeypairRequest detachKeypairRequest = new DetachKeypairRequest();
+        detachKeypairRequest.setKeypairId("");
+        detachKeypairRequest.setInstanceIds(new ArrayList<>());
+        bccClient.detachKeypair(detachKeypairRequest);
     }
     /**
      * detachVolume
@@ -603,6 +982,17 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * getAsp
+     *
+     */
+    @Test
+    public void getAspTest() {
+        GetAspRequest getAspRequest = new GetAspRequest();
+        getAspRequest.setAspId("");
+        GetAspResponse response = bccClient.getAsp(getAspRequest);
+        System.out.println(response);
+    }
+    /**
      * getAvailableImagesBySpec
      *
      */
@@ -614,6 +1004,24 @@ public class BccClientTest {
         getAvailableImagesBySpecRequest.setMaxKeys(0);
         getAvailableImagesBySpecRequest.setOsName("");
         GetAvailableImagesBySpecResponse response = bccClient.getAvailableImagesBySpec(getAvailableImagesBySpecRequest);
+        System.out.println(response);
+    }
+    /**
+     * getBidInstancePrice
+     *
+     */
+    @Test
+    public void getBidInstancePriceTest() {
+        GetBidInstancePriceRequest getBidInstancePriceRequest = new GetBidInstancePriceRequest();
+        getBidInstancePriceRequest.setSpec("");
+        getBidInstancePriceRequest.setRootDiskSizeInGb(0);
+        getBidInstancePriceRequest.setRootDiskStorageType("");
+        getBidInstancePriceRequest.setCreateCdsList(new ArrayList<>());
+        getBidInstancePriceRequest.setNetworkCapacityInMbps(0);
+        getBidInstancePriceRequest.setInternetChargeType("");
+        getBidInstancePriceRequest.setPurchaseCount(0);
+        getBidInstancePriceRequest.setZoneName("");
+        GetBidInstancePriceResponse response = bccClient.getBidInstancePrice(getBidInstancePriceRequest);
         System.out.println(response);
     }
     /**
@@ -631,6 +1039,17 @@ public class BccClientTest {
         getCdsPriceRequest.setPurchaseLength(0);
         getCdsPriceRequest.setCdsExtraIo(0);
         GetCdsPriceResponse response = bccClient.getCdsPrice(getCdsPriceRequest);
+        System.out.println(response);
+    }
+    /**
+     * getDeploySet
+     *
+     */
+    @Test
+    public void getDeploySetTest() {
+        GetDeploySetRequest getDeploySetRequest = new GetDeploySetRequest();
+        getDeploySetRequest.setId("");
+        GetDeploySetResponse response = bccClient.getDeploySet(getDeploySetRequest);
         System.out.println(response);
     }
     /**
@@ -714,6 +1133,17 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * getSnapshot
+     *
+     */
+    @Test
+    public void getSnapshotTest() {
+        GetSnapshotRequest getSnapshotRequest = new GetSnapshotRequest();
+        getSnapshotRequest.setSnapshotId("");
+        GetSnapshotResponse response = bccClient.getSnapshot(getSnapshotRequest);
+        System.out.println(response);
+    }
+    /**
      * getVolume
      *
      */
@@ -754,6 +1184,19 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * importKeypair
+     *
+     */
+    @Test
+    public void importKeypairTest() {
+        ImportKeypairRequest importKeypairRequest = new ImportKeypairRequest();
+        importKeypairRequest.setName("");
+        importKeypairRequest.setDescription("");
+        importKeypairRequest.setPublicKey("");
+        ImportKeypairResponse response = bccClient.importKeypair(importKeypairRequest);
+        System.out.println(response);
+    }
+    /**
      * instanceBatchResizeBySpec
      *
      */
@@ -790,6 +1233,31 @@ public class BccClientTest {
         bccClient.instanceRecovery(instanceRecoveryRequest);
     }
     /**
+     * keypairDetail
+     *
+     */
+    @Test
+    public void keypairDetailTest() {
+        KeypairDetailRequest keypairDetailRequest = new KeypairDetailRequest();
+        keypairDetailRequest.setKeypairId("");
+        KeypairDetailResponse response = bccClient.keypairDetail(keypairDetailRequest);
+        System.out.println(response);
+    }
+    /**
+     * listAsps
+     *
+     */
+    @Test
+    public void listAspsTest() {
+        ListAspsRequest listAspsRequest = new ListAspsRequest();
+        listAspsRequest.setMarker("");
+        listAspsRequest.setMaxKeys(0);
+        listAspsRequest.setAspName("");
+        listAspsRequest.setVolumeName("");
+        ListAspsResponse response = bccClient.listAsps(listAspsRequest);
+        System.out.println(response);
+    }
+    /**
      * listAvailableResizeSpec
      *
      */
@@ -801,6 +1269,24 @@ public class BccClientTest {
         listAvailableResizeSpecRequest.setZone("");
         listAvailableResizeSpecRequest.setInstanceIdList(new ArrayList<>());
         ListAvailableResizeSpecResponse response = bccClient.listAvailableResizeSpec(listAvailableResizeSpecRequest);
+        System.out.println(response);
+    }
+    /**
+     * listBidFlavor
+     *
+     */
+    @Test
+    public void listBidFlavorTest() {
+        ListBidFlavorResponse response = bccClient.listBidFlavor();
+        System.out.println(response);
+    }
+    /**
+     * listDeploySet
+     *
+     */
+    @Test
+    public void listDeploySetTest() {
+        ListDeploySetResponse response = bccClient.listDeploySet();
         System.out.println(response);
     }
     /**
@@ -870,6 +1356,18 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * listKeypair
+     *
+     */
+    @Test
+    public void listKeypairTest() {
+        ListKeypairRequest listKeypairRequest = new ListKeypairRequest();
+        listKeypairRequest.setMarker("");
+        listKeypairRequest.setMaxKeys(0);
+        ListKeypairResponse response = bccClient.listKeypair(listKeypairRequest);
+        System.out.println(response);
+    }
+    /**
      * listOs
      *
      */
@@ -898,6 +1396,22 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * listSecurityGroups
+     *
+     */
+    @Test
+    public void listSecurityGroupsTest() {
+        ListSecurityGroupsRequest listSecurityGroupsRequest = new ListSecurityGroupsRequest();
+        listSecurityGroupsRequest.setMarker("");
+        listSecurityGroupsRequest.setMaxKeys(0);
+        listSecurityGroupsRequest.setInstanceId("");
+        listSecurityGroupsRequest.setVpcId("");
+        listSecurityGroupsRequest.setSecurityGroupId("");
+        listSecurityGroupsRequest.setSecurityGroupIds("");
+        ListSecurityGroupsResponse response = bccClient.listSecurityGroups(listSecurityGroupsRequest);
+        System.out.println(response);
+    }
+    /**
      * listSharedUser
      *
      */
@@ -906,6 +1420,46 @@ public class BccClientTest {
         ListSharedUserRequest listSharedUserRequest = new ListSharedUserRequest();
         listSharedUserRequest.setImageId("");
         ListSharedUserResponse response = bccClient.listSharedUser(listSharedUserRequest);
+        System.out.println(response);
+    }
+    /**
+     * listSnapchain
+     *
+     */
+    @Test
+    public void listSnapchainTest() {
+        ListSnapchainRequest listSnapchainRequest = new ListSnapchainRequest();
+        listSnapchainRequest.setOrderBy("");
+        listSnapchainRequest.setOrder("");
+        listSnapchainRequest.setPageSize(0);
+        listSnapchainRequest.setPageNo(0);
+        listSnapchainRequest.setVolumeId("");
+        ListSnapchainResponse response = bccClient.listSnapchain(listSnapchainRequest);
+        System.out.println(response);
+    }
+    /**
+     * listSnapshotShare
+     *
+     */
+    @Test
+    public void listSnapshotShareTest() {
+        ListSnapshotShareRequest listSnapshotShareRequest = new ListSnapshotShareRequest();
+        listSnapshotShareRequest.setMarker("");
+        listSnapshotShareRequest.setMaxKeys(0);
+        ListSnapshotShareResponse response = bccClient.listSnapshotShare(listSnapshotShareRequest);
+        System.out.println(response);
+    }
+    /**
+     * listSnapshots
+     *
+     */
+    @Test
+    public void listSnapshotsTest() {
+        ListSnapshotsRequest listSnapshotsRequest = new ListSnapshotsRequest();
+        listSnapshotsRequest.setMarker("");
+        listSnapshotsRequest.setMaxKeys(0);
+        listSnapshotsRequest.setVolumeId("");
+        ListSnapshotsResponse response = bccClient.listSnapshots(listSnapshotsRequest);
         System.out.println(response);
     }
     /**
@@ -1155,6 +1709,19 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * remoteCopySnapshot
+     *
+     */
+    @Test
+    public void remoteCopySnapshotTest() {
+        RemoteCopySnapshotRequest remoteCopySnapshotRequest = new RemoteCopySnapshotRequest();
+        remoteCopySnapshotRequest.setSnapshotId("");
+        remoteCopySnapshotRequest.setUuid("");
+        remoteCopySnapshotRequest.setDestRegionInfos(new ArrayList<>());
+        RemoteCopySnapshotResponse response = bccClient.remoteCopySnapshot(remoteCopySnapshotRequest);
+        System.out.println(response);
+    }
+    /**
      * renameImage
      *
      */
@@ -1166,6 +1733,17 @@ public class BccClientTest {
         bccClient.renameImage(renameImageRequest);
     }
     /**
+     * renameKeypair
+     *
+     */
+    @Test
+    public void renameKeypairTest() {
+        RenameKeypairRequest renameKeypairRequest = new RenameKeypairRequest();
+        renameKeypairRequest.setKeypairId("");
+        renameKeypairRequest.setName("");
+        bccClient.renameKeypair(renameKeypairRequest);
+    }
+    /**
      * renameVolume
      *
      */
@@ -1175,6 +1753,19 @@ public class BccClientTest {
         renameVolumeRequest.setVolumeId("");
         renameVolumeRequest.setName("");
         bccClient.renameVolume(renameVolumeRequest);
+    }
+    /**
+     * replaceInstanceSecurityGroup
+     *
+     */
+    @Test
+    public void replaceInstanceSecurityGroupTest() {
+        ReplaceInstanceSecurityGroupRequest replaceInstanceSecurityGroupRequest = new ReplaceInstanceSecurityGroupRequest();
+        replaceInstanceSecurityGroupRequest.setInstanceIds(new ArrayList<>());
+        replaceInstanceSecurityGroupRequest.setSecurityGroupIds(new ArrayList<>());
+        replaceInstanceSecurityGroupRequest.setSecurityGroupType("");
+        ReplaceInstanceSecurityGroupResponse response = bccClient.replaceInstanceSecurityGroup(replaceInstanceSecurityGroupRequest);
+        System.out.println(response);
     }
     /**
      * resizeInstanceBySpec
@@ -1202,6 +1793,18 @@ public class BccClientTest {
         resizeVolumeRequest.setNewVolumeType("");
         ResizeVolumeResponse response = bccClient.resizeVolume(resizeVolumeRequest);
         System.out.println(response);
+    }
+    /**
+     * revokeSecurityGroupRule
+     *
+     */
+    @Test
+    public void revokeSecurityGroupRuleTest() {
+        RevokeSecurityGroupRuleRequest revokeSecurityGroupRuleRequest = new RevokeSecurityGroupRuleRequest();
+        revokeSecurityGroupRuleRequest.setSecurityGroupId("");
+        revokeSecurityGroupRuleRequest.setSgVersion(0);
+        revokeSecurityGroupRuleRequest.setRule(null);
+        bccClient.revokeSecurityGroupRule(revokeSecurityGroupRuleRequest);
     }
     /**
      * rollbackVolume
@@ -1286,6 +1889,19 @@ public class BccClientTest {
         bccClient.unbindInstanceFromTags(unbindInstanceFromTagsRequest);
     }
     /**
+     * unbindInstanceSecurityGroup
+     *
+     */
+    @Test
+    public void unbindInstanceSecurityGroupTest() {
+        UnbindInstanceSecurityGroupRequest unbindInstanceSecurityGroupRequest = new UnbindInstanceSecurityGroupRequest();
+        unbindInstanceSecurityGroupRequest.setInstanceIds(new ArrayList<>());
+        unbindInstanceSecurityGroupRequest.setSecurityGroupIds(new ArrayList<>());
+        unbindInstanceSecurityGroupRequest.setSecurityGroupType("");
+        UnbindInstanceSecurityGroupResponse response = bccClient.unbindInstanceSecurityGroup(unbindInstanceSecurityGroupRequest);
+        System.out.println(response);
+    }
+    /**
      * unbindRole
      *
      */
@@ -1309,6 +1925,17 @@ public class BccClientTest {
         bccClient.unbindTagImage(unbindTagImageRequest);
     }
     /**
+     * unbindTagSnapchain
+     *
+     */
+    @Test
+    public void unbindTagSnapchainTest() {
+        UnbindTagSnapchainRequest unbindTagSnapchainRequest = new UnbindTagSnapchainRequest();
+        unbindTagSnapchainRequest.setChainId("");
+        unbindTagSnapchainRequest.setChangeTags(new ArrayList<>());
+        bccClient.unbindTagSnapchain(unbindTagSnapchainRequest);
+    }
+    /**
      * unbindTagVolume
      *
      */
@@ -1318,6 +1945,44 @@ public class BccClientTest {
         unbindTagVolumeRequest.setVolumeId("");
         unbindTagVolumeRequest.setChangeTags(new ArrayList<>());
         bccClient.unbindTagVolume(unbindTagVolumeRequest);
+    }
+    /**
+     * updateAsp
+     *
+     */
+    @Test
+    public void updateAspTest() {
+        UpdateAspRequest updateAspRequest = new UpdateAspRequest();
+        updateAspRequest.setAspId("");
+        updateAspRequest.setName("");
+        updateAspRequest.setTimePoints(new ArrayList<>());
+        updateAspRequest.setRepeatWeekdays(new ArrayList<>());
+        updateAspRequest.setRetentionDays("");
+        bccClient.updateAsp(updateAspRequest);
+    }
+    /**
+     * updateDeploySet
+     *
+     */
+    @Test
+    public void updateDeploySetTest() {
+        UpdateDeploySetRequest updateDeploySetRequest = new UpdateDeploySetRequest();
+        updateDeploySetRequest.setDeployId("");
+        updateDeploySetRequest.setName("");
+        updateDeploySetRequest.setDesc("");
+        bccClient.updateDeploySet(updateDeploySetRequest);
+    }
+    /**
+     * updateDeploySetRelation
+     *
+     */
+    @Test
+    public void updateDeploySetRelationTest() {
+        UpdateDeploySetRelationRequest updateDeploySetRelationRequest = new UpdateDeploySetRelationRequest();
+        updateDeploySetRelationRequest.setInstanceId("");
+        updateDeploySetRelationRequest.setDeploysetIdList(new ArrayList<>());
+        UpdateDeploySetRelationResponse response = bccClient.updateDeploySetRelation(updateDeploySetRelationRequest);
+        System.out.println(response);
     }
     /**
      * updateInstanceSubnet
@@ -1332,5 +1997,34 @@ public class BccClientTest {
         updateInstanceSubnetRequest.setSecurityGroupIds(new ArrayList<>());
         updateInstanceSubnetRequest.setEnterpriseSecurityGroupIds(new ArrayList<>());
         bccClient.updateInstanceSubnet(updateInstanceSubnetRequest);
+    }
+    /**
+     * updateKeypairDescription
+     *
+     */
+    @Test
+    public void updateKeypairDescriptionTest() {
+        UpdateKeypairDescriptionRequest updateKeypairDescriptionRequest = new UpdateKeypairDescriptionRequest();
+        updateKeypairDescriptionRequest.setKeypairId("");
+        updateKeypairDescriptionRequest.setDescription("");
+        bccClient.updateKeypairDescription(updateKeypairDescriptionRequest);
+    }
+    /**
+     * updateSecurityGroupRule
+     *
+     */
+    @Test
+    public void updateSecurityGroupRuleTest() {
+        UpdateSecurityGroupRuleRequest updateSecurityGroupRuleRequest = new UpdateSecurityGroupRuleRequest();
+        updateSecurityGroupRuleRequest.setSgVersion(0);
+        updateSecurityGroupRuleRequest.setSecurityGroupRuleId("");
+        updateSecurityGroupRuleRequest.setRemark("");
+        updateSecurityGroupRuleRequest.setPortRange("");
+        updateSecurityGroupRuleRequest.setSourceIp("");
+        updateSecurityGroupRuleRequest.setSourceGroupId("");
+        updateSecurityGroupRuleRequest.setDestIp("");
+        updateSecurityGroupRuleRequest.setDestGroupId("");
+        updateSecurityGroupRuleRequest.setProtocol("");
+        bccClient.updateSecurityGroupRule(updateSecurityGroupRuleRequest);
     }
 }

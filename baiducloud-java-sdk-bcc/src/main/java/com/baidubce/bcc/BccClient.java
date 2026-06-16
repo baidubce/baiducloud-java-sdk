@@ -18,8 +18,11 @@ import com.baidubce.common.BaseBceResponse;
 
 import com.baidubce.bcc.models.AddIpv6Request;
 import com.baidubce.bcc.models.AddIpv6Response;
+import com.baidubce.bcc.models.AttachAspRequest;
+import com.baidubce.bcc.models.AttachKeypairRequest;
 import com.baidubce.bcc.models.AttachVolumeRequest;
 import com.baidubce.bcc.models.AttachVolumeResponse;
+import com.baidubce.bcc.models.AuthorizeSecurityGroupRuleRequest;
 import com.baidubce.bcc.models.AutoReleaseInstanceRequest;
 import com.baidubce.bcc.models.BatchAddIpRequest;
 import com.baidubce.bcc.models.BatchChangeToPostpaidRequest;
@@ -31,39 +34,75 @@ import com.baidubce.bcc.models.BatchRefundResourceRequest;
 import com.baidubce.bcc.models.BatchRefundResourceResponse;
 import com.baidubce.bcc.models.BatchStartInstanceRequest;
 import com.baidubce.bcc.models.BatchStopInstanceRequest;
+import com.baidubce.bcc.models.BindInstanceSecurityGroupRequest;
+import com.baidubce.bcc.models.BindInstanceSecurityGroupResponse;
 import com.baidubce.bcc.models.BindInstanceToSecurityGroupRequest;
 import com.baidubce.bcc.models.BindInstanceToTagsRequest;
 import com.baidubce.bcc.models.BindRoleRequest;
 import com.baidubce.bcc.models.BindRoleResponse;
 import com.baidubce.bcc.models.BindTagImageRequest;
+import com.baidubce.bcc.models.BindTagSnapchainRequest;
 import com.baidubce.bcc.models.BindTagVolumeRequest;
+import com.baidubce.bcc.models.CancelBidOrderRequest;
+import com.baidubce.bcc.models.CancelBidOrderResponse;
 import com.baidubce.bcc.models.CancelRemoteCopyImageRequest;
+import com.baidubce.bcc.models.CancelSnapshotShareRequest;
+import com.baidubce.bcc.models.CancelSnapshotShareResponse;
 import com.baidubce.bcc.models.ChangeToPrepaidRequest;
 import com.baidubce.bcc.models.ChangeToPrepaidResponse;
 import com.baidubce.bcc.models.ChangeVpcRequest;
+import com.baidubce.bcc.models.CreateAspRequest;
+import com.baidubce.bcc.models.CreateAspResponse;
 import com.baidubce.bcc.models.CreateAutoRenewRuleRequest;
+import com.baidubce.bcc.models.CreateBidInstanceRequest;
+import com.baidubce.bcc.models.CreateBidInstanceResponse;
+import com.baidubce.bcc.models.CreateDeploySetRequest;
+import com.baidubce.bcc.models.CreateDeploySetResponse;
 import com.baidubce.bcc.models.CreateImageRequest;
 import com.baidubce.bcc.models.CreateImageResponse;
 import com.baidubce.bcc.models.CreateInstanceBySpecRequest;
 import com.baidubce.bcc.models.CreateInstanceBySpecResponse;
+import com.baidubce.bcc.models.CreateKeypairRequest;
+import com.baidubce.bcc.models.CreateKeypairResponse;
+import com.baidubce.bcc.models.CreateSecurityGroupRequest;
+import com.baidubce.bcc.models.CreateSecurityGroupResponse;
+import com.baidubce.bcc.models.CreateSnapshotRequest;
+import com.baidubce.bcc.models.CreateSnapshotResponse;
+import com.baidubce.bcc.models.CreateSnapshotShareRequest;
+import com.baidubce.bcc.models.CreateSnapshotShareResponse;
 import com.baidubce.bcc.models.CreateVolumeRequest;
 import com.baidubce.bcc.models.CreateVolumeResponse;
 import com.baidubce.bcc.models.DelIpv6Request;
+import com.baidubce.bcc.models.DeleteAspRequest;
 import com.baidubce.bcc.models.DeleteAutoRenewRuleRequest;
+import com.baidubce.bcc.models.DeleteDeploySetRequest;
 import com.baidubce.bcc.models.DeleteImageRequest;
 import com.baidubce.bcc.models.DeleteInstanceDeploySetRequest;
+import com.baidubce.bcc.models.DeleteKeypairRequest;
 import com.baidubce.bcc.models.DeletePrepayInstanceRequest;
 import com.baidubce.bcc.models.DeletePrepayInstanceResponse;
 import com.baidubce.bcc.models.DeleteRecycledInstanceRequest;
+import com.baidubce.bcc.models.DeleteSecurityGroupRequest;
+import com.baidubce.bcc.models.DeleteSecurityGroupRuleRequest;
+import com.baidubce.bcc.models.DeleteSnapshotRequest;
+import com.baidubce.bcc.models.DeletesInstanceDeploySetRequest;
+import com.baidubce.bcc.models.DetachAspRequest;
+import com.baidubce.bcc.models.DetachKeypairRequest;
 import com.baidubce.bcc.models.DetachVolumeRequest;
 import com.baidubce.bcc.models.EnterRescueModeRequest;
 import com.baidubce.bcc.models.EnterRescueModeResponse;
 import com.baidubce.bcc.models.ExitRescueModeRequest;
 import com.baidubce.bcc.models.ExitRescueModeResponse;
+import com.baidubce.bcc.models.GetAspRequest;
+import com.baidubce.bcc.models.GetAspResponse;
 import com.baidubce.bcc.models.GetAvailableImagesBySpecRequest;
 import com.baidubce.bcc.models.GetAvailableImagesBySpecResponse;
+import com.baidubce.bcc.models.GetBidInstancePriceRequest;
+import com.baidubce.bcc.models.GetBidInstancePriceResponse;
 import com.baidubce.bcc.models.GetCdsPriceRequest;
 import com.baidubce.bcc.models.GetCdsPriceResponse;
+import com.baidubce.bcc.models.GetDeploySetRequest;
+import com.baidubce.bcc.models.GetDeploySetResponse;
 import com.baidubce.bcc.models.GetDiskQuotaRequest;
 import com.baidubce.bcc.models.GetDiskQuotaResponse;
 import com.baidubce.bcc.models.GetImageRequest;
@@ -77,18 +116,28 @@ import com.baidubce.bcc.models.GetInstanceUserDataInfoResponse;
 import com.baidubce.bcc.models.GetInstanceVncRequest;
 import com.baidubce.bcc.models.GetInstanceVncResponse;
 import com.baidubce.bcc.models.GetRoleListResponse;
+import com.baidubce.bcc.models.GetSnapshotRequest;
+import com.baidubce.bcc.models.GetSnapshotResponse;
 import com.baidubce.bcc.models.GetVolumeRequest;
 import com.baidubce.bcc.models.GetVolumeResizeProgressRequest;
 import com.baidubce.bcc.models.GetVolumeResizeProgressResponse;
 import com.baidubce.bcc.models.GetVolumeResponse;
 import com.baidubce.bcc.models.ImportImageRequest;
 import com.baidubce.bcc.models.ImportImageResponse;
+import com.baidubce.bcc.models.ImportKeypairRequest;
+import com.baidubce.bcc.models.ImportKeypairResponse;
 import com.baidubce.bcc.models.InstanceBatchResizeBySpecRequest;
 import com.baidubce.bcc.models.InstanceBatchResizeBySpecResponse;
 import com.baidubce.bcc.models.InstanceDeletionProtectionRequest;
 import com.baidubce.bcc.models.InstanceRecoveryRequest;
+import com.baidubce.bcc.models.KeypairDetailRequest;
+import com.baidubce.bcc.models.KeypairDetailResponse;
+import com.baidubce.bcc.models.ListAspsRequest;
+import com.baidubce.bcc.models.ListAspsResponse;
 import com.baidubce.bcc.models.ListAvailableResizeSpecRequest;
 import com.baidubce.bcc.models.ListAvailableResizeSpecResponse;
+import com.baidubce.bcc.models.ListBidFlavorResponse;
+import com.baidubce.bcc.models.ListDeploySetResponse;
 import com.baidubce.bcc.models.ListImagesRequest;
 import com.baidubce.bcc.models.ListImagesResponse;
 import com.baidubce.bcc.models.ListInstanceByIdsRequest;
@@ -97,12 +146,22 @@ import com.baidubce.bcc.models.ListInstanceEnisRequest;
 import com.baidubce.bcc.models.ListInstanceEnisResponse;
 import com.baidubce.bcc.models.ListInstancesRequest;
 import com.baidubce.bcc.models.ListInstancesResponse;
+import com.baidubce.bcc.models.ListKeypairRequest;
+import com.baidubce.bcc.models.ListKeypairResponse;
 import com.baidubce.bcc.models.ListOsRequest;
 import com.baidubce.bcc.models.ListOsResponse;
 import com.baidubce.bcc.models.ListRecycleInstanceRequest;
 import com.baidubce.bcc.models.ListRecycleInstanceResponse;
+import com.baidubce.bcc.models.ListSecurityGroupsRequest;
+import com.baidubce.bcc.models.ListSecurityGroupsResponse;
 import com.baidubce.bcc.models.ListSharedUserRequest;
 import com.baidubce.bcc.models.ListSharedUserResponse;
+import com.baidubce.bcc.models.ListSnapchainRequest;
+import com.baidubce.bcc.models.ListSnapchainResponse;
+import com.baidubce.bcc.models.ListSnapshotShareRequest;
+import com.baidubce.bcc.models.ListSnapshotShareResponse;
+import com.baidubce.bcc.models.ListSnapshotsRequest;
+import com.baidubce.bcc.models.ListSnapshotsResponse;
 import com.baidubce.bcc.models.ListVolumesRequest;
 import com.baidubce.bcc.models.ListVolumesResponse;
 import com.baidubce.bcc.models.ModifyCdsAttributeRequest;
@@ -124,11 +183,17 @@ import com.baidubce.bcc.models.ReleaseMultipleInstanceByPostRequest;
 import com.baidubce.bcc.models.ReleaseVolumeRequest;
 import com.baidubce.bcc.models.RemoteCopyImageRequest;
 import com.baidubce.bcc.models.RemoteCopyImageResponse;
+import com.baidubce.bcc.models.RemoteCopySnapshotRequest;
+import com.baidubce.bcc.models.RemoteCopySnapshotResponse;
 import com.baidubce.bcc.models.RenameImageRequest;
+import com.baidubce.bcc.models.RenameKeypairRequest;
 import com.baidubce.bcc.models.RenameVolumeRequest;
+import com.baidubce.bcc.models.ReplaceInstanceSecurityGroupRequest;
+import com.baidubce.bcc.models.ReplaceInstanceSecurityGroupResponse;
 import com.baidubce.bcc.models.ResizeInstanceBySpecRequest;
 import com.baidubce.bcc.models.ResizeVolumeRequest;
 import com.baidubce.bcc.models.ResizeVolumeResponse;
+import com.baidubce.bcc.models.RevokeSecurityGroupRuleRequest;
 import com.baidubce.bcc.models.RollbackVolumeRequest;
 import com.baidubce.bcc.models.ShareImageRequest;
 import com.baidubce.bcc.models.StartInstanceRequest;
@@ -136,62 +201,91 @@ import com.baidubce.bcc.models.StopInstanceRequest;
 import com.baidubce.bcc.models.UnShareImageRequest;
 import com.baidubce.bcc.models.UnbindInstanceFromSecurityGroupRequest;
 import com.baidubce.bcc.models.UnbindInstanceFromTagsRequest;
+import com.baidubce.bcc.models.UnbindInstanceSecurityGroupRequest;
+import com.baidubce.bcc.models.UnbindInstanceSecurityGroupResponse;
 import com.baidubce.bcc.models.UnbindRoleRequest;
 import com.baidubce.bcc.models.UnbindRoleResponse;
 import com.baidubce.bcc.models.UnbindTagImageRequest;
+import com.baidubce.bcc.models.UnbindTagSnapchainRequest;
 import com.baidubce.bcc.models.UnbindTagVolumeRequest;
+import com.baidubce.bcc.models.UpdateAspRequest;
+import com.baidubce.bcc.models.UpdateDeploySetRelationRequest;
+import com.baidubce.bcc.models.UpdateDeploySetRelationResponse;
+import com.baidubce.bcc.models.UpdateDeploySetRequest;
 import com.baidubce.bcc.models.UpdateInstanceSubnetRequest;
+import com.baidubce.bcc.models.UpdateKeypairDescriptionRequest;
+import com.baidubce.bcc.models.UpdateSecurityGroupRuleRequest;
 
 public class BccClient extends AbstractBceClient {
 
     private static final String[] HEADERS_TO_SIGN = {"host", "x-bce-date"};
 
     private static final String VERSION_V2 = "v2";
-    private static final String CONSTANT_INSTANCE = "instance";
-    private static final String CONSTANT_ATTRIBUTE = "attribute";
-    private static final String CONSTANT_GET_USERDATA = "getUserdata";
     private static final String CONSTANT_IMAGE = "image";
     private static final String CONSTANT_TAG = "tag";
     private static final String CONSTANT_VOLUME = "volume";
-    private static final String CONSTANT_BATCH_DEL_IP = "batchDelIp";
-    private static final String CONSTANT_PROGRESS = "progress";
+    private static final String CONSTANT_SNAPSHOT = "snapshot";
     private static final String CONSTANT_DISK = "disk";
     private static final String CONSTANT_QUOTA = "quota";
-    private static final String CONSTANT_BATCH = "batch";
-    private static final String CONSTANT_CHARGING = "charging";
     private static final String CONSTANT_GET_PRICE = "getPrice";
+    private static final String CONSTANT_INSTANCE = "instance";
     private static final String CONSTANT_RECOVERY = "recovery";
+    private static final String CONSTANT_DEPLOYSET = "deployset";
     private static final String CONSTANT_GET_AVAILABLE_IMAGES_BY_SPEC = "getAvailableImagesBySpec";
     private static final String CONSTANT_ROLE = "role";
-    private static final String CONSTANT_RENAME = "rename";
-    private static final String CONSTANT_SUBNET = "subnet";
-    private static final String CONSTANT_CHANGE_SUBNET = "changeSubnet";
+    private static final String CONSTANT_SECURITY_GROUP = "securityGroup";
     private static final String CONSTANT_BATCH_CREATE_AUTO_RENEW_RULES = "batchCreateAutoRenewRules";
-    private static final String CONSTANT_VPC = "vpc";
-    private static final String CONSTANT_CHANGE_VPC = "changeVpc";
-    private static final String CONSTANT_BATCH_DELETE_AUTO_RENEW_RULES = "batchDeleteAutoRenewRules";
+    private static final String CONSTANT_ASP = "asp";
+    private static final String CONSTANT_UPDATE = "update";
+    private static final String CONSTANT_CHAIN = "chain";
+    private static final String CONSTANT_KEYPAIR = "keypair";
     private static final String CONSTANT_VNC = "vnc";
-    private static final String CONSTANT_ADD_IPV6 = "addIpv6";
-    private static final String CONSTANT_DELETION_PROTECTION = "deletionProtection";
+    private static final String CONSTANT_UN_SHARE = "unShare";
     private static final String CONSTANT_RECYCLE = "recycle";
-    private static final String CONSTANT_BATCH_ACTION = "batchAction";
     private static final String CONSTANT_SHARED_USERS = "sharedUsers";
     private static final String CONSTANT_NO_CHARGE = "noCharge";
     private static final String CONSTANT_REBUILD = "rebuild";
     private static final String CONSTANT_INSTANCE_BATCH_BY_SPEC = "instanceBatchBySpec";
     private static final String CONSTANT_MODIFY_RELATED_DELETE_POLICY = "modifyRelatedDeletePolicy";
-    private static final String CONSTANT_DEPLOYSET = "deployset";
     private static final String CONSTANT_DEL_RELATION = "delRelation";
-    private static final String CONSTANT_DEL_IPV6 = "delIpv6";
-    private static final String CONSTANT_ENI = "eni";
+    private static final String CONSTANT_CANCEL_BID_ORDER = "cancelBidOrder";
+    private static final String CONSTANT_BID_FLAVOR = "bidFlavor";
     private static final String CONSTANT_LIST = "list";
-    private static final String CONSTANT_BATCH_ADD_IP = "batchAddIp";
     private static final String CONSTANT_INSTANCE_BY_SPEC = "instanceBySpec";
     private static final String CONSTANT_BATCH_DELETE = "batchDelete";
     private static final String CONSTANT_BATCH_REFUND_RESOURCE = "batchRefundResource";
     private static final String CONSTANT_LIST_BY_INSTANCE_ID = "listByInstanceId";
-    private static final String CONSTANT_IMPORT = "import";
     private static final String CONSTANT_OS = "os";
+    private static final String CONSTANT_SECURITYGROUP = "securitygroup";
+    private static final String CONSTANT_UNBIND = "unbind";
+    private static final String CONSTANT_BATCH_ACTION = "batchAction";
+    private static final String CONSTANT_BIND = "bind";
+    private static final String CONSTANT_RULE = "rule";
+    private static final String CONSTANT_ATTRIBUTE = "attribute";
+    private static final String CONSTANT_GET_USERDATA = "getUserdata";
+    private static final String CONSTANT_BATCH_DEL_IP = "batchDelIp";
+    private static final String CONSTANT_PROGRESS = "progress";
+    private static final String CONSTANT_BATCH = "batch";
+    private static final String CONSTANT_CHARGING = "charging";
+    private static final String CONSTANT_BID_PRICE = "bidPrice";
+    private static final String CONSTANT_SNAPSHOT_SHARE = "snapshotShare";
+    private static final String CONSTANT_RENAME = "rename";
+    private static final String CONSTANT_SUBNET = "subnet";
+    private static final String CONSTANT_CHANGE_SUBNET = "changeSubnet";
+    private static final String CONSTANT_REPLACE = "replace";
+    private static final String CONSTANT_VPC = "vpc";
+    private static final String CONSTANT_CHANGE_VPC = "changeVpc";
+    private static final String CONSTANT_BATCH_DELETE_AUTO_RENEW_RULES = "batchDeleteAutoRenewRules";
+    private static final String CONSTANT_ADD_IPV6 = "addIpv6";
+    private static final String CONSTANT_DELETION_PROTECTION = "deletionProtection";
+    private static final String CONSTANT_SHARE = "share";
+    private static final String CONSTANT_UPDATE_RELATION = "updateRelation";
+    private static final String CONSTANT_CREATE = "create";
+    private static final String CONSTANT_DEL_IPV6 = "delIpv6";
+    private static final String CONSTANT_ENI = "eni";
+    private static final String CONSTANT_BATCH_ADD_IP = "batchAddIp";
+    private static final String CONSTANT_REMOTE_COPY = "remote_copy";
+    private static final String CONSTANT_IMPORT = "import";
     private static final String CONSTANT_RESCUE = "rescue";
     private static final String CONSTANT_MODE = "mode";
     private static final String CONSTANT_EXIT = "exit";
@@ -230,6 +324,30 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * attachAsp
+     * 
+     * @param request 入参结构体
+     */
+    public void attachAsp(AttachAspRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_ASP, request.getAspId());
+        internalRequest.addParameter("attach", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * attachKeypair
+     * 
+     * @param request 入参结构体
+     */
+    public void attachKeypair(AttachKeypairRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_KEYPAIR, request.getKeypairId());
+        internalRequest.addParameter("attach", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * attachVolume
      * 
      * @param request 入参结构体
@@ -240,6 +358,21 @@ public class BccClient extends AbstractBceClient {
         internalRequest.addParameter("attach", null);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, AttachVolumeResponse.class);
+    }
+
+    /**
+     * authorizeSecurityGroupRule
+     * 
+     * @param request 入参结构体
+     */
+    public void authorizeSecurityGroupRule(AuthorizeSecurityGroupRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
+        internalRequest.addParameter("authorizeRule", null);
+        if (request.getSgVersion() != null) {
+            internalRequest.addParameter("sgVersion", String.valueOf(request.getSgVersion()));
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
@@ -339,6 +472,18 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * bindInstanceSecurityGroup
+     * 
+     * @param request 入参结构体
+     * @return BindInstanceSecurityGroupResponse
+     */
+    public BindInstanceSecurityGroupResponse bindInstanceSecurityGroup(BindInstanceSecurityGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SECURITYGROUP, CONSTANT_BIND);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, BindInstanceSecurityGroupResponse.class);
+    }
+
+    /**
      * bindInstanceToSecurityGroup
      * 
      * @param request 入参结构体
@@ -388,6 +533,18 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * bindTagSnapchain
+     * 
+     * @param request 入参结构体
+     */
+    public void bindTagSnapchain(BindTagSnapchainRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SNAPSHOT, CONSTANT_CHAIN, request.getChainId(), CONSTANT_TAG);
+        internalRequest.addParameter("bind", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * bindTagVolume
      * 
      * @param request 入参结构体
@@ -400,6 +557,18 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * cancelBidOrder
+     * 
+     * @param request 入参结构体
+     * @return CancelBidOrderResponse
+     */
+    public CancelBidOrderResponse cancelBidOrder(CancelBidOrderRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_CANCEL_BID_ORDER);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CancelBidOrderResponse.class);
+    }
+
+    /**
      * cancelRemoteCopyImage
      * 
      * @param request 入参结构体
@@ -408,6 +577,18 @@ public class BccClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_IMAGE, request.getImageId());
         internalRequest.addParameter("cancelRemoteCopy", null);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * cancelSnapshotShare
+     * 
+     * @param request 入参结构体
+     * @return CancelSnapshotShareResponse
+     */
+    public CancelSnapshotShareResponse cancelSnapshotShare(CancelSnapshotShareRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_SNAPSHOT, CONSTANT_UN_SHARE);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CancelSnapshotShareResponse.class);
     }
 
     /**
@@ -435,6 +616,18 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * createAsp
+     * 
+     * @param request 入参结构体
+     * @return CreateAspResponse
+     */
+    public CreateAspResponse createAsp(CreateAspRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_ASP);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateAspResponse.class);
+    }
+
+    /**
      * createAutoRenewRule
      * 
      * @param request 入参结构体
@@ -443,6 +636,30 @@ public class BccClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_BATCH_CREATE_AUTO_RENEW_RULES);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * createBidInstance
+     * 
+     * @param request 入参结构体
+     * @return CreateBidInstanceResponse
+     */
+    public CreateBidInstanceResponse createBidInstance(CreateBidInstanceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE_BY_SPEC);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateBidInstanceResponse.class);
+    }
+
+    /**
+     * createDeploySet
+     * 
+     * @param request 入参结构体
+     * @return CreateDeploySetResponse
+     */
+    public CreateDeploySetResponse createDeploySet(CreateDeploySetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_DEPLOYSET, CONSTANT_CREATE);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateDeploySetResponse.class);
     }
 
     /**
@@ -470,6 +687,54 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * createKeypair
+     * 
+     * @param request 入参结构体
+     * @return CreateKeypairResponse
+     */
+    public CreateKeypairResponse createKeypair(CreateKeypairRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_KEYPAIR);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateKeypairResponse.class);
+    }
+
+    /**
+     * createSecurityGroup
+     * 
+     * @param request 入参结构体
+     * @return CreateSecurityGroupResponse
+     */
+    public CreateSecurityGroupResponse createSecurityGroup(CreateSecurityGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_SECURITY_GROUP);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateSecurityGroupResponse.class);
+    }
+
+    /**
+     * createSnapshot
+     * 
+     * @param request 入参结构体
+     * @return CreateSnapshotResponse
+     */
+    public CreateSnapshotResponse createSnapshot(CreateSnapshotRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_SNAPSHOT);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateSnapshotResponse.class);
+    }
+
+    /**
+     * createSnapshotShare
+     * 
+     * @param request 入参结构体
+     * @return CreateSnapshotShareResponse
+     */
+    public CreateSnapshotShareResponse createSnapshotShare(CreateSnapshotShareRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_SNAPSHOT, CONSTANT_SHARE);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateSnapshotShareResponse.class);
+    }
+
+    /**
      * createVolume
      * 
      * @param request 入参结构体
@@ -493,6 +758,16 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * deleteAsp
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteAsp(DeleteAspRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V2, CONSTANT_ASP, request.getAspId());
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * deleteAutoRenewRule
      * 
      * @param request 入参结构体
@@ -500,6 +775,16 @@ public class BccClient extends AbstractBceClient {
     public void deleteAutoRenewRule(DeleteAutoRenewRuleRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_BATCH_DELETE_AUTO_RENEW_RULES);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteDeploySet
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteDeploySet(DeleteDeploySetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_DEPLOYSET, request.getDeployId());
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
@@ -525,6 +810,16 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * deleteKeypair
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteKeypair(DeleteKeypairRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V2, CONSTANT_KEYPAIR, request.getKeypairId());
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * deletePrepayInstance
      * 
      * @param request 入参结构体
@@ -546,6 +841,74 @@ public class BccClient extends AbstractBceClient {
      */
     public void deleteRecycledInstance(DeleteRecycledInstanceRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V2, CONSTANT_RECYCLE, CONSTANT_INSTANCE, request.getInstanceId());
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteSecurityGroup
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteSecurityGroup(DeleteSecurityGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V2, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteSecurityGroupRule
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteSecurityGroupRule(DeleteSecurityGroupRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V2, CONSTANT_SECURITY_GROUP, CONSTANT_RULE, request.getSecurityGroupRuleId());
+        if (request.getSgVersion() != null) {
+            internalRequest.addParameter("sgVersion", String.valueOf(request.getSgVersion()));
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteSnapshot
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteSnapshot(DeleteSnapshotRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V2, CONSTANT_SNAPSHOT, request.getSnapshotId());
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deletesInstanceDeploySet
+     * 
+     * @param request 入参结构体
+     */
+    public void deletesInstanceDeploySet(DeletesInstanceDeploySetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_DEPLOYSET, CONSTANT_DEL_RELATION);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * detachAsp
+     * 
+     * @param request 入参结构体
+     */
+    public void detachAsp(DetachAspRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_ASP, request.getAspId());
+        internalRequest.addParameter("detach", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * detachKeypair
+     * 
+     * @param request 入参结构体
+     */
+    public void detachKeypair(DetachKeypairRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_KEYPAIR, request.getKeypairId());
+        internalRequest.addParameter("detach", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
@@ -586,6 +949,17 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * getAsp
+     * 
+     * @param request 入参结构体
+     * @return GetAspResponse
+     */
+    public GetAspResponse getAsp(GetAspRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_ASP, request.getAspId());
+        return invokeHttpClient(internalRequest, GetAspResponse.class);
+    }
+
+    /**
      * getAvailableImagesBySpec
      * 
      * @param request 入参结构体
@@ -609,6 +983,18 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * getBidInstancePrice
+     * 
+     * @param request 入参结构体
+     * @return GetBidInstancePriceResponse
+     */
+    public GetBidInstancePriceResponse getBidInstancePrice(GetBidInstancePriceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_BID_PRICE);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, GetBidInstancePriceResponse.class);
+    }
+
+    /**
      * getCdsPrice
      * 
      * @param request 入参结构体
@@ -618,6 +1004,17 @@ public class BccClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_VOLUME, CONSTANT_GET_PRICE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, GetCdsPriceResponse.class);
+    }
+
+    /**
+     * getDeploySet
+     * 
+     * @param request 入参结构体
+     * @return GetDeploySetResponse
+     */
+    public GetDeploySetResponse getDeploySet(GetDeploySetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_DEPLOYSET, request.getId());
+        return invokeHttpClient(internalRequest, GetDeploySetResponse.class);
     }
 
     /**
@@ -719,6 +1116,17 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * getSnapshot
+     * 
+     * @param request 入参结构体
+     * @return GetSnapshotResponse
+     */
+    public GetSnapshotResponse getSnapshot(GetSnapshotRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_SNAPSHOT, request.getSnapshotId());
+        return invokeHttpClient(internalRequest, GetSnapshotResponse.class);
+    }
+
+    /**
      * getVolume
      * 
      * @param request 入参结构体
@@ -750,6 +1158,19 @@ public class BccClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_IMAGE, CONSTANT_IMPORT);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, ImportImageResponse.class);
+    }
+
+    /**
+     * importKeypair
+     * 
+     * @param request 入参结构体
+     * @return ImportKeypairResponse
+     */
+    public ImportKeypairResponse importKeypair(ImportKeypairRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_KEYPAIR);
+        internalRequest.addParameter("import", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ImportKeypairResponse.class);
     }
 
     /**
@@ -788,6 +1209,40 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * keypairDetail
+     * 
+     * @param request 入参结构体
+     * @return KeypairDetailResponse
+     */
+    public KeypairDetailResponse keypairDetail(KeypairDetailRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_KEYPAIR, request.getKeypairId());
+        return invokeHttpClient(internalRequest, KeypairDetailResponse.class);
+    }
+
+    /**
+     * listAsps
+     * 
+     * @param request 入参结构体
+     * @return ListAspsResponse
+     */
+    public ListAspsResponse listAsps(ListAspsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_ASP);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        if (request.getAspName() != null) {
+            internalRequest.addParameter("aspName", request.getAspName());
+        }
+        if (request.getVolumeName() != null) {
+            internalRequest.addParameter("volumeName", request.getVolumeName());
+        }
+        return invokeHttpClient(internalRequest, ListAspsResponse.class);
+    }
+
+    /**
      * listAvailableResizeSpec
      * 
      * @param request 入参结构体
@@ -798,6 +1253,26 @@ public class BccClient extends AbstractBceClient {
         internalRequest.addParameter("resizeList", null);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, ListAvailableResizeSpecResponse.class);
+    }
+
+    /**
+     * listBidFlavor
+     * 
+     * @return ListBidFlavorResponse
+     */
+    public ListBidFlavorResponse listBidFlavor() {
+        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_BID_FLAVOR);
+        return invokeHttpClient(internalRequest, ListBidFlavorResponse.class);
+    }
+
+    /**
+     * listDeploySet
+     * 
+     * @return ListDeploySetResponse
+     */
+    public ListDeploySetResponse listDeploySet() {
+        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_DEPLOYSET, CONSTANT_LIST);
+        return invokeHttpClient(internalRequest, ListDeploySetResponse.class);
     }
 
     /**
@@ -918,6 +1393,23 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * listKeypair
+     * 
+     * @param request 入参结构体
+     * @return ListKeypairResponse
+     */
+    public ListKeypairResponse listKeypair(ListKeypairRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_KEYPAIR);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, ListKeypairResponse.class);
+    }
+
+    /**
      * listOs
      * 
      * @param request 入参结构体
@@ -942,6 +1434,35 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * listSecurityGroups
+     * 
+     * @param request 入参结构体
+     * @return ListSecurityGroupsResponse
+     */
+    public ListSecurityGroupsResponse listSecurityGroups(ListSecurityGroupsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_SECURITY_GROUP);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        if (request.getInstanceId() != null) {
+            internalRequest.addParameter("instanceId", request.getInstanceId());
+        }
+        if (request.getVpcId() != null) {
+            internalRequest.addParameter("vpcId", request.getVpcId());
+        }
+        if (request.getSecurityGroupId() != null) {
+            internalRequest.addParameter("securityGroupId", request.getSecurityGroupId());
+        }
+        if (request.getSecurityGroupIds() != null) {
+            internalRequest.addParameter("securityGroupIds", request.getSecurityGroupIds());
+        }
+        return invokeHttpClient(internalRequest, ListSecurityGroupsResponse.class);
+    }
+
+    /**
      * listSharedUser
      * 
      * @param request 入参结构体
@@ -950,6 +1471,64 @@ public class BccClient extends AbstractBceClient {
     public ListSharedUserResponse listSharedUser(ListSharedUserRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_IMAGE, request.getImageId(), CONSTANT_SHARED_USERS);
         return invokeHttpClient(internalRequest, ListSharedUserResponse.class);
+    }
+
+    /**
+     * listSnapchain
+     * 
+     * @param request 入参结构体
+     * @return ListSnapchainResponse
+     */
+    public ListSnapchainResponse listSnapchain(ListSnapchainRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_SNAPSHOT, CONSTANT_CHAIN);
+        if (request.getOrderBy() != null) {
+            internalRequest.addParameter("orderBy", request.getOrderBy());
+        }
+        if (request.getOrder() != null) {
+            internalRequest.addParameter("order", request.getOrder());
+        }
+        if (request.getPageSize() != null) {
+            internalRequest.addParameter("pageSize", String.valueOf(request.getPageSize()));
+        }
+        if (request.getPageNo() != null) {
+            internalRequest.addParameter("pageNo", String.valueOf(request.getPageNo()));
+        }
+        if (request.getVolumeId() != null) {
+            internalRequest.addParameter("volumeId", request.getVolumeId());
+        }
+        return invokeHttpClient(internalRequest, ListSnapchainResponse.class);
+    }
+
+    /**
+     * listSnapshotShare
+     * 
+     * @param request 入参结构体
+     * @return ListSnapshotShareResponse
+     */
+    public ListSnapshotShareResponse listSnapshotShare(ListSnapshotShareRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_SNAPSHOT, CONSTANT_SNAPSHOT_SHARE, CONSTANT_LIST);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ListSnapshotShareResponse.class);
+    }
+
+    /**
+     * listSnapshots
+     * 
+     * @param request 入参结构体
+     * @return ListSnapshotsResponse
+     */
+    public ListSnapshotsResponse listSnapshots(ListSnapshotsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_SNAPSHOT);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        if (request.getVolumeId() != null) {
+            internalRequest.addParameter("volumeId", request.getVolumeId());
+        }
+        return invokeHttpClient(internalRequest, ListSnapshotsResponse.class);
     }
 
     /**
@@ -1185,12 +1764,36 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * remoteCopySnapshot
+     * 
+     * @param request 入参结构体
+     * @return RemoteCopySnapshotResponse
+     */
+    public RemoteCopySnapshotResponse remoteCopySnapshot(RemoteCopySnapshotRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SNAPSHOT, CONSTANT_REMOTE_COPY, request.getSnapshotId());
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, RemoteCopySnapshotResponse.class);
+    }
+
+    /**
      * renameImage
      * 
      * @param request 入参结构体
      */
     public void renameImage(RenameImageRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_IMAGE, CONSTANT_RENAME);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * renameKeypair
+     * 
+     * @param request 入参结构体
+     */
+    public void renameKeypair(RenameKeypairRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_KEYPAIR, request.getKeypairId());
+        internalRequest.addParameter("rename", null);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
@@ -1205,6 +1808,18 @@ public class BccClient extends AbstractBceClient {
         internalRequest.addParameter("rename", null);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * replaceInstanceSecurityGroup
+     * 
+     * @param request 入参结构体
+     * @return ReplaceInstanceSecurityGroupResponse
+     */
+    public ReplaceInstanceSecurityGroupResponse replaceInstanceSecurityGroup(ReplaceInstanceSecurityGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SECURITYGROUP, CONSTANT_REPLACE);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ReplaceInstanceSecurityGroupResponse.class);
     }
 
     /**
@@ -1233,6 +1848,21 @@ public class BccClient extends AbstractBceClient {
         internalRequest.addParameter("resize", null);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, ResizeVolumeResponse.class);
+    }
+
+    /**
+     * revokeSecurityGroupRule
+     * 
+     * @param request 入参结构体
+     */
+    public void revokeSecurityGroupRule(RevokeSecurityGroupRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
+        internalRequest.addParameter("revokeRule", null);
+        if (request.getSgVersion() != null) {
+            internalRequest.addParameter("sgVersion", String.valueOf(request.getSgVersion()));
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
@@ -1319,6 +1949,18 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * unbindInstanceSecurityGroup
+     * 
+     * @param request 入参结构体
+     * @return UnbindInstanceSecurityGroupResponse
+     */
+    public UnbindInstanceSecurityGroupResponse unbindInstanceSecurityGroup(UnbindInstanceSecurityGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SECURITYGROUP, CONSTANT_UNBIND);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, UnbindInstanceSecurityGroupResponse.class);
+    }
+
+    /**
      * unbindRole
      * 
      * @param request 入参结构体
@@ -1344,6 +1986,18 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * unbindTagSnapchain
+     * 
+     * @param request 入参结构体
+     */
+    public void unbindTagSnapchain(UnbindTagSnapchainRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SNAPSHOT, CONSTANT_CHAIN, request.getChainId(), CONSTANT_TAG);
+        internalRequest.addParameter("unbind", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * unbindTagVolume
      * 
      * @param request 入参结构体
@@ -1356,12 +2010,73 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * updateAsp
+     * 
+     * @param request 入参结构体
+     */
+    public void updateAsp(UpdateAspRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_ASP, CONSTANT_UPDATE);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateDeploySet
+     * 
+     * @param request 入参结构体
+     */
+    public void updateDeploySet(UpdateDeploySetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_DEPLOYSET, request.getDeployId());
+        internalRequest.addParameter("modifyAttribute", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateDeploySetRelation
+     * 
+     * @param request 入参结构体
+     * @return UpdateDeploySetRelationResponse
+     */
+    public UpdateDeploySetRelationResponse updateDeploySetRelation(UpdateDeploySetRelationRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_DEPLOYSET, CONSTANT_UPDATE_RELATION);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, UpdateDeploySetRelationResponse.class);
+    }
+
+    /**
      * updateInstanceSubnet
      * 
      * @param request 入参结构体
      */
     public void updateInstanceSubnet(UpdateInstanceSubnetRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SUBNET, CONSTANT_CHANGE_SUBNET);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateKeypairDescription
+     * 
+     * @param request 入参结构体
+     */
+    public void updateKeypairDescription(UpdateKeypairDescriptionRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_KEYPAIR, request.getKeypairId());
+        internalRequest.addParameter("updateDesc", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateSecurityGroupRule
+     * 
+     * @param request 入参结构体
+     */
+    public void updateSecurityGroupRule(UpdateSecurityGroupRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SECURITY_GROUP, CONSTANT_RULE, CONSTANT_UPDATE);
+        if (request.getSgVersion() != null) {
+            internalRequest.addParameter("sgVersion", String.valueOf(request.getSgVersion()));
+        }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }

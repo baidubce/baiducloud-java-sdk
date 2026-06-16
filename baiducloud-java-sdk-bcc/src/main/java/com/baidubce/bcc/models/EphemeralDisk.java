@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EphemeralDisk {
     /**
-     * CDS磁盘存储类型，包括SSD_Enhanced (增强型SSD)，cloud_hp1（通用型SD），hp1 (高性能云磁盘)和hdd (通用型HDD) 共四种磁盘类型，默认 hp1。（查询磁盘列表、查询磁盘详情返回）
+     * 
      */
     private String storageType;
 
