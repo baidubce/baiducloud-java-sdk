@@ -13,10 +13,10 @@ public class ExampleDeleteAppBlbIpGroupMember {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        BlbClient client = new BlbClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        BlbClient client = new BlbClient(bceClientConfig);
         DeleteAppBlbIpGroupMemberRequest deleteAppBlbIpGroupMemberRequest = new DeleteAppBlbIpGroupMemberRequest();
         deleteAppBlbIpGroupMemberRequest.setBlbId("");
         deleteAppBlbIpGroupMemberRequest.setClientToken("");

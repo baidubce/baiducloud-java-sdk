@@ -12,10 +12,10 @@ public class ExampleUpdateAppBlb {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        BlbClient client = new BlbClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        BlbClient client = new BlbClient(bceClientConfig);
         UpdateAppBlbRequest updateAppBlbRequest = new UpdateAppBlbRequest();
         updateAppBlbRequest.setBlbId("");
         updateAppBlbRequest.setClientToken("");
