@@ -1,3 +1,6 @@
+2026-06-16 Version: 0.0.14
+- 涉及产品: BLB，SDK版本更新
+
 2026-06-08 Version: 0.0.13
 - 涉及产品: BLB，createAppBlb创建实例接口变更
 - 涉及产品: BLB，describeAppBlbs查询实例新增query.type字段
