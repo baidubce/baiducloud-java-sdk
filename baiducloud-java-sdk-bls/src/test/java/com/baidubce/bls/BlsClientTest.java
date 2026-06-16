@@ -1,11 +1,21 @@
 package com.baidubce.bls;
 
+import com.baidubce.bls.models.CreateDownloadTaskRequest;
+import com.baidubce.bls.models.CreateDownloadTaskResponse;
 import com.baidubce.bls.models.CreateProjectRequest;
 import com.baidubce.bls.models.CreateProjectResponse;
+import com.baidubce.bls.models.DeleteDownloadTaskRequest;
+import com.baidubce.bls.models.DeleteDownloadTaskResponse;
 import com.baidubce.bls.models.DeleteProjectRequest;
 import com.baidubce.bls.models.DeleteProjectResponse;
+import com.baidubce.bls.models.DescribeDownloadTaskRequest;
+import com.baidubce.bls.models.DescribeDownloadTaskResponse;
 import com.baidubce.bls.models.DescribeProjectRequest;
 import com.baidubce.bls.models.DescribeProjectResponse;
+import com.baidubce.bls.models.GetDownloadTaskLinkRequest;
+import com.baidubce.bls.models.GetDownloadTaskLinkResponse;
+import com.baidubce.bls.models.ListDownloadTaskRequest;
+import com.baidubce.bls.models.ListDownloadTaskResponse;
 import com.baidubce.bls.models.ListProjectRequest;
 import com.baidubce.bls.models.ListProjectResponse;
 import com.baidubce.bls.models.PullLogRecordRequest;
@@ -41,6 +51,27 @@ public class BlsClientTest {
     }
 
     /**
+     * createDownloadTask
+     *
+     */
+    @Test
+    public void createDownloadTaskTest() {
+        CreateDownloadTaskRequest createDownloadTaskRequest = new CreateDownloadTaskRequest();
+        createDownloadTaskRequest.setName("");
+        createDownloadTaskRequest.setProject("");
+        createDownloadTaskRequest.setLogStoreName("");
+        createDownloadTaskRequest.setLogStreamName("");
+        createDownloadTaskRequest.setQuery("");
+        createDownloadTaskRequest.setQueryStartTime("");
+        createDownloadTaskRequest.setQueryEndTime("");
+        createDownloadTaskRequest.setFormat("");
+        createDownloadTaskRequest.setLimit(0);
+        createDownloadTaskRequest.setOrder("");
+        createDownloadTaskRequest.setFileDir("");
+        CreateDownloadTaskResponse response = blsClient.createDownloadTask(createDownloadTaskRequest);
+        System.out.println(response);
+    }
+    /**
      * createProject
      *
      */
@@ -50,6 +81,17 @@ public class BlsClientTest {
         createProjectRequest.setName("");
         createProjectRequest.setDescription("");
         CreateProjectResponse response = blsClient.createProject(createProjectRequest);
+        System.out.println(response);
+    }
+    /**
+     * deleteDownloadTask
+     *
+     */
+    @Test
+    public void deleteDownloadTaskTest() {
+        DeleteDownloadTaskRequest deleteDownloadTaskRequest = new DeleteDownloadTaskRequest();
+        deleteDownloadTaskRequest.setUuid("");
+        DeleteDownloadTaskResponse response = blsClient.deleteDownloadTask(deleteDownloadTaskRequest);
         System.out.println(response);
     }
     /**
@@ -64,6 +106,17 @@ public class BlsClientTest {
         System.out.println(response);
     }
     /**
+     * describeDownloadTask
+     *
+     */
+    @Test
+    public void describeDownloadTaskTest() {
+        DescribeDownloadTaskRequest describeDownloadTaskRequest = new DescribeDownloadTaskRequest();
+        describeDownloadTaskRequest.setUuid("");
+        DescribeDownloadTaskResponse response = blsClient.describeDownloadTask(describeDownloadTaskRequest);
+        System.out.println(response);
+    }
+    /**
      * describeProject
      *
      */
@@ -72,6 +125,33 @@ public class BlsClientTest {
         DescribeProjectRequest describeProjectRequest = new DescribeProjectRequest();
         describeProjectRequest.setUuid("");
         DescribeProjectResponse response = blsClient.describeProject(describeProjectRequest);
+        System.out.println(response);
+    }
+    /**
+     * getDownloadTaskLink
+     *
+     */
+    @Test
+    public void getDownloadTaskLinkTest() {
+        GetDownloadTaskLinkRequest getDownloadTaskLinkRequest = new GetDownloadTaskLinkRequest();
+        getDownloadTaskLinkRequest.setUuid("");
+        GetDownloadTaskLinkResponse response = blsClient.getDownloadTaskLink(getDownloadTaskLinkRequest);
+        System.out.println(response);
+    }
+    /**
+     * listDownloadTask
+     *
+     */
+    @Test
+    public void listDownloadTaskTest() {
+        ListDownloadTaskRequest listDownloadTaskRequest = new ListDownloadTaskRequest();
+        listDownloadTaskRequest.setProject("");
+        listDownloadTaskRequest.setLogStoreName("");
+        listDownloadTaskRequest.setOrderBy("");
+        listDownloadTaskRequest.setOrder("");
+        listDownloadTaskRequest.setPageNo(0);
+        listDownloadTaskRequest.setPageSize(0);
+        ListDownloadTaskResponse response = blsClient.listDownloadTask(listDownloadTaskRequest);
         System.out.println(response);
     }
     /**
@@ -168,7 +248,8 @@ public class BlsClientTest {
     public void updateProjectTest() {
         UpdateProjectRequest updateProjectRequest = new UpdateProjectRequest();
         updateProjectRequest.setUuid("");
-        updateProjectRequest.setDescription(false);
+        updateProjectRequest.setDescription("");
+        updateProjectRequest.setTop(false);
         UpdateProjectResponse response = blsClient.updateProject(updateProjectRequest);
         System.out.println(response);
     }

@@ -12,9 +12,14 @@ public class UpdateProjectRequest extends BaseBceRequest {
     private String uuid;
 
     /**
+    * 日志组描述
+    */
+    private String description;
+
+    /**
     * 日志组是否置顶
     */
-    private Boolean description;
+    private Boolean top;
 
     public String getUuid() {
         return uuid;
@@ -25,12 +30,21 @@ public class UpdateProjectRequest extends BaseBceRequest {
         return this;
     }
 
-    public Boolean getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public UpdateProjectRequest setDescription(Boolean description) {
+    public UpdateProjectRequest setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public Boolean getTop() {
+        return top;
+    }
+
+    public UpdateProjectRequest setTop(Boolean top) {
+        this.top = top;
         return this;
     }
 

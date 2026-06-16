@@ -13,13 +13,14 @@ public class ExampleUpdateProject {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        BlsClient client = new BlsClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        BlsClient client = new BlsClient(bceClientConfig);
         UpdateProjectRequest updateProjectRequest = new UpdateProjectRequest();
         updateProjectRequest.setUuid("");
-        updateProjectRequest.setDescription(false);
+        updateProjectRequest.setDescription("");
+        updateProjectRequest.setTop(false);
         try {
             UpdateProjectResponse response = client.updateProject(updateProjectRequest);
             System.out.println(response.toJsonString());
