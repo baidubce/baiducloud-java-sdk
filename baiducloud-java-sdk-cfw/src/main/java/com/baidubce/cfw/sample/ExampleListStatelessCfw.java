@@ -4,9 +4,9 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.cfw.CfwClient;
-import com.baidubce.cfw.models.DeleteCfwRequest;
+import com.baidubce.cfw.models.ListStatelessCfwResponse;
 
-public class ExampleDeleteCfw {
+public class ExampleListStatelessCfw {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -16,12 +16,10 @@ public class ExampleDeleteCfw {
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
         bceClientConfig.setEndpoint(endpoint);
         CfwClient client = new CfwClient(bceClientConfig);
-        DeleteCfwRequest deleteCfwRequest = new DeleteCfwRequest();
-        deleteCfwRequest.setCfwId("");
         try {
-            client.deleteCfw(deleteCfwRequest);
+            ListStatelessCfwResponse response = client.listStatelessCfw();
+            System.out.println(response.toJsonString());
         } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

@@ -13,25 +13,32 @@ import com.baidubce.auth.SignOptions;
 import com.baidubce.util.RequestBodyUtils;
 import java.util.Arrays;
 import java.util.HashSet;
+import com.baidubce.common.BaseBceRequest;
 import com.baidubce.common.BaseBceResponse;
 
 import com.baidubce.cfw.models.BindCfwRequest;
 import com.baidubce.cfw.models.CreateCfwRequest;
 import com.baidubce.cfw.models.CreateCfwResponse;
 import com.baidubce.cfw.models.CreateCfwRuleRequest;
+import com.baidubce.cfw.models.CreateStatelessCfwRequest;
+import com.baidubce.cfw.models.CreateStatelessCfwResponse;
 import com.baidubce.cfw.models.DeleteCfwRequest;
 import com.baidubce.cfw.models.DeleteCfwRuleRequest;
 import com.baidubce.cfw.models.DisableCfwProtectRequest;
 import com.baidubce.cfw.models.EnableCfwProtectRequest;
 import com.baidubce.cfw.models.GetCfwRequest;
 import com.baidubce.cfw.models.GetCfwResponse;
+import com.baidubce.cfw.models.GetStatelessCfwRequest;
+import com.baidubce.cfw.models.GetStatelessCfwResponse;
 import com.baidubce.cfw.models.ListCfwRequest;
 import com.baidubce.cfw.models.ListCfwResponse;
 import com.baidubce.cfw.models.ListProtectInstancesRequest;
 import com.baidubce.cfw.models.ListProtectInstancesResponse;
+import com.baidubce.cfw.models.ListStatelessCfwResponse;
 import com.baidubce.cfw.models.UnbindCfwRequest;
 import com.baidubce.cfw.models.UpdateCfwRequest;
 import com.baidubce.cfw.models.UpdateCfwRuleRequest;
+import com.baidubce.cfw.models.UpdateStatelessCfwRequest;
 
 public class CfwClient extends AbstractBceClient {
 
@@ -39,6 +46,7 @@ public class CfwClient extends AbstractBceClient {
 
     private static final String VERSION_V1 = "v1";
     private static final String CONSTANT_CFW = "cfw";
+    private static final String CONSTANT_STATELESS = "stateless";
     private static final String CONSTANT_RULE = "rule";
     private static final String CONSTANT_DELETE = "delete";
     private static final String CONSTANT_INSTANCE = "instance";
@@ -98,6 +106,18 @@ public class CfwClient extends AbstractBceClient {
     }
 
     /**
+     * createStatelessCfw
+     * 
+     * @param request 入参结构体
+     * @return CreateStatelessCfwResponse
+     */
+    public CreateStatelessCfwResponse createStatelessCfw(CreateStatelessCfwRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_CFW, CONSTANT_STATELESS);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateStatelessCfwResponse.class);
+    }
+
+    /**
      * deleteCfw
      * 
      * @param request 入参结构体
@@ -154,6 +174,17 @@ public class CfwClient extends AbstractBceClient {
     }
 
     /**
+     * getStatelessCfw
+     * 
+     * @param request 入参结构体
+     * @return GetStatelessCfwResponse
+     */
+    public GetStatelessCfwResponse getStatelessCfw(GetStatelessCfwRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_CFW, CONSTANT_STATELESS, request.getCfwId());
+        return invokeHttpClient(internalRequest, GetStatelessCfwResponse.class);
+    }
+
+    /**
      * listCfw
      * 
      * @param request 入参结构体
@@ -197,6 +228,18 @@ public class CfwClient extends AbstractBceClient {
     }
 
     /**
+     * listStatelessCfw
+     * 
+     * @return ListStatelessCfwResponse
+     */
+    public ListStatelessCfwResponse listStatelessCfw() {
+        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_CFW, CONSTANT_STATELESS);
+        internalRequest.addParameter("marker", "cfw-egx34bzjj43k");
+        internalRequest.addParameter("maxKeys", "1");
+        return invokeHttpClient(internalRequest, ListStatelessCfwResponse.class);
+    }
+
+    /**
      * unbindCfw
      * 
      * @param request 入参结构体
@@ -226,6 +269,17 @@ public class CfwClient extends AbstractBceClient {
      */
     public void updateCfwRule(UpdateCfwRuleRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_CFW, request.getCfwId(), CONSTANT_RULE, request.getCfwRuleId());
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateStatelessCfw
+     * 
+     * @param request 入参结构体
+     */
+    public void updateStatelessCfw(UpdateStatelessCfwRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_CFW, CONSTANT_STATELESS, request.getCfwId());
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
