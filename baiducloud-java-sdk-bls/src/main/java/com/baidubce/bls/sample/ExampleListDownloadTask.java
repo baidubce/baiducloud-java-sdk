@@ -4,10 +4,10 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.bls.BlsClient;
-import com.baidubce.bls.models.UpdateProjectRequest;
-import com.baidubce.bls.models.UpdateProjectResponse;
+import com.baidubce.bls.models.ListDownloadTaskRequest;
+import com.baidubce.bls.models.ListDownloadTaskResponse;
 
-public class ExampleUpdateProject {
+public class ExampleListDownloadTask {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -17,12 +17,15 @@ public class ExampleUpdateProject {
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
         bceClientConfig.setEndpoint(endpoint);
         BlsClient client = new BlsClient(bceClientConfig);
-        UpdateProjectRequest updateProjectRequest = new UpdateProjectRequest();
-        updateProjectRequest.setUuid("");
-        updateProjectRequest.setDescription("");
-        updateProjectRequest.setTop(false);
+        ListDownloadTaskRequest listDownloadTaskRequest = new ListDownloadTaskRequest();
+        listDownloadTaskRequest.setProject("");
+        listDownloadTaskRequest.setLogStoreName("");
+        listDownloadTaskRequest.setOrderBy("");
+        listDownloadTaskRequest.setOrder("");
+        listDownloadTaskRequest.setPageNo(0);
+        listDownloadTaskRequest.setPageSize(0);
         try {
-            UpdateProjectResponse response = client.updateProject(updateProjectRequest);
+            ListDownloadTaskResponse response = client.listDownloadTask(listDownloadTaskRequest);
             System.out.println(response.toJsonString());
         } catch (BceClientException e) {
             System.out.println(e.getMessage());

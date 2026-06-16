@@ -4,10 +4,10 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.bls.BlsClient;
-import com.baidubce.bls.models.UpdateProjectRequest;
-import com.baidubce.bls.models.UpdateProjectResponse;
+import com.baidubce.bls.models.DeleteDownloadTaskRequest;
+import com.baidubce.bls.models.DeleteDownloadTaskResponse;
 
-public class ExampleUpdateProject {
+public class ExampleDeleteDownloadTask {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
@@ -17,12 +17,10 @@ public class ExampleUpdateProject {
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
         bceClientConfig.setEndpoint(endpoint);
         BlsClient client = new BlsClient(bceClientConfig);
-        UpdateProjectRequest updateProjectRequest = new UpdateProjectRequest();
-        updateProjectRequest.setUuid("");
-        updateProjectRequest.setDescription("");
-        updateProjectRequest.setTop(false);
+        DeleteDownloadTaskRequest deleteDownloadTaskRequest = new DeleteDownloadTaskRequest();
+        deleteDownloadTaskRequest.setUuid("");
         try {
-            UpdateProjectResponse response = client.updateProject(updateProjectRequest);
+            DeleteDownloadTaskResponse response = client.deleteDownloadTask(deleteDownloadTaskRequest);
             System.out.println(response.toJsonString());
         } catch (BceClientException e) {
             System.out.println(e.getMessage());

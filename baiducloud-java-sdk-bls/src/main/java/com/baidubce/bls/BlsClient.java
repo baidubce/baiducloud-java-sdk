@@ -14,12 +14,22 @@ import com.baidubce.util.RequestBodyUtils;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import com.baidubce.bls.models.CreateDownloadTaskRequest;
+import com.baidubce.bls.models.CreateDownloadTaskResponse;
 import com.baidubce.bls.models.CreateProjectRequest;
 import com.baidubce.bls.models.CreateProjectResponse;
+import com.baidubce.bls.models.DeleteDownloadTaskRequest;
+import com.baidubce.bls.models.DeleteDownloadTaskResponse;
 import com.baidubce.bls.models.DeleteProjectRequest;
 import com.baidubce.bls.models.DeleteProjectResponse;
+import com.baidubce.bls.models.DescribeDownloadTaskRequest;
+import com.baidubce.bls.models.DescribeDownloadTaskResponse;
 import com.baidubce.bls.models.DescribeProjectRequest;
 import com.baidubce.bls.models.DescribeProjectResponse;
+import com.baidubce.bls.models.GetDownloadTaskLinkRequest;
+import com.baidubce.bls.models.GetDownloadTaskLinkResponse;
+import com.baidubce.bls.models.ListDownloadTaskRequest;
+import com.baidubce.bls.models.ListDownloadTaskResponse;
 import com.baidubce.bls.models.ListProjectRequest;
 import com.baidubce.bls.models.ListProjectResponse;
 import com.baidubce.bls.models.PullLogRecordRequest;
@@ -42,8 +52,10 @@ public class BlsClient extends AbstractBceClient {
     private static final String CONSTANT_PROJECT = "project";
     private static final String CONSTANT_LOGSTORE = "logstore";
     private static final String CONSTANT_LOGRECORD = "logrecord";
+    private static final String CONSTANT_DOWNLOAD = "download";
     private static final String CONSTANT_LIST = "list";
     private static final String CONSTANT_LOGHISTOGRAM = "loghistogram";
+    private static final String CONSTANT_LINK = "link";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -65,6 +77,18 @@ public class BlsClient extends AbstractBceClient {
     }
 
     /**
+     * createDownloadTask
+     * 
+     * @param request 入参结构体
+     * @return CreateDownloadTaskResponse
+     */
+    public CreateDownloadTaskResponse createDownloadTask(CreateDownloadTaskRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_LOGSTORE, CONSTANT_DOWNLOAD);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateDownloadTaskResponse.class);
+    }
+
+    /**
      * createProject
      * 
      * @param request 入参结构体
@@ -74,6 +98,17 @@ public class BlsClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_PROJECT);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateProjectResponse.class);
+    }
+
+    /**
+     * deleteDownloadTask
+     * 
+     * @param request 入参结构体
+     * @return DeleteDownloadTaskResponse
+     */
+    public DeleteDownloadTaskResponse deleteDownloadTask(DeleteDownloadTaskRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V2, CONSTANT_LOGSTORE, CONSTANT_DOWNLOAD, request.getUuid());
+        return invokeHttpClient(internalRequest, DeleteDownloadTaskResponse.class);
     }
 
     /**
@@ -88,6 +123,17 @@ public class BlsClient extends AbstractBceClient {
     }
 
     /**
+     * describeDownloadTask
+     * 
+     * @param request 入参结构体
+     * @return DescribeDownloadTaskResponse
+     */
+    public DescribeDownloadTaskResponse describeDownloadTask(DescribeDownloadTaskRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_LOGSTORE, CONSTANT_DOWNLOAD, request.getUuid());
+        return invokeHttpClient(internalRequest, DescribeDownloadTaskResponse.class);
+    }
+
+    /**
      * describeProject
      * 
      * @param request 入参结构体
@@ -96,6 +142,29 @@ public class BlsClient extends AbstractBceClient {
     public DescribeProjectResponse describeProject(DescribeProjectRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_PROJECT, request.getUuid());
         return invokeHttpClient(internalRequest, DescribeProjectResponse.class);
+    }
+
+    /**
+     * getDownloadTaskLink
+     * 
+     * @param request 入参结构体
+     * @return GetDownloadTaskLinkResponse
+     */
+    public GetDownloadTaskLinkResponse getDownloadTaskLink(GetDownloadTaskLinkRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_LOGSTORE, CONSTANT_DOWNLOAD, CONSTANT_LINK, request.getUuid());
+        return invokeHttpClient(internalRequest, GetDownloadTaskLinkResponse.class);
+    }
+
+    /**
+     * listDownloadTask
+     * 
+     * @param request 入参结构体
+     * @return ListDownloadTaskResponse
+     */
+    public ListDownloadTaskResponse listDownloadTask(ListDownloadTaskRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_LOGSTORE, CONSTANT_DOWNLOAD, CONSTANT_LIST);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ListDownloadTaskResponse.class);
     }
 
     /**
