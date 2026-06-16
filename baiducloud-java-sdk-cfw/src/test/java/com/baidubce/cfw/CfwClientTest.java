@@ -4,19 +4,25 @@ import com.baidubce.cfw.models.BindCfwRequest;
 import com.baidubce.cfw.models.CreateCfwRequest;
 import com.baidubce.cfw.models.CreateCfwResponse;
 import com.baidubce.cfw.models.CreateCfwRuleRequest;
+import com.baidubce.cfw.models.CreateStatelessCfwRequest;
+import com.baidubce.cfw.models.CreateStatelessCfwResponse;
 import com.baidubce.cfw.models.DeleteCfwRequest;
 import com.baidubce.cfw.models.DeleteCfwRuleRequest;
 import com.baidubce.cfw.models.DisableCfwProtectRequest;
 import com.baidubce.cfw.models.EnableCfwProtectRequest;
 import com.baidubce.cfw.models.GetCfwRequest;
 import com.baidubce.cfw.models.GetCfwResponse;
+import com.baidubce.cfw.models.GetStatelessCfwRequest;
+import com.baidubce.cfw.models.GetStatelessCfwResponse;
 import com.baidubce.cfw.models.ListCfwRequest;
 import com.baidubce.cfw.models.ListCfwResponse;
 import com.baidubce.cfw.models.ListProtectInstancesRequest;
 import com.baidubce.cfw.models.ListProtectInstancesResponse;
+import com.baidubce.cfw.models.ListStatelessCfwResponse;
 import com.baidubce.cfw.models.UnbindCfwRequest;
 import com.baidubce.cfw.models.UpdateCfwRequest;
 import com.baidubce.cfw.models.UpdateCfwRuleRequest;
+import com.baidubce.cfw.models.UpdateStatelessCfwRequest;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -78,6 +84,21 @@ public class CfwClientTest {
         cfwClient.createCfwRule(createCfwRuleRequest);
     }
     /**
+     * createStatelessCfw
+     *
+     */
+    @Test
+    public void createStatelessCfwTest() {
+        CreateStatelessCfwRequest createStatelessCfwRequest = new CreateStatelessCfwRequest();
+        createStatelessCfwRequest.setName("");
+        createStatelessCfwRequest.setDescription("");
+        createStatelessCfwRequest.setDefaultAction("");
+        createStatelessCfwRequest.setProtocol("");
+        createStatelessCfwRequest.setIpList(new ArrayList<>());
+        CreateStatelessCfwResponse response = cfwClient.createStatelessCfw(createStatelessCfwRequest);
+        System.out.println(response);
+    }
+    /**
      * deleteCfw
      *
      */
@@ -136,6 +157,17 @@ public class CfwClientTest {
         System.out.println(response);
     }
     /**
+     * getStatelessCfw
+     *
+     */
+    @Test
+    public void getStatelessCfwTest() {
+        GetStatelessCfwRequest getStatelessCfwRequest = new GetStatelessCfwRequest();
+        getStatelessCfwRequest.setCfwId("");
+        GetStatelessCfwResponse response = cfwClient.getStatelessCfw(getStatelessCfwRequest);
+        System.out.println(response);
+    }
+    /**
      * listCfw
      *
      */
@@ -160,6 +192,15 @@ public class CfwClientTest {
         listProtectInstancesRequest.setStatus("");
         listProtectInstancesRequest.setRegion("");
         ListProtectInstancesResponse response = cfwClient.listProtectInstances(listProtectInstancesRequest);
+        System.out.println(response);
+    }
+    /**
+     * listStatelessCfw
+     *
+     */
+    @Test
+    public void listStatelessCfwTest() {
+        ListStatelessCfwResponse response = cfwClient.listStatelessCfw();
         System.out.println(response);
     }
     /**
@@ -206,5 +247,19 @@ public class CfwClientTest {
         updateCfwRuleRequest.setAction("");
         updateCfwRuleRequest.setDescription("");
         cfwClient.updateCfwRule(updateCfwRuleRequest);
+    }
+    /**
+     * updateStatelessCfw
+     *
+     */
+    @Test
+    public void updateStatelessCfwTest() {
+        UpdateStatelessCfwRequest updateStatelessCfwRequest = new UpdateStatelessCfwRequest();
+        updateStatelessCfwRequest.setCfwId("");
+        updateStatelessCfwRequest.setName("");
+        updateStatelessCfwRequest.setDescription("");
+        updateStatelessCfwRequest.setProtocol("");
+        updateStatelessCfwRequest.setIpList(new ArrayList<>());
+        cfwClient.updateStatelessCfw(updateStatelessCfwRequest);
     }
 }

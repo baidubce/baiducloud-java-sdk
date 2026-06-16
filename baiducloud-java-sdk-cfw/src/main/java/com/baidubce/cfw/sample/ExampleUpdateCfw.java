@@ -12,10 +12,10 @@ public class ExampleUpdateCfw {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        CfwClient client = new CfwClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        CfwClient client = new CfwClient(bceClientConfig);
         UpdateCfwRequest updateCfwRequest = new UpdateCfwRequest();
         updateCfwRequest.setCfwId("");
         updateCfwRequest.setName("");
