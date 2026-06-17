@@ -304,6 +304,7 @@
                         <configuration>
                             <!-- 注意：此 serverId 必须与 Maven settings.xml 中的 server id 对应 -->
                             <publishingServerId>central</publishingServerId>
+                            <autoPublish>true</autoPublish>
                         </configuration>
                     </plugin>
                 </plugins>
