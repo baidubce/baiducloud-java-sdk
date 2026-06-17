@@ -12,6 +12,9 @@
  */
 package com.baidubce;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@JsonFormat(with = JsonFormat.Feature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
 public class BceErrorResponse {
 
     private String requestId;
