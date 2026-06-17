@@ -1,0 +1,40 @@
+package com.baidubce.bls.models;
+
+import com.baidubce.common.BaseBceRequest;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class DeleteLogStoreRequest extends BaseBceRequest {
+
+    /**
+    * logStoreName
+    */
+    @JsonIgnore
+    private String logStoreName;
+
+    /**
+    * project
+    */
+    @JsonIgnore
+    private String project;
+
+    public String getLogStoreName() {
+        return logStoreName;
+    }
+
+    public DeleteLogStoreRequest setLogStoreName(String logStoreName) {
+        this.logStoreName = logStoreName;
+        return this;
+    }
+
+    public String getProject() {
+        return project;
+    }
+
+    public DeleteLogStoreRequest setProject(String project) {
+        this.project = project;
+        return this;
+    }
+
+}
