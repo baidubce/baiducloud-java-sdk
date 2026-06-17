@@ -28,12 +28,6 @@ public class ListAlarmExecutionStatsRequest extends BaseBceRequest {
     private List<String> states;
 
     /**
-    * 按报警通知状态过滤，取值：SENT: 已发送, NOT_SENT: 不发送, FAIL: 发送失败, BLOCK_BY_PENDING_COUNT: 不发送由于频次不足, BLOCK_BY_REPEAT_INTERVAL: 不发送由于重复报警间隔没到, BLOCK_BY_FREQUENCY: 不发送由于发送次数过多,
-    * BLOCK_BY_NOTICE_DISABLED: 不发送由于通知关闭
-    */
-    private List<String> noticeStates;
-
-    /**
     * 查询开始时间，UTC时间，默认值：30天前
     */
     private String startDateTime;
@@ -96,15 +90,6 @@ public class ListAlarmExecutionStatsRequest extends BaseBceRequest {
 
     public ListAlarmExecutionStatsRequest setStates(List<String> states) {
         this.states = states;
-        return this;
-    }
-
-    public List<String> getNoticeStates() {
-        return noticeStates;
-    }
-
-    public ListAlarmExecutionStatsRequest setNoticeStates(List<String> noticeStates) {
-        this.noticeStates = noticeStates;
         return this;
     }
 

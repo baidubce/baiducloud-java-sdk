@@ -23,7 +23,6 @@ public class ExampleListAlarmExecutionStats {
         listAlarmExecutionStatsRequest.setPolicyName("");
         listAlarmExecutionStatsRequest.setLogStoreName("");
         listAlarmExecutionStatsRequest.setStates(new ArrayList<>());
-        listAlarmExecutionStatsRequest.setNoticeStates(new ArrayList<>());
         listAlarmExecutionStatsRequest.setStartDateTime("");
         listAlarmExecutionStatsRequest.setEndDateTime("");
         listAlarmExecutionStatsRequest.setOrderBy("");

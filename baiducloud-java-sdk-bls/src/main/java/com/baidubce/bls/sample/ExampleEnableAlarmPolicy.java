@@ -19,7 +19,7 @@ public class ExampleEnableAlarmPolicy {
         bceClientConfig.setEndpoint(endpoint);
         BlsClient client = new BlsClient(bceClientConfig);
         EnableAlarmPolicyRequest enableAlarmPolicyRequest = new EnableAlarmPolicyRequest();
-        enableAlarmPolicyRequest.setName(new ArrayList<>());
+        enableAlarmPolicyRequest.setNames(new ArrayList<>());
         try {
             EnableAlarmPolicyResponse response = client.enableAlarmPolicy(enableAlarmPolicyRequest);
             System.out.println(response.toJsonString());

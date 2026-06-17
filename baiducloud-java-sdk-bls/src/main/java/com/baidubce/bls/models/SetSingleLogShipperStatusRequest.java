@@ -16,7 +16,7 @@ public class SetSingleLogShipperStatusRequest extends BaseBceRequest {
     /**
     * 期望的状态，可选Running或Paused
     */
-    private String desiredStatus;
+    private String status;
 
     public String getLogShipperID() {
         return logShipperID;
@@ -27,12 +27,12 @@ public class SetSingleLogShipperStatusRequest extends BaseBceRequest {
         return this;
     }
 
-    public String getDesiredStatus() {
-        return desiredStatus;
+    public String getStatus() {
+        return status;
     }
 
-    public SetSingleLogShipperStatusRequest setDesiredStatus(String desiredStatus) {
-        this.desiredStatus = desiredStatus;
+    public SetSingleLogShipperStatusRequest setStatus(String status) {
+        this.status = status;
         return this;
     }
 

@@ -10,14 +10,14 @@ public class EnableAlarmPolicyRequest extends BaseBceRequest {
     /**
     * 报警策略名称
     */
-    private List<String> name;
+    private List<String> names;
 
-    public List<String> getName() {
-        return name;
+    public List<String> getNames() {
+        return names;
     }
 
-    public EnableAlarmPolicyRequest setName(List<String> name) {
-        this.name = name;
+    public EnableAlarmPolicyRequest setNames(List<String> names) {
+        this.names = names;
         return this;
     }
 
