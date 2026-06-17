@@ -28,7 +28,7 @@ public class AddAppBlbServerGroupRsRequest extends BaseBceRequest {
     /**
     * 后端服务器列表
     */
-    private List<AppBackendServer> backendServerList;
+    private List<AppBackendServerForCreate> backendServerList;
 
     public String getBlbId() {
         return blbId;
@@ -57,11 +57,11 @@ public class AddAppBlbServerGroupRsRequest extends BaseBceRequest {
         return this;
     }
 
-    public List<AppBackendServer> getBackendServerList() {
+    public List<AppBackendServerForCreate> getBackendServerList() {
         return backendServerList;
     }
 
-    public AddAppBlbServerGroupRsRequest setBackendServerList(List<AppBackendServer> backendServerList) {
+    public AddAppBlbServerGroupRsRequest setBackendServerList(List<AppBackendServerForCreate> backendServerList) {
         this.backendServerList = backendServerList;
         return this;
     }

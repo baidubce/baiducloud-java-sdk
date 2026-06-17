@@ -28,7 +28,7 @@ public class UpdateAppBlbServerGroupRsRequest extends BaseBceRequest {
     /**
     * 后端服务器列表
     */
-    private List<AppBackendServer> backendServerList;
+    private List<AppBackendServerForCreate> backendServerList;
 
     public String getBlbId() {
         return blbId;
@@ -57,11 +57,11 @@ public class UpdateAppBlbServerGroupRsRequest extends BaseBceRequest {
         return this;
     }
 
-    public List<AppBackendServer> getBackendServerList() {
+    public List<AppBackendServerForCreate> getBackendServerList() {
         return backendServerList;
     }
 
-    public UpdateAppBlbServerGroupRsRequest setBackendServerList(List<AppBackendServer> backendServerList) {
+    public UpdateAppBlbServerGroupRsRequest setBackendServerList(List<AppBackendServerForCreate> backendServerList) {
         this.backendServerList = backendServerList;
         return this;
     }

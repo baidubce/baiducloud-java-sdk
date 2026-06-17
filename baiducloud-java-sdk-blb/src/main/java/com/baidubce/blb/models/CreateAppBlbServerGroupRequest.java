@@ -33,7 +33,7 @@ public class CreateAppBlbServerGroupRequest extends BaseBceRequest {
     /**
     * 服务器组绑定的后端服务器列表
     */
-    private List<AppBackendServer> backendServerList;
+    private List<AppBackendServerForCreate> backendServerList;
 
     public String getBlbId() {
         return blbId;
@@ -71,11 +71,11 @@ public class CreateAppBlbServerGroupRequest extends BaseBceRequest {
         return this;
     }
 
-    public List<AppBackendServer> getBackendServerList() {
+    public List<AppBackendServerForCreate> getBackendServerList() {
         return backendServerList;
     }
 
-    public CreateAppBlbServerGroupRequest setBackendServerList(List<AppBackendServer> backendServerList) {
+    public CreateAppBlbServerGroupRequest setBackendServerList(List<AppBackendServerForCreate> backendServerList) {
         this.backendServerList = backendServerList;
         return this;
     }
