@@ -24,6 +24,8 @@ import com.baidubce.bcc.models.AttachKeypairRequest;
 import com.baidubce.bcc.models.AttachVolumeRequest;
 import com.baidubce.bcc.models.AttachVolumeResponse;
 import com.baidubce.bcc.models.AuthorizeSecurityGroupRuleRequest;
+import com.baidubce.bcc.models.AuthorizeServerEventRequest;
+import com.baidubce.bcc.models.AuthorizeServerEventResponse;
 import com.baidubce.bcc.models.AutoReleaseInstanceRequest;
 import com.baidubce.bcc.models.AutoRenewReservedInstanceRequest;
 import com.baidubce.bcc.models.AutoRenewReservedInstanceResponse;
@@ -60,8 +62,12 @@ import com.baidubce.bcc.models.CancelSnapshotShareResponse;
 import com.baidubce.bcc.models.ChangeToPrepaidRequest;
 import com.baidubce.bcc.models.ChangeToPrepaidResponse;
 import com.baidubce.bcc.models.ChangeVpcRequest;
+import com.baidubce.bcc.models.CheckServerEventRequest;
+import com.baidubce.bcc.models.CheckServerEventResponse;
 import com.baidubce.bcc.models.CreateAspRequest;
 import com.baidubce.bcc.models.CreateAspResponse;
+import com.baidubce.bcc.models.CreateAuthorizationRuleRequest;
+import com.baidubce.bcc.models.CreateAuthorizationRuleResponse;
 import com.baidubce.bcc.models.CreateAutoRenewRuleRequest;
 import com.baidubce.bcc.models.CreateBidInstanceRequest;
 import com.baidubce.bcc.models.CreateBidInstanceResponse;
@@ -94,6 +100,8 @@ import com.baidubce.bcc.models.DeleteAutoRenewRuleRequest;
 import com.baidubce.bcc.models.DeleteDeploySetRequest;
 import com.baidubce.bcc.models.DeleteEhcClusterRequest;
 import com.baidubce.bcc.models.DeleteImageRequest;
+import com.baidubce.bcc.models.DeleteInstUserOpAuthorizeRuleRequest;
+import com.baidubce.bcc.models.DeleteInstUserOpAuthorizeRuleResponse;
 import com.baidubce.bcc.models.DeleteInstanceDeploySetRequest;
 import com.baidubce.bcc.models.DeleteKeypairRequest;
 import com.baidubce.bcc.models.DeletePrepayInstanceRequest;
@@ -103,8 +111,18 @@ import com.baidubce.bcc.models.DeleteSecurityGroupRequest;
 import com.baidubce.bcc.models.DeleteSecurityGroupRuleRequest;
 import com.baidubce.bcc.models.DeleteSnapshotRequest;
 import com.baidubce.bcc.models.DeletesInstanceDeploySetRequest;
+import com.baidubce.bcc.models.DescribeAuthorizeRulesRequest;
+import com.baidubce.bcc.models.DescribeAuthorizeRulesResponse;
+import com.baidubce.bcc.models.DescribePlannedEventRecordsRequest;
+import com.baidubce.bcc.models.DescribePlannedEventRecordsResponse;
+import com.baidubce.bcc.models.DescribePlannedEventsRequest;
+import com.baidubce.bcc.models.DescribePlannedEventsResponse;
 import com.baidubce.bcc.models.DescribeRegionsRequest;
 import com.baidubce.bcc.models.DescribeRegionsResponse;
+import com.baidubce.bcc.models.DescribeUnplannedEventRecordsRequest;
+import com.baidubce.bcc.models.DescribeUnplannedEventRecordsResponse;
+import com.baidubce.bcc.models.DescribeUnplannedEventsRequest;
+import com.baidubce.bcc.models.DescribeUnplannedEventsResponse;
 import com.baidubce.bcc.models.DetachAspRequest;
 import com.baidubce.bcc.models.DetachKeypairRequest;
 import com.baidubce.bcc.models.DetachVolumeRequest;
@@ -210,6 +228,8 @@ import com.baidubce.bcc.models.ListVolumesResponse;
 import com.baidubce.bcc.models.ListZonesResponse;
 import com.baidubce.bcc.models.ModifyCdsAttributeRequest;
 import com.baidubce.bcc.models.ModifyEhcClusterRequest;
+import com.baidubce.bcc.models.ModifyInstUserOpAuthorizeRuleAttributeRequest;
+import com.baidubce.bcc.models.ModifyInstUserOpAuthorizeRuleAttributeResponse;
 import com.baidubce.bcc.models.ModifyInstanceAttributesRequest;
 import com.baidubce.bcc.models.ModifyInstanceDescRequest;
 import com.baidubce.bcc.models.ModifyInstanceHostnameRequest;
@@ -465,6 +485,21 @@ public class BccClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * authorizeServerEvent
+     * 
+     * @param request 入参结构体
+     * @return AuthorizeServerEventResponse
+     */
+    public AuthorizeServerEventResponse authorizeServerEvent(AuthorizeServerEventRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, AuthorizeServerEventResponse.class);
     }
 
     /**
@@ -778,6 +813,21 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * checkServerEvent
+     * 
+     * @param request 入参结构体
+     * @return CheckServerEventResponse
+     */
+    public CheckServerEventResponse checkServerEvent(CheckServerEventRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CheckServerEventResponse.class);
+    }
+
+    /**
      * createAsp
      * 
      * @param request 入参结构体
@@ -787,6 +837,21 @@ public class BccClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_ASP);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateAspResponse.class);
+    }
+
+    /**
+     * createAuthorizationRule
+     * 
+     * @param request 入参结构体
+     * @return CreateAuthorizationRuleResponse
+     */
+    public CreateAuthorizationRuleResponse createAuthorizationRule(CreateAuthorizationRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateAuthorizationRuleResponse.class);
     }
 
     /**
@@ -1019,6 +1084,21 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * deleteInstUserOpAuthorizeRule
+     * 
+     * @param request 入参结构体
+     * @return DeleteInstUserOpAuthorizeRuleResponse
+     */
+    public DeleteInstUserOpAuthorizeRuleResponse deleteInstUserOpAuthorizeRule(DeleteInstUserOpAuthorizeRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DeleteInstUserOpAuthorizeRuleResponse.class);
+    }
+
+    /**
      * deleteInstanceDeploySet
      * 
      * @param request 入参结构体
@@ -1109,6 +1189,51 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * describeAuthorizeRules
+     * 
+     * @param request 入参结构体
+     * @return DescribeAuthorizeRulesResponse
+     */
+    public DescribeAuthorizeRulesResponse describeAuthorizeRules(DescribeAuthorizeRulesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeAuthorizeRulesResponse.class);
+    }
+
+    /**
+     * describePlannedEventRecords
+     * 
+     * @param request 入参结构体
+     * @return DescribePlannedEventRecordsResponse
+     */
+    public DescribePlannedEventRecordsResponse describePlannedEventRecords(DescribePlannedEventRecordsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribePlannedEventRecordsResponse.class);
+    }
+
+    /**
+     * describePlannedEvents
+     * 
+     * @param request 入参结构体
+     * @return DescribePlannedEventsResponse
+     */
+    public DescribePlannedEventsResponse describePlannedEvents(DescribePlannedEventsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribePlannedEventsResponse.class);
+    }
+
+    /**
      * describeRegions
      * 
      * @param request 入参结构体
@@ -1118,6 +1243,36 @@ public class BccClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_REGION, CONSTANT_DESCRIBE_REGIONS);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, DescribeRegionsResponse.class);
+    }
+
+    /**
+     * describeUnplannedEventRecords
+     * 
+     * @param request 入参结构体
+     * @return DescribeUnplannedEventRecordsResponse
+     */
+    public DescribeUnplannedEventRecordsResponse describeUnplannedEventRecords(DescribeUnplannedEventRecordsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeUnplannedEventRecordsResponse.class);
+    }
+
+    /**
+     * describeUnplannedEvents
+     * 
+     * @param request 入参结构体
+     * @return DescribeUnplannedEventsResponse
+     */
+    public DescribeUnplannedEventsResponse describeUnplannedEvents(DescribeUnplannedEventsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeUnplannedEventsResponse.class);
     }
 
     /**
@@ -2025,6 +2180,21 @@ public class BccClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_EHC, CONSTANT_CLUSTER, CONSTANT_MODIFY);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * modifyInstUserOpAuthorizeRuleAttribute
+     * 
+     * @param request 入参结构体
+     * @return ModifyInstUserOpAuthorizeRuleAttributeResponse
+     */
+    public ModifyInstUserOpAuthorizeRuleAttributeResponse modifyInstUserOpAuthorizeRuleAttribute(ModifyInstUserOpAuthorizeRuleAttributeRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ModifyInstUserOpAuthorizeRuleAttributeResponse.class);
     }
 
     /**
