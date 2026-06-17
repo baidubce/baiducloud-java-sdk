@@ -1,5 +1,6 @@
 package com.baidubce.bcc;
 
+import com.baidubce.bcc.models.AcceptReservedInstanceTransferRequest;
 import com.baidubce.bcc.models.AddIpv6Request;
 import com.baidubce.bcc.models.AddIpv6Response;
 import com.baidubce.bcc.models.AttachAspRequest;
@@ -8,6 +9,9 @@ import com.baidubce.bcc.models.AttachVolumeRequest;
 import com.baidubce.bcc.models.AttachVolumeResponse;
 import com.baidubce.bcc.models.AuthorizeSecurityGroupRuleRequest;
 import com.baidubce.bcc.models.AutoReleaseInstanceRequest;
+import com.baidubce.bcc.models.AutoRenewReservedInstanceRequest;
+import com.baidubce.bcc.models.AutoRenewReservedInstanceResponse;
+import com.baidubce.bcc.models.AutoRenewVolumeClusterRequest;
 import com.baidubce.bcc.models.BatchAddIpRequest;
 import com.baidubce.bcc.models.BatchChangeToPostpaidRequest;
 import com.baidubce.bcc.models.BatchChangeToPostpaidResponse;
@@ -22,11 +26,16 @@ import com.baidubce.bcc.models.BindInstanceSecurityGroupRequest;
 import com.baidubce.bcc.models.BindInstanceSecurityGroupResponse;
 import com.baidubce.bcc.models.BindInstanceToSecurityGroupRequest;
 import com.baidubce.bcc.models.BindInstanceToTagsRequest;
+import com.baidubce.bcc.models.BindReservedInstanceToTagsRequest;
 import com.baidubce.bcc.models.BindRoleRequest;
 import com.baidubce.bcc.models.BindRoleResponse;
 import com.baidubce.bcc.models.BindTagImageRequest;
 import com.baidubce.bcc.models.BindTagSnapchainRequest;
+import com.baidubce.bcc.models.BindTagVolumeClusterRequest;
 import com.baidubce.bcc.models.BindTagVolumeRequest;
+import com.baidubce.bcc.models.CancelAutoRenewReservedInstanceRequest;
+import com.baidubce.bcc.models.CancelAutoRenewReservedInstanceResponse;
+import com.baidubce.bcc.models.CancelAutoRenewVolumeClusterRequest;
 import com.baidubce.bcc.models.CancelBidOrderRequest;
 import com.baidubce.bcc.models.CancelBidOrderResponse;
 import com.baidubce.bcc.models.CancelRemoteCopyImageRequest;
@@ -42,24 +51,32 @@ import com.baidubce.bcc.models.CreateBidInstanceRequest;
 import com.baidubce.bcc.models.CreateBidInstanceResponse;
 import com.baidubce.bcc.models.CreateDeploySetRequest;
 import com.baidubce.bcc.models.CreateDeploySetResponse;
+import com.baidubce.bcc.models.CreateEhcClusterRequest;
+import com.baidubce.bcc.models.CreateEhcClusterResponse;
 import com.baidubce.bcc.models.CreateImageRequest;
 import com.baidubce.bcc.models.CreateImageResponse;
 import com.baidubce.bcc.models.CreateInstanceBySpecRequest;
 import com.baidubce.bcc.models.CreateInstanceBySpecResponse;
 import com.baidubce.bcc.models.CreateKeypairRequest;
 import com.baidubce.bcc.models.CreateKeypairResponse;
+import com.baidubce.bcc.models.CreateReservedInstanceTransferRequest;
+import com.baidubce.bcc.models.CreateReservedInstancesRequest;
+import com.baidubce.bcc.models.CreateReservedInstancesResponse;
 import com.baidubce.bcc.models.CreateSecurityGroupRequest;
 import com.baidubce.bcc.models.CreateSecurityGroupResponse;
 import com.baidubce.bcc.models.CreateSnapshotRequest;
 import com.baidubce.bcc.models.CreateSnapshotResponse;
 import com.baidubce.bcc.models.CreateSnapshotShareRequest;
 import com.baidubce.bcc.models.CreateSnapshotShareResponse;
+import com.baidubce.bcc.models.CreateVolumeClusterRequest;
+import com.baidubce.bcc.models.CreateVolumeClusterResponse;
 import com.baidubce.bcc.models.CreateVolumeRequest;
 import com.baidubce.bcc.models.CreateVolumeResponse;
 import com.baidubce.bcc.models.DelIpv6Request;
 import com.baidubce.bcc.models.DeleteAspRequest;
 import com.baidubce.bcc.models.DeleteAutoRenewRuleRequest;
 import com.baidubce.bcc.models.DeleteDeploySetRequest;
+import com.baidubce.bcc.models.DeleteEhcClusterRequest;
 import com.baidubce.bcc.models.DeleteImageRequest;
 import com.baidubce.bcc.models.DeleteInstanceDeploySetRequest;
 import com.baidubce.bcc.models.DeleteKeypairRequest;
@@ -70,9 +87,13 @@ import com.baidubce.bcc.models.DeleteSecurityGroupRequest;
 import com.baidubce.bcc.models.DeleteSecurityGroupRuleRequest;
 import com.baidubce.bcc.models.DeleteSnapshotRequest;
 import com.baidubce.bcc.models.DeletesInstanceDeploySetRequest;
+import com.baidubce.bcc.models.DescribeRegionsRequest;
+import com.baidubce.bcc.models.DescribeRegionsResponse;
 import com.baidubce.bcc.models.DetachAspRequest;
 import com.baidubce.bcc.models.DetachKeypairRequest;
 import com.baidubce.bcc.models.DetachVolumeRequest;
+import com.baidubce.bcc.models.EhcClusterListRequest;
+import com.baidubce.bcc.models.EhcClusterListResponse;
 import com.baidubce.bcc.models.EnterRescueModeRequest;
 import com.baidubce.bcc.models.EnterRescueModeResponse;
 import com.baidubce.bcc.models.ExitRescueModeRequest;
@@ -99,13 +120,25 @@ import com.baidubce.bcc.models.GetInstanceUserDataInfoRequest;
 import com.baidubce.bcc.models.GetInstanceUserDataInfoResponse;
 import com.baidubce.bcc.models.GetInstanceVncRequest;
 import com.baidubce.bcc.models.GetInstanceVncResponse;
+import com.baidubce.bcc.models.GetPriceBySpecRequest;
+import com.baidubce.bcc.models.GetPriceBySpecResponse;
+import com.baidubce.bcc.models.GetReservedInstancePriceRequest;
+import com.baidubce.bcc.models.GetReservedInstancePriceResponse;
+import com.baidubce.bcc.models.GetReservedInstanceRequest;
+import com.baidubce.bcc.models.GetReservedInstanceResponse;
 import com.baidubce.bcc.models.GetRoleListResponse;
 import com.baidubce.bcc.models.GetSnapshotRequest;
 import com.baidubce.bcc.models.GetSnapshotResponse;
+import com.baidubce.bcc.models.GetTaskRequest;
+import com.baidubce.bcc.models.GetTaskResponse;
+import com.baidubce.bcc.models.GetVolumeClusterRequest;
+import com.baidubce.bcc.models.GetVolumeClusterResponse;
 import com.baidubce.bcc.models.GetVolumeRequest;
 import com.baidubce.bcc.models.GetVolumeResizeProgressRequest;
 import com.baidubce.bcc.models.GetVolumeResizeProgressResponse;
 import com.baidubce.bcc.models.GetVolumeResponse;
+import com.baidubce.bcc.models.GetZoneBySpecRequest;
+import com.baidubce.bcc.models.GetZoneBySpecResponse;
 import com.baidubce.bcc.models.ImportImageRequest;
 import com.baidubce.bcc.models.ImportImageResponse;
 import com.baidubce.bcc.models.ImportKeypairRequest;
@@ -122,6 +155,8 @@ import com.baidubce.bcc.models.ListAvailableResizeSpecRequest;
 import com.baidubce.bcc.models.ListAvailableResizeSpecResponse;
 import com.baidubce.bcc.models.ListBidFlavorResponse;
 import com.baidubce.bcc.models.ListDeploySetResponse;
+import com.baidubce.bcc.models.ListFlavorSpecRequest;
+import com.baidubce.bcc.models.ListFlavorSpecResponse;
 import com.baidubce.bcc.models.ListImagesRequest;
 import com.baidubce.bcc.models.ListImagesResponse;
 import com.baidubce.bcc.models.ListInstanceByIdsRequest;
@@ -136,6 +171,10 @@ import com.baidubce.bcc.models.ListOsRequest;
 import com.baidubce.bcc.models.ListOsResponse;
 import com.baidubce.bcc.models.ListRecycleInstanceRequest;
 import com.baidubce.bcc.models.ListRecycleInstanceResponse;
+import com.baidubce.bcc.models.ListReservedInstanceTransferInRequest;
+import com.baidubce.bcc.models.ListReservedInstanceTransferInResponse;
+import com.baidubce.bcc.models.ListReservedInstanceTransferOutRequest;
+import com.baidubce.bcc.models.ListReservedInstanceTransferOutResponse;
 import com.baidubce.bcc.models.ListSecurityGroupsRequest;
 import com.baidubce.bcc.models.ListSecurityGroupsResponse;
 import com.baidubce.bcc.models.ListSharedUserRequest;
@@ -146,22 +185,33 @@ import com.baidubce.bcc.models.ListSnapshotShareRequest;
 import com.baidubce.bcc.models.ListSnapshotShareResponse;
 import com.baidubce.bcc.models.ListSnapshotsRequest;
 import com.baidubce.bcc.models.ListSnapshotsResponse;
+import com.baidubce.bcc.models.ListTaskRequest;
+import com.baidubce.bcc.models.ListTaskResponse;
+import com.baidubce.bcc.models.ListVolumeClustersRequest;
+import com.baidubce.bcc.models.ListVolumeClustersResponse;
 import com.baidubce.bcc.models.ListVolumesRequest;
 import com.baidubce.bcc.models.ListVolumesResponse;
+import com.baidubce.bcc.models.ListZonesResponse;
 import com.baidubce.bcc.models.ModifyCdsAttributeRequest;
+import com.baidubce.bcc.models.ModifyEhcClusterRequest;
 import com.baidubce.bcc.models.ModifyInstanceAttributesRequest;
 import com.baidubce.bcc.models.ModifyInstanceDescRequest;
 import com.baidubce.bcc.models.ModifyInstanceHostnameRequest;
 import com.baidubce.bcc.models.ModifyInstancePasswordRequest;
 import com.baidubce.bcc.models.ModifyRelatedDeletePolicyRequest;
+import com.baidubce.bcc.models.ModifyReservedInstancesRequest;
+import com.baidubce.bcc.models.ModifyReservedInstancesResponse;
 import com.baidubce.bcc.models.ModifyVolumeChargeTypeRequest;
 import com.baidubce.bcc.models.PurchaseReservedInstanceRequest;
 import com.baidubce.bcc.models.PurchaseReservedInstanceResponse;
+import com.baidubce.bcc.models.PurchaseReservedVolumeClusterRequest;
+import com.baidubce.bcc.models.PurchaseReservedVolumeClusterResponse;
 import com.baidubce.bcc.models.PurchaseReservedVolumeRequest;
 import com.baidubce.bcc.models.PurchaseReservedVolumeResponse;
 import com.baidubce.bcc.models.RebootInstanceRequest;
 import com.baidubce.bcc.models.RebuildBatchInstanceRequest;
 import com.baidubce.bcc.models.RebuildInstanceRequest;
+import com.baidubce.bcc.models.RefuseReservedInstanceTransferRequest;
 import com.baidubce.bcc.models.ReleaseInstanceByPostRequest;
 import com.baidubce.bcc.models.ReleaseMultipleInstanceByPostRequest;
 import com.baidubce.bcc.models.ReleaseVolumeRequest;
@@ -172,11 +222,16 @@ import com.baidubce.bcc.models.RemoteCopySnapshotResponse;
 import com.baidubce.bcc.models.RenameImageRequest;
 import com.baidubce.bcc.models.RenameKeypairRequest;
 import com.baidubce.bcc.models.RenameVolumeRequest;
+import com.baidubce.bcc.models.RenewReservedInstanceRequest;
+import com.baidubce.bcc.models.RenewReservedInstanceResponse;
 import com.baidubce.bcc.models.ReplaceInstanceSecurityGroupRequest;
 import com.baidubce.bcc.models.ReplaceInstanceSecurityGroupResponse;
 import com.baidubce.bcc.models.ResizeInstanceBySpecRequest;
+import com.baidubce.bcc.models.ResizeVolumeClusterRequest;
+import com.baidubce.bcc.models.ResizeVolumeClusterResponse;
 import com.baidubce.bcc.models.ResizeVolumeRequest;
 import com.baidubce.bcc.models.ResizeVolumeResponse;
+import com.baidubce.bcc.models.RevokeReservedInstanceTransferRequest;
 import com.baidubce.bcc.models.RevokeSecurityGroupRuleRequest;
 import com.baidubce.bcc.models.RollbackVolumeRequest;
 import com.baidubce.bcc.models.ShareImageRequest;
@@ -187,10 +242,12 @@ import com.baidubce.bcc.models.UnbindInstanceFromSecurityGroupRequest;
 import com.baidubce.bcc.models.UnbindInstanceFromTagsRequest;
 import com.baidubce.bcc.models.UnbindInstanceSecurityGroupRequest;
 import com.baidubce.bcc.models.UnbindInstanceSecurityGroupResponse;
+import com.baidubce.bcc.models.UnbindReservedInstanceFromTagsRequest;
 import com.baidubce.bcc.models.UnbindRoleRequest;
 import com.baidubce.bcc.models.UnbindRoleResponse;
 import com.baidubce.bcc.models.UnbindTagImageRequest;
 import com.baidubce.bcc.models.UnbindTagSnapchainRequest;
+import com.baidubce.bcc.models.UnbindTagVolumeClusterRequest;
 import com.baidubce.bcc.models.UnbindTagVolumeRequest;
 import com.baidubce.bcc.models.UpdateAspRequest;
 import com.baidubce.bcc.models.UpdateDeploySetRelationRequest;
@@ -221,6 +278,17 @@ public class BccClientTest {
         bccClient = new BccClient(config);
     }
 
+    /**
+     * acceptReservedInstanceTransfer
+     *
+     */
+    @Test
+    public void acceptReservedInstanceTransferTest() {
+        AcceptReservedInstanceTransferRequest acceptReservedInstanceTransferRequest = new AcceptReservedInstanceTransferRequest();
+        acceptReservedInstanceTransferRequest.setTransferRecordId("");
+        acceptReservedInstanceTransferRequest.setEhcClusterId("");
+        bccClient.acceptReservedInstanceTransfer(acceptReservedInstanceTransferRequest);
+    }
     /**
      * addIpv6
      *
@@ -294,6 +362,31 @@ public class BccClientTest {
         autoReleaseInstanceRequest.setIsEipAutoRelatedDelete(false);
         autoReleaseInstanceRequest.setReleaseTime("");
         bccClient.autoReleaseInstance(autoReleaseInstanceRequest);
+    }
+    /**
+     * autoRenewReservedInstance
+     *
+     */
+    @Test
+    public void autoRenewReservedInstanceTest() {
+        AutoRenewReservedInstanceRequest autoRenewReservedInstanceRequest = new AutoRenewReservedInstanceRequest();
+        autoRenewReservedInstanceRequest.setReservedInstanceIds(new ArrayList<>());
+        autoRenewReservedInstanceRequest.setAutoRenewTimeUnit("");
+        autoRenewReservedInstanceRequest.setAutoRenewTime(0);
+        AutoRenewReservedInstanceResponse response = bccClient.autoRenewReservedInstance(autoRenewReservedInstanceRequest);
+        System.out.println(response);
+    }
+    /**
+     * autoRenewVolumeCluster
+     *
+     */
+    @Test
+    public void autoRenewVolumeClusterTest() {
+        AutoRenewVolumeClusterRequest autoRenewVolumeClusterRequest = new AutoRenewVolumeClusterRequest();
+        autoRenewVolumeClusterRequest.setClusterId("");
+        autoRenewVolumeClusterRequest.setRenewTimeUnit("");
+        autoRenewVolumeClusterRequest.setRenewTime(0);
+        bccClient.autoRenewVolumeCluster(autoRenewVolumeClusterRequest);
     }
     /**
      * batchAddIp
@@ -414,6 +507,17 @@ public class BccClientTest {
         bccClient.bindInstanceToTags(bindInstanceToTagsRequest);
     }
     /**
+     * bindReservedInstanceToTags
+     *
+     */
+    @Test
+    public void bindReservedInstanceToTagsTest() {
+        BindReservedInstanceToTagsRequest bindReservedInstanceToTagsRequest = new BindReservedInstanceToTagsRequest();
+        bindReservedInstanceToTagsRequest.setReservedInstanceIds(new ArrayList<>());
+        bindReservedInstanceToTagsRequest.setChangeTags(new ArrayList<>());
+        bccClient.bindReservedInstanceToTags(bindReservedInstanceToTagsRequest);
+    }
+    /**
      * bindRole
      *
      */
@@ -457,6 +561,38 @@ public class BccClientTest {
         bindTagVolumeRequest.setVolumeId("");
         bindTagVolumeRequest.setChangeTags(new ArrayList<>());
         bccClient.bindTagVolume(bindTagVolumeRequest);
+    }
+    /**
+     * bindTagVolumeCluster
+     *
+     */
+    @Test
+    public void bindTagVolumeClusterTest() {
+        BindTagVolumeClusterRequest bindTagVolumeClusterRequest = new BindTagVolumeClusterRequest();
+        bindTagVolumeClusterRequest.setClusterId("");
+        bindTagVolumeClusterRequest.setChangeTags(new ArrayList<>());
+        bccClient.bindTagVolumeCluster(bindTagVolumeClusterRequest);
+    }
+    /**
+     * cancelAutoRenewReservedInstance
+     *
+     */
+    @Test
+    public void cancelAutoRenewReservedInstanceTest() {
+        CancelAutoRenewReservedInstanceRequest cancelAutoRenewReservedInstanceRequest = new CancelAutoRenewReservedInstanceRequest();
+        cancelAutoRenewReservedInstanceRequest.setReservedInstanceIds(new ArrayList<>());
+        CancelAutoRenewReservedInstanceResponse response = bccClient.cancelAutoRenewReservedInstance(cancelAutoRenewReservedInstanceRequest);
+        System.out.println(response);
+    }
+    /**
+     * cancelAutoRenewVolumeCluster
+     *
+     */
+    @Test
+    public void cancelAutoRenewVolumeClusterTest() {
+        CancelAutoRenewVolumeClusterRequest cancelAutoRenewVolumeClusterRequest = new CancelAutoRenewVolumeClusterRequest();
+        cancelAutoRenewVolumeClusterRequest.setClusterId("");
+        bccClient.cancelAutoRenewVolumeCluster(cancelAutoRenewVolumeClusterRequest);
     }
     /**
      * cancelBidOrder
@@ -609,6 +745,19 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * createEhcCluster
+     *
+     */
+    @Test
+    public void createEhcClusterTest() {
+        CreateEhcClusterRequest createEhcClusterRequest = new CreateEhcClusterRequest();
+        createEhcClusterRequest.setName("");
+        createEhcClusterRequest.setZoneName("");
+        createEhcClusterRequest.setDescription("");
+        CreateEhcClusterResponse response = bccClient.createEhcCluster(createEhcClusterRequest);
+        System.out.println(response);
+    }
+    /**
      * createImage
      *
      */
@@ -709,6 +858,43 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * createReservedInstanceTransfer
+     *
+     */
+    @Test
+    public void createReservedInstanceTransferTest() {
+        CreateReservedInstanceTransferRequest createReservedInstanceTransferRequest = new CreateReservedInstanceTransferRequest();
+        createReservedInstanceTransferRequest.setReservedInstanceIds(new ArrayList<>());
+        createReservedInstanceTransferRequest.setRecipientAccountId("");
+        bccClient.createReservedInstanceTransfer(createReservedInstanceTransferRequest);
+    }
+    /**
+     * createReservedInstances
+     *
+     */
+    @Test
+    public void createReservedInstancesTest() {
+        CreateReservedInstancesRequest createReservedInstancesRequest = new CreateReservedInstancesRequest();
+        createReservedInstancesRequest.setReservedInstanceName("");
+        createReservedInstancesRequest.setScope("");
+        createReservedInstancesRequest.setZoneName("");
+        createReservedInstancesRequest.setSpec("");
+        createReservedInstancesRequest.setOfferingType("");
+        createReservedInstancesRequest.setInstanceCount(0);
+        createReservedInstancesRequest.setReservedInstanceCount(0);
+        createReservedInstancesRequest.setReservedInstanceTime(0);
+        createReservedInstancesRequest.setReservedInstanceTimeUnit("");
+        createReservedInstancesRequest.setAutoRenew(false);
+        createReservedInstancesRequest.setAutoRenewTimeUnit("");
+        createReservedInstancesRequest.setAutoRenewTime(0);
+        createReservedInstancesRequest.setEffectiveTime("");
+        createReservedInstancesRequest.setTags(new ArrayList<>());
+        createReservedInstancesRequest.setTicketId("");
+        createReservedInstancesRequest.setEhcClusterId("");
+        CreateReservedInstancesResponse response = bccClient.createReservedInstances(createReservedInstancesRequest);
+        System.out.println(response);
+    }
+    /**
      * createSecurityGroup
      *
      */
@@ -784,6 +970,23 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * createVolumeCluster
+     *
+     */
+    @Test
+    public void createVolumeClusterTest() {
+        CreateVolumeClusterRequest createVolumeClusterRequest = new CreateVolumeClusterRequest();
+        createVolumeClusterRequest.setZoneName("");
+        createVolumeClusterRequest.setClusterName("");
+        createVolumeClusterRequest.setClusterSizeInGB(0);
+        createVolumeClusterRequest.setStorageType("");
+        createVolumeClusterRequest.setPurchaseCount(0);
+        createVolumeClusterRequest.setBilling(null);
+        createVolumeClusterRequest.setTags(new ArrayList<>());
+        CreateVolumeClusterResponse response = bccClient.createVolumeCluster(createVolumeClusterRequest);
+        System.out.println(response);
+    }
+    /**
      * delIpv6
      *
      */
@@ -825,6 +1028,16 @@ public class BccClientTest {
         DeleteDeploySetRequest deleteDeploySetRequest = new DeleteDeploySetRequest();
         deleteDeploySetRequest.setDeployId("");
         bccClient.deleteDeploySet(deleteDeploySetRequest);
+    }
+    /**
+     * deleteEhcCluster
+     *
+     */
+    @Test
+    public void deleteEhcClusterTest() {
+        DeleteEhcClusterRequest deleteEhcClusterRequest = new DeleteEhcClusterRequest();
+        deleteEhcClusterRequest.setEhcClusterIdList(new ArrayList<>());
+        bccClient.deleteEhcCluster(deleteEhcClusterRequest);
     }
     /**
      * deleteImage
@@ -924,6 +1137,17 @@ public class BccClientTest {
         bccClient.deletesInstanceDeploySet(deletesInstanceDeploySetRequest);
     }
     /**
+     * describeRegions
+     *
+     */
+    @Test
+    public void describeRegionsTest() {
+        DescribeRegionsRequest describeRegionsRequest = new DescribeRegionsRequest();
+        describeRegionsRequest.setRegion("");
+        DescribeRegionsResponse response = bccClient.describeRegions(describeRegionsRequest);
+        System.out.println(response);
+    }
+    /**
      * detachAsp
      *
      */
@@ -956,6 +1180,19 @@ public class BccClientTest {
         detachVolumeRequest.setVolumeId("");
         detachVolumeRequest.setInstanceId("");
         bccClient.detachVolume(detachVolumeRequest);
+    }
+    /**
+     * ehcClusterList
+     *
+     */
+    @Test
+    public void ehcClusterListTest() {
+        EhcClusterListRequest ehcClusterListRequest = new EhcClusterListRequest();
+        ehcClusterListRequest.setEhcClusterIdList(new ArrayList<>());
+        ehcClusterListRequest.setNameList(new ArrayList<>());
+        ehcClusterListRequest.setZoneName("");
+        EhcClusterListResponse response = bccClient.ehcClusterList(ehcClusterListRequest);
+        System.out.println(response);
     }
     /**
      * enterRescueMode
@@ -1124,6 +1361,68 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * getPriceBySpec
+     *
+     */
+    @Test
+    public void getPriceBySpecTest() {
+        GetPriceBySpecRequest getPriceBySpecRequest = new GetPriceBySpecRequest();
+        getPriceBySpecRequest.setSpecId("");
+        getPriceBySpecRequest.setSpec("");
+        getPriceBySpecRequest.setPaymentTiming("");
+        getPriceBySpecRequest.setZoneName("");
+        getPriceBySpecRequest.setPurchaseCount(0);
+        getPriceBySpecRequest.setPurchaseLength(0);
+        GetPriceBySpecResponse response = bccClient.getPriceBySpec(getPriceBySpecRequest);
+        System.out.println(response);
+    }
+    /**
+     * getReservedInstance
+     *
+     */
+    @Test
+    public void getReservedInstanceTest() {
+        GetReservedInstanceRequest getReservedInstanceRequest = new GetReservedInstanceRequest();
+        getReservedInstanceRequest.setMarker("");
+        getReservedInstanceRequest.setMaxKeys(0);
+        getReservedInstanceRequest.setReservedInstanceIds(new ArrayList<>());
+        getReservedInstanceRequest.setReservedInstanceName("");
+        getReservedInstanceRequest.setZoneName("");
+        getReservedInstanceRequest.setReservedInstanceStatus("");
+        getReservedInstanceRequest.setSpec("");
+        getReservedInstanceRequest.setOfferingType("");
+        getReservedInstanceRequest.setOsType("");
+        getReservedInstanceRequest.setInstanceId("");
+        getReservedInstanceRequest.setInstanceName("");
+        getReservedInstanceRequest.setIsDeduct(false);
+        getReservedInstanceRequest.setEhcClusterId("");
+        getReservedInstanceRequest.setSortKey("");
+        getReservedInstanceRequest.setSortDir("");
+        getReservedInstanceRequest.setReservedInstanceSource("");
+        getReservedInstanceRequest.setScope("");
+        GetReservedInstanceResponse response = bccClient.getReservedInstance(getReservedInstanceRequest);
+        System.out.println(response);
+    }
+    /**
+     * getReservedInstancePrice
+     *
+     */
+    @Test
+    public void getReservedInstancePriceTest() {
+        GetReservedInstancePriceRequest getReservedInstancePriceRequest = new GetReservedInstancePriceRequest();
+        getReservedInstancePriceRequest.setSpecId("");
+        getReservedInstancePriceRequest.setSpec("");
+        getReservedInstancePriceRequest.setOfferingType("");
+        getReservedInstancePriceRequest.setScope("");
+        getReservedInstancePriceRequest.setZoneName("");
+        getReservedInstancePriceRequest.setReservedInstanceCount(0);
+        getReservedInstancePriceRequest.setPriceTimeUnit("");
+        getReservedInstancePriceRequest.setReservedInstanceTime(0);
+        getReservedInstancePriceRequest.setPurchaseNum(0);
+        GetReservedInstancePriceResponse response = bccClient.getReservedInstancePrice(getReservedInstancePriceRequest);
+        System.out.println(response);
+    }
+    /**
      * getRoleList
      *
      */
@@ -1144,6 +1443,18 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * getTask
+     *
+     */
+    @Test
+    public void getTaskTest() {
+        GetTaskRequest getTaskRequest = new GetTaskRequest();
+        getTaskRequest.setTaskIds(new ArrayList<>());
+        getTaskRequest.setMaxKeys(0);
+        GetTaskResponse response = bccClient.getTask(getTaskRequest);
+        System.out.println(response);
+    }
+    /**
      * getVolume
      *
      */
@@ -1155,6 +1466,17 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * getVolumeCluster
+     *
+     */
+    @Test
+    public void getVolumeClusterTest() {
+        GetVolumeClusterRequest getVolumeClusterRequest = new GetVolumeClusterRequest();
+        getVolumeClusterRequest.setClusterId("");
+        GetVolumeClusterResponse response = bccClient.getVolumeCluster(getVolumeClusterRequest);
+        System.out.println(response);
+    }
+    /**
      * getVolumeResizeProgress
      *
      */
@@ -1163,6 +1485,20 @@ public class BccClientTest {
         GetVolumeResizeProgressRequest getVolumeResizeProgressRequest = new GetVolumeResizeProgressRequest();
         getVolumeResizeProgressRequest.setVolumeId("");
         GetVolumeResizeProgressResponse response = bccClient.getVolumeResizeProgress(getVolumeResizeProgressRequest);
+        System.out.println(response);
+    }
+    /**
+     * getZoneBySpec
+     *
+     */
+    @Test
+    public void getZoneBySpecTest() {
+        GetZoneBySpecRequest getZoneBySpecRequest = new GetZoneBySpecRequest();
+        getZoneBySpecRequest.setInstanceType("");
+        getZoneBySpecRequest.setProductType("");
+        getZoneBySpecRequest.setSpec("");
+        getZoneBySpecRequest.setSpecId("");
+        GetZoneBySpecResponse response = bccClient.getZoneBySpec(getZoneBySpecRequest);
         System.out.println(response);
     }
     /**
@@ -1290,6 +1626,19 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * listFlavorSpec
+     *
+     */
+    @Test
+    public void listFlavorSpecTest() {
+        ListFlavorSpecRequest listFlavorSpecRequest = new ListFlavorSpecRequest();
+        listFlavorSpecRequest.setZoneName("");
+        listFlavorSpecRequest.setSpecs("");
+        listFlavorSpecRequest.setSpecIds("");
+        ListFlavorSpecResponse response = bccClient.listFlavorSpec(listFlavorSpecRequest);
+        System.out.println(response);
+    }
+    /**
      * listImages
      *
      */
@@ -1396,6 +1745,38 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * listReservedInstanceTransferIn
+     *
+     */
+    @Test
+    public void listReservedInstanceTransferInTest() {
+        ListReservedInstanceTransferInRequest listReservedInstanceTransferInRequest = new ListReservedInstanceTransferInRequest();
+        listReservedInstanceTransferInRequest.setMarker("");
+        listReservedInstanceTransferInRequest.setMaxKeys(0);
+        listReservedInstanceTransferInRequest.setReservedInstanceIds(new ArrayList<>());
+        listReservedInstanceTransferInRequest.setTransferRecordIds(new ArrayList<>());
+        listReservedInstanceTransferInRequest.setSpec("");
+        listReservedInstanceTransferInRequest.setStatus("");
+        ListReservedInstanceTransferInResponse response = bccClient.listReservedInstanceTransferIn(listReservedInstanceTransferInRequest);
+        System.out.println(response);
+    }
+    /**
+     * listReservedInstanceTransferOut
+     *
+     */
+    @Test
+    public void listReservedInstanceTransferOutTest() {
+        ListReservedInstanceTransferOutRequest listReservedInstanceTransferOutRequest = new ListReservedInstanceTransferOutRequest();
+        listReservedInstanceTransferOutRequest.setMarker("");
+        listReservedInstanceTransferOutRequest.setMaxKeys(0);
+        listReservedInstanceTransferOutRequest.setReservedInstanceIds(new ArrayList<>());
+        listReservedInstanceTransferOutRequest.setTransferRecordIds(new ArrayList<>());
+        listReservedInstanceTransferOutRequest.setSpec("");
+        listReservedInstanceTransferOutRequest.setStatus("");
+        ListReservedInstanceTransferOutResponse response = bccClient.listReservedInstanceTransferOut(listReservedInstanceTransferOutRequest);
+        System.out.println(response);
+    }
+    /**
      * listSecurityGroups
      *
      */
@@ -1463,6 +1844,38 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * listTask
+     *
+     */
+    @Test
+    public void listTaskTest() {
+        ListTaskRequest listTaskRequest = new ListTaskRequest();
+        listTaskRequest.setTaskIds(new ArrayList<>());
+        listTaskRequest.setMarker("");
+        listTaskRequest.setMaxKeys(0);
+        listTaskRequest.setTaskAction("");
+        listTaskRequest.setTaskStatus("");
+        listTaskRequest.setStartTime("");
+        listTaskRequest.setEndTime("");
+        listTaskRequest.setResourceIds(new ArrayList<>());
+        ListTaskResponse response = bccClient.listTask(listTaskRequest);
+        System.out.println(response);
+    }
+    /**
+     * listVolumeClusters
+     *
+     */
+    @Test
+    public void listVolumeClustersTest() {
+        ListVolumeClustersRequest listVolumeClustersRequest = new ListVolumeClustersRequest();
+        listVolumeClustersRequest.setMarker("");
+        listVolumeClustersRequest.setMaxKeys(0);
+        listVolumeClustersRequest.setZoneName("");
+        listVolumeClustersRequest.setClusterName("");
+        ListVolumeClustersResponse response = bccClient.listVolumeClusters(listVolumeClustersRequest);
+        System.out.println(response);
+    }
+    /**
      * listVolumes
      *
      */
@@ -1482,6 +1895,15 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * listZones
+     *
+     */
+    @Test
+    public void listZonesTest() {
+        ListZonesResponse response = bccClient.listZones();
+        System.out.println(response);
+    }
+    /**
      * modifyCdsAttribute
      *
      */
@@ -1494,6 +1916,18 @@ public class BccClientTest {
         modifyCdsAttributeRequest.setDeleteWithInstance(false);
         modifyCdsAttributeRequest.setDeleteAutoSnapshot(false);
         bccClient.modifyCdsAttribute(modifyCdsAttributeRequest);
+    }
+    /**
+     * modifyEhcCluster
+     *
+     */
+    @Test
+    public void modifyEhcClusterTest() {
+        ModifyEhcClusterRequest modifyEhcClusterRequest = new ModifyEhcClusterRequest();
+        modifyEhcClusterRequest.setEhcClusterId("");
+        modifyEhcClusterRequest.setName("");
+        modifyEhcClusterRequest.setDescription("");
+        bccClient.modifyEhcCluster(modifyEhcClusterRequest);
     }
     /**
      * modifyInstanceAttributes
@@ -1556,6 +1990,17 @@ public class BccClientTest {
         bccClient.modifyRelatedDeletePolicy(modifyRelatedDeletePolicyRequest);
     }
     /**
+     * modifyReservedInstances
+     *
+     */
+    @Test
+    public void modifyReservedInstancesTest() {
+        ModifyReservedInstancesRequest modifyReservedInstancesRequest = new ModifyReservedInstancesRequest();
+        modifyReservedInstancesRequest.setReservedInstances(new ArrayList<>());
+        ModifyReservedInstancesResponse response = bccClient.modifyReservedInstances(modifyReservedInstancesRequest);
+        System.out.println(response);
+    }
+    /**
      * modifyVolumeChargeType
      *
      */
@@ -1592,6 +2037,18 @@ public class BccClientTest {
         purchaseReservedVolumeRequest.setBilling(null);
         purchaseReservedVolumeRequest.setInstanceId("");
         PurchaseReservedVolumeResponse response = bccClient.purchaseReservedVolume(purchaseReservedVolumeRequest);
+        System.out.println(response);
+    }
+    /**
+     * purchaseReservedVolumeCluster
+     *
+     */
+    @Test
+    public void purchaseReservedVolumeClusterTest() {
+        PurchaseReservedVolumeClusterRequest purchaseReservedVolumeClusterRequest = new PurchaseReservedVolumeClusterRequest();
+        purchaseReservedVolumeClusterRequest.setClusterId("");
+        purchaseReservedVolumeClusterRequest.setBilling(null);
+        PurchaseReservedVolumeClusterResponse response = bccClient.purchaseReservedVolumeCluster(purchaseReservedVolumeClusterRequest);
         System.out.println(response);
     }
     /**
@@ -1650,6 +2107,16 @@ public class BccClientTest {
         rebuildInstanceRequest.setUseLastUserData(false);
         rebuildInstanceRequest.setCleanLastUserData(false);
         bccClient.rebuildInstance(rebuildInstanceRequest);
+    }
+    /**
+     * refuseReservedInstanceTransfer
+     *
+     */
+    @Test
+    public void refuseReservedInstanceTransferTest() {
+        RefuseReservedInstanceTransferRequest refuseReservedInstanceTransferRequest = new RefuseReservedInstanceTransferRequest();
+        refuseReservedInstanceTransferRequest.setTransferRecordIds(new ArrayList<>());
+        bccClient.refuseReservedInstanceTransfer(refuseReservedInstanceTransferRequest);
     }
     /**
      * releaseInstanceByPost
@@ -1755,6 +2222,22 @@ public class BccClientTest {
         bccClient.renameVolume(renameVolumeRequest);
     }
     /**
+     * renewReservedInstance
+     *
+     */
+    @Test
+    public void renewReservedInstanceTest() {
+        RenewReservedInstanceRequest renewReservedInstanceRequest = new RenewReservedInstanceRequest();
+        renewReservedInstanceRequest.setReservedInstanceIds(new ArrayList<>());
+        renewReservedInstanceRequest.setReservedInstanceTime("");
+        renewReservedInstanceRequest.setReservedInstanceTimeUnit("");
+        renewReservedInstanceRequest.setAutoRenew(false);
+        renewReservedInstanceRequest.setAutoRenewTimeUnit("");
+        renewReservedInstanceRequest.setAutoRenewTime(0);
+        RenewReservedInstanceResponse response = bccClient.renewReservedInstance(renewReservedInstanceRequest);
+        System.out.println(response);
+    }
+    /**
      * replaceInstanceSecurityGroup
      *
      */
@@ -1793,6 +2276,28 @@ public class BccClientTest {
         resizeVolumeRequest.setNewVolumeType("");
         ResizeVolumeResponse response = bccClient.resizeVolume(resizeVolumeRequest);
         System.out.println(response);
+    }
+    /**
+     * resizeVolumeCluster
+     *
+     */
+    @Test
+    public void resizeVolumeClusterTest() {
+        ResizeVolumeClusterRequest resizeVolumeClusterRequest = new ResizeVolumeClusterRequest();
+        resizeVolumeClusterRequest.setClusterId("");
+        resizeVolumeClusterRequest.setNewClusterSizeInGB(0);
+        ResizeVolumeClusterResponse response = bccClient.resizeVolumeCluster(resizeVolumeClusterRequest);
+        System.out.println(response);
+    }
+    /**
+     * revokeReservedInstanceTransfer
+     *
+     */
+    @Test
+    public void revokeReservedInstanceTransferTest() {
+        RevokeReservedInstanceTransferRequest revokeReservedInstanceTransferRequest = new RevokeReservedInstanceTransferRequest();
+        revokeReservedInstanceTransferRequest.setTransferRecordIds(new ArrayList<>());
+        bccClient.revokeReservedInstanceTransfer(revokeReservedInstanceTransferRequest);
     }
     /**
      * revokeSecurityGroupRule
@@ -1902,6 +2407,17 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * unbindReservedInstanceFromTags
+     *
+     */
+    @Test
+    public void unbindReservedInstanceFromTagsTest() {
+        UnbindReservedInstanceFromTagsRequest unbindReservedInstanceFromTagsRequest = new UnbindReservedInstanceFromTagsRequest();
+        unbindReservedInstanceFromTagsRequest.setReservedInstanceIds(new ArrayList<>());
+        unbindReservedInstanceFromTagsRequest.setChangeTags(new ArrayList<>());
+        bccClient.unbindReservedInstanceFromTags(unbindReservedInstanceFromTagsRequest);
+    }
+    /**
      * unbindRole
      *
      */
@@ -1945,6 +2461,17 @@ public class BccClientTest {
         unbindTagVolumeRequest.setVolumeId("");
         unbindTagVolumeRequest.setChangeTags(new ArrayList<>());
         bccClient.unbindTagVolume(unbindTagVolumeRequest);
+    }
+    /**
+     * unbindTagVolumeCluster
+     *
+     */
+    @Test
+    public void unbindTagVolumeClusterTest() {
+        UnbindTagVolumeClusterRequest unbindTagVolumeClusterRequest = new UnbindTagVolumeClusterRequest();
+        unbindTagVolumeClusterRequest.setClusterId("");
+        unbindTagVolumeClusterRequest.setChangeTags(new ArrayList<>());
+        bccClient.unbindTagVolumeCluster(unbindTagVolumeClusterRequest);
     }
     /**
      * updateAsp
