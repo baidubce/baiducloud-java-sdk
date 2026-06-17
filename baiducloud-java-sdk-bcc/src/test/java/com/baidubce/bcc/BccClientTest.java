@@ -8,6 +8,8 @@ import com.baidubce.bcc.models.AttachKeypairRequest;
 import com.baidubce.bcc.models.AttachVolumeRequest;
 import com.baidubce.bcc.models.AttachVolumeResponse;
 import com.baidubce.bcc.models.AuthorizeSecurityGroupRuleRequest;
+import com.baidubce.bcc.models.AuthorizeServerEventRequest;
+import com.baidubce.bcc.models.AuthorizeServerEventResponse;
 import com.baidubce.bcc.models.AutoReleaseInstanceRequest;
 import com.baidubce.bcc.models.AutoRenewReservedInstanceRequest;
 import com.baidubce.bcc.models.AutoRenewReservedInstanceResponse;
@@ -44,8 +46,12 @@ import com.baidubce.bcc.models.CancelSnapshotShareResponse;
 import com.baidubce.bcc.models.ChangeToPrepaidRequest;
 import com.baidubce.bcc.models.ChangeToPrepaidResponse;
 import com.baidubce.bcc.models.ChangeVpcRequest;
+import com.baidubce.bcc.models.CheckServerEventRequest;
+import com.baidubce.bcc.models.CheckServerEventResponse;
 import com.baidubce.bcc.models.CreateAspRequest;
 import com.baidubce.bcc.models.CreateAspResponse;
+import com.baidubce.bcc.models.CreateAuthorizationRuleRequest;
+import com.baidubce.bcc.models.CreateAuthorizationRuleResponse;
 import com.baidubce.bcc.models.CreateAutoRenewRuleRequest;
 import com.baidubce.bcc.models.CreateBidInstanceRequest;
 import com.baidubce.bcc.models.CreateBidInstanceResponse;
@@ -78,6 +84,8 @@ import com.baidubce.bcc.models.DeleteAutoRenewRuleRequest;
 import com.baidubce.bcc.models.DeleteDeploySetRequest;
 import com.baidubce.bcc.models.DeleteEhcClusterRequest;
 import com.baidubce.bcc.models.DeleteImageRequest;
+import com.baidubce.bcc.models.DeleteInstUserOpAuthorizeRuleRequest;
+import com.baidubce.bcc.models.DeleteInstUserOpAuthorizeRuleResponse;
 import com.baidubce.bcc.models.DeleteInstanceDeploySetRequest;
 import com.baidubce.bcc.models.DeleteKeypairRequest;
 import com.baidubce.bcc.models.DeletePrepayInstanceRequest;
@@ -87,8 +95,18 @@ import com.baidubce.bcc.models.DeleteSecurityGroupRequest;
 import com.baidubce.bcc.models.DeleteSecurityGroupRuleRequest;
 import com.baidubce.bcc.models.DeleteSnapshotRequest;
 import com.baidubce.bcc.models.DeletesInstanceDeploySetRequest;
+import com.baidubce.bcc.models.DescribeAuthorizeRulesRequest;
+import com.baidubce.bcc.models.DescribeAuthorizeRulesResponse;
+import com.baidubce.bcc.models.DescribePlannedEventRecordsRequest;
+import com.baidubce.bcc.models.DescribePlannedEventRecordsResponse;
+import com.baidubce.bcc.models.DescribePlannedEventsRequest;
+import com.baidubce.bcc.models.DescribePlannedEventsResponse;
 import com.baidubce.bcc.models.DescribeRegionsRequest;
 import com.baidubce.bcc.models.DescribeRegionsResponse;
+import com.baidubce.bcc.models.DescribeUnplannedEventRecordsRequest;
+import com.baidubce.bcc.models.DescribeUnplannedEventRecordsResponse;
+import com.baidubce.bcc.models.DescribeUnplannedEventsRequest;
+import com.baidubce.bcc.models.DescribeUnplannedEventsResponse;
 import com.baidubce.bcc.models.DetachAspRequest;
 import com.baidubce.bcc.models.DetachKeypairRequest;
 import com.baidubce.bcc.models.DetachVolumeRequest;
@@ -194,6 +212,8 @@ import com.baidubce.bcc.models.ListVolumesResponse;
 import com.baidubce.bcc.models.ListZonesResponse;
 import com.baidubce.bcc.models.ModifyCdsAttributeRequest;
 import com.baidubce.bcc.models.ModifyEhcClusterRequest;
+import com.baidubce.bcc.models.ModifyInstUserOpAuthorizeRuleAttributeRequest;
+import com.baidubce.bcc.models.ModifyInstUserOpAuthorizeRuleAttributeResponse;
 import com.baidubce.bcc.models.ModifyInstanceAttributesRequest;
 import com.baidubce.bcc.models.ModifyInstanceDescRequest;
 import com.baidubce.bcc.models.ModifyInstanceHostnameRequest;
@@ -350,6 +370,21 @@ public class BccClientTest {
         authorizeSecurityGroupRuleRequest.setSgVersion(0);
         authorizeSecurityGroupRuleRequest.setRule(null);
         bccClient.authorizeSecurityGroupRule(authorizeSecurityGroupRuleRequest);
+    }
+    /**
+     * authorizeServerEvent
+     *
+     */
+    @Test
+    public void authorizeServerEventTest() {
+        AuthorizeServerEventRequest authorizeServerEventRequest = new AuthorizeServerEventRequest();
+        authorizeServerEventRequest.setAction("");
+        authorizeServerEventRequest.setServerEventId("");
+        authorizeServerEventRequest.setInstanceId("");
+        authorizeServerEventRequest.setAuthorizeMaintenanceOperation("");
+        authorizeServerEventRequest.setExecuteTime("");
+        AuthorizeServerEventResponse response = bccClient.authorizeServerEvent(authorizeServerEventRequest);
+        System.out.println(response);
     }
     /**
      * autoReleaseInstance
@@ -659,6 +694,23 @@ public class BccClientTest {
         bccClient.changeVpc(changeVpcRequest);
     }
     /**
+     * checkServerEvent
+     *
+     */
+    @Test
+    public void checkServerEventTest() {
+        CheckServerEventRequest checkServerEventRequest = new CheckServerEventRequest();
+        checkServerEventRequest.setAction("");
+        checkServerEventRequest.setServerEventId("");
+        checkServerEventRequest.setInstanceId("");
+        checkServerEventRequest.setCheckResult("");
+        checkServerEventRequest.setIssueEffect("");
+        checkServerEventRequest.setIssueDescription("");
+        checkServerEventRequest.setAuthorizeMaintenanceOperation("");
+        CheckServerEventResponse response = bccClient.checkServerEvent(checkServerEventRequest);
+        System.out.println(response);
+    }
+    /**
      * createAsp
      *
      */
@@ -670,6 +722,21 @@ public class BccClientTest {
         createAspRequest.setRepeatWeekdays(new ArrayList<>());
         createAspRequest.setRetentionDays("");
         CreateAspResponse response = bccClient.createAsp(createAspRequest);
+        System.out.println(response);
+    }
+    /**
+     * createAuthorizationRule
+     *
+     */
+    @Test
+    public void createAuthorizationRuleTest() {
+        CreateAuthorizationRuleRequest createAuthorizationRuleRequest = new CreateAuthorizationRuleRequest();
+        createAuthorizationRuleRequest.setAction("");
+        createAuthorizationRuleRequest.setEnableRule(0);
+        createAuthorizationRuleRequest.setAuthorizeMaintenanceOperations(new ArrayList<>());
+        createAuthorizationRuleRequest.setRuleName("");
+        createAuthorizationRuleRequest.setServerEventCategory("");
+        CreateAuthorizationRuleResponse response = bccClient.createAuthorizationRule(createAuthorizationRuleRequest);
         System.out.println(response);
     }
     /**
@@ -1050,6 +1117,18 @@ public class BccClientTest {
         bccClient.deleteImage(deleteImageRequest);
     }
     /**
+     * deleteInstUserOpAuthorizeRule
+     *
+     */
+    @Test
+    public void deleteInstUserOpAuthorizeRuleTest() {
+        DeleteInstUserOpAuthorizeRuleRequest deleteInstUserOpAuthorizeRuleRequest = new DeleteInstUserOpAuthorizeRuleRequest();
+        deleteInstUserOpAuthorizeRuleRequest.setAction("");
+        deleteInstUserOpAuthorizeRuleRequest.setRuleId("");
+        DeleteInstUserOpAuthorizeRuleResponse response = bccClient.deleteInstUserOpAuthorizeRule(deleteInstUserOpAuthorizeRuleRequest);
+        System.out.println(response);
+    }
+    /**
      * deleteInstanceDeploySet
      *
      */
@@ -1137,6 +1216,62 @@ public class BccClientTest {
         bccClient.deletesInstanceDeploySet(deletesInstanceDeploySetRequest);
     }
     /**
+     * describeAuthorizeRules
+     *
+     */
+    @Test
+    public void describeAuthorizeRulesTest() {
+        DescribeAuthorizeRulesRequest describeAuthorizeRulesRequest = new DescribeAuthorizeRulesRequest();
+        describeAuthorizeRulesRequest.setAction("");
+        describeAuthorizeRulesRequest.setMarker("");
+        describeAuthorizeRulesRequest.setMaxKeys(0);
+        describeAuthorizeRulesRequest.setRuleIds(new ArrayList<>());
+        describeAuthorizeRulesRequest.setRuleNames(new ArrayList<>());
+        DescribeAuthorizeRulesResponse response = bccClient.describeAuthorizeRules(describeAuthorizeRulesRequest);
+        System.out.println(response);
+    }
+    /**
+     * describePlannedEventRecords
+     *
+     */
+    @Test
+    public void describePlannedEventRecordsTest() {
+        DescribePlannedEventRecordsRequest describePlannedEventRecordsRequest = new DescribePlannedEventRecordsRequest();
+        describePlannedEventRecordsRequest.setAction("");
+        describePlannedEventRecordsRequest.setServerEventIds(new ArrayList<>());
+        describePlannedEventRecordsRequest.setInstanceIds(new ArrayList<>());
+        describePlannedEventRecordsRequest.setProductCategory("");
+        describePlannedEventRecordsRequest.setServerEventType("");
+        describePlannedEventRecordsRequest.setServerEventLogTimeFilter("");
+        describePlannedEventRecordsRequest.setPeriodStartTime("");
+        describePlannedEventRecordsRequest.setPeriodEndTime("");
+        describePlannedEventRecordsRequest.setMaxKeys(0);
+        describePlannedEventRecordsRequest.setMarker("");
+        DescribePlannedEventRecordsResponse response = bccClient.describePlannedEventRecords(describePlannedEventRecordsRequest);
+        System.out.println(response);
+    }
+    /**
+     * describePlannedEvents
+     *
+     */
+    @Test
+    public void describePlannedEventsTest() {
+        DescribePlannedEventsRequest describePlannedEventsRequest = new DescribePlannedEventsRequest();
+        describePlannedEventsRequest.setAction("");
+        describePlannedEventsRequest.setServerEventStatus("");
+        describePlannedEventsRequest.setServerEventIds(new ArrayList<>());
+        describePlannedEventsRequest.setInstanceIds(new ArrayList<>());
+        describePlannedEventsRequest.setProductCategory("");
+        describePlannedEventsRequest.setServerEventType("");
+        describePlannedEventsRequest.setServerEventLogTimeFilter("");
+        describePlannedEventsRequest.setPeriodStartTime("");
+        describePlannedEventsRequest.setPeriodEndTime("");
+        describePlannedEventsRequest.setMaxKeys(0);
+        describePlannedEventsRequest.setMarker("");
+        DescribePlannedEventsResponse response = bccClient.describePlannedEvents(describePlannedEventsRequest);
+        System.out.println(response);
+    }
+    /**
      * describeRegions
      *
      */
@@ -1145,6 +1280,47 @@ public class BccClientTest {
         DescribeRegionsRequest describeRegionsRequest = new DescribeRegionsRequest();
         describeRegionsRequest.setRegion("");
         DescribeRegionsResponse response = bccClient.describeRegions(describeRegionsRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeUnplannedEventRecords
+     *
+     */
+    @Test
+    public void describeUnplannedEventRecordsTest() {
+        DescribeUnplannedEventRecordsRequest describeUnplannedEventRecordsRequest = new DescribeUnplannedEventRecordsRequest();
+        describeUnplannedEventRecordsRequest.setAction("");
+        describeUnplannedEventRecordsRequest.setServerEventIds(new ArrayList<>());
+        describeUnplannedEventRecordsRequest.setInstanceIds(new ArrayList<>());
+        describeUnplannedEventRecordsRequest.setProductCategory("");
+        describeUnplannedEventRecordsRequest.setServerEventType("");
+        describeUnplannedEventRecordsRequest.setServerEventLogTimeFilter("");
+        describeUnplannedEventRecordsRequest.setPeriodStartTime("");
+        describeUnplannedEventRecordsRequest.setPeriodEndTime("");
+        describeUnplannedEventRecordsRequest.setMaxKeys(0);
+        describeUnplannedEventRecordsRequest.setMarker("");
+        DescribeUnplannedEventRecordsResponse response = bccClient.describeUnplannedEventRecords(describeUnplannedEventRecordsRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeUnplannedEvents
+     *
+     */
+    @Test
+    public void describeUnplannedEventsTest() {
+        DescribeUnplannedEventsRequest describeUnplannedEventsRequest = new DescribeUnplannedEventsRequest();
+        describeUnplannedEventsRequest.setAction("");
+        describeUnplannedEventsRequest.setServerEventStatus("");
+        describeUnplannedEventsRequest.setServerEventIds(new ArrayList<>());
+        describeUnplannedEventsRequest.setInstanceIds(new ArrayList<>());
+        describeUnplannedEventsRequest.setProductCategory("");
+        describeUnplannedEventsRequest.setServerEventType("");
+        describeUnplannedEventsRequest.setServerEventLogTimeFilter("");
+        describeUnplannedEventsRequest.setPeriodStartTime("");
+        describeUnplannedEventsRequest.setPeriodEndTime("");
+        describeUnplannedEventsRequest.setMaxKeys(0);
+        describeUnplannedEventsRequest.setMarker("");
+        DescribeUnplannedEventsResponse response = bccClient.describeUnplannedEvents(describeUnplannedEventsRequest);
         System.out.println(response);
     }
     /**
@@ -1928,6 +2104,21 @@ public class BccClientTest {
         modifyEhcClusterRequest.setName("");
         modifyEhcClusterRequest.setDescription("");
         bccClient.modifyEhcCluster(modifyEhcClusterRequest);
+    }
+    /**
+     * modifyInstUserOpAuthorizeRuleAttribute
+     *
+     */
+    @Test
+    public void modifyInstUserOpAuthorizeRuleAttributeTest() {
+        ModifyInstUserOpAuthorizeRuleAttributeRequest modifyInstUserOpAuthorizeRuleAttributeRequest = new ModifyInstUserOpAuthorizeRuleAttributeRequest();
+        modifyInstUserOpAuthorizeRuleAttributeRequest.setAction("");
+        modifyInstUserOpAuthorizeRuleAttributeRequest.setEnableRule(0);
+        modifyInstUserOpAuthorizeRuleAttributeRequest.setAuthorizeMaintenanceOperations(new ArrayList<>());
+        modifyInstUserOpAuthorizeRuleAttributeRequest.setRuleName("");
+        modifyInstUserOpAuthorizeRuleAttributeRequest.setRuleId("");
+        ModifyInstUserOpAuthorizeRuleAttributeResponse response = bccClient.modifyInstUserOpAuthorizeRuleAttribute(modifyInstUserOpAuthorizeRuleAttributeRequest);
+        System.out.println(response);
     }
     /**
      * modifyInstanceAttributes
