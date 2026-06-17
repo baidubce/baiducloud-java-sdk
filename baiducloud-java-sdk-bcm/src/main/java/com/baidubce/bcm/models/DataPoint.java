@@ -7,7 +7,7 @@ public class DataPoint {
     /**
      * 时间戳，单位：毫秒
      */
-    private Long timestmap;
+    private Long timestamp;
 
     /**
      * 若aggregationOverTime包含avg，返回平均值
@@ -34,13 +34,13 @@ public class DataPoint {
      */
     private Integer count;
 
-    public DataPoint setTimestmap(Long timestmap) {
-        this.timestmap = timestmap;
+    public DataPoint setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
         return this;
     }
 
-    public Long getTimestmap() {
-        return this.timestmap;
+    public Long getTimestamp() {
+        return this.timestamp;
     }
 
     public DataPoint setAvg(Float avg) {
@@ -90,7 +90,7 @@ public class DataPoint {
 
     @Override
     public String toString() {
-        return "DataPoint{" + "timestmap=" + timestmap + "\n" + "avg=" + avg + "\n" + "max=" + max + "\n" + "min=" + min + "\n" + "sum=" + sum + "\n" + "count=" + count + "\n"
+        return "DataPoint{" + "timestamp=" + timestamp + "\n" + "avg=" + avg + "\n" + "max=" + max + "\n" + "min=" + min + "\n" + "sum=" + sum + "\n" + "count=" + count + "\n"
                 + "}";
     }
 
