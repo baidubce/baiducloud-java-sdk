@@ -176,6 +176,7 @@ public class BlsClient extends AbstractBceClient {
     private static final String CONSTANT_TASK = "task";
     private static final String CONSTANT_LOGHISTOGRAM = "loghistogram";
     private static final String CONSTANT_LOGRECORD = "logrecord";
+    private static final String CONSTANT_STATS = "stats";
     private static final String CONSTANT_ENABLE = "enable";
     private static final String CONSTANT_LINK = "link";
     private static final String CONSTANT_CONDITION = "condition";
@@ -494,6 +495,9 @@ public class BlsClient extends AbstractBceClient {
      */
     public DescribeAlarmPolicyResponse describeAlarmPolicy(DescribeAlarmPolicyRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_ALARM, CONSTANT_POLICY);
+        if (request.getPolicyName() != null) {
+            internalRequest.addParameter("PolicyName", request.getPolicyName());
+        }
         return invokeHttpClient(internalRequest, DescribeAlarmPolicyResponse.class);
     }
 
@@ -505,6 +509,9 @@ public class BlsClient extends AbstractBceClient {
      */
     public DescribeAlarmRecordResponse describeAlarmRecord(DescribeAlarmRecordRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_ALARM, CONSTANT_RECORD);
+        if (request.getAlarmId() != null) {
+            internalRequest.addParameter("alarmId", request.getAlarmId());
+        }
         return invokeHttpClient(internalRequest, DescribeAlarmRecordResponse.class);
     }
 
@@ -673,7 +680,7 @@ public class BlsClient extends AbstractBceClient {
      * @return ListAlarmExecutionStatsResponse
      */
     public ListAlarmExecutionStatsResponse listAlarmExecutionStats(ListAlarmExecutionStatsRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_ALARM, CONSTANT_EXECUTION, CONSTANT_LIST);
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_ALARM, CONSTANT_EXECUTION, CONSTANT_STATS);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, ListAlarmExecutionStatsResponse.class);
     }

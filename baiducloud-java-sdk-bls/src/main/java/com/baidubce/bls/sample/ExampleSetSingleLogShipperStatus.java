@@ -19,7 +19,7 @@ public class ExampleSetSingleLogShipperStatus {
         BlsClient client = new BlsClient(bceClientConfig);
         SetSingleLogShipperStatusRequest setSingleLogShipperStatusRequest = new SetSingleLogShipperStatusRequest();
         setSingleLogShipperStatusRequest.setLogShipperID("");
-        setSingleLogShipperStatusRequest.setDesiredStatus("");
+        setSingleLogShipperStatusRequest.setStatus("");
         try {
             SetSingleLogShipperStatusResponse response = client.setSingleLogShipperStatus(setSingleLogShipperStatusRequest);
             System.out.println(response.toJsonString());

@@ -19,7 +19,7 @@ public class ExampleDeleteAlarmPolicy {
         bceClientConfig.setEndpoint(endpoint);
         BlsClient client = new BlsClient(bceClientConfig);
         DeleteAlarmPolicyRequest deleteAlarmPolicyRequest = new DeleteAlarmPolicyRequest();
-        deleteAlarmPolicyRequest.setName(new ArrayList<>());
+        deleteAlarmPolicyRequest.setNames(new ArrayList<>());
         try {
             DeleteAlarmPolicyResponse response = client.deleteAlarmPolicy(deleteAlarmPolicyRequest);
             System.out.println(response.toJsonString());

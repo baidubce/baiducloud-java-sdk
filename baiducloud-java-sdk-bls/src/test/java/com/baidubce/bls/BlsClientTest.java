@@ -383,7 +383,7 @@ public class BlsClientTest {
     @Test
     public void deleteAlarmPolicyTest() {
         DeleteAlarmPolicyRequest deleteAlarmPolicyRequest = new DeleteAlarmPolicyRequest();
-        deleteAlarmPolicyRequest.setName(new ArrayList<>());
+        deleteAlarmPolicyRequest.setNames(new ArrayList<>());
         DeleteAlarmPolicyResponse response = blsClient.deleteAlarmPolicy(deleteAlarmPolicyRequest);
         System.out.println(response);
     }
@@ -602,7 +602,7 @@ public class BlsClientTest {
     @Test
     public void disableAlarmPolicyTest() {
         DisableAlarmPolicyRequest disableAlarmPolicyRequest = new DisableAlarmPolicyRequest();
-        disableAlarmPolicyRequest.setName(new ArrayList<>());
+        disableAlarmPolicyRequest.setNames(new ArrayList<>());
         DisableAlarmPolicyResponse response = blsClient.disableAlarmPolicy(disableAlarmPolicyRequest);
         System.out.println(response);
     }
@@ -613,7 +613,7 @@ public class BlsClientTest {
     @Test
     public void enableAlarmPolicyTest() {
         EnableAlarmPolicyRequest enableAlarmPolicyRequest = new EnableAlarmPolicyRequest();
-        enableAlarmPolicyRequest.setName(new ArrayList<>());
+        enableAlarmPolicyRequest.setNames(new ArrayList<>());
         EnableAlarmPolicyResponse response = blsClient.enableAlarmPolicy(enableAlarmPolicyRequest);
         System.out.println(response);
     }
@@ -662,7 +662,6 @@ public class BlsClientTest {
         listAlarmExecutionStatsRequest.setPolicyName("");
         listAlarmExecutionStatsRequest.setLogStoreName("");
         listAlarmExecutionStatsRequest.setStates(new ArrayList<>());
-        listAlarmExecutionStatsRequest.setNoticeStates(new ArrayList<>());
         listAlarmExecutionStatsRequest.setStartDateTime("");
         listAlarmExecutionStatsRequest.setEndDateTime("");
         listAlarmExecutionStatsRequest.setOrderBy("");
@@ -953,7 +952,7 @@ public class BlsClientTest {
     public void setSingleLogShipperStatusTest() {
         SetSingleLogShipperStatusRequest setSingleLogShipperStatusRequest = new SetSingleLogShipperStatusRequest();
         setSingleLogShipperStatusRequest.setLogShipperID("");
-        setSingleLogShipperStatusRequest.setDesiredStatus("");
+        setSingleLogShipperStatusRequest.setStatus("");
         SetSingleLogShipperStatusResponse response = blsClient.setSingleLogShipperStatus(setSingleLogShipperStatusRequest);
         System.out.println(response);
     }
