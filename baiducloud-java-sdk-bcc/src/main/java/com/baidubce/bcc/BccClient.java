@@ -238,6 +238,7 @@ import com.baidubce.bcc.models.ModifyRelatedDeletePolicyRequest;
 import com.baidubce.bcc.models.ModifyReservedInstancesRequest;
 import com.baidubce.bcc.models.ModifyReservedInstancesResponse;
 import com.baidubce.bcc.models.ModifyVolumeChargeTypeRequest;
+import com.baidubce.bcc.models.ModifyVolumeDeleteProtectionV2Request;
 import com.baidubce.bcc.models.PurchaseReservedInstanceRequest;
 import com.baidubce.bcc.models.PurchaseReservedInstanceResponse;
 import com.baidubce.bcc.models.PurchaseReservedVolumeClusterRequest;
@@ -317,6 +318,8 @@ public class BccClient extends AbstractBceClient {
     private static final String CONSTANT_DEPLOYSET = "deployset";
     private static final String CONSTANT_GET_AVAILABLE_IMAGES_BY_SPEC = "getAvailableImagesBySpec";
     private static final String CONSTANT_ROLE = "role";
+    private static final String CONSTANT_MODIFY = "modify";
+    private static final String CONSTANT_DELETE_PROTECTION = "deleteProtection";
     private static final String CONSTANT_BCC = "bcc";
     private static final String CONSTANT_SECURITY_GROUP = "securityGroup";
     private static final String CONSTANT_PRICE = "price";
@@ -338,7 +341,6 @@ public class BccClient extends AbstractBceClient {
     private static final String CONSTANT_REBUILD = "rebuild";
     private static final String CONSTANT_INSTANCE_BATCH_BY_SPEC = "instanceBatchBySpec";
     private static final String CONSTANT_MODIFY_RELATED_DELETE_POLICY = "modifyRelatedDeletePolicy";
-    private static final String CONSTANT_MODIFY = "modify";
     private static final String CONSTANT_DEL_RELATION = "delRelation";
     private static final String CONSTANT_FLAVOR_SPEC = "flavorSpec";
     private static final String CONSTANT_REVOKE = "revoke";
@@ -2277,6 +2279,17 @@ public class BccClient extends AbstractBceClient {
     public void modifyVolumeChargeType(ModifyVolumeChargeTypeRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_VOLUME, request.getVolumeId());
         internalRequest.addParameter("modifyChargeType", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * modifyVolumeDeleteProtectionV2
+     * 
+     * @param request 入参结构体
+     */
+    public void modifyVolumeDeleteProtectionV2(ModifyVolumeDeleteProtectionV2Request request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_VOLUME, CONSTANT_MODIFY, CONSTANT_DELETE_PROTECTION);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }

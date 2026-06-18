@@ -222,6 +222,7 @@ import com.baidubce.bcc.models.ModifyRelatedDeletePolicyRequest;
 import com.baidubce.bcc.models.ModifyReservedInstancesRequest;
 import com.baidubce.bcc.models.ModifyReservedInstancesResponse;
 import com.baidubce.bcc.models.ModifyVolumeChargeTypeRequest;
+import com.baidubce.bcc.models.ModifyVolumeDeleteProtectionV2Request;
 import com.baidubce.bcc.models.PurchaseReservedInstanceRequest;
 import com.baidubce.bcc.models.PurchaseReservedInstanceResponse;
 import com.baidubce.bcc.models.PurchaseReservedVolumeClusterRequest;
@@ -2202,6 +2203,17 @@ public class BccClientTest {
         modifyVolumeChargeTypeRequest.setBilling(null);
         modifyVolumeChargeTypeRequest.setEffectiveType("");
         bccClient.modifyVolumeChargeType(modifyVolumeChargeTypeRequest);
+    }
+    /**
+     * modifyVolumeDeleteProtectionV2
+     *
+     */
+    @Test
+    public void modifyVolumeDeleteProtectionV2Test() {
+        ModifyVolumeDeleteProtectionV2Request modifyVolumeDeleteProtectionV2Request = new ModifyVolumeDeleteProtectionV2Request();
+        modifyVolumeDeleteProtectionV2Request.setVolumeIds(new ArrayList<>());
+        modifyVolumeDeleteProtectionV2Request.setEnableDeleteProtection(false);
+        bccClient.modifyVolumeDeleteProtectionV2(modifyVolumeDeleteProtectionV2Request);
     }
     /**
      * purchaseReservedInstance
