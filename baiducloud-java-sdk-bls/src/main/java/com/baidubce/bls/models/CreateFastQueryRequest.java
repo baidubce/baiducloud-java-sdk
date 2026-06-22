@@ -36,6 +36,11 @@ public class CreateFastQueryRequest extends BaseBceRequest {
     */
     private String logStreamName;
 
+    /**
+    * 日志集类型，LOGSTORE或者LOGSTORE_VIEW
+    */
+    private String logStoreType;
+
     public String getFastQueryName() {
         return fastQueryName;
     }
@@ -87,6 +92,15 @@ public class CreateFastQueryRequest extends BaseBceRequest {
 
     public CreateFastQueryRequest setLogStreamName(String logStreamName) {
         this.logStreamName = logStreamName;
+        return this;
+    }
+
+    public String getLogStoreType() {
+        return logStoreType;
+    }
+
+    public CreateFastQueryRequest setLogStoreType(String logStoreType) {
+        this.logStoreType = logStoreType;
         return this;
     }
 

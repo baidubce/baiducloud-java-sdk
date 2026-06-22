@@ -21,6 +21,7 @@ public class ExampleListFastQuery {
         listFastQueryRequest.setProject("");
         listFastQueryRequest.setLogStoreName("");
         listFastQueryRequest.setNamePattern("");
+        listFastQueryRequest.setLogStoreType("");
         listFastQueryRequest.setOrder("");
         listFastQueryRequest.setOrderBy("");
         listFastQueryRequest.setPageNo(0);

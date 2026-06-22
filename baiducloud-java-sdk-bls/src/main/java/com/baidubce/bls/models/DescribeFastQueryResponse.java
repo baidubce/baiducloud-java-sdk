@@ -46,6 +46,11 @@ public class DescribeFastQueryResponse extends BaseBceResponse {
     */
     private String logStreamName;
 
+    /**
+    * 日志集类型，LOGSTORE或者LOGSTORE_VIEW
+    */
+    private String logStoreType;
+
     public String getCreationDateTime() {
         return creationDateTime;
     }
@@ -118,11 +123,20 @@ public class DescribeFastQueryResponse extends BaseBceResponse {
         return this;
     }
 
+    public String getLogStoreType() {
+        return logStoreType;
+    }
+
+    public DescribeFastQueryResponse setLogStoreType(String logStoreType) {
+        this.logStoreType = logStoreType;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "DescribeFastQueryResponse{" + "creationDateTime=" + creationDateTime + "\n" + "lastModifiedTime=" + lastModifiedTime + "\n" + "fastQueryName=" + fastQueryName
                 + "\n" + "description=" + description + "\n" + "query=" + query + "\n" + "project=" + project + "\n" + "logStoreName=" + logStoreName + "\n" + "logStreamName="
-                + logStreamName + "\n" + "}";
+                + logStreamName + "\n" + "logStoreType=" + logStoreType + "\n" + "}";
     }
 
 }

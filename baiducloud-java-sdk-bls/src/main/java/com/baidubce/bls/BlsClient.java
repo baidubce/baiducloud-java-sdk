@@ -750,6 +750,9 @@ public class BlsClient extends AbstractBceClient {
         if (request.getNamePattern() != null) {
             internalRequest.addParameter("namePattern", request.getNamePattern());
         }
+        if (request.getLogStoreType() != null) {
+            internalRequest.addParameter("logStoreType", request.getLogStoreType());
+        }
         if (request.getOrder() != null) {
             internalRequest.addParameter("order", request.getOrder());
         }
