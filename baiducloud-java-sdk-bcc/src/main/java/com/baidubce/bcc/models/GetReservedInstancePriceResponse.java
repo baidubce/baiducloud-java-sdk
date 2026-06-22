@@ -17,14 +17,14 @@ public class GetReservedInstancePriceResponse extends BaseBceResponse {
     private String spec;
 
     /**
-    * 实例券目录价格。
+    * categoryPrice
     */
-    private Object categoryPrice;
+    private CatagoryPrice categoryPrice;
 
     /**
-    * 实例券最终价，即优惠后订单实付价格。
+    * tradePrice
     */
-    private Object tradePrice;
+    private TradePrice tradePrice;
 
     public String getRequestId() {
         return requestId;
@@ -44,20 +44,20 @@ public class GetReservedInstancePriceResponse extends BaseBceResponse {
         return this;
     }
 
-    public Object getCategoryPrice() {
+    public CatagoryPrice getCategoryPrice() {
         return categoryPrice;
     }
 
-    public GetReservedInstancePriceResponse setCategoryPrice(Object categoryPrice) {
+    public GetReservedInstancePriceResponse setCategoryPrice(CatagoryPrice categoryPrice) {
         this.categoryPrice = categoryPrice;
         return this;
     }
 
-    public Object getTradePrice() {
+    public TradePrice getTradePrice() {
         return tradePrice;
     }
 
-    public GetReservedInstancePriceResponse setTradePrice(Object tradePrice) {
+    public GetReservedInstancePriceResponse setTradePrice(TradePrice tradePrice) {
         this.tradePrice = tradePrice;
         return this;
     }

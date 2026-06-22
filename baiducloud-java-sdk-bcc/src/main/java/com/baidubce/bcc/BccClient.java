@@ -119,6 +119,8 @@ import com.baidubce.bcc.models.DescribePlannedEventsRequest;
 import com.baidubce.bcc.models.DescribePlannedEventsResponse;
 import com.baidubce.bcc.models.DescribeRegionsRequest;
 import com.baidubce.bcc.models.DescribeRegionsResponse;
+import com.baidubce.bcc.models.DescribeSnapshotsUsageRequest;
+import com.baidubce.bcc.models.DescribeSnapshotsUsageResponse;
 import com.baidubce.bcc.models.DescribeUnplannedEventRecordsRequest;
 import com.baidubce.bcc.models.DescribeUnplannedEventRecordsResponse;
 import com.baidubce.bcc.models.DescribeUnplannedEventsRequest;
@@ -237,6 +239,7 @@ import com.baidubce.bcc.models.ModifyInstancePasswordRequest;
 import com.baidubce.bcc.models.ModifyRelatedDeletePolicyRequest;
 import com.baidubce.bcc.models.ModifyReservedInstancesRequest;
 import com.baidubce.bcc.models.ModifyReservedInstancesResponse;
+import com.baidubce.bcc.models.ModifySnapshotAttributeRequest;
 import com.baidubce.bcc.models.ModifyVolumeChargeTypeRequest;
 import com.baidubce.bcc.models.ModifyVolumeDeleteProtectionV2Request;
 import com.baidubce.bcc.models.PurchaseReservedInstanceRequest;
@@ -1245,6 +1248,17 @@ public class BccClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_REGION, CONSTANT_DESCRIBE_REGIONS);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, DescribeRegionsResponse.class);
+    }
+
+    /**
+     * describeSnapshotsUsage
+     * 
+     * @param request 入参结构体
+     * @return DescribeSnapshotsUsageResponse
+     */
+    public DescribeSnapshotsUsageResponse describeSnapshotsUsage(DescribeSnapshotsUsageRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_SNAPSHOT, request.getAction());
+        return invokeHttpClient(internalRequest, DescribeSnapshotsUsageResponse.class);
     }
 
     /**
@@ -2269,6 +2283,18 @@ public class BccClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_RESERVED, CONSTANT_MODIFY);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, ModifyReservedInstancesResponse.class);
+    }
+
+    /**
+     * modifySnapshotAttribute
+     * 
+     * @param request 入参结构体
+     */
+    public void modifySnapshotAttribute(ModifySnapshotAttributeRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SNAPSHOT, request.getSnapshotId());
+        internalRequest.addParameter("modifyAttribute", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**

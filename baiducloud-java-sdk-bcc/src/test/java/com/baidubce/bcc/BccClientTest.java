@@ -103,6 +103,8 @@ import com.baidubce.bcc.models.DescribePlannedEventsRequest;
 import com.baidubce.bcc.models.DescribePlannedEventsResponse;
 import com.baidubce.bcc.models.DescribeRegionsRequest;
 import com.baidubce.bcc.models.DescribeRegionsResponse;
+import com.baidubce.bcc.models.DescribeSnapshotsUsageRequest;
+import com.baidubce.bcc.models.DescribeSnapshotsUsageResponse;
 import com.baidubce.bcc.models.DescribeUnplannedEventRecordsRequest;
 import com.baidubce.bcc.models.DescribeUnplannedEventRecordsResponse;
 import com.baidubce.bcc.models.DescribeUnplannedEventsRequest;
@@ -221,6 +223,7 @@ import com.baidubce.bcc.models.ModifyInstancePasswordRequest;
 import com.baidubce.bcc.models.ModifyRelatedDeletePolicyRequest;
 import com.baidubce.bcc.models.ModifyReservedInstancesRequest;
 import com.baidubce.bcc.models.ModifyReservedInstancesResponse;
+import com.baidubce.bcc.models.ModifySnapshotAttributeRequest;
 import com.baidubce.bcc.models.ModifyVolumeChargeTypeRequest;
 import com.baidubce.bcc.models.ModifyVolumeDeleteProtectionV2Request;
 import com.baidubce.bcc.models.PurchaseReservedInstanceRequest;
@@ -1284,6 +1287,17 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * describeSnapshotsUsage
+     *
+     */
+    @Test
+    public void describeSnapshotsUsageTest() {
+        DescribeSnapshotsUsageRequest describeSnapshotsUsageRequest = new DescribeSnapshotsUsageRequest();
+        describeSnapshotsUsageRequest.setAction("");
+        DescribeSnapshotsUsageResponse response = bccClient.describeSnapshotsUsage(describeSnapshotsUsageRequest);
+        System.out.println(response);
+    }
+    /**
      * describeUnplannedEventRecords
      *
      */
@@ -2191,6 +2205,19 @@ public class BccClientTest {
         modifyReservedInstancesRequest.setReservedInstances(new ArrayList<>());
         ModifyReservedInstancesResponse response = bccClient.modifyReservedInstances(modifyReservedInstancesRequest);
         System.out.println(response);
+    }
+    /**
+     * modifySnapshotAttribute
+     *
+     */
+    @Test
+    public void modifySnapshotAttributeTest() {
+        ModifySnapshotAttributeRequest modifySnapshotAttributeRequest = new ModifySnapshotAttributeRequest();
+        modifySnapshotAttributeRequest.setSnapshotId("");
+        modifySnapshotAttributeRequest.setSnapshotName("");
+        modifySnapshotAttributeRequest.setRetentionInDays(0);
+        modifySnapshotAttributeRequest.setDesc("");
+        bccClient.modifySnapshotAttribute(modifySnapshotAttributeRequest);
     }
     /**
      * modifyVolumeChargeType
