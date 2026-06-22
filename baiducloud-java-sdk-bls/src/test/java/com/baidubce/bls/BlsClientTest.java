@@ -266,6 +266,7 @@ public class BlsClientTest {
         createFastQueryRequest.setProject("");
         createFastQueryRequest.setLogStoreName("");
         createFastQueryRequest.setLogStreamName("");
+        createFastQueryRequest.setLogStoreType("");
         CreateFastQueryResponse response = blsClient.createFastQuery(createFastQueryRequest);
         System.out.println(response);
     }
@@ -757,6 +758,7 @@ public class BlsClientTest {
         listFastQueryRequest.setProject("");
         listFastQueryRequest.setLogStoreName("");
         listFastQueryRequest.setNamePattern("");
+        listFastQueryRequest.setLogStoreType("");
         listFastQueryRequest.setOrder("");
         listFastQueryRequest.setOrderBy("");
         listFastQueryRequest.setPageNo(0);

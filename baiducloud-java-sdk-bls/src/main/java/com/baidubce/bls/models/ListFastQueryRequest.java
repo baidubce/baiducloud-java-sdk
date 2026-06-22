@@ -26,6 +26,12 @@ public class ListFastQueryRequest extends BaseBceRequest {
     private String namePattern;
 
     /**
+    * logStoreType
+    */
+    @JsonIgnore
+    private String logStoreType;
+
+    /**
     * order
     */
     @JsonIgnore
@@ -73,6 +79,15 @@ public class ListFastQueryRequest extends BaseBceRequest {
 
     public ListFastQueryRequest setNamePattern(String namePattern) {
         this.namePattern = namePattern;
+        return this;
+    }
+
+    public String getLogStoreType() {
+        return logStoreType;
+    }
+
+    public ListFastQueryRequest setLogStoreType(String logStoreType) {
+        this.logStoreType = logStoreType;
         return this;
     }
 

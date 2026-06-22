@@ -24,6 +24,7 @@ public class ExampleCreateFastQuery {
         createFastQueryRequest.setProject("");
         createFastQueryRequest.setLogStoreName("");
         createFastQueryRequest.setLogStreamName("");
+        createFastQueryRequest.setLogStoreType("");
         try {
             CreateFastQueryResponse response = client.createFastQuery(createFastQueryRequest);
             System.out.println(response.toJsonString());
