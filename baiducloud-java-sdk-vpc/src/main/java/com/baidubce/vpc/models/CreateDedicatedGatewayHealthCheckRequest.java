@@ -30,11 +30,6 @@ public class CreateDedicatedGatewayHealthCheckRequest extends BaseBceRequest {
     private String healthCheckType;
 
     /**
-    * 健康检查的端口
-    */
-    private Integer healthCheckPort;
-
-    /**
     * 健康检查的间隔，1-60之间的整数，单位s
     */
     private Integer healthCheckInterval;
@@ -87,15 +82,6 @@ public class CreateDedicatedGatewayHealthCheckRequest extends BaseBceRequest {
 
     public CreateDedicatedGatewayHealthCheckRequest setHealthCheckType(String healthCheckType) {
         this.healthCheckType = healthCheckType;
-        return this;
-    }
-
-    public Integer getHealthCheckPort() {
-        return healthCheckPort;
-    }
-
-    public CreateDedicatedGatewayHealthCheckRequest setHealthCheckPort(Integer healthCheckPort) {
-        this.healthCheckPort = healthCheckPort;
         return this;
     }
 

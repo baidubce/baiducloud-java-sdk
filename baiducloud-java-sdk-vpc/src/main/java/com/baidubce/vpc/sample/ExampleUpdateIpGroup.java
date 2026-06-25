@@ -12,10 +12,10 @@ public class ExampleUpdateIpGroup {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        VpcClient client = new VpcClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        VpcClient client = new VpcClient(bceClientConfig);
         UpdateIpGroupRequest updateIpGroupRequest = new UpdateIpGroupRequest();
         updateIpGroupRequest.setIpSetId("");
         updateIpGroupRequest.setClientToken("");

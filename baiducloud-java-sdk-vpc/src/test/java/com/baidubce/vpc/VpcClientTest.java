@@ -557,7 +557,6 @@ public class VpcClientTest {
         createDedicatedGatewayHealthCheckRequest.setClientToken("");
         createDedicatedGatewayHealthCheckRequest.setHealthCheckSourceIp("");
         createDedicatedGatewayHealthCheckRequest.setHealthCheckType("");
-        createDedicatedGatewayHealthCheckRequest.setHealthCheckPort(0);
         createDedicatedGatewayHealthCheckRequest.setHealthCheckInterval(0);
         createDedicatedGatewayHealthCheckRequest.setHealthThreshold(0);
         createDedicatedGatewayHealthCheckRequest.setUnhealthThreshold(0);
