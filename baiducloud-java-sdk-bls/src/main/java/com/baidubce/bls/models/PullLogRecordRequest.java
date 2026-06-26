@@ -26,6 +26,12 @@ public class PullLogRecordRequest extends BaseBceRequest {
     private String logStreamName;
 
     /**
+    * logStoreType
+    */
+    @JsonIgnore
+    private String logStoreType;
+
+    /**
     * startDateTime
     */
     @JsonIgnore
@@ -73,6 +79,15 @@ public class PullLogRecordRequest extends BaseBceRequest {
 
     public PullLogRecordRequest setLogStreamName(String logStreamName) {
         this.logStreamName = logStreamName;
+        return this;
+    }
+
+    public String getLogStoreType() {
+        return logStoreType;
+    }
+
+    public PullLogRecordRequest setLogStoreType(String logStoreType) {
+        this.logStoreType = logStoreType;
         return this;
     }
 

@@ -26,6 +26,12 @@ public class QueryLogRecordRequest extends BaseBceRequest {
     private String logStreamName;
 
     /**
+    * logStoreType
+    */
+    @JsonIgnore
+    private String logStoreType;
+
+    /**
     * query
     */
     @JsonIgnore
@@ -97,6 +103,15 @@ public class QueryLogRecordRequest extends BaseBceRequest {
 
     public QueryLogRecordRequest setLogStreamName(String logStreamName) {
         this.logStreamName = logStreamName;
+        return this;
+    }
+
+    public String getLogStoreType() {
+        return logStoreType;
+    }
+
+    public QueryLogRecordRequest setLogStoreType(String logStoreType) {
+        this.logStoreType = logStoreType;
         return this;
     }
 

@@ -23,6 +23,7 @@ public class ExamplePullLogRecord {
         pullLogRecordRequest.setStartDateTime("");
         pullLogRecordRequest.setEndDateTime("");
         pullLogRecordRequest.setProject("");
+        pullLogRecordRequest.setLogStoreType("");
         pullLogRecordRequest.setLimit(0);
         pullLogRecordRequest.setMarker("");
         try {

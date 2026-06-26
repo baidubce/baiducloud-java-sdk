@@ -24,6 +24,7 @@ public class ExampleQueryLogHistogram {
         queryLogHistogramRequest.setEndDateTime("");
         queryLogHistogramRequest.setProject("");
         queryLogHistogramRequest.setLogStreamName("");
+        queryLogHistogramRequest.setLogStoreType("");
         try {
             QueryLogHistogramResponse response = client.queryLogHistogram(queryLogHistogramRequest);
             System.out.println(response.toJsonString());
