@@ -24,6 +24,7 @@ public class ExampleQueryLogRecord {
         queryLogRecordRequest.setEndDateTime("");
         queryLogRecordRequest.setProject("");
         queryLogRecordRequest.setLogStreamName("");
+        queryLogRecordRequest.setLogStoreType("");
         queryLogRecordRequest.setMarker("");
         queryLogRecordRequest.setLimit(0);
         queryLogRecordRequest.setSort("");

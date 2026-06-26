@@ -877,6 +877,7 @@ public class BlsClientTest {
         pullLogRecordRequest.setStartDateTime("");
         pullLogRecordRequest.setEndDateTime("");
         pullLogRecordRequest.setProject("");
+        pullLogRecordRequest.setLogStoreType("");
         pullLogRecordRequest.setLimit(0);
         pullLogRecordRequest.setMarker("");
         PullLogRecordResponse response = blsClient.pullLogRecord(pullLogRecordRequest);
@@ -911,6 +912,7 @@ public class BlsClientTest {
         queryLogHistogramRequest.setEndDateTime("");
         queryLogHistogramRequest.setProject("");
         queryLogHistogramRequest.setLogStreamName("");
+        queryLogHistogramRequest.setLogStoreType("");
         QueryLogHistogramResponse response = blsClient.queryLogHistogram(queryLogHistogramRequest);
         System.out.println(response);
     }
@@ -927,6 +929,7 @@ public class BlsClientTest {
         queryLogRecordRequest.setEndDateTime("");
         queryLogRecordRequest.setProject("");
         queryLogRecordRequest.setLogStreamName("");
+        queryLogRecordRequest.setLogStoreType("");
         queryLogRecordRequest.setMarker("");
         queryLogRecordRequest.setLimit(0);
         queryLogRecordRequest.setSort("");

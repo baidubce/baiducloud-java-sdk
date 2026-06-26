@@ -917,6 +917,9 @@ public class BlsClient extends AbstractBceClient {
         if (request.getProject() != null) {
             internalRequest.addParameter("project", request.getProject());
         }
+        if (request.getLogStoreType() != null) {
+            internalRequest.addParameter("logStoreType", request.getLogStoreType());
+        }
         if (request.getLimit() != null) {
             internalRequest.addParameter("limit", String.valueOf(request.getLimit()));
         }
@@ -964,6 +967,9 @@ public class BlsClient extends AbstractBceClient {
         if (request.getLogStreamName() != null) {
             internalRequest.addParameter("logStreamName", request.getLogStreamName());
         }
+        if (request.getLogStoreType() != null) {
+            internalRequest.addParameter("logStoreType", request.getLogStoreType());
+        }
         return invokeHttpClient(internalRequest, QueryLogHistogramResponse.class);
     }
 
@@ -989,6 +995,9 @@ public class BlsClient extends AbstractBceClient {
         }
         if (request.getLogStreamName() != null) {
             internalRequest.addParameter("logStreamName", request.getLogStreamName());
+        }
+        if (request.getLogStoreType() != null) {
+            internalRequest.addParameter("logStoreType", request.getLogStoreType());
         }
         if (request.getMarker() != null) {
             internalRequest.addParameter("marker", request.getMarker());

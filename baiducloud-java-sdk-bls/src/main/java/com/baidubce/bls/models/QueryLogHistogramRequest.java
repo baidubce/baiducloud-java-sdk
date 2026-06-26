@@ -26,6 +26,12 @@ public class QueryLogHistogramRequest extends BaseBceRequest {
     private String logStreamName;
 
     /**
+    * logStoreType
+    */
+    @JsonIgnore
+    private String logStoreType;
+
+    /**
     * query
     */
     @JsonIgnore
@@ -67,6 +73,15 @@ public class QueryLogHistogramRequest extends BaseBceRequest {
 
     public QueryLogHistogramRequest setLogStreamName(String logStreamName) {
         this.logStreamName = logStreamName;
+        return this;
+    }
+
+    public String getLogStoreType() {
+        return logStoreType;
+    }
+
+    public QueryLogHistogramRequest setLogStoreType(String logStoreType) {
+        this.logStoreType = logStoreType;
         return this;
     }
 
