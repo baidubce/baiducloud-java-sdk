@@ -1,5 +1,7 @@
 package com.baidubce.bls.models;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -20,9 +22,9 @@ public class PolicyListResult {
     private Integer totalCount;
 
     /**
-     * policies
+     * 报警策略详情
      */
-    private Policy policies;
+    private List<Policy> policies;
 
     public PolicyListResult setPageNo(Integer pageNo) {
         this.pageNo = pageNo;
@@ -51,12 +53,12 @@ public class PolicyListResult {
         return this.totalCount;
     }
 
-    public PolicyListResult setPolicies(Policy policies) {
+    public PolicyListResult setPolicies(List<Policy> policies) {
         this.policies = policies;
         return this;
     }
 
-    public Policy getPolicies() {
+    public List<Policy> getPolicies() {
         return this.policies;
     }
 
