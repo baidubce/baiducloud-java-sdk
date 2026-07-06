@@ -1,15 +1,21 @@
 package com.baidubce.aihc;
 
+import com.baidubce.aihc.models.BatchStopTrainingTasksV2Request;
+import com.baidubce.aihc.models.BatchStopTrainingTasksV2Response;
 import com.baidubce.aihc.models.CreateDatasetRequest;
 import com.baidubce.aihc.models.CreateDatasetResponse;
 import com.baidubce.aihc.models.CreateDatasetVersionRequest;
 import com.baidubce.aihc.models.CreateDatasetVersionResponse;
+import com.baidubce.aihc.models.CreateJobRequest;
+import com.baidubce.aihc.models.CreateJobResponse;
 import com.baidubce.aihc.models.CreateModelRequest;
 import com.baidubce.aihc.models.CreateModelResponse;
 import com.baidubce.aihc.models.CreateModelVersionRequest;
 import com.baidubce.aihc.models.CreateModelVersionResponse;
 import com.baidubce.aihc.models.DeleteDatasetRequest;
 import com.baidubce.aihc.models.DeleteDatasetVersionRequest;
+import com.baidubce.aihc.models.DeleteJobRequest;
+import com.baidubce.aihc.models.DeleteJobResponse;
 import com.baidubce.aihc.models.DeleteModelRequest;
 import com.baidubce.aihc.models.DeleteModelVersionRequest;
 import com.baidubce.aihc.models.DescribeDatasetRequest;
@@ -20,6 +26,20 @@ import com.baidubce.aihc.models.DescribeDatasetVersionsRequest;
 import com.baidubce.aihc.models.DescribeDatasetVersionsResponse;
 import com.baidubce.aihc.models.DescribeDatasetsRequest;
 import com.baidubce.aihc.models.DescribeDatasetsResponse;
+import com.baidubce.aihc.models.DescribeJobEventsRequest;
+import com.baidubce.aihc.models.DescribeJobEventsResponse;
+import com.baidubce.aihc.models.DescribeJobLogsRequest;
+import com.baidubce.aihc.models.DescribeJobLogsResponse;
+import com.baidubce.aihc.models.DescribeJobMetricsRequest;
+import com.baidubce.aihc.models.DescribeJobMetricsResponse;
+import com.baidubce.aihc.models.DescribeJobNodesRequest;
+import com.baidubce.aihc.models.DescribeJobNodesResponse;
+import com.baidubce.aihc.models.DescribeJobRequest;
+import com.baidubce.aihc.models.DescribeJobResponse;
+import com.baidubce.aihc.models.DescribeJobWebterminalRequest;
+import com.baidubce.aihc.models.DescribeJobWebterminalResponse;
+import com.baidubce.aihc.models.DescribeJobsRequest;
+import com.baidubce.aihc.models.DescribeJobsResponse;
 import com.baidubce.aihc.models.DescribeModelRequest;
 import com.baidubce.aihc.models.DescribeModelResponse;
 import com.baidubce.aihc.models.DescribeModelVersionRequest;
@@ -28,8 +48,14 @@ import com.baidubce.aihc.models.DescribeModelVersionsRequest;
 import com.baidubce.aihc.models.DescribeModelVersionsResponse;
 import com.baidubce.aihc.models.DescribeModelsRequest;
 import com.baidubce.aihc.models.DescribeModelsResponse;
+import com.baidubce.aihc.models.DescribePodEventsRequest;
+import com.baidubce.aihc.models.DescribePodEventsResponse;
 import com.baidubce.aihc.models.ModifyDatasetRequest;
+import com.baidubce.aihc.models.ModifyJobRequest;
+import com.baidubce.aihc.models.ModifyJobResponse;
 import com.baidubce.aihc.models.ModifyModelRequest;
+import com.baidubce.aihc.models.StopJobRequest;
+import com.baidubce.aihc.models.StopJobResponse;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -52,6 +78,18 @@ public class AihcClientTest {
         aihcClient = new AihcClient(config);
     }
 
+    /**
+     * batchStopTrainingTasksV2
+     *
+     */
+    @Test
+    public void batchStopTrainingTasksV2Test() {
+        BatchStopTrainingTasksV2Request batchStopTrainingTasksV2Request = new BatchStopTrainingTasksV2Request();
+        batchStopTrainingTasksV2Request.setJobList(new ArrayList<>());
+        batchStopTrainingTasksV2Request.setJobListJobId("");
+        BatchStopTrainingTasksV2Response response = aihcClient.batchStopTrainingTasksV2(batchStopTrainingTasksV2Request);
+        System.out.println(response);
+    }
     /**
      * createDataset
      *
@@ -84,6 +122,31 @@ public class AihcClientTest {
         createDatasetVersionRequest.setStoragePath("");
         createDatasetVersionRequest.setMountPath("");
         CreateDatasetVersionResponse response = aihcClient.createDatasetVersion(createDatasetVersionRequest);
+        System.out.println(response);
+    }
+    /**
+     * createJob
+     *
+     */
+    @Test
+    public void createJobTest() {
+        CreateJobRequest createJobRequest = new CreateJobRequest();
+        createJobRequest.setName("");
+        createJobRequest.setQueue("");
+        createJobRequest.setJobType("");
+        createJobRequest.setJobSpec(null);
+        createJobRequest.setCommand("");
+        createJobRequest.setLabels(new ArrayList<>());
+        createJobRequest.setPriority("");
+        createJobRequest.setDatasources(new ArrayList<>());
+        createJobRequest.setEnableBccl(false);
+        createJobRequest.setFaultTolerance(false);
+        createJobRequest.setFaultToleranceArgs("");
+        createJobRequest.setTensorboardConfig(null);
+        createJobRequest.setAlertConfig(null);
+        createJobRequest.setRetentionPeriod("");
+        createJobRequest.setAdvancedSettings(null);
+        CreateJobResponse response = aihcClient.createJob(createJobRequest);
         System.out.println(response);
     }
     /**
@@ -138,6 +201,17 @@ public class AihcClientTest {
         deleteDatasetVersionRequest.setDatasetId("");
         deleteDatasetVersionRequest.setVersionId("");
         aihcClient.deleteDatasetVersion(deleteDatasetVersionRequest);
+    }
+    /**
+     * deleteJob
+     *
+     */
+    @Test
+    public void deleteJobTest() {
+        DeleteJobRequest deleteJobRequest = new DeleteJobRequest();
+        deleteJobRequest.setJobId("");
+        DeleteJobResponse response = aihcClient.deleteJob(deleteJobRequest);
+        System.out.println(response);
     }
     /**
      * deleteModel
@@ -213,6 +287,109 @@ public class AihcClientTest {
         System.out.println(response);
     }
     /**
+     * describeJob
+     *
+     */
+    @Test
+    public void describeJobTest() {
+        DescribeJobRequest describeJobRequest = new DescribeJobRequest();
+        describeJobRequest.setJobId("");
+        describeJobRequest.setNeedDetail(false);
+        DescribeJobResponse response = aihcClient.describeJob(describeJobRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeJobEvents
+     *
+     */
+    @Test
+    public void describeJobEventsTest() {
+        DescribeJobEventsRequest describeJobEventsRequest = new DescribeJobEventsRequest();
+        describeJobEventsRequest.setJobId("");
+        describeJobEventsRequest.setStartTime("");
+        describeJobEventsRequest.setEndTime("");
+        DescribeJobEventsResponse response = aihcClient.describeJobEvents(describeJobEventsRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeJobLogs
+     *
+     */
+    @Test
+    public void describeJobLogsTest() {
+        DescribeJobLogsRequest describeJobLogsRequest = new DescribeJobLogsRequest();
+        describeJobLogsRequest.setJobId("");
+        describeJobLogsRequest.setPodName("");
+        describeJobLogsRequest.setKeywords("");
+        describeJobLogsRequest.setStartTime("");
+        describeJobLogsRequest.setEndTime("");
+        describeJobLogsRequest.setMaxLines("");
+        describeJobLogsRequest.setChunkSize("");
+        describeJobLogsRequest.setMarker("");
+        DescribeJobLogsResponse response = aihcClient.describeJobLogs(describeJobLogsRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeJobMetrics
+     *
+     */
+    @Test
+    public void describeJobMetricsTest() {
+        DescribeJobMetricsRequest describeJobMetricsRequest = new DescribeJobMetricsRequest();
+        describeJobMetricsRequest.setJobId("");
+        describeJobMetricsRequest.setStartTime("");
+        describeJobMetricsRequest.setEndTime("");
+        describeJobMetricsRequest.setTimeStep("");
+        describeJobMetricsRequest.setMetricType("");
+        describeJobMetricsRequest.setRateInterval("");
+        DescribeJobMetricsResponse response = aihcClient.describeJobMetrics(describeJobMetricsRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeJobNodes
+     *
+     */
+    @Test
+    public void describeJobNodesTest() {
+        DescribeJobNodesRequest describeJobNodesRequest = new DescribeJobNodesRequest();
+        describeJobNodesRequest.setJobId("");
+        DescribeJobNodesResponse response = aihcClient.describeJobNodes(describeJobNodesRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeJobWebterminal
+     *
+     */
+    @Test
+    public void describeJobWebterminalTest() {
+        DescribeJobWebterminalRequest describeJobWebterminalRequest = new DescribeJobWebterminalRequest();
+        describeJobWebterminalRequest.setJobId("");
+        describeJobWebterminalRequest.setPodName("");
+        describeJobWebterminalRequest.setHandshakeTimeoutSecond("");
+        describeJobWebterminalRequest.setPingTimeoutSecond("");
+        DescribeJobWebterminalResponse response = aihcClient.describeJobWebterminal(describeJobWebterminalRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeJobs
+     *
+     */
+    @Test
+    public void describeJobsTest() {
+        DescribeJobsRequest describeJobsRequest = new DescribeJobsRequest();
+        describeJobsRequest.setQueueID("");
+        describeJobsRequest.setQueue("");
+        describeJobsRequest.setStatus("");
+        describeJobsRequest.setKeywordType("");
+        describeJobsRequest.setKeyword("");
+        describeJobsRequest.setOrderBy("");
+        describeJobsRequest.setOrder("");
+        describeJobsRequest.setPageNumber(0);
+        describeJobsRequest.setPageSize(0);
+        DescribeJobsResponse response = aihcClient.describeJobs(describeJobsRequest);
+        System.out.println(response);
+    }
+    /**
      * describeModel
      *
      */
@@ -262,6 +439,20 @@ public class AihcClientTest {
         System.out.println(response);
     }
     /**
+     * describePodEvents
+     *
+     */
+    @Test
+    public void describePodEventsTest() {
+        DescribePodEventsRequest describePodEventsRequest = new DescribePodEventsRequest();
+        describePodEventsRequest.setJobId("");
+        describePodEventsRequest.setPodName("");
+        describePodEventsRequest.setStartTime("");
+        describePodEventsRequest.setEndTime("");
+        DescribePodEventsResponse response = aihcClient.describePodEvents(describePodEventsRequest);
+        System.out.println(response);
+    }
+    /**
      * modifyDataset
      *
      */
@@ -277,6 +468,18 @@ public class AihcClientTest {
         aihcClient.modifyDataset(modifyDatasetRequest);
     }
     /**
+     * modifyJob
+     *
+     */
+    @Test
+    public void modifyJobTest() {
+        ModifyJobRequest modifyJobRequest = new ModifyJobRequest();
+        modifyJobRequest.setJobId("");
+        modifyJobRequest.setPriority("");
+        ModifyJobResponse response = aihcClient.modifyJob(modifyJobRequest);
+        System.out.println(response);
+    }
+    /**
      * modifyModel
      *
      */
@@ -287,5 +490,16 @@ public class AihcClientTest {
         modifyModelRequest.setName("");
         modifyModelRequest.setDescription("");
         aihcClient.modifyModel(modifyModelRequest);
+    }
+    /**
+     * stopJob
+     *
+     */
+    @Test
+    public void stopJobTest() {
+        StopJobRequest stopJobRequest = new StopJobRequest();
+        stopJobRequest.setJobId("");
+        StopJobResponse response = aihcClient.stopJob(stopJobRequest);
+        System.out.println(response);
     }
 }
