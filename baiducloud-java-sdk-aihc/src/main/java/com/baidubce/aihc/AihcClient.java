@@ -15,16 +15,22 @@ import java.util.Arrays;
 import java.util.HashSet;
 import com.baidubce.common.BaseBceResponse;
 
+import com.baidubce.aihc.models.BatchStopTrainingTasksV2Request;
+import com.baidubce.aihc.models.BatchStopTrainingTasksV2Response;
 import com.baidubce.aihc.models.CreateDatasetRequest;
 import com.baidubce.aihc.models.CreateDatasetResponse;
 import com.baidubce.aihc.models.CreateDatasetVersionRequest;
 import com.baidubce.aihc.models.CreateDatasetVersionResponse;
+import com.baidubce.aihc.models.CreateJobRequest;
+import com.baidubce.aihc.models.CreateJobResponse;
 import com.baidubce.aihc.models.CreateModelRequest;
 import com.baidubce.aihc.models.CreateModelResponse;
 import com.baidubce.aihc.models.CreateModelVersionRequest;
 import com.baidubce.aihc.models.CreateModelVersionResponse;
 import com.baidubce.aihc.models.DeleteDatasetRequest;
 import com.baidubce.aihc.models.DeleteDatasetVersionRequest;
+import com.baidubce.aihc.models.DeleteJobRequest;
+import com.baidubce.aihc.models.DeleteJobResponse;
 import com.baidubce.aihc.models.DeleteModelRequest;
 import com.baidubce.aihc.models.DeleteModelVersionRequest;
 import com.baidubce.aihc.models.DescribeDatasetRequest;
@@ -35,6 +41,20 @@ import com.baidubce.aihc.models.DescribeDatasetVersionsRequest;
 import com.baidubce.aihc.models.DescribeDatasetVersionsResponse;
 import com.baidubce.aihc.models.DescribeDatasetsRequest;
 import com.baidubce.aihc.models.DescribeDatasetsResponse;
+import com.baidubce.aihc.models.DescribeJobEventsRequest;
+import com.baidubce.aihc.models.DescribeJobEventsResponse;
+import com.baidubce.aihc.models.DescribeJobLogsRequest;
+import com.baidubce.aihc.models.DescribeJobLogsResponse;
+import com.baidubce.aihc.models.DescribeJobMetricsRequest;
+import com.baidubce.aihc.models.DescribeJobMetricsResponse;
+import com.baidubce.aihc.models.DescribeJobNodesRequest;
+import com.baidubce.aihc.models.DescribeJobNodesResponse;
+import com.baidubce.aihc.models.DescribeJobRequest;
+import com.baidubce.aihc.models.DescribeJobResponse;
+import com.baidubce.aihc.models.DescribeJobWebterminalRequest;
+import com.baidubce.aihc.models.DescribeJobWebterminalResponse;
+import com.baidubce.aihc.models.DescribeJobsRequest;
+import com.baidubce.aihc.models.DescribeJobsResponse;
 import com.baidubce.aihc.models.DescribeModelRequest;
 import com.baidubce.aihc.models.DescribeModelResponse;
 import com.baidubce.aihc.models.DescribeModelVersionRequest;
@@ -43,8 +63,14 @@ import com.baidubce.aihc.models.DescribeModelVersionsRequest;
 import com.baidubce.aihc.models.DescribeModelVersionsResponse;
 import com.baidubce.aihc.models.DescribeModelsRequest;
 import com.baidubce.aihc.models.DescribeModelsResponse;
+import com.baidubce.aihc.models.DescribePodEventsRequest;
+import com.baidubce.aihc.models.DescribePodEventsResponse;
 import com.baidubce.aihc.models.ModifyDatasetRequest;
+import com.baidubce.aihc.models.ModifyJobRequest;
+import com.baidubce.aihc.models.ModifyJobResponse;
 import com.baidubce.aihc.models.ModifyModelRequest;
+import com.baidubce.aihc.models.StopJobRequest;
+import com.baidubce.aihc.models.StopJobResponse;
 
 public class AihcClient extends AbstractBceClient {
 
@@ -67,6 +93,21 @@ public class AihcClient extends AbstractBceClient {
     */
     public AihcClient(BceClientConfiguration clientConfiguration) {
         super(clientConfiguration, CLIENT_HANDLERS);
+    }
+
+    /**
+     * batchStopTrainingTasksV2
+     * 
+     * @param request 入参结构体
+     * @return BatchStopTrainingTasksV2Response
+     */
+    public BatchStopTrainingTasksV2Response batchStopTrainingTasksV2(BatchStopTrainingTasksV2Request request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "BatchStopJobs");
+        internalRequest.addParameter("resourcePoolId", "xxxx");
+        internalRequest.addParameter("queueID", "xxxx");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, BatchStopTrainingTasksV2Response.class);
     }
 
     /**
@@ -98,6 +139,21 @@ public class AihcClient extends AbstractBceClient {
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateDatasetVersionResponse.class);
+    }
+
+    /**
+     * createJob
+     * 
+     * @param request 入参结构体
+     * @return CreateJobResponse
+     */
+    public CreateJobResponse createJob(CreateJobRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "CreateJob");
+        internalRequest.addParameter("resourcePoolId", "xxxx");
+        internalRequest.addParameter("queueID", "xxxx");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateJobResponse.class);
     }
 
     /**
@@ -162,6 +218,21 @@ public class AihcClient extends AbstractBceClient {
         }
         internalRequest.addHeader("Version", "v2");
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteJob
+     * 
+     * @param request 入参结构体
+     * @return DeleteJobResponse
+     */
+    public DeleteJobResponse deleteJob(DeleteJobRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DeleteJob");
+        internalRequest.addParameter("resourcePoolId", "xxxx");
+        internalRequest.addParameter("queueID", "xxxx");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DeleteJobResponse.class);
     }
 
     /**
@@ -286,6 +357,113 @@ public class AihcClient extends AbstractBceClient {
     }
 
     /**
+     * describeJob
+     * 
+     * @param request 入参结构体
+     * @return DescribeJobResponse
+     */
+    public DescribeJobResponse describeJob(DescribeJobRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DescribeJob");
+        internalRequest.addParameter("resourcePoolId", "xxxx");
+        internalRequest.addParameter("queueID", "xxx");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeJobResponse.class);
+    }
+
+    /**
+     * describeJobEvents
+     * 
+     * @param request 入参结构体
+     * @return DescribeJobEventsResponse
+     */
+    public DescribeJobEventsResponse describeJobEvents(DescribeJobEventsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DescribeJobEvents");
+        internalRequest.addParameter("resourcePoolId", "xxxx");
+        internalRequest.addParameter("queueID", "xxxx");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeJobEventsResponse.class);
+    }
+
+    /**
+     * describeJobLogs
+     * 
+     * @param request 入参结构体
+     * @return DescribeJobLogsResponse
+     */
+    public DescribeJobLogsResponse describeJobLogs(DescribeJobLogsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DescribeJobLogs");
+        internalRequest.addParameter("resourcePoolId", "xxxx");
+        internalRequest.addParameter("queueID", "xxxx");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeJobLogsResponse.class);
+    }
+
+    /**
+     * describeJobMetrics
+     * 
+     * @param request 入参结构体
+     * @return DescribeJobMetricsResponse
+     */
+    public DescribeJobMetricsResponse describeJobMetrics(DescribeJobMetricsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DescribeJobMetrics");
+        internalRequest.addParameter("resourcePoolId", "xxxx");
+        internalRequest.addParameter("queueID", "xxxx");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeJobMetricsResponse.class);
+    }
+
+    /**
+     * describeJobNodes
+     * 
+     * @param request 入参结构体
+     * @return DescribeJobNodesResponse
+     */
+    public DescribeJobNodesResponse describeJobNodes(DescribeJobNodesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DescribeJobNodes");
+        internalRequest.addParameter("resourcePoolId", "xxxx");
+        internalRequest.addParameter("queueID", "xxxx");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeJobNodesResponse.class);
+    }
+
+    /**
+     * describeJobWebterminal
+     * 
+     * @param request 入参结构体
+     * @return DescribeJobWebterminalResponse
+     */
+    public DescribeJobWebterminalResponse describeJobWebterminal(DescribeJobWebterminalRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DescribeJobWebterminal");
+        internalRequest.addParameter("resourcePoolId", "xxxx");
+        internalRequest.addParameter("queueID", "xxxx");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeJobWebterminalResponse.class);
+    }
+
+    /**
+     * describeJobs
+     * 
+     * @param request 入参结构体
+     * @return DescribeJobsResponse
+     */
+    public DescribeJobsResponse describeJobs(DescribeJobsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DescribeJobs");
+        internalRequest.addParameter("resourcePoolId", "xxxx");
+        if (request.getQueueID() != null) {
+            internalRequest.addParameter("queueID", request.getQueueID());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeJobsResponse.class);
+    }
+
+    /**
      * describeModel
      * 
      * @param request 入参结构体
@@ -365,6 +543,21 @@ public class AihcClient extends AbstractBceClient {
     }
 
     /**
+     * describePodEvents
+     * 
+     * @param request 入参结构体
+     * @return DescribePodEventsResponse
+     */
+    public DescribePodEventsResponse describePodEvents(DescribePodEventsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DescribePodEvents");
+        internalRequest.addParameter("resourcePoolId", "xxxx");
+        internalRequest.addParameter("queueID", "xxxx");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribePodEventsResponse.class);
+    }
+
+    /**
      * modifyDataset
      * 
      * @param request 入参结构体
@@ -381,6 +574,21 @@ public class AihcClient extends AbstractBceClient {
     }
 
     /**
+     * modifyJob
+     * 
+     * @param request 入参结构体
+     * @return ModifyJobResponse
+     */
+    public ModifyJobResponse modifyJob(ModifyJobRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "ModifyJob");
+        internalRequest.addParameter("resourcePoolId", "xxxx");
+        internalRequest.addParameter("queueID", "xxxx");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ModifyJobResponse.class);
+    }
+
+    /**
      * modifyModel
      * 
      * @param request 入参结构体
@@ -394,6 +602,21 @@ public class AihcClient extends AbstractBceClient {
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * stopJob
+     * 
+     * @param request 入参结构体
+     * @return StopJobResponse
+     */
+    public StopJobResponse stopJob(StopJobRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "StopJob");
+        internalRequest.addParameter("resourcePoolId", "xxxx");
+        internalRequest.addParameter("queueID", "xxxx");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, StopJobResponse.class);
     }
 
     /**
