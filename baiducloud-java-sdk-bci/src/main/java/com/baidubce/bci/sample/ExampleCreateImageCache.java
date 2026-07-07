@@ -8,8 +8,7 @@ import com.baidubce.bci.models.CreateImageCacheRequest;
 import com.baidubce.bci.models.CreateImageCacheResponse;
 import java.util.ArrayList;
 
-public class ExampleCreateImageCache
-{
+public class ExampleCreateImageCache {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";

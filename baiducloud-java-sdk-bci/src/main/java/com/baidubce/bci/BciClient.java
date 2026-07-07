@@ -35,8 +35,8 @@ public class BciClient extends AbstractBceClient {
 
     private static final String VERSION_V1 = "v1";
     private static final String CONSTANT_INSTANCE = "instance";
-    private static final String CONSTANT_IMAGE_CACHE = "imageCache";
     private static final String CONSTANT_BATCH_DEL = "batchDel";
+    private static final String CONSTANT_IMAGE_CACHE = "imageCache";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -58,7 +58,7 @@ public class BciClient extends AbstractBceClient {
     }
 
     /**
-     * batch-delete-image-caches
+     * batchDeleteImageCaches
      * 
      * @param request 入参结构体
      */
@@ -69,7 +69,7 @@ public class BciClient extends AbstractBceClient {
     }
 
     /**
-     * batch-delete-instances
+     * batchDeleteInstances
      * 
      * @param request 入参结构体
      */
@@ -80,7 +80,7 @@ public class BciClient extends AbstractBceClient {
     }
 
     /**
-     * create-image-cache
+     * createImageCache
      * 
      * @param request 入参结构体
      * @return CreateImageCacheResponse
@@ -92,7 +92,7 @@ public class BciClient extends AbstractBceClient {
     }
 
     /**
-     * create-instance
+     * createInstance
      * 
      * @param request 入参结构体
      * @return CreateInstanceResponse
@@ -107,7 +107,7 @@ public class BciClient extends AbstractBceClient {
     }
 
     /**
-     * delete-instance
+     * deleteInstance
      * 
      * @param request 入参结构体
      */
@@ -120,7 +120,7 @@ public class BciClient extends AbstractBceClient {
     }
 
     /**
-     * get-instance
+     * getInstance
      * 
      * @param request 入参结构体
      * @return GetInstanceResponse
@@ -131,7 +131,7 @@ public class BciClient extends AbstractBceClient {
     }
 
     /**
-     * list-image-caches
+     * listImageCaches
      * 
      * @param request 入参结构体
      * @return ListImageCachesResponse
@@ -148,7 +148,7 @@ public class BciClient extends AbstractBceClient {
     }
 
     /**
-     * list-instances
+     * listInstances
      * 
      * @param request 入参结构体
      * @return ListInstancesResponse

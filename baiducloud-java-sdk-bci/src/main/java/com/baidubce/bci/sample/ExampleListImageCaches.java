@@ -7,8 +7,7 @@ import com.baidubce.bci.BciClient;
 import com.baidubce.bci.models.ListImageCachesRequest;
 import com.baidubce.bci.models.ListImageCachesResponse;
 
-public class ExampleListImageCaches
-{
+public class ExampleListImageCaches {
     public static void main(String[] args) {
         // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
         String ak = "Your Ak";
