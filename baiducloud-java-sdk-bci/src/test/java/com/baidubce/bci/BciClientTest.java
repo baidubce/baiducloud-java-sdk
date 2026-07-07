@@ -1,25 +1,17 @@
 package com.baidubce.bci;
 
-import com.baidubce.bci.models.Batch-delete-image-cachesRequest;
-import com.baidubce.bci.models.Batch-delete-instancesRequest;
-import com.baidubce.bci.models.BatchDeleteImageCachesBodyRequest;
 import com.baidubce.bci.models.BatchDeleteImageCachesRequest;
-import com.baidubce.bci.models.BatchDeleteInstancesBodyRequest;
 import com.baidubce.bci.models.BatchDeleteInstancesRequest;
-import com.baidubce.bci.models.Create-image-cacheRequest;
-import com.baidubce.bci.models.Create-instanceRequest;
-import com.baidubce.bci.models.CreateImageCacheBodyRequest;
 import com.baidubce.bci.models.CreateImageCacheRequest;
 import com.baidubce.bci.models.CreateImageCacheResponse;
-import com.baidubce.bci.models.CreateInstanceBodyRequest;
 import com.baidubce.bci.models.CreateInstanceRequest;
 import com.baidubce.bci.models.CreateInstanceResponse;
-import com.baidubce.bci.models.Delete-instanceRequest;
-import com.baidubce.bci.models.Get-instanceRequest;
+import com.baidubce.bci.models.DeleteInstanceRequest;
+import com.baidubce.bci.models.GetInstanceRequest;
 import com.baidubce.bci.models.GetInstanceResponse;
-import com.baidubce.bci.models.List-image-cachesRequest;
-import com.baidubce.bci.models.List-instancesRequest;
+import com.baidubce.bci.models.ListImageCachesRequest;
 import com.baidubce.bci.models.ListImageCachesResponse;
+import com.baidubce.bci.models.ListInstancesRequest;
 import com.baidubce.bci.models.ListInstancesResponse;
 import org.junit.Test;
 import org.junit.Before;
@@ -44,7 +36,7 @@ public class BciClientTest {
     }
 
     /**
-     * batch-delete-image-caches
+     * batchDeleteImageCaches
      *
      */
     @Test
@@ -54,7 +46,7 @@ public class BciClientTest {
         bciClient.batchDeleteImageCaches(batchDeleteImageCachesRequest);
     }
     /**
-     * batch-delete-instances
+     * batchDeleteInstances
      *
      */
     @Test
@@ -65,7 +57,7 @@ public class BciClientTest {
         bciClient.batchDeleteInstances(batchDeleteInstancesRequest);
     }
     /**
-     * create-image-cache
+     * createImageCache
      *
      */
     @Test
@@ -85,7 +77,7 @@ public class BciClientTest {
         System.out.println(response);
     }
     /**
-     * create-instance
+     * createInstance
      *
      */
     @Test
@@ -115,7 +107,7 @@ public class BciClientTest {
         System.out.println(response);
     }
     /**
-     * delete-instance
+     * deleteInstance
      *
      */
     @Test
@@ -126,7 +118,7 @@ public class BciClientTest {
         bciClient.deleteInstance(deleteInstanceRequest);
     }
     /**
-     * get-instance
+     * getInstance
      *
      */
     @Test
@@ -137,7 +129,7 @@ public class BciClientTest {
         System.out.println(response);
     }
     /**
-     * list-image-caches
+     * listImageCaches
      *
      */
     @Test
@@ -149,7 +141,7 @@ public class BciClientTest {
         System.out.println(response);
     }
     /**
-     * list-instances
+     * listInstances
      *
      */
     @Test
