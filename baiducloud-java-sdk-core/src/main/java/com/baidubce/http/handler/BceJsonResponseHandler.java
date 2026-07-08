@@ -17,7 +17,9 @@ import com.baidubce.http.Headers;
 import com.baidubce.model.AbstractBceResponse;
 import com.baidubce.util.JsonUtils;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.io.SequenceInputStream;
 
 /**
  * HTTP body json response handler for Baidu BCE responses.
@@ -27,11 +29,20 @@ public class BceJsonResponseHandler implements HttpResponseHandler {
     public boolean handle(BceHttpResponse httpResponse, AbstractBceResponse response) throws Exception {
         InputStream content = httpResponse.getContent();
         if (content != null) {
-            if (Long.parseLong(response.getMetadata().get(Headers.CONTENT_LENGTH)) > 0
-                    || "chunked".equalsIgnoreCase(response.getMetadata().get(Headers.TRANSFER_ENCODING))) {
-                JsonUtils.load(content, response);
+            try {
+                if (Long.parseLong(response.getMetadata().get(Headers.CONTENT_LENGTH)) != 0
+                        || "chunked".equalsIgnoreCase(response.getMetadata().get(Headers.TRANSFER_ENCODING))) {
+                    int firstByte = content.read();
+                    if (firstByte != -1) {
+                        InputStream combined = new SequenceInputStream(
+                                new ByteArrayInputStream(new byte[] {(byte) firstByte}),
+                                content);
+                        JsonUtils.load(combined, response);
+                    }
+                }
+            } finally {
+                content.close();
             }
-            content.close();
         }
         return true;
     }
