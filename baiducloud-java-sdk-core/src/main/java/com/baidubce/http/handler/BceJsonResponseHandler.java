@@ -30,8 +30,7 @@ public class BceJsonResponseHandler implements HttpResponseHandler {
         InputStream content = httpResponse.getContent();
         if (content != null) {
             try {
-                if (Long.parseLong(response.getMetadata().get(Headers.CONTENT_LENGTH)) != 0
-                        || "chunked".equalsIgnoreCase(response.getMetadata().get(Headers.TRANSFER_ENCODING))) {
+                if (Long.parseLong(response.getMetadata().get(Headers.CONTENT_LENGTH)) != 0) {
                     int firstByte = content.read();
                     if (firstByte != -1) {
                         InputStream combined = new SequenceInputStream(
