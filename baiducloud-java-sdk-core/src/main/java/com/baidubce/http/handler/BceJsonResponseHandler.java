@@ -33,10 +33,10 @@ public class BceJsonResponseHandler implements HttpResponseHandler {
                 if (Long.parseLong(response.getMetadata().get(Headers.CONTENT_LENGTH)) != 0) {
                     int firstByte = content.read();
                     if (firstByte != -1) {
-                        InputStream combined = new SequenceInputStream(
+                        InputStream restoredContent = new SequenceInputStream(
                                 new ByteArrayInputStream(new byte[] {(byte) firstByte}),
                                 content);
-                        JsonUtils.load(combined, response);
+                        JsonUtils.load(restoredContent, response);
                     }
                 }
             } finally {
