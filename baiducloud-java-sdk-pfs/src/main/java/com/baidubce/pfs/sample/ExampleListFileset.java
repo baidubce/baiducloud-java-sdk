@@ -13,10 +13,10 @@ public class ExampleListFileset {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        PfsClient client = new PfsClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        PfsClient client = new PfsClient(bceClientConfig);
         ListFilesetRequest listFilesetRequest = new ListFilesetRequest();
         listFilesetRequest.setInstanceId("");
         listFilesetRequest.setFilesetId("");

@@ -156,6 +156,7 @@ public class PfsClientTest {
         createPfsRequest.setName("");
         createPfsRequest.setInstanceType("");
         createPfsRequest.setCapacity(0);
+        createPfsRequest.setZone("");
         createPfsRequest.setSubnetId("");
         createPfsRequest.setDescription("");
         createPfsRequest.setTags(new ArrayList<>());

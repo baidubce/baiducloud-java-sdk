@@ -18,12 +18,17 @@ public class CreatePfsRequest extends BaseBceRequest {
     private String instanceType;
 
     /**
-    * 购买文件系统存储容量大小，详情见容量限制表（单位GB）
+    * 购买文件系统存储容量大小，详情见容量限制表（单位GB）。plusl3_p1类型不用传（无起步要求，弹性扩缩容），其他类型必传。
     */
     private Integer capacity;
 
     /**
-    * 子网短ID
+    * plusl3_p1类型所在可用区。plusl3_p1类型必传，其他类型不用传。
+    */
+    private String zone;
+
+    /**
+    * 子网短ID。plusl3_p1类型不用传，其他类型必传。
     */
     private String subnetId;
 
@@ -61,6 +66,15 @@ public class CreatePfsRequest extends BaseBceRequest {
 
     public CreatePfsRequest setCapacity(Integer capacity) {
         this.capacity = capacity;
+        return this;
+    }
+
+    public String getZone() {
+        return zone;
+    }
+
+    public CreatePfsRequest setZone(String zone) {
+        this.zone = zone;
         return this;
     }
 

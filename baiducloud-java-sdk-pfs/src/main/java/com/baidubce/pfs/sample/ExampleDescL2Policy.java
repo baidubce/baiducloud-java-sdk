@@ -13,10 +13,10 @@ public class ExampleDescL2Policy {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        PfsClient client = new PfsClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        PfsClient client = new PfsClient(bceClientConfig);
         DescL2PolicyRequest descL2PolicyRequest = new DescL2PolicyRequest();
         descL2PolicyRequest.setInstanceId("");
         descL2PolicyRequest.setPolicyId("");
