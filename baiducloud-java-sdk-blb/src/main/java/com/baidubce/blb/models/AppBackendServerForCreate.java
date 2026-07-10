@@ -14,6 +14,11 @@ public class AppBackendServerForCreate {
      */
     private Integer weight;
 
+    /**
+     * 描述
+     */
+    private String desc;
+
     public AppBackendServerForCreate setInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
@@ -32,9 +37,18 @@ public class AppBackendServerForCreate {
         return this.weight;
     }
 
+    public AppBackendServerForCreate setDesc(String desc) {
+        this.desc = desc;
+        return this;
+    }
+
+    public String getDesc() {
+        return this.desc;
+    }
+
     @Override
     public String toString() {
-        return "AppBackendServerForCreate{" + "instanceId=" + instanceId + "\n" + "weight=" + weight + "\n" + "}";
+        return "AppBackendServerForCreate{" + "instanceId=" + instanceId + "\n" + "weight=" + weight + "\n" + "desc=" + desc + "\n" + "}";
     }
 
 }
