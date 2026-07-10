@@ -13,10 +13,10 @@ public class ExampleDescL2BucketLink {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        PfsClient client = new PfsClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        PfsClient client = new PfsClient(bceClientConfig);
         DescL2BucketLinkRequest descL2BucketLinkRequest = new DescL2BucketLinkRequest();
         descL2BucketLinkRequest.setInstanceId("");
         descL2BucketLinkRequest.setBucketLinkId("");

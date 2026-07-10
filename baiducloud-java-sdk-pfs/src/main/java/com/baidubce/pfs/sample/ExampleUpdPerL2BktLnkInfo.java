@@ -13,10 +13,10 @@ public class ExampleUpdPerL2BktLnkInfo {
         String ak = "Your Ak";
         String sk = "Your Sk";
         String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        PfsClient client = new PfsClient(config);
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+        bceClientConfig.setEndpoint(endpoint);
+        PfsClient client = new PfsClient(bceClientConfig);
         UpdPerL2BktLnkInfoRequest updPerL2BktLnkInfoRequest = new UpdPerL2BktLnkInfoRequest();
         updPerL2BktLnkInfoRequest.setInstanceId("");
         updPerL2BktLnkInfoRequest.setBucketLinkId("");
