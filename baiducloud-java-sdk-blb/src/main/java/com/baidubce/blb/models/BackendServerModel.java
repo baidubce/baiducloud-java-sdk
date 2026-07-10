@@ -14,6 +14,11 @@ public class BackendServerModel {
      */
     private Integer weight;
 
+    /**
+     * 描述
+     */
+    private String desc;
+
     public BackendServerModel setInstanceId(String instanceId) {
         this.instanceId = instanceId;
         return this;
@@ -32,9 +37,18 @@ public class BackendServerModel {
         return this.weight;
     }
 
+    public BackendServerModel setDesc(String desc) {
+        this.desc = desc;
+        return this;
+    }
+
+    public String getDesc() {
+        return this.desc;
+    }
+
     @Override
     public String toString() {
-        return "BackendServerModel{" + "instanceId=" + instanceId + "\n" + "weight=" + weight + "\n" + "}";
+        return "BackendServerModel{" + "instanceId=" + instanceId + "\n" + "weight=" + weight + "\n" + "desc=" + desc + "\n" + "}";
     }
 
 }

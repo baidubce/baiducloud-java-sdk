@@ -1,3 +1,6 @@
+2026-07-10 Version: 0.0.16
+- 涉及产品: BLB，后端服务器增删改查接口新增desc字段
+
 2026-06-17 Version: 0.0.15
 - 涉及产品: BLB，创建服务器组删除privateIp、portList等8个字段
 - 涉及产品: BLB，修改后端服务器删除privateIp、status等9个字段

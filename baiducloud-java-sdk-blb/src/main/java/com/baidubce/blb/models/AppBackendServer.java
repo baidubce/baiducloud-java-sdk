@@ -17,6 +17,11 @@ public class AppBackendServer {
     private Integer weight;
 
     /**
+     * 描述
+     */
+    private String desc;
+
+    /**
      * 查询时返回值，后端绑定的该服务器ip地址
      */
     private String privateIp;
@@ -44,6 +49,15 @@ public class AppBackendServer {
         return this.weight;
     }
 
+    public AppBackendServer setDesc(String desc) {
+        this.desc = desc;
+        return this;
+    }
+
+    public String getDesc() {
+        return this.desc;
+    }
+
     public AppBackendServer setPrivateIp(String privateIp) {
         this.privateIp = privateIp;
         return this;
@@ -64,7 +78,8 @@ public class AppBackendServer {
 
     @Override
     public String toString() {
-        return "AppBackendServer{" + "instanceId=" + instanceId + "\n" + "weight=" + weight + "\n" + "privateIp=" + privateIp + "\n" + "portList=" + portList + "\n" + "}";
+        return "AppBackendServer{" + "instanceId=" + instanceId + "\n" + "weight=" + weight + "\n" + "desc=" + desc + "\n" + "privateIp=" + privateIp + "\n" + "portList="
+                + portList + "\n" + "}";
     }
 
 }
