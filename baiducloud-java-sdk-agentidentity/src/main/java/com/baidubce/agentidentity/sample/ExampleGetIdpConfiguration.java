@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.agentidentity.AgentidentityClient;
 import com.baidubce.agentidentity.models.GetIdpConfigurationRequest;
+import com.baidubce.agentidentity.models.GetIdpConfigurationResponse;
 
 public class ExampleGetIdpConfiguration {
     public static void main(String[] args) {
@@ -20,9 +21,9 @@ public class ExampleGetIdpConfiguration {
         getIdpConfigurationRequest.setUserPoolId("");
         getIdpConfigurationRequest.setId("");
         try {
-            client.getIdpConfiguration(getIdpConfigurationRequest);
+            GetIdpConfigurationResponse response = client.getIdpConfiguration(getIdpConfigurationRequest);
+            System.out.println(response.toJsonString());
         } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

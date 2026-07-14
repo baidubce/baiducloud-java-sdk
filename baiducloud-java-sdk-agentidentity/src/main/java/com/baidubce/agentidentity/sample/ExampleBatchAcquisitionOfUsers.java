@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.agentidentity.AgentidentityClient;
 import com.baidubce.agentidentity.models.BatchAcquisitionOfUsersRequest;
+import com.baidubce.agentidentity.models.BatchAcquisitionOfUsersResponse;
 import java.util.ArrayList;
 
 public class ExampleBatchAcquisitionOfUsers {
@@ -21,9 +22,9 @@ public class ExampleBatchAcquisitionOfUsers {
         batchAcquisitionOfUsersRequest.setUserPoolId("");
         batchAcquisitionOfUsersRequest.setIds(new ArrayList<>());
         try {
-            client.batchAcquisitionOfUsers(batchAcquisitionOfUsersRequest);
+            BatchAcquisitionOfUsersResponse response = client.batchAcquisitionOfUsers(batchAcquisitionOfUsersRequest);
+            System.out.println(response.toJsonString());
         } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

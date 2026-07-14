@@ -2,15 +2,22 @@ package com.baidubce.agentidentity;
 
 import com.baidubce.agentidentity.models.AuthorizeEndpointRequest;
 import com.baidubce.agentidentity.models.BatchAcquisitionOfUsersRequest;
+import com.baidubce.agentidentity.models.BatchAcquisitionOfUsersResponse;
 import com.baidubce.agentidentity.models.BatchGetResourceApiKeyRequest;
 import com.baidubce.agentidentity.models.BatchGetResourceApiKeyResponse;
 import com.baidubce.agentidentity.models.CompleteOauth2sessionRequest;
 import com.baidubce.agentidentity.models.CreateAgentRequest;
+import com.baidubce.agentidentity.models.CreateAgentResponse;
 import com.baidubce.agentidentity.models.CreateCredentialProviderRequest;
+import com.baidubce.agentidentity.models.CreateCredentialProviderResponse;
 import com.baidubce.agentidentity.models.CreateIdpConfigurationRequest;
+import com.baidubce.agentidentity.models.CreateIdpConfigurationResponse;
 import com.baidubce.agentidentity.models.CreateOauth2ClientRequest;
+import com.baidubce.agentidentity.models.CreateOauth2ClientResponse;
 import com.baidubce.agentidentity.models.CreateUserPoolRequest;
+import com.baidubce.agentidentity.models.CreateUserPoolResponse;
 import com.baidubce.agentidentity.models.CreateUserRequest;
+import com.baidubce.agentidentity.models.CreateUserResponse;
 import com.baidubce.agentidentity.models.DeleteAgentRequest;
 import com.baidubce.agentidentity.models.DeleteCredentialProviderRequest;
 import com.baidubce.agentidentity.models.DeleteIdpConfigurationRequest;
@@ -18,17 +25,28 @@ import com.baidubce.agentidentity.models.DeleteOauth2ClientRequest;
 import com.baidubce.agentidentity.models.DeleteUserPoolRequest;
 import com.baidubce.agentidentity.models.DeleteUserRequest;
 import com.baidubce.agentidentity.models.DisableIdpConfigurationRequest;
+import com.baidubce.agentidentity.models.DisableIdpConfigurationResponse;
 import com.baidubce.agentidentity.models.EnableIdpConfigurationRequest;
+import com.baidubce.agentidentity.models.EnableIdpConfigurationResponse;
 import com.baidubce.agentidentity.models.GetAgentRequest;
+import com.baidubce.agentidentity.models.GetAgentResponse;
 import com.baidubce.agentidentity.models.GetCredentialProviderRequest;
+import com.baidubce.agentidentity.models.GetCredentialProviderResponse;
 import com.baidubce.agentidentity.models.GetIdpConfigurationRequest;
+import com.baidubce.agentidentity.models.GetIdpConfigurationResponse;
 import com.baidubce.agentidentity.models.GetOauth2ClientRequest;
+import com.baidubce.agentidentity.models.GetOauth2ClientResponse;
 import com.baidubce.agentidentity.models.GetResourceApikeyRequest;
 import com.baidubce.agentidentity.models.GetResourceOauth2tokenRequest;
+import com.baidubce.agentidentity.models.GetResourceOauth2tokenResponse;
 import com.baidubce.agentidentity.models.GetUserPoolRequest;
+import com.baidubce.agentidentity.models.GetUserPoolResponse;
 import com.baidubce.agentidentity.models.GetUserRequest;
+import com.baidubce.agentidentity.models.GetUserResponse;
 import com.baidubce.agentidentity.models.GetWATForUserRequest;
+import com.baidubce.agentidentity.models.GetWATForUserResponse;
 import com.baidubce.agentidentity.models.GetWorkloadAccessTokenRequest;
+import com.baidubce.agentidentity.models.GetWorkloadAccessTokenResponse;
 import com.baidubce.agentidentity.models.ListAgentsRequest;
 import com.baidubce.agentidentity.models.ListAgentsResponse;
 import com.baidubce.agentidentity.models.ListCredentialProvidersRequest;
@@ -45,12 +63,19 @@ import com.baidubce.agentidentity.models.OIDCDiscoveryRequest;
 import com.baidubce.agentidentity.models.Oauth2idpCallbackRequest;
 import com.baidubce.agentidentity.models.ResetPasswordRequest;
 import com.baidubce.agentidentity.models.TokenEndpointRequest;
+import com.baidubce.agentidentity.models.TokenEndpointResponse;
 import com.baidubce.agentidentity.models.UpdateAgentRequest;
+import com.baidubce.agentidentity.models.UpdateAgentResponse;
 import com.baidubce.agentidentity.models.UpdateCredentialProviderRequest;
+import com.baidubce.agentidentity.models.UpdateCredentialProviderResponse;
 import com.baidubce.agentidentity.models.UpdateIdpConfigurationRequest;
+import com.baidubce.agentidentity.models.UpdateIdpConfigurationResponse;
 import com.baidubce.agentidentity.models.UpdateOauth2ClientRequest;
+import com.baidubce.agentidentity.models.UpdateOauth2ClientResponse;
 import com.baidubce.agentidentity.models.UpdateUserPoolRequest;
+import com.baidubce.agentidentity.models.UpdateUserPoolResponse;
 import com.baidubce.agentidentity.models.UpdateUserRequest;
+import com.baidubce.agentidentity.models.UpdateUserResponse;
 import com.baidubce.agentidentity.models.UserinfoEndpointRequest;
 import com.baidubce.agentidentity.models.UserinfoEndpointResponse;
 import org.junit.Test;
@@ -100,7 +125,8 @@ public class AgentidentityClientTest {
         BatchAcquisitionOfUsersRequest batchAcquisitionOfUsersRequest = new BatchAcquisitionOfUsersRequest();
         batchAcquisitionOfUsersRequest.setUserPoolId("");
         batchAcquisitionOfUsersRequest.setIds(new ArrayList<>());
-        agentidentityClient.batchAcquisitionOfUsers(batchAcquisitionOfUsersRequest);
+        BatchAcquisitionOfUsersResponse response = agentidentityClient.batchAcquisitionOfUsers(batchAcquisitionOfUsersRequest);
+        System.out.println(response);
     }
     /**
      * batchGetResourceApiKey
@@ -139,7 +165,8 @@ public class AgentidentityClientTest {
         createAgentRequest.setName("");
         createAgentRequest.setDescription("");
         createAgentRequest.setAllowedResourceOauth2ReturnUrls(new ArrayList<>());
-        agentidentityClient.createAgent(createAgentRequest);
+        CreateAgentResponse response = agentidentityClient.createAgent(createAgentRequest);
+        System.out.println(response);
     }
     /**
      * createCredentialProvider
@@ -152,7 +179,8 @@ public class AgentidentityClientTest {
         createCredentialProviderRequest.setType("");
         createCredentialProviderRequest.setDesc("");
         createCredentialProviderRequest.setCredential(null);
-        agentidentityClient.createCredentialProvider(createCredentialProviderRequest);
+        CreateCredentialProviderResponse response = agentidentityClient.createCredentialProvider(createCredentialProviderRequest);
+        System.out.println(response);
     }
     /**
      * createIdpConfiguration
@@ -175,7 +203,8 @@ public class AgentidentityClientTest {
         createIdpConfigurationRequest.setUserIdClaim("");
         createIdpConfigurationRequest.setDisplayNameClaim("");
         createIdpConfigurationRequest.setAutoCreateUser(false);
-        agentidentityClient.createIdpConfiguration(createIdpConfigurationRequest);
+        CreateIdpConfigurationResponse response = agentidentityClient.createIdpConfiguration(createIdpConfigurationRequest);
+        System.out.println(response);
     }
     /**
      * createOauth2Client
@@ -193,7 +222,8 @@ public class AgentidentityClientTest {
         createOauth2ClientRequest.setScopes(new ArrayList<>());
         createOauth2ClientRequest.setAccessTokenTtl(0);
         createOauth2ClientRequest.setRefreshTokenTtl(0);
-        agentidentityClient.createOauth2Client(createOauth2ClientRequest);
+        CreateOauth2ClientResponse response = agentidentityClient.createOauth2Client(createOauth2ClientRequest);
+        System.out.println(response);
     }
     /**
      * createUser
@@ -208,7 +238,8 @@ public class AgentidentityClientTest {
         createUserRequest.setDescription("");
         createUserRequest.setPassword("");
         createUserRequest.setForceResetPassword(false);
-        agentidentityClient.createUser(createUserRequest);
+        CreateUserResponse response = agentidentityClient.createUser(createUserRequest);
+        System.out.println(response);
     }
     /**
      * createUserPool
@@ -219,7 +250,8 @@ public class AgentidentityClientTest {
         CreateUserPoolRequest createUserPoolRequest = new CreateUserPoolRequest();
         createUserPoolRequest.setName("");
         createUserPoolRequest.setDescription("");
-        agentidentityClient.createUserPool(createUserPoolRequest);
+        CreateUserPoolResponse response = agentidentityClient.createUserPool(createUserPoolRequest);
+        System.out.println(response);
     }
     /**
      * deleteAgent
@@ -293,7 +325,8 @@ public class AgentidentityClientTest {
         DisableIdpConfigurationRequest disableIdpConfigurationRequest = new DisableIdpConfigurationRequest();
         disableIdpConfigurationRequest.setUserPoolId("");
         disableIdpConfigurationRequest.setId("");
-        agentidentityClient.disableIdpConfiguration(disableIdpConfigurationRequest);
+        DisableIdpConfigurationResponse response = agentidentityClient.disableIdpConfiguration(disableIdpConfigurationRequest);
+        System.out.println(response);
     }
     /**
      * enableIdpConfiguration
@@ -304,7 +337,8 @@ public class AgentidentityClientTest {
         EnableIdpConfigurationRequest enableIdpConfigurationRequest = new EnableIdpConfigurationRequest();
         enableIdpConfigurationRequest.setUserPoolId("");
         enableIdpConfigurationRequest.setId("");
-        agentidentityClient.enableIdpConfiguration(enableIdpConfigurationRequest);
+        EnableIdpConfigurationResponse response = agentidentityClient.enableIdpConfiguration(enableIdpConfigurationRequest);
+        System.out.println(response);
     }
     /**
      * getAgent
@@ -314,7 +348,8 @@ public class AgentidentityClientTest {
     public void getAgentTest() {
         GetAgentRequest getAgentRequest = new GetAgentRequest();
         getAgentRequest.setAgentId("");
-        agentidentityClient.getAgent(getAgentRequest);
+        GetAgentResponse response = agentidentityClient.getAgent(getAgentRequest);
+        System.out.println(response);
     }
     /**
      * getCredentialProvider
@@ -324,7 +359,8 @@ public class AgentidentityClientTest {
     public void getCredentialProviderTest() {
         GetCredentialProviderRequest getCredentialProviderRequest = new GetCredentialProviderRequest();
         getCredentialProviderRequest.setCredentialProviderId("");
-        agentidentityClient.getCredentialProvider(getCredentialProviderRequest);
+        GetCredentialProviderResponse response = agentidentityClient.getCredentialProvider(getCredentialProviderRequest);
+        System.out.println(response);
     }
     /**
      * getIdpConfiguration
@@ -335,7 +371,8 @@ public class AgentidentityClientTest {
         GetIdpConfigurationRequest getIdpConfigurationRequest = new GetIdpConfigurationRequest();
         getIdpConfigurationRequest.setUserPoolId("");
         getIdpConfigurationRequest.setId("");
-        agentidentityClient.getIdpConfiguration(getIdpConfigurationRequest);
+        GetIdpConfigurationResponse response = agentidentityClient.getIdpConfiguration(getIdpConfigurationRequest);
+        System.out.println(response);
     }
     /**
      * getOauth2Client
@@ -346,7 +383,8 @@ public class AgentidentityClientTest {
         GetOauth2ClientRequest getOauth2ClientRequest = new GetOauth2ClientRequest();
         getOauth2ClientRequest.setUserPoolId("");
         getOauth2ClientRequest.setId("");
-        agentidentityClient.getOauth2Client(getOauth2ClientRequest);
+        GetOauth2ClientResponse response = agentidentityClient.getOauth2Client(getOauth2ClientRequest);
+        System.out.println(response);
     }
     /**
      * getResourceApikey
@@ -375,7 +413,8 @@ public class AgentidentityClientTest {
         getResourceOauth2tokenRequest.setSessionUri("");
         getResourceOauth2tokenRequest.setForceAuthentication(false);
         getResourceOauth2tokenRequest.setWorkloadAccessToken("");
-        agentidentityClient.getResourceOauth2token(getResourceOauth2tokenRequest);
+        GetResourceOauth2tokenResponse response = agentidentityClient.getResourceOauth2token(getResourceOauth2tokenRequest);
+        System.out.println(response);
     }
     /**
      * getUser
@@ -387,7 +426,8 @@ public class AgentidentityClientTest {
         getUserRequest.setUserPoolId("");
         getUserRequest.setId("");
         getUserRequest.setUsername("");
-        agentidentityClient.getUser(getUserRequest);
+        GetUserResponse response = agentidentityClient.getUser(getUserRequest);
+        System.out.println(response);
     }
     /**
      * getUserPool
@@ -397,7 +437,8 @@ public class AgentidentityClientTest {
     public void getUserPoolTest() {
         GetUserPoolRequest getUserPoolRequest = new GetUserPoolRequest();
         getUserPoolRequest.setId("");
-        agentidentityClient.getUserPool(getUserPoolRequest);
+        GetUserPoolResponse response = agentidentityClient.getUserPool(getUserPoolRequest);
+        System.out.println(response);
     }
     /**
      * getWATForUser
@@ -412,7 +453,8 @@ public class AgentidentityClientTest {
         getWATForUserRequest.setUserId("");
         getWATForUserRequest.setSessionId("");
         getWATForUserRequest.setDurationSeconds(0);
-        agentidentityClient.getWATForUser(getWATForUserRequest);
+        GetWATForUserResponse response = agentidentityClient.getWATForUser(getWATForUserRequest);
+        System.out.println(response);
     }
     /**
      * getWorkloadAccessToken
@@ -425,7 +467,8 @@ public class AgentidentityClientTest {
         getWorkloadAccessTokenRequest.setAgentId("");
         getWorkloadAccessTokenRequest.setAgentName("");
         getWorkloadAccessTokenRequest.setDurationSeconds(0);
-        agentidentityClient.getWorkloadAccessToken(getWorkloadAccessTokenRequest);
+        GetWorkloadAccessTokenResponse response = agentidentityClient.getWorkloadAccessToken(getWorkloadAccessTokenRequest);
+        System.out.println(response);
     }
     /**
      * listAgents
@@ -559,7 +602,8 @@ public class AgentidentityClientTest {
         tokenEndpointRequest.setClientId("");
         tokenEndpointRequest.setClientSecret("");
         tokenEndpointRequest.setRedirectUri("");
-        agentidentityClient.tokenEndpoint(tokenEndpointRequest);
+        TokenEndpointResponse response = agentidentityClient.tokenEndpoint(tokenEndpointRequest);
+        System.out.println(response);
     }
     /**
      * updateAgent
@@ -571,7 +615,8 @@ public class AgentidentityClientTest {
         updateAgentRequest.setAgentId("");
         updateAgentRequest.setDescription("");
         updateAgentRequest.setAllowedResourceOauth2ReturnUrls(new ArrayList<>());
-        agentidentityClient.updateAgent(updateAgentRequest);
+        UpdateAgentResponse response = agentidentityClient.updateAgent(updateAgentRequest);
+        System.out.println(response);
     }
     /**
      * updateCredentialProvider
@@ -583,7 +628,8 @@ public class AgentidentityClientTest {
         updateCredentialProviderRequest.setCredentialProviderId("");
         updateCredentialProviderRequest.setDesc("");
         updateCredentialProviderRequest.setCredential(null);
-        agentidentityClient.updateCredentialProvider(updateCredentialProviderRequest);
+        UpdateCredentialProviderResponse response = agentidentityClient.updateCredentialProvider(updateCredentialProviderRequest);
+        System.out.println(response);
     }
     /**
      * updateIdpConfiguration
@@ -604,7 +650,8 @@ public class AgentidentityClientTest {
         updateIdpConfigurationRequest.setUserIdClaim("");
         updateIdpConfigurationRequest.setDisplayNameClaim("");
         updateIdpConfigurationRequest.setAutoCreateUser(false);
-        agentidentityClient.updateIdpConfiguration(updateIdpConfigurationRequest);
+        UpdateIdpConfigurationResponse response = agentidentityClient.updateIdpConfiguration(updateIdpConfigurationRequest);
+        System.out.println(response);
     }
     /**
      * updateOauth2Client
@@ -622,7 +669,8 @@ public class AgentidentityClientTest {
         updateOauth2ClientRequest.setScopes(new ArrayList<>());
         updateOauth2ClientRequest.setAccessTokenTtl(0);
         updateOauth2ClientRequest.setRefreshTokenTtl(0);
-        agentidentityClient.updateOauth2Client(updateOauth2ClientRequest);
+        UpdateOauth2ClientResponse response = agentidentityClient.updateOauth2Client(updateOauth2ClientRequest);
+        System.out.println(response);
     }
     /**
      * updateUser
@@ -635,7 +683,8 @@ public class AgentidentityClientTest {
         updateUserRequest.setId("");
         updateUserRequest.setDisplayName("");
         updateUserRequest.setDescription("");
-        agentidentityClient.updateUser(updateUserRequest);
+        UpdateUserResponse response = agentidentityClient.updateUser(updateUserRequest);
+        System.out.println(response);
     }
     /**
      * updateUserPool
@@ -647,7 +696,8 @@ public class AgentidentityClientTest {
         updateUserPoolRequest.setId("");
         updateUserPoolRequest.setName("");
         updateUserPoolRequest.setDescription("");
-        agentidentityClient.updateUserPool(updateUserPoolRequest);
+        UpdateUserPoolResponse response = agentidentityClient.updateUserPool(updateUserPoolRequest);
+        System.out.println(response);
     }
     /**
      * userinfoEndpoint

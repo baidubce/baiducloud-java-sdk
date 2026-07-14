@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.agentidentity.AgentidentityClient;
 import com.baidubce.agentidentity.models.UpdateAgentRequest;
+import com.baidubce.agentidentity.models.UpdateAgentResponse;
 import java.util.ArrayList;
 
 public class ExampleUpdateAgent {
@@ -22,9 +23,9 @@ public class ExampleUpdateAgent {
         updateAgentRequest.setDescription("");
         updateAgentRequest.setAllowedResourceOauth2ReturnUrls(new ArrayList<>());
         try {
-            client.updateAgent(updateAgentRequest);
+            UpdateAgentResponse response = client.updateAgent(updateAgentRequest);
+            System.out.println(response.toJsonString());
         } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.agentidentity.AgentidentityClient;
 import com.baidubce.agentidentity.models.GetResourceOauth2tokenRequest;
+import com.baidubce.agentidentity.models.GetResourceOauth2tokenResponse;
 import java.util.ArrayList;
 
 public class ExampleGetResourceOauth2token {
@@ -27,9 +28,9 @@ public class ExampleGetResourceOauth2token {
         getResourceOauth2tokenRequest.setForceAuthentication(false);
         getResourceOauth2tokenRequest.setWorkloadAccessToken("");
         try {
-            client.getResourceOauth2token(getResourceOauth2tokenRequest);
+            GetResourceOauth2tokenResponse response = client.getResourceOauth2token(getResourceOauth2tokenRequest);
+            System.out.println(response.toJsonString());
         } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

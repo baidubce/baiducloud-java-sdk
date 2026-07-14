@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.agentidentity.AgentidentityClient;
 import com.baidubce.agentidentity.models.UpdateOauth2ClientRequest;
+import com.baidubce.agentidentity.models.UpdateOauth2ClientResponse;
 import java.util.ArrayList;
 
 public class ExampleUpdateOauth2Client {
@@ -28,9 +29,9 @@ public class ExampleUpdateOauth2Client {
         updateOauth2ClientRequest.setAccessTokenTtl(0);
         updateOauth2ClientRequest.setRefreshTokenTtl(0);
         try {
-            client.updateOauth2Client(updateOauth2ClientRequest);
+            UpdateOauth2ClientResponse response = client.updateOauth2Client(updateOauth2ClientRequest);
+            System.out.println(response.toJsonString());
         } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

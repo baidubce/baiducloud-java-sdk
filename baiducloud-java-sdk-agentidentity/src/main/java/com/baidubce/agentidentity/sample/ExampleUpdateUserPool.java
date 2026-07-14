@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.agentidentity.AgentidentityClient;
 import com.baidubce.agentidentity.models.UpdateUserPoolRequest;
+import com.baidubce.agentidentity.models.UpdateUserPoolResponse;
 
 public class ExampleUpdateUserPool {
     public static void main(String[] args) {
@@ -21,9 +22,9 @@ public class ExampleUpdateUserPool {
         updateUserPoolRequest.setName("");
         updateUserPoolRequest.setDescription("");
         try {
-            client.updateUserPool(updateUserPoolRequest);
+            UpdateUserPoolResponse response = client.updateUserPool(updateUserPoolRequest);
+            System.out.println(response.toJsonString());
         } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }
