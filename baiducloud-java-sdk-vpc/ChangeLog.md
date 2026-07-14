@@ -1,3 +1,7 @@
+2026-07-14 Version: 0.0.24
+VPC专线网关健康检查接口新增三个字段
+- 涉及产品: VPC，创建专线网关健康检查新增dcphyId、channelId、subnetId字段
+
 2026-06-25 Version: 0.0.23
 - 涉及产品: VPC，创建专线网关健康检查删除healthCheckPort字段
 

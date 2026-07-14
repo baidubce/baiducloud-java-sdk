@@ -555,6 +555,9 @@ public class VpcClientTest {
         CreateDedicatedGatewayHealthCheckRequest createDedicatedGatewayHealthCheckRequest = new CreateDedicatedGatewayHealthCheckRequest();
         createDedicatedGatewayHealthCheckRequest.setEtGatewayId("");
         createDedicatedGatewayHealthCheckRequest.setClientToken("");
+        createDedicatedGatewayHealthCheckRequest.setDcphyId("");
+        createDedicatedGatewayHealthCheckRequest.setChannelId("");
+        createDedicatedGatewayHealthCheckRequest.setSubnetId("");
         createDedicatedGatewayHealthCheckRequest.setHealthCheckSourceIp("");
         createDedicatedGatewayHealthCheckRequest.setHealthCheckType("");
         createDedicatedGatewayHealthCheckRequest.setHealthCheckInterval(0);

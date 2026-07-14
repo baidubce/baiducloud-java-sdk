@@ -20,6 +20,21 @@ public class CreateDedicatedGatewayHealthCheckRequest extends BaseBceRequest {
     private String clientToken;
 
     /**
+    * 物理专线ID
+    */
+    private String dcphyId;
+
+    /**
+    * 专线通道ID
+    */
+    private String channelId;
+
+    /**
+    * 子网ID
+    */
+    private String subnetId;
+
+    /**
     * 若不传该参数，系统会自动分配一个IP
     */
     private String healthCheckSourceIp;
@@ -64,6 +79,33 @@ public class CreateDedicatedGatewayHealthCheckRequest extends BaseBceRequest {
 
     public CreateDedicatedGatewayHealthCheckRequest setClientToken(String clientToken) {
         this.clientToken = clientToken;
+        return this;
+    }
+
+    public String getDcphyId() {
+        return dcphyId;
+    }
+
+    public CreateDedicatedGatewayHealthCheckRequest setDcphyId(String dcphyId) {
+        this.dcphyId = dcphyId;
+        return this;
+    }
+
+    public String getChannelId() {
+        return channelId;
+    }
+
+    public CreateDedicatedGatewayHealthCheckRequest setChannelId(String channelId) {
+        this.channelId = channelId;
+        return this;
+    }
+
+    public String getSubnetId() {
+        return subnetId;
+    }
+
+    public CreateDedicatedGatewayHealthCheckRequest setSubnetId(String subnetId) {
+        this.subnetId = subnetId;
         return this;
     }
 
