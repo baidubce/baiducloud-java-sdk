@@ -17,15 +17,22 @@ import com.baidubce.common.BaseBceResponse;
 
 import com.baidubce.agentidentity.models.AuthorizeEndpointRequest;
 import com.baidubce.agentidentity.models.BatchAcquisitionOfUsersRequest;
+import com.baidubce.agentidentity.models.BatchAcquisitionOfUsersResponse;
 import com.baidubce.agentidentity.models.BatchGetResourceApiKeyRequest;
 import com.baidubce.agentidentity.models.BatchGetResourceApiKeyResponse;
 import com.baidubce.agentidentity.models.CompleteOauth2sessionRequest;
 import com.baidubce.agentidentity.models.CreateAgentRequest;
+import com.baidubce.agentidentity.models.CreateAgentResponse;
 import com.baidubce.agentidentity.models.CreateCredentialProviderRequest;
+import com.baidubce.agentidentity.models.CreateCredentialProviderResponse;
 import com.baidubce.agentidentity.models.CreateIdpConfigurationRequest;
+import com.baidubce.agentidentity.models.CreateIdpConfigurationResponse;
 import com.baidubce.agentidentity.models.CreateOauth2ClientRequest;
+import com.baidubce.agentidentity.models.CreateOauth2ClientResponse;
 import com.baidubce.agentidentity.models.CreateUserPoolRequest;
+import com.baidubce.agentidentity.models.CreateUserPoolResponse;
 import com.baidubce.agentidentity.models.CreateUserRequest;
+import com.baidubce.agentidentity.models.CreateUserResponse;
 import com.baidubce.agentidentity.models.DeleteAgentRequest;
 import com.baidubce.agentidentity.models.DeleteCredentialProviderRequest;
 import com.baidubce.agentidentity.models.DeleteIdpConfigurationRequest;
@@ -33,17 +40,28 @@ import com.baidubce.agentidentity.models.DeleteOauth2ClientRequest;
 import com.baidubce.agentidentity.models.DeleteUserPoolRequest;
 import com.baidubce.agentidentity.models.DeleteUserRequest;
 import com.baidubce.agentidentity.models.DisableIdpConfigurationRequest;
+import com.baidubce.agentidentity.models.DisableIdpConfigurationResponse;
 import com.baidubce.agentidentity.models.EnableIdpConfigurationRequest;
+import com.baidubce.agentidentity.models.EnableIdpConfigurationResponse;
 import com.baidubce.agentidentity.models.GetAgentRequest;
+import com.baidubce.agentidentity.models.GetAgentResponse;
 import com.baidubce.agentidentity.models.GetCredentialProviderRequest;
+import com.baidubce.agentidentity.models.GetCredentialProviderResponse;
 import com.baidubce.agentidentity.models.GetIdpConfigurationRequest;
+import com.baidubce.agentidentity.models.GetIdpConfigurationResponse;
 import com.baidubce.agentidentity.models.GetOauth2ClientRequest;
+import com.baidubce.agentidentity.models.GetOauth2ClientResponse;
 import com.baidubce.agentidentity.models.GetResourceApikeyRequest;
 import com.baidubce.agentidentity.models.GetResourceOauth2tokenRequest;
+import com.baidubce.agentidentity.models.GetResourceOauth2tokenResponse;
 import com.baidubce.agentidentity.models.GetUserPoolRequest;
+import com.baidubce.agentidentity.models.GetUserPoolResponse;
 import com.baidubce.agentidentity.models.GetUserRequest;
+import com.baidubce.agentidentity.models.GetUserResponse;
 import com.baidubce.agentidentity.models.GetWATForUserRequest;
+import com.baidubce.agentidentity.models.GetWATForUserResponse;
 import com.baidubce.agentidentity.models.GetWorkloadAccessTokenRequest;
+import com.baidubce.agentidentity.models.GetWorkloadAccessTokenResponse;
 import com.baidubce.agentidentity.models.ListAgentsRequest;
 import com.baidubce.agentidentity.models.ListAgentsResponse;
 import com.baidubce.agentidentity.models.ListCredentialProvidersRequest;
@@ -60,12 +78,19 @@ import com.baidubce.agentidentity.models.OIDCDiscoveryRequest;
 import com.baidubce.agentidentity.models.Oauth2idpCallbackRequest;
 import com.baidubce.agentidentity.models.ResetPasswordRequest;
 import com.baidubce.agentidentity.models.TokenEndpointRequest;
+import com.baidubce.agentidentity.models.TokenEndpointResponse;
 import com.baidubce.agentidentity.models.UpdateAgentRequest;
+import com.baidubce.agentidentity.models.UpdateAgentResponse;
 import com.baidubce.agentidentity.models.UpdateCredentialProviderRequest;
+import com.baidubce.agentidentity.models.UpdateCredentialProviderResponse;
 import com.baidubce.agentidentity.models.UpdateIdpConfigurationRequest;
+import com.baidubce.agentidentity.models.UpdateIdpConfigurationResponse;
 import com.baidubce.agentidentity.models.UpdateOauth2ClientRequest;
+import com.baidubce.agentidentity.models.UpdateOauth2ClientResponse;
 import com.baidubce.agentidentity.models.UpdateUserPoolRequest;
+import com.baidubce.agentidentity.models.UpdateUserPoolResponse;
 import com.baidubce.agentidentity.models.UpdateUserRequest;
+import com.baidubce.agentidentity.models.UpdateUserResponse;
 import com.baidubce.agentidentity.models.UserinfoEndpointRequest;
 import com.baidubce.agentidentity.models.UserinfoEndpointResponse;
 
@@ -156,11 +181,12 @@ public class AgentidentityClient extends AbstractBceClient {
      * batchAcquisitionOfUsers
      * 
      * @param request 入参结构体
+     * @return BatchAcquisitionOfUsersResponse
      */
-    public void batchAcquisitionOfUsers(BatchAcquisitionOfUsersRequest request) {
+    public BatchAcquisitionOfUsersResponse batchAcquisitionOfUsers(BatchAcquisitionOfUsersRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_USER, CONSTANT_BATCH);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, BatchAcquisitionOfUsersResponse.class);
     }
 
     /**
@@ -191,69 +217,75 @@ public class AgentidentityClient extends AbstractBceClient {
      * createAgent
      * 
      * @param request 入参结构体
+     * @return CreateAgentResponse
      */
-    public void createAgent(CreateAgentRequest request) {
+    public CreateAgentResponse createAgent(CreateAgentRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_AGENT, CONSTANT_CREATE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, CreateAgentResponse.class);
     }
 
     /**
      * createCredentialProvider
      * 
      * @param request 入参结构体
+     * @return CreateCredentialProviderResponse
      */
-    public void createCredentialProvider(CreateCredentialProviderRequest request) {
+    public CreateCredentialProviderResponse createCredentialProvider(CreateCredentialProviderRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_CREDENTIAL_PROVIDER, CONSTANT_CREATE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, CreateCredentialProviderResponse.class);
     }
 
     /**
      * createIdpConfiguration
      * 
      * @param request 入参结构体
+     * @return CreateIdpConfigurationResponse
      */
-    public void createIdpConfiguration(CreateIdpConfigurationRequest request) {
+    public CreateIdpConfigurationResponse createIdpConfiguration(CreateIdpConfigurationRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_IDP_CONFIG, CONSTANT_CREATE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, CreateIdpConfigurationResponse.class);
     }
 
     /**
      * createOauth2Client
      * 
      * @param request 入参结构体
+     * @return CreateOauth2ClientResponse
      */
-    public void createOauth2Client(CreateOauth2ClientRequest request) {
+    public CreateOauth2ClientResponse createOauth2Client(CreateOauth2ClientRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_OAUTH2_CLIENT, CONSTANT_CREATE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, CreateOauth2ClientResponse.class);
     }
 
     /**
      * createUser
      * 
      * @param request 入参结构体
+     * @return CreateUserResponse
      */
-    public void createUser(CreateUserRequest request) {
+    public CreateUserResponse createUser(CreateUserRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_USER, CONSTANT_CREATE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, CreateUserResponse.class);
     }
 
     /**
      * createUserPool
      * 
      * @param request 入参结构体
+     * @return CreateUserPoolResponse
      */
-    public void createUserPool(CreateUserPoolRequest request) {
+    public CreateUserPoolResponse createUserPool(CreateUserPoolRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_CREATE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, CreateUserPoolResponse.class);
     }
 
     /**
@@ -329,70 +361,76 @@ public class AgentidentityClient extends AbstractBceClient {
      * disableIdpConfiguration
      * 
      * @param request 入参结构体
+     * @return DisableIdpConfigurationResponse
      */
-    public void disableIdpConfiguration(DisableIdpConfigurationRequest request) {
+    public DisableIdpConfigurationResponse disableIdpConfiguration(DisableIdpConfigurationRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_IDP_CONFIG, CONSTANT_DISABLE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, DisableIdpConfigurationResponse.class);
     }
 
     /**
      * enableIdpConfiguration
      * 
      * @param request 入参结构体
+     * @return EnableIdpConfigurationResponse
      */
-    public void enableIdpConfiguration(EnableIdpConfigurationRequest request) {
+    public EnableIdpConfigurationResponse enableIdpConfiguration(EnableIdpConfigurationRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_IDP_CONFIG, CONSTANT_ENABLE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, EnableIdpConfigurationResponse.class);
     }
 
     /**
      * getAgent
      * 
      * @param request 入参结构体
+     * @return GetAgentResponse
      */
-    public void getAgent(GetAgentRequest request) {
+    public GetAgentResponse getAgent(GetAgentRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_AGENT, CONSTANT_GET);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, GetAgentResponse.class);
     }
 
     /**
      * getCredentialProvider
      * 
      * @param request 入参结构体
+     * @return GetCredentialProviderResponse
      */
-    public void getCredentialProvider(GetCredentialProviderRequest request) {
+    public GetCredentialProviderResponse getCredentialProvider(GetCredentialProviderRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_CREDENTIAL_PROVIDER, CONSTANT_GET);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, GetCredentialProviderResponse.class);
     }
 
     /**
      * getIdpConfiguration
      * 
      * @param request 入参结构体
+     * @return GetIdpConfigurationResponse
      */
-    public void getIdpConfiguration(GetIdpConfigurationRequest request) {
+    public GetIdpConfigurationResponse getIdpConfiguration(GetIdpConfigurationRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_IDP_CONFIG, CONSTANT_GET);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, GetIdpConfigurationResponse.class);
     }
 
     /**
      * getOauth2Client
      * 
      * @param request 入参结构体
+     * @return GetOauth2ClientResponse
      */
-    public void getOauth2Client(GetOauth2ClientRequest request) {
+    public GetOauth2ClientResponse getOauth2Client(GetOauth2ClientRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_OAUTH2_CLIENT, CONSTANT_GET);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, GetOauth2ClientResponse.class);
     }
 
     /**
@@ -410,55 +448,60 @@ public class AgentidentityClient extends AbstractBceClient {
      * getResourceOauth2token
      * 
      * @param request 入参结构体
+     * @return GetResourceOauth2tokenResponse
      */
-    public void getResourceOauth2token(GetResourceOauth2tokenRequest request) {
+    public GetResourceOauth2tokenResponse getResourceOauth2token(GetResourceOauth2tokenRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_CREDENTIAL, CONSTANT_OAUTH2);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, GetResourceOauth2tokenResponse.class);
     }
 
     /**
      * getUser
      * 
      * @param request 入参结构体
+     * @return GetUserResponse
      */
-    public void getUser(GetUserRequest request) {
+    public GetUserResponse getUser(GetUserRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_USER, CONSTANT_GET);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, GetUserResponse.class);
     }
 
     /**
      * getUserPool
      * 
      * @param request 入参结构体
+     * @return GetUserPoolResponse
      */
-    public void getUserPool(GetUserPoolRequest request) {
+    public GetUserPoolResponse getUserPool(GetUserPoolRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_GET);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, GetUserPoolResponse.class);
     }
 
     /**
      * getWATForUser
      * 
      * @param request 入参结构体
+     * @return GetWATForUserResponse
      */
-    public void getWATForUser(GetWATForUserRequest request) {
+    public GetWATForUserResponse getWATForUser(GetWATForUserRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_WORKLOAD_ACCESS_TOKEN_FOR_USER);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, GetWATForUserResponse.class);
     }
 
     /**
      * getWorkloadAccessToken
      * 
      * @param request 入参结构体
+     * @return GetWorkloadAccessTokenResponse
      */
-    public void getWorkloadAccessToken(GetWorkloadAccessTokenRequest request) {
+    public GetWorkloadAccessTokenResponse getWorkloadAccessToken(GetWorkloadAccessTokenRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_WORKLOAD_ACCESS_TOKEN);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, GetWorkloadAccessTokenResponse.class);
     }
 
     /**
@@ -587,81 +630,88 @@ public class AgentidentityClient extends AbstractBceClient {
      * tokenEndpoint
      * 
      * @param request 入参结构体
+     * @return TokenEndpointResponse
      */
-    public void tokenEndpoint(TokenEndpointRequest request) {
+    public TokenEndpointResponse tokenEndpoint(TokenEndpointRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_INBOUND, request.getUserPoolId(), CONSTANT_TOKEN);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, TokenEndpointResponse.class);
     }
 
     /**
      * updateAgent
      * 
      * @param request 入参结构体
+     * @return UpdateAgentResponse
      */
-    public void updateAgent(UpdateAgentRequest request) {
+    public UpdateAgentResponse updateAgent(UpdateAgentRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_AGENT, CONSTANT_UPDATE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, UpdateAgentResponse.class);
     }
 
     /**
      * updateCredentialProvider
      * 
      * @param request 入参结构体
+     * @return UpdateCredentialProviderResponse
      */
-    public void updateCredentialProvider(UpdateCredentialProviderRequest request) {
+    public UpdateCredentialProviderResponse updateCredentialProvider(UpdateCredentialProviderRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_CREDENTIAL_PROVIDER, CONSTANT_UPDATE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, UpdateCredentialProviderResponse.class);
     }
 
     /**
      * updateIdpConfiguration
      * 
      * @param request 入参结构体
+     * @return UpdateIdpConfigurationResponse
      */
-    public void updateIdpConfiguration(UpdateIdpConfigurationRequest request) {
+    public UpdateIdpConfigurationResponse updateIdpConfiguration(UpdateIdpConfigurationRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_IDP_CONFIG, CONSTANT_UPDATE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, UpdateIdpConfigurationResponse.class);
     }
 
     /**
      * updateOauth2Client
      * 
      * @param request 入参结构体
+     * @return UpdateOauth2ClientResponse
      */
-    public void updateOauth2Client(UpdateOauth2ClientRequest request) {
+    public UpdateOauth2ClientResponse updateOauth2Client(UpdateOauth2ClientRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_OAUTH2_CLIENT, CONSTANT_UPDATE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, UpdateOauth2ClientResponse.class);
     }
 
     /**
      * updateUser
      * 
      * @param request 入参结构体
+     * @return UpdateUserResponse
      */
-    public void updateUser(UpdateUserRequest request) {
+    public UpdateUserResponse updateUser(UpdateUserRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_USER, CONSTANT_UPDATE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, UpdateUserResponse.class);
     }
 
     /**
      * updateUserPool
      * 
      * @param request 入参结构体
+     * @return UpdateUserPoolResponse
      */
-    public void updateUserPool(UpdateUserPoolRequest request) {
+    public UpdateUserPoolResponse updateUserPool(UpdateUserPoolRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_AGENT_IDENTITY, CONSTANT_USER_POOL, CONSTANT_UPDATE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, UpdateUserPoolResponse.class);
     }
 
     /**

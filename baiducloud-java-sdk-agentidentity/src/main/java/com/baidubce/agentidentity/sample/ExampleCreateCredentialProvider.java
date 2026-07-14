@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.agentidentity.AgentidentityClient;
 import com.baidubce.agentidentity.models.CreateCredentialProviderRequest;
+import com.baidubce.agentidentity.models.CreateCredentialProviderResponse;
 
 public class ExampleCreateCredentialProvider {
     public static void main(String[] args) {
@@ -22,9 +23,9 @@ public class ExampleCreateCredentialProvider {
         createCredentialProviderRequest.setDesc("");
         createCredentialProviderRequest.setCredential(null);
         try {
-            client.createCredentialProvider(createCredentialProviderRequest);
+            CreateCredentialProviderResponse response = client.createCredentialProvider(createCredentialProviderRequest);
+            System.out.println(response.toJsonString());
         } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

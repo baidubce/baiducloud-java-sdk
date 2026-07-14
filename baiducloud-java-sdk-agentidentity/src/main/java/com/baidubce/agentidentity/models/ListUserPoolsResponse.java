@@ -2,6 +2,7 @@ package com.baidubce.agentidentity.models;
 
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ListUserPoolsResponse extends BaseBceResponse {
@@ -22,9 +23,9 @@ public class ListUserPoolsResponse extends BaseBceResponse {
     private Integer pageSize;
 
     /**
-    * result
+    * 结果列表
     */
-    private UserPoolDTO result;
+    private List<UserPoolDTO> result;
 
     public Integer getTotalCount() {
         return totalCount;
@@ -53,11 +54,11 @@ public class ListUserPoolsResponse extends BaseBceResponse {
         return this;
     }
 
-    public UserPoolDTO getResult() {
+    public List<UserPoolDTO> getResult() {
         return result;
     }
 
-    public ListUserPoolsResponse setResult(UserPoolDTO result) {
+    public ListUserPoolsResponse setResult(List<UserPoolDTO> result) {
         this.result = result;
         return this;
     }
