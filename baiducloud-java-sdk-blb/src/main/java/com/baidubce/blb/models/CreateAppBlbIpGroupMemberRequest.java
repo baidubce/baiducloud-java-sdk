@@ -28,7 +28,7 @@ public class CreateAppBlbIpGroupMemberRequest extends BaseBceRequest {
     /**
     * IP组成员列表
     */
-    private List<AppIpGroupMember> memberList;
+    private List<AppIpGroupMemberForCreate> memberList;
 
     public String getBlbId() {
         return blbId;
@@ -57,11 +57,11 @@ public class CreateAppBlbIpGroupMemberRequest extends BaseBceRequest {
         return this;
     }
 
-    public List<AppIpGroupMember> getMemberList() {
+    public List<AppIpGroupMemberForCreate> getMemberList() {
         return memberList;
     }
 
-    public CreateAppBlbIpGroupMemberRequest setMemberList(List<AppIpGroupMember> memberList) {
+    public CreateAppBlbIpGroupMemberRequest setMemberList(List<AppIpGroupMemberForCreate> memberList) {
         this.memberList = memberList;
         return this;
     }

@@ -25,11 +25,6 @@ public class AppIpGroupBackendPolicy {
     private Integer healthCheckPort;
 
     /**
-     * 7层健康检查请求的头部域会带指定的host字段，例如"localhost"，默认""。当健康检查协议为"HTTP"时生效
-     */
-    private String healthCheckHost;
-
-    /**
      * 健康检查路径，默认/，当健康检查协议为"HTTP"时生效
      */
     private String healthCheckUrlPath;
@@ -60,7 +55,7 @@ public class AppIpGroupBackendPolicy {
     private String healthCheckNormalStatus;
 
     /**
-     * udp健康检查字符串，当端口类型为udp是有效
+     * udp健康检查字符串，当端口类型为udp时有效
      */
     private String udpHealthCheckString;
 
@@ -98,15 +93,6 @@ public class AppIpGroupBackendPolicy {
 
     public Integer getHealthCheckPort() {
         return this.healthCheckPort;
-    }
-
-    public AppIpGroupBackendPolicy setHealthCheckHost(String healthCheckHost) {
-        this.healthCheckHost = healthCheckHost;
-        return this;
-    }
-
-    public String getHealthCheckHost() {
-        return this.healthCheckHost;
     }
 
     public AppIpGroupBackendPolicy setHealthCheckUrlPath(String healthCheckUrlPath) {
@@ -175,9 +161,9 @@ public class AppIpGroupBackendPolicy {
     @Override
     public String toString() {
         return "AppIpGroupBackendPolicy{" + "id=" + id + "\n" + "type=" + type + "\n" + "healthCheck=" + healthCheck + "\n" + "healthCheckPort=" + healthCheckPort + "\n"
-                + "healthCheckHost=" + healthCheckHost + "\n" + "healthCheckUrlPath=" + healthCheckUrlPath + "\n" + "healthCheckTimeoutInSecond=" + healthCheckTimeoutInSecond
-                + "\n" + "healthCheckIntervalInSecond=" + healthCheckIntervalInSecond + "\n" + "healthCheckDownRetry=" + healthCheckDownRetry + "\n" + "healthCheckUpRetry="
-                + healthCheckUpRetry + "\n" + "healthCheckNormalStatus=" + healthCheckNormalStatus + "\n" + "udpHealthCheckString=" + udpHealthCheckString + "\n" + "}";
+                + "healthCheckUrlPath=" + healthCheckUrlPath + "\n" + "healthCheckTimeoutInSecond=" + healthCheckTimeoutInSecond + "\n" + "healthCheckIntervalInSecond="
+                + healthCheckIntervalInSecond + "\n" + "healthCheckDownRetry=" + healthCheckDownRetry + "\n" + "healthCheckUpRetry=" + healthCheckUpRetry + "\n"
+                + "healthCheckNormalStatus=" + healthCheckNormalStatus + "\n" + "udpHealthCheckString=" + udpHealthCheckString + "\n" + "}";
     }
 
 }
