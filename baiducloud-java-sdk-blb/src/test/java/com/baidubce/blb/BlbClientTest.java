@@ -1337,6 +1337,7 @@ public class BlbClientTest {
     public void releaseAppBlbTest() {
         ReleaseAppBlbRequest releaseAppBlbRequest = new ReleaseAppBlbRequest();
         releaseAppBlbRequest.setBlbId("");
+        releaseAppBlbRequest.setClientToken("");
         blbClient.releaseAppBlb(releaseAppBlbRequest);
     }
     /**
@@ -1433,8 +1434,8 @@ public class BlbClientTest {
     public void updateAppBlbHttpListenerTest() {
         UpdateAppBlbHttpListenerRequest updateAppBlbHttpListenerRequest = new UpdateAppBlbHttpListenerRequest();
         updateAppBlbHttpListenerRequest.setBlbId("");
-        updateAppBlbHttpListenerRequest.setClientToken("");
         updateAppBlbHttpListenerRequest.setListenerPort(0);
+        updateAppBlbHttpListenerRequest.setClientToken("");
         updateAppBlbHttpListenerRequest.setScheduler("");
         updateAppBlbHttpListenerRequest.setKeepSession(false);
         updateAppBlbHttpListenerRequest.setKeepSessionType("");
@@ -1456,8 +1457,8 @@ public class BlbClientTest {
     public void updateAppBlbHttpsListenerTest() {
         UpdateAppBlbHttpsListenerRequest updateAppBlbHttpsListenerRequest = new UpdateAppBlbHttpsListenerRequest();
         updateAppBlbHttpsListenerRequest.setBlbId("");
-        updateAppBlbHttpsListenerRequest.setClientToken("");
         updateAppBlbHttpsListenerRequest.setListenerPort(0);
+        updateAppBlbHttpsListenerRequest.setClientToken("");
         updateAppBlbHttpsListenerRequest.setScheduler("");
         updateAppBlbHttpsListenerRequest.setKeepSession(false);
         updateAppBlbHttpsListenerRequest.setKeepSessionType("");
@@ -1599,8 +1600,8 @@ public class BlbClientTest {
     public void updateAppBlbSslListenerTest() {
         UpdateAppBlbSslListenerRequest updateAppBlbSslListenerRequest = new UpdateAppBlbSslListenerRequest();
         updateAppBlbSslListenerRequest.setBlbId("");
-        updateAppBlbSslListenerRequest.setClientToken("");
         updateAppBlbSslListenerRequest.setListenerPort(0);
+        updateAppBlbSslListenerRequest.setClientToken("");
         updateAppBlbSslListenerRequest.setScheduler("");
         updateAppBlbSslListenerRequest.setCertIds(new ArrayList<>());
         updateAppBlbSslListenerRequest.setEncryptionType("");
@@ -1619,8 +1620,8 @@ public class BlbClientTest {
     public void updateAppBlbTcpListenerTest() {
         UpdateAppBlbTcpListenerRequest updateAppBlbTcpListenerRequest = new UpdateAppBlbTcpListenerRequest();
         updateAppBlbTcpListenerRequest.setBlbId("");
-        updateAppBlbTcpListenerRequest.setClientToken("");
         updateAppBlbTcpListenerRequest.setListenerPort(0);
+        updateAppBlbTcpListenerRequest.setClientToken("");
         updateAppBlbTcpListenerRequest.setScheduler("");
         updateAppBlbTcpListenerRequest.setTcpSessionTimeout(0);
         updateAppBlbTcpListenerRequest.setDescription("");
@@ -1634,8 +1635,8 @@ public class BlbClientTest {
     public void updateAppBlbUdpListenerTest() {
         UpdateAppBlbUdpListenerRequest updateAppBlbUdpListenerRequest = new UpdateAppBlbUdpListenerRequest();
         updateAppBlbUdpListenerRequest.setBlbId("");
-        updateAppBlbUdpListenerRequest.setClientToken("");
         updateAppBlbUdpListenerRequest.setListenerPort(0);
+        updateAppBlbUdpListenerRequest.setClientToken("");
         updateAppBlbUdpListenerRequest.setScheduler("");
         updateAppBlbUdpListenerRequest.setUdpSessionTimeout(0);
         updateAppBlbUdpListenerRequest.setDescription("");

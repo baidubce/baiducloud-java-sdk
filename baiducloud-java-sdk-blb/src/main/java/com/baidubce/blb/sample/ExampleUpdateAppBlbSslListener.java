@@ -19,8 +19,8 @@ public class ExampleUpdateAppBlbSslListener {
         BlbClient client = new BlbClient(bceClientConfig);
         UpdateAppBlbSslListenerRequest updateAppBlbSslListenerRequest = new UpdateAppBlbSslListenerRequest();
         updateAppBlbSslListenerRequest.setBlbId("");
-        updateAppBlbSslListenerRequest.setClientToken("");
         updateAppBlbSslListenerRequest.setListenerPort(0);
+        updateAppBlbSslListenerRequest.setClientToken("");
         updateAppBlbSslListenerRequest.setScheduler("");
         updateAppBlbSslListenerRequest.setCertIds(new ArrayList<>());
         updateAppBlbSslListenerRequest.setEncryptionType("");

@@ -1452,6 +1452,9 @@ public class BlbClient extends AbstractBceClient {
      */
     public void releaseAppBlb(ReleaseAppBlbRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_APPBLB, request.getBlbId());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
+        }
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
@@ -1565,11 +1568,11 @@ public class BlbClient extends AbstractBceClient {
      */
     public void updateAppBlbHttpListener(UpdateAppBlbHttpListenerRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_APPBLB, request.getBlbId(), CONSTANT_H_T_T_PLISTENER);
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
-        }
         if (request.getListenerPort() != null) {
             internalRequest.addParameter("listenerPort", String.valueOf(request.getListenerPort()));
+        }
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
@@ -1582,11 +1585,11 @@ public class BlbClient extends AbstractBceClient {
      */
     public void updateAppBlbHttpsListener(UpdateAppBlbHttpsListenerRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_APPBLB, request.getBlbId(), CONSTANT_H_T_T_P_SLISTENER);
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
-        }
         if (request.getListenerPort() != null) {
             internalRequest.addParameter("listenerPort", String.valueOf(request.getListenerPort()));
+        }
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
@@ -1699,11 +1702,11 @@ public class BlbClient extends AbstractBceClient {
      */
     public void updateAppBlbSslListener(UpdateAppBlbSslListenerRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_APPBLB, request.getBlbId(), CONSTANT_S_S_LLISTENER);
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
-        }
         if (request.getListenerPort() != null) {
             internalRequest.addParameter("listenerPort", String.valueOf(request.getListenerPort()));
+        }
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
@@ -1716,11 +1719,11 @@ public class BlbClient extends AbstractBceClient {
      */
     public void updateAppBlbTcpListener(UpdateAppBlbTcpListenerRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_APPBLB, request.getBlbId(), CONSTANT_T_C_PLISTENER);
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
-        }
         if (request.getListenerPort() != null) {
             internalRequest.addParameter("listenerPort", String.valueOf(request.getListenerPort()));
+        }
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
@@ -1733,11 +1736,11 @@ public class BlbClient extends AbstractBceClient {
      */
     public void updateAppBlbUdpListener(UpdateAppBlbUdpListenerRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_APPBLB, request.getBlbId(), CONSTANT_U_D_PLISTENER);
-        if (request.getClientToken() != null) {
-            internalRequest.addParameter("clientToken", request.getClientToken());
-        }
         if (request.getListenerPort() != null) {
             internalRequest.addParameter("listenerPort", String.valueOf(request.getListenerPort()));
+        }
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);

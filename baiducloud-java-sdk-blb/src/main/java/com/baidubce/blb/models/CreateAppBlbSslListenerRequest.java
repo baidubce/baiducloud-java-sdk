@@ -37,7 +37,7 @@ public class CreateAppBlbSslListenerRequest extends BaseBceRequest {
 
     /**
     * 加密选项，默认tls_cipher_policy_default。支持：tls_cipher_policy_default/tls_cipher_policy_1_1/tls_cipher_policy_1_2/tls_cipher_policy_1_2_secure/userDefind，对应的加密协议和加密套件参见：
-    * [encryption](BLB/API参考/附录.md#encryption)
+    * [encryption](https://cloud.baidu.com/doc/BLB/s/Pjwvxnxdm#encryption)
     */
     private String encryptionType;
 
@@ -47,7 +47,7 @@ public class CreateAppBlbSslListenerRequest extends BaseBceRequest {
     private List<String> encryptionProtocols;
 
     /**
-    * 加密套件参见：[encryption](BLB/API参考/附录.md#encryption)，不同加密套件用冒号":"隔开
+    * 加密套件参见：[encryption](https://cloud.baidu.com/doc/BLB/s/Pjwvxnxdm#encryption)，不同加密套件用冒号":"隔开
     */
     private String appliedCiphers;
 

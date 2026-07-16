@@ -18,6 +18,7 @@ public class ExampleReleaseAppBlb {
         BlbClient client = new BlbClient(bceClientConfig);
         ReleaseAppBlbRequest releaseAppBlbRequest = new ReleaseAppBlbRequest();
         releaseAppBlbRequest.setBlbId("");
+        releaseAppBlbRequest.setClientToken("");
         try {
             client.releaseAppBlb(releaseAppBlbRequest);
         } catch (BceClientException e) {
