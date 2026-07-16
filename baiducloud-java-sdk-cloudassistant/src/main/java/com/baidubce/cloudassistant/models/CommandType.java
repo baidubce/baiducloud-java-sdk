@@ -1,23 +1,17 @@
 package com.baidubce.cloudassistant.models;
 
 /**
- * Gets or Sets State
+ * Gets or Sets CommandType
  */
-public enum State {
+public enum CommandType {
 
-    FAILED("FAILED"),
+    SHELL("SHELL"),
 
-    RUNNING("RUNNING"),
-
-    SUCCESS("SUCCESS"),
-
-    PARTIAL_FAILED("PARTIAL_FAILED"),
-
-    PENDING("PENDING");
+    POWERSHELL("POWERSHELL");
 
     private String value;
 
-    State(String value) {
+    CommandType(String value) {
         this.value = value;
     }
 

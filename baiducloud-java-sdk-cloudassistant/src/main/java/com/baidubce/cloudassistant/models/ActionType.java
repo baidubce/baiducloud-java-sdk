@@ -1,17 +1,17 @@
 package com.baidubce.cloudassistant.models;
 
 /**
- * Gets or Sets Type
+ * Gets or Sets ActionType
  */
-public enum Type {
+public enum ActionType {
 
-    SHELL("SHELL"),
+    COMMAND("COMMAND"),
 
-    POWERSHELL("POWERSHELL");
+    FILE_UPLOAD("FILE_UPLOAD");
 
     private String value;
 
-    Type(String value) {
+    ActionType(String value) {
         this.value = value;
     }
 

@@ -1,17 +1,17 @@
 package com.baidubce.cloudassistant.models;
 
 /**
- * Gets or Sets Id
+ * Gets or Sets AgentState
  */
-public enum Id {
+public enum AgentState {
 
-    COMMAND("COMMAND"),
+    ONLINE("ONLINE"),
 
-    FILE_UPLOAD("FILE_UPLOAD");
+    OFFLINE("OFFLINE");
 
     private String value;
 
-    Id(String value) {
+    AgentState(String value) {
         this.value = value;
     }
 
