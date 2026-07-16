@@ -15,6 +15,12 @@ public class UpdateBlbSslListenerRequest extends BaseBceRequest {
     private String blbId;
 
     /**
+    * clientToken
+    */
+    @JsonIgnore
+    private String clientToken;
+
+    /**
     * listenerPort
     */
     @JsonIgnore
@@ -92,6 +98,15 @@ public class UpdateBlbSslListenerRequest extends BaseBceRequest {
 
     public UpdateBlbSslListenerRequest setBlbId(String blbId) {
         this.blbId = blbId;
+        return this;
+    }
+
+    public String getClientToken() {
+        return clientToken;
+    }
+
+    public UpdateBlbSslListenerRequest setClientToken(String clientToken) {
+        this.clientToken = clientToken;
         return this;
     }
 

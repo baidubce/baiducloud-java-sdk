@@ -22,6 +22,7 @@ public class ExampleCreateBlbHttpListener {
 
         CreateBlbHttpListenerRequest createBlbHttpListenerRequest = new CreateBlbHttpListenerRequest();
         createBlbHttpListenerRequest.setBlbId("");
+        createBlbHttpListenerRequest.setClientToken("");
         createBlbHttpListenerRequest.setListenerPort(0);
         createBlbHttpListenerRequest.setBackendPort(0);
         createBlbHttpListenerRequest.setScheduler("");

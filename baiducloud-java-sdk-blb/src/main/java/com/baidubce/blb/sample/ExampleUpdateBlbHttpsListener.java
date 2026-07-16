@@ -24,6 +24,7 @@ public class ExampleUpdateBlbHttpsListener {
         UpdateBlbHttpsListenerRequest updateBlbHttpsListenerRequest = new UpdateBlbHttpsListenerRequest();
         updateBlbHttpsListenerRequest.setBlbId("");
         updateBlbHttpsListenerRequest.setListenerPort(0);
+        updateBlbHttpsListenerRequest.setClientToken("");
         updateBlbHttpsListenerRequest.setBackendPort(0);
         updateBlbHttpsListenerRequest.setScheduler("");
         updateBlbHttpsListenerRequest.setKeepSession(false);

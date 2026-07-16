@@ -14,6 +14,12 @@ public class CreateBlbTcpListenerRequest extends BaseBceRequest {
     private String blbId;
 
     /**
+    * clientToken
+    */
+    @JsonIgnore
+    private String clientToken;
+
+    /**
     * 监听器的监听端口，需为1-65535间的整数
     */
     private Integer listenerPort;
@@ -64,6 +70,15 @@ public class CreateBlbTcpListenerRequest extends BaseBceRequest {
 
     public CreateBlbTcpListenerRequest setBlbId(String blbId) {
         this.blbId = blbId;
+        return this;
+    }
+
+    public String getClientToken() {
+        return clientToken;
+    }
+
+    public CreateBlbTcpListenerRequest setClientToken(String clientToken) {
+        this.clientToken = clientToken;
         return this;
     }
 
