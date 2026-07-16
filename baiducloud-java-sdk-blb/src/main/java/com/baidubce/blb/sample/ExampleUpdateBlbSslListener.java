@@ -20,6 +20,7 @@ public class ExampleUpdateBlbSslListener {
         UpdateBlbSslListenerRequest updateBlbSslListenerRequest = new UpdateBlbSslListenerRequest();
         updateBlbSslListenerRequest.setBlbId("");
         updateBlbSslListenerRequest.setListenerPort(0);
+        updateBlbSslListenerRequest.setClientToken("");
         updateBlbSslListenerRequest.setBackendPort(0);
         updateBlbSslListenerRequest.setScheduler("");
         updateBlbSslListenerRequest.setHealthCheckType("");

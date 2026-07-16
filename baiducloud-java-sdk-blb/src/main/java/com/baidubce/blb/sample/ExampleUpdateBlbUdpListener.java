@@ -19,6 +19,7 @@ public class ExampleUpdateBlbUdpListener {
         UpdateBlbUdpListenerRequest updateBlbUdpListenerRequest = new UpdateBlbUdpListenerRequest();
         updateBlbUdpListenerRequest.setBlbId("");
         updateBlbUdpListenerRequest.setListenerPort(0);
+        updateBlbUdpListenerRequest.setClientToken("");
         updateBlbUdpListenerRequest.setBackendPort(0);
         updateBlbUdpListenerRequest.setScheduler("");
         updateBlbUdpListenerRequest.setHealthCheckType("");

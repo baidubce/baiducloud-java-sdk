@@ -19,6 +19,7 @@ public class ExampleUpdateBlbTcpListener {
         UpdateBlbTcpListenerRequest updateBlbTcpListenerRequest = new UpdateBlbTcpListenerRequest();
         updateBlbTcpListenerRequest.setBlbId("");
         updateBlbTcpListenerRequest.setListenerPort(0);
+        updateBlbTcpListenerRequest.setClientToken("");
         updateBlbTcpListenerRequest.setBackendPort(0);
         updateBlbTcpListenerRequest.setScheduler("");
         updateBlbTcpListenerRequest.setHealthCheckType("");

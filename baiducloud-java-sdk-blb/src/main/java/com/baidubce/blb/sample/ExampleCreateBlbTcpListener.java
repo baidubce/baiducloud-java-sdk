@@ -18,6 +18,7 @@ public class ExampleCreateBlbTcpListener {
         BlbClient client = new BlbClient(bceClientConfig);
         CreateBlbTcpListenerRequest createBlbTcpListenerRequest = new CreateBlbTcpListenerRequest();
         createBlbTcpListenerRequest.setBlbId("");
+        createBlbTcpListenerRequest.setClientToken("");
         createBlbTcpListenerRequest.setListenerPort(0);
         createBlbTcpListenerRequest.setBackendPort(0);
         createBlbTcpListenerRequest.setScheduler("");

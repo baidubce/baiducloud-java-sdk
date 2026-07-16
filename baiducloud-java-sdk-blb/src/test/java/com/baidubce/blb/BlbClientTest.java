@@ -573,6 +573,7 @@ public class BlbClientTest {
     public void createBlbHttpListenerTest() {
         CreateBlbHttpListenerRequest createBlbHttpListenerRequest = new CreateBlbHttpListenerRequest();
         createBlbHttpListenerRequest.setBlbId("");
+        createBlbHttpListenerRequest.setClientToken("");
         createBlbHttpListenerRequest.setListenerPort(0);
         createBlbHttpListenerRequest.setBackendPort(0);
         createBlbHttpListenerRequest.setScheduler("");
@@ -668,6 +669,7 @@ public class BlbClientTest {
     public void createBlbTcpListenerTest() {
         CreateBlbTcpListenerRequest createBlbTcpListenerRequest = new CreateBlbTcpListenerRequest();
         createBlbTcpListenerRequest.setBlbId("");
+        createBlbTcpListenerRequest.setClientToken("");
         createBlbTcpListenerRequest.setListenerPort(0);
         createBlbTcpListenerRequest.setBackendPort(0);
         createBlbTcpListenerRequest.setScheduler("");
@@ -1675,6 +1677,7 @@ public class BlbClientTest {
         UpdateBlbHttpListenerRequest updateBlbHttpListenerRequest = new UpdateBlbHttpListenerRequest();
         updateBlbHttpListenerRequest.setBlbId("");
         updateBlbHttpListenerRequest.setListenerPort(0);
+        updateBlbHttpListenerRequest.setClientToken("");
         updateBlbHttpListenerRequest.setBackendPort(0);
         updateBlbHttpListenerRequest.setScheduler("");
         updateBlbHttpListenerRequest.setKeepSession(false);
@@ -1706,6 +1709,7 @@ public class BlbClientTest {
         UpdateBlbHttpsListenerRequest updateBlbHttpsListenerRequest = new UpdateBlbHttpsListenerRequest();
         updateBlbHttpsListenerRequest.setBlbId("");
         updateBlbHttpsListenerRequest.setListenerPort(0);
+        updateBlbHttpsListenerRequest.setClientToken("");
         updateBlbHttpsListenerRequest.setBackendPort(0);
         updateBlbHttpsListenerRequest.setScheduler("");
         updateBlbHttpsListenerRequest.setKeepSession(false);
@@ -1766,6 +1770,7 @@ public class BlbClientTest {
         UpdateBlbSslListenerRequest updateBlbSslListenerRequest = new UpdateBlbSslListenerRequest();
         updateBlbSslListenerRequest.setBlbId("");
         updateBlbSslListenerRequest.setListenerPort(0);
+        updateBlbSslListenerRequest.setClientToken("");
         updateBlbSslListenerRequest.setBackendPort(0);
         updateBlbSslListenerRequest.setScheduler("");
         updateBlbSslListenerRequest.setHealthCheckType("");
@@ -1790,6 +1795,7 @@ public class BlbClientTest {
         UpdateBlbTcpListenerRequest updateBlbTcpListenerRequest = new UpdateBlbTcpListenerRequest();
         updateBlbTcpListenerRequest.setBlbId("");
         updateBlbTcpListenerRequest.setListenerPort(0);
+        updateBlbTcpListenerRequest.setClientToken("");
         updateBlbTcpListenerRequest.setBackendPort(0);
         updateBlbTcpListenerRequest.setScheduler("");
         updateBlbTcpListenerRequest.setHealthCheckType("");
@@ -1808,6 +1814,7 @@ public class BlbClientTest {
         UpdateBlbUdpListenerRequest updateBlbUdpListenerRequest = new UpdateBlbUdpListenerRequest();
         updateBlbUdpListenerRequest.setBlbId("");
         updateBlbUdpListenerRequest.setListenerPort(0);
+        updateBlbUdpListenerRequest.setClientToken("");
         updateBlbUdpListenerRequest.setBackendPort(0);
         updateBlbUdpListenerRequest.setScheduler("");
         updateBlbUdpListenerRequest.setHealthCheckType("");
