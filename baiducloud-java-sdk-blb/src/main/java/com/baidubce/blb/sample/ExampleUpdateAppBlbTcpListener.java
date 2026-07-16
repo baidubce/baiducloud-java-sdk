@@ -18,8 +18,8 @@ public class ExampleUpdateAppBlbTcpListener {
         BlbClient client = new BlbClient(bceClientConfig);
         UpdateAppBlbTcpListenerRequest updateAppBlbTcpListenerRequest = new UpdateAppBlbTcpListenerRequest();
         updateAppBlbTcpListenerRequest.setBlbId("");
-        updateAppBlbTcpListenerRequest.setClientToken("");
         updateAppBlbTcpListenerRequest.setListenerPort(0);
+        updateAppBlbTcpListenerRequest.setClientToken("");
         updateAppBlbTcpListenerRequest.setScheduler("");
         updateAppBlbTcpListenerRequest.setTcpSessionTimeout(0);
         updateAppBlbTcpListenerRequest.setDescription("");

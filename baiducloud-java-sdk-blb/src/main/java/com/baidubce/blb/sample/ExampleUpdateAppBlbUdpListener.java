@@ -18,8 +18,8 @@ public class ExampleUpdateAppBlbUdpListener {
         BlbClient client = new BlbClient(bceClientConfig);
         UpdateAppBlbUdpListenerRequest updateAppBlbUdpListenerRequest = new UpdateAppBlbUdpListenerRequest();
         updateAppBlbUdpListenerRequest.setBlbId("");
-        updateAppBlbUdpListenerRequest.setClientToken("");
         updateAppBlbUdpListenerRequest.setListenerPort(0);
+        updateAppBlbUdpListenerRequest.setClientToken("");
         updateAppBlbUdpListenerRequest.setScheduler("");
         updateAppBlbUdpListenerRequest.setUdpSessionTimeout(0);
         updateAppBlbUdpListenerRequest.setDescription("");
