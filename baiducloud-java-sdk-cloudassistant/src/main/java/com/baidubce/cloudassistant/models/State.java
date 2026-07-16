@@ -9,7 +9,11 @@ public enum State {
 
     RUNNING("RUNNING"),
 
-    SUCCESS("SUCCESS");
+    SUCCESS("SUCCESS"),
+
+    PARTIAL_FAILED("PARTIAL_FAILED"),
+
+    PENDING("PENDING");
 
     private String value;
 
