@@ -12,7 +12,7 @@ public class ActionRun {
     private String id;
 
     /**
-     * 执行状态
+     * 执行状态，枚举值：FAILED（执行失败），RUNNING（执行中），SUCCESS（执行成功），PARTIAL_FAILED（部分成功），PENDING（等待中）
      */
     private String state;
 

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CommandFilter {
     /**
-     * 按命令可见范围筛选。枚举值：INDIVIDUAL（个人命令），GLOBAL（公共命令）
+     * 按命令可见范围筛选。枚举值：INDIVIDUAL（我的命令），GLOBAL（公共命令）
      */
     private String scope;
 
