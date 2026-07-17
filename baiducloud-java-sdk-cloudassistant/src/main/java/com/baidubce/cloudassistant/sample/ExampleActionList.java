@@ -7,6 +7,7 @@ import com.baidubce.cloudassistant.CloudassistantClient;
 import com.baidubce.cloudassistant.models.ActionListRequest;
 import com.baidubce.cloudassistant.models.ActionListResponse;
 import com.baidubce.cloudassistant.models.CommandFilter;
+import com.baidubce.cloudassistant.models.FileUploadFilter;
 import com.baidubce.cloudassistant.models.ActionFilter;
 
 public class ExampleActionList {
@@ -20,6 +21,8 @@ public class ExampleActionList {
         bceClientConfig.setEndpoint(endpoint);
         CloudassistantClient client = new CloudassistantClient(bceClientConfig);
         ActionFilter action = new ActionFilter();
+        action.setId("");
+        action.setName("");
         action.setType("");
         CommandFilter command = new CommandFilter();
         command.setScope("");
@@ -27,10 +30,10 @@ public class ExampleActionList {
         command.setType("");
 
         action.setCommand(command);
-        action.setInstanceType("");
-        action.setId("");
-        action.setName("");
-        action.setFileUpload(null);
+        FileUploadFilter fileUpload = new FileUploadFilter();
+        fileUpload.setFilename("");
+
+        action.setFileUpload(fileUpload);
 
         ActionListRequest actionListRequest = new ActionListRequest();
         actionListRequest.setLocale("");

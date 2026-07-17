@@ -5,7 +5,17 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ActionFilter {
     /**
-     * 类型，可选值：COMMAND，FILE_UPLOAD
+     * 命令 ID，仅用来查询执行历史记录，例如：c-jPwwUBxxxxxxxxxx
+     */
+    private String id;
+
+    /**
+     * 命令名称，仅用来查询执行历史记录
+     */
+    private String name;
+
+    /**
+     * Action类型。COMMAND（命令），FILE_UPLOAD（上传文件）
      */
     private String type;
 
@@ -15,51 +25,9 @@ public class ActionFilter {
     private CommandFilter command;
 
     /**
-     * 实例类型
+     * fileUpload
      */
-    private String instanceType;
-
-    /**
-     * 命令 ID，仅被保存的命令拥有
-     */
-    private String id;
-
-    /**
-     * 命令名称，仅被保存的命令拥有
-     */
-    private String name;
-
-    /**
-     * 文件上传详情
-     */
-    private Object fileUpload;
-
-    public ActionFilter setType(String type) {
-        this.type = type;
-        return this;
-    }
-
-    public String getType() {
-        return this.type;
-    }
-
-    public ActionFilter setCommand(CommandFilter command) {
-        this.command = command;
-        return this;
-    }
-
-    public CommandFilter getCommand() {
-        return this.command;
-    }
-
-    public ActionFilter setInstanceType(String instanceType) {
-        this.instanceType = instanceType;
-        return this;
-    }
-
-    public String getInstanceType() {
-        return this.instanceType;
-    }
+    private FileUploadFilter fileUpload;
 
     public ActionFilter setId(String id) {
         this.id = id;
@@ -79,19 +47,36 @@ public class ActionFilter {
         return this.name;
     }
 
-    public ActionFilter setFileUpload(Object fileUpload) {
+    public ActionFilter setType(String type) {
+        this.type = type;
+        return this;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public ActionFilter setCommand(CommandFilter command) {
+        this.command = command;
+        return this;
+    }
+
+    public CommandFilter getCommand() {
+        return this.command;
+    }
+
+    public ActionFilter setFileUpload(FileUploadFilter fileUpload) {
         this.fileUpload = fileUpload;
         return this;
     }
 
-    public Object getFileUpload() {
+    public FileUploadFilter getFileUpload() {
         return this.fileUpload;
     }
 
     @Override
     public String toString() {
-        return "ActionFilter{" + "type=" + type + "\n" + "command=" + command + "\n" + "instanceType=" + instanceType + "\n" + "id=" + id + "\n" + "name=" + name + "\n"
-                + "fileUpload=" + fileUpload + "\n" + "}";
+        return "ActionFilter{" + "id=" + id + "\n" + "name=" + name + "\n" + "type=" + type + "\n" + "command=" + command + "\n" + "fileUpload=" + fileUpload + "\n" + "}";
     }
 
 }

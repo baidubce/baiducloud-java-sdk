@@ -11,6 +11,7 @@ import com.baidubce.cloudassistant.models.TargetSelector;
 import com.baidubce.cloudassistant.models.TargetImport;
 import com.baidubce.cloudassistant.models.CreateActionResponse;
 import com.baidubce.cloudassistant.models.FileUpload;
+import java.util.HashMap;
 import java.util.ArrayList;
 
 public class ExampleCreateAction {
@@ -73,7 +74,7 @@ public class ExampleCreateAction {
         CreateActionRequest createActionRequest = new CreateActionRequest();
         createActionRequest.setExecution("");
         createActionRequest.setAction(action);
-        createActionRequest.setParameters(null);
+        createActionRequest.setParameters(new HashMap<>());
         createActionRequest.setTargetSelectorType("");
         createActionRequest.setTargets(new ArrayList<>());
         createActionRequest.setTargetSelector(targetSelector);

@@ -2,6 +2,7 @@ package com.baidubce.cloudassistant.models;
 
 import com.baidubce.common.BaseBceRequest;
 import java.util.List;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -18,9 +19,9 @@ public class UpdateActionRequest extends BaseBceRequest {
     private Action action;
 
     /**
-    * 执行命令时的参数值，仅在命令有参数且需要执行时需要
+    * 执行命令时的参数值，仅在命令有参数时需要
     */
-    private Object parameters;
+    private Map<String, String> parameters;
 
     /**
     * 实例选择器类型，仅在执行动作为执行或保存并执行时需要。默认值为INSTANCES_LIST。可选值：INSTANCES_LIST（实例列表），ALL_INSTANCES（全部实例），TAG_INSTANCES（实例标签选择），INSTANCES_IMPORT（实例列表导入）
@@ -55,11 +56,11 @@ public class UpdateActionRequest extends BaseBceRequest {
         return this;
     }
 
-    public Object getParameters() {
+    public Map<String, String> getParameters() {
         return parameters;
     }
 
-    public UpdateActionRequest setParameters(Object parameters) {
+    public UpdateActionRequest setParameters(Map<String, String> parameters) {
         this.parameters = parameters;
         return this;
     }
