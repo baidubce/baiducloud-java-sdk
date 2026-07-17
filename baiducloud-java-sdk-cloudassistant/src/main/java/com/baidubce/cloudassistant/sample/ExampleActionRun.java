@@ -8,6 +8,8 @@ import com.baidubce.cloudassistant.models.ActionRunRequest;
 import com.baidubce.cloudassistant.models.TargetSelector;
 import com.baidubce.cloudassistant.models.TargetImport;
 import com.baidubce.cloudassistant.models.ActionRunResponse;
+import com.baidubce.cloudassistant.models.ActionRef;
+import java.util.HashMap;
 import java.util.ArrayList;
 
 public class ExampleActionRun {
@@ -20,6 +22,9 @@ public class ExampleActionRun {
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
         bceClientConfig.setEndpoint(endpoint);
         CloudassistantClient client = new CloudassistantClient(bceClientConfig);
+        ActionRef action = new ActionRef();
+        action.setRef("");
+
         TargetSelector targetSelector = new TargetSelector();
         targetSelector.setInstanceType("");
         targetSelector.setTags(new ArrayList<>());
@@ -31,8 +36,8 @@ public class ExampleActionRun {
 
         ActionRunRequest actionRunRequest = new ActionRunRequest();
         actionRunRequest.setLocale("");
-        actionRunRequest.setAction(null);
-        actionRunRequest.setParameters(null);
+        actionRunRequest.setAction(action);
+        actionRunRequest.setParameters(new HashMap<>());
         actionRunRequest.setTargetSelectorType("");
         actionRunRequest.setTargets(new ArrayList<>());
         actionRunRequest.setTargetSelector(targetSelector);

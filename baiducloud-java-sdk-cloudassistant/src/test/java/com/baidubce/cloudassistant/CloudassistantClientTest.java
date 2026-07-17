@@ -24,7 +24,9 @@ import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
 import com.baidubce.auth.DefaultBceCredentials;
+import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * API tests for CloudassistantClient
@@ -80,7 +82,7 @@ public class CloudassistantClientTest {
         ActionRunRequest actionRunRequest = new ActionRunRequest();
         actionRunRequest.setLocale("");
         actionRunRequest.setAction(null);
-        actionRunRequest.setParameters(null);
+        actionRunRequest.setParameters(new HashMap<>());
         actionRunRequest.setTargetSelectorType("");
         actionRunRequest.setTargets(new ArrayList<>());
         actionRunRequest.setTargetSelector(null);
@@ -127,7 +129,7 @@ public class CloudassistantClientTest {
         CreateActionRequest createActionRequest = new CreateActionRequest();
         createActionRequest.setExecution("");
         createActionRequest.setAction(null);
-        createActionRequest.setParameters(null);
+        createActionRequest.setParameters(new HashMap<>());
         createActionRequest.setTargetSelectorType("");
         createActionRequest.setTargets(new ArrayList<>());
         createActionRequest.setTargetSelector(null);
@@ -182,7 +184,7 @@ public class CloudassistantClientTest {
         UpdateActionRequest updateActionRequest = new UpdateActionRequest();
         updateActionRequest.setExecution("");
         updateActionRequest.setAction(null);
-        updateActionRequest.setParameters(null);
+        updateActionRequest.setParameters(new HashMap<>());
         updateActionRequest.setTargetSelectorType("");
         updateActionRequest.setTargets(new ArrayList<>());
         updateActionRequest.setTargetSelector(null);
