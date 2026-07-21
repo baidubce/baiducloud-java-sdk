@@ -5,6 +5,9 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.iam.IamClient;
 import com.baidubce.iam.models.CreateApikeyPermanentlyValidRequest;
+import com.baidubce.iam.models.CreateApikeyPermanentlyValidResponse;
+import com.baidubce.iam.models.ACL;
+import java.util.ArrayList;
 
 public class ExampleCreateApikeyPermanentlyValid {
     public static void main(String[] args) {
@@ -16,14 +19,19 @@ public class ExampleCreateApikeyPermanentlyValid {
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
         bceClientConfig.setEndpoint(endpoint);
         IamClient client = new IamClient(bceClientConfig);
+        ACL acl = new ACL();
+        acl.setId("");
+        acl.setVersion("");
+        acl.setAccessControlList(new ArrayList<>());
+
         CreateApikeyPermanentlyValidRequest createApikeyPermanentlyValidRequest = new CreateApikeyPermanentlyValidRequest();
         createApikeyPermanentlyValidRequest.setUserId("");
-        createApikeyPermanentlyValidRequest.setAcl("");
+        createApikeyPermanentlyValidRequest.setAcl(acl);
         createApikeyPermanentlyValidRequest.setName("");
         try {
-            client.createApikeyPermanentlyValid(createApikeyPermanentlyValidRequest);
+            CreateApikeyPermanentlyValidResponse response = client.createApikeyPermanentlyValid(createApikeyPermanentlyValidRequest);
+            System.out.println(response.toJsonString());
         } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

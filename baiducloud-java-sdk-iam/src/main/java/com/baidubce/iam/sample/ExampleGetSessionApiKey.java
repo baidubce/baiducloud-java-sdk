@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.iam.IamClient;
 import com.baidubce.iam.models.GetSessionApiKeyRequest;
+import com.baidubce.iam.models.GetSessionApiKeyResponse;
 
 public class ExampleGetSessionApiKey {
     public static void main(String[] args) {
@@ -20,9 +21,9 @@ public class ExampleGetSessionApiKey {
         getSessionApiKeyRequest.setExpireInSeconds(0);
         getSessionApiKeyRequest.setAcl("");
         try {
-            client.getSessionApiKey(getSessionApiKeyRequest);
+            GetSessionApiKeyResponse response = client.getSessionApiKey(getSessionApiKeyRequest);
+            System.out.println(response.toJsonString());
         } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

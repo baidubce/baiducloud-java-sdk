@@ -17,9 +17,9 @@ public class UpdateApikeyPermanentlyValidRequest extends BaseBceRequest {
     private String id;
 
     /**
-    * ACL策略
+    * acl
     */
-    private String acl;
+    private ACL acl;
 
     public String getUserId() {
         return userId;
@@ -39,11 +39,11 @@ public class UpdateApikeyPermanentlyValidRequest extends BaseBceRequest {
         return this;
     }
 
-    public String getAcl() {
+    public ACL getAcl() {
         return acl;
     }
 
-    public UpdateApikeyPermanentlyValidRequest setAcl(String acl) {
+    public UpdateApikeyPermanentlyValidRequest setAcl(ACL acl) {
         this.acl = acl;
         return this;
     }
