@@ -12,9 +12,9 @@ public class CreateApikeyPermanentlyValidRequest extends BaseBceRequest {
     private String userId;
 
     /**
-    * ACL策略
+    * acl
     */
-    private String acl;
+    private ACL acl;
 
     /**
     * APIKey名称；不传会默认生成
@@ -30,11 +30,11 @@ public class CreateApikeyPermanentlyValidRequest extends BaseBceRequest {
         return this;
     }
 
-    public String getAcl() {
+    public ACL getAcl() {
         return acl;
     }
 
-    public CreateApikeyPermanentlyValidRequest setAcl(String acl) {
+    public CreateApikeyPermanentlyValidRequest setAcl(ACL acl) {
         this.acl = acl;
         return this;
     }

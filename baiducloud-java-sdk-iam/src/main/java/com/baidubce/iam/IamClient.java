@@ -23,13 +23,16 @@ import com.baidubce.iam.models.AssociateUserPermissionsRequest;
 import com.baidubce.iam.models.ChangeSubUserPasswordRequest;
 import com.baidubce.iam.models.CreateAccessKeyRequest;
 import com.baidubce.iam.models.CreateApikeyPermanentlyValidRequest;
+import com.baidubce.iam.models.CreateApikeyPermanentlyValidResponse;
 import com.baidubce.iam.models.CreateGroupRequest;
 import com.baidubce.iam.models.CreateRoleRequest;
 import com.baidubce.iam.models.CreateStrategyRequest;
 import com.baidubce.iam.models.CreateUserRequest;
 import com.baidubce.iam.models.DecodingApikeyPermanentlyValidRequest;
+import com.baidubce.iam.models.DecodingApikeyPermanentlyValidResponse;
 import com.baidubce.iam.models.DeleteAccessKeyRequest;
 import com.baidubce.iam.models.DeleteApikeyPermanentlyValidRequest;
+import com.baidubce.iam.models.DeleteApikeyPermanentlyValidResponse;
 import com.baidubce.iam.models.DeleteGroupRequest;
 import com.baidubce.iam.models.DeleteLoginProfileRequest;
 import com.baidubce.iam.models.DeleteRoleRequest;
@@ -39,6 +42,7 @@ import com.baidubce.iam.models.DisableAccessKeyRequest;
 import com.baidubce.iam.models.EnableAccessKeyRequest;
 import com.baidubce.iam.models.GetLoginProfileRequest;
 import com.baidubce.iam.models.GetSessionApiKeyRequest;
+import com.baidubce.iam.models.GetSessionApiKeyResponse;
 import com.baidubce.iam.models.GetUserRequest;
 import com.baidubce.iam.models.ListAccessKeyRequest;
 import com.baidubce.iam.models.ListAccessKeyResponse;
@@ -63,7 +67,9 @@ import com.baidubce.iam.models.ListUsersWithinTheGroupRequest;
 import com.baidubce.iam.models.ListUsersWithinTheGroupResponse;
 import com.baidubce.iam.models.ModifySubUserOperationProtectionRequest;
 import com.baidubce.iam.models.ObtainAListOfPermanentlyValidApikeysRequest;
+import com.baidubce.iam.models.ObtainAListOfPermanentlyValidApikeysResponse;
 import com.baidubce.iam.models.QueryApikeyDetailsPermanentlyValidRequest;
+import com.baidubce.iam.models.QueryApikeyDetailsPermanentlyValidResponse;
 import com.baidubce.iam.models.QueryGroupRequest;
 import com.baidubce.iam.models.QueryRoleRequest;
 import com.baidubce.iam.models.QueryStrategyRequest;
@@ -77,6 +83,7 @@ import com.baidubce.iam.models.RemoveUserFromTheGroupRequest;
 import com.baidubce.iam.models.RemoveUserPermissionsRequest;
 import com.baidubce.iam.models.UnbindSubUserVirtualMfaRequest;
 import com.baidubce.iam.models.UpdateApikeyPermanentlyValidRequest;
+import com.baidubce.iam.models.UpdateApikeyPermanentlyValidResponse;
 import com.baidubce.iam.models.UpdateGroupRequest;
 import com.baidubce.iam.models.UpdateLoginProfileRequest;
 import com.baidubce.iam.models.UpdateRoleRequest;
@@ -218,11 +225,12 @@ public class IamClient extends AbstractBceClient {
      * createApikeyPermanentlyValid
      * 
      * @param request 入参结构体
+     * @return CreateApikeyPermanentlyValidResponse
      */
-    public void createApikeyPermanentlyValid(CreateApikeyPermanentlyValidRequest request) {
+    public CreateApikeyPermanentlyValidResponse createApikeyPermanentlyValid(CreateApikeyPermanentlyValidRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_APIKEY, CONSTANT_CREATE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, CreateApikeyPermanentlyValidResponse.class);
     }
 
     /**
@@ -273,11 +281,12 @@ public class IamClient extends AbstractBceClient {
      * decodingApikeyPermanentlyValid
      * 
      * @param request 入参结构体
+     * @return DecodingApikeyPermanentlyValidResponse
      */
-    public void decodingApikeyPermanentlyValid(DecodingApikeyPermanentlyValidRequest request) {
+    public DecodingApikeyPermanentlyValidResponse decodingApikeyPermanentlyValid(DecodingApikeyPermanentlyValidRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_APIKEY, CONSTANT_DECRYPT);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, DecodingApikeyPermanentlyValidResponse.class);
     }
 
     /**
@@ -295,11 +304,12 @@ public class IamClient extends AbstractBceClient {
      * deleteApikeyPermanentlyValid
      * 
      * @param request 入参结构体
+     * @return DeleteApikeyPermanentlyValidResponse
      */
-    public void deleteApikeyPermanentlyValid(DeleteApikeyPermanentlyValidRequest request) {
+    public DeleteApikeyPermanentlyValidResponse deleteApikeyPermanentlyValid(DeleteApikeyPermanentlyValidRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_APIKEY, CONSTANT_DELETE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, DeleteApikeyPermanentlyValidResponse.class);
     }
 
     /**
@@ -399,8 +409,9 @@ public class IamClient extends AbstractBceClient {
      * getSessionApiKey
      * 
      * @param request 入参结构体
+     * @return GetSessionApiKeyResponse
      */
-    public void getSessionApiKey(GetSessionApiKeyRequest request) {
+    public GetSessionApiKeyResponse getSessionApiKey(GetSessionApiKeyRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_B_C_E__B_E_A_R_E_R, CONSTANT_TOKEN);
         if (request.getExpireInSeconds() != null) {
             internalRequest.addParameter("expireInSeconds", String.valueOf(request.getExpireInSeconds()));
@@ -408,7 +419,7 @@ public class IamClient extends AbstractBceClient {
         if (request.getAcl() != null) {
             internalRequest.addParameter("acl", request.getAcl());
         }
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, GetSessionApiKeyResponse.class);
     }
 
     /**
@@ -572,22 +583,24 @@ public class IamClient extends AbstractBceClient {
      * obtainAListOfPermanentlyValidApikeys
      * 
      * @param request 入参结构体
+     * @return ObtainAListOfPermanentlyValidApikeysResponse
      */
-    public void obtainAListOfPermanentlyValidApikeys(ObtainAListOfPermanentlyValidApikeysRequest request) {
+    public ObtainAListOfPermanentlyValidApikeysResponse obtainAListOfPermanentlyValidApikeys(ObtainAListOfPermanentlyValidApikeysRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_APIKEY, CONSTANT_LIST);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, ObtainAListOfPermanentlyValidApikeysResponse.class);
     }
 
     /**
      * queryApikeyDetailsPermanentlyValid
      * 
      * @param request 入参结构体
+     * @return QueryApikeyDetailsPermanentlyValidResponse
      */
-    public void queryApikeyDetailsPermanentlyValid(QueryApikeyDetailsPermanentlyValidRequest request) {
+    public QueryApikeyDetailsPermanentlyValidResponse queryApikeyDetailsPermanentlyValid(QueryApikeyDetailsPermanentlyValidRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_APIKEY, CONSTANT_DETAIL);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, QueryApikeyDetailsPermanentlyValidResponse.class);
     }
 
     /**
@@ -722,11 +735,12 @@ public class IamClient extends AbstractBceClient {
      * updateApikeyPermanentlyValid
      * 
      * @param request 入参结构体
+     * @return UpdateApikeyPermanentlyValidResponse
      */
-    public void updateApikeyPermanentlyValid(UpdateApikeyPermanentlyValidRequest request) {
+    public UpdateApikeyPermanentlyValidResponse updateApikeyPermanentlyValid(UpdateApikeyPermanentlyValidRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_APIKEY, CONSTANT_UPDATE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, UpdateApikeyPermanentlyValidResponse.class);
     }
 
     /**

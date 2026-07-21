@@ -7,13 +7,16 @@ import com.baidubce.iam.models.AssociateUserPermissionsRequest;
 import com.baidubce.iam.models.ChangeSubUserPasswordRequest;
 import com.baidubce.iam.models.CreateAccessKeyRequest;
 import com.baidubce.iam.models.CreateApikeyPermanentlyValidRequest;
+import com.baidubce.iam.models.CreateApikeyPermanentlyValidResponse;
 import com.baidubce.iam.models.CreateGroupRequest;
 import com.baidubce.iam.models.CreateRoleRequest;
 import com.baidubce.iam.models.CreateStrategyRequest;
 import com.baidubce.iam.models.CreateUserRequest;
 import com.baidubce.iam.models.DecodingApikeyPermanentlyValidRequest;
+import com.baidubce.iam.models.DecodingApikeyPermanentlyValidResponse;
 import com.baidubce.iam.models.DeleteAccessKeyRequest;
 import com.baidubce.iam.models.DeleteApikeyPermanentlyValidRequest;
+import com.baidubce.iam.models.DeleteApikeyPermanentlyValidResponse;
 import com.baidubce.iam.models.DeleteGroupRequest;
 import com.baidubce.iam.models.DeleteLoginProfileRequest;
 import com.baidubce.iam.models.DeleteRoleRequest;
@@ -23,6 +26,7 @@ import com.baidubce.iam.models.DisableAccessKeyRequest;
 import com.baidubce.iam.models.EnableAccessKeyRequest;
 import com.baidubce.iam.models.GetLoginProfileRequest;
 import com.baidubce.iam.models.GetSessionApiKeyRequest;
+import com.baidubce.iam.models.GetSessionApiKeyResponse;
 import com.baidubce.iam.models.GetUserRequest;
 import com.baidubce.iam.models.ListAccessKeyRequest;
 import com.baidubce.iam.models.ListAccessKeyResponse;
@@ -47,7 +51,9 @@ import com.baidubce.iam.models.ListUsersWithinTheGroupRequest;
 import com.baidubce.iam.models.ListUsersWithinTheGroupResponse;
 import com.baidubce.iam.models.ModifySubUserOperationProtectionRequest;
 import com.baidubce.iam.models.ObtainAListOfPermanentlyValidApikeysRequest;
+import com.baidubce.iam.models.ObtainAListOfPermanentlyValidApikeysResponse;
 import com.baidubce.iam.models.QueryApikeyDetailsPermanentlyValidRequest;
+import com.baidubce.iam.models.QueryApikeyDetailsPermanentlyValidResponse;
 import com.baidubce.iam.models.QueryGroupRequest;
 import com.baidubce.iam.models.QueryRoleRequest;
 import com.baidubce.iam.models.QueryStrategyRequest;
@@ -61,6 +67,7 @@ import com.baidubce.iam.models.RemoveUserFromTheGroupRequest;
 import com.baidubce.iam.models.RemoveUserPermissionsRequest;
 import com.baidubce.iam.models.UnbindSubUserVirtualMfaRequest;
 import com.baidubce.iam.models.UpdateApikeyPermanentlyValidRequest;
+import com.baidubce.iam.models.UpdateApikeyPermanentlyValidResponse;
 import com.baidubce.iam.models.UpdateGroupRequest;
 import com.baidubce.iam.models.UpdateLoginProfileRequest;
 import com.baidubce.iam.models.UpdateRoleRequest;
@@ -168,9 +175,10 @@ public class IamClientTest {
     public void createApikeyPermanentlyValidTest() {
         CreateApikeyPermanentlyValidRequest createApikeyPermanentlyValidRequest = new CreateApikeyPermanentlyValidRequest();
         createApikeyPermanentlyValidRequest.setUserId("");
-        createApikeyPermanentlyValidRequest.setAcl("");
+        createApikeyPermanentlyValidRequest.setAcl(null);
         createApikeyPermanentlyValidRequest.setName("");
-        iamClient.createApikeyPermanentlyValid(createApikeyPermanentlyValidRequest);
+        CreateApikeyPermanentlyValidResponse response = iamClient.createApikeyPermanentlyValid(createApikeyPermanentlyValidRequest);
+        System.out.println(response);
     }
     /**
      * createGroup
@@ -227,7 +235,8 @@ public class IamClientTest {
         DecodingApikeyPermanentlyValidRequest decodingApikeyPermanentlyValidRequest = new DecodingApikeyPermanentlyValidRequest();
         decodingApikeyPermanentlyValidRequest.setUserId("");
         decodingApikeyPermanentlyValidRequest.setId("");
-        iamClient.decodingApikeyPermanentlyValid(decodingApikeyPermanentlyValidRequest);
+        DecodingApikeyPermanentlyValidResponse response = iamClient.decodingApikeyPermanentlyValid(decodingApikeyPermanentlyValidRequest);
+        System.out.println(response);
     }
     /**
      * deleteAccessKey
@@ -249,7 +258,8 @@ public class IamClientTest {
         DeleteApikeyPermanentlyValidRequest deleteApikeyPermanentlyValidRequest = new DeleteApikeyPermanentlyValidRequest();
         deleteApikeyPermanentlyValidRequest.setUserId("");
         deleteApikeyPermanentlyValidRequest.setId("");
-        iamClient.deleteApikeyPermanentlyValid(deleteApikeyPermanentlyValidRequest);
+        DeleteApikeyPermanentlyValidResponse response = iamClient.deleteApikeyPermanentlyValid(deleteApikeyPermanentlyValidRequest);
+        System.out.println(response);
     }
     /**
      * deleteGroup
@@ -350,7 +360,8 @@ public class IamClientTest {
         GetSessionApiKeyRequest getSessionApiKeyRequest = new GetSessionApiKeyRequest();
         getSessionApiKeyRequest.setExpireInSeconds(0);
         getSessionApiKeyRequest.setAcl("");
-        iamClient.getSessionApiKey(getSessionApiKeyRequest);
+        GetSessionApiKeyResponse response = iamClient.getSessionApiKey(getSessionApiKeyRequest);
+        System.out.println(response);
     }
     /**
      * getUser
@@ -513,7 +524,8 @@ public class IamClientTest {
         obtainAListOfPermanentlyValidApikeysRequest.setService(new ArrayList<>());
         obtainAListOfPermanentlyValidApikeysRequest.setPageNo(0);
         obtainAListOfPermanentlyValidApikeysRequest.setPageSize(0);
-        iamClient.obtainAListOfPermanentlyValidApikeys(obtainAListOfPermanentlyValidApikeysRequest);
+        ObtainAListOfPermanentlyValidApikeysResponse response = iamClient.obtainAListOfPermanentlyValidApikeys(obtainAListOfPermanentlyValidApikeysRequest);
+        System.out.println(response);
     }
     /**
      * queryApikeyDetailsPermanentlyValid
@@ -524,7 +536,8 @@ public class IamClientTest {
         QueryApikeyDetailsPermanentlyValidRequest queryApikeyDetailsPermanentlyValidRequest = new QueryApikeyDetailsPermanentlyValidRequest();
         queryApikeyDetailsPermanentlyValidRequest.setUserId("");
         queryApikeyDetailsPermanentlyValidRequest.setId("");
-        iamClient.queryApikeyDetailsPermanentlyValid(queryApikeyDetailsPermanentlyValidRequest);
+        QueryApikeyDetailsPermanentlyValidResponse response = iamClient.queryApikeyDetailsPermanentlyValid(queryApikeyDetailsPermanentlyValidRequest);
+        System.out.println(response);
     }
     /**
      * queryGroup
@@ -653,8 +666,9 @@ public class IamClientTest {
         UpdateApikeyPermanentlyValidRequest updateApikeyPermanentlyValidRequest = new UpdateApikeyPermanentlyValidRequest();
         updateApikeyPermanentlyValidRequest.setUserId("");
         updateApikeyPermanentlyValidRequest.setId("");
-        updateApikeyPermanentlyValidRequest.setAcl("");
-        iamClient.updateApikeyPermanentlyValid(updateApikeyPermanentlyValidRequest);
+        updateApikeyPermanentlyValidRequest.setAcl(null);
+        UpdateApikeyPermanentlyValidResponse response = iamClient.updateApikeyPermanentlyValid(updateApikeyPermanentlyValidRequest);
+        System.out.println(response);
     }
     /**
      * updateGroup
