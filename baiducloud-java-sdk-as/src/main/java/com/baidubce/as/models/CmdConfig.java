@@ -35,7 +35,7 @@ public class CmdConfig {
     private Boolean hasIncreaseCmd;
 
     /**
-     * 缩容策略，不可为空，失败暂停缩容、失败继续缩容：Proceed、Pause
+     * 扩容策略，不可为空、失败继续扩容：Proceed、Pause
      */
     private String incCmdStrategy;
 

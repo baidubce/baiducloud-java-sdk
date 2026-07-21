@@ -7,9 +7,9 @@ public enum Type {
 
     CRONTAB("CRONTAB"),
 
-    ALARM("ALARM"),
+    PERIOD("PERIOD"),
 
-    PERIOD("PERIOD");
+    ALARM("ALARM");
 
     private String value;
 
