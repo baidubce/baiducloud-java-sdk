@@ -17,7 +17,7 @@ public class CreateRuleV2Request extends BaseBceRequest {
     private String groupId;
 
     /**
-    * 规则状态。包括：ENABLE(可用),DISABLE(禁用)
+    * 创建后的规则状态。包括：ENABLE(启用),DISABLE(禁用)
     */
     private String state;
 

@@ -1,19 +1,17 @@
 package com.baidubce.as.models;
 
 /**
- * Gets or Sets Type
+ * Gets or Sets ShrinkageStrategy
  */
-public enum Type {
+public enum ShrinkageStrategy {
 
-    CRONTAB("CRONTAB"),
+    EARLIER("Earlier"),
 
-    PERIOD("PERIOD"),
-
-    ALARM("ALARM");
+    LATER("Later");
 
     private String value;
 
-    Type(String value) {
+    ShrinkageStrategy(String value) {
         this.value = value;
     }
 

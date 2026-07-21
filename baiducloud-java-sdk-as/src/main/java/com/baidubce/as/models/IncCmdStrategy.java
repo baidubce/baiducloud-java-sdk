@@ -1,19 +1,17 @@
 package com.baidubce.as.models;
 
 /**
- * Gets or Sets Type
+ * Gets or Sets IncCmdStrategy
  */
-public enum Type {
+public enum IncCmdStrategy {
 
-    CRONTAB("CRONTAB"),
+    PROCEED("Proceed"),
 
-    PERIOD("PERIOD"),
-
-    ALARM("ALARM");
+    PAUSE("Pause");
 
     private String value;
 
-    Type(String value) {
+    IncCmdStrategy(String value) {
         this.value = value;
     }
 

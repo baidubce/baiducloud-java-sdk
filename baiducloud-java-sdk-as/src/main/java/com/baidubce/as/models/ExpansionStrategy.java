@@ -1,19 +1,17 @@
 package com.baidubce.as.models;
 
 /**
- * Gets or Sets Type
+ * Gets or Sets ExpansionStrategy
  */
-public enum Type {
+public enum ExpansionStrategy {
 
-    CRONTAB("CRONTAB"),
+    PRIORITY("Priority"),
 
-    PERIOD("PERIOD"),
-
-    ALARM("ALARM");
+    BALANCED("Balanced");
 
     private String value;
 
-    Type(String value) {
+    ExpansionStrategy(String value) {
         this.value = value;
     }
 
