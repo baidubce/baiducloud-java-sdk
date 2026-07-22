@@ -29,7 +29,7 @@ public class CreateActionResponse extends BaseBceResponse {
     /**
     * result
     */
-    private ActionIndex result;
+    private ActionResult result;
 
     public String getRequestId() {
         return requestId;
@@ -67,11 +67,11 @@ public class CreateActionResponse extends BaseBceResponse {
         return this;
     }
 
-    public ActionIndex getResult() {
+    public ActionResult getResult() {
         return result;
     }
 
-    public CreateActionResponse setResult(ActionIndex result) {
+    public CreateActionResponse setResult(ActionResult result) {
         this.result = result;
         return this;
     }

@@ -3,9 +3,9 @@ package com.baidubce.cloudassistant.models;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ActionIndex {
+public class ActionResult {
     /**
-     * 命令id
+     * 命令ID
      */
     private String actionId;
 
@@ -19,7 +19,7 @@ public class ActionIndex {
      */
     private String runId;
 
-    public ActionIndex setActionId(String actionId) {
+    public ActionResult setActionId(String actionId) {
         this.actionId = actionId;
         return this;
     }
@@ -28,7 +28,7 @@ public class ActionIndex {
         return this.actionId;
     }
 
-    public ActionIndex setActionName(String actionName) {
+    public ActionResult setActionName(String actionName) {
         this.actionName = actionName;
         return this;
     }
@@ -37,7 +37,7 @@ public class ActionIndex {
         return this.actionName;
     }
 
-    public ActionIndex setRunId(String runId) {
+    public ActionResult setRunId(String runId) {
         this.runId = runId;
         return this;
     }
@@ -48,7 +48,7 @@ public class ActionIndex {
 
     @Override
     public String toString() {
-        return "ActionIndex{" + "actionId=" + actionId + "\n" + "actionName=" + actionName + "\n" + "runId=" + runId + "\n" + "}";
+        return "ActionResult{" + "actionId=" + actionId + "\n" + "actionName=" + actionName + "\n" + "runId=" + runId + "\n" + "}";
     }
 
 }
