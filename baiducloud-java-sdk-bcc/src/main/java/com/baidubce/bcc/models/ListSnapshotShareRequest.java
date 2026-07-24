@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class ListSnapshotShareRequest extends BaseBceRequest {
 
     /**
-    * 批量获取列表的查询的起始位置，是一个由系统生成的字符串。
+    * 批量获取列表的查询的起始位置，是一个由系统生成的字符串
     */
     private String marker;
 
     /**
-    * 每页包含的最大数量
+    * 每页包含的最大数量，最大数量通常不超过100，缺省值为10
     */
     private Integer maxKeys;
 

@@ -15,11 +15,6 @@ public class RemoteCopySnapshotRequest extends BaseBceRequest {
     private String snapshotId;
 
     /**
-    * 快照uuid
-    */
-    private String uuid;
-
-    /**
     * 待复制到目标区域列表
     */
     private List<RemoteCopyRequest> destRegionInfos;
@@ -30,15 +25,6 @@ public class RemoteCopySnapshotRequest extends BaseBceRequest {
 
     public RemoteCopySnapshotRequest setSnapshotId(String snapshotId) {
         this.snapshotId = snapshotId;
-        return this;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public RemoteCopySnapshotRequest setUuid(String uuid) {
-        this.uuid = uuid;
         return this;
     }
 

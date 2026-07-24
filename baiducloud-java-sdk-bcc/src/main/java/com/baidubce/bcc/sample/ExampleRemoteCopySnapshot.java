@@ -20,7 +20,6 @@ public class ExampleRemoteCopySnapshot {
         BccClient client = new BccClient(bceClientConfig);
         RemoteCopySnapshotRequest remoteCopySnapshotRequest = new RemoteCopySnapshotRequest();
         remoteCopySnapshotRequest.setSnapshotId("");
-        remoteCopySnapshotRequest.setUuid("");
         remoteCopySnapshotRequest.setDestRegionInfos(new ArrayList<>());
         try {
             RemoteCopySnapshotResponse response = client.remoteCopySnapshot(remoteCopySnapshotRequest);
