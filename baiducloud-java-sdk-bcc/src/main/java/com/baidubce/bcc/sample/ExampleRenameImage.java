@@ -18,6 +18,7 @@ public class ExampleRenameImage {
         bceClientConfig.setEndpoint(endpoint);
         BccClient client = new BccClient(bceClientConfig);
         RenameImageRequest renameImageRequest = new RenameImageRequest();
+        renameImageRequest.setImageId("");
         renameImageRequest.setImageIds(new ArrayList<>());
         renameImageRequest.setName("");
         try {

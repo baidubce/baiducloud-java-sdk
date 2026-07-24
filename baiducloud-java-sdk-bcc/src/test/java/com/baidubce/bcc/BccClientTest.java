@@ -1347,7 +1347,6 @@ public class BccClientTest {
         DetachAspRequest detachAspRequest = new DetachAspRequest();
         detachAspRequest.setAspId("");
         detachAspRequest.setVolumeIds(new ArrayList<>());
-        detachAspRequest.setDeleteAutoSnapshot(false);
         bccClient.detachAsp(detachAspRequest);
     }
     /**
@@ -2413,7 +2412,6 @@ public class BccClientTest {
     public void remoteCopySnapshotTest() {
         RemoteCopySnapshotRequest remoteCopySnapshotRequest = new RemoteCopySnapshotRequest();
         remoteCopySnapshotRequest.setSnapshotId("");
-        remoteCopySnapshotRequest.setUuid("");
         remoteCopySnapshotRequest.setDestRegionInfos(new ArrayList<>());
         RemoteCopySnapshotResponse response = bccClient.remoteCopySnapshot(remoteCopySnapshotRequest);
         System.out.println(response);
@@ -2425,6 +2423,7 @@ public class BccClientTest {
     @Test
     public void renameImageTest() {
         RenameImageRequest renameImageRequest = new RenameImageRequest();
+        renameImageRequest.setImageId("");
         renameImageRequest.setImageIds(new ArrayList<>());
         renameImageRequest.setName("");
         bccClient.renameImage(renameImageRequest);

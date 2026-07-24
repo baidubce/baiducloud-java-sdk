@@ -19,11 +19,6 @@ public class DetachAspRequest extends BaseBceRequest {
     */
     private List<String> volumeIds;
 
-    /**
-    * 自动快照随磁盘删除，初始值为false，显式赋值后所有相关磁盘对应属性会被新值替换
-    */
-    private Boolean deleteAutoSnapshot;
-
     public String getAspId() {
         return aspId;
     }
@@ -39,15 +34,6 @@ public class DetachAspRequest extends BaseBceRequest {
 
     public DetachAspRequest setVolumeIds(List<String> volumeIds) {
         this.volumeIds = volumeIds;
-        return this;
-    }
-
-    public Boolean getDeleteAutoSnapshot() {
-        return deleteAutoSnapshot;
-    }
-
-    public DetachAspRequest setDeleteAutoSnapshot(Boolean deleteAutoSnapshot) {
-        this.deleteAutoSnapshot = deleteAutoSnapshot;
         return this;
     }
 

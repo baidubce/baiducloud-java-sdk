@@ -20,7 +20,6 @@ public class ExampleDetachAsp {
         DetachAspRequest detachAspRequest = new DetachAspRequest();
         detachAspRequest.setAspId("");
         detachAspRequest.setVolumeIds(new ArrayList<>());
-        detachAspRequest.setDeleteAutoSnapshot(false);
         try {
             client.detachAsp(detachAspRequest);
         } catch (BceClientException e) {
