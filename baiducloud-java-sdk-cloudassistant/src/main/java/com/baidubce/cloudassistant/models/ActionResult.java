@@ -10,7 +10,7 @@ public class ActionResult {
     private String actionId;
 
     /**
-     * 命令名称
+     * 命令名称，保存命令的时候返回
      */
     private String actionName;
 

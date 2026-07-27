@@ -7,7 +7,9 @@ public enum InstanceType {
 
     BCC("BCC"),
 
-    BBC("BBC");
+    BBC("BBC"),
+
+    HPAS("HPAS");
 
     private String value;
 
