@@ -10,7 +10,7 @@ public class Option {
     private String label;
 
     /**
-     * 选项取值
+     * 选项值
      */
     private Object value;
 

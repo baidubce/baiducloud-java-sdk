@@ -12,7 +12,7 @@ public class KeyValuePair {
     /**
      * 值
      */
-    private Object value;
+    private String value;
 
     public KeyValuePair setKey(String key) {
         this.key = key;
@@ -23,12 +23,12 @@ public class KeyValuePair {
         return this.key;
     }
 
-    public KeyValuePair setValue(Object value) {
+    public KeyValuePair setValue(String value) {
         this.value = value;
         return this;
     }
 
-    public Object getValue() {
+    public String getValue() {
         return this.value;
     }
 

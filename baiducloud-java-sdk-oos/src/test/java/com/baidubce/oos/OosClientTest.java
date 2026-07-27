@@ -28,7 +28,9 @@ import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
 import com.baidubce.auth.DefaultBceCredentials;
+import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * API tests for OosClient
@@ -76,7 +78,7 @@ public class OosClientTest {
         createExecutionV2Request.setTemplate(null);
         createExecutionV2Request.setParallelism(0);
         createExecutionV2Request.setManually(false);
-        createExecutionV2Request.setProperties(null);
+        createExecutionV2Request.setProperties(new HashMap<>());
         createExecutionV2Request.setTags(new ArrayList<>());
         CreateExecutionV2Response response = oosClient.createExecutionV2(createExecutionV2Request);
         System.out.println(response);
@@ -107,7 +109,6 @@ public class OosClientTest {
     public void deleteTemplateV2Test() {
         DeleteTemplateV2Request deleteTemplateV2Request = new DeleteTemplateV2Request();
         deleteTemplateV2Request.setId("");
-        deleteTemplateV2Request.setNamespace("");
         DeleteTemplateV2Response response = oosClient.deleteTemplateV2(deleteTemplateV2Request);
         System.out.println(response);
     }
@@ -119,7 +120,6 @@ public class OosClientTest {
     public void getExecutionDetailV2Test() {
         GetExecutionDetailV2Request getExecutionDetailV2Request = new GetExecutionDetailV2Request();
         getExecutionDetailV2Request.setId("");
-        getExecutionDetailV2Request.setNamespace("");
         getExecutionDetailV2Request.setWithLog("");
         getExecutionDetailV2Request.setLocale("");
         GetExecutionDetailV2Response response = oosClient.getExecutionDetailV2(getExecutionDetailV2Request);
@@ -133,7 +133,6 @@ public class OosClientTest {
     public void getExecutionListV2Test() {
         GetExecutionListV2Request getExecutionListV2Request = new GetExecutionListV2Request();
         getExecutionListV2Request.setLocale("");
-        getExecutionListV2Request.setNamespace("");
         getExecutionListV2Request.setTemplate(null);
         getExecutionListV2Request.setState("");
         getExecutionListV2Request.setTrigger("");
@@ -174,7 +173,6 @@ public class OosClientTest {
         getTaskChildrenListV2Request.setLocale("");
         getTaskChildrenListV2Request.setExecutionId("");
         getTaskChildrenListV2Request.setTaskId("");
-        getTaskChildrenListV2Request.setNamespace("");
         getTaskChildrenListV2Request.setStates(new ArrayList<>());
         getTaskChildrenListV2Request.setPageNo(0);
         getTaskChildrenListV2Request.setPageSize(0);
@@ -190,7 +188,6 @@ public class OosClientTest {
         GetTaskDetailV2Request getTaskDetailV2Request = new GetTaskDetailV2Request();
         getTaskDetailV2Request.setDagId("");
         getTaskDetailV2Request.setTaskId("");
-        getTaskDetailV2Request.setNamespace("");
         getTaskDetailV2Request.setIgnoreChildren("");
         getTaskDetailV2Request.setLocale("");
         GetTaskDetailV2Response response = oosClient.getTaskDetailV2(getTaskDetailV2Request);
@@ -203,7 +200,6 @@ public class OosClientTest {
     @Test
     public void getTemplateDetailV2Test() {
         GetTemplateDetailV2Request getTemplateDetailV2Request = new GetTemplateDetailV2Request();
-        getTemplateDetailV2Request.setNamespace("");
         getTemplateDetailV2Request.setId("");
         getTemplateDetailV2Request.setName("");
         getTemplateDetailV2Request.setType("");
@@ -219,7 +215,6 @@ public class OosClientTest {
     public void getTemplateListV2Test() {
         GetTemplateListV2Request getTemplateListV2Request = new GetTemplateListV2Request();
         getTemplateListV2Request.setLocale("");
-        getTemplateListV2Request.setNamespace("");
         getTemplateListV2Request.setName("");
         getTemplateListV2Request.setId("");
         getTemplateListV2Request.setType("");
@@ -238,7 +233,6 @@ public class OosClientTest {
     @Test
     public void updateTemplateV2Test() {
         UpdateTemplateV2Request updateTemplateV2Request = new UpdateTemplateV2Request();
-        updateTemplateV2Request.setNamespace("");
         updateTemplateV2Request.setId("");
         updateTemplateV2Request.setName("");
         updateTemplateV2Request.setDescription("");

@@ -121,9 +121,6 @@ public class OosClient extends AbstractBceClient {
         if (request.getId() != null) {
             internalRequest.addParameter("id", request.getId());
         }
-        if (request.getNamespace() != null) {
-            internalRequest.addParameter("namespace", request.getNamespace());
-        }
         return invokeHttpClient(internalRequest, DeleteTemplateV2Response.class);
     }
 
@@ -137,9 +134,6 @@ public class OosClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_EXECUTION);
         if (request.getId() != null) {
             internalRequest.addParameter("id", request.getId());
-        }
-        if (request.getNamespace() != null) {
-            internalRequest.addParameter("namespace", request.getNamespace());
         }
         if (request.getWithLog() != null) {
             internalRequest.addParameter("withLog", request.getWithLog());
@@ -209,9 +203,6 @@ public class OosClient extends AbstractBceClient {
         if (request.getTaskId() != null) {
             internalRequest.addParameter("taskId", request.getTaskId());
         }
-        if (request.getNamespace() != null) {
-            internalRequest.addParameter("namespace", request.getNamespace());
-        }
         if (request.getIgnoreChildren() != null) {
             internalRequest.addParameter("ignoreChildren", request.getIgnoreChildren());
         }
@@ -229,9 +220,6 @@ public class OosClient extends AbstractBceClient {
      */
     public GetTemplateDetailV2Response getTemplateDetailV2(GetTemplateDetailV2Request request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_TEMPLATE);
-        if (request.getNamespace() != null) {
-            internalRequest.addParameter("namespace", request.getNamespace());
-        }
         if (request.getId() != null) {
             internalRequest.addParameter("id", request.getId());
         }

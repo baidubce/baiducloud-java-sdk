@@ -1,6 +1,7 @@
 package com.baidubce.oos.models;
 
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -34,7 +35,7 @@ public class EventExecution {
     /**
      * 全局参数取值集合
      */
-    private Object properties;
+    private Map<String, Object> properties;
 
     /**
      * event
@@ -106,12 +107,12 @@ public class EventExecution {
         return this.template;
     }
 
-    public EventExecution setProperties(Object properties) {
+    public EventExecution setProperties(Map<String, Object> properties) {
         this.properties = properties;
         return this;
     }
 
-    public Object getProperties() {
+    public Map<String, Object> getProperties() {
         return this.properties;
     }
 

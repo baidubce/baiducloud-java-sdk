@@ -1,6 +1,7 @@
 package com.baidubce.oos.models;
 
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -34,7 +35,7 @@ public class CronExecution {
     /**
      * 全局参数取值集合
      */
-    private Object properties;
+    private Map<String, Object> properties;
 
     /**
      * 标签
@@ -141,12 +142,12 @@ public class CronExecution {
         return this.templateDeleted;
     }
 
-    public CronExecution setProperties(Object properties) {
+    public CronExecution setProperties(Map<String, Object> properties) {
         this.properties = properties;
         return this;
     }
 
-    public Object getProperties() {
+    public Map<String, Object> getProperties() {
         return this.properties;
     }
 

@@ -22,7 +22,6 @@ public class ExampleGetTaskChildrenListV2 {
         getTaskChildrenListV2Request.setLocale("");
         getTaskChildrenListV2Request.setExecutionId("");
         getTaskChildrenListV2Request.setTaskId("");
-        getTaskChildrenListV2Request.setNamespace("");
         getTaskChildrenListV2Request.setStates(new ArrayList<>());
         getTaskChildrenListV2Request.setPageNo(0);
         getTaskChildrenListV2Request.setPageSize(0);

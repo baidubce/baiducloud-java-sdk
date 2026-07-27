@@ -19,7 +19,6 @@ public class ExampleUpdateTemplateV2 {
         bceClientConfig.setEndpoint(endpoint);
         OosClient client = new OosClient(bceClientConfig);
         UpdateTemplateV2Request updateTemplateV2Request = new UpdateTemplateV2Request();
-        updateTemplateV2Request.setNamespace("");
         updateTemplateV2Request.setId("");
         updateTemplateV2Request.setName("");
         updateTemplateV2Request.setDescription("");

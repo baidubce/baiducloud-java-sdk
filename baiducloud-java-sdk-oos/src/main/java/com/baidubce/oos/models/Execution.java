@@ -1,6 +1,7 @@
 package com.baidubce.oos.models;
 
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -59,7 +60,7 @@ public class Execution {
     /**
      * 全局参数取值集合
      */
-    private Object properties;
+    private Map<String, Object> properties;
 
     /**
      * 执行中的任务列表；执行列表接口响应固定为空数组，仅用于查询详情接口的字段返回
@@ -191,12 +192,12 @@ public class Execution {
         return this.state;
     }
 
-    public Execution setProperties(Object properties) {
+    public Execution setProperties(Map<String, Object> properties) {
         this.properties = properties;
         return this;
     }
 
-    public Object getProperties() {
+    public Map<String, Object> getProperties() {
         return this.properties;
     }
 

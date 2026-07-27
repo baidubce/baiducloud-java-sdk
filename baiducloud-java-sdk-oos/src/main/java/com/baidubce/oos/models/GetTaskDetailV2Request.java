@@ -8,12 +8,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class GetTaskDetailV2Request extends BaseBceRequest {
 
     /**
-    * namespace
-    */
-    @JsonIgnore
-    private String namespace;
-
-    /**
     * dagId
     */
     @JsonIgnore
@@ -36,15 +30,6 @@ public class GetTaskDetailV2Request extends BaseBceRequest {
     */
     @JsonIgnore
     private String locale;
-
-    public String getNamespace() {
-        return namespace;
-    }
-
-    public GetTaskDetailV2Request setNamespace(String namespace) {
-        this.namespace = namespace;
-        return this;
-    }
 
     public String getDagId() {
         return dagId;

@@ -17,7 +17,7 @@ public class Property {
     private Boolean required;
 
     /**
-     * 参数类型
+     * 参数类型，支持的类型：string、number、boolean、list、object、bccInstance、hpasInstance
      */
     private String type;
 

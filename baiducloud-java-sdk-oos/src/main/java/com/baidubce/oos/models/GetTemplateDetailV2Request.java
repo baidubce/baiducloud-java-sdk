@@ -8,12 +8,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class GetTemplateDetailV2Request extends BaseBceRequest {
 
     /**
-    * namespace
-    */
-    @JsonIgnore
-    private String namespace;
-
-    /**
     * id
     */
     @JsonIgnore
@@ -36,15 +30,6 @@ public class GetTemplateDetailV2Request extends BaseBceRequest {
     */
     @JsonIgnore
     private String locale;
-
-    public String getNamespace() {
-        return namespace;
-    }
-
-    public GetTemplateDetailV2Request setNamespace(String namespace) {
-        this.namespace = namespace;
-        return this;
-    }
 
     public String getId() {
         return id;

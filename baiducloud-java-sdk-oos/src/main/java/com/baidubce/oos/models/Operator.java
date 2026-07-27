@@ -1,6 +1,7 @@
 package com.baidubce.oos.models;
 
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -124,7 +125,7 @@ public class Operator {
     /**
      * 任务执行所需参数取值
      */
-    private Object properties;
+    private Map<String, Object> properties;
 
     /**
      * 循环执行参数列表，与 targetInstances 不能同时设置
@@ -338,12 +339,12 @@ public class Operator {
         return this.loopWindowType;
     }
 
-    public Operator setProperties(Object properties) {
+    public Operator setProperties(Map<String, Object> properties) {
         this.properties = properties;
         return this;
     }
 
-    public Object getProperties() {
+    public Map<String, Object> getProperties() {
         return this.properties;
     }
 

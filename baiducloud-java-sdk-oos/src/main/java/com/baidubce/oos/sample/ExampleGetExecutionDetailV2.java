@@ -19,7 +19,6 @@ public class ExampleGetExecutionDetailV2 {
         OosClient client = new OosClient(bceClientConfig);
         GetExecutionDetailV2Request getExecutionDetailV2Request = new GetExecutionDetailV2Request();
         getExecutionDetailV2Request.setId("");
-        getExecutionDetailV2Request.setNamespace("");
         getExecutionDetailV2Request.setWithLog("");
         getExecutionDetailV2Request.setLocale("");
         try {

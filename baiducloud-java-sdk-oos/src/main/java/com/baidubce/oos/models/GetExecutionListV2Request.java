@@ -14,14 +14,9 @@ public class GetExecutionListV2Request extends BaseBceRequest {
     private String locale;
 
     /**
-    * 名称空间，默认 default
+    * template
     */
-    private String namespace;
-
-    /**
-    * 模版过滤条件
-    */
-    private Object template;
+    private TemplateFilter template;
 
     /**
     * 执行状态，如设置则只返回指定状态的执行列表，可选值：RUNNING（执行中）、SUCCESS（执行成功）、FAILED（执行失败）、CANCELED（已取消）、PENDING（等待中）
@@ -82,20 +77,11 @@ public class GetExecutionListV2Request extends BaseBceRequest {
         return this;
     }
 
-    public String getNamespace() {
-        return namespace;
-    }
-
-    public GetExecutionListV2Request setNamespace(String namespace) {
-        this.namespace = namespace;
-        return this;
-    }
-
-    public Object getTemplate() {
+    public TemplateFilter getTemplate() {
         return template;
     }
 
-    public GetExecutionListV2Request setTemplate(Object template) {
+    public GetExecutionListV2Request setTemplate(TemplateFilter template) {
         this.template = template;
         return this;
     }

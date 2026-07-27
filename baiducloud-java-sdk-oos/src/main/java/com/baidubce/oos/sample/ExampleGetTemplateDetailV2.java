@@ -18,7 +18,6 @@ public class ExampleGetTemplateDetailV2 {
         bceClientConfig.setEndpoint(endpoint);
         OosClient client = new OosClient(bceClientConfig);
         GetTemplateDetailV2Request getTemplateDetailV2Request = new GetTemplateDetailV2Request();
-        getTemplateDetailV2Request.setNamespace("");
         getTemplateDetailV2Request.setId("");
         getTemplateDetailV2Request.setName("");
         getTemplateDetailV2Request.setType("");
