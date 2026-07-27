@@ -1,6 +1,7 @@
 package com.baidubce.oos.models;
 
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -74,7 +75,7 @@ public class Task {
     /**
      * 任务参数
      */
-    private Object properties;
+    private Map<String, Object> properties;
 
     /**
      * 任务尝试次数，从 0 开始
@@ -213,12 +214,12 @@ public class Task {
         return this.state;
     }
 
-    public Task setProperties(Object properties) {
+    public Task setProperties(Map<String, Object> properties) {
         this.properties = properties;
         return this;
     }
 
-    public Object getProperties() {
+    public Map<String, Object> getProperties() {
         return this.properties;
     }
 

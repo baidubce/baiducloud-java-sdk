@@ -20,7 +20,6 @@ public class ExampleGetTaskDetailV2 {
         GetTaskDetailV2Request getTaskDetailV2Request = new GetTaskDetailV2Request();
         getTaskDetailV2Request.setDagId("");
         getTaskDetailV2Request.setTaskId("");
-        getTaskDetailV2Request.setNamespace("");
         getTaskDetailV2Request.setIgnoreChildren("");
         getTaskDetailV2Request.setLocale("");
         try {

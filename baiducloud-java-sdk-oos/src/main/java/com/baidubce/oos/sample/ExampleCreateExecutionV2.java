@@ -7,6 +7,7 @@ import com.baidubce.oos.OosClient;
 import com.baidubce.oos.models.CreateExecutionV2Request;
 import com.baidubce.oos.models.CreateExecutionV2Response;
 import com.baidubce.oos.models.Template;
+import java.util.HashMap;
 import java.util.ArrayList;
 
 public class ExampleCreateExecutionV2 {
@@ -40,7 +41,7 @@ public class ExampleCreateExecutionV2 {
         createExecutionV2Request.setTemplate(template);
         createExecutionV2Request.setParallelism(0);
         createExecutionV2Request.setManually(false);
-        createExecutionV2Request.setProperties(null);
+        createExecutionV2Request.setProperties(new HashMap<>());
         createExecutionV2Request.setTags(new ArrayList<>());
         try {
             CreateExecutionV2Response response = client.createExecutionV2(createExecutionV2Request);

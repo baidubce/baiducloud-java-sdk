@@ -14,11 +14,6 @@ public class GetTemplateListV2Request extends BaseBceRequest {
     private String locale;
 
     /**
-    * 名称空间，默认 default
-    */
-    private String namespace;
-
-    /**
     * 模板名称
     */
     private String name;
@@ -64,15 +59,6 @@ public class GetTemplateListV2Request extends BaseBceRequest {
 
     public GetTemplateListV2Request setLocale(String locale) {
         this.locale = locale;
-        return this;
-    }
-
-    public String getNamespace() {
-        return namespace;
-    }
-
-    public GetTemplateListV2Request setNamespace(String namespace) {
-        this.namespace = namespace;
         return this;
     }
 

@@ -3,6 +3,7 @@ package com.baidubce.oos.models;
 import com.baidubce.common.BaseBceRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -37,7 +38,7 @@ public class CreateExecutionV2Request extends BaseBceRequest {
     /**
     * 全局参数取值集合
     */
-    private Object properties;
+    private Map<String, Object> properties;
 
     /**
     * 执行绑定标签列表
@@ -89,11 +90,11 @@ public class CreateExecutionV2Request extends BaseBceRequest {
         return this;
     }
 
-    public Object getProperties() {
+    public Map<String, Object> getProperties() {
         return properties;
     }
 
-    public CreateExecutionV2Request setProperties(Object properties) {
+    public CreateExecutionV2Request setProperties(Map<String, Object> properties) {
         this.properties = properties;
         return this;
     }

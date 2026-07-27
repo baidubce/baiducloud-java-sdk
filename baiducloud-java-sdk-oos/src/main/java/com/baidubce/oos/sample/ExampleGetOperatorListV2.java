@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.oos.OosClient;
 import com.baidubce.oos.models.GetOperatorListV2Request;
+import com.baidubce.oos.models.OperatorFilter;
 import com.baidubce.oos.models.GetOperatorListV2Response;
 
 public class ExampleGetOperatorListV2 {
@@ -17,9 +18,12 @@ public class ExampleGetOperatorListV2 {
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
         bceClientConfig.setEndpoint(endpoint);
         OosClient client = new OosClient(bceClientConfig);
+        OperatorFilter operator = new OperatorFilter();
+        operator.setName("");
+
         GetOperatorListV2Request getOperatorListV2Request = new GetOperatorListV2Request();
         getOperatorListV2Request.setLocale("");
-        getOperatorListV2Request.setOperator(null);
+        getOperatorListV2Request.setOperator(operator);
         getOperatorListV2Request.setSort("");
         getOperatorListV2Request.setAscending(false);
         getOperatorListV2Request.setPageNo(0);

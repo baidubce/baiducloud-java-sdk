@@ -14,9 +14,9 @@ public class GetOperatorListV2Request extends BaseBceRequest {
     private String locale;
 
     /**
-    * 系统模板操作符过滤条件
+    * operator
     */
-    private Object operator;
+    private OperatorFilter operator;
 
     /**
     * 排序字段
@@ -47,11 +47,11 @@ public class GetOperatorListV2Request extends BaseBceRequest {
         return this;
     }
 
-    public Object getOperator() {
+    public OperatorFilter getOperator() {
         return operator;
     }
 
-    public GetOperatorListV2Request setOperator(Object operator) {
+    public GetOperatorListV2Request setOperator(OperatorFilter operator) {
         this.operator = operator;
         return this;
     }

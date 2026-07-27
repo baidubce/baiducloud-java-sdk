@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.oos.OosClient;
 import com.baidubce.oos.models.GetExecutionListV2Request;
+import com.baidubce.oos.models.TemplateFilter;
 import com.baidubce.oos.models.GetExecutionListV2Response;
 
 public class ExampleGetExecutionListV2 {
@@ -17,10 +18,12 @@ public class ExampleGetExecutionListV2 {
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
         bceClientConfig.setEndpoint(endpoint);
         OosClient client = new OosClient(bceClientConfig);
+        TemplateFilter template = new TemplateFilter();
+        template.setName("");
+
         GetExecutionListV2Request getExecutionListV2Request = new GetExecutionListV2Request();
         getExecutionListV2Request.setLocale("");
-        getExecutionListV2Request.setNamespace("");
-        getExecutionListV2Request.setTemplate(null);
+        getExecutionListV2Request.setTemplate(template);
         getExecutionListV2Request.setState("");
         getExecutionListV2Request.setTrigger("");
         getExecutionListV2Request.setCronExecutionName("");

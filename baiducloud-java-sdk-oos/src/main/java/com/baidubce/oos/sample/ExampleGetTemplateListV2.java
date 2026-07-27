@@ -19,7 +19,6 @@ public class ExampleGetTemplateListV2 {
         OosClient client = new OosClient(bceClientConfig);
         GetTemplateListV2Request getTemplateListV2Request = new GetTemplateListV2Request();
         getTemplateListV2Request.setLocale("");
-        getTemplateListV2Request.setNamespace("");
         getTemplateListV2Request.setName("");
         getTemplateListV2Request.setId("");
         getTemplateListV2Request.setType("");

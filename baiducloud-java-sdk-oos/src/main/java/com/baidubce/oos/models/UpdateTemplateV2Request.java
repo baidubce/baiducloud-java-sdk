@@ -8,11 +8,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class UpdateTemplateV2Request extends BaseBceRequest {
 
     /**
-    * 名称空间，默认 default
-    */
-    private String namespace;
-
-    /**
     * 模板唯一标识，由服务端生成，更新模版需要传递此字段，查询详情和列表时响应此字段
     */
     private String id;
@@ -56,15 +51,6 @@ public class UpdateTemplateV2Request extends BaseBceRequest {
     * 全局参数列表
     */
     private List<Property> properties;
-
-    public String getNamespace() {
-        return namespace;
-    }
-
-    public UpdateTemplateV2Request setNamespace(String namespace) {
-        this.namespace = namespace;
-        return this;
-    }
 
     public String getId() {
         return id;

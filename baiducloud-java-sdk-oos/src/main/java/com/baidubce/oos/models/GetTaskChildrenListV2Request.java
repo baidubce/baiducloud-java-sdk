@@ -25,11 +25,6 @@ public class GetTaskChildrenListV2Request extends BaseBceRequest {
     private String taskId;
 
     /**
-    * 名称空间，如果用户未使用自定义名称空间，可以不传此字段，默认为“default”，
-    */
-    private String namespace;
-
-    /**
     * 按state进行筛选，选填，若未设置，返回所有状态的子执行
     */
     private List<String> states;
@@ -68,15 +63,6 @@ public class GetTaskChildrenListV2Request extends BaseBceRequest {
 
     public GetTaskChildrenListV2Request setTaskId(String taskId) {
         this.taskId = taskId;
-        return this;
-    }
-
-    public String getNamespace() {
-        return namespace;
-    }
-
-    public GetTaskChildrenListV2Request setNamespace(String namespace) {
-        this.namespace = namespace;
         return this;
     }
 

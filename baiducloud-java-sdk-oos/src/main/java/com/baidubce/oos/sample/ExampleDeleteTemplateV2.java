@@ -19,7 +19,6 @@ public class ExampleDeleteTemplateV2 {
         OosClient client = new OosClient(bceClientConfig);
         DeleteTemplateV2Request deleteTemplateV2Request = new DeleteTemplateV2Request();
         deleteTemplateV2Request.setId("");
-        deleteTemplateV2Request.setNamespace("");
         try {
             DeleteTemplateV2Response response = client.deleteTemplateV2(deleteTemplateV2Request);
             System.out.println(response.toJsonString());
