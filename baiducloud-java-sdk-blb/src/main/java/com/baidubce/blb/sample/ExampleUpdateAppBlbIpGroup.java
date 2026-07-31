@@ -22,7 +22,6 @@ public class ExampleUpdateAppBlbIpGroup {
         updateAppBlbIpGroupRequest.setIpGroupId("");
         updateAppBlbIpGroupRequest.setName("");
         updateAppBlbIpGroupRequest.setDesc("");
-        updateAppBlbIpGroupRequest.setPreserveClientIpEnabled(false);
         try {
             client.updateAppBlbIpGroup(updateAppBlbIpGroupRequest);
         } catch (BceClientException e) {
