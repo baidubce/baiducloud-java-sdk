@@ -17,6 +17,10 @@ import com.baidubce.BceClientException;
 import com.baidubce.Protocol;
 import com.baidubce.auth.BceCredentials;
 import com.baidubce.auth.Signer;
+import com.baidubce.auth.BceApiKeyCredentials;
+import com.baidubce.auth.BceApiKeySigner;
+import com.baidubce.auth.BceAccessTokenCredentials;
+import com.baidubce.auth.BceAccessTokenSigner;
 import com.baidubce.http.handler.HttpResponseHandler;
 import com.baidubce.internal.InternalRequest;
 import com.baidubce.model.AbstractBceResponse;
@@ -226,7 +230,15 @@ public class BceHttpClient {
             try {
                 // Sign the request if credentials were provided
                 if (credentials != null) {
-                    this.signer.sign(request, credentials);
+                    Signer effectiveSigner;
+                    if (credentials instanceof BceApiKeyCredentials) {
+                        effectiveSigner = new BceApiKeySigner();
+                    } else if (credentials instanceof BceAccessTokenCredentials) {
+                        effectiveSigner = new BceAccessTokenSigner();
+                    } else {
+                        effectiveSigner = this.signer;
+                    }
+                    effectiveSigner.sign(request, credentials);
                 }
 
                 requestLogger.debug("Sending Request: {}", request);
