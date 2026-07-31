@@ -13,6 +13,9 @@
 package com.baidubce;
 
 import com.baidubce.auth.BceV1Signer;
+import com.baidubce.auth.BceCredentials;
+import com.baidubce.auth.BceApiKeyCredentials;
+import com.baidubce.auth.BceAccessTokenCredentials;
 import com.baidubce.http.BceHttpClient;
 import com.baidubce.http.Headers;
 import com.baidubce.http.handler.HttpResponseHandler;
@@ -108,6 +111,12 @@ public abstract class AbstractBceClient {
                              boolean isHttpAsyncPutEnabled) {
         this.serviceId = this.computeServiceId();
         this.config = config;
+        // apiKey / accessToken 鉴权只在 https 下可用（endpoint 无 scheme 时默认 http），
+        // 与 Go/Python 一致：仅对这两类凭证强制切到 https，aksk 不动。
+        BceCredentials credentials = config.getCredentials();
+        if (credentials instanceof BceApiKeyCredentials || credentials instanceof BceAccessTokenCredentials) {
+            config.setProtocol(Protocol.HTTPS);
+        }
         this.endpoint = this.computeEndpoint();
         this.client = new BceHttpClient(config, new BceV1Signer(), isHttpAsyncPutEnabled);
         this.responseHandlers = responseHandlers;
