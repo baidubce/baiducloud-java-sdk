@@ -1,13 +1,15 @@
 package com.baidubce.auth;
 
 import com.baidubce.BceClientException;
+import com.baidubce.util.JsonUtils;
+import com.fasterxml.jackson.databind.JsonNode;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 /**
  * 通过AK/SK向 https://aip.baidubce.com/oauth/2.0/token 请求获取access token
@@ -53,15 +55,9 @@ public class BceAccessTokenCredentials implements BceCredentials {
     }
 
     @Override
-    public String getAccessKeyId() {
-        return apiKey;
+    public Signer getSigner() {
+        return new BceAccessTokenSigner();
     }
-
-    @Override
-    public String getSecretKey() {
-        return secretKey;
-    }
-
 
     /**
      * 向百度ai平台换取新的access token
@@ -74,98 +70,37 @@ public class BceAccessTokenCredentials implements BceCredentials {
         int attempt = 0;
         while (attempt < maxRetry) {
             attempt++;
-            HttpURLConnection connection = null;
-            try {
-                String url = String.format(TOKEN_URL, apiKey, secretKey);
-                URL urlObj = new URL(url);
-                connection = (HttpURLConnection) urlObj.openConnection();
-                connection.setRequestMethod("POST");
-                connection.setConnectTimeout(10000);
-                connection.setReadTimeout(10000);
-                connection.setRequestProperty("Content-Type", "application/json");
-                connection.setRequestProperty("Accept", "application/json");
-
-                int statusCode = connection.getResponseCode();
+            String url = String.format(TOKEN_URL, apiKey, secretKey);
+            HttpPost httpPost = new HttpPost(url);
+            httpPost.setHeader("Content-Type", "application/json");
+            httpPost.setHeader("Accept", "application/json");
+            try (CloseableHttpClient httpClient = HttpClients.createDefault();
+                 CloseableHttpResponse response = httpClient.execute(httpPost)) {
+                int statusCode = response.getStatusLine().getStatusCode();
                 if (statusCode == 500 && attempt < maxRetry) {
                     LOGGER.warn("Failed to get access token, response code: 500, retrying ({}/{})",
                             attempt, maxRetry);
                     continue;
                 }
-
                 if (statusCode != 200) {
                     throw new BceClientException("Failed to get access token, response code: " + statusCode);
                 }
-
-                BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(connection.getInputStream(), "UTF-8"));
-                StringBuilder sb = new StringBuilder();
-                String line;
-                while ((line = reader.readLine()) != null) {
-                   sb.append(line);
-                }
-                reader.close();
-
-                String body = sb.toString();
-            // 简单json解析，避免引入额外依赖
-                String token = extractJsonField(body, "access_token");
-                String expiresInStr = extractJsonField(body, "expires_in");
-
-                if (token == null || token.isEmpty()) {
+                String body = EntityUtils.toString(response.getEntity(), "UTF-8");
+                JsonNode node = JsonUtils.jsonNodeOf(body);
+                JsonNode tokenNode = node == null ? null : node.get("access_token");
+                if (tokenNode == null || tokenNode.asText().isEmpty()) {
                     throw new BceClientException("Failed to parse access_token from response body: " + body);
                 }
-
-                this.accessToken = token;
-                Long expiresInLong = expiresInStr != null ? Long.parseLong(expiresInStr) : 2592000L;
-                this.expireTimeMills = System.currentTimeMillis() + expiresInLong * 1000L;
-
-                LOGGER.debug("access_token refreshed, expires in {} seconds", expiresInLong);
+                this.accessToken = tokenNode.asText();
+                long expiresIn = node.has("expires_in") ? node.get("expires_in").asLong() : 2592000L;
+                this.expireTimeMills = System.currentTimeMillis() + expiresIn * 1000L;
+                LOGGER.debug("access_token refreshed, expires in {} seconds", expiresIn);
+                return;
             } catch (BceClientException e) {
                 throw e;
-            }catch (Exception e) {
+            } catch (Exception e) {
                 throw new BceClientException("Failed to refresh access token", e);
-            } finally {
-                if (connection != null) {
-                    connection.disconnect();
-                }
             }
-        }
-    }
-
-    /**
-     * 从json字符串中提取指定字段的值
-     */
-    private static String extractJsonField(String json, String field) {
-        // 匹配“filed”：“value”格式的字段
-        String key = "\"" + field + "\"";
-        int keyIndex = json.indexOf(key);
-        if (keyIndex < 0) {
-            return null;
-        }
-        int colonIndex = json.indexOf(':', keyIndex + key.length());
-        if (colonIndex < 0) {
-            return null;
-        }
-        int valueStart = colonIndex + 1;
-        while (valueStart < json.length() && json.charAt(valueStart) == ' ') {
-            valueStart++;
-        }
-        if (valueStart >= json.length()) {
-            return null;
-        }
-        if (json.charAt(valueStart) == '"') {
-            int endIndex = json.indexOf('"', valueStart + 1);
-            if (endIndex < 0) {
-                return null;
-            }
-            return json.substring(valueStart + 1, endIndex);
-        } else {
-            int endIndex = valueStart;
-            while (endIndex < json.length()
-                    && json.charAt(endIndex) != ','
-                    && json.charAt(endIndex) != '}') {
-                endIndex++;
-            }
-            return json.substring(valueStart, endIndex).trim();
         }
     }
 }

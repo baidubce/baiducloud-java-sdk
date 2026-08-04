@@ -16,13 +16,8 @@ public class BceApiKeyCredentials implements BceCredentials {
     }
 
     @Override
-    public String getAccessKeyId() {
-        return "";
-    }
-
-    @Override
-    public String getSecretKey() {
-        return "";
+    public Signer getSigner() {
+        return new BceApiKeySigner();
     }
 
 }
