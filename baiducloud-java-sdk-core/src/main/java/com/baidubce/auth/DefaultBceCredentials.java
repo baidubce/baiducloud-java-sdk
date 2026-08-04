@@ -50,17 +50,15 @@ public class DefaultBceCredentials implements BceCredentials {
     }
 
     /**
-     * @see BceCredentials#getAccessKeyId()
+     * Returns the BCE access key ID for this credentials object.
      */
-    @Override
     public String getAccessKeyId() {
         return this.accessKeyId;
     }
 
     /**
-     * @see BceCredentials#getSecretKey()
+     * Returns the BCE secret access key for this credentials object.
      */
-    @Override
     public String getSecretKey() {
         return this.secretKey;
     }

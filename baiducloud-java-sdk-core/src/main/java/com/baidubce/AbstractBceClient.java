@@ -12,7 +12,6 @@
  */
 package com.baidubce;
 
-import com.baidubce.auth.BceV1Signer;
 import com.baidubce.auth.BceCredentials;
 import com.baidubce.auth.BceApiKeyCredentials;
 import com.baidubce.auth.BceAccessTokenCredentials;
@@ -117,7 +116,7 @@ public abstract class AbstractBceClient {
             config.setProtocol(Protocol.HTTPS);
         }
         this.endpoint = this.computeEndpoint();
-        this.client = new BceHttpClient(config, new BceV1Signer(), isHttpAsyncPutEnabled);
+        this.client = new BceHttpClient(config, isHttpAsyncPutEnabled);
         this.responseHandlers = responseHandlers;
     }
 
