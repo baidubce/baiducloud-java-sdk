@@ -23,6 +23,8 @@ public class ExampleCreateAppBlbIpGroup {
         createAppBlbIpGroupRequest.setClientToken("");
         createAppBlbIpGroupRequest.setName("");
         createAppBlbIpGroupRequest.setDesc("");
+        createAppBlbIpGroupRequest.setPreserveClientIpEnabled(false);
+        createAppBlbIpGroupRequest.setGroupTargetType("");
         createAppBlbIpGroupRequest.setMemberList(new ArrayList<>());
         try {
             CreateAppBlbIpGroupResponse response = client.createAppBlbIpGroup(createAppBlbIpGroupRequest);
