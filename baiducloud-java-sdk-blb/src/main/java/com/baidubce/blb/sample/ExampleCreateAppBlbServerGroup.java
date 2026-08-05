@@ -23,6 +23,7 @@ public class ExampleCreateAppBlbServerGroup {
         createAppBlbServerGroupRequest.setClientToken("");
         createAppBlbServerGroupRequest.setName("");
         createAppBlbServerGroupRequest.setDesc("");
+        createAppBlbServerGroupRequest.setPreserveClientIpEnabled(false);
         createAppBlbServerGroupRequest.setBackendServerList(new ArrayList<>());
         try {
             CreateAppBlbServerGroupResponse response = client.createAppBlbServerGroup(createAppBlbServerGroupRequest);

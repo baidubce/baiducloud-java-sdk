@@ -1,6 +1,7 @@
 package com.baidubce.blb.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AdditionalCertDomain {
@@ -12,6 +13,7 @@ public class AdditionalCertDomain {
     /**
      * 证书域名。若证书的产品类型为通配符域名版还支持通配符域名及其子域名
      */
+    @JsonProperty("Host")
     private String host;
 
     public AdditionalCertDomain setCertId(String certId) {

@@ -34,6 +34,11 @@ public class UpdateAppBlbServerGroupRequest extends BaseBceRequest {
     */
     private String desc;
 
+    /**
+    * 是否开启客户端地址保持功能，注意：仅应用型实例支持，应用型IPv6不支持该功能
+    */
+    private Boolean preserveClientIpEnabled;
+
     public String getBlbId() {
         return blbId;
     }
@@ -76,6 +81,15 @@ public class UpdateAppBlbServerGroupRequest extends BaseBceRequest {
 
     public UpdateAppBlbServerGroupRequest setDesc(String desc) {
         this.desc = desc;
+        return this;
+    }
+
+    public Boolean getPreserveClientIpEnabled() {
+        return preserveClientIpEnabled;
+    }
+
+    public UpdateAppBlbServerGroupRequest setPreserveClientIpEnabled(Boolean preserveClientIpEnabled) {
+        this.preserveClientIpEnabled = preserveClientIpEnabled;
         return this;
     }
 

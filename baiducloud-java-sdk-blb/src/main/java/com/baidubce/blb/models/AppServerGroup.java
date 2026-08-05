@@ -27,6 +27,11 @@ public class AppServerGroup {
     private String status;
 
     /**
+     * 是否开启客户端地址保持功能,仅应用型实例支持，应用型IPv6不支持该功能
+     */
+    private Boolean preserveClientIpEnabled;
+
+    /**
      * 服务器组开放的端口列表
      */
     private List<AppServerGroupPort> portList;
@@ -67,6 +72,15 @@ public class AppServerGroup {
         return this.status;
     }
 
+    public AppServerGroup setPreserveClientIpEnabled(Boolean preserveClientIpEnabled) {
+        this.preserveClientIpEnabled = preserveClientIpEnabled;
+        return this;
+    }
+
+    public Boolean getPreserveClientIpEnabled() {
+        return this.preserveClientIpEnabled;
+    }
+
     public AppServerGroup setPortList(List<AppServerGroupPort> portList) {
         this.portList = portList;
         return this;
@@ -78,7 +92,8 @@ public class AppServerGroup {
 
     @Override
     public String toString() {
-        return "AppServerGroup{" + "id=" + id + "\n" + "name=" + name + "\n" + "desc=" + desc + "\n" + "status=" + status + "\n" + "portList=" + portList + "\n" + "}";
+        return "AppServerGroup{" + "id=" + id + "\n" + "name=" + name + "\n" + "desc=" + desc + "\n" + "status=" + status + "\n" + "preserveClientIpEnabled="
+                + preserveClientIpEnabled + "\n" + "portList=" + portList + "\n" + "}";
     }
 
 }

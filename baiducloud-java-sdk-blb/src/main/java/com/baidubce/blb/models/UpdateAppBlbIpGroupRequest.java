@@ -34,6 +34,11 @@ public class UpdateAppBlbIpGroupRequest extends BaseBceRequest {
     */
     private String desc;
 
+    /**
+    * 是否开启客户端地址保持功能，默认为true。当且仅当`groupTargetType`数据流模式为同Region同VPC时才支持关闭。注意：仅应用型实例支持，应用型IPv6不支持该功能
+    */
+    private Boolean preserveClientIpEnabled;
+
     public String getBlbId() {
         return blbId;
     }
@@ -76,6 +81,15 @@ public class UpdateAppBlbIpGroupRequest extends BaseBceRequest {
 
     public UpdateAppBlbIpGroupRequest setDesc(String desc) {
         this.desc = desc;
+        return this;
+    }
+
+    public Boolean getPreserveClientIpEnabled() {
+        return preserveClientIpEnabled;
+    }
+
+    public UpdateAppBlbIpGroupRequest setPreserveClientIpEnabled(Boolean preserveClientIpEnabled) {
+        this.preserveClientIpEnabled = preserveClientIpEnabled;
         return this;
     }
 

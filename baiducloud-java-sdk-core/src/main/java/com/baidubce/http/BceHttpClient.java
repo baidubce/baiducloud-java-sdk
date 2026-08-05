@@ -16,6 +16,7 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.Protocol;
 import com.baidubce.auth.BceCredentials;
+import com.baidubce.auth.Signer;
 import com.baidubce.http.handler.HttpResponseHandler;
 import com.baidubce.internal.InternalRequest;
 import com.baidubce.model.AbstractBceResponse;
@@ -111,6 +112,8 @@ public class BceHttpClient {
      */
     protected BceClientConfiguration config;
 
+    protected Signer signer;
+
     private HttpClientConnectionManager connectionManager;
     private NHttpClientConnectionManager nioConnectionManager;
 
@@ -133,11 +136,14 @@ public class BceHttpClient {
      *
      * @param config Configuration options specifying how this client will communicate with BCE (ex: proxy settings,
      *               retry count, etc.).
-     * @throws IllegalArgumentException If config is null.
+     * @param signer signer used to sign http requests
+     * @throws IllegalArgumentException If config or signer is null.
      */
-    public BceHttpClient(BceClientConfiguration config) {
+    public BceHttpClient(BceClientConfiguration config, Signer signer) {
         checkNotNull(config, "config should not be null.");
+        checkNotNull(signer, "signer should not be null.");
         this.config = config;
+        this.signer = signer;
         this.connectionManager = this.createHttpClientConnectionManager();
         this.httpClient = this.createHttpClient(this.connectionManager);
         IdleConnectionReaper.registerConnectionManager(this.connectionManager);
@@ -174,10 +180,11 @@ public class BceHttpClient {
      *
      * @param config                Configuration options specifying how this client will communicate with BCE (ex: proxy settings,
      *                              retry count, etc.).
+     * @param signer                signer used to sign http requests
      * @param isHttpAsyncPutEnabled whether use Async for PUT method.
      */
-    public BceHttpClient(BceClientConfiguration config, boolean isHttpAsyncPutEnabled) {
-        this(config);
+    public BceHttpClient(BceClientConfiguration config, Signer signer, boolean isHttpAsyncPutEnabled) {
+        this(config, signer);
         if (isHttpAsyncPutEnabled) {
             try {
                 this.nioConnectionManager = this.createNHttpClientConnectionManager();
@@ -219,7 +226,7 @@ public class BceHttpClient {
             try {
                 // Sign the request if credentials were provided
                 if (credentials != null) {
-                    credentials.getSigner().sign(request, credentials);
+                    this.signer.sign(request, credentials);
                 }
 
                 requestLogger.debug("Sending Request: {}", request);
