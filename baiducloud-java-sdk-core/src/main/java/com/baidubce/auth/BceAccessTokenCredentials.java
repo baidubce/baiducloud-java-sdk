@@ -11,6 +11,9 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * 通过AK/SK向 https://aip.baidubce.com/oauth/2.0/token 请求获取access token
  * 拿到access_token, 支持自动刷新*/
@@ -31,12 +34,10 @@ public class BceAccessTokenCredentials implements BceCredentials {
     private volatile long expireTimeMills;
 
     public BceAccessTokenCredentials(String apiKey, String secretKey) {
-        if (apiKey == null || apiKey.isEmpty()) {
-            throw new IllegalArgumentException("apiKey is null or empty");
-        }
-        if (secretKey == null || secretKey.isEmpty()) {
-            throw new IllegalArgumentException("secretKey is null or empty");
-        }
+        checkNotNull(apiKey, "apiKey should not be null.");
+        checkArgument(!apiKey.isEmpty(), "apiKey should not be empty.");
+        checkNotNull(secretKey, "secretKey should not be null.");
+        checkArgument(!secretKey.isEmpty(), "secretKey should not be empty.");
         this.apiKey = apiKey;
         this.secretKey = secretKey;
         refresh();

@@ -1,13 +1,15 @@
 package com.baidubce.auth;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 public class BceApiKeyCredentials implements BceCredentials {
 
     private final String apiKey;
 
-    public  BceApiKeyCredentials(String apiKey) {
-        if (apiKey == null || apiKey.isEmpty()){
-            throw new IllegalArgumentException("apiKey cannot be empty");
-        }
+    public BceApiKeyCredentials(String apiKey) {
+        checkNotNull(apiKey, "apiKey should not be null.");
+        checkArgument(!apiKey.isEmpty(), "apiKey should not be empty.");
         this.apiKey = apiKey;
     }
 
