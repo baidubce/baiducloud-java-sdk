@@ -22,7 +22,6 @@ public class ExampleUpdateAppBlbServerGroup {
         updateAppBlbServerGroupRequest.setSgId("");
         updateAppBlbServerGroupRequest.setName("");
         updateAppBlbServerGroupRequest.setDesc("");
-        updateAppBlbServerGroupRequest.setPreserveClientIpEnabled(false);
         try {
             client.updateAppBlbServerGroup(updateAppBlbServerGroupRequest);
         } catch (BceClientException e) {

@@ -392,8 +392,6 @@ public class BlbClientTest {
         createAppBlbIpGroupRequest.setClientToken("");
         createAppBlbIpGroupRequest.setName("");
         createAppBlbIpGroupRequest.setDesc("");
-        createAppBlbIpGroupRequest.setPreserveClientIpEnabled(false);
-        createAppBlbIpGroupRequest.setGroupTargetType("");
         createAppBlbIpGroupRequest.setMemberList(new ArrayList<>());
         CreateAppBlbIpGroupResponse response = blbClient.createAppBlbIpGroup(createAppBlbIpGroupRequest);
         System.out.println(response);
@@ -459,7 +457,6 @@ public class BlbClientTest {
         createAppBlbServerGroupRequest.setClientToken("");
         createAppBlbServerGroupRequest.setName("");
         createAppBlbServerGroupRequest.setDesc("");
-        createAppBlbServerGroupRequest.setPreserveClientIpEnabled(false);
         createAppBlbServerGroupRequest.setBackendServerList(new ArrayList<>());
         CreateAppBlbServerGroupResponse response = blbClient.createAppBlbServerGroup(createAppBlbServerGroupRequest);
         System.out.println(response);
@@ -1492,7 +1489,6 @@ public class BlbClientTest {
         updateAppBlbIpGroupRequest.setIpGroupId("");
         updateAppBlbIpGroupRequest.setName("");
         updateAppBlbIpGroupRequest.setDesc("");
-        updateAppBlbIpGroupRequest.setPreserveClientIpEnabled(false);
         blbClient.updateAppBlbIpGroup(updateAppBlbIpGroupRequest);
     }
     /**
@@ -1557,7 +1553,6 @@ public class BlbClientTest {
         updateAppBlbServerGroupRequest.setSgId("");
         updateAppBlbServerGroupRequest.setName("");
         updateAppBlbServerGroupRequest.setDesc("");
-        updateAppBlbServerGroupRequest.setPreserveClientIpEnabled(false);
         blbClient.updateAppBlbServerGroup(updateAppBlbServerGroupRequest);
     }
     /**

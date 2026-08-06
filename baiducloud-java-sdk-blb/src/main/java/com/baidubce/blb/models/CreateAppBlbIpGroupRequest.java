@@ -31,16 +31,6 @@ public class CreateAppBlbIpGroupRequest extends BaseBceRequest {
     private String desc;
 
     /**
-    * 是否开启客户端地址保持功能，默认为true。当且仅当`groupTargetType`数据流模式为同Region同VPC时才支持关闭。注意：仅应用型实例支持，应用型IPv6不支持该功能
-    */
-    private Boolean preserveClientIpEnabled;
-
-    /**
-    * IP组流量模式。默认`customized`(自定义),取值范围支持:`sameVpc`(同Region同VPC), `acrossVpc`(同Region跨VPC),`acrossRegion`(跨地域),`hybridCloud`(混合云),`customized`(自定义)。注意：创建完成后不支持再修改IP组数据流模式
-    */
-    private String groupTargetType;
-
-    /**
     * IP组挂载的IP组成员列表
     */
     private List<AppIpGroupMemberForCreate> memberList;
@@ -78,24 +68,6 @@ public class CreateAppBlbIpGroupRequest extends BaseBceRequest {
 
     public CreateAppBlbIpGroupRequest setDesc(String desc) {
         this.desc = desc;
-        return this;
-    }
-
-    public Boolean getPreserveClientIpEnabled() {
-        return preserveClientIpEnabled;
-    }
-
-    public CreateAppBlbIpGroupRequest setPreserveClientIpEnabled(Boolean preserveClientIpEnabled) {
-        this.preserveClientIpEnabled = preserveClientIpEnabled;
-        return this;
-    }
-
-    public String getGroupTargetType() {
-        return groupTargetType;
-    }
-
-    public CreateAppBlbIpGroupRequest setGroupTargetType(String groupTargetType) {
-        this.groupTargetType = groupTargetType;
         return this;
     }
 
