@@ -91,9 +91,8 @@ public class BceV1Signer implements Signer {
             }
         }
 
-        DefaultBceCredentials bceCredentials = (DefaultBceCredentials) credentials;
-        String accessKeyId = bceCredentials.getAccessKeyId();
-        String secretAccessKey = bceCredentials.getSecretKey();
+        String accessKeyId = credentials.getAccessKeyId();
+        String secretAccessKey = credentials.getSecretKey();
 
         request.addHeader(Headers.HOST, HttpUtils.generateHostHeader(request.getUri()));
         if (credentials instanceof BceSessionCredentials) {
