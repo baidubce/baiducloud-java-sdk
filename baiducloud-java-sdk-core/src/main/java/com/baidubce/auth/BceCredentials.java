@@ -23,6 +23,20 @@ package com.baidubce.auth;
 public interface BceCredentials {
 
     /**
+     * Returns the BCE access key ID for this credentials object.
+     *
+     * @return the BCE access key ID for this credentials object.
+     */
+    public String getAccessKeyId();
+
+    /**
+     * Returns the BCE secret access key for this credentials object.
+     *
+     * @return the BCE secret access key for this credentials object.
+     */
+    public String getSecretKey();
+
+    /**
      * Returns the signer used to authenticate requests for this credentials object. By default the
      * AK/SK v1 signer ({@link BceV1Signer}) is used. Credentials that require a specific signer
      * (e.g. API Key or access token) should override this method.
