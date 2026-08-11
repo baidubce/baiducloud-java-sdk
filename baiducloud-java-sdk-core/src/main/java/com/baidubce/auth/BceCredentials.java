@@ -36,4 +36,15 @@ public interface BceCredentials {
      */
     public String getSecretKey();
 
+    /**
+     * Returns the signer used to authenticate requests for this credentials object. By default the
+     * AK/SK v1 signer ({@link BceV1Signer}) is used. Credentials that require a specific signer
+     * (e.g. API Key or access token) should override this method.
+     *
+     * @return the signer for this credentials.
+     */
+    default Signer getSigner() {
+        return new BceV1Signer();
+    }
+
 }
