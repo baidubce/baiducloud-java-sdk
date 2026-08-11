@@ -8,6 +8,8 @@ import com.baidubce.pfs.models.CreateL2BucketLinkRequest;
 import com.baidubce.pfs.models.CreateL2BucketLinkResponse;
 import com.baidubce.pfs.models.CreateL2PolicyRequest;
 import com.baidubce.pfs.models.CreateL2PolicyResponse;
+import com.baidubce.pfs.models.CreateL3MountTargetRequest;
+import com.baidubce.pfs.models.CreateL3MountTargetResponse;
 import com.baidubce.pfs.models.CreatePfsRequest;
 import com.baidubce.pfs.models.CreatePfsResponse;
 import com.baidubce.pfs.models.DeleteFilesetRequest;
@@ -16,6 +18,8 @@ import com.baidubce.pfs.models.DeleteL2BucketLinkRequest;
 import com.baidubce.pfs.models.DeleteL2BucketLinkResponse;
 import com.baidubce.pfs.models.DeleteL2PolicyRequest;
 import com.baidubce.pfs.models.DeleteL2PolicyResponse;
+import com.baidubce.pfs.models.DeleteL3MountTargetRequest;
+import com.baidubce.pfs.models.DeleteL3MountTargetResponse;
 import com.baidubce.pfs.models.DeletePfsRequest;
 import com.baidubce.pfs.models.DescFilesetRequest;
 import com.baidubce.pfs.models.DescFilesetResponse;
@@ -25,6 +29,8 @@ import com.baidubce.pfs.models.DescL2PolicyRequest;
 import com.baidubce.pfs.models.DescL2PolicyResponse;
 import com.baidubce.pfs.models.DescPfsRequest;
 import com.baidubce.pfs.models.DescPfsResponse;
+import com.baidubce.pfs.models.DescribeL3MountTargetRequest;
+import com.baidubce.pfs.models.DescribeL3MountTargetResponse;
 import com.baidubce.pfs.models.InstanceListClientsRequest;
 import com.baidubce.pfs.models.InstanceListClientsResponse;
 import com.baidubce.pfs.models.ListFilesetRequest;
@@ -33,6 +39,8 @@ import com.baidubce.pfs.models.ListL2BucketLinkRequest;
 import com.baidubce.pfs.models.ListL2BucketLinkResponse;
 import com.baidubce.pfs.models.ListL2PolicyRequest;
 import com.baidubce.pfs.models.ListL2PolicyResponse;
+import com.baidubce.pfs.models.ListL3MountTargetRequest;
+import com.baidubce.pfs.models.ListL3MountTargetResponse;
 import com.baidubce.pfs.models.ListPfsRequest;
 import com.baidubce.pfs.models.ListPfsResponse;
 import com.baidubce.pfs.models.LstPerL2BktLnkExecLogRequest;
@@ -147,6 +155,19 @@ public class PfsClientTest {
         System.out.println(response);
     }
     /**
+     * createL3MountTarget
+     *
+     */
+    @Test
+    public void createL3MountTargetTest() {
+        CreateL3MountTargetRequest createL3MountTargetRequest = new CreateL3MountTargetRequest();
+        createL3MountTargetRequest.setInstanceId("");
+        createL3MountTargetRequest.setVpcId("");
+        createL3MountTargetRequest.setSubnetId("");
+        CreateL3MountTargetResponse response = pfsClient.createL3MountTarget(createL3MountTargetRequest);
+        System.out.println(response);
+    }
+    /**
      * createPfs
      *
      */
@@ -197,6 +218,18 @@ public class PfsClientTest {
         deleteL2PolicyRequest.setInstanceId("");
         deleteL2PolicyRequest.setPolicyId("");
         DeleteL2PolicyResponse response = pfsClient.deleteL2Policy(deleteL2PolicyRequest);
+        System.out.println(response);
+    }
+    /**
+     * deleteL3MountTarget
+     *
+     */
+    @Test
+    public void deleteL3MountTargetTest() {
+        DeleteL3MountTargetRequest deleteL3MountTargetRequest = new DeleteL3MountTargetRequest();
+        deleteL3MountTargetRequest.setInstanceId("");
+        deleteL3MountTargetRequest.setMountTargetId("");
+        DeleteL3MountTargetResponse response = pfsClient.deleteL3MountTarget(deleteL3MountTargetRequest);
         System.out.println(response);
     }
     /**
@@ -257,6 +290,18 @@ public class PfsClientTest {
         System.out.println(response);
     }
     /**
+     * describeL3MountTarget
+     *
+     */
+    @Test
+    public void describeL3MountTargetTest() {
+        DescribeL3MountTargetRequest describeL3MountTargetRequest = new DescribeL3MountTargetRequest();
+        describeL3MountTargetRequest.setInstanceId("");
+        describeL3MountTargetRequest.setMountTargetId("");
+        DescribeL3MountTargetResponse response = pfsClient.describeL3MountTarget(describeL3MountTargetRequest);
+        System.out.println(response);
+    }
+    /**
      * instanceListClients
      *
      */
@@ -313,6 +358,19 @@ public class PfsClientTest {
         listL2PolicyRequest.setMaxKeys(0);
         listL2PolicyRequest.setMarker("");
         ListL2PolicyResponse response = pfsClient.listL2Policy(listL2PolicyRequest);
+        System.out.println(response);
+    }
+    /**
+     * listL3MountTarget
+     *
+     */
+    @Test
+    public void listL3MountTargetTest() {
+        ListL3MountTargetRequest listL3MountTargetRequest = new ListL3MountTargetRequest();
+        listL3MountTargetRequest.setInstanceId("");
+        listL3MountTargetRequest.setMaxKeys(0);
+        listL3MountTargetRequest.setMarker("");
+        ListL3MountTargetResponse response = pfsClient.listL3MountTarget(listL3MountTargetRequest);
         System.out.println(response);
     }
     /**

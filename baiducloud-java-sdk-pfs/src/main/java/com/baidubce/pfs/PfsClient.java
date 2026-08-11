@@ -23,6 +23,8 @@ import com.baidubce.pfs.models.CreateL2BucketLinkRequest;
 import com.baidubce.pfs.models.CreateL2BucketLinkResponse;
 import com.baidubce.pfs.models.CreateL2PolicyRequest;
 import com.baidubce.pfs.models.CreateL2PolicyResponse;
+import com.baidubce.pfs.models.CreateL3MountTargetRequest;
+import com.baidubce.pfs.models.CreateL3MountTargetResponse;
 import com.baidubce.pfs.models.CreatePfsRequest;
 import com.baidubce.pfs.models.CreatePfsResponse;
 import com.baidubce.pfs.models.DeleteFilesetRequest;
@@ -31,6 +33,8 @@ import com.baidubce.pfs.models.DeleteL2BucketLinkRequest;
 import com.baidubce.pfs.models.DeleteL2BucketLinkResponse;
 import com.baidubce.pfs.models.DeleteL2PolicyRequest;
 import com.baidubce.pfs.models.DeleteL2PolicyResponse;
+import com.baidubce.pfs.models.DeleteL3MountTargetRequest;
+import com.baidubce.pfs.models.DeleteL3MountTargetResponse;
 import com.baidubce.pfs.models.DeletePfsRequest;
 import com.baidubce.pfs.models.DescFilesetRequest;
 import com.baidubce.pfs.models.DescFilesetResponse;
@@ -40,6 +44,8 @@ import com.baidubce.pfs.models.DescL2PolicyRequest;
 import com.baidubce.pfs.models.DescL2PolicyResponse;
 import com.baidubce.pfs.models.DescPfsRequest;
 import com.baidubce.pfs.models.DescPfsResponse;
+import com.baidubce.pfs.models.DescribeL3MountTargetRequest;
+import com.baidubce.pfs.models.DescribeL3MountTargetResponse;
 import com.baidubce.pfs.models.InstanceListClientsRequest;
 import com.baidubce.pfs.models.InstanceListClientsResponse;
 import com.baidubce.pfs.models.ListFilesetRequest;
@@ -48,6 +54,8 @@ import com.baidubce.pfs.models.ListL2BucketLinkRequest;
 import com.baidubce.pfs.models.ListL2BucketLinkResponse;
 import com.baidubce.pfs.models.ListL2PolicyRequest;
 import com.baidubce.pfs.models.ListL2PolicyResponse;
+import com.baidubce.pfs.models.ListL3MountTargetRequest;
+import com.baidubce.pfs.models.ListL3MountTargetResponse;
 import com.baidubce.pfs.models.ListPfsRequest;
 import com.baidubce.pfs.models.ListPfsResponse;
 import com.baidubce.pfs.models.LstPerL2BktLnkExecLogRequest;
@@ -155,6 +163,20 @@ public class PfsClient extends AbstractBceClient {
     }
 
     /**
+     * createL3MountTarget
+     * 
+     * @param request 入参结构体
+     * @return CreateL3MountTargetResponse
+     */
+    public CreateL3MountTargetResponse createL3MountTarget(CreateL3MountTargetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "CreateL3MountTarget");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateL3MountTargetResponse.class);
+    }
+
+    /**
      * createPfs
      * 
      * @param request 入参结构体
@@ -206,6 +228,20 @@ public class PfsClient extends AbstractBceClient {
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, DeleteL2PolicyResponse.class);
+    }
+
+    /**
+     * deleteL3MountTarget
+     * 
+     * @param request 入参结构体
+     * @return DeleteL3MountTargetResponse
+     */
+    public DeleteL3MountTargetResponse deleteL3MountTarget(DeleteL3MountTargetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DeleteL3MountTarget");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DeleteL3MountTargetResponse.class);
     }
 
     /**
@@ -278,6 +314,20 @@ public class PfsClient extends AbstractBceClient {
     }
 
     /**
+     * describeL3MountTarget
+     * 
+     * @param request 入参结构体
+     * @return DescribeL3MountTargetResponse
+     */
+    public DescribeL3MountTargetResponse describeL3MountTarget(DescribeL3MountTargetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DescribeL3MountTarget");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeL3MountTargetResponse.class);
+    }
+
+    /**
      * instanceListClients
      * 
      * @param request 入参结构体
@@ -331,6 +381,20 @@ public class PfsClient extends AbstractBceClient {
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, ListL2PolicyResponse.class);
+    }
+
+    /**
+     * listL3MountTarget
+     * 
+     * @param request 入参结构体
+     * @return ListL3MountTargetResponse
+     */
+    public ListL3MountTargetResponse listL3MountTarget(ListL3MountTargetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "ListL3MountTarget");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ListL3MountTargetResponse.class);
     }
 
     /**
