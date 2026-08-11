@@ -22,6 +22,16 @@ public class AppIpGroup {
     private String desc;
 
     /**
+     * 是否开启客户端地址保持功能，默认为true。当且仅当`groupTargetType`数据流模式为同Region同VPC时才支持关闭。注意：仅应用型实例支持，应用型IPv6不支持该功能
+     */
+    private Boolean preserveClientIpEnabled;
+
+    /**
+     * 
+     */
+    private String groupTargetType;
+
+    /**
      * 关联的IP组协议列表
      */
     private List<AppIpGroupBackendPolicy> backendPolicyList;
@@ -53,6 +63,24 @@ public class AppIpGroup {
         return this.desc;
     }
 
+    public AppIpGroup setPreserveClientIpEnabled(Boolean preserveClientIpEnabled) {
+        this.preserveClientIpEnabled = preserveClientIpEnabled;
+        return this;
+    }
+
+    public Boolean getPreserveClientIpEnabled() {
+        return this.preserveClientIpEnabled;
+    }
+
+    public AppIpGroup setGroupTargetType(String groupTargetType) {
+        this.groupTargetType = groupTargetType;
+        return this;
+    }
+
+    public String getGroupTargetType() {
+        return this.groupTargetType;
+    }
+
     public AppIpGroup setBackendPolicyList(List<AppIpGroupBackendPolicy> backendPolicyList) {
         this.backendPolicyList = backendPolicyList;
         return this;
@@ -64,7 +92,8 @@ public class AppIpGroup {
 
     @Override
     public String toString() {
-        return "AppIpGroup{" + "id=" + id + "\n" + "name=" + name + "\n" + "desc=" + desc + "\n" + "backendPolicyList=" + backendPolicyList + "\n" + "}";
+        return "AppIpGroup{" + "id=" + id + "\n" + "name=" + name + "\n" + "desc=" + desc + "\n" + "preserveClientIpEnabled=" + preserveClientIpEnabled + "\n" + "groupTargetType="
+                + groupTargetType + "\n" + "backendPolicyList=" + backendPolicyList + "\n" + "}";
     }
 
 }
