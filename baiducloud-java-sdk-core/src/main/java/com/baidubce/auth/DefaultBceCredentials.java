@@ -37,13 +37,13 @@ public class DefaultBceCredentials implements BceCredentials {
      * @param accessKeyId the BCE access key id.
      * @param secretKey   the BCE secret access key.
      *
-     * @throws IllegalArgumentException The accessKeyId, secretAccessKey should not be null or empty.
+     * @throws IllegalArgumentException The accessKeyId, secretKey should not be null or empty.
      */
     public DefaultBceCredentials(String accessKeyId, String secretKey) {
         checkNotNull(accessKeyId, "accessKeyId should not be null.");
         checkArgument(!accessKeyId.isEmpty(), "accessKeyId should not be empty.");
-        checkNotNull(secretKey, "secretAccessKey should not be null.");
-        checkArgument(!secretKey.isEmpty(), "secretAccessKey should not be empty.");
+        checkNotNull(secretKey, "secretKey should not be null.");
+        checkArgument(!secretKey.isEmpty(), "secretKey should not be empty.");
 
         this.accessKeyId = accessKeyId;
         this.secretKey = secretKey;

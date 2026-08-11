@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baidubce</groupId>
-    <artifactId>baiducloud-java-sdk-blb</artifactId>
-    <version>0.0.20</version>
-    <name>baiducloud-java-sdk-blb</name>
+    <artifactId>baiducloud-java-sdk-ax</artifactId>
+    <version>0.0.1</version>
+    <name>baiducloud-java-sdk-ax</name>
     <description>Baidu Cloud SDK for Java</description>
     <url>https://github.com/baidubce/baiducloud-java-sdk</url>
 

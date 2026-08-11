@@ -31,6 +31,11 @@ public class CreateAppBlbServerGroupRequest extends BaseBceRequest {
     private String desc;
 
     /**
+    * 是否开启客户端地址保持功能，默认为true。注意：仅应用型实例支持，应用型IPv6不支持该功能
+    */
+    private Boolean preserveClientIpEnabled;
+
+    /**
     * 服务器组绑定的后端服务器列表
     */
     private List<AppBackendServerForCreate> backendServerList;
@@ -68,6 +73,15 @@ public class CreateAppBlbServerGroupRequest extends BaseBceRequest {
 
     public CreateAppBlbServerGroupRequest setDesc(String desc) {
         this.desc = desc;
+        return this;
+    }
+
+    public Boolean getPreserveClientIpEnabled() {
+        return preserveClientIpEnabled;
+    }
+
+    public CreateAppBlbServerGroupRequest setPreserveClientIpEnabled(Boolean preserveClientIpEnabled) {
+        this.preserveClientIpEnabled = preserveClientIpEnabled;
         return this;
     }
 

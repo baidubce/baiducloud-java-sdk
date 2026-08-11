@@ -1,6 +1,3 @@
-2026-07-30 Version: 0.0.5
-- 新增 API Key、AccessToken 鉴权方式支持
-
 2026-07-08 Version: 0.0.4
 - 兼容返回特殊content length时的反序列化场景
 
