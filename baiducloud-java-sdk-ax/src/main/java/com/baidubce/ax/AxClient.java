@@ -13,16 +13,55 @@ import com.baidubce.auth.SignOptions;
 import com.baidubce.util.RequestBodyUtils;
 import java.util.Arrays;
 import java.util.HashSet;
+import com.baidubce.common.BaseBceResponse;
 
+import com.baidubce.ax.models.BatchReleaseSandboxesRequest;
+import com.baidubce.ax.models.BatchReleaseSandboxesResponse;
+import com.baidubce.ax.models.ConnectSandboxRequest;
+import com.baidubce.ax.models.ConnectSandboxResponse;
+import com.baidubce.ax.models.CreateSandboxRequest;
+import com.baidubce.ax.models.CreateSandboxResponse;
+import com.baidubce.ax.models.CreateSandboxSnapshotRequest;
+import com.baidubce.ax.models.CreateSandboxSnapshotResponse;
+import com.baidubce.ax.models.DeleteSandboxRequest;
+import com.baidubce.ax.models.ForkSandboxRequest;
+import com.baidubce.ax.models.ForkSandboxResponse;
+import com.baidubce.ax.models.GetSandboxRequest;
+import com.baidubce.ax.models.GetSandboxResourcesRequest;
+import com.baidubce.ax.models.GetSandboxResourcesResponse;
+import com.baidubce.ax.models.GetSandboxResponse;
+import com.baidubce.ax.models.GetSandboxSnapshotRequest;
+import com.baidubce.ax.models.GetSandboxSnapshotResponse;
+import com.baidubce.ax.models.ListSandboxSnapshotsRequest;
+import com.baidubce.ax.models.ListSandboxSnapshotsResponse;
+import com.baidubce.ax.models.ListSandboxesRequest;
+import com.baidubce.ax.models.ListSandboxesResponse;
+import com.baidubce.ax.models.ListSandboxesV2ByPathRequest;
+import com.baidubce.ax.models.ListSandboxesV2ByPathResponse;
+import com.baidubce.ax.models.ListSandboxesV2Request;
+import com.baidubce.ax.models.ListSandboxesV2Response;
+import com.baidubce.ax.models.PauseSandboxRequest;
 import com.baidubce.ax.models.QuerySandboxesRequest;
 import com.baidubce.ax.models.QuerySandboxesResponse;
+import com.baidubce.ax.models.ResumeSandboxRequest;
+import com.baidubce.ax.models.ResumeSandboxResponse;
+import com.baidubce.ax.models.SetSandboxTimeoutRequest;
 
 public class AxClient extends AbstractBceClient {
 
     private static final String[] HEADERS_TO_SIGN = {"host", "x-bce-date"};
 
     private static final String CONSTANT_SANDBOXES = "sandboxes";
+    private static final String CONSTANT_RESOURCES = "resources";
+    private static final String CONSTANT_TIMEOUT = "timeout";
+    private static final String CONSTANT_V2 = "v2";
+    private static final String CONSTANT_RESUME = "resume";
+    private static final String CONSTANT_SNAPSHOTS = "snapshots";
+    private static final String CONSTANT_BATCH_RELEASE = "batchRelease";
+    private static final String CONSTANT_CONNECT = "connect";
+    private static final String CONSTANT_FORK = "fork";
     private static final String CONSTANT_QUERY = "query";
+    private static final String CONSTANT_PAUSE = "pause";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -44,6 +83,192 @@ public class AxClient extends AbstractBceClient {
     }
 
     /**
+     * batchReleaseSandboxes
+     * 
+     * @param request 入参结构体
+     * @return BatchReleaseSandboxesResponse
+     */
+    public BatchReleaseSandboxesResponse batchReleaseSandboxes(BatchReleaseSandboxesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_SANDBOXES, CONSTANT_BATCH_RELEASE);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, BatchReleaseSandboxesResponse.class);
+    }
+
+    /**
+     * connectSandbox
+     * 
+     * @param request 入参结构体
+     * @return ConnectSandboxResponse
+     */
+    public ConnectSandboxResponse connectSandbox(ConnectSandboxRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_SANDBOXES, request.getSandboxID(), CONSTANT_CONNECT);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ConnectSandboxResponse.class);
+    }
+
+    /**
+     * createSandbox
+     * 
+     * @param request 入参结构体
+     * @return CreateSandboxResponse
+     */
+    public CreateSandboxResponse createSandbox(CreateSandboxRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_SANDBOXES);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateSandboxResponse.class);
+    }
+
+    /**
+     * createSandboxSnapshot
+     * 
+     * @param request 入参结构体
+     * @return CreateSandboxSnapshotResponse
+     */
+    public CreateSandboxSnapshotResponse createSandboxSnapshot(CreateSandboxSnapshotRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_SANDBOXES, request.getSandboxID(), CONSTANT_SNAPSHOTS);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateSandboxSnapshotResponse.class);
+    }
+
+    /**
+     * deleteSandbox
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteSandbox(DeleteSandboxRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, CONSTANT_SANDBOXES, request.getSandboxID());
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * forkSandbox
+     * 
+     * @param request 入参结构体
+     * @return ForkSandboxResponse
+     */
+    public ForkSandboxResponse forkSandbox(ForkSandboxRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_SANDBOXES, request.getSandboxID(), CONSTANT_FORK);
+        return invokeHttpClient(internalRequest, ForkSandboxResponse.class);
+    }
+
+    /**
+     * getSandbox
+     * 
+     * @param request 入参结构体
+     * @return GetSandboxResponse
+     */
+    public GetSandboxResponse getSandbox(GetSandboxRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_SANDBOXES, request.getSandboxID());
+        return invokeHttpClient(internalRequest, GetSandboxResponse.class);
+    }
+
+    /**
+     * getSandboxResources
+     * 
+     * @param request 入参结构体
+     * @return GetSandboxResourcesResponse
+     */
+    public GetSandboxResourcesResponse getSandboxResources(GetSandboxResourcesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_SANDBOXES, request.getSandboxID(), CONSTANT_RESOURCES);
+        return invokeHttpClient(internalRequest, GetSandboxResourcesResponse.class);
+    }
+
+    /**
+     * getSandboxSnapshot
+     * 
+     * @param request 入参结构体
+     * @return GetSandboxSnapshotResponse
+     */
+    public GetSandboxSnapshotResponse getSandboxSnapshot(GetSandboxSnapshotRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_SANDBOXES, request.getSandboxID(), CONSTANT_SNAPSHOTS, request.getSnapshotID());
+        return invokeHttpClient(internalRequest, GetSandboxSnapshotResponse.class);
+    }
+
+    /**
+     * listSandboxSnapshots
+     * 
+     * @param request 入参结构体
+     * @return ListSandboxSnapshotsResponse
+     */
+    public ListSandboxSnapshotsResponse listSandboxSnapshots(ListSandboxSnapshotsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_SANDBOXES, request.getSandboxID(), CONSTANT_SNAPSHOTS);
+        return invokeHttpClient(internalRequest, ListSandboxSnapshotsResponse.class);
+    }
+
+    /**
+     * listSandboxes
+     * 
+     * @param request 入参结构体
+     * @return ListSandboxesResponse
+     */
+    public ListSandboxesResponse listSandboxes(ListSandboxesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_SANDBOXES);
+        if (request.getMetadata() != null) {
+            internalRequest.addParameter("metadata", request.getMetadata());
+        }
+        return invokeHttpClient(internalRequest, ListSandboxesResponse.class);
+    }
+
+    /**
+     * listSandboxesV2
+     * 
+     * @param request 入参结构体
+     * @return ListSandboxesV2Response
+     */
+    public ListSandboxesV2Response listSandboxesV2(ListSandboxesV2Request request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_V2, CONSTANT_SANDBOXES);
+        if (request.getLimit() != null) {
+            internalRequest.addParameter("limit", String.valueOf(request.getLimit()));
+        }
+        if (request.getNextToken() != null) {
+            internalRequest.addParameter("nextToken", request.getNextToken());
+        }
+        if (request.getMetadata() != null) {
+            internalRequest.addParameter("metadata", request.getMetadata());
+        }
+        if (request.getState() != null) {
+            internalRequest.addParameter("state", request.getState());
+        }
+        return invokeHttpClient(internalRequest, ListSandboxesV2Response.class);
+    }
+
+    /**
+     * listSandboxesV2ByPath
+     * 
+     * @param request 入参结构体
+     * @return ListSandboxesV2ByPathResponse
+     */
+    public ListSandboxesV2ByPathResponse listSandboxesV2ByPath(ListSandboxesV2ByPathRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_SANDBOXES, CONSTANT_V2);
+        if (request.getLimit() != null) {
+            internalRequest.addParameter("limit", String.valueOf(request.getLimit()));
+        }
+        if (request.getNextToken() != null) {
+            internalRequest.addParameter("nextToken", request.getNextToken());
+        }
+        if (request.getMetadata() != null) {
+            internalRequest.addParameter("metadata", request.getMetadata());
+        }
+        if (request.getState() != null) {
+            internalRequest.addParameter("state", request.getState());
+        }
+        return invokeHttpClient(internalRequest, ListSandboxesV2ByPathResponse.class);
+    }
+
+    /**
+     * pauseSandbox
+     * 
+     * @param request 入参结构体
+     */
+    public void pauseSandbox(PauseSandboxRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_SANDBOXES, request.getSandboxID(), CONSTANT_PAUSE);
+        if (request.getHibernateMode() != null) {
+            internalRequest.addParameter("hibernateMode", request.getHibernateMode());
+        }
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * querySandboxes
      * 
      * @param request 入参结构体
@@ -53,6 +278,29 @@ public class AxClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_SANDBOXES, CONSTANT_QUERY);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, QuerySandboxesResponse.class);
+    }
+
+    /**
+     * resumeSandbox
+     * 
+     * @param request 入参结构体
+     * @return ResumeSandboxResponse
+     */
+    public ResumeSandboxResponse resumeSandbox(ResumeSandboxRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_SANDBOXES, request.getSandboxID(), CONSTANT_RESUME);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ResumeSandboxResponse.class);
+    }
+
+    /**
+     * setSandboxTimeout
+     * 
+     * @param request 入参结构体
+     */
+    public void setSandboxTimeout(SetSandboxTimeoutRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_SANDBOXES, request.getSandboxID(), CONSTANT_TIMEOUT);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**

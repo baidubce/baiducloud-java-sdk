@@ -8,12 +8,12 @@ import java.util.List;
 public class QuerySandboxesResponse extends BaseBceResponse {
 
     /**
-    * 满足过滤条件的沙箱实例列表。
+    * 满足条件的沙箱实例列表。
     */
     private List<QueriedSandbox> sandboxes;
 
     /**
-    * 下一页游标。为空表示没有更多数据。
+    * 下一页游标，为空表示没有更多数据。
     */
     private String nextToken;
 

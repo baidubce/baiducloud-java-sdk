@@ -9,32 +9,32 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class QuerySandboxesRequest extends BaseBceRequest {
 
     /**
-    * 单页返回的最大沙箱数，取值范围为 1-100，默认 100。
+    * 单页返回数量，取值 1-100，默认 100。
     */
     private Integer limit;
 
     /**
-    * 上一页响应返回的游标。首次查询不传或传空字符串；响应中为空表示没有更多数据。
+    * 上一页返回的游标，首次请求为空。
     */
     private String nextToken;
 
     /**
-    * 沙箱实例 ID 过滤条件，最多 100 个。多个 ID 之间为 OR 关系。
+    * 沙箱实例 ID 列表，同组内 OR。
     */
     private List<String> sandboxIds;
 
     /**
-    * 实际镜像地址过滤条件，最多 100 个。多个镜像地址之间为 OR 关系。
+    * 实际镜像地址列表，同组内 OR。
     */
     private List<String> imagePaths;
 
     /**
-    * 沙箱 metadata 过滤条件。所有 key-value 条件均需匹配。
+    * metadata 键值过滤，条件之间 AND。
     */
     private Map<String, String> metadata;
 
     /**
-    * 沙箱状态过滤条件，取值为 running、paused、killing 或 killed。多个状态之间为 OR 关系。
+    * 沙箱状态列表，可选 running、paused、killing、killed。
     */
     private List<String> state;
 

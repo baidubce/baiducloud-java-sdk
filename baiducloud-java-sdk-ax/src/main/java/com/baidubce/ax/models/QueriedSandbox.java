@@ -1,5 +1,6 @@
 package com.baidubce.ax.models;
 
+import java.lang.String;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -12,12 +13,12 @@ public class QueriedSandbox {
     private String sandboxID;
 
     /**
-     * 沙箱当前状态，可取 running、paused、killing、killed。
+     * 当前沙箱状态。
      */
     private String state;
 
     /**
-     * 沙箱 metadata。
+     * 沙箱 metadata 标签。
      */
     private Map<String, String> metadata;
 
@@ -27,37 +28,37 @@ public class QueriedSandbox {
     private Integer cpuCount;
 
     /**
-     * 内存大小，单位为 MiB。
+     * 内存大小，单位 MiB。
      */
     private Integer memoryMB;
 
     /**
-     * 沙箱启动时间，RFC3339 格式。
+     * 启动时间。
      */
     private String startedAt;
 
     /**
-     * 沙箱结束时间，RFC3339 格式。
+     * 结束时间。
      */
     private String endAt;
 
     /**
-     * 沙箱运行时 envd 版本。
+     * envd 版本。
      */
     private String envdVersion;
 
     /**
-     * 访问沙箱 envd 的临时 token。
+     * envd 访问令牌。
      */
     private String envdAccessToken;
 
     /**
-     * 创建沙箱使用的模板 ID。
+     * 沙箱模板 ID。
      */
     private String templateID;
 
     /**
-     * 沙箱实际使用的镜像地址。
+     * 当前沙箱镜像地址。
      */
     private String imagePath;
 
