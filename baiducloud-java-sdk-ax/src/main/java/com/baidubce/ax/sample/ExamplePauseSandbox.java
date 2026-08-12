@@ -4,12 +4,9 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.BceApiKeyCredentials;
 import com.baidubce.ax.AxClient;
-import com.baidubce.ax.models.QuerySandboxesRequest;
-import com.baidubce.ax.models.QuerySandboxesResponse;
-import java.util.HashMap;
-import java.util.ArrayList;
+import com.baidubce.ax.models.PauseSandboxRequest;
 
-public class ExampleQuerySandboxes {
+public class ExamplePauseSandbox {
     public static void main(String[] args) {
         String endpoint = "Your Endpoint";
         BceClientConfiguration bceClientConfig = new BceClientConfiguration();
@@ -25,17 +22,13 @@ public class ExampleQuerySandboxes {
         bceClientConfig.setCredentials(new BceApiKeyCredentials(apiKey));
 
         AxClient client = new AxClient(bceClientConfig);
-        QuerySandboxesRequest querySandboxesRequest = new QuerySandboxesRequest();
-        querySandboxesRequest.setLimit(0);
-        querySandboxesRequest.setNextToken("");
-        querySandboxesRequest.setSandboxIds(new ArrayList<>());
-        querySandboxesRequest.setImagePaths(new ArrayList<>());
-        querySandboxesRequest.setMetadata(new HashMap<>());
-        querySandboxesRequest.setState(new ArrayList<>());
+        PauseSandboxRequest pauseSandboxRequest = new PauseSandboxRequest();
+        pauseSandboxRequest.setSandboxID("");
+        pauseSandboxRequest.setHibernateMode("");
         try {
-            QuerySandboxesResponse response = client.querySandboxes(querySandboxesRequest);
-            System.out.println(response.toJsonString());
+            client.pauseSandbox(pauseSandboxRequest);
         } catch (BceClientException e) {
+            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

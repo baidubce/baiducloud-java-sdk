@@ -4,12 +4,11 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.BceApiKeyCredentials;
 import com.baidubce.ax.AxClient;
-import com.baidubce.ax.models.QuerySandboxesRequest;
-import com.baidubce.ax.models.QuerySandboxesResponse;
-import java.util.HashMap;
+import com.baidubce.ax.models.BatchReleaseSandboxesRequest;
+import com.baidubce.ax.models.BatchReleaseSandboxesResponse;
 import java.util.ArrayList;
 
-public class ExampleQuerySandboxes {
+public class ExampleBatchReleaseSandboxes {
     public static void main(String[] args) {
         String endpoint = "Your Endpoint";
         BceClientConfiguration bceClientConfig = new BceClientConfiguration();
@@ -25,15 +24,10 @@ public class ExampleQuerySandboxes {
         bceClientConfig.setCredentials(new BceApiKeyCredentials(apiKey));
 
         AxClient client = new AxClient(bceClientConfig);
-        QuerySandboxesRequest querySandboxesRequest = new QuerySandboxesRequest();
-        querySandboxesRequest.setLimit(0);
-        querySandboxesRequest.setNextToken("");
-        querySandboxesRequest.setSandboxIds(new ArrayList<>());
-        querySandboxesRequest.setImagePaths(new ArrayList<>());
-        querySandboxesRequest.setMetadata(new HashMap<>());
-        querySandboxesRequest.setState(new ArrayList<>());
+        BatchReleaseSandboxesRequest batchReleaseSandboxesRequest = new BatchReleaseSandboxesRequest();
+        batchReleaseSandboxesRequest.setSandboxIds(new ArrayList<>());
         try {
-            QuerySandboxesResponse response = client.querySandboxes(querySandboxesRequest);
+            BatchReleaseSandboxesResponse response = client.batchReleaseSandboxes(batchReleaseSandboxesRequest);
             System.out.println(response.toJsonString());
         } catch (BceClientException e) {
             System.out.println(e.getMessage());
