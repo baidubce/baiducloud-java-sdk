@@ -80,7 +80,10 @@ public class PfsClientTest {
     @Before
     public void setUp() {
         BceClientConfiguration config = new BceClientConfiguration();
+
+        // ==== AK/SK 鉴权 ====
         config.setCredentials(new DefaultBceCredentials(AK, SK));
+
         pfsClient = new PfsClient(config);
     }
 
