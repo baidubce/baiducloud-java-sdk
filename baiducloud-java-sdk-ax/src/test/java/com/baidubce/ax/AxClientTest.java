@@ -11,10 +11,8 @@ import com.baidubce.ax.models.CreateSandboxSnapshotResponse;
 import com.baidubce.ax.models.DeleteSandboxRequest;
 import com.baidubce.ax.models.ForkSandboxRequest;
 import com.baidubce.ax.models.ForkSandboxResponse;
-import com.baidubce.ax.models.GetSandboxRequest;
 import com.baidubce.ax.models.GetSandboxResourcesRequest;
 import com.baidubce.ax.models.GetSandboxResourcesResponse;
-import com.baidubce.ax.models.GetSandboxResponse;
 import com.baidubce.ax.models.GetSandboxSnapshotRequest;
 import com.baidubce.ax.models.GetSandboxSnapshotResponse;
 import com.baidubce.ax.models.ListSandboxSnapshotsRequest;
@@ -138,17 +136,6 @@ public class AxClientTest {
         ForkSandboxRequest forkSandboxRequest = new ForkSandboxRequest();
         forkSandboxRequest.setSandboxID("");
         ForkSandboxResponse response = axClient.forkSandbox(forkSandboxRequest);
-        System.out.println(response);
-    }
-    /**
-     * getSandbox
-     *
-     */
-    @Test
-    public void getSandboxTest() {
-        GetSandboxRequest getSandboxRequest = new GetSandboxRequest();
-        getSandboxRequest.setSandboxID("");
-        GetSandboxResponse response = axClient.getSandbox(getSandboxRequest);
         System.out.println(response);
     }
     /**

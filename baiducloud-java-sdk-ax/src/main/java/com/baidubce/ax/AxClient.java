@@ -26,10 +26,8 @@ import com.baidubce.ax.models.CreateSandboxSnapshotResponse;
 import com.baidubce.ax.models.DeleteSandboxRequest;
 import com.baidubce.ax.models.ForkSandboxRequest;
 import com.baidubce.ax.models.ForkSandboxResponse;
-import com.baidubce.ax.models.GetSandboxRequest;
 import com.baidubce.ax.models.GetSandboxResourcesRequest;
 import com.baidubce.ax.models.GetSandboxResourcesResponse;
-import com.baidubce.ax.models.GetSandboxResponse;
 import com.baidubce.ax.models.GetSandboxSnapshotRequest;
 import com.baidubce.ax.models.GetSandboxSnapshotResponse;
 import com.baidubce.ax.models.ListSandboxSnapshotsRequest;
@@ -149,17 +147,6 @@ public class AxClient extends AbstractBceClient {
     public ForkSandboxResponse forkSandbox(ForkSandboxRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_SANDBOXES, request.getSandboxID(), CONSTANT_FORK);
         return invokeHttpClient(internalRequest, ForkSandboxResponse.class);
-    }
-
-    /**
-     * getSandbox
-     * 
-     * @param request 入参结构体
-     * @return GetSandboxResponse
-     */
-    public GetSandboxResponse getSandbox(GetSandboxRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_SANDBOXES, request.getSandboxID());
-        return invokeHttpClient(internalRequest, GetSandboxResponse.class);
     }
 
     /**
