@@ -1,5 +1,7 @@
 package com.baidubce.cfw.models;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -33,6 +35,16 @@ public class CreateRule {
      * 目的IP，网段或IP，例如：180.76.1.0/24 或 180.76.1.1，0.0.0.0/0表示所有
      */
     private String destAddress;
+
+    /**
+     * 域名解析模式，当destAddress为域名时有效，取值 \[ dns \| fqdn ]
+     */
+    private String domainDetectMode;
+
+    /**
+     * 应用，支持的应用协议有HTTP、SSL、FTP、 RDP、 SMTP、SSH、VNC，fqdn模式仅支持HTTP、SSL
+     */
+    private List<String> applications;
 
     /**
      * 源端口，0-65535之间的整数，或区间，例如：8080，8080-8090，0-65535表示所有
@@ -108,6 +120,24 @@ public class CreateRule {
         return this.destAddress;
     }
 
+    public CreateRule setDomainDetectMode(String domainDetectMode) {
+        this.domainDetectMode = domainDetectMode;
+        return this;
+    }
+
+    public String getDomainDetectMode() {
+        return this.domainDetectMode;
+    }
+
+    public CreateRule setApplications(List<String> applications) {
+        this.applications = applications;
+        return this;
+    }
+
+    public List<String> getApplications() {
+        return this.applications;
+    }
+
     public CreateRule setSourcePort(String sourcePort) {
         this.sourcePort = sourcePort;
         return this;
@@ -147,8 +177,8 @@ public class CreateRule {
     @Override
     public String toString() {
         return "CreateRule{" + "ipVersion=" + ipVersion + "\n" + "priority=" + priority + "\n" + "protocol=" + protocol + "\n" + "direction=" + direction + "\n" + "sourceAddress="
-                + sourceAddress + "\n" + "destAddress=" + destAddress + "\n" + "sourcePort=" + sourcePort + "\n" + "destPort=" + destPort + "\n" + "action=" + action + "\n"
-                + "description=" + description + "\n" + "}";
+                + sourceAddress + "\n" + "destAddress=" + destAddress + "\n" + "domainDetectMode=" + domainDetectMode + "\n" + "applications=" + applications + "\n"
+                + "sourcePort=" + sourcePort + "\n" + "destPort=" + destPort + "\n" + "action=" + action + "\n" + "description=" + description + "\n" + "}";
     }
 
 }
