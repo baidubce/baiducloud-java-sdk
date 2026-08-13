@@ -9,13 +9,15 @@ import com.baidubce.vpc.models.CreateUserGatewayResponse;
 
 public class ExampleCreateUserGateway {
     public static void main(String[] args) {
-        // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
+        String endpoint = "Your Endpoint";
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setEndpoint(endpoint);
+
+        // ==== AK/SK 鉴权 ====
         String ak = "Your Ak";
         String sk = "Your Sk";
-        String endpoint = "Endpoint";
-        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
-        bceClientConfig.setEndpoint(endpoint);
+
         VpcClient client = new VpcClient(bceClientConfig);
         CreateUserGatewayRequest createUserGatewayRequest = new CreateUserGatewayRequest();
         createUserGatewayRequest.setClientToken("");

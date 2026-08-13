@@ -263,6 +263,7 @@ public class VpcClient extends AbstractBceClient {
     private static final String[] HEADERS_TO_SIGN = {"host", "x-bce-date"};
 
     private static final String VERSION_V1 = "v1";
+    private static final String VERSION_V2 = "v2";
     private static final String CONSTANT_VPC = "vpc";
     private static final String CONSTANT_NAT = "nat";
     private static final String CONSTANT_DNAT_RULE = "dnatRule";
@@ -450,7 +451,7 @@ public class VpcClient extends AbstractBceClient {
      * @param request 入参结构体
      */
     public void authorizeSecurityGroupRules(AuthorizeSecurityGroupRulesRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
         internalRequest.addParameter("authorizeRule", null);
         if (request.getSgVersion() != null) {
             internalRequest.addParameter("sgVersion", String.valueOf(request.getSgVersion()));
@@ -903,7 +904,7 @@ public class VpcClient extends AbstractBceClient {
      * @return CreateSecurityGroupResponse
      */
     public CreateSecurityGroupResponse createSecurityGroup(CreateSecurityGroupRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_SECURITY_GROUP);
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_SECURITY_GROUP);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -1237,7 +1238,7 @@ public class VpcClient extends AbstractBceClient {
      * @param request 入参结构体
      */
     public void deleteSecurityGroup(DeleteSecurityGroupRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V2, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -1250,7 +1251,7 @@ public class VpcClient extends AbstractBceClient {
      * @param request 入参结构体
      */
     public void deleteSecurityGroupRules(DeleteSecurityGroupRulesRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_SECURITY_GROUP, CONSTANT_RULE, request.getSecurityGroupRuleId());
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V2, CONSTANT_SECURITY_GROUP, CONSTANT_RULE, request.getSecurityGroupRuleId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }
@@ -1442,7 +1443,7 @@ public class VpcClient extends AbstractBceClient {
      * @return GetSecurityGroupDetailsResponse
      */
     public GetSecurityGroupDetailsResponse getSecurityGroupDetails(GetSecurityGroupDetailsRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
         return invokeHttpClient(internalRequest, GetSecurityGroupDetailsResponse.class);
     }
 
@@ -1955,7 +1956,7 @@ public class VpcClient extends AbstractBceClient {
      * @return QuerySecurityGroupsListResponse
      */
     public QuerySecurityGroupsListResponse querySecurityGroupsList(QuerySecurityGroupsListRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_SECURITY_GROUP);
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V2, CONSTANT_SECURITY_GROUP);
         if (request.getMarker() != null) {
             internalRequest.addParameter("marker", request.getMarker());
         }
@@ -2355,7 +2356,7 @@ public class VpcClient extends AbstractBceClient {
      * @param request 入参结构体
      */
     public void revokeSecurityGroupRules(RevokeSecurityGroupRulesRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SECURITY_GROUP, request.getSecurityGroupId());
         internalRequest.addParameter("revokeRule", null);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
@@ -2738,7 +2739,7 @@ public class VpcClient extends AbstractBceClient {
      * @param request 入参结构体
      */
     public void updateSecurityGroupRules(UpdateSecurityGroupRulesRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_SECURITY_GROUP, CONSTANT_RULE, CONSTANT_UPDATE);
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V2, CONSTANT_SECURITY_GROUP, CONSTANT_RULE, CONSTANT_UPDATE);
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }

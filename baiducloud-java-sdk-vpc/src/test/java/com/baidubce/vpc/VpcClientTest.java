@@ -260,7 +260,10 @@ public class VpcClientTest {
     @Before
     public void setUp() {
         BceClientConfiguration config = new BceClientConfiguration();
+
+        // ==== AK/SK 鉴权 ====
         config.setCredentials(new DefaultBceCredentials(AK, SK));
+
         vpcClient = new VpcClient(config);
     }
 
