@@ -33,7 +33,7 @@ public class GetCfwResponse extends BaseBceResponse {
     private Integer bindInstanceNum;
 
     /**
-    * CFW类型，1表示有状态防火墙
+    * CFW类型，1表示应用型防火墙
     */
     private Integer type;
 

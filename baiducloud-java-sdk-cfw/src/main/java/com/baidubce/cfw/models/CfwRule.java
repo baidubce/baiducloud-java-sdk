@@ -1,5 +1,7 @@
 package com.baidubce.cfw.models;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -45,6 +47,16 @@ public class CfwRule {
     private String destAddress;
 
     /**
+     * 域名解析模式，当destAddress为域名时有效，取值 \[ dns \| fqdn ]
+     */
+    private String domainDetectMode;
+
+    /**
+     * 应用，支持的应用协议有HTTP、SSL、FTP、 RDP、 SMTP、SSH、VNC
+     */
+    private List<String> applications;
+
+    /**
      * 源端口，0-65535之间的整数，或区间，例如：8080，8080-8090，0-65535表示所有
      */
     private String sourcePort;
@@ -63,6 +75,11 @@ public class CfwRule {
      * CFW规则的描述
      */
     private String description;
+
+    /**
+     * CFW规则的创建时间，标准UTC时间格式
+     */
+    private String createdTime;
 
     public CfwRule setCfwId(String cfwId) {
         this.cfwId = cfwId;
@@ -136,6 +153,24 @@ public class CfwRule {
         return this.destAddress;
     }
 
+    public CfwRule setDomainDetectMode(String domainDetectMode) {
+        this.domainDetectMode = domainDetectMode;
+        return this;
+    }
+
+    public String getDomainDetectMode() {
+        return this.domainDetectMode;
+    }
+
+    public CfwRule setApplications(List<String> applications) {
+        this.applications = applications;
+        return this;
+    }
+
+    public List<String> getApplications() {
+        return this.applications;
+    }
+
     public CfwRule setSourcePort(String sourcePort) {
         this.sourcePort = sourcePort;
         return this;
@@ -172,11 +207,21 @@ public class CfwRule {
         return this.description;
     }
 
+    public CfwRule setCreatedTime(String createdTime) {
+        this.createdTime = createdTime;
+        return this;
+    }
+
+    public String getCreatedTime() {
+        return this.createdTime;
+    }
+
     @Override
     public String toString() {
         return "CfwRule{" + "cfwId=" + cfwId + "\n" + "cfwRuleId=" + cfwRuleId + "\n" + "ipVersion=" + ipVersion + "\n" + "priority=" + priority + "\n" + "protocol=" + protocol
-                + "\n" + "direction=" + direction + "\n" + "sourceAddress=" + sourceAddress + "\n" + "destAddress=" + destAddress + "\n" + "sourcePort=" + sourcePort + "\n"
-                + "destPort=" + destPort + "\n" + "action=" + action + "\n" + "description=" + description + "\n" + "}";
+                + "\n" + "direction=" + direction + "\n" + "sourceAddress=" + sourceAddress + "\n" + "destAddress=" + destAddress + "\n" + "domainDetectMode=" + domainDetectMode
+                + "\n" + "applications=" + applications + "\n" + "sourcePort=" + sourcePort + "\n" + "destPort=" + destPort + "\n" + "action=" + action + "\n" + "description="
+                + description + "\n" + "createdTime=" + createdTime + "\n" + "}";
     }
 
 }
