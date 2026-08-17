@@ -1,13 +1,23 @@
 package com.baidubce.aigw;
 
+import com.baidubce.aigw.models.CreateConsumerRequest;
+import com.baidubce.aigw.models.CreateConsumerResponse;
 import com.baidubce.aigw.models.CreateRouteRequest;
 import com.baidubce.aigw.models.CreateRouteResponse;
+import com.baidubce.aigw.models.DeleteConsumerRequest;
+import com.baidubce.aigw.models.DeleteConsumerResponse;
 import com.baidubce.aigw.models.DeleteRouteRequest;
 import com.baidubce.aigw.models.DeleteRouteResponse;
+import com.baidubce.aigw.models.GetConsumerListRequest;
+import com.baidubce.aigw.models.GetConsumerListResponse;
+import com.baidubce.aigw.models.GetConsumerRequest;
+import com.baidubce.aigw.models.GetConsumerResponse;
 import com.baidubce.aigw.models.QueryRoutingDetailsRequest;
 import com.baidubce.aigw.models.QueryRoutingDetailsResponse;
 import com.baidubce.aigw.models.QueryRoutingListRequest;
 import com.baidubce.aigw.models.QueryRoutingListResponse;
+import com.baidubce.aigw.models.UpdateConsumerRequest;
+import com.baidubce.aigw.models.UpdateConsumerResponse;
 import com.baidubce.aigw.models.UpdateRouteRequest;
 import com.baidubce.aigw.models.UpdateRouteResponse;
 import org.junit.Test;
@@ -35,6 +45,25 @@ public class AigwClientTest {
         aigwClient = new AigwClient(config);
     }
 
+    /**
+     * createConsumer
+     *
+     */
+    @Test
+    public void createConsumerTest() {
+        CreateConsumerRequest createConsumerRequest = new CreateConsumerRequest();
+        createConsumerRequest.setInstanceId("");
+        createConsumerRequest.setConsumerName("");
+        createConsumerRequest.setDescription("");
+        createConsumerRequest.setAuthType("");
+        createConsumerRequest.setCredentialType("");
+        createConsumerRequest.setRouteNames(new ArrayList<>());
+        createConsumerRequest.setTags(new ArrayList<>());
+        createConsumerRequest.setCredential(null);
+        createConsumerRequest.setIamCredential(null);
+        CreateConsumerResponse response = aigwClient.createConsumer(createConsumerRequest);
+        System.out.println(response);
+    }
     /**
      * createRoute
      *
@@ -72,6 +101,19 @@ public class AigwClientTest {
         System.out.println(response);
     }
     /**
+     * deleteConsumer
+     *
+     */
+    @Test
+    public void deleteConsumerTest() {
+        DeleteConsumerRequest deleteConsumerRequest = new DeleteConsumerRequest();
+        deleteConsumerRequest.setInstanceId("");
+        deleteConsumerRequest.setConsumerId("");
+        deleteConsumerRequest.setKeyType("");
+        DeleteConsumerResponse response = aigwClient.deleteConsumer(deleteConsumerRequest);
+        System.out.println(response);
+    }
+    /**
      * deleteRoute
      *
      */
@@ -81,6 +123,34 @@ public class AigwClientTest {
         deleteRouteRequest.setInstanceId("");
         deleteRouteRequest.setRouteName("");
         DeleteRouteResponse response = aigwClient.deleteRoute(deleteRouteRequest);
+        System.out.println(response);
+    }
+    /**
+     * getConsumer
+     *
+     */
+    @Test
+    public void getConsumerTest() {
+        GetConsumerRequest getConsumerRequest = new GetConsumerRequest();
+        getConsumerRequest.setInstanceId("");
+        getConsumerRequest.setConsumerId("");
+        getConsumerRequest.setKeyType("");
+        GetConsumerResponse response = aigwClient.getConsumer(getConsumerRequest);
+        System.out.println(response);
+    }
+    /**
+     * getConsumerList
+     *
+     */
+    @Test
+    public void getConsumerListTest() {
+        GetConsumerListRequest getConsumerListRequest = new GetConsumerListRequest();
+        getConsumerListRequest.setInstanceId("");
+        getConsumerListRequest.setPageNo(0);
+        getConsumerListRequest.setPageSize(0);
+        getConsumerListRequest.setTagKey("");
+        getConsumerListRequest.setTagValue("");
+        GetConsumerListResponse response = aigwClient.getConsumerList(getConsumerListRequest);
         System.out.println(response);
     }
     /**
@@ -109,6 +179,25 @@ public class AigwClientTest {
         queryRoutingListRequest.setOrderBy("");
         queryRoutingListRequest.setOrder("");
         QueryRoutingListResponse response = aigwClient.queryRoutingList(queryRoutingListRequest);
+        System.out.println(response);
+    }
+    /**
+     * updateConsumer
+     *
+     */
+    @Test
+    public void updateConsumerTest() {
+        UpdateConsumerRequest updateConsumerRequest = new UpdateConsumerRequest();
+        updateConsumerRequest.setInstanceId("");
+        updateConsumerRequest.setConsumerId("");
+        updateConsumerRequest.setKeyType("");
+        updateConsumerRequest.setDescription("");
+        updateConsumerRequest.setRouteNames(new ArrayList<>());
+        updateConsumerRequest.setTags(new ArrayList<>());
+        updateConsumerRequest.setCredentialOp(null);
+        updateConsumerRequest.setCredentialLocation(null);
+        updateConsumerRequest.setIamCredential(null);
+        UpdateConsumerResponse response = aigwClient.updateConsumer(updateConsumerRequest);
         System.out.println(response);
     }
     /**

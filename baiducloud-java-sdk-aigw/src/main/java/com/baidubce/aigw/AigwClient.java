@@ -14,14 +14,24 @@ import com.baidubce.util.RequestBodyUtils;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import com.baidubce.aigw.models.CreateConsumerRequest;
+import com.baidubce.aigw.models.CreateConsumerResponse;
 import com.baidubce.aigw.models.CreateRouteRequest;
 import com.baidubce.aigw.models.CreateRouteResponse;
+import com.baidubce.aigw.models.DeleteConsumerRequest;
+import com.baidubce.aigw.models.DeleteConsumerResponse;
 import com.baidubce.aigw.models.DeleteRouteRequest;
 import com.baidubce.aigw.models.DeleteRouteResponse;
+import com.baidubce.aigw.models.GetConsumerListRequest;
+import com.baidubce.aigw.models.GetConsumerListResponse;
+import com.baidubce.aigw.models.GetConsumerRequest;
+import com.baidubce.aigw.models.GetConsumerResponse;
 import com.baidubce.aigw.models.QueryRoutingDetailsRequest;
 import com.baidubce.aigw.models.QueryRoutingDetailsResponse;
 import com.baidubce.aigw.models.QueryRoutingListRequest;
 import com.baidubce.aigw.models.QueryRoutingListResponse;
+import com.baidubce.aigw.models.UpdateConsumerRequest;
+import com.baidubce.aigw.models.UpdateConsumerResponse;
 import com.baidubce.aigw.models.UpdateRouteRequest;
 import com.baidubce.aigw.models.UpdateRouteResponse;
 
@@ -33,7 +43,9 @@ public class AigwClient extends AbstractBceClient {
     private static final String CONSTANT_AIGW = "aigw";
     private static final String CONSTANT_ROUTE = "route";
     private static final String CONSTANT_DETAIL = "detail";
+    private static final String CONSTANT_CONSUMER = "consumer";
     private static final String CONSTANT_CLUSTER = "cluster";
+    private static final String CONSTANT_CONSUMERS = "consumers";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -55,6 +67,18 @@ public class AigwClient extends AbstractBceClient {
     }
 
     /**
+     * createConsumer
+     * 
+     * @param request 入参结构体
+     * @return CreateConsumerResponse
+     */
+    public CreateConsumerResponse createConsumer(CreateConsumerRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), CONSTANT_CONSUMER);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateConsumerResponse.class);
+    }
+
+    /**
      * createRoute
      * 
      * @param request 入参结构体
@@ -68,6 +92,21 @@ public class AigwClient extends AbstractBceClient {
     }
 
     /**
+     * deleteConsumer
+     * 
+     * @param request 入参结构体
+     * @return DeleteConsumerResponse
+     */
+    public DeleteConsumerResponse deleteConsumer(DeleteConsumerRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.DELETE, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), CONSTANT_CONSUMER, request.getConsumerId());
+        if (request.getKeyType() != null) {
+            internalRequest.addParameter("keyType", request.getKeyType());
+        }
+        return invokeHttpClient(internalRequest, DeleteConsumerResponse.class);
+    }
+
+    /**
      * deleteRoute
      * 
      * @param request 入参结构体
@@ -77,6 +116,44 @@ public class AigwClient extends AbstractBceClient {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.DELETE, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), request.getRouteName(), CONSTANT_ROUTE, CONSTANT_DETAIL);
         return invokeHttpClient(internalRequest, DeleteRouteResponse.class);
+    }
+
+    /**
+     * getConsumer
+     * 
+     * @param request 入参结构体
+     * @return GetConsumerResponse
+     */
+    public GetConsumerResponse getConsumer(GetConsumerRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.GET, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), CONSTANT_CONSUMER, request.getConsumerId());
+        if (request.getKeyType() != null) {
+            internalRequest.addParameter("keyType", request.getKeyType());
+        }
+        return invokeHttpClient(internalRequest, GetConsumerResponse.class);
+    }
+
+    /**
+     * getConsumerList
+     * 
+     * @param request 入参结构体
+     * @return GetConsumerListResponse
+     */
+    public GetConsumerListResponse getConsumerList(GetConsumerListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), CONSTANT_CONSUMERS);
+        if (request.getPageNo() != null) {
+            internalRequest.addParameter("pageNo", String.valueOf(request.getPageNo()));
+        }
+        if (request.getPageSize() != null) {
+            internalRequest.addParameter("pageSize", String.valueOf(request.getPageSize()));
+        }
+        if (request.getTagKey() != null) {
+            internalRequest.addParameter("tagKey", request.getTagKey());
+        }
+        if (request.getTagValue() != null) {
+            internalRequest.addParameter("tagValue", request.getTagValue());
+        }
+        return invokeHttpClient(internalRequest, GetConsumerListResponse.class);
     }
 
     /**
@@ -115,6 +192,22 @@ public class AigwClient extends AbstractBceClient {
             internalRequest.addParameter("order", request.getOrder());
         }
         return invokeHttpClient(internalRequest, QueryRoutingListResponse.class);
+    }
+
+    /**
+     * updateConsumer
+     * 
+     * @param request 入参结构体
+     * @return UpdateConsumerResponse
+     */
+    public UpdateConsumerResponse updateConsumer(UpdateConsumerRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), CONSTANT_CONSUMER, request.getConsumerId());
+        if (request.getKeyType() != null) {
+            internalRequest.addParameter("keyType", request.getKeyType());
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, UpdateConsumerResponse.class);
     }
 
     /**
