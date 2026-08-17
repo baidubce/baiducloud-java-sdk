@@ -1,0 +1,106 @@
+package com.baidubce.ocr.models;
+
+import com.baidubce.common.BaseBceResponse;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class MedicalReportDetectionResponse extends BaseBceResponse {
+
+    /**
+    * 错误码
+    */
+    @JsonProperty("error_code")
+    private Integer errorCode;
+
+    /**
+    * 错误描述信息
+    */
+    @JsonProperty("error_msg")
+    private String errorMsg;
+
+    /**
+    * 唯一的log id，用于问题定位
+    */
+    @JsonProperty("log_id")
+    private Long logId;
+
+    /**
+    * 患者具体信息的识别结果数，表示CommonData的元素个数
+    */
+    @JsonProperty("CommonData_result_num")
+    private Integer commonDataResultNum;
+
+    /**
+    * 检查项目的行数，表示Item中的数组个数
+    */
+    @JsonProperty("Item_row_num")
+    private Integer itemRowNum;
+
+    /**
+    * wordsResult
+    */
+    @JsonProperty("words_result")
+    private MedicalReportDetectionWordsResult wordsResult;
+
+    public Integer getErrorCode() {
+        return errorCode;
+    }
+
+    public MedicalReportDetectionResponse setErrorCode(Integer errorCode) {
+        this.errorCode = errorCode;
+        return this;
+    }
+
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public MedicalReportDetectionResponse setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+        return this;
+    }
+
+    public Long getLogId() {
+        return logId;
+    }
+
+    public MedicalReportDetectionResponse setLogId(Long logId) {
+        this.logId = logId;
+        return this;
+    }
+
+    public Integer getCommonDataResultNum() {
+        return commonDataResultNum;
+    }
+
+    public MedicalReportDetectionResponse setCommonDataResultNum(Integer commonDataResultNum) {
+        this.commonDataResultNum = commonDataResultNum;
+        return this;
+    }
+
+    public Integer getItemRowNum() {
+        return itemRowNum;
+    }
+
+    public MedicalReportDetectionResponse setItemRowNum(Integer itemRowNum) {
+        this.itemRowNum = itemRowNum;
+        return this;
+    }
+
+    public MedicalReportDetectionWordsResult getWordsResult() {
+        return wordsResult;
+    }
+
+    public MedicalReportDetectionResponse setWordsResult(MedicalReportDetectionWordsResult wordsResult) {
+        this.wordsResult = wordsResult;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "MedicalReportDetectionResponse{" + "errorCode=" + errorCode + "\n" + "errorMsg=" + errorMsg + "\n" + "logId=" + logId + "\n" + "commonDataResultNum="
+                + commonDataResultNum + "\n" + "itemRowNum=" + itemRowNum + "\n" + "wordsResult=" + wordsResult + "\n" + "}";
+    }
+
+}
