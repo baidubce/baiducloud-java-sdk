@@ -2,6 +2,7 @@ package com.baidubce.bcm.models;
 
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -45,36 +46,43 @@ public class DescribeAlarmTemplatesResponse extends BaseBceResponse {
     /**
     * 报警模板ID
     */
+    @JsonProperty("alarmTemplates.id")
     private String alarmTemplatesId;
 
     /**
     * 云产品类型
     */
+    @JsonProperty("alarmTemplates.scope")
     private String alarmTemplatesScope;
 
     /**
     * 资源类型
     */
+    @JsonProperty("alarmTemplates.resourceType")
     private String alarmTemplatesResourceType;
 
     /**
     * 子资源类型
     */
+    @JsonProperty("alarmTemplates.subResourceType")
     private String alarmTemplatesSubResourceType;
 
     /**
     * 模板名称
     */
+    @JsonProperty("alarmTemplates.name")
     private String alarmTemplatesName;
 
     /**
     * 备注信息
     */
+    @JsonProperty("alarmTemplates.comment")
     private String alarmTemplatesComment;
 
     /**
     * 报警规则列表
     */
+    @JsonProperty("alarmTemplates.rules")
     private List<AlarmRule> alarmTemplatesRules;
 
     public Boolean getSuccess() {

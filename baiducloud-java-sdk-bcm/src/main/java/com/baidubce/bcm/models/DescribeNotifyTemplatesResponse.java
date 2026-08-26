@@ -2,6 +2,7 @@ package com.baidubce.bcm.models;
 
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -30,31 +31,37 @@ public class DescribeNotifyTemplatesResponse extends BaseBceResponse {
     /**
     * 通知模板ID
     */
+    @JsonProperty("notifyTemplates.id")
     private String notifyTemplatesId;
 
     /**
     * 通知模板名称
     */
+    @JsonProperty("notifyTemplates.name")
     private String notifyTemplatesName;
 
     /**
     * 模板来源，可选值：SYSTEM（默认通知模板）/ CUSTOM（用户自定义创建）
     */
+    @JsonProperty("notifyTemplates.source")
     private String notifyTemplatesSource;
 
     /**
     * 静默时间段列表
     */
+    @JsonProperty("notifyTemplates.silencePeriods")
     private List<SilencePeriod> notifyTemplatesSilencePeriods;
 
     /**
     * 通知接收者列表
     */
+    @JsonProperty("notifyTemplates.receivers")
     private List<NotifyReceiver> notifyTemplatesReceivers;
 
     /**
     * 回调配置列表
     */
+    @JsonProperty("notifyTemplates.callbacks")
     private List<Callback> notifyTemplatesCallbacks;
 
     public Boolean getSuccess() {

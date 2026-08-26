@@ -4,11 +4,10 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.bcm.BcmClient;
-import com.baidubce.bcm.models.UpdateAlarmMaskingStatesRequest;
-import com.baidubce.bcm.models.UpdateAlarmMaskingStatesResponse;
-import java.util.ArrayList;
+import com.baidubce.bcm.models.DescribeResourceCatalogsRequest;
+import com.baidubce.bcm.models.DescribeResourceCatalogsResponse;
 
-public class ExampleUpdateAlarmMaskingStates {
+public class ExampleDescribeResourceCatalogs {
     public static void main(String[] args) {
         String endpoint = "Your Endpoint";
         BceClientConfiguration bceClientConfig = new BceClientConfiguration();
@@ -20,11 +19,10 @@ public class ExampleUpdateAlarmMaskingStates {
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
 
         BcmClient client = new BcmClient(bceClientConfig);
-        UpdateAlarmMaskingStatesRequest updateAlarmMaskingStatesRequest = new UpdateAlarmMaskingStatesRequest();
-        updateAlarmMaskingStatesRequest.setIds(new ArrayList<>());
-        updateAlarmMaskingStatesRequest.setState("");
+        DescribeResourceCatalogsRequest describeResourceCatalogsRequest = new DescribeResourceCatalogsRequest();
+        describeResourceCatalogsRequest.setLocale("");
         try {
-            UpdateAlarmMaskingStatesResponse response = client.updateAlarmMaskingStates(updateAlarmMaskingStatesRequest);
+            DescribeResourceCatalogsResponse response = client.describeResourceCatalogs(describeResourceCatalogsRequest);
             System.out.println(response.toJsonString());
         } catch (BceClientException e) {
             System.out.println(e.getMessage());
