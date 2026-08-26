@@ -1,32 +1,38 @@
 package com.baidubce.bcm.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Receiver {
     /**
      * 用户/用户组ID
      */
+    @JsonProperty("receivers.id")
     private String receiversId;
 
     /**
      * 主账户对应的domainId
      */
+    @JsonProperty("receivers.domainId")
     private String receiversDomainId;
 
     /**
      * 用户/用户组名称
      */
+    @JsonProperty("receivers.name")
     private String receiversName;
 
     /**
      * 用户配置的邮箱
      */
+    @JsonProperty("receivers.email")
     private String receiversEmail;
 
     /**
      * 用户配置的电话号码
      */
+    @JsonProperty("receivers.phone")
     private String receiversPhone;
 
     public Receiver setReceiversId(String receiversId) {

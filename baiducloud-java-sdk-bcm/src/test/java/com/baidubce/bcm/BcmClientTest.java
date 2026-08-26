@@ -48,6 +48,8 @@ import com.baidubce.bcm.models.DescribeInstanceGroupRequest;
 import com.baidubce.bcm.models.DescribeInstanceGroupResponse;
 import com.baidubce.bcm.models.DescribeInstanceGroupsRequest;
 import com.baidubce.bcm.models.DescribeInstanceGroupsResponse;
+import com.baidubce.bcm.models.DescribeMetricCatalogsRequest;
+import com.baidubce.bcm.models.DescribeMetricCatalogsResponse;
 import com.baidubce.bcm.models.DescribeMetricDataLatestRequest;
 import com.baidubce.bcm.models.DescribeMetricDataLatestResponse;
 import com.baidubce.bcm.models.DescribeMetricDataLatestTopRequest;
@@ -60,6 +62,8 @@ import com.baidubce.bcm.models.DescribeNotifyTemplatesRequest;
 import com.baidubce.bcm.models.DescribeNotifyTemplatesResponse;
 import com.baidubce.bcm.models.DescribeReceiversRequest;
 import com.baidubce.bcm.models.DescribeReceiversResponse;
+import com.baidubce.bcm.models.DescribeResourceCatalogsRequest;
+import com.baidubce.bcm.models.DescribeResourceCatalogsResponse;
 import com.baidubce.bcm.models.DescribeSystemTemplateRulesRequest;
 import com.baidubce.bcm.models.DescribeSystemTemplateRulesResponse;
 import com.baidubce.bcm.models.ExportAlarmTemplatesRequest;
@@ -100,7 +104,10 @@ public class BcmClientTest {
     @Before
     public void setUp() {
         BceClientConfiguration config = new BceClientConfiguration();
+
+        // ==== AK/SK 鉴权 ====
         config.setCredentials(new DefaultBceCredentials(AK, SK));
+
         bcmClient = new BcmClient(config);
     }
 
@@ -458,6 +465,27 @@ public class BcmClientTest {
         System.out.println(response);
     }
     /**
+     * describeMetricCatalogs
+     *
+     */
+    @Test
+    public void describeMetricCatalogsTest() {
+        DescribeMetricCatalogsRequest describeMetricCatalogsRequest = new DescribeMetricCatalogsRequest();
+        describeMetricCatalogsRequest.setLocale("");
+        describeMetricCatalogsRequest.setScope("");
+        describeMetricCatalogsRequest.setResourceType("");
+        describeMetricCatalogsRequest.setCatalog("");
+        describeMetricCatalogsRequest.setFilters(new ArrayList<>());
+        describeMetricCatalogsRequest.setFiltersKey("");
+        describeMetricCatalogsRequest.setFiltersOp("");
+        describeMetricCatalogsRequest.setFiltersValue("");
+        describeMetricCatalogsRequest.setFiltersValues(new ArrayList<>());
+        describeMetricCatalogsRequest.setIncludingDimensions(new ArrayList<>());
+        describeMetricCatalogsRequest.setExcludingDimensions(new ArrayList<>());
+        DescribeMetricCatalogsResponse response = bcmClient.describeMetricCatalogs(describeMetricCatalogsRequest);
+        System.out.println(response);
+    }
+    /**
      * describeMetricData
      *
      */
@@ -559,6 +587,17 @@ public class BcmClientTest {
         describeReceiversRequest.setPageNo(0);
         describeReceiversRequest.setPageSize(0);
         DescribeReceiversResponse response = bcmClient.describeReceivers(describeReceiversRequest);
+        System.out.println(response);
+    }
+    /**
+     * describeResourceCatalogs
+     *
+     */
+    @Test
+    public void describeResourceCatalogsTest() {
+        DescribeResourceCatalogsRequest describeResourceCatalogsRequest = new DescribeResourceCatalogsRequest();
+        describeResourceCatalogsRequest.setLocale("");
+        DescribeResourceCatalogsResponse response = bcmClient.describeResourceCatalogs(describeResourceCatalogsRequest);
         System.out.println(response);
     }
     /**

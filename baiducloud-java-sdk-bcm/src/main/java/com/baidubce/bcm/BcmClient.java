@@ -62,6 +62,8 @@ import com.baidubce.bcm.models.DescribeInstanceGroupRequest;
 import com.baidubce.bcm.models.DescribeInstanceGroupResponse;
 import com.baidubce.bcm.models.DescribeInstanceGroupsRequest;
 import com.baidubce.bcm.models.DescribeInstanceGroupsResponse;
+import com.baidubce.bcm.models.DescribeMetricCatalogsRequest;
+import com.baidubce.bcm.models.DescribeMetricCatalogsResponse;
 import com.baidubce.bcm.models.DescribeMetricDataLatestRequest;
 import com.baidubce.bcm.models.DescribeMetricDataLatestResponse;
 import com.baidubce.bcm.models.DescribeMetricDataLatestTopRequest;
@@ -74,6 +76,8 @@ import com.baidubce.bcm.models.DescribeNotifyTemplatesRequest;
 import com.baidubce.bcm.models.DescribeNotifyTemplatesResponse;
 import com.baidubce.bcm.models.DescribeReceiversRequest;
 import com.baidubce.bcm.models.DescribeReceiversResponse;
+import com.baidubce.bcm.models.DescribeResourceCatalogsRequest;
+import com.baidubce.bcm.models.DescribeResourceCatalogsResponse;
 import com.baidubce.bcm.models.DescribeSystemTemplateRulesRequest;
 import com.baidubce.bcm.models.DescribeSystemTemplateRulesResponse;
 import com.baidubce.bcm.models.ExportAlarmTemplatesRequest;
@@ -438,6 +442,20 @@ public class BcmClient extends AbstractBceClient {
     }
 
     /**
+     * describeMetricCatalogs
+     * 
+     * @param request 入参结构体
+     * @return DescribeMetricCatalogsResponse
+     */
+    public DescribeMetricCatalogsResponse describeMetricCatalogs(DescribeMetricCatalogsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "DescribeMetricCatalogs");
+        internalRequest.addParameter("locale", "zh-cn");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeMetricCatalogsResponse.class);
+    }
+
+    /**
      * describeMetricData
      * 
      * @param request 入参结构体
@@ -513,6 +531,19 @@ public class BcmClient extends AbstractBceClient {
         internalRequest.addParameter("action", "DescribeReceivers");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, DescribeReceiversResponse.class);
+    }
+
+    /**
+     * describeResourceCatalogs
+     * 
+     * @param request 入参结构体
+     * @return DescribeResourceCatalogsResponse
+     */
+    public DescribeResourceCatalogsResponse describeResourceCatalogs(DescribeResourceCatalogsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V3, CONSTANT_BCM);
+        internalRequest.addParameter("action", "DescribeResourceCatalogs");
+        internalRequest.addParameter("locale", "zh-cn");
+        return invokeHttpClient(internalRequest, DescribeResourceCatalogsResponse.class);
     }
 
     /**
