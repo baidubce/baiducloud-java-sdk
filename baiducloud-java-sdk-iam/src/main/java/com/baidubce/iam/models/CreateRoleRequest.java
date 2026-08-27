@@ -17,6 +17,11 @@ public class CreateRoleRequest extends BaseBceRequest {
     private String description;
 
     /**
+    * 扮演角色的载体类型
+    */
+    private String grantType;
+
+    /**
     * 指定允许扮演角色的载体
     */
     private String assumeRolePolicyDocument;
@@ -36,6 +41,15 @@ public class CreateRoleRequest extends BaseBceRequest {
 
     public CreateRoleRequest setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public String getGrantType() {
+        return grantType;
+    }
+
+    public CreateRoleRequest setGrantType(String grantType) {
+        this.grantType = grantType;
         return this;
     }
 
