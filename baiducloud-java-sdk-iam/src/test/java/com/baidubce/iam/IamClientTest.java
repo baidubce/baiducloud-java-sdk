@@ -95,7 +95,10 @@ public class IamClientTest {
     @Before
     public void setUp() {
         BceClientConfiguration config = new BceClientConfiguration();
+
+        // ==== AK/SK 鉴权 ====
         config.setCredentials(new DefaultBceCredentials(AK, SK));
+
         iamClient = new IamClient(config);
     }
 
@@ -200,6 +203,7 @@ public class IamClientTest {
         CreateRoleRequest createRoleRequest = new CreateRoleRequest();
         createRoleRequest.setName("");
         createRoleRequest.setDescription("");
+        createRoleRequest.setGrantType("");
         createRoleRequest.setAssumeRolePolicyDocument("");
         iamClient.createRole(createRoleRequest);
     }

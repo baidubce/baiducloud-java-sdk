@@ -2,6 +2,7 @@ package com.baidubce.iam.models;
 
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -30,6 +31,7 @@ public class ListTheSubjectsGrantedPermissionsResponse extends BaseBceResponse {
     /**
     * 策略被授予时间
     */
+    @JsonProperty("attach_time")
     private String attachTime;
 
     public List<AttachedEntities> getEntities() {
