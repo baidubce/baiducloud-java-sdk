@@ -1,0 +1,135 @@
+package com.baidubce.ocr.models;
+
+import com.baidubce.common.BaseBceResponse;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class WebImageResponse extends BaseBceResponse {
+
+    /**
+    * 错误码
+    */
+    @JsonProperty("error_code")
+    private Integer errorCode;
+
+    /**
+    * 错误信息
+    */
+    @JsonProperty("error_msg")
+    private String errorMsg;
+
+    /**
+    * 唯一的log id，用于问题定位
+    */
+    @JsonProperty("log_id")
+    private Long logId;
+
+    /**
+    * 图像中识别出的语言类型，-1表示未知语言
+    */
+    private Integer language;
+
+    /**
+    * 图像方向，当 detect_direction=true 时返回该字段
+    */
+    private Integer direction;
+
+    /**
+    * 定位和识别结果数组
+    */
+    @JsonProperty("words_result")
+    private List<WebImageWordsResult> wordsResult;
+
+    /**
+    * 识别结果数，表示words_result的元素个数
+    */
+    @JsonProperty("words_result_num")
+    private Integer wordsResultNum;
+
+    /**
+    * 传入PDF文件的总页数，当 pdf_file 参数有效时返回该字段
+    */
+    @JsonProperty("pdf_file_size")
+    private Integer pdfFileSize;
+
+    public Integer getErrorCode() {
+        return errorCode;
+    }
+
+    public WebImageResponse setErrorCode(Integer errorCode) {
+        this.errorCode = errorCode;
+        return this;
+    }
+
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public WebImageResponse setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+        return this;
+    }
+
+    public Long getLogId() {
+        return logId;
+    }
+
+    public WebImageResponse setLogId(Long logId) {
+        this.logId = logId;
+        return this;
+    }
+
+    public Integer getLanguage() {
+        return language;
+    }
+
+    public WebImageResponse setLanguage(Integer language) {
+        this.language = language;
+        return this;
+    }
+
+    public Integer getDirection() {
+        return direction;
+    }
+
+    public WebImageResponse setDirection(Integer direction) {
+        this.direction = direction;
+        return this;
+    }
+
+    public List<WebImageWordsResult> getWordsResult() {
+        return wordsResult;
+    }
+
+    public WebImageResponse setWordsResult(List<WebImageWordsResult> wordsResult) {
+        this.wordsResult = wordsResult;
+        return this;
+    }
+
+    public Integer getWordsResultNum() {
+        return wordsResultNum;
+    }
+
+    public WebImageResponse setWordsResultNum(Integer wordsResultNum) {
+        this.wordsResultNum = wordsResultNum;
+        return this;
+    }
+
+    public Integer getPdfFileSize() {
+        return pdfFileSize;
+    }
+
+    public WebImageResponse setPdfFileSize(Integer pdfFileSize) {
+        this.pdfFileSize = pdfFileSize;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "WebImageResponse{" + "errorCode=" + errorCode + "\n" + "errorMsg=" + errorMsg + "\n" + "logId=" + logId + "\n" + "language=" + language + "\n" + "direction="
+                + direction + "\n" + "wordsResult=" + wordsResult + "\n" + "wordsResultNum=" + wordsResultNum + "\n" + "pdfFileSize=" + pdfFileSize + "\n" + "}";
+    }
+
+}
