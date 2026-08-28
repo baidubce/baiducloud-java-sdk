@@ -1,0 +1,82 @@
+package com.baidubce.ocr.models;
+
+import com.baidubce.common.BaseBceRequest;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class WeightNoteRequest extends BaseBceRequest {
+
+    /**
+    * 图像数据，base64编码后进行urlencode，要求base64编码和urlencode后大小不超过4M，最短边至少15px，最长边最大4096px，支持jpg/jpeg/png/bmp格式
+    */
+    private String image;
+
+    /**
+    * 图片完整url，url长度不超过1024字节，url对应的图片base64编码后大小不超过4M，最短边至少15px，最长边最大4096px，支持jpg/jpeg/png/bmp格式，当image字段存在时url字段失效。请注意关闭URL防盗链
+    */
+    private String url;
+
+    /**
+    * PDF文件，base64编码后进行urlencode，要求base64编码和urlencode后大小不超过4M，最短边至少15px，最长边最大4096px。<br/><strong>优先级</strong>：image > url > pdf_file，当image、url字段存在时，pdf_file字段失效
+    */
+    @JsonProperty("pdf_file")
+    private String pdfFile;
+
+    /**
+    * 需要识别的PDF文件的对应页码，当pdf_file参数有效时，识别传入页码的对应页面内容，若不传入，则默认识别第1页
+    */
+    @JsonProperty("pdf_file_num")
+    private Integer pdfFileNum;
+
+    /**
+    * 是否返回字段识别结果的置信度，<strong>默认为false，可缺省</strong><br/>- false：不返回字段识别结果的置信度 <br/>- true：返回字段识别结果的置信度，包括字段识别结果中各字符置信度的平均值（average）和最小值（min）
+    */
+    private Boolean probability;
+
+    public String getImage() {
+        return image;
+    }
+
+    public WeightNoteRequest setImage(String image) {
+        this.image = image;
+        return this;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public WeightNoteRequest setUrl(String url) {
+        this.url = url;
+        return this;
+    }
+
+    public String getPdfFile() {
+        return pdfFile;
+    }
+
+    public WeightNoteRequest setPdfFile(String pdfFile) {
+        this.pdfFile = pdfFile;
+        return this;
+    }
+
+    public Integer getPdfFileNum() {
+        return pdfFileNum;
+    }
+
+    public WeightNoteRequest setPdfFileNum(Integer pdfFileNum) {
+        this.pdfFileNum = pdfFileNum;
+        return this;
+    }
+
+    public Boolean getProbability() {
+        return probability;
+    }
+
+    public WeightNoteRequest setProbability(Boolean probability) {
+        this.probability = probability;
+        return this;
+    }
+
+}

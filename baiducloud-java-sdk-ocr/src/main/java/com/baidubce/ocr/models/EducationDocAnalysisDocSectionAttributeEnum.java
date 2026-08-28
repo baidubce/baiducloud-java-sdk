@@ -1,0 +1,33 @@
+package com.baidubce.ocr.models;
+
+/**
+ * Gets or Sets EducationDocAnalysisDocSectionAttributeEnum
+ */
+public enum EducationDocAnalysisDocSectionAttributeEnum {
+
+    SECTION("section"),
+
+    HEADER("header"),
+
+    FOOTER("footer"),
+
+    NUMBER("number"),
+
+    FOOTNOTE("footnote");
+
+    private String value;
+
+    EducationDocAnalysisDocSectionAttributeEnum(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+}

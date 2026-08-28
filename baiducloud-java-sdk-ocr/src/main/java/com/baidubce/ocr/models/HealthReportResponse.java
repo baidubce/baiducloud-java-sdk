@@ -36,7 +36,7 @@ public class HealthReportResponse extends BaseBceResponse {
     * 识别结果列表
     */
     @JsonProperty("words_result")
-    private List<WordResult> wordsResult;
+    private List<HealthReportWordResult> wordsResult;
 
     public Integer getErrorCode() {
         return errorCode;
@@ -74,11 +74,11 @@ public class HealthReportResponse extends BaseBceResponse {
         return this;
     }
 
-    public List<WordResult> getWordsResult() {
+    public List<HealthReportWordResult> getWordsResult() {
         return wordsResult;
     }
 
-    public HealthReportResponse setWordsResult(List<WordResult> wordsResult) {
+    public HealthReportResponse setWordsResult(List<HealthReportWordResult> wordsResult) {
         this.wordsResult = wordsResult;
         return this;
     }

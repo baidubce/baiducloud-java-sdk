@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class WordResult {
+public class HealthReportWordResult {
     /**
      * 字段名，包括：医院名称、报告名称、姓名、性别、年龄、科室、临床诊断、报告日期、检查部位、检查方法、检查所见、检查提示、建议、肉眼可见
      */
@@ -26,7 +26,7 @@ public class WordResult {
      */
     private HealthReportProbability probability;
 
-    public WordResult setWordName(String wordName) {
+    public HealthReportWordResult setWordName(String wordName) {
         this.wordName = wordName;
         return this;
     }
@@ -35,7 +35,7 @@ public class WordResult {
         return this.wordName;
     }
 
-    public WordResult setWord(String word) {
+    public HealthReportWordResult setWord(String word) {
         this.word = word;
         return this;
     }
@@ -44,7 +44,7 @@ public class WordResult {
         return this.word;
     }
 
-    public WordResult setLocation(HealthReportLocation location) {
+    public HealthReportWordResult setLocation(HealthReportLocation location) {
         this.location = location;
         return this;
     }
@@ -53,7 +53,7 @@ public class WordResult {
         return this.location;
     }
 
-    public WordResult setProbability(HealthReportProbability probability) {
+    public HealthReportWordResult setProbability(HealthReportProbability probability) {
         this.probability = probability;
         return this;
     }
@@ -64,7 +64,7 @@ public class WordResult {
 
     @Override
     public String toString() {
-        return "WordResult{" + "wordName=" + wordName + "\n" + "word=" + word + "\n" + "location=" + location + "\n" + "probability=" + probability + "\n" + "}";
+        return "HealthReportWordResult{" + "wordName=" + wordName + "\n" + "word=" + word + "\n" + "location=" + location + "\n" + "probability=" + probability + "\n" + "}";
     }
 
 }
