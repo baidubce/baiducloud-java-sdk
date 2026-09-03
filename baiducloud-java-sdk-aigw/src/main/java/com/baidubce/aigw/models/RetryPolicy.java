@@ -5,17 +5,17 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class RetryPolicy {
     /**
-     * 是否启用
+     * 是否启用重试策略
      */
     private Boolean enabled;
 
     /**
-     * 重试条件
+     * 重试条件，多个条件使用逗号分隔
      */
     private String retryConditions;
 
     /**
-     * 重试次数
+     * 重试次数，范围为 1～10
      */
     private Integer numRetries;
 

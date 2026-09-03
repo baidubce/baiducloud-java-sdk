@@ -52,8 +52,8 @@ public class ExampleUpdateRoute {
         targetService.setHashType("");
         targetService.setHashKey("");
         targetService.setRequestRatio(0);
-        targetService.setWeightFactor(0);
         targetService.setModelName("");
+        targetService.setWeightFactor(0);
         targetService.setModelNameMode("");
         targetService.setSpecifiedModelName("");
 
@@ -115,6 +115,7 @@ public class ExampleUpdateRoute {
         UpdateRouteRequest updateRouteRequest = new UpdateRouteRequest();
         updateRouteRequest.setInstanceId("");
         updateRouteRequest.setRouteName("");
+        updateRouteRequest.setXRegion("");
         updateRouteRequest.setSrcProduct("");
         updateRouteRequest.setAccessMode("");
         updateRouteRequest.setWebSubdomain("");

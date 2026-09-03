@@ -14,38 +14,64 @@ import com.baidubce.util.RequestBodyUtils;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import com.baidubce.aigw.models.CreateAIGatewayRequest;
+import com.baidubce.aigw.models.CreateAIGatewayResponse;
 import com.baidubce.aigw.models.CreateConsumerRequest;
 import com.baidubce.aigw.models.CreateConsumerResponse;
 import com.baidubce.aigw.models.CreateRouteRequest;
 import com.baidubce.aigw.models.CreateRouteResponse;
+import com.baidubce.aigw.models.CreateServiceRequest;
+import com.baidubce.aigw.models.CreateServiceResponse;
+import com.baidubce.aigw.models.DeleteAIGatewayRequest;
+import com.baidubce.aigw.models.DeleteAIGatewayResponse;
 import com.baidubce.aigw.models.DeleteConsumerRequest;
 import com.baidubce.aigw.models.DeleteConsumerResponse;
 import com.baidubce.aigw.models.DeleteRouteRequest;
 import com.baidubce.aigw.models.DeleteRouteResponse;
+import com.baidubce.aigw.models.DeleteServiceRequest;
+import com.baidubce.aigw.models.DeleteServiceResponse;
+import com.baidubce.aigw.models.GetAIGatewayDetailRequest;
+import com.baidubce.aigw.models.GetAIGatewayDetailResponse;
 import com.baidubce.aigw.models.GetConsumerListRequest;
 import com.baidubce.aigw.models.GetConsumerListResponse;
 import com.baidubce.aigw.models.GetConsumerRequest;
 import com.baidubce.aigw.models.GetConsumerResponse;
+import com.baidubce.aigw.models.GetServiceDetailRequest;
+import com.baidubce.aigw.models.GetServiceDetailResponse;
+import com.baidubce.aigw.models.GetServiceListRequest;
+import com.baidubce.aigw.models.GetServiceListResponse;
+import com.baidubce.aigw.models.ListAIGatewaysRequest;
+import com.baidubce.aigw.models.ListAIGatewaysResponse;
+import com.baidubce.aigw.models.ListServicesBySourceRequest;
+import com.baidubce.aigw.models.ListServicesBySourceResponse;
 import com.baidubce.aigw.models.QueryRoutingDetailsRequest;
 import com.baidubce.aigw.models.QueryRoutingDetailsResponse;
 import com.baidubce.aigw.models.QueryRoutingListRequest;
 import com.baidubce.aigw.models.QueryRoutingListResponse;
+import com.baidubce.aigw.models.UpdateAIGatewayRequest;
+import com.baidubce.aigw.models.UpdateAIGatewayResponse;
 import com.baidubce.aigw.models.UpdateConsumerRequest;
 import com.baidubce.aigw.models.UpdateConsumerResponse;
 import com.baidubce.aigw.models.UpdateRouteRequest;
 import com.baidubce.aigw.models.UpdateRouteResponse;
+import com.baidubce.aigw.models.UpdateServiceRequest;
+import com.baidubce.aigw.models.UpdateServiceResponse;
 
 public class AigwClient extends AbstractBceClient {
 
     private static final String[] HEADERS_TO_SIGN = {"host", "x-bce-date"};
 
     private static final String CONSTANT_V1 = "v1";
+    private static final String CONSTANT_AIGATEWAY = "aigateway";
     private static final String CONSTANT_AIGW = "aigw";
+    private static final String CONSTANT_SERVICE = "service";
     private static final String CONSTANT_ROUTE = "route";
     private static final String CONSTANT_DETAIL = "detail";
-    private static final String CONSTANT_CONSUMER = "consumer";
     private static final String CONSTANT_CLUSTER = "cluster";
+    private static final String CONSTANT_CONSUMER = "consumer";
+    private static final String CONSTANT_SERVICE_LIST = "serviceList";
     private static final String CONSTANT_CONSUMERS = "consumers";
+    private static final String CONSTANT_LIST = "list";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -67,6 +93,21 @@ public class AigwClient extends AbstractBceClient {
     }
 
     /**
+     * createAIGateway
+     * 
+     * @param request 入参结构体
+     * @return CreateAIGatewayResponse
+     */
+    public CreateAIGatewayResponse createAIGateway(CreateAIGatewayRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_AIGATEWAY);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateAIGatewayResponse.class);
+    }
+
+    /**
      * createConsumer
      * 
      * @param request 入参结构体
@@ -74,6 +115,9 @@ public class AigwClient extends AbstractBceClient {
      */
     public CreateConsumerResponse createConsumer(CreateConsumerRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), CONSTANT_CONSUMER);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateConsumerResponse.class);
     }
@@ -87,8 +131,44 @@ public class AigwClient extends AbstractBceClient {
     public CreateRouteResponse createRoute(CreateRouteRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), request.getClusterId(), CONSTANT_ROUTE);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateRouteResponse.class);
+    }
+
+    /**
+     * createService
+     * 
+     * @param request 入参结构体
+     * @return CreateServiceResponse
+     */
+    public CreateServiceResponse createService(CreateServiceRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_AIGW, CONSTANT_CLUSTER, request.getInstanceId(), CONSTANT_SERVICE_LIST);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateServiceResponse.class);
+    }
+
+    /**
+     * deleteAIGateway
+     * 
+     * @param request 入参结构体
+     * @return DeleteAIGatewayResponse
+     */
+    public DeleteAIGatewayResponse deleteAIGateway(DeleteAIGatewayRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, CONSTANT_V1, CONSTANT_AIGATEWAY, request.getInstanceId());
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
+        if (request.getForce() != null) {
+            internalRequest.addParameter("force", String.valueOf(request.getForce()));
+        }
+        return invokeHttpClient(internalRequest, DeleteAIGatewayResponse.class);
     }
 
     /**
@@ -100,6 +180,9 @@ public class AigwClient extends AbstractBceClient {
     public DeleteConsumerResponse deleteConsumer(DeleteConsumerRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.DELETE, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), CONSTANT_CONSUMER, request.getConsumerId());
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
         if (request.getKeyType() != null) {
             internalRequest.addParameter("keyType", request.getKeyType());
         }
@@ -115,7 +198,50 @@ public class AigwClient extends AbstractBceClient {
     public DeleteRouteResponse deleteRoute(DeleteRouteRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.DELETE, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), request.getRouteName(), CONSTANT_ROUTE, CONSTANT_DETAIL);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
         return invokeHttpClient(internalRequest, DeleteRouteResponse.class);
+    }
+
+    /**
+     * deleteService
+     * 
+     * @param request 入参结构体
+     * @return DeleteServiceResponse
+     */
+    public DeleteServiceResponse deleteService(DeleteServiceRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(
+                        request,
+                        HttpMethodName.DELETE,
+                        CONSTANT_V1,
+                        CONSTANT_AIGW,
+                        request.getInstanceId(),
+                        request.getServiceName(),
+                        request.getNamespace(),
+                        CONSTANT_SERVICE);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
+        return invokeHttpClient(internalRequest, DeleteServiceResponse.class);
+    }
+
+    /**
+     * getAIGatewayDetail
+     * 
+     * @param request 入参结构体
+     * @return GetAIGatewayDetailResponse
+     */
+    public GetAIGatewayDetailResponse getAIGatewayDetail(GetAIGatewayDetailRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_V1, CONSTANT_AIGATEWAY, request.getInstanceId());
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
+        if (request.getSrcProduct() != null) {
+            internalRequest.addParameter("srcProduct", request.getSrcProduct());
+        }
+        return invokeHttpClient(internalRequest, GetAIGatewayDetailResponse.class);
     }
 
     /**
@@ -127,6 +253,9 @@ public class AigwClient extends AbstractBceClient {
     public GetConsumerResponse getConsumer(GetConsumerRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.GET, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), CONSTANT_CONSUMER, request.getConsumerId());
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
         if (request.getKeyType() != null) {
             internalRequest.addParameter("keyType", request.getKeyType());
         }
@@ -141,6 +270,9 @@ public class AigwClient extends AbstractBceClient {
      */
     public GetConsumerListResponse getConsumerList(GetConsumerListRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), CONSTANT_CONSUMERS);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
         if (request.getPageNo() != null) {
             internalRequest.addParameter("pageNo", String.valueOf(request.getPageNo()));
         }
@@ -157,6 +289,102 @@ public class AigwClient extends AbstractBceClient {
     }
 
     /**
+     * getServiceDetail
+     * 
+     * @param request 入参结构体
+     * @return GetServiceDetailResponse
+     */
+    public GetServiceDetailResponse getServiceDetail(GetServiceDetailRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.GET, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), request.getServiceName(), CONSTANT_SERVICE);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
+        return invokeHttpClient(internalRequest, GetServiceDetailResponse.class);
+    }
+
+    /**
+     * getServiceList
+     * 
+     * @param request 入参结构体
+     * @return GetServiceListResponse
+     */
+    public GetServiceListResponse getServiceList(GetServiceListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), CONSTANT_SERVICE);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
+        if (request.getServiceSource() != null) {
+            internalRequest.addParameter("serviceSource", request.getServiceSource());
+        }
+        return invokeHttpClient(internalRequest, GetServiceListResponse.class);
+    }
+
+    /**
+     * listAIGateways
+     * 
+     * @param request 入参结构体
+     * @return ListAIGatewaysResponse
+     */
+    public ListAIGatewaysResponse listAIGateways(ListAIGatewaysRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_V1, CONSTANT_AIGATEWAY, CONSTANT_LIST);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
+        if (request.getKeyword() != null) {
+            internalRequest.addParameter("keyword", request.getKeyword());
+        }
+        if (request.getKeywordType() != null) {
+            internalRequest.addParameter("keywordType", request.getKeywordType());
+        }
+        if (request.getStatus() != null) {
+            internalRequest.addParameter("status", request.getStatus());
+        }
+        if (request.getSrcProduct() != null) {
+            internalRequest.addParameter("srcProduct", request.getSrcProduct());
+        }
+        if (request.getTagKey() != null) {
+            internalRequest.addParameter("tagKey", request.getTagKey());
+        }
+        if (request.getTagValue() != null) {
+            internalRequest.addParameter("tagValue", request.getTagValue());
+        }
+        if (request.getResourceGroupId() != null) {
+            internalRequest.addParameter("resourceGroupId", request.getResourceGroupId());
+        }
+        if (request.getPageNo() != null) {
+            internalRequest.addParameter("pageNo", String.valueOf(request.getPageNo()));
+        }
+        if (request.getPageSize() != null) {
+            internalRequest.addParameter("pageSize", String.valueOf(request.getPageSize()));
+        }
+        if (request.getOrderBy() != null) {
+            internalRequest.addParameter("orderBy", request.getOrderBy());
+        }
+        if (request.getOrder() != null) {
+            internalRequest.addParameter("order", request.getOrder());
+        }
+        return invokeHttpClient(internalRequest, ListAIGatewaysResponse.class);
+    }
+
+    /**
+     * listServicesBySource
+     * 
+     * @param request 入参结构体
+     * @return ListServicesBySourceResponse
+     */
+    public ListServicesBySourceResponse listServicesBySource(ListServicesBySourceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), CONSTANT_SERVICE);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
+        if (request.getServiceSource() != null) {
+            internalRequest.addParameter("serviceSource", request.getServiceSource());
+        }
+        return invokeHttpClient(internalRequest, ListServicesBySourceResponse.class);
+    }
+
+    /**
      * queryRoutingDetails
      * 
      * @param request 入参结构体
@@ -165,6 +393,9 @@ public class AigwClient extends AbstractBceClient {
     public QueryRoutingDetailsResponse queryRoutingDetails(QueryRoutingDetailsRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.GET, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), request.getRouteName(), CONSTANT_ROUTE, CONSTANT_DETAIL);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
         return invokeHttpClient(internalRequest, QueryRoutingDetailsResponse.class);
     }
 
@@ -176,6 +407,9 @@ public class AigwClient extends AbstractBceClient {
      */
     public QueryRoutingListResponse queryRoutingList(QueryRoutingListRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_V1, CONSTANT_AIGW, CONSTANT_CLUSTER, request.getInstanceId(), CONSTANT_ROUTE);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
         if (request.getRouteName() != null) {
             internalRequest.addParameter("routeName", request.getRouteName());
         }
@@ -195,6 +429,21 @@ public class AigwClient extends AbstractBceClient {
     }
 
     /**
+     * updateAIGateway
+     * 
+     * @param request 入参结构体
+     * @return UpdateAIGatewayResponse
+     */
+    public UpdateAIGatewayResponse updateAIGateway(UpdateAIGatewayRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, CONSTANT_V1, CONSTANT_AIGATEWAY, request.getInstanceId());
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, UpdateAIGatewayResponse.class);
+    }
+
+    /**
      * updateConsumer
      * 
      * @param request 入参结构体
@@ -203,6 +452,9 @@ public class AigwClient extends AbstractBceClient {
     public UpdateConsumerResponse updateConsumer(UpdateConsumerRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.PUT, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), CONSTANT_CONSUMER, request.getConsumerId());
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
         if (request.getKeyType() != null) {
             internalRequest.addParameter("keyType", request.getKeyType());
         }
@@ -219,8 +471,27 @@ public class AigwClient extends AbstractBceClient {
     public UpdateRouteResponse updateRoute(UpdateRouteRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.PUT, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), request.getRouteName(), CONSTANT_ROUTE, CONSTANT_DETAIL);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, UpdateRouteResponse.class);
+    }
+
+    /**
+     * updateService
+     * 
+     * @param request 入参结构体
+     * @return UpdateServiceResponse
+     */
+    public UpdateServiceResponse updateService(UpdateServiceRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, CONSTANT_V1, CONSTANT_AIGW, request.getInstanceId(), request.getServiceNamePath(), CONSTANT_SERVICE);
+        if (request.getXRegion() != null) {
+            internalRequest.addHeader("X-Region", String.valueOf(request.getXRegion()));
+        }
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, UpdateServiceResponse.class);
     }
 
     /**

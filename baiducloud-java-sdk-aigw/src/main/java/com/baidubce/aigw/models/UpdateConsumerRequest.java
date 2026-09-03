@@ -27,6 +27,12 @@ public class UpdateConsumerRequest extends BaseBceRequest {
     private String keyType;
 
     /**
+    * xRegion
+    */
+    @JsonIgnore
+    private String xRegion;
+
+    /**
     * 描述
     */
     private String description;
@@ -80,6 +86,15 @@ public class UpdateConsumerRequest extends BaseBceRequest {
 
     public UpdateConsumerRequest setKeyType(String keyType) {
         this.keyType = keyType;
+        return this;
+    }
+
+    public String getXRegion() {
+        return xRegion;
+    }
+
+    public UpdateConsumerRequest setXRegion(String xRegion) {
+        this.xRegion = xRegion;
         return this;
     }
 

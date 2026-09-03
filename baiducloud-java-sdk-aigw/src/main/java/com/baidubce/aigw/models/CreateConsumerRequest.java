@@ -15,6 +15,12 @@ public class CreateConsumerRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
+    * xRegion
+    */
+    @JsonIgnore
+    private String xRegion;
+
+    /**
     * 消费者名称
     */
     private String consumerName;
@@ -60,6 +66,15 @@ public class CreateConsumerRequest extends BaseBceRequest {
 
     public CreateConsumerRequest setInstanceId(String instanceId) {
         this.instanceId = instanceId;
+        return this;
+    }
+
+    public String getXRegion() {
+        return xRegion;
+    }
+
+    public CreateConsumerRequest setXRegion(String xRegion) {
+        this.xRegion = xRegion;
         return this;
     }
 

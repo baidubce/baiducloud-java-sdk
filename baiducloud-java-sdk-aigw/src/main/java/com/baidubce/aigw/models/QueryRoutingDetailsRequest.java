@@ -19,6 +19,12 @@ public class QueryRoutingDetailsRequest extends BaseBceRequest {
     @JsonIgnore
     private String routeName;
 
+    /**
+    * xRegion
+    */
+    @JsonIgnore
+    private String xRegion;
+
     public String getInstanceId() {
         return instanceId;
     }
@@ -34,6 +40,15 @@ public class QueryRoutingDetailsRequest extends BaseBceRequest {
 
     public QueryRoutingDetailsRequest setRouteName(String routeName) {
         this.routeName = routeName;
+        return this;
+    }
+
+    public String getXRegion() {
+        return xRegion;
+    }
+
+    public QueryRoutingDetailsRequest setXRegion(String xRegion) {
+        this.xRegion = xRegion;
         return this;
     }
 

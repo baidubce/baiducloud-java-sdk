@@ -22,6 +22,7 @@ public class ExampleQueryRoutingDetails {
         QueryRoutingDetailsRequest queryRoutingDetailsRequest = new QueryRoutingDetailsRequest();
         queryRoutingDetailsRequest.setInstanceId("");
         queryRoutingDetailsRequest.setRouteName("");
+        queryRoutingDetailsRequest.setXRegion("");
         try {
             QueryRoutingDetailsResponse response = client.queryRoutingDetails(queryRoutingDetailsRequest);
             System.out.println(response.toJsonString());

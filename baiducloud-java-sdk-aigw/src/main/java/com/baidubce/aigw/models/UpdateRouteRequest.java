@@ -21,6 +21,12 @@ public class UpdateRouteRequest extends BaseBceRequest {
     private String routeName;
 
     /**
+    * xRegion
+    */
+    @JsonIgnore
+    private String xRegion;
+
+    /**
     * 来源产品标识
     */
     private String srcProduct;
@@ -150,6 +156,15 @@ public class UpdateRouteRequest extends BaseBceRequest {
 
     public UpdateRouteRequest setRouteName(String routeName) {
         this.routeName = routeName;
+        return this;
+    }
+
+    public String getXRegion() {
+        return xRegion;
+    }
+
+    public UpdateRouteRequest setXRegion(String xRegion) {
+        this.xRegion = xRegion;
         return this;
     }
 

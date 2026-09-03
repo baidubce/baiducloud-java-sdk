@@ -21,6 +21,7 @@ public class ExampleQueryRoutingList {
         AigwClient client = new AigwClient(bceClientConfig);
         QueryRoutingListRequest queryRoutingListRequest = new QueryRoutingListRequest();
         queryRoutingListRequest.setInstanceId("");
+        queryRoutingListRequest.setXRegion("");
         queryRoutingListRequest.setRouteName("");
         queryRoutingListRequest.setPageNo(0);
         queryRoutingListRequest.setPageSize(0);

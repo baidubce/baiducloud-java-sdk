@@ -25,6 +25,12 @@ public class DeleteConsumerRequest extends BaseBceRequest {
     @JsonIgnore
     private String keyType;
 
+    /**
+    * xRegion
+    */
+    @JsonIgnore
+    private String xRegion;
+
     public String getInstanceId() {
         return instanceId;
     }
@@ -49,6 +55,15 @@ public class DeleteConsumerRequest extends BaseBceRequest {
 
     public DeleteConsumerRequest setKeyType(String keyType) {
         this.keyType = keyType;
+        return this;
+    }
+
+    public String getXRegion() {
+        return xRegion;
+    }
+
+    public DeleteConsumerRequest setXRegion(String xRegion) {
+        this.xRegion = xRegion;
         return this;
     }
 

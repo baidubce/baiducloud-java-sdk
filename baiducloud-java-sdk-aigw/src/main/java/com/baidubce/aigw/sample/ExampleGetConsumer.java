@@ -22,6 +22,7 @@ public class ExampleGetConsumer {
         GetConsumerRequest getConsumerRequest = new GetConsumerRequest();
         getConsumerRequest.setInstanceId("");
         getConsumerRequest.setConsumerId("");
+        getConsumerRequest.setXRegion("");
         getConsumerRequest.setKeyType("");
         try {
             GetConsumerResponse response = client.getConsumer(getConsumerRequest);

@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TimeoutPolicy {
     /**
-     * 是否启用
+     * 是否启用超时策略
      */
     private Boolean enabled;
 
     /**
-     * 超时时间（秒）
+     * 超时时长，单位为秒，enabled 为 true 时必需
      */
     private Integer timeout;
 
