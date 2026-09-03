@@ -45,6 +45,7 @@ public class ExampleCreateConsumer {
 
         CreateConsumerRequest createConsumerRequest = new CreateConsumerRequest();
         createConsumerRequest.setInstanceId("");
+        createConsumerRequest.setXRegion("");
         createConsumerRequest.setConsumerName("");
         createConsumerRequest.setDescription("");
         createConsumerRequest.setAuthType("");

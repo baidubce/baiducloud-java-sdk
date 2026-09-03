@@ -48,6 +48,7 @@ public class ExampleUpdateConsumer {
         UpdateConsumerRequest updateConsumerRequest = new UpdateConsumerRequest();
         updateConsumerRequest.setInstanceId("");
         updateConsumerRequest.setConsumerId("");
+        updateConsumerRequest.setXRegion("");
         updateConsumerRequest.setKeyType("");
         updateConsumerRequest.setDescription("");
         updateConsumerRequest.setRouteNames(new ArrayList<>());

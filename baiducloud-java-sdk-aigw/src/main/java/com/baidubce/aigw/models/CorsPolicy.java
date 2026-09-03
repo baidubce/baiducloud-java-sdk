@@ -14,7 +14,7 @@ public class CorsPolicy {
     /**
      * 允许的来源，每项包含 matchType、value
      */
-    private List<OriginMatch> allowOrigins;
+    private List<OriginMatch<String, String>> allowOrigins;
 
     /**
      * 允许的 HTTP 方法
@@ -50,12 +50,12 @@ public class CorsPolicy {
         return this.enabled;
     }
 
-    public CorsPolicy setAllowOrigins(List<OriginMatch> allowOrigins) {
+    public CorsPolicy setAllowOrigins(List<OriginMatch<String, String>> allowOrigins) {
         this.allowOrigins = allowOrigins;
         return this;
     }
 
-    public List<OriginMatch> getAllowOrigins() {
+    public List<OriginMatch<String, String>> getAllowOrigins() {
         return this.allowOrigins;
     }
 

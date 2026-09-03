@@ -9,13 +9,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TokenRateLimit {
     /**
-     * 规则名称
+     * 服务端生成的规则名称，仅响应返回
      */
     @JsonProperty("rule_name")
     private String ruleName;
 
     /**
-     * 是否启用
+     * 是否启用 Token 限流
      */
     private Boolean enabled;
 

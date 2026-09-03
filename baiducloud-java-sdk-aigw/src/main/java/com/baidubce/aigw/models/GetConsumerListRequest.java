@@ -37,6 +37,12 @@ public class GetConsumerListRequest extends BaseBceRequest {
     @JsonIgnore
     private String tagValue;
 
+    /**
+    * xRegion
+    */
+    @JsonIgnore
+    private String xRegion;
+
     public String getInstanceId() {
         return instanceId;
     }
@@ -79,6 +85,15 @@ public class GetConsumerListRequest extends BaseBceRequest {
 
     public GetConsumerListRequest setTagValue(String tagValue) {
         this.tagValue = tagValue;
+        return this;
+    }
+
+    public String getXRegion() {
+        return xRegion;
+    }
+
+    public GetConsumerListRequest setXRegion(String xRegion) {
+        this.xRegion = xRegion;
         return this;
     }
 

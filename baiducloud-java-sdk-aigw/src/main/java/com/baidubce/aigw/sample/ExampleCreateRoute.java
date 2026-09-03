@@ -52,8 +52,8 @@ public class ExampleCreateRoute {
         targetService.setHashType("");
         targetService.setHashKey("");
         targetService.setRequestRatio(0);
-        targetService.setWeightFactor(0);
         targetService.setModelName("");
+        targetService.setWeightFactor(0);
         targetService.setModelNameMode("");
         targetService.setSpecifiedModelName("");
 
@@ -115,6 +115,7 @@ public class ExampleCreateRoute {
         CreateRouteRequest createRouteRequest = new CreateRouteRequest();
         createRouteRequest.setInstanceId("");
         createRouteRequest.setClusterId("");
+        createRouteRequest.setXRegion("");
         createRouteRequest.setRouteName("");
         createRouteRequest.setSrcProduct("");
         createRouteRequest.setAccessMode("");

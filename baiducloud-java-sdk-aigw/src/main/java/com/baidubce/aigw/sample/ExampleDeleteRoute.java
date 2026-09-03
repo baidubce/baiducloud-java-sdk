@@ -22,6 +22,7 @@ public class ExampleDeleteRoute {
         DeleteRouteRequest deleteRouteRequest = new DeleteRouteRequest();
         deleteRouteRequest.setInstanceId("");
         deleteRouteRequest.setRouteName("");
+        deleteRouteRequest.setXRegion("");
         try {
             DeleteRouteResponse response = client.deleteRoute(deleteRouteRequest);
             System.out.println(response.toJsonString());

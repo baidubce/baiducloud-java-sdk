@@ -21,12 +21,18 @@ public class CreateRouteRequest extends BaseBceRequest {
     private String clusterId;
 
     /**
+    * xRegion
+    */
+    @JsonIgnore
+    private String xRegion;
+
+    /**
     * 路由名称，长度为 2～64 个字符，在同一实例内唯一
     */
     private String routeName;
 
     /**
-    * 来源产品标识
+    * 来源产品标识，外部用户无需填写
     */
     private String srcProduct;
 
@@ -155,6 +161,15 @@ public class CreateRouteRequest extends BaseBceRequest {
 
     public CreateRouteRequest setClusterId(String clusterId) {
         this.clusterId = clusterId;
+        return this;
+    }
+
+    public String getXRegion() {
+        return xRegion;
+    }
+
+    public CreateRouteRequest setXRegion(String xRegion) {
+        this.xRegion = xRegion;
         return this;
     }
 

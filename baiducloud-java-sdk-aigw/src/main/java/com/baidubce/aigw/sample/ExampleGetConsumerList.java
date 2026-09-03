@@ -21,6 +21,7 @@ public class ExampleGetConsumerList {
         AigwClient client = new AigwClient(bceClientConfig);
         GetConsumerListRequest getConsumerListRequest = new GetConsumerListRequest();
         getConsumerListRequest.setInstanceId("");
+        getConsumerListRequest.setXRegion("");
         getConsumerListRequest.setPageNo(0);
         getConsumerListRequest.setPageSize(0);
         getConsumerListRequest.setTagKey("");

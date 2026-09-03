@@ -19,6 +19,12 @@ public class DeleteRouteRequest extends BaseBceRequest {
     @JsonIgnore
     private String routeName;
 
+    /**
+    * xRegion
+    */
+    @JsonIgnore
+    private String xRegion;
+
     public String getInstanceId() {
         return instanceId;
     }
@@ -34,6 +40,15 @@ public class DeleteRouteRequest extends BaseBceRequest {
 
     public DeleteRouteRequest setRouteName(String routeName) {
         this.routeName = routeName;
+        return this;
+    }
+
+    public String getXRegion() {
+        return xRegion;
+    }
+
+    public DeleteRouteRequest setXRegion(String xRegion) {
+        this.xRegion = xRegion;
         return this;
     }
 

@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomHeader {
     /**
-     * 请求头名称
+     * HTTP 头名称，同一列表中不能重复
      */
     private String key;
 
     /**
-     * 请求头值
+     * HTTP 头值
      */
     private String value;
 

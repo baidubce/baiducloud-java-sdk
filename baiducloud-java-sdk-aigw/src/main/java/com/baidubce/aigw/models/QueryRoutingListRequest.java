@@ -43,6 +43,12 @@ public class QueryRoutingListRequest extends BaseBceRequest {
     @JsonIgnore
     private String order;
 
+    /**
+    * xRegion
+    */
+    @JsonIgnore
+    private String xRegion;
+
     public String getInstanceId() {
         return instanceId;
     }
@@ -94,6 +100,15 @@ public class QueryRoutingListRequest extends BaseBceRequest {
 
     public QueryRoutingListRequest setOrder(String order) {
         this.order = order;
+        return this;
+    }
+
+    public String getXRegion() {
+        return xRegion;
+    }
+
+    public QueryRoutingListRequest setXRegion(String xRegion) {
+        this.xRegion = xRegion;
         return this;
     }
 

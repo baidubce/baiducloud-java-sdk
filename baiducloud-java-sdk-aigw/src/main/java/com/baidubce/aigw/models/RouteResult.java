@@ -27,17 +27,17 @@ public class RouteResult {
     private List<String> domains;
 
     /**
-     * Web 模式自动绑定的公网、内网域名
+     * Web 模式绑定的公网、内网域名
      */
     private List<String> webDomains;
 
     /**
-     * Web 模式的独立子域名
+     * Web 模式独立子域名
      */
     private String webSubdomain;
 
     /**
-     * Web 模式的后端服务路径
+     * Web 模式后端服务路径
      */
     private String servicePath;
 
@@ -52,12 +52,17 @@ public class RouteResult {
     private String updateTime;
 
     /**
+     * matchRules
+     */
+    private MatchRules matchRules;
+
+    /**
      * 是否启用多服务
      */
     private Boolean multiService;
 
     /**
-     * 多服务流量分发策略：ratio、model_name
+     * 多服务流量分发策略
      */
     private String trafficDistributionStrategy;
 
@@ -74,15 +79,15 @@ public class RouteResult {
     /**
      * rewrite
      */
-    private RewriteConfig rewrite;
+    private Rewrite rewrite;
 
     /**
      * regexRewrite
      */
-    private RegexRewriteConfig regexRewrite;
+    private RegexRewrite regexRewrite;
 
     /**
-     * 自定义请求头，每项包含 key、value
+     * 自定义请求头
      */
     private List<CustomHeader> customHeaders;
 
@@ -130,11 +135,6 @@ public class RouteResult {
      * fallbackConfig
      */
     private FallbackConfig fallbackConfig;
-
-    /**
-     * matchRules
-     */
-    private MatchRules matchRules;
 
     public RouteResult setRouteName(String routeName) {
         this.routeName = routeName;
@@ -217,6 +217,15 @@ public class RouteResult {
         return this.updateTime;
     }
 
+    public RouteResult setMatchRules(MatchRules matchRules) {
+        this.matchRules = matchRules;
+        return this;
+    }
+
+    public MatchRules getMatchRules() {
+        return this.matchRules;
+    }
+
     public RouteResult setMultiService(Boolean multiService) {
         this.multiService = multiService;
         return this;
@@ -253,21 +262,21 @@ public class RouteResult {
         return this.targetService;
     }
 
-    public RouteResult setRewrite(RewriteConfig rewrite) {
+    public RouteResult setRewrite(Rewrite rewrite) {
         this.rewrite = rewrite;
         return this;
     }
 
-    public RewriteConfig getRewrite() {
+    public Rewrite getRewrite() {
         return this.rewrite;
     }
 
-    public RouteResult setRegexRewrite(RegexRewriteConfig regexRewrite) {
+    public RouteResult setRegexRewrite(RegexRewrite regexRewrite) {
         this.regexRewrite = regexRewrite;
         return this;
     }
 
-    public RegexRewriteConfig getRegexRewrite() {
+    public RegexRewrite getRegexRewrite() {
         return this.regexRewrite;
     }
 
@@ -361,25 +370,15 @@ public class RouteResult {
         return this.fallbackConfig;
     }
 
-    public RouteResult setMatchRules(MatchRules matchRules) {
-        this.matchRules = matchRules;
-        return this;
-    }
-
-    public MatchRules getMatchRules() {
-        return this.matchRules;
-    }
-
     @Override
     public String toString() {
         return "RouteResult{" + "routeName=" + routeName + "\n" + "srcProduct=" + srcProduct + "\n" + "accessMode=" + accessMode + "\n" + "domains=" + domains + "\n"
                 + "webDomains=" + webDomains + "\n" + "webSubdomain=" + webSubdomain + "\n" + "servicePath=" + servicePath + "\n" + "createTime=" + createTime + "\n"
-                + "updateTime=" + updateTime + "\n" + "multiService=" + multiService + "\n" + "trafficDistributionStrategy=" + trafficDistributionStrategy + "\n"
-                + "enableWeightAdjust=" + enableWeightAdjust + "\n" + "targetService=" + targetService + "\n" + "rewrite=" + rewrite + "\n" + "regexRewrite=" + regexRewrite + "\n"
-                + "customHeaders=" + customHeaders + "\n" + "authEnabled=" + authEnabled + "\n" + "allowedConsumers=" + allowedConsumers + "\n" + "tokenRateLimit="
-                + tokenRateLimit + "\n" + "requestRateLimit=" + requestRateLimit + "\n" + "timeoutPolicy=" + timeoutPolicy + "\n" + "retryPolicy=" + retryPolicy + "\n"
-                + "corsPolicy=" + corsPolicy + "\n" + "responseHeaders=" + responseHeaders + "\n" + "fallbackConfig=" + fallbackConfig + "\n" + "matchRules=" + matchRules + "\n"
-                + "}";
+                + "updateTime=" + updateTime + "\n" + "matchRules=" + matchRules + "\n" + "multiService=" + multiService + "\n" + "trafficDistributionStrategy="
+                + trafficDistributionStrategy + "\n" + "enableWeightAdjust=" + enableWeightAdjust + "\n" + "targetService=" + targetService + "\n" + "rewrite=" + rewrite + "\n"
+                + "regexRewrite=" + regexRewrite + "\n" + "customHeaders=" + customHeaders + "\n" + "authEnabled=" + authEnabled + "\n" + "allowedConsumers=" + allowedConsumers
+                + "\n" + "tokenRateLimit=" + tokenRateLimit + "\n" + "requestRateLimit=" + requestRateLimit + "\n" + "timeoutPolicy=" + timeoutPolicy + "\n" + "retryPolicy="
+                + retryPolicy + "\n" + "corsPolicy=" + corsPolicy + "\n" + "responseHeaders=" + responseHeaders + "\n" + "fallbackConfig=" + fallbackConfig + "\n" + "}";
     }
 
 }

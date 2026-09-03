@@ -22,6 +22,7 @@ public class ExampleDeleteConsumer {
         DeleteConsumerRequest deleteConsumerRequest = new DeleteConsumerRequest();
         deleteConsumerRequest.setInstanceId("");
         deleteConsumerRequest.setConsumerId("");
+        deleteConsumerRequest.setXRegion("");
         deleteConsumerRequest.setKeyType("");
         try {
             DeleteConsumerResponse response = client.deleteConsumer(deleteConsumerRequest);
