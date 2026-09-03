@@ -54,7 +54,7 @@ public class RouteResult {
     /**
      * matchRules
      */
-    private MatchRules matchRules;
+    private MatchRule matchRules;
 
     /**
      * 是否启用多服务
@@ -217,12 +217,12 @@ public class RouteResult {
         return this.updateTime;
     }
 
-    public RouteResult setMatchRules(MatchRules matchRules) {
+    public RouteResult setMatchRules(MatchRule matchRules) {
         this.matchRules = matchRules;
         return this;
     }
 
-    public MatchRules getMatchRules() {
+    public MatchRule getMatchRules() {
         return this.matchRules;
     }
 
