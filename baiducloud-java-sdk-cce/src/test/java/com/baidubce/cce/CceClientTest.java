@@ -8,8 +8,6 @@ import com.baidubce.cce.models.CreateExpansionNodeGroupTaskV2Request;
 import com.baidubce.cce.models.CreateExpansionNodeGroupTaskV2Response;
 import com.baidubce.cce.models.CreateNodeGroupV2Request;
 import com.baidubce.cce.models.CreateNodeGroupV2Response;
-import com.baidubce.cce.models.CreateNodesClusterExpansionV2Request;
-import com.baidubce.cce.models.CreateNodesClusterExpansionV2Response;
 import com.baidubce.cce.models.DeleteNodeGroupV2Request;
 import com.baidubce.cce.models.DeleteNodeGroupV2Response;
 import com.baidubce.cce.models.DeleteNodesClusterScalingV2Request;
@@ -133,18 +131,6 @@ public class CceClientTest {
         createNodeGroupV2Request.setReplicas(0);
         createNodeGroupV2Request.setClusterAutoscalerSpec(null);
         CreateNodeGroupV2Response response = cceClient.createNodeGroupV2(createNodeGroupV2Request);
-        System.out.println(response);
-    }
-    /**
-     * createNodesClusterExpansionV2
-     *
-     */
-    @Test
-    public void createNodesClusterExpansionV2Test() {
-        CreateNodesClusterExpansionV2Request createNodesClusterExpansionV2Request = new CreateNodesClusterExpansionV2Request();
-        createNodesClusterExpansionV2Request.setClusterID("");
-        createNodesClusterExpansionV2Request.set无（requestBody为数组）(new ArrayList<>());
-        CreateNodesClusterExpansionV2Response response = cceClient.createNodesClusterExpansionV2(createNodesClusterExpansionV2Request);
         System.out.println(response);
     }
     /**

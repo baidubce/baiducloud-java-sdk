@@ -22,8 +22,6 @@ import com.baidubce.cce.models.CreateExpansionNodeGroupTaskV2Request;
 import com.baidubce.cce.models.CreateExpansionNodeGroupTaskV2Response;
 import com.baidubce.cce.models.CreateNodeGroupV2Request;
 import com.baidubce.cce.models.CreateNodeGroupV2Response;
-import com.baidubce.cce.models.CreateNodesClusterExpansionV2Request;
-import com.baidubce.cce.models.CreateNodesClusterExpansionV2Response;
 import com.baidubce.cce.models.DeleteNodeGroupV2Request;
 import com.baidubce.cce.models.DeleteNodeGroupV2Response;
 import com.baidubce.cce.models.DeleteNodesClusterScalingV2Request;
@@ -178,18 +176,6 @@ public class CceClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_INSTANCEGROUP);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateNodeGroupV2Response.class);
-    }
-
-    /**
-     * createNodesClusterExpansionV2
-     * 
-     * @param request 入参结构体
-     * @return CreateNodesClusterExpansionV2Response
-     */
-    public CreateNodesClusterExpansionV2Response createNodesClusterExpansionV2(CreateNodesClusterExpansionV2Request request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_INSTANCES);
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, CreateNodesClusterExpansionV2Response.class);
     }
 
     /**
