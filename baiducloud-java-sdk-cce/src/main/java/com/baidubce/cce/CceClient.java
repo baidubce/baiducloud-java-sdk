@@ -13,31 +13,56 @@ import com.baidubce.auth.SignOptions;
 import com.baidubce.util.RequestBodyUtils;
 import java.util.Arrays;
 import java.util.HashSet;
+import com.baidubce.common.BaseBceResponse;
 
+import com.baidubce.cce.models.BatchCreateDiagnosisTasksRequest;
+import com.baidubce.cce.models.BatchCreateDiagnosisTasksResponse;
 import com.baidubce.cce.models.CreateAShrinkingNodeGroupTaskV2Request;
 import com.baidubce.cce.models.CreateAShrinkingNodeGroupTaskV2Response;
 import com.baidubce.cce.models.CreateAnAutoscalerV2Request;
 import com.baidubce.cce.models.CreateAnAutoscalerV2Response;
+import com.baidubce.cce.models.CreateDiagnosisTaskRequest;
+import com.baidubce.cce.models.CreateDiagnosisTaskResponse;
 import com.baidubce.cce.models.CreateExpansionNodeGroupTaskV2Request;
 import com.baidubce.cce.models.CreateExpansionNodeGroupTaskV2Response;
+import com.baidubce.cce.models.CreateInspectionRequest;
+import com.baidubce.cce.models.CreateInspectionResponse;
 import com.baidubce.cce.models.CreateNodeGroupV2Request;
 import com.baidubce.cce.models.CreateNodeGroupV2Response;
 import com.baidubce.cce.models.DeleteNodeGroupV2Request;
 import com.baidubce.cce.models.DeleteNodeGroupV2Response;
 import com.baidubce.cce.models.DeleteNodesClusterScalingV2Request;
 import com.baidubce.cce.models.DeleteNodesClusterScalingV2Response;
+import com.baidubce.cce.models.GetDiagnosisReportDetailRequest;
+import com.baidubce.cce.models.GetDiagnosisReportDetailResponse;
+import com.baidubce.cce.models.GetInspectionItemsRequest;
+import com.baidubce.cce.models.GetInspectionItemsResponse;
+import com.baidubce.cce.models.GetInspectionSubscriptionConfigRequest;
+import com.baidubce.cce.models.GetInspectionSubscriptionConfigResponse;
+import com.baidubce.cce.models.GetLatestReportRequest;
+import com.baidubce.cce.models.GetLatestReportResponse;
 import com.baidubce.cce.models.GetNodeDetailsV2Request;
 import com.baidubce.cce.models.GetNodeDetailsV2Response;
 import com.baidubce.cce.models.GetNodeGroupDetailsV2Request;
 import com.baidubce.cce.models.GetNodeGroupDetailsV2Response;
 import com.baidubce.cce.models.GetPackageListV2Request;
 import com.baidubce.cce.models.GetPackageListV2Response;
+import com.baidubce.cce.models.GetReportByTaskIDRequest;
+import com.baidubce.cce.models.GetReportByTaskIDResponse;
+import com.baidubce.cce.models.GetReportConfigRequest;
+import com.baidubce.cce.models.GetReportConfigResponse;
+import com.baidubce.cce.models.GetReportListRequest;
+import com.baidubce.cce.models.GetReportListResponse;
 import com.baidubce.cce.models.GetTaskListV2Request;
 import com.baidubce.cce.models.GetTaskListV2Response;
 import com.baidubce.cce.models.GetTheListOfClusterNodeGroupsV2Request;
 import com.baidubce.cce.models.GetTheListOfClusterNodeGroupsV2Response;
 import com.baidubce.cce.models.GetTheListOfClusterNodesV2Request;
 import com.baidubce.cce.models.GetTheListOfClusterNodesV2Response;
+import com.baidubce.cce.models.HasInspectingTaskRequest;
+import com.baidubce.cce.models.HasInspectingTaskResponse;
+import com.baidubce.cce.models.ListDiagnosisReportsRequest;
+import com.baidubce.cce.models.ListDiagnosisReportsResponse;
 import com.baidubce.cce.models.ModifyIGAutoScalerRequest;
 import com.baidubce.cce.models.ModifyIGAutoScalerResponse;
 import com.baidubce.cce.models.ModifyNodeGroupNodeShrinkProtectionStatusV2Request;
@@ -56,6 +81,8 @@ import com.baidubce.cce.models.SynchronizeNodeMetadataV2Request;
 import com.baidubce.cce.models.SynchronizeNodeMetadataV2Response;
 import com.baidubce.cce.models.UpdateAutoscalerConfigurationV2Request;
 import com.baidubce.cce.models.UpdateAutoscalerConfigurationV2Response;
+import com.baidubce.cce.models.UpdateInspectionItemsRequest;
+import com.baidubce.cce.models.UpdateInspectionSubscriptionConfigRequest;
 import com.baidubce.cce.models.UpdateNodeAttributesV2Request;
 import com.baidubce.cce.models.UpdateNodeAttributesV2Response;
 import com.baidubce.cce.models.ViewTaskDetailsV2Request;
@@ -66,27 +93,37 @@ public class CceClient extends AbstractBceClient {
     private static final String[] HEADERS_TO_SIGN = {"host", "x-bce-date"};
 
     private static final String CONSTANT_V2 = "v2";
-    private static final String CONSTANT_EVENT = "event";
-    private static final String CONSTANT_INSTANCE = "instance";
     private static final String CONSTANT_CLUSTER = "cluster";
     private static final String CONSTANT_INSTANCEGROUPS = "instancegroups";
+    private static final String CONSTANT_INSPECTION_IS_RUNNING = "inspection_is_running";
     private static final String CONSTANT_CLUSTER_I_D = "[clusterID]";
     private static final String CONSTANT_INSTANCEGROUP = "instancegroup";
     private static final String CONSTANT_INSTANCE_GROUP_I_D = "[instanceGroupID]";
     private static final String CONSTANT_ATTACH_INSTANCES = "attachInstances";
     private static final String CONSTANT_INSTANCE_SCALE_DOWN = "instanceScaleDown";
     private static final String CONSTANT_AUTOSCALER = "autoscaler";
-    private static final String CONSTANT_TASK = "task";
-    private static final String CONSTANT_SCALEUP = "scaleup";
+    private static final String CONSTANT_DIAGNOSIS = "diagnosis";
+    private static final String CONSTANT_REPORT = "report";
+    private static final String CONSTANT_INSPECTION = "inspection";
     private static final String CONSTANT_REPLICAS = "replicas";
-    private static final String CONSTANT_INSTANCES = "instances";
     private static final String CONSTANT_TASKS = "tasks";
+    private static final String CONSTANT_INSTANCES = "instances";
+    private static final String CONSTANT_INSPECTION_PLAN = "inspection_plan";
     private static final String CONSTANT_SYNC = "sync";
+    private static final String CONSTANT_DIAGNOSES = "diagnoses";
     private static final String CONSTANT_API = "api";
     private static final String CONSTANT_CCE = "cce";
     private static final String CONSTANT_ARTIFACT_SERVICE = "artifact-service";
     private static final String CONSTANT_V1 = "v1";
     private static final String CONSTANT_MACHINE_SPECS = "machine-specs";
+    private static final String CONSTANT_INSTANCE = "instance";
+    private static final String CONSTANT_INSPECTION_REPORTER_TYPE = "inspection_reporter_type";
+    private static final String CONSTANT_EVENT = "event";
+    private static final String CONSTANT_INSPECTION_ITEMS = "inspection_items";
+    private static final String CONSTANT_TASK = "task";
+    private static final String CONSTANT_SCALEUP = "scaleup";
+    private static final String CONSTANT_INSPECTION_LATEST_REPORT = "inspection_latest_report";
+    private static final String CONSTANT_INSPECTIONS = "inspections";
     private static final String CONSTANT_SCALEDOWN = "scaledown";
 
     /**
@@ -106,6 +143,18 @@ public class CceClient extends AbstractBceClient {
     */
     public CceClient(BceClientConfiguration clientConfiguration) {
         super(clientConfiguration, CLIENT_HANDLERS);
+    }
+
+    /**
+     * batchCreateDiagnosisTasks
+     * 
+     * @param request 入参结构体
+     * @return BatchCreateDiagnosisTasksResponse
+     */
+    public BatchCreateDiagnosisTasksResponse batchCreateDiagnosisTasks(BatchCreateDiagnosisTasksRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_DIAGNOSES);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, BatchCreateDiagnosisTasksResponse.class);
     }
 
     /**
@@ -141,6 +190,18 @@ public class CceClient extends AbstractBceClient {
     }
 
     /**
+     * createDiagnosisTask
+     * 
+     * @param request 入参结构体
+     * @return CreateDiagnosisTaskResponse
+     */
+    public CreateDiagnosisTaskResponse createDiagnosisTask(CreateDiagnosisTaskRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_DIAGNOSIS);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateDiagnosisTaskResponse.class);
+    }
+
+    /**
      * createExpansionNodeGroupTaskV2
      * 
      * @param request 入参结构体
@@ -164,6 +225,17 @@ public class CceClient extends AbstractBceClient {
             internalRequest.addParameter("upReplicas", String.valueOf(request.getUpReplicas()));
         }
         return invokeHttpClient(internalRequest, CreateExpansionNodeGroupTaskV2Response.class);
+    }
+
+    /**
+     * createInspection
+     * 
+     * @param request 入参结构体
+     * @return CreateInspectionResponse
+     */
+    public CreateInspectionResponse createInspection(CreateInspectionRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_INSPECTION);
+        return invokeHttpClient(internalRequest, CreateInspectionResponse.class);
     }
 
     /**
@@ -209,6 +281,52 @@ public class CceClient extends AbstractBceClient {
     }
 
     /**
+     * getDiagnosisReportDetail
+     * 
+     * @param request 入参结构体
+     * @return GetDiagnosisReportDetailResponse
+     */
+    public GetDiagnosisReportDetailResponse getDiagnosisReportDetail(GetDiagnosisReportDetailRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.GET, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_DIAGNOSIS, request.getTaskID(), CONSTANT_REPORT);
+        return invokeHttpClient(internalRequest, GetDiagnosisReportDetailResponse.class);
+    }
+
+    /**
+     * getInspectionItems
+     * 
+     * @param request 入参结构体
+     * @return GetInspectionItemsResponse
+     */
+    public GetInspectionItemsResponse getInspectionItems(GetInspectionItemsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_INSPECTION_ITEMS);
+        return invokeHttpClient(internalRequest, GetInspectionItemsResponse.class);
+    }
+
+    /**
+     * getInspectionSubscriptionConfig
+     * 
+     * @param request 入参结构体
+     * @return GetInspectionSubscriptionConfigResponse
+     */
+    public GetInspectionSubscriptionConfigResponse getInspectionSubscriptionConfig(GetInspectionSubscriptionConfigRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_INSPECTION_PLAN);
+        return invokeHttpClient(internalRequest, GetInspectionSubscriptionConfigResponse.class);
+    }
+
+    /**
+     * getLatestReport
+     * 
+     * @param request 入参结构体
+     * @return GetLatestReportResponse
+     */
+    public GetLatestReportResponse getLatestReport(GetLatestReportRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.GET, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_INSPECTION_LATEST_REPORT);
+        return invokeHttpClient(internalRequest, GetLatestReportResponse.class);
+    }
+
+    /**
      * getNodeDetailsV2
      * 
      * @param request 入参结构体
@@ -246,6 +364,55 @@ public class CceClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, GetPackageListV2Response.class);
+    }
+
+    /**
+     * getReportByTaskID
+     * 
+     * @param request 入参结构体
+     * @return GetReportByTaskIDResponse
+     */
+    public GetReportByTaskIDResponse getReportByTaskID(GetReportByTaskIDRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.GET, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_INSPECTION, request.getTaskID(), CONSTANT_REPORT);
+        return invokeHttpClient(internalRequest, GetReportByTaskIDResponse.class);
+    }
+
+    /**
+     * getReportConfig
+     * 
+     * @param request 入参结构体
+     * @return GetReportConfigResponse
+     */
+    public GetReportConfigResponse getReportConfig(GetReportConfigRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.GET, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_INSPECTION_REPORTER_TYPE);
+        return invokeHttpClient(internalRequest, GetReportConfigResponse.class);
+    }
+
+    /**
+     * getReportList
+     * 
+     * @param request 入参结构体
+     * @return GetReportListResponse
+     */
+    public GetReportListResponse getReportList(GetReportListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_INSPECTIONS);
+        internalRequest.addParameter("pageSize", "10");
+        internalRequest.addParameter("pageNo", "1");
+        if (request.getOrder() != null) {
+            internalRequest.addParameter("order", request.getOrder());
+        }
+        if (request.getOrderBy() != null) {
+            internalRequest.addParameter("orderBy", request.getOrderBy());
+        }
+        if (request.getInspectionType() != null) {
+            internalRequest.addParameter("inspectionType", request.getInspectionType());
+        }
+        if (request.getInspectionStatus() != null) {
+            internalRequest.addParameter("inspectionStatus", request.getInspectionStatus());
+        }
+        return invokeHttpClient(internalRequest, GetReportListResponse.class);
     }
 
     /**
@@ -336,6 +503,44 @@ public class CceClient extends AbstractBceClient {
             internalRequest.addParameter("pageSize", String.valueOf(request.getPageSize()));
         }
         return invokeHttpClient(internalRequest, GetTheListOfClusterNodesV2Response.class);
+    }
+
+    /**
+     * hasInspectingTask
+     * 
+     * @param request 入参结构体
+     * @return HasInspectingTaskResponse
+     */
+    public HasInspectingTaskResponse hasInspectingTask(HasInspectingTaskRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_INSPECTION_IS_RUNNING);
+        return invokeHttpClient(internalRequest, HasInspectingTaskResponse.class);
+    }
+
+    /**
+     * listDiagnosisReports
+     * 
+     * @param request 入参结构体
+     * @return ListDiagnosisReportsResponse
+     */
+    public ListDiagnosisReportsResponse listDiagnosisReports(ListDiagnosisReportsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_DIAGNOSES);
+        internalRequest.addParameter("type", "node");
+        if (request.getPageNo() != null) {
+            internalRequest.addParameter("pageNo", String.valueOf(request.getPageNo()));
+        }
+        if (request.getPageSize() != null) {
+            internalRequest.addParameter("pageSize", String.valueOf(request.getPageSize()));
+        }
+        if (request.getOrder() != null) {
+            internalRequest.addParameter("order", request.getOrder());
+        }
+        if (request.getOrderBy() != null) {
+            internalRequest.addParameter("orderBy", request.getOrderBy());
+        }
+        if (request.getResultFilter() != null) {
+            internalRequest.addParameter("resultFilter", request.getResultFilter());
+        }
+        return invokeHttpClient(internalRequest, ListDiagnosisReportsResponse.class);
     }
 
     /**
@@ -483,6 +688,28 @@ public class CceClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, CONSTANT_V2, CONSTANT_AUTOSCALER, request.getClusterID());
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, UpdateAutoscalerConfigurationV2Response.class);
+    }
+
+    /**
+     * updateInspectionItems
+     * 
+     * @param request 入参结构体
+     */
+    public void updateInspectionItems(UpdateInspectionItemsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_INSPECTION_ITEMS);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateInspectionSubscriptionConfig
+     * 
+     * @param request 入参结构体
+     */
+    public void updateInspectionSubscriptionConfig(UpdateInspectionSubscriptionConfigRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, CONSTANT_V2, CONSTANT_CLUSTER, request.getClusterID(), CONSTANT_INSPECTION_PLAN);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
