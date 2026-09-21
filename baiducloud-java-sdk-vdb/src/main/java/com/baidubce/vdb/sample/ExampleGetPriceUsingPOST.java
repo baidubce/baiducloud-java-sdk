@@ -6,6 +6,8 @@ import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.vdb.VdbClient;
 import com.baidubce.vdb.models.GetPriceUsingPOSTRequest;
 import com.baidubce.vdb.models.GetPriceUsingPOSTResponse;
+import com.baidubce.vdb.models.InstanceParam;
+import java.util.ArrayList;
 
 public class ExampleGetPriceUsingPOST {
     public static void main(String[] args) {
@@ -19,8 +21,47 @@ public class ExampleGetPriceUsingPOST {
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
 
         VdbClient client = new VdbClient(bceClientConfig);
+        InstanceParam instanceParam = new InstanceParam();
+        instanceParam.setAvailabilityZone("");
+        instanceParam.setAzInfos(new ArrayList<>());
+        instanceParam.setCloneDataAppBackupId("");
+        instanceParam.setCloneDataAppId("");
+        instanceParam.setComponents(new ArrayList<>());
+        instanceParam.setDataNodeNum(0);
+        instanceParam.setDiskFlavor(0);
+        instanceParam.setDiskType("");
+        instanceParam.setEnableEmbedding(false);
+        instanceParam.setEnableEncryption(false);
+        instanceParam.setEngineVersion("");
+        instanceParam.setFrom("");
+        instanceParam.setInstanceName("");
+        instanceParam.setInstanceNum(0);
+        instanceParam.setInstanceType("");
+        instanceParam.setMasterNodeSpec("");
+        instanceParam.setMasterNum(0);
+        instanceParam.setNodeSpec("");
+        instanceParam.setNodeType("");
+        instanceParam.setOrderId("");
+        instanceParam.setPassword("");
+        instanceParam.setPort(0);
+        instanceParam.setProxyNodeSpec("");
+        instanceParam.setProxyNum(0);
+        instanceParam.setReqSource("");
+        instanceParam.setSubnetId("");
+        instanceParam.setSwitchEntrance("");
+        instanceParam.setVpcId("");
+
         GetPriceUsingPOSTRequest getPriceUsingPOSTRequest = new GetPriceUsingPOSTRequest();
         getPriceUsingPOSTRequest.setEngineType("");
+        getPriceUsingPOSTRequest.setAutoRenew(false);
+        getPriceUsingPOSTRequest.setAutoRenewTime(0);
+        getPriceUsingPOSTRequest.setAutoRenewTimeUnit("");
+        getPriceUsingPOSTRequest.setComponents(new ArrayList<>());
+        getPriceUsingPOSTRequest.setDuration(0);
+        getPriceUsingPOSTRequest.setEnv("");
+        getPriceUsingPOSTRequest.setInstanceParam(instanceParam);
+        getPriceUsingPOSTRequest.setProductType("");
+        getPriceUsingPOSTRequest.setTimeUnit("");
         try {
             GetPriceUsingPOSTResponse response = client.getPriceUsingPOST(getPriceUsingPOSTRequest);
             System.out.println(response.toJsonString());

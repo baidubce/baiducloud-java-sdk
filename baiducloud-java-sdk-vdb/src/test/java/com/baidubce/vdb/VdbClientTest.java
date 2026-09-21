@@ -8,10 +8,13 @@ import com.baidubce.vdb.models.CreateInstanceUsingPOSTResponse;
 import com.baidubce.vdb.models.DeleteInstanceUsingDELETERequest;
 import com.baidubce.vdb.models.DeleteRecordUsingDELETERequest;
 import com.baidubce.vdb.models.DeleteRecyclerInstanceRequest;
+import com.baidubce.vdb.models.Deleteinstanceusingdelete1Request;
 import com.baidubce.vdb.models.DescribeInstanceConfigsRequest;
+import com.baidubce.vdb.models.DescribeInstanceConfigsUsingGETRequest;
 import com.baidubce.vdb.models.GetConfigUsingGETRequest;
 import com.baidubce.vdb.models.GetConfigUsingGETResponse;
 import com.baidubce.vdb.models.GetFreeInstanceQuotaResponse;
+import com.baidubce.vdb.models.GetFreeInstanceQuotaUsingGETResponse;
 import com.baidubce.vdb.models.GetInstanceListUsingGETRequest;
 import com.baidubce.vdb.models.GetInstanceListUsingGETResponse;
 import com.baidubce.vdb.models.GetNodeSpecListUsingGETRequest;
@@ -31,8 +34,10 @@ import com.baidubce.vdb.models.ListRecordsUsingGETRequest;
 import com.baidubce.vdb.models.ListRecordsUsingGETResponse;
 import com.baidubce.vdb.models.ManualBackupUsingPOSTRequest;
 import com.baidubce.vdb.models.ModifyInstanceConfigRequest;
+import com.baidubce.vdb.models.ModifyInstanceConfigUsingPOSTRequest;
 import com.baidubce.vdb.models.ModifyPasswordUsingPOSTRequest;
 import com.baidubce.vdb.models.ModifyPublicAccessRequest;
+import com.baidubce.vdb.models.ModifyPublicAccessUsingPUTRequest;
 import com.baidubce.vdb.models.ModifyTLSUsingPUTRequest;
 import com.baidubce.vdb.models.PasswordUsingGETRequest;
 import com.baidubce.vdb.models.PasswordUsingGETResponse;
@@ -44,7 +49,9 @@ import com.baidubce.vdb.models.SetCommentUsingPOSTRequest;
 import com.baidubce.vdb.models.SetConfigUsingPOSTRequest;
 import com.baidubce.vdb.models.UnbindEipUsingPOSTRequest;
 import com.baidubce.vdb.models.UpdateInstanceDomainRequest;
+import com.baidubce.vdb.models.UpdateInstanceDomainUsingPOSTRequest;
 import com.baidubce.vdb.models.UpdateInstanceNameRequest;
+import com.baidubce.vdb.models.UpdateInstanceNameUsingPOSTRequest;
 import com.baidubce.vdb.models.ZoneListUsingGETRequest;
 import com.baidubce.vdb.models.ZoneListUsingGETResponse;
 import org.junit.Test;
@@ -104,6 +111,15 @@ public class VdbClientTest {
     public void createInstanceUsingPOSTTest() {
         CreateInstanceUsingPOSTRequest createInstanceUsingPOSTRequest = new CreateInstanceUsingPOSTRequest();
         createInstanceUsingPOSTRequest.setEngineType("");
+        createInstanceUsingPOSTRequest.setAutoRenew(false);
+        createInstanceUsingPOSTRequest.setAutoRenewTime(0);
+        createInstanceUsingPOSTRequest.setAutoRenewTimeUnit("");
+        createInstanceUsingPOSTRequest.setComponents(new ArrayList<>());
+        createInstanceUsingPOSTRequest.setDuration(0);
+        createInstanceUsingPOSTRequest.setEnv("");
+        createInstanceUsingPOSTRequest.setInstanceParam(null);
+        createInstanceUsingPOSTRequest.setProductType("");
+        createInstanceUsingPOSTRequest.setTimeUnit("");
         CreateInstanceUsingPOSTResponse response = vdbClient.createInstanceUsingPOST(createInstanceUsingPOSTRequest);
         System.out.println(response);
     }
@@ -143,6 +159,17 @@ public class VdbClientTest {
         vdbClient.deleteRecyclerInstance(deleteRecyclerInstanceRequest);
     }
     /**
+     * deleteinstanceusingdelete1
+     *
+     */
+    @Test
+    public void deleteinstanceusingdelete1Test() {
+        Deleteinstanceusingdelete1Request deleteinstanceusingdelete1Request = new Deleteinstanceusingdelete1Request();
+        deleteinstanceusingdelete1Request.setInstanceId("");
+        deleteinstanceusingdelete1Request.setEngineType("");
+        vdbClient.deleteinstanceusingdelete1(deleteinstanceusingdelete1Request);
+    }
+    /**
      * describeInstanceConfigs
      *
      */
@@ -151,6 +178,16 @@ public class VdbClientTest {
         DescribeInstanceConfigsRequest describeInstanceConfigsRequest = new DescribeInstanceConfigsRequest();
         describeInstanceConfigsRequest.setInstanceId("");
         vdbClient.describeInstanceConfigs(describeInstanceConfigsRequest);
+    }
+    /**
+     * describeInstanceConfigsUsingGET
+     *
+     */
+    @Test
+    public void describeInstanceConfigsUsingGETTest() {
+        DescribeInstanceConfigsUsingGETRequest describeInstanceConfigsUsingGETRequest = new DescribeInstanceConfigsUsingGETRequest();
+        describeInstanceConfigsUsingGETRequest.setInstanceId("");
+        vdbClient.describeInstanceConfigsUsingGET(describeInstanceConfigsUsingGETRequest);
     }
     /**
      * getConfigUsingGET
@@ -171,6 +208,15 @@ public class VdbClientTest {
     @Test
     public void getFreeInstanceQuotaTest() {
         GetFreeInstanceQuotaResponse response = vdbClient.getFreeInstanceQuota();
+        System.out.println(response);
+    }
+    /**
+     * getFreeInstanceQuotaUsingGET
+     *
+     */
+    @Test
+    public void getFreeInstanceQuotaUsingGETTest() {
+        GetFreeInstanceQuotaUsingGETResponse response = vdbClient.getFreeInstanceQuotaUsingGET();
         System.out.println(response);
     }
     /**
@@ -203,6 +249,15 @@ public class VdbClientTest {
     public void getPriceUsingPOSTTest() {
         GetPriceUsingPOSTRequest getPriceUsingPOSTRequest = new GetPriceUsingPOSTRequest();
         getPriceUsingPOSTRequest.setEngineType("");
+        getPriceUsingPOSTRequest.setAutoRenew(false);
+        getPriceUsingPOSTRequest.setAutoRenewTime(0);
+        getPriceUsingPOSTRequest.setAutoRenewTimeUnit("");
+        getPriceUsingPOSTRequest.setComponents(new ArrayList<>());
+        getPriceUsingPOSTRequest.setDuration(0);
+        getPriceUsingPOSTRequest.setEnv("");
+        getPriceUsingPOSTRequest.setInstanceParam(null);
+        getPriceUsingPOSTRequest.setProductType("");
+        getPriceUsingPOSTRequest.setTimeUnit("");
         GetPriceUsingPOSTResponse response = vdbClient.getPriceUsingPOST(getPriceUsingPOSTRequest);
         System.out.println(response);
     }
@@ -305,6 +360,18 @@ public class VdbClientTest {
         vdbClient.modifyInstanceConfig(modifyInstanceConfigRequest);
     }
     /**
+     * modifyInstanceConfigUsingPOST
+     *
+     */
+    @Test
+    public void modifyInstanceConfigUsingPOSTTest() {
+        ModifyInstanceConfigUsingPOSTRequest modifyInstanceConfigUsingPOSTRequest = new ModifyInstanceConfigUsingPOSTRequest();
+        modifyInstanceConfigUsingPOSTRequest.setInstanceId("");
+        modifyInstanceConfigUsingPOSTRequest.setReason("");
+        modifyInstanceConfigUsingPOSTRequest.setUserConfigs(new ArrayList<>());
+        vdbClient.modifyInstanceConfigUsingPOST(modifyInstanceConfigUsingPOSTRequest);
+    }
+    /**
      * modifyPasswordUsingPOST
      *
      */
@@ -328,6 +395,17 @@ public class VdbClientTest {
         modifyPublicAccessRequest.setInstanceId("");
         modifyPublicAccessRequest.setPublicAccess(false);
         vdbClient.modifyPublicAccess(modifyPublicAccessRequest);
+    }
+    /**
+     * modifyPublicAccessUsingPUT
+     *
+     */
+    @Test
+    public void modifyPublicAccessUsingPUTTest() {
+        ModifyPublicAccessUsingPUTRequest modifyPublicAccessUsingPUTRequest = new ModifyPublicAccessUsingPUTRequest();
+        modifyPublicAccessUsingPUTRequest.setInstanceId("");
+        modifyPublicAccessUsingPUTRequest.setPublicAccess(false);
+        vdbClient.modifyPublicAccessUsingPUT(modifyPublicAccessUsingPUTRequest);
     }
     /**
      * modifyTLSUsingPUT
@@ -455,6 +533,18 @@ public class VdbClientTest {
         vdbClient.updateInstanceDomain(updateInstanceDomainRequest);
     }
     /**
+     * updateInstanceDomainUsingPOST
+     *
+     */
+    @Test
+    public void updateInstanceDomainUsingPOSTTest() {
+        UpdateInstanceDomainUsingPOSTRequest updateInstanceDomainUsingPOSTRequest = new UpdateInstanceDomainUsingPOSTRequest();
+        updateInstanceDomainUsingPOSTRequest.setInstanceId("");
+        updateInstanceDomainUsingPOSTRequest.setEngineType("");
+        updateInstanceDomainUsingPOSTRequest.setDomain("");
+        vdbClient.updateInstanceDomainUsingPOST(updateInstanceDomainUsingPOSTRequest);
+    }
+    /**
      * updateInstanceName
      *
      */
@@ -465,6 +555,18 @@ public class VdbClientTest {
         updateInstanceNameRequest.setEngineType("");
         updateInstanceNameRequest.setInstanceName("");
         vdbClient.updateInstanceName(updateInstanceNameRequest);
+    }
+    /**
+     * updateInstanceNameUsingPOST
+     *
+     */
+    @Test
+    public void updateInstanceNameUsingPOSTTest() {
+        UpdateInstanceNameUsingPOSTRequest updateInstanceNameUsingPOSTRequest = new UpdateInstanceNameUsingPOSTRequest();
+        updateInstanceNameUsingPOSTRequest.setInstanceId("");
+        updateInstanceNameUsingPOSTRequest.setEngineType("");
+        updateInstanceNameUsingPOSTRequest.setInstanceName("");
+        vdbClient.updateInstanceNameUsingPOST(updateInstanceNameUsingPOSTRequest);
     }
     /**
      * zoneListUsingGET
