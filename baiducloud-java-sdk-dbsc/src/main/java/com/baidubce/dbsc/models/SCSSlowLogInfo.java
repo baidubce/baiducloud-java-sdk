@@ -1,7 +1,6 @@
 package com.baidubce.dbsc.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SCSSlowLogInfo {
@@ -36,15 +35,9 @@ public class SCSSlowLogInfo {
     private Long slowLogId;
 
     /**
-     * Ip地址以及端口号
-     */
-    private String clientIp;
-
-    /**
      * IP地址以及端口号
      */
-    @JsonProperty("ClientIP")
-    private String clientIP;
+    private String clientIp;
 
     public SCSSlowLogInfo setContent(String content) {
         this.content = content;
@@ -109,19 +102,10 @@ public class SCSSlowLogInfo {
         return this.clientIp;
     }
 
-    public SCSSlowLogInfo setClientIP(String clientIP) {
-        this.clientIP = clientIP;
-        return this;
-    }
-
-    public String getClientIP() {
-        return this.clientIP;
-    }
-
     @Override
     public String toString() {
         return "SCSSlowLogInfo{" + "content=" + content + "\n" + "logDuration=" + logDuration + "\n" + "logKey=" + logKey + "\n" + "logSql=" + logSql + "\n" + "logTime=" + logTime
-                + "\n" + "slowLogId=" + slowLogId + "\n" + "clientIp=" + clientIp + "\n" + "clientIP=" + clientIP + "\n" + "}";
+                + "\n" + "slowLogId=" + slowLogId + "\n" + "clientIp=" + clientIp + "\n" + "}";
     }
 
 }

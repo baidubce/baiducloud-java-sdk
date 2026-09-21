@@ -21,7 +21,6 @@ import com.baidubce.dbsc.models.GetMongodbSlowQueryTemplateRequest;
 import com.baidubce.dbsc.models.GetMongodbSlowQueryTemplateResponse;
 import com.baidubce.dbsc.models.GetMongodbSpaceSummaryRequest;
 import com.baidubce.dbsc.models.GetMongodbSpaceSummaryResponse;
-import com.baidubce.dbsc.models.GetMysqlActiveSessionsRequest;
 import com.baidubce.dbsc.models.GetMysqlActiveSessionsResponse;
 import com.baidubce.dbsc.models.GetMysqlDatabaseSpaceRequest;
 import com.baidubce.dbsc.models.GetMysqlDatabaseSpaceResponse;
@@ -300,9 +299,7 @@ public class DbscClientTest {
      */
     @Test
     public void getMysqlActiveSessionsTest() {
-        GetMysqlActiveSessionsRequest getMysqlActiveSessionsRequest = new GetMysqlActiveSessionsRequest();
-        getMysqlActiveSessionsRequest.setAppId("");
-        GetMysqlActiveSessionsResponse response = dbscClient.getMysqlActiveSessions(getMysqlActiveSessionsRequest);
+        GetMysqlActiveSessionsResponse response = dbscClient.getMysqlActiveSessions();
         System.out.println(response);
     }
     /**

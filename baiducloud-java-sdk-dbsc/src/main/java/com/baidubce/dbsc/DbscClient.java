@@ -37,7 +37,6 @@ import com.baidubce.dbsc.models.GetMongodbSlowQueryTemplateRequest;
 import com.baidubce.dbsc.models.GetMongodbSlowQueryTemplateResponse;
 import com.baidubce.dbsc.models.GetMongodbSpaceSummaryRequest;
 import com.baidubce.dbsc.models.GetMongodbSpaceSummaryResponse;
-import com.baidubce.dbsc.models.GetMysqlActiveSessionsRequest;
 import com.baidubce.dbsc.models.GetMysqlActiveSessionsResponse;
 import com.baidubce.dbsc.models.GetMysqlDatabaseSpaceRequest;
 import com.baidubce.dbsc.models.GetMysqlDatabaseSpaceResponse;
@@ -501,13 +500,13 @@ public class DbscClient extends AbstractBceClient {
     /**
      * getMysqlActiveSessions
      * 
-     * @param request 入参结构体
      * @return GetMysqlActiveSessionsResponse
      */
-    public GetMysqlActiveSessionsResponse getMysqlActiveSessions(GetMysqlActiveSessionsRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_DIAGNOSIS, CONSTANT_MYSQL, CONSTANT_SESSION, CONSTANT_LIST);
+    public GetMysqlActiveSessionsResponse getMysqlActiveSessions() {
+        InternalRequest internalRequest =
+                this.createRequest(new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_DIAGNOSIS, CONSTANT_MYSQL, CONSTANT_SESSION, CONSTANT_LIST);
         internalRequest.addParameter("appId", "appId");
-        internalRequest.addParameter("nodeId", "appId");
+        internalRequest.addParameter("nodeId", "nodeId");
         return invokeHttpClient(internalRequest, GetMysqlActiveSessionsResponse.class);
     }
 
