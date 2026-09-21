@@ -5,22 +5,22 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Instance {
     /**
-     * 
+     * 节点规格配置
      */
     private Object spec;
 
     /**
-     * 
+     * 节点状态信息
      */
     private Object status;
 
     /**
-     * 
+     * 创建时间
      */
     private String createdAt;
 
     /**
-     * 
+     * 更新时间
      */
     private String updatedAt;
 
