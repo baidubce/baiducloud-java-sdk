@@ -20,7 +20,7 @@ public class BindEipUsingPOSTRequest extends BaseBceRequest {
     private String engineType;
 
     /**
-    * eip
+    * EIP 地址
     */
     private String eip;
 

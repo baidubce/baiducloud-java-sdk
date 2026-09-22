@@ -20,17 +20,17 @@ public class ModifyPasswordUsingPOSTRequest extends BaseBceRequest {
     private String engineType;
 
     /**
-    * from
+    * 请求来源
     */
     private String from;
 
     /**
-    * password
+    * 新密码
     */
     private String password;
 
     /**
-    * username
+    * 用户名
     */
     private String username;
 

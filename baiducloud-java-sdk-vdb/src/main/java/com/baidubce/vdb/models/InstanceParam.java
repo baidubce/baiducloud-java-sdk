@@ -7,142 +7,142 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class InstanceParam {
     /**
-     * 
+     * 可用区
      */
     private String availabilityZone;
 
     /**
-     * 
+     * 可用区及子网信息
      */
     private List<AzInfo> azInfos;
 
     /**
-     * 
+     * 克隆源备份ID
      */
     private String cloneDataAppBackupId;
 
     /**
-     * 
+     * 克隆源实例ID
      */
     private String cloneDataAppId;
 
     /**
-     * 
+     * 组件配置
      */
     private List<MilvusComponent> components;
 
     /**
-     * 
+     * 数据节点数量
      */
     private Integer dataNodeNum;
 
     /**
-     * 
+     * 磁盘容量（GB）
      */
     private Integer diskFlavor;
 
     /**
-     * 
+     * 磁盘类型
      */
     private String diskType;
 
     /**
-     * 
+     * 是否开启 Embedding
      */
     private Boolean enableEmbedding;
 
     /**
-     * 
+     * 是否开启数据加密
      */
     private Boolean enableEncryption;
 
     /**
-     * 
+     * 引擎版本
      */
     private String engineVersion;
 
     /**
-     * 
+     * 请求来源（console/api）
      */
     private String from;
 
     /**
-     * 
+     * 实例名称
      */
     private String instanceName;
 
     /**
-     * 
+     * 实例数量
      */
     private Integer instanceNum;
 
     /**
-     * 
+     * 实例类型（cluster：集群，standalone：单机）
      */
     private String instanceType;
 
     /**
-     * 
+     * 主节点规格
      */
     private String masterNodeSpec;
 
     /**
-     * 
+     * 主节点数量
      */
     private Integer masterNum;
 
     /**
-     * 
+     * 节点规格
      */
     private String nodeSpec;
 
     /**
-     * 
+     * 节点类型
      */
     private String nodeType;
 
     /**
-     * 
+     * 订单ID
      */
     private String orderId;
 
     /**
-     * 
+     * 实例密码
      */
     private String password;
 
     /**
-     * 
+     * 端口
      */
     private Integer port;
 
     /**
-     * 
+     * 代理节点规格
      */
     private String proxyNodeSpec;
 
     /**
-     * 
+     * 代理节点数量
      */
     private Integer proxyNum;
 
     /**
-     * 
+     * 请求来源
      */
     private String reqSource;
 
     /**
-     * 
+     * 子网 ID
      */
     private String subnetId;
 
     /**
-     * 
+     * 是否交换原实例和克隆实例入口
      */
     private String switchEntrance;
 
     /**
-     * 
+     * VPC ID
      */
     private String vpcId;
 

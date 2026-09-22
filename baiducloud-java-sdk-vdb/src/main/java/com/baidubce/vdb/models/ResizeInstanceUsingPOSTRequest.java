@@ -15,67 +15,67 @@ public class ResizeInstanceUsingPOSTRequest extends BaseBceRequest {
     private String engineType;
 
     /**
-    * components
+    * 组件配置
     */
     private List<MilvusComponent> components;
 
     /**
-    * dataNodeNum
+    * 数据节点数量
     */
     private Integer dataNodeNum;
 
     /**
-    * diskFlavor
+    * 磁盘容量（GB）
     */
     private Integer diskFlavor;
 
     /**
-    * diskType
+    * 磁盘类型
     */
     private String diskType;
 
     /**
-    * env
+    * 环境
     */
     private String env;
 
     /**
-    * instanceId
+    * 实例ID
     */
     private String instanceId;
 
     /**
-    * masterNodeSpec
+    * 主节点规格
     */
     private String masterNodeSpec;
 
     /**
-    * masterNum
+    * 主节点数量
     */
     private Integer masterNum;
 
     /**
-    * nodeSpec
+    * 节点规格
     */
     private String nodeSpec;
 
     /**
-    * nodeType
+    * 节点类型
     */
     private String nodeType;
 
     /**
-    * orderId
+    * 订单ID
     */
     private String orderId;
 
     /**
-    * proxyNodeSpec
+    * 代理节点规格
     */
     private String proxyNodeSpec;
 
     /**
-    * proxyNum
+    * 代理节点数量
     */
     private Integer proxyNum;
 

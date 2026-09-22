@@ -20,7 +20,7 @@ public class UpdateInstanceNameUsingPOSTRequest extends BaseBceRequest {
     private String engineType;
 
     /**
-    * instanceName
+    * 实例名称
     */
     private String instanceName;
 

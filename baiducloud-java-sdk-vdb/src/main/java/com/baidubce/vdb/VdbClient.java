@@ -23,13 +23,10 @@ import com.baidubce.vdb.models.CreateInstanceUsingPOSTRequest;
 import com.baidubce.vdb.models.CreateInstanceUsingPOSTResponse;
 import com.baidubce.vdb.models.DeleteInstanceUsingDELETERequest;
 import com.baidubce.vdb.models.DeleteRecordUsingDELETERequest;
-import com.baidubce.vdb.models.DeleteRecyclerInstanceRequest;
 import com.baidubce.vdb.models.Deleteinstanceusingdelete1Request;
-import com.baidubce.vdb.models.DescribeInstanceConfigsRequest;
 import com.baidubce.vdb.models.DescribeInstanceConfigsUsingGETRequest;
 import com.baidubce.vdb.models.GetConfigUsingGETRequest;
 import com.baidubce.vdb.models.GetConfigUsingGETResponse;
-import com.baidubce.vdb.models.GetFreeInstanceQuotaResponse;
 import com.baidubce.vdb.models.GetFreeInstanceQuotaUsingGETResponse;
 import com.baidubce.vdb.models.GetInstanceListUsingGETRequest;
 import com.baidubce.vdb.models.GetInstanceListUsingGETResponse;
@@ -49,10 +46,8 @@ import com.baidubce.vdb.models.InstanceDetailUsingGETResponse;
 import com.baidubce.vdb.models.ListRecordsUsingGETRequest;
 import com.baidubce.vdb.models.ListRecordsUsingGETResponse;
 import com.baidubce.vdb.models.ManualBackupUsingPOSTRequest;
-import com.baidubce.vdb.models.ModifyInstanceConfigRequest;
 import com.baidubce.vdb.models.ModifyInstanceConfigUsingPOSTRequest;
 import com.baidubce.vdb.models.ModifyPasswordUsingPOSTRequest;
-import com.baidubce.vdb.models.ModifyPublicAccessRequest;
 import com.baidubce.vdb.models.ModifyPublicAccessUsingPUTRequest;
 import com.baidubce.vdb.models.ModifyTLSUsingPUTRequest;
 import com.baidubce.vdb.models.PasswordUsingGETRequest;
@@ -64,9 +59,7 @@ import com.baidubce.vdb.models.ResizeInstanceUsingPOSTResponse;
 import com.baidubce.vdb.models.SetCommentUsingPOSTRequest;
 import com.baidubce.vdb.models.SetConfigUsingPOSTRequest;
 import com.baidubce.vdb.models.UnbindEipUsingPOSTRequest;
-import com.baidubce.vdb.models.UpdateInstanceDomainRequest;
 import com.baidubce.vdb.models.UpdateInstanceDomainUsingPOSTRequest;
-import com.baidubce.vdb.models.UpdateInstanceNameRequest;
 import com.baidubce.vdb.models.UpdateInstanceNameUsingPOSTRequest;
 import com.baidubce.vdb.models.ZoneListUsingGETRequest;
 import com.baidubce.vdb.models.ZoneListUsingGETResponse;
@@ -81,18 +74,14 @@ public class VdbClient extends AbstractBceClient {
     private static final String CONSTANT_PRICE = "price";
     private static final String CONSTANT_ACCOUNT = "account";
     private static final String CONSTANT_RESET_PASSWORD = "resetPassword";
-    private static final String CONSTANT_MODIFY_PUBLIC_ACCESS = "modifyPublicAccess";
     private static final String CONSTANT_DETAIL = "detail";
-    private static final String CONSTANT_DESCRIBE_INSTANCE_CONFIGS = "describeInstanceConfigs";
     private static final String CONSTANT_RECYCLER = "recycler";
     private static final String CONSTANT_DELETE = "delete";
     private static final String CONSTANT_MODIFY_NAME = "modifyName";
-    private static final String CONSTANT_MODIFY_INSTANCE_CONFIG = "modifyInstanceConfig";
     private static final String CONSTANT_LIST = "list";
     private static final String CONSTANT_PASSWORD = "password";
     private static final String CONSTANT_BACKUP = "backup";
     private static final String CONSTANT_SET_COMMENT = "setComment";
-    private static final String CONSTANT_MODIFY_DOMAIN = "modifyDomain";
     private static final String CONSTANT_RECOVER = "recover";
     private static final String CONSTANT_BIND_EIP = "bindEip";
     private static final String CONSTANT_MANUAL_BACKUP = "manualBackup";
@@ -108,7 +97,11 @@ public class VdbClient extends AbstractBceClient {
     private static final String CONSTANT_GET_NODE_SPEC_LIST = "getNodeSpecList";
     private static final String CONSTANT_UNBIND_EIP = "unbindEip";
     private static final String CONSTANT_QUOTA = "quota";
+    private static final String CONSTANT_MODIFY_PUBLIC_ACCESS = "modifyPublicAccess";
     private static final String CONSTANT_ZONE = "zone";
+    private static final String CONSTANT_MODIFY_INSTANCE_CONFIG = "modifyInstanceConfig";
+    private static final String CONSTANT_MODIFY_DOMAIN = "modifyDomain";
+    private static final String CONSTANT_DESCRIBE_INSTANCE_CONFIGS = "describeInstanceConfigs";
     private static final String CONSTANT_GET_T_L_S_INFO = "getTLSInfo";
     private static final String CONSTANT_SET_CONFIG = "setConfig";
 
@@ -217,22 +210,6 @@ public class VdbClient extends AbstractBceClient {
     }
 
     /**
-     * deleteRecyclerInstance
-     * 
-     * @param request 入参结构体
-     */
-    public void deleteRecyclerInstance(DeleteRecyclerInstanceRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_VDB, CONSTANT_RECYCLER, CONSTANT_INSTANCE, CONSTANT_DELETE);
-        if (request.getInstanceId() != null) {
-            internalRequest.addParameter("instanceId", request.getInstanceId());
-        }
-        if (request.getEngineType() != null) {
-            internalRequest.addParameter("engineType", request.getEngineType());
-        }
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
      * deleteinstanceusingdelete1
      * 
      * @param request 入参结构体
@@ -244,19 +221,6 @@ public class VdbClient extends AbstractBceClient {
         }
         if (request.getEngineType() != null) {
             internalRequest.addParameter("engineType", request.getEngineType());
-        }
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
-     * describeInstanceConfigs
-     * 
-     * @param request 入参结构体
-     */
-    public void describeInstanceConfigs(DescribeInstanceConfigsRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_VDB, CONSTANT_INSTANCE, CONSTANT_DESCRIBE_INSTANCE_CONFIGS);
-        if (request.getInstanceId() != null) {
-            internalRequest.addParameter("instanceId", request.getInstanceId());
         }
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
@@ -289,16 +253,6 @@ public class VdbClient extends AbstractBceClient {
             internalRequest.addParameter("engineType", request.getEngineType());
         }
         return invokeHttpClient(internalRequest, GetConfigUsingGETResponse.class);
-    }
-
-    /**
-     * getFreeInstanceQuota
-     * 
-     * @return GetFreeInstanceQuotaResponse
-     */
-    public GetFreeInstanceQuotaResponse getFreeInstanceQuota() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_VDB, CONSTANT_INSTANCE, CONSTANT_FREE_QUOTA);
-        return invokeHttpClient(internalRequest, GetFreeInstanceQuotaResponse.class);
     }
 
     /**
@@ -482,17 +436,6 @@ public class VdbClient extends AbstractBceClient {
     }
 
     /**
-     * modifyInstanceConfig
-     * 
-     * @param request 入参结构体
-     */
-    public void modifyInstanceConfig(ModifyInstanceConfigRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_VDB, CONSTANT_INSTANCE, CONSTANT_MODIFY_INSTANCE_CONFIG);
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
      * modifyInstanceConfigUsingPOST
      * 
      * @param request 入参结构体
@@ -516,18 +459,6 @@ public class VdbClient extends AbstractBceClient {
         if (request.getEngineType() != null) {
             internalRequest.addParameter("engineType", request.getEngineType());
         }
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
-     * modifyPublicAccess
-     * 
-     * @param request 入参结构体
-     */
-    public void modifyPublicAccess(ModifyPublicAccessRequest request) {
-        InternalRequest internalRequest =
-                this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_VDB, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_MODIFY_PUBLIC_ACCESS);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
@@ -675,21 +606,6 @@ public class VdbClient extends AbstractBceClient {
     }
 
     /**
-     * updateInstanceDomain
-     * 
-     * @param request 入参结构体
-     */
-    public void updateInstanceDomain(UpdateInstanceDomainRequest request) {
-        InternalRequest internalRequest =
-                this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_VDB, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_MODIFY_DOMAIN);
-        if (request.getEngineType() != null) {
-            internalRequest.addParameter("engineType", request.getEngineType());
-        }
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
      * updateInstanceDomainUsingPOST
      * 
      * @param request 入参结构体
@@ -697,21 +613,6 @@ public class VdbClient extends AbstractBceClient {
     public void updateInstanceDomainUsingPOST(UpdateInstanceDomainUsingPOSTRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_VDB, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_MODIFY_DOMAIN);
-        if (request.getEngineType() != null) {
-            internalRequest.addParameter("engineType", request.getEngineType());
-        }
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
-     * updateInstanceName
-     * 
-     * @param request 入参结构体
-     */
-    public void updateInstanceName(UpdateInstanceNameRequest request) {
-        InternalRequest internalRequest =
-                this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_VDB, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_MODIFY_NAME);
         if (request.getEngineType() != null) {
             internalRequest.addParameter("engineType", request.getEngineType());
         }

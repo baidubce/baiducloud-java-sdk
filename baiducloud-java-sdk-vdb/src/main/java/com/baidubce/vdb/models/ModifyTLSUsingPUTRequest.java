@@ -14,12 +14,12 @@ public class ModifyTLSUsingPUTRequest extends BaseBceRequest {
     private String engineType;
 
     /**
-    * action
+    * 操作类型
     */
     private String action;
 
     /**
-    * instanceId
+    * 实例ID
     */
     private String instanceId;
 
