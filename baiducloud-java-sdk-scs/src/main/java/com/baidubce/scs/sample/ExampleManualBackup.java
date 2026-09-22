@@ -4,10 +4,9 @@ import com.baidubce.BceClientConfiguration;
 import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.scs.ScsClient;
-import com.baidubce.scs.models.InstanceListRequest;
-import com.baidubce.scs.models.InstanceListResponse;
+import com.baidubce.scs.models.ManualBackupRequest;
 
-public class ExampleInstanceList {
+public class ExampleManualBackup {
     public static void main(String[] args) {
         String endpoint = "Your Endpoint";
         BceClientConfiguration bceClientConfig = new BceClientConfiguration();
@@ -19,15 +18,13 @@ public class ExampleInstanceList {
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
 
         ScsClient client = new ScsClient(bceClientConfig);
-        InstanceListRequest instanceListRequest = new InstanceListRequest();
-        instanceListRequest.setMarker("");
-        instanceListRequest.setMaxKeys("");
-        instanceListRequest.setInstanceIds("");
-        instanceListRequest.setVnetIp("");
+        ManualBackupRequest manualBackupRequest = new ManualBackupRequest();
+        manualBackupRequest.setInstanceId("");
+        manualBackupRequest.setComment("");
         try {
-            InstanceListResponse response = client.instanceList(instanceListRequest);
-            System.out.println(response.toJsonString());
+            client.manualBackup(manualBackupRequest);
         } catch (BceClientException e) {
+            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class InstanceListRequest extends BaseBceRequest {
+public class GetInstanceListRequest extends BaseBceRequest {
 
     /**
     * marker
@@ -35,7 +35,7 @@ public class InstanceListRequest extends BaseBceRequest {
         return marker;
     }
 
-    public InstanceListRequest setMarker(String marker) {
+    public GetInstanceListRequest setMarker(String marker) {
         this.marker = marker;
         return this;
     }
@@ -44,7 +44,7 @@ public class InstanceListRequest extends BaseBceRequest {
         return maxKeys;
     }
 
-    public InstanceListRequest setMaxKeys(String maxKeys) {
+    public GetInstanceListRequest setMaxKeys(String maxKeys) {
         this.maxKeys = maxKeys;
         return this;
     }
@@ -53,7 +53,7 @@ public class InstanceListRequest extends BaseBceRequest {
         return instanceIds;
     }
 
-    public InstanceListRequest setInstanceIds(String instanceIds) {
+    public GetInstanceListRequest setInstanceIds(String instanceIds) {
         this.instanceIds = instanceIds;
         return this;
     }
@@ -62,7 +62,7 @@ public class InstanceListRequest extends BaseBceRequest {
         return vnetIp;
     }
 
-    public InstanceListRequest setVnetIp(String vnetIp) {
+    public GetInstanceListRequest setVnetIp(String vnetIp) {
         this.vnetIp = vnetIp;
         return this;
     }
