@@ -17,7 +17,7 @@ public class InstanceModel {
     private String instanceName;
 
     /**
-     * [实例状态](#实例状态)
+     * [实例状态](#InstanceStatus)
      */
     private String instanceStatus;
 
@@ -27,12 +27,12 @@ public class InstanceModel {
     private String isolatedStatus;
 
     /**
-     * 引擎类型为Redis，取值：集群: “cluster” 主从:“master_slave”，default: 主从
+     * [集群类型](#ClusterType)
      */
     private String clusterType;
 
     /**
-     * 引擎类型，redis,memcache
+     * [引擎类型](#Engine)
      */
     private String engine;
 
@@ -47,24 +47,19 @@ public class InstanceModel {
     private String vnetIp;
 
     /**
-     * 域名
+     * 内网域名
      */
     private String domain;
 
     /**
      * 链接端口
      */
-    private String port;
+    private Integer port;
 
     /**
-     * 实例创建时间
+     * 创建时间（格式：yyyy-MM-dd'T'HH:mm:ss'Z'，UTC）
      */
     private String instanceCreateTime;
-
-    /**
-     * 实例到期时间
-     */
-    private String instanceExpireTime;
 
     /**
      * 总容量，单位GB
@@ -82,9 +77,59 @@ public class InstanceModel {
     private String paymentTiming;
 
     /**
-     * 可用区list
+     * 可用区列表
      */
     private List<String> zoneNames;
+
+    /**
+     * 集群存储空间
+     */
+    private Integer diskFlavor;
+
+    /**
+     * 公网IP
+     */
+    private String eip;
+
+    /**
+     * 到期时间（格式：yyyy-MM-dd'T'HH:mm:ss'Z'，UTC）
+     */
+    private String instanceExpireTime;
+
+    /**
+     * 副本数
+     */
+    private Integer replicationNum;
+
+    /**
+     * 节点规格
+     */
+    private String nodeType;
+
+    /**
+     * 存储类型
+     */
+    private Integer storeType;
+
+    /**
+     * 分片数
+     */
+    private Integer shardNum;
+
+    /**
+     * 标签列表
+     */
+    private List<Tag> tags;
+
+    /**
+     * 资源分组ID
+     */
+    private String resourceGroupId;
+
+    /**
+     * 资源分组名称
+     */
+    private String resourceGroupName;
 
     /**
      * 预转后、后转预的标记。 <li>to_postpay: 预付费转后付费<li> to_prepay: 后付费转预付费
@@ -95,6 +140,16 @@ public class InstanceModel {
      * 集群绑定的部署集ID列表。
      */
     private List<String> deployIdList;
+
+    /**
+     * vpc
+     */
+    private VpcInfo vpc;
+
+    /**
+     * 子网信息
+     */
+    private List<SubnetInfo> subnets;
 
     public InstanceModel setInstanceId(String instanceId) {
         this.instanceId = instanceId;
@@ -177,12 +232,12 @@ public class InstanceModel {
         return this.domain;
     }
 
-    public InstanceModel setPort(String port) {
+    public InstanceModel setPort(Integer port) {
         this.port = port;
         return this;
     }
 
-    public String getPort() {
+    public Integer getPort() {
         return this.port;
     }
 
@@ -193,15 +248,6 @@ public class InstanceModel {
 
     public String getInstanceCreateTime() {
         return this.instanceCreateTime;
-    }
-
-    public InstanceModel setInstanceExpireTime(String instanceExpireTime) {
-        this.instanceExpireTime = instanceExpireTime;
-        return this;
-    }
-
-    public String getInstanceExpireTime() {
-        return this.instanceExpireTime;
     }
 
     public InstanceModel setCapacity(Float capacity) {
@@ -240,6 +286,96 @@ public class InstanceModel {
         return this.zoneNames;
     }
 
+    public InstanceModel setDiskFlavor(Integer diskFlavor) {
+        this.diskFlavor = diskFlavor;
+        return this;
+    }
+
+    public Integer getDiskFlavor() {
+        return this.diskFlavor;
+    }
+
+    public InstanceModel setEip(String eip) {
+        this.eip = eip;
+        return this;
+    }
+
+    public String getEip() {
+        return this.eip;
+    }
+
+    public InstanceModel setInstanceExpireTime(String instanceExpireTime) {
+        this.instanceExpireTime = instanceExpireTime;
+        return this;
+    }
+
+    public String getInstanceExpireTime() {
+        return this.instanceExpireTime;
+    }
+
+    public InstanceModel setReplicationNum(Integer replicationNum) {
+        this.replicationNum = replicationNum;
+        return this;
+    }
+
+    public Integer getReplicationNum() {
+        return this.replicationNum;
+    }
+
+    public InstanceModel setNodeType(String nodeType) {
+        this.nodeType = nodeType;
+        return this;
+    }
+
+    public String getNodeType() {
+        return this.nodeType;
+    }
+
+    public InstanceModel setStoreType(Integer storeType) {
+        this.storeType = storeType;
+        return this;
+    }
+
+    public Integer getStoreType() {
+        return this.storeType;
+    }
+
+    public InstanceModel setShardNum(Integer shardNum) {
+        this.shardNum = shardNum;
+        return this;
+    }
+
+    public Integer getShardNum() {
+        return this.shardNum;
+    }
+
+    public InstanceModel setTags(List<Tag> tags) {
+        this.tags = tags;
+        return this;
+    }
+
+    public List<Tag> getTags() {
+        return this.tags;
+    }
+
+    public InstanceModel setResourceGroupId(String resourceGroupId) {
+        this.resourceGroupId = resourceGroupId;
+        return this;
+    }
+
+    public String getResourceGroupId() {
+        return this.resourceGroupId;
+    }
+
+    public InstanceModel setResourceGroupName(String resourceGroupName) {
+        this.resourceGroupName = resourceGroupName;
+        return this;
+    }
+
+    public String getResourceGroupName() {
+        return this.resourceGroupName;
+    }
+
     public InstanceModel setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
         return this;
@@ -258,13 +394,33 @@ public class InstanceModel {
         return this.deployIdList;
     }
 
+    public InstanceModel setVpc(VpcInfo vpc) {
+        this.vpc = vpc;
+        return this;
+    }
+
+    public VpcInfo getVpc() {
+        return this.vpc;
+    }
+
+    public InstanceModel setSubnets(List<SubnetInfo> subnets) {
+        this.subnets = subnets;
+        return this;
+    }
+
+    public List<SubnetInfo> getSubnets() {
+        return this.subnets;
+    }
+
     @Override
     public String toString() {
         return "InstanceModel{" + "instanceId=" + instanceId + "\n" + "instanceName=" + instanceName + "\n" + "instanceStatus=" + instanceStatus + "\n" + "isolatedStatus="
                 + isolatedStatus + "\n" + "clusterType=" + clusterType + "\n" + "engine=" + engine + "\n" + "engineVersion=" + engineVersion + "\n" + "vnetIp=" + vnetIp + "\n"
-                + "domain=" + domain + "\n" + "port=" + port + "\n" + "instanceCreateTime=" + instanceCreateTime + "\n" + "instanceExpireTime=" + instanceExpireTime + "\n"
-                + "capacity=" + capacity + "\n" + "usedCapacity=" + usedCapacity + "\n" + "paymentTiming=" + paymentTiming + "\n" + "zoneNames=" + zoneNames + "\n"
-                + "orderStatus=" + orderStatus + "\n" + "deployIdList=" + deployIdList + "\n" + "}";
+                + "domain=" + domain + "\n" + "port=" + port + "\n" + "instanceCreateTime=" + instanceCreateTime + "\n" + "capacity=" + capacity + "\n" + "usedCapacity="
+                + usedCapacity + "\n" + "paymentTiming=" + paymentTiming + "\n" + "zoneNames=" + zoneNames + "\n" + "diskFlavor=" + diskFlavor + "\n" + "eip=" + eip + "\n"
+                + "instanceExpireTime=" + instanceExpireTime + "\n" + "replicationNum=" + replicationNum + "\n" + "nodeType=" + nodeType + "\n" + "storeType=" + storeType + "\n"
+                + "shardNum=" + shardNum + "\n" + "tags=" + tags + "\n" + "resourceGroupId=" + resourceGroupId + "\n" + "resourceGroupName=" + resourceGroupName + "\n"
+                + "orderStatus=" + orderStatus + "\n" + "deployIdList=" + deployIdList + "\n" + "vpc=" + vpc + "\n" + "subnets=" + subnets + "\n" + "}";
     }
 
 }

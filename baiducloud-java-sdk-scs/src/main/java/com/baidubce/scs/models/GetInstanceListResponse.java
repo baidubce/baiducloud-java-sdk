@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class InstanceListResponse extends BaseBceResponse {
+public class GetInstanceListResponse extends BaseBceResponse {
 
     /**
     * 批量获取列表的查询的起始位置，是一个由系统生成的字符串,起始值可传入-1
@@ -28,7 +28,7 @@ public class InstanceListResponse extends BaseBceResponse {
     private String nextMarker;
 
     /**
-    * 由[InstanceModel](SCS/API参考/附录.md#InstanceModel)组成的数组
+    * 实例列表数据。
     */
     private List<InstanceModel> instances;
 
@@ -36,7 +36,7 @@ public class InstanceListResponse extends BaseBceResponse {
         return marker;
     }
 
-    public InstanceListResponse setMarker(String marker) {
+    public GetInstanceListResponse setMarker(String marker) {
         this.marker = marker;
         return this;
     }
@@ -45,7 +45,7 @@ public class InstanceListResponse extends BaseBceResponse {
         return maxKeys;
     }
 
-    public InstanceListResponse setMaxKeys(Integer maxKeys) {
+    public GetInstanceListResponse setMaxKeys(Integer maxKeys) {
         this.maxKeys = maxKeys;
         return this;
     }
@@ -54,7 +54,7 @@ public class InstanceListResponse extends BaseBceResponse {
         return isTruncated;
     }
 
-    public InstanceListResponse setIsTruncated(Boolean isTruncated) {
+    public GetInstanceListResponse setIsTruncated(Boolean isTruncated) {
         this.isTruncated = isTruncated;
         return this;
     }
@@ -63,7 +63,7 @@ public class InstanceListResponse extends BaseBceResponse {
         return nextMarker;
     }
 
-    public InstanceListResponse setNextMarker(String nextMarker) {
+    public GetInstanceListResponse setNextMarker(String nextMarker) {
         this.nextMarker = nextMarker;
         return this;
     }
@@ -72,14 +72,14 @@ public class InstanceListResponse extends BaseBceResponse {
         return instances;
     }
 
-    public InstanceListResponse setInstances(List<InstanceModel> instances) {
+    public GetInstanceListResponse setInstances(List<InstanceModel> instances) {
         this.instances = instances;
         return this;
     }
 
     @Override
     public String toString() {
-        return "InstanceListResponse{" + "marker=" + marker + "\n" + "maxKeys=" + maxKeys + "\n" + "isTruncated=" + isTruncated + "\n" + "nextMarker=" + nextMarker + "\n"
+        return "GetInstanceListResponse{" + "marker=" + marker + "\n" + "maxKeys=" + maxKeys + "\n" + "isTruncated=" + isTruncated + "\n" + "nextMarker=" + nextMarker + "\n"
                 + "instances=" + instances + "\n" + "}";
     }
 
