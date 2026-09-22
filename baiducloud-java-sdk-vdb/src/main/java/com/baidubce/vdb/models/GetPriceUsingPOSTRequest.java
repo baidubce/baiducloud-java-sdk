@@ -15,32 +15,32 @@ public class GetPriceUsingPOSTRequest extends BaseBceRequest {
     private String engineType;
 
     /**
-    * autoRenew
+    * 是否自动续费
     */
     private Boolean autoRenew;
 
     /**
-    * autoRenewTime
+    * 自动续费时长
     */
     private Integer autoRenewTime;
 
     /**
-    * autoRenewTimeUnit
+    * 自动续费时长单位
     */
     private String autoRenewTimeUnit;
 
     /**
-    * components
+    * 组件配置
     */
     private List<MilvusComponent> components;
 
     /**
-    * duration
+    * 购买时长
     */
     private Integer duration;
 
     /**
-    * env
+    * 环境
     */
     private String env;
 
@@ -50,12 +50,12 @@ public class GetPriceUsingPOSTRequest extends BaseBceRequest {
     private InstanceParam instanceParam;
 
     /**
-    * productType
+    * 计费类型（prepay：预付费，postpay：后付费）
     */
     private String productType;
 
     /**
-    * timeUnit
+    * 购买时长单位
     */
     private String timeUnit;
 

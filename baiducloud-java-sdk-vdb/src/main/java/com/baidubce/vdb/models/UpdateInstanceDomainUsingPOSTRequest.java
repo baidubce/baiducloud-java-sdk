@@ -20,7 +20,7 @@ public class UpdateInstanceDomainUsingPOSTRequest extends BaseBceRequest {
     private String engineType;
 
     /**
-    * domain
+    * 域名
     */
     private String domain;
 
