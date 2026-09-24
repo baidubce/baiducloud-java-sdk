@@ -1,53 +1,29 @@
 package com.baidubce.cce;
 
-import com.baidubce.cce.models.BatchCreateDiagnosisTasksRequest;
-import com.baidubce.cce.models.BatchCreateDiagnosisTasksResponse;
 import com.baidubce.cce.models.CreateAShrinkingNodeGroupTaskV2Request;
 import com.baidubce.cce.models.CreateAShrinkingNodeGroupTaskV2Response;
 import com.baidubce.cce.models.CreateAnAutoscalerV2Request;
 import com.baidubce.cce.models.CreateAnAutoscalerV2Response;
-import com.baidubce.cce.models.CreateDiagnosisTaskRequest;
-import com.baidubce.cce.models.CreateDiagnosisTaskResponse;
 import com.baidubce.cce.models.CreateExpansionNodeGroupTaskV2Request;
 import com.baidubce.cce.models.CreateExpansionNodeGroupTaskV2Response;
-import com.baidubce.cce.models.CreateInspectionRequest;
-import com.baidubce.cce.models.CreateInspectionResponse;
 import com.baidubce.cce.models.CreateNodeGroupV2Request;
 import com.baidubce.cce.models.CreateNodeGroupV2Response;
 import com.baidubce.cce.models.DeleteNodeGroupV2Request;
 import com.baidubce.cce.models.DeleteNodeGroupV2Response;
 import com.baidubce.cce.models.DeleteNodesClusterScalingV2Request;
 import com.baidubce.cce.models.DeleteNodesClusterScalingV2Response;
-import com.baidubce.cce.models.GetDiagnosisReportDetailRequest;
-import com.baidubce.cce.models.GetDiagnosisReportDetailResponse;
-import com.baidubce.cce.models.GetInspectionItemsRequest;
-import com.baidubce.cce.models.GetInspectionItemsResponse;
-import com.baidubce.cce.models.GetInspectionSubscriptionConfigRequest;
-import com.baidubce.cce.models.GetInspectionSubscriptionConfigResponse;
-import com.baidubce.cce.models.GetLatestReportRequest;
-import com.baidubce.cce.models.GetLatestReportResponse;
 import com.baidubce.cce.models.GetNodeDetailsV2Request;
 import com.baidubce.cce.models.GetNodeDetailsV2Response;
 import com.baidubce.cce.models.GetNodeGroupDetailsV2Request;
 import com.baidubce.cce.models.GetNodeGroupDetailsV2Response;
 import com.baidubce.cce.models.GetPackageListV2Request;
 import com.baidubce.cce.models.GetPackageListV2Response;
-import com.baidubce.cce.models.GetReportByTaskIDRequest;
-import com.baidubce.cce.models.GetReportByTaskIDResponse;
-import com.baidubce.cce.models.GetReportConfigRequest;
-import com.baidubce.cce.models.GetReportConfigResponse;
-import com.baidubce.cce.models.GetReportListRequest;
-import com.baidubce.cce.models.GetReportListResponse;
 import com.baidubce.cce.models.GetTaskListV2Request;
 import com.baidubce.cce.models.GetTaskListV2Response;
 import com.baidubce.cce.models.GetTheListOfClusterNodeGroupsV2Request;
 import com.baidubce.cce.models.GetTheListOfClusterNodeGroupsV2Response;
 import com.baidubce.cce.models.GetTheListOfClusterNodesV2Request;
 import com.baidubce.cce.models.GetTheListOfClusterNodesV2Response;
-import com.baidubce.cce.models.HasInspectingTaskRequest;
-import com.baidubce.cce.models.HasInspectingTaskResponse;
-import com.baidubce.cce.models.ListDiagnosisReportsRequest;
-import com.baidubce.cce.models.ListDiagnosisReportsResponse;
 import com.baidubce.cce.models.ModifyIGAutoScalerRequest;
 import com.baidubce.cce.models.ModifyIGAutoScalerResponse;
 import com.baidubce.cce.models.ModifyNodeGroupNodeShrinkProtectionStatusV2Request;
@@ -66,8 +42,6 @@ import com.baidubce.cce.models.SynchronizeNodeMetadataV2Request;
 import com.baidubce.cce.models.SynchronizeNodeMetadataV2Response;
 import com.baidubce.cce.models.UpdateAutoscalerConfigurationV2Request;
 import com.baidubce.cce.models.UpdateAutoscalerConfigurationV2Response;
-import com.baidubce.cce.models.UpdateInspectionItemsRequest;
-import com.baidubce.cce.models.UpdateInspectionSubscriptionConfigRequest;
 import com.baidubce.cce.models.UpdateNodeAttributesV2Request;
 import com.baidubce.cce.models.UpdateNodeAttributesV2Response;
 import com.baidubce.cce.models.ViewTaskDetailsV2Request;
@@ -100,19 +74,6 @@ public class CceClientTest {
     }
 
     /**
-     * batchCreateDiagnosisTasks
-     *
-     */
-    @Test
-    public void batchCreateDiagnosisTasksTest() {
-        BatchCreateDiagnosisTasksRequest batchCreateDiagnosisTasksRequest = new BatchCreateDiagnosisTasksRequest();
-        batchCreateDiagnosisTasksRequest.setClusterID("");
-        batchCreateDiagnosisTasksRequest.setType("");
-        batchCreateDiagnosisTasksRequest.setTargets(new ArrayList<>());
-        BatchCreateDiagnosisTasksResponse response = cceClient.batchCreateDiagnosisTasks(batchCreateDiagnosisTasksRequest);
-        System.out.println(response);
-    }
-    /**
      * createAShrinkingNodeGroupTaskV2
      *
      */
@@ -140,20 +101,6 @@ public class CceClientTest {
         System.out.println(response);
     }
     /**
-     * createDiagnosisTask
-     *
-     */
-    @Test
-    public void createDiagnosisTaskTest() {
-        CreateDiagnosisTaskRequest createDiagnosisTaskRequest = new CreateDiagnosisTaskRequest();
-        createDiagnosisTaskRequest.setClusterID("");
-        createDiagnosisTaskRequest.setType("");
-        createDiagnosisTaskRequest.setTarget(null);
-        createDiagnosisTaskRequest.setExistedOption(null);
-        CreateDiagnosisTaskResponse response = cceClient.createDiagnosisTask(createDiagnosisTaskRequest);
-        System.out.println(response);
-    }
-    /**
      * createExpansionNodeGroupTaskV2
      *
      */
@@ -165,17 +112,6 @@ public class CceClientTest {
         createExpansionNodeGroupTaskV2Request.setUpToReplicas(0);
         createExpansionNodeGroupTaskV2Request.setUpReplicas(0);
         CreateExpansionNodeGroupTaskV2Response response = cceClient.createExpansionNodeGroupTaskV2(createExpansionNodeGroupTaskV2Request);
-        System.out.println(response);
-    }
-    /**
-     * createInspection
-     *
-     */
-    @Test
-    public void createInspectionTest() {
-        CreateInspectionRequest createInspectionRequest = new CreateInspectionRequest();
-        createInspectionRequest.setClusterID("");
-        CreateInspectionResponse response = cceClient.createInspection(createInspectionRequest);
         System.out.println(response);
     }
     /**
@@ -226,51 +162,6 @@ public class CceClientTest {
         System.out.println(response);
     }
     /**
-     * getDiagnosisReportDetail
-     *
-     */
-    @Test
-    public void getDiagnosisReportDetailTest() {
-        GetDiagnosisReportDetailRequest getDiagnosisReportDetailRequest = new GetDiagnosisReportDetailRequest();
-        getDiagnosisReportDetailRequest.setClusterID("");
-        getDiagnosisReportDetailRequest.setTaskID("");
-        GetDiagnosisReportDetailResponse response = cceClient.getDiagnosisReportDetail(getDiagnosisReportDetailRequest);
-        System.out.println(response);
-    }
-    /**
-     * getInspectionItems
-     *
-     */
-    @Test
-    public void getInspectionItemsTest() {
-        GetInspectionItemsRequest getInspectionItemsRequest = new GetInspectionItemsRequest();
-        getInspectionItemsRequest.setClusterID("");
-        GetInspectionItemsResponse response = cceClient.getInspectionItems(getInspectionItemsRequest);
-        System.out.println(response);
-    }
-    /**
-     * getInspectionSubscriptionConfig
-     *
-     */
-    @Test
-    public void getInspectionSubscriptionConfigTest() {
-        GetInspectionSubscriptionConfigRequest getInspectionSubscriptionConfigRequest = new GetInspectionSubscriptionConfigRequest();
-        getInspectionSubscriptionConfigRequest.setClusterID("");
-        GetInspectionSubscriptionConfigResponse response = cceClient.getInspectionSubscriptionConfig(getInspectionSubscriptionConfigRequest);
-        System.out.println(response);
-    }
-    /**
-     * getLatestReport
-     *
-     */
-    @Test
-    public void getLatestReportTest() {
-        GetLatestReportRequest getLatestReportRequest = new GetLatestReportRequest();
-        getLatestReportRequest.setClusterID("");
-        GetLatestReportResponse response = cceClient.getLatestReport(getLatestReportRequest);
-        System.out.println(response);
-    }
-    /**
      * getNodeDetailsV2
      *
      */
@@ -304,44 +195,6 @@ public class CceClientTest {
         getPackageListV2Request.setType("");
         getPackageListV2Request.setMachineSpecList(new ArrayList<>());
         GetPackageListV2Response response = cceClient.getPackageListV2(getPackageListV2Request);
-        System.out.println(response);
-    }
-    /**
-     * getReportByTaskID
-     *
-     */
-    @Test
-    public void getReportByTaskIDTest() {
-        GetReportByTaskIDRequest getReportByTaskIDRequest = new GetReportByTaskIDRequest();
-        getReportByTaskIDRequest.setClusterID("");
-        getReportByTaskIDRequest.setTaskID("");
-        GetReportByTaskIDResponse response = cceClient.getReportByTaskID(getReportByTaskIDRequest);
-        System.out.println(response);
-    }
-    /**
-     * getReportConfig
-     *
-     */
-    @Test
-    public void getReportConfigTest() {
-        GetReportConfigRequest getReportConfigRequest = new GetReportConfigRequest();
-        getReportConfigRequest.setClusterID("");
-        GetReportConfigResponse response = cceClient.getReportConfig(getReportConfigRequest);
-        System.out.println(response);
-    }
-    /**
-     * getReportList
-     *
-     */
-    @Test
-    public void getReportListTest() {
-        GetReportListRequest getReportListRequest = new GetReportListRequest();
-        getReportListRequest.setClusterID("");
-        getReportListRequest.setOrder("");
-        getReportListRequest.setOrderBy("");
-        getReportListRequest.setInspectionType("");
-        getReportListRequest.setInspectionStatus("");
-        GetReportListResponse response = cceClient.getReportList(getReportListRequest);
         System.out.println(response);
     }
     /**
@@ -394,33 +247,6 @@ public class CceClientTest {
         getTheListOfClusterNodesV2Request.setPageNo(0);
         getTheListOfClusterNodesV2Request.setPageSize(0);
         GetTheListOfClusterNodesV2Response response = cceClient.getTheListOfClusterNodesV2(getTheListOfClusterNodesV2Request);
-        System.out.println(response);
-    }
-    /**
-     * hasInspectingTask
-     *
-     */
-    @Test
-    public void hasInspectingTaskTest() {
-        HasInspectingTaskRequest hasInspectingTaskRequest = new HasInspectingTaskRequest();
-        hasInspectingTaskRequest.setClusterID("");
-        HasInspectingTaskResponse response = cceClient.hasInspectingTask(hasInspectingTaskRequest);
-        System.out.println(response);
-    }
-    /**
-     * listDiagnosisReports
-     *
-     */
-    @Test
-    public void listDiagnosisReportsTest() {
-        ListDiagnosisReportsRequest listDiagnosisReportsRequest = new ListDiagnosisReportsRequest();
-        listDiagnosisReportsRequest.setClusterID("");
-        listDiagnosisReportsRequest.setPageNo(0);
-        listDiagnosisReportsRequest.setPageSize(0);
-        listDiagnosisReportsRequest.setOrder("");
-        listDiagnosisReportsRequest.setOrderBy("");
-        listDiagnosisReportsRequest.setResultFilter("");
-        ListDiagnosisReportsResponse response = cceClient.listDiagnosisReports(listDiagnosisReportsRequest);
         System.out.println(response);
     }
     /**
@@ -555,29 +381,6 @@ public class CceClientTest {
         updateAutoscalerConfigurationV2Request.setCustomConfigs(new HashMap<>());
         UpdateAutoscalerConfigurationV2Response response = cceClient.updateAutoscalerConfigurationV2(updateAutoscalerConfigurationV2Request);
         System.out.println(response);
-    }
-    /**
-     * updateInspectionItems
-     *
-     */
-    @Test
-    public void updateInspectionItemsTest() {
-        UpdateInspectionItemsRequest updateInspectionItemsRequest = new UpdateInspectionItemsRequest();
-        updateInspectionItemsRequest.setClusterID("");
-        updateInspectionItemsRequest.set（根元素）(new HashMap<>());
-        cceClient.updateInspectionItems(updateInspectionItemsRequest);
-    }
-    /**
-     * updateInspectionSubscriptionConfig
-     *
-     */
-    @Test
-    public void updateInspectionSubscriptionConfigTest() {
-        UpdateInspectionSubscriptionConfigRequest updateInspectionSubscriptionConfigRequest = new UpdateInspectionSubscriptionConfigRequest();
-        updateInspectionSubscriptionConfigRequest.setClusterID("");
-        updateInspectionSubscriptionConfigRequest.setInspectionConfig(null);
-        updateInspectionSubscriptionConfigRequest.setSubscriptionConfig(null);
-        cceClient.updateInspectionSubscriptionConfig(updateInspectionSubscriptionConfigRequest);
     }
     /**
      * updateNodeAttributesV2
