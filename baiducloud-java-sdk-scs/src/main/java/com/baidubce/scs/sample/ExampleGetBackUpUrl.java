@@ -21,7 +21,7 @@ public class ExampleGetBackUpUrl {
         ScsClient client = new ScsClient(bceClientConfig);
         GetBackUpUrlRequest getBackUpUrlRequest = new GetBackUpUrlRequest();
         getBackUpUrlRequest.setInstanceId("");
-        getBackUpUrlRequest.setBackupId(0);
+        getBackUpUrlRequest.setBackupId("");
         try {
             GetBackUpUrlResponse response = client.getBackUpUrl(getBackUpUrlRequest);
             System.out.println(response.toJsonString());
