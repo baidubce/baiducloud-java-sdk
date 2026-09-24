@@ -664,7 +664,7 @@ public class ScsClientTest {
     public void getBackUpUrlTest() {
         GetBackUpUrlRequest getBackUpUrlRequest = new GetBackUpUrlRequest();
         getBackUpUrlRequest.setInstanceId("");
-        getBackUpUrlRequest.setBackupId(0);
+        getBackUpUrlRequest.setBackupId("");
         GetBackUpUrlResponse response = scsClient.getBackUpUrl(getBackUpUrlRequest);
         System.out.println(response);
     }

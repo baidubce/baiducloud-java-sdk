@@ -17,7 +17,7 @@ public class GetBackUpUrlRequest extends BaseBceRequest {
     * backupId
     */
     @JsonIgnore
-    private Integer backupId;
+    private String backupId;
 
     public String getInstanceId() {
         return instanceId;
@@ -28,11 +28,11 @@ public class GetBackUpUrlRequest extends BaseBceRequest {
         return this;
     }
 
-    public Integer getBackupId() {
+    public String getBackupId() {
         return backupId;
     }
 
-    public GetBackUpUrlRequest setBackupId(Integer backupId) {
+    public GetBackUpUrlRequest setBackupId(String backupId) {
         this.backupId = backupId;
         return this;
     }
