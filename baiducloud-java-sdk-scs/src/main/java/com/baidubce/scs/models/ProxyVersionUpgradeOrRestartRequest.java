@@ -15,17 +15,17 @@ public class ProxyVersionUpgradeOrRestartRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * 升级任务为空 重启任务不为空。<li>填写批量重启的proxy的showId
+    * 升级任务为空 重启任务不为空。填写批量重启的proxy的showId
     */
     private List<String> proxyList;
 
     /**
-    * 任务类型。 <li>relaunch：重启proxy；<li> latest：升级proxy版本
+    * 任务类型。 `relaunch`：重启proxy；`latest`：升级proxy版本
     */
     private String upgradeType;
 
     /**
-    * 是否延迟执行，默认false： <li>false 立即执行 <li>true 延迟执行(维护时间窗口执行)
+    * 是否延迟执行，默认false。 `false`：立即执行；`true`：延迟执行(维护时间窗口执行)
     */
     private Boolean isDefer;
 

@@ -22,7 +22,7 @@ public class GetBackupStrategyResponse extends BaseBceResponse {
     private Integer expireDay;
 
     /**
-    * 是否开启加密 <li>no 不开启 <li> yes 开启
+    * 是否开启加密。 `no`：不开启；`yes`：开启
     */
     private String isEncrypt;
 

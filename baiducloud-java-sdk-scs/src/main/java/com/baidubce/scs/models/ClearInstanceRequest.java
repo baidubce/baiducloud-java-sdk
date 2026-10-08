@@ -25,12 +25,12 @@ public class ClearInstanceRequest extends BaseBceRequest {
     private Integer dbIndex;
 
     /**
-    * true=只清理过期数据, false=清理所有数据
+    * `true`：只清理过期数据, `false`：清理所有数据
     */
     private Boolean isFlushExpired;
 
     /**
-    * 维护时间窗口执行, 仅isFlushExpired=true时可用。<li>true：维护时间执行，false：立即执行。
+    * 维护时间窗口执行, 仅isFlushExpired=true时可用。`true`：维护时间执行，`false`：立即执行。
     */
     private Boolean isDefer;
 

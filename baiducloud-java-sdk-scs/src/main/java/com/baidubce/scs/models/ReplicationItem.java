@@ -15,7 +15,7 @@ public class ReplicationItem {
     private String subnetId;
 
     /**
-     * 是否是主节点。主节点有且仅有一个。  <li>1：主节点 <li> 0：从节点
+     * 是否是主节点。主节点有且仅有一个。  `1`：主节点；`0`：从节点
      */
     private Integer isMaster;
 

@@ -15,22 +15,22 @@ public class ClusterTypeUpgradeRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * 是否维护时间内执行。默认false。true：维护时间内执行；false：立即执行。
+    * 是否维护时间内执行。默认false。`true`：维护时间内执行；`false`：立即执行。
     */
     private Boolean isDefer;
 
     /**
-    * 节点规格。<li>可以是新的规格，需要是Redis集群版的规格。<li>可以为空，默认为原实例规格，但是需要确保原实例规格为集群版的规格，否则执行失败。
+    * 节点规格。<br/>1、可以是新的规格，需要是Redis集群版的规格。<br/>2、可以为空，默认为原实例规格，但是需要确保原实例规格为集群版的规格，否则执行失败。
     */
     private String nodeType;
 
     /**
-    * 分片数量。<li>可以设置新的分片数量；<li>可以为空，默认为原实例分片数。
+    * 分片数量。<br/>1、可以设置新的分片数量；<br/>2、可以为空，默认为原实例分片数。
     */
     private Integer shardNum;
 
     /**
-    * 副本信息。<li>不支持减少副本，可以新增。<li>可以设置新的副本信息，需全量的副本信息。<li>可以为空，默认为原实例副本数。
+    * 副本信息。<br/>1、不支持减少副本，可以新增。<br/>2、可以设置新的副本信息，需全量的副本信息。<br/>3、可以为空，默认为原实例副本数。
     */
     private List<ReplicationItem> replicationInfo;
 
