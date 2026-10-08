@@ -14,7 +14,7 @@ public class ModifyParameterTemplateNameRequest extends BaseBceRequest {
     private String templateShowId;
 
     /**
-    * 新的实例名称。要求：<br> 大小写字母、数字、中文以及-_/.特殊字符，必须以字母或者中文开头，长度1-65<br>
+    * 新的实例名称。要求：大小写字母、数字、中文以及-_/.特殊字符，必须以字母或者中文开头，长度1-65
     */
     private String name;
 

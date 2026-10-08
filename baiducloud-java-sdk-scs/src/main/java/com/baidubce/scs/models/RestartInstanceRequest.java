@@ -14,7 +14,7 @@ public class RestartInstanceRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * 执行时机。<li>false：立即执行<li>true：维护时间内执行
+    * 执行时机。`false`：立即执行；`true`：维护时间内执行
     */
     private Boolean isDefer;
 

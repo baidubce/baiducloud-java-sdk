@@ -14,7 +14,7 @@ public class ModifyEntranceRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * 是否维护时间内执行。 <li>true：维护时间内执行 <li>false：立即执行
+    * 是否维护时间内执行。 `true`：维护时间内执行；`false`：立即执行
     */
     private Boolean isDefer;
 

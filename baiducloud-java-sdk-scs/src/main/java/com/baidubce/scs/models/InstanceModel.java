@@ -17,7 +17,7 @@ public class InstanceModel {
     private String instanceName;
 
     /**
-     * [实例状态](#InstanceStatus)
+     * 实例状态
      */
     private String instanceStatus;
 
@@ -27,12 +27,12 @@ public class InstanceModel {
     private String isolatedStatus;
 
     /**
-     * [集群类型](#ClusterType)
+     * 集群类型
      */
     private String clusterType;
 
     /**
-     * [引擎类型](#Engine)
+     * 引擎类型
      */
     private String engine;
 

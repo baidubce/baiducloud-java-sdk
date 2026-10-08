@@ -14,7 +14,7 @@ public class SetBackupPolicyRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * 备份时间。<li>未填写该参数时，备份时间默认修改为1:05:00。
+    * 备份时间。未填写该参数时，备份时间默认修改为1:05:00。
     */
     private String backupTime;
 
@@ -29,7 +29,7 @@ public class SetBackupPolicyRequest extends BaseBceRequest {
     private Integer expireDay;
 
     /**
-    * 是否开启加密 no 不开启 yes 开启
+    * 是否开启加密。`no`：不开启；`yes`：开启
     */
     private String isEncrypt;
 

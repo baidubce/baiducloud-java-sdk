@@ -832,6 +832,18 @@ public class ScsClient extends AbstractBceClient {
      */
     public GetInstanceListResponse getInstanceList(GetInstanceListRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, CONSTANT_V2, CONSTANT_INSTANCE);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", request.getMaxKeys());
+        }
+        if (request.getInstanceIds() != null) {
+            internalRequest.addParameter("instanceIds", request.getInstanceIds());
+        }
+        if (request.getVnetIp() != null) {
+            internalRequest.addParameter("vnetIp", request.getVnetIp());
+        }
         return invokeHttpClient(internalRequest, GetInstanceListResponse.class);
     }
 

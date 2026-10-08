@@ -14,7 +14,7 @@ public class HotGroupForbidWriteRequest extends BaseBceRequest {
     private String groupId;
 
     /**
-    * 禁写标识（false 未禁写 true 禁写）
+    * 禁写标识。`false`：未禁写；`true`：禁写
     */
     private Boolean forbidWriteFlag;
 

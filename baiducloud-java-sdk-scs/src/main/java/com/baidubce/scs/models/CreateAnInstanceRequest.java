@@ -130,7 +130,7 @@ public class CreateAnInstanceRequest extends BaseBceRequest {
     private String resourceGroupId;
 
     /**
-    * 备份配置。格式："${备份周期};${备份时间};${备份时长}"。<br>备份周期取值参考：周一：'Mon',  周二：'Tue', 周三： 'Wed', 周四：'Thu',周五： 'Fri', 周六：'Sta', 周日：'Sun'。<br>备份时间为UTC时间，如16:00:00，北京时间为00:00:00。<br>备份时间：取值1-15
+    * 备份配置。格式："${备份周期};${备份时间};${备份时长}"。<br>备份周期取值参考：`Mon`：周一, `Tue`：周二, `Wed`：周三, `Thu`：周四, `Fri`：周五, `Sta`：周六, `Sun`：周日。<br>备份时间为UTC时间，如16:00:00，北京时间为00:00:00。<br>备份时间：取值1-15
     */
     private String autoBackupConfig;
 

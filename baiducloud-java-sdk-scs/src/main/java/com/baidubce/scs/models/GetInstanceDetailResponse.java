@@ -23,12 +23,12 @@ public class GetInstanceDetailResponse extends BaseBceResponse {
     private String instanceStatus;
 
     /**
-    * [集群类型](#ClusterType)
+    * 集群类型
     */
     private String clusterType;
 
     /**
-    * [引擎类型](#Engine)
+    * 引擎类型
     */
     private String engine;
 

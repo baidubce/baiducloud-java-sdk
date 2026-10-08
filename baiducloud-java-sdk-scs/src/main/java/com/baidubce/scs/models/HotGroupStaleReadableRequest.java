@@ -19,7 +19,7 @@ public class HotGroupStaleReadableRequest extends BaseBceRequest {
     private String followerId;
 
     /**
-    * 是否开启从角色脏读（true：开启，false：关闭）
+    * 是否开启从角色脏读。`true`：开启；`false`：关闭
     */
     private Boolean staleReadable;
 

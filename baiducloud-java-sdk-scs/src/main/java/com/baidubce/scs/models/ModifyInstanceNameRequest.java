@@ -14,7 +14,7 @@ public class ModifyInstanceNameRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * 新的实例名称。要求：<br>1. 支持大小写字母、数字以及\-\_ /\.等特殊字符，必须以字母开头；<br>2. 长度限制为1\-64；<br>3. 和自己其他实例的名称不重复
+    * 新的实例名称。要求：<br>1. 支持大小写字母、数字以及\-\_ /\.等特殊字符，必须以字母开头；<br>2. 长度限制为1\-64；
     */
     private String instanceName;
 
