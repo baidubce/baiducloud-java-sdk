@@ -1,6 +1,7 @@
 package com.baidubce.rds;
 
 import com.baidubce.rds.models.QueryTaskListRequest;
+import com.baidubce.rds.models.QueryTaskListResponse;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -41,6 +42,7 @@ public class RdsClientTest {
         queryTaskListRequest.setTaskStatus("");
         queryTaskListRequest.setStartTime("");
         queryTaskListRequest.setEndTime("");
-        rdsClient.queryTaskList(queryTaskListRequest);
+        QueryTaskListResponse response = rdsClient.queryTaskList(queryTaskListRequest);
+        System.out.println(response);
     }
 }

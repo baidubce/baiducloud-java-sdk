@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.rds.RdsClient;
 import com.baidubce.rds.models.QueryTaskListRequest;
+import com.baidubce.rds.models.QueryTaskListResponse;
 
 public class ExampleQueryTaskList {
     public static void main(String[] args) {
@@ -29,9 +30,9 @@ public class ExampleQueryTaskList {
         queryTaskListRequest.setStartTime("");
         queryTaskListRequest.setEndTime("");
         try {
-            client.queryTaskList(queryTaskListRequest);
+            QueryTaskListResponse response = client.queryTaskList(queryTaskListRequest);
+            System.out.println(response.toJsonString());
         } catch (BceClientException e) {
-            // 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
             System.out.println(e.getMessage());
         }
     }

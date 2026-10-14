@@ -13,9 +13,9 @@ import com.baidubce.auth.SignOptions;
 import com.baidubce.util.RequestBodyUtils;
 import java.util.Arrays;
 import java.util.HashSet;
-import com.baidubce.common.BaseBceResponse;
 
 import com.baidubce.rds.models.QueryTaskListRequest;
+import com.baidubce.rds.models.QueryTaskListResponse;
 
 public class RdsClient extends AbstractBceClient {
 
@@ -48,11 +48,12 @@ public class RdsClient extends AbstractBceClient {
      * queryTaskList
      * 
      * @param request 入参结构体
+     * @return QueryTaskListResponse
      */
-    public void queryTaskList(QueryTaskListRequest request) {
+    public QueryTaskListResponse queryTaskList(QueryTaskListRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_INSTANCE, CONSTANT_TASK);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+        return invokeHttpClient(internalRequest, QueryTaskListResponse.class);
     }
 
     /**
