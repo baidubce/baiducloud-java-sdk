@@ -9,13 +9,15 @@ import com.baidubce.blb.models.AdditionalAttributesModel;
 
 public class ExampleCreateBlbHttpListener {
     public static void main(String[] args) {
-        // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
+        String endpoint = "Your Endpoint";
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setEndpoint(endpoint);
+
+        // ==== AK/SK 鉴权 ====
         String ak = "Your Ak";
         String sk = "Your Sk";
-        String endpoint = "Endpoint";
-        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
-        bceClientConfig.setEndpoint(endpoint);
+
         BlbClient client = new BlbClient(bceClientConfig);
         AdditionalAttributesModel additionalAttributes = new AdditionalAttributesModel();
         additionalAttributes.setGzipJson("");
@@ -34,6 +36,8 @@ public class ExampleCreateBlbHttpListener {
         createBlbHttpListenerRequest.setXForwardedProto(false);
         createBlbHttpListenerRequest.setAdditionalAttributes(additionalAttributes);
         createBlbHttpListenerRequest.setHealthCheckType("");
+        createBlbHttpListenerRequest.setHealthCheckHttpVersion("");
+        createBlbHttpListenerRequest.setHealthCheckMethod("");
         createBlbHttpListenerRequest.setHealthCheckPort(0);
         createBlbHttpListenerRequest.setHealthCheckURI("");
         createBlbHttpListenerRequest.setHealthCheckTimeoutInSecond(0);

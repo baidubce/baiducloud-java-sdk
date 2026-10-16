@@ -20,6 +20,16 @@ public class AppIpGroupBackendPolicy {
     private String healthCheck;
 
     /**
+     * 健康检查HTTP协议版本,只有`healthCheckType`设置为HTTP时生效。取值: `HTTP 1.0`(默认)、`HTTP 1.1`
+     */
+    private String healthCheckHttpVersion;
+
+    /**
+     * 健康检查的方法,只有`healthCheckType`设置为HTTP时生效。取值:`GET`,`HEAD`(默认)
+     */
+    private String healthCheckMethod;
+
+    /**
      * 健康检查端口
      */
     private Integer healthCheckPort;
@@ -84,6 +94,24 @@ public class AppIpGroupBackendPolicy {
 
     public String getHealthCheck() {
         return this.healthCheck;
+    }
+
+    public AppIpGroupBackendPolicy setHealthCheckHttpVersion(String healthCheckHttpVersion) {
+        this.healthCheckHttpVersion = healthCheckHttpVersion;
+        return this;
+    }
+
+    public String getHealthCheckHttpVersion() {
+        return this.healthCheckHttpVersion;
+    }
+
+    public AppIpGroupBackendPolicy setHealthCheckMethod(String healthCheckMethod) {
+        this.healthCheckMethod = healthCheckMethod;
+        return this;
+    }
+
+    public String getHealthCheckMethod() {
+        return this.healthCheckMethod;
     }
 
     public AppIpGroupBackendPolicy setHealthCheckPort(Integer healthCheckPort) {
@@ -160,10 +188,11 @@ public class AppIpGroupBackendPolicy {
 
     @Override
     public String toString() {
-        return "AppIpGroupBackendPolicy{" + "id=" + id + "\n" + "type=" + type + "\n" + "healthCheck=" + healthCheck + "\n" + "healthCheckPort=" + healthCheckPort + "\n"
-                + "healthCheckUrlPath=" + healthCheckUrlPath + "\n" + "healthCheckTimeoutInSecond=" + healthCheckTimeoutInSecond + "\n" + "healthCheckIntervalInSecond="
-                + healthCheckIntervalInSecond + "\n" + "healthCheckDownRetry=" + healthCheckDownRetry + "\n" + "healthCheckUpRetry=" + healthCheckUpRetry + "\n"
-                + "healthCheckNormalStatus=" + healthCheckNormalStatus + "\n" + "udpHealthCheckString=" + udpHealthCheckString + "\n" + "}";
+        return "AppIpGroupBackendPolicy{" + "id=" + id + "\n" + "type=" + type + "\n" + "healthCheck=" + healthCheck + "\n" + "healthCheckHttpVersion=" + healthCheckHttpVersion
+                + "\n" + "healthCheckMethod=" + healthCheckMethod + "\n" + "healthCheckPort=" + healthCheckPort + "\n" + "healthCheckUrlPath=" + healthCheckUrlPath + "\n"
+                + "healthCheckTimeoutInSecond=" + healthCheckTimeoutInSecond + "\n" + "healthCheckIntervalInSecond=" + healthCheckIntervalInSecond + "\n" + "healthCheckDownRetry="
+                + healthCheckDownRetry + "\n" + "healthCheckUpRetry=" + healthCheckUpRetry + "\n" + "healthCheckNormalStatus=" + healthCheckNormalStatus + "\n"
+                + "udpHealthCheckString=" + udpHealthCheckString + "\n" + "}";
     }
 
 }

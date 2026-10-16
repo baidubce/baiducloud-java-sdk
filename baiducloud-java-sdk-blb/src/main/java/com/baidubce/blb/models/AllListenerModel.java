@@ -97,6 +97,16 @@ public class AllListenerModel {
     private String healthCheckType;
 
     /**
+     * 健康检查HTTP协议版本,只有`healthCheckType`设置为HTTP时生效。取值: `HTTP 1.0`(默认)、`HTTP 1.1`
+     */
+    private String healthCheckHttpVersion;
+
+    /**
+     * 健康检查的方法,只有`healthCheckType`设置为HTTP时生效。取值:`GET`,`HEAD`(默认)
+     */
+    private String healthCheckMethod;
+
+    /**
      * 健康检查端口
      */
     private Integer healthCheckPort;
@@ -318,6 +328,24 @@ public class AllListenerModel {
         return this.healthCheckType;
     }
 
+    public AllListenerModel setHealthCheckHttpVersion(String healthCheckHttpVersion) {
+        this.healthCheckHttpVersion = healthCheckHttpVersion;
+        return this;
+    }
+
+    public String getHealthCheckHttpVersion() {
+        return this.healthCheckHttpVersion;
+    }
+
+    public AllListenerModel setHealthCheckMethod(String healthCheckMethod) {
+        this.healthCheckMethod = healthCheckMethod;
+        return this;
+    }
+
+    public String getHealthCheckMethod() {
+        return this.healthCheckMethod;
+    }
+
     public AllListenerModel setHealthCheckPort(Integer healthCheckPort) {
         this.healthCheckPort = healthCheckPort;
         return this;
@@ -433,10 +461,11 @@ public class AllListenerModel {
                 + healthyThreshold + "\n" + "unhealthyThreshold=" + unhealthyThreshold + "\n" + "getBlbIp=" + getBlbIp + "\n" + "tcpSessionTimeout=" + tcpSessionTimeout + "\n"
                 + "udpSessionTimeout=" + udpSessionTimeout + "\n" + "healthCheckString=" + healthCheckString + "\n" + "keepSession=" + keepSession + "\n" + "keepSessionType="
                 + keepSessionType + "\n" + "keepSessionDuration=" + keepSessionDuration + "\n" + "keepSessionCookieName=" + keepSessionCookieName + "\n" + "xForwardFor="
-                + xForwardFor + "\n" + "healthCheckType=" + healthCheckType + "\n" + "healthCheckPort=" + healthCheckPort + "\n" + "healthCheckURI=" + healthCheckURI + "\n"
-                + "healthCheckNormalStatus=" + healthCheckNormalStatus + "\n" + "healthCheckHost=" + healthCheckHost + "\n" + "serverTimeout=" + serverTimeout + "\n"
-                + "redirectPort=" + redirectPort + "\n" + "certIds=" + certIds + "\n" + "dualAuth=" + dualAuth + "\n" + "clientCertIds=" + clientCertIds + "\n" + "encryptionType="
-                + encryptionType + "\n" + "encryptionProtocols=" + encryptionProtocols + "\n" + "appliedCiphers=" + appliedCiphers + "\n" + "}";
+                + xForwardFor + "\n" + "healthCheckType=" + healthCheckType + "\n" + "healthCheckHttpVersion=" + healthCheckHttpVersion + "\n" + "healthCheckMethod="
+                + healthCheckMethod + "\n" + "healthCheckPort=" + healthCheckPort + "\n" + "healthCheckURI=" + healthCheckURI + "\n" + "healthCheckNormalStatus="
+                + healthCheckNormalStatus + "\n" + "healthCheckHost=" + healthCheckHost + "\n" + "serverTimeout=" + serverTimeout + "\n" + "redirectPort=" + redirectPort + "\n"
+                + "certIds=" + certIds + "\n" + "dualAuth=" + dualAuth + "\n" + "clientCertIds=" + clientCertIds + "\n" + "encryptionType=" + encryptionType + "\n"
+                + "encryptionProtocols=" + encryptionProtocols + "\n" + "appliedCiphers=" + appliedCiphers + "\n" + "}";
     }
 
 }
