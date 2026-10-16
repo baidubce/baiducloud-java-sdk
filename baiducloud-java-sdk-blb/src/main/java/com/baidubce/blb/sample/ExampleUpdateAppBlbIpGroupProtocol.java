@@ -8,13 +8,15 @@ import com.baidubce.blb.models.UpdateAppBlbIpGroupProtocolRequest;
 
 public class ExampleUpdateAppBlbIpGroupProtocol {
     public static void main(String[] args) {
-        // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
+        String endpoint = "Your Endpoint";
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setEndpoint(endpoint);
+
+        // ==== AK/SK 鉴权 ====
         String ak = "Your Ak";
         String sk = "Your Sk";
-        String endpoint = "Endpoint";
-        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
-        bceClientConfig.setEndpoint(endpoint);
+
         BlbClient client = new BlbClient(bceClientConfig);
         UpdateAppBlbIpGroupProtocolRequest updateAppBlbIpGroupProtocolRequest = new UpdateAppBlbIpGroupProtocolRequest();
         updateAppBlbIpGroupProtocolRequest.setBlbId("");
@@ -22,6 +24,8 @@ public class ExampleUpdateAppBlbIpGroupProtocol {
         updateAppBlbIpGroupProtocolRequest.setIpGroupId("");
         updateAppBlbIpGroupProtocolRequest.setId("");
         updateAppBlbIpGroupProtocolRequest.setHealthCheck("");
+        updateAppBlbIpGroupProtocolRequest.setHealthCheckHttpVersion("");
+        updateAppBlbIpGroupProtocolRequest.setHealthCheckMethod("");
         updateAppBlbIpGroupProtocolRequest.setHealthCheckPort(0);
         updateAppBlbIpGroupProtocolRequest.setHealthCheckUrlPath("");
         updateAppBlbIpGroupProtocolRequest.setHealthCheckTimeoutInSecond(0);

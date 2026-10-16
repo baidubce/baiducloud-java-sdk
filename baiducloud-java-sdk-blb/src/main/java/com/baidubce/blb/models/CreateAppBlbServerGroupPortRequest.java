@@ -45,6 +45,16 @@ public class CreateAppBlbServerGroupPortRequest extends BaseBceRequest {
     private String healthCheck;
 
     /**
+    * 健康检查HTTP协议版本,只有`healthCheck`设置为HTTP时生效。取值: `HTTP 1.0`(默认)、`HTTP 1.1`
+    */
+    private String healthCheckHttpVersion;
+
+    /**
+    * 健康检查的方法,只有`healthCheck`设置为HTTP时生效。取值:`GET`,`HEAD`(默认)
+    */
+    private String healthCheckMethod;
+
+    /**
     * 健康检查端口，允许范围为1-65535，默认为port的取值，当健康检查协议为"HTTP"时生效
     */
     private Integer healthCheckPort;
@@ -149,6 +159,24 @@ public class CreateAppBlbServerGroupPortRequest extends BaseBceRequest {
 
     public CreateAppBlbServerGroupPortRequest setHealthCheck(String healthCheck) {
         this.healthCheck = healthCheck;
+        return this;
+    }
+
+    public String getHealthCheckHttpVersion() {
+        return healthCheckHttpVersion;
+    }
+
+    public CreateAppBlbServerGroupPortRequest setHealthCheckHttpVersion(String healthCheckHttpVersion) {
+        this.healthCheckHttpVersion = healthCheckHttpVersion;
+        return this;
+    }
+
+    public String getHealthCheckMethod() {
+        return healthCheckMethod;
+    }
+
+    public CreateAppBlbServerGroupPortRequest setHealthCheckMethod(String healthCheckMethod) {
+        this.healthCheckMethod = healthCheckMethod;
         return this;
     }
 

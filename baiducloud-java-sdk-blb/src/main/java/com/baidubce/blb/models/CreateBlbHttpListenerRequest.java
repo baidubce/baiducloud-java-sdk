@@ -75,6 +75,16 @@ public class CreateBlbHttpListenerRequest extends BaseBceRequest {
     private String healthCheckType;
 
     /**
+    * 健康检查HTTP协议版本,只有`healthCheckType`设置为HTTP时生效。取值: `HTTP 1.0`(默认)、`HTTP 1.1`
+    */
+    private String healthCheckHttpVersion;
+
+    /**
+    * 健康检查的方法,只有`healthCheckType`设置为HTTP时生效。取值:`GET`,`HEAD`(默认)
+    */
+    private String healthCheckMethod;
+
+    /**
     * 健康检查端口，默认为backendPort
     */
     private Integer healthCheckPort;
@@ -238,6 +248,24 @@ public class CreateBlbHttpListenerRequest extends BaseBceRequest {
 
     public CreateBlbHttpListenerRequest setHealthCheckType(String healthCheckType) {
         this.healthCheckType = healthCheckType;
+        return this;
+    }
+
+    public String getHealthCheckHttpVersion() {
+        return healthCheckHttpVersion;
+    }
+
+    public CreateBlbHttpListenerRequest setHealthCheckHttpVersion(String healthCheckHttpVersion) {
+        this.healthCheckHttpVersion = healthCheckHttpVersion;
+        return this;
+    }
+
+    public String getHealthCheckMethod() {
+        return healthCheckMethod;
+    }
+
+    public CreateBlbHttpListenerRequest setHealthCheckMethod(String healthCheckMethod) {
+        this.healthCheckMethod = healthCheckMethod;
         return this;
     }
 

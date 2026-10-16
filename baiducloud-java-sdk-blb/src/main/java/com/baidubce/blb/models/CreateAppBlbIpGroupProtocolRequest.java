@@ -36,6 +36,16 @@ public class CreateAppBlbIpGroupProtocolRequest extends BaseBceRequest {
     private String healthCheck;
 
     /**
+    * 健康检查HTTP协议版本,只有`healthCheck`设置为HTTP时生效。取值: `HTTP 1.0`(默认)、`HTTP 1.1`
+    */
+    private String healthCheckHttpVersion;
+
+    /**
+    * 健康检查的方法,只有`healthCheck`设置为HTTP时生效。取值:`GET`,`HEAD`(默认)
+    */
+    private String healthCheckMethod;
+
+    /**
     * 健康检查端口，IP组协议为HTTP协议时必传
     */
     private Integer healthCheckPort;
@@ -122,6 +132,24 @@ public class CreateAppBlbIpGroupProtocolRequest extends BaseBceRequest {
 
     public CreateAppBlbIpGroupProtocolRequest setHealthCheck(String healthCheck) {
         this.healthCheck = healthCheck;
+        return this;
+    }
+
+    public String getHealthCheckHttpVersion() {
+        return healthCheckHttpVersion;
+    }
+
+    public CreateAppBlbIpGroupProtocolRequest setHealthCheckHttpVersion(String healthCheckHttpVersion) {
+        this.healthCheckHttpVersion = healthCheckHttpVersion;
+        return this;
+    }
+
+    public String getHealthCheckMethod() {
+        return healthCheckMethod;
+    }
+
+    public CreateAppBlbIpGroupProtocolRequest setHealthCheckMethod(String healthCheckMethod) {
+        this.healthCheckMethod = healthCheckMethod;
         return this;
     }
 

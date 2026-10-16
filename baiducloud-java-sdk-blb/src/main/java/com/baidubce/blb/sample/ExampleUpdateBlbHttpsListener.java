@@ -10,13 +10,15 @@ import java.util.ArrayList;
 
 public class ExampleUpdateBlbHttpsListener {
     public static void main(String[] args) {
-        // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
+        String endpoint = "Your Endpoint";
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setEndpoint(endpoint);
+
+        // ==== AK/SK 鉴权 ====
         String ak = "Your Ak";
         String sk = "Your Sk";
-        String endpoint = "Endpoint";
-        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
         bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
-        bceClientConfig.setEndpoint(endpoint);
+
         BlbClient client = new BlbClient(bceClientConfig);
         AdditionalAttributesModel additionalAttributes = new AdditionalAttributesModel();
         additionalAttributes.setGzipJson("");
@@ -35,6 +37,8 @@ public class ExampleUpdateBlbHttpsListener {
         updateBlbHttpsListenerRequest.setXForwardedProto(false);
         updateBlbHttpsListenerRequest.setAdditionalAttributes(additionalAttributes);
         updateBlbHttpsListenerRequest.setHealthCheckType("");
+        updateBlbHttpsListenerRequest.setHealthCheckHttpVersion("");
+        updateBlbHttpsListenerRequest.setHealthCheckMethod("");
         updateBlbHttpsListenerRequest.setHealthCheckPort(0);
         updateBlbHttpsListenerRequest.setHealthCheckURI("");
         updateBlbHttpsListenerRequest.setHealthCheckTimeoutInSecond(0);

@@ -169,7 +169,10 @@ public class BlbClientTest {
     @Before
     public void setUp() {
         BceClientConfiguration config = new BceClientConfiguration();
+
+        // ==== AK/SK 鉴权 ====
         config.setCredentials(new DefaultBceCredentials(AK, SK));
+
         blbClient = new BlbClient(config);
     }
 
@@ -423,6 +426,8 @@ public class BlbClientTest {
         createAppBlbIpGroupProtocolRequest.setIpGroupId("");
         createAppBlbIpGroupProtocolRequest.setType("");
         createAppBlbIpGroupProtocolRequest.setHealthCheck("");
+        createAppBlbIpGroupProtocolRequest.setHealthCheckHttpVersion("");
+        createAppBlbIpGroupProtocolRequest.setHealthCheckMethod("");
         createAppBlbIpGroupProtocolRequest.setHealthCheckPort(0);
         createAppBlbIpGroupProtocolRequest.setHealthCheckUrlPath("");
         createAppBlbIpGroupProtocolRequest.setHealthCheckTimeoutInSecond(0);
@@ -478,6 +483,8 @@ public class BlbClientTest {
         createAppBlbServerGroupPortRequest.setType("");
         createAppBlbServerGroupPortRequest.setEnableHealthCheck(false);
         createAppBlbServerGroupPortRequest.setHealthCheck("");
+        createAppBlbServerGroupPortRequest.setHealthCheckHttpVersion("");
+        createAppBlbServerGroupPortRequest.setHealthCheckMethod("");
         createAppBlbServerGroupPortRequest.setHealthCheckPort(0);
         createAppBlbServerGroupPortRequest.setHealthCheckUrlPath("");
         createAppBlbServerGroupPortRequest.setHealthCheckTimeoutInSecond(0);
@@ -588,6 +595,8 @@ public class BlbClientTest {
         createBlbHttpListenerRequest.setXForwardedProto(false);
         createBlbHttpListenerRequest.setAdditionalAttributes(null);
         createBlbHttpListenerRequest.setHealthCheckType("");
+        createBlbHttpListenerRequest.setHealthCheckHttpVersion("");
+        createBlbHttpListenerRequest.setHealthCheckMethod("");
         createBlbHttpListenerRequest.setHealthCheckPort(0);
         createBlbHttpListenerRequest.setHealthCheckURI("");
         createBlbHttpListenerRequest.setHealthCheckTimeoutInSecond(0);
@@ -620,6 +629,8 @@ public class BlbClientTest {
         createBlbHttpsListenerRequest.setXForwardedProto(false);
         createBlbHttpsListenerRequest.setAdditionalAttributes(null);
         createBlbHttpsListenerRequest.setHealthCheckType("");
+        createBlbHttpsListenerRequest.setHealthCheckHttpVersion("");
+        createBlbHttpsListenerRequest.setHealthCheckMethod("");
         createBlbHttpsListenerRequest.setHealthCheckPort(0);
         createBlbHttpsListenerRequest.setHealthCheckURI("");
         createBlbHttpsListenerRequest.setHealthCheckTimeoutInSecond(0);
@@ -1520,6 +1531,8 @@ public class BlbClientTest {
         updateAppBlbIpGroupProtocolRequest.setIpGroupId("");
         updateAppBlbIpGroupProtocolRequest.setId("");
         updateAppBlbIpGroupProtocolRequest.setHealthCheck("");
+        updateAppBlbIpGroupProtocolRequest.setHealthCheckHttpVersion("");
+        updateAppBlbIpGroupProtocolRequest.setHealthCheckMethod("");
         updateAppBlbIpGroupProtocolRequest.setHealthCheckPort(0);
         updateAppBlbIpGroupProtocolRequest.setHealthCheckUrlPath("");
         updateAppBlbIpGroupProtocolRequest.setHealthCheckTimeoutInSecond(0);
@@ -1573,6 +1586,8 @@ public class BlbClientTest {
         updateAppBlbServerGroupPortRequest.setPortId("");
         updateAppBlbServerGroupPortRequest.setEnableHealthCheck(false);
         updateAppBlbServerGroupPortRequest.setHealthCheck("");
+        updateAppBlbServerGroupPortRequest.setHealthCheckHttpVersion("");
+        updateAppBlbServerGroupPortRequest.setHealthCheckMethod("");
         updateAppBlbServerGroupPortRequest.setHealthCheckPort(0);
         updateAppBlbServerGroupPortRequest.setHealthCheckUrlPath("");
         updateAppBlbServerGroupPortRequest.setHealthCheckTimeoutInSecond(0);
@@ -1694,6 +1709,8 @@ public class BlbClientTest {
         updateBlbHttpListenerRequest.setXForwardedProto(false);
         updateBlbHttpListenerRequest.setAdditionalAttributes(null);
         updateBlbHttpListenerRequest.setHealthCheckType("");
+        updateBlbHttpListenerRequest.setHealthCheckHttpVersion("");
+        updateBlbHttpListenerRequest.setHealthCheckMethod("");
         updateBlbHttpListenerRequest.setHealthCheckPort(0);
         updateBlbHttpListenerRequest.setHealthCheckURI("");
         updateBlbHttpListenerRequest.setHealthCheckTimeoutInSecond(0);
@@ -1726,6 +1743,8 @@ public class BlbClientTest {
         updateBlbHttpsListenerRequest.setXForwardedProto(false);
         updateBlbHttpsListenerRequest.setAdditionalAttributes(null);
         updateBlbHttpsListenerRequest.setHealthCheckType("");
+        updateBlbHttpsListenerRequest.setHealthCheckHttpVersion("");
+        updateBlbHttpsListenerRequest.setHealthCheckMethod("");
         updateBlbHttpsListenerRequest.setHealthCheckPort(0);
         updateBlbHttpsListenerRequest.setHealthCheckURI("");
         updateBlbHttpsListenerRequest.setHealthCheckTimeoutInSecond(0);
