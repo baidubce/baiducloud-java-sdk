@@ -18,14 +18,14 @@ public class ZoneMigrationRequest extends BaseBceRequest {
     /**
     * 主可用区
     */
-    @JsonProperty("master\_azone")
+    @JsonProperty("master_azone")
     private String masterAzone;
 
     /**
     * 备可用区
     */
     @JsonProperty
-    ("backup\_azone")private String backupAzone;
+    ("backup_azone")private String backupAzone;
 
     /**
     * 可用区
