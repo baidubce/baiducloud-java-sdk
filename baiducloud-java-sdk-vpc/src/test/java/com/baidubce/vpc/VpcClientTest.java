@@ -1833,9 +1833,9 @@ public class VpcClientTest {
     @Test
     public void queryVpnListTest() {
         QueryVpnListRequest queryVpnListRequest = new QueryVpnListRequest();
-        queryVpnListRequest.setVpcId("");
         queryVpnListRequest.setMarker("");
         queryVpnListRequest.setMaxKeys(0);
+        queryVpnListRequest.setVpcId("");
         queryVpnListRequest.setEip("");
         queryVpnListRequest.setType("");
         QueryVpnListResponse response = vpcClient.queryVpnList(queryVpnListRequest);

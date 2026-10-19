@@ -2151,14 +2151,14 @@ public class VpcClient extends AbstractBceClient {
      */
     public QueryVpnListResponse queryVpnList(QueryVpnListRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_VPN);
-        if (request.getVpcId() != null) {
-            internalRequest.addParameter("vpcId", request.getVpcId());
-        }
         if (request.getMarker() != null) {
             internalRequest.addParameter("marker", request.getMarker());
         }
         if (request.getMaxKeys() != null) {
             internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        if (request.getVpcId() != null) {
+            internalRequest.addParameter("vpcId", request.getVpcId());
         }
         if (request.getEip() != null) {
             internalRequest.addParameter("eip", request.getEip());

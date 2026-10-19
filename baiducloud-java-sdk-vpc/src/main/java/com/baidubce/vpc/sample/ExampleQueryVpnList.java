@@ -20,9 +20,9 @@ public class ExampleQueryVpnList {
 
         VpcClient client = new VpcClient(bceClientConfig);
         QueryVpnListRequest queryVpnListRequest = new QueryVpnListRequest();
-        queryVpnListRequest.setVpcId("");
         queryVpnListRequest.setMarker("");
         queryVpnListRequest.setMaxKeys(0);
+        queryVpnListRequest.setVpcId("");
         queryVpnListRequest.setEip("");
         queryVpnListRequest.setType("");
         try {
