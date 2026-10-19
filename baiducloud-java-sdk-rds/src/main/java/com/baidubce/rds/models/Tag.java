@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Tag {
     /**
-     * 标签 key
+     * 标签名
      */
     private String tagKey;
 
     /**
-     * 标签 value
+     * 标签值
      */
     private String tagValue;
 

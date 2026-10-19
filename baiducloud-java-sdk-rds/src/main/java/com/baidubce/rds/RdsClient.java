@@ -13,15 +13,51 @@ import com.baidubce.auth.SignOptions;
 import com.baidubce.util.RequestBodyUtils;
 import java.util.Arrays;
 import java.util.HashSet;
+import com.baidubce.common.BaseBceRequest;
+import com.baidubce.common.BaseBceResponse;
 
+import com.baidubce.rds.models.BatchConfigurationOfInstancesRequest;
+import com.baidubce.rds.models.BatchConfigurationOfInstancesResponse;
+import com.baidubce.rds.models.BindingTagsRequest;
+import com.baidubce.rds.models.ClusterStatusCheckRequest;
+import com.baidubce.rds.models.ClusterStatusCheckResponse;
 import com.baidubce.rds.models.CreateAPrimaryInstanceRequest;
 import com.baidubce.rds.models.CreateAPrimaryInstanceResponse;
 import com.baidubce.rds.models.CreateAProxyInstanceRequest;
 import com.baidubce.rds.models.CreateAProxyInstanceResponse;
 import com.baidubce.rds.models.CreateReadOnlyInstanceRequest;
 import com.baidubce.rds.models.CreateReadOnlyInstanceResponse;
+import com.baidubce.rds.models.DialTestInterfaceRequest;
+import com.baidubce.rds.models.DialTestInterfaceResponse;
+import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionRequest;
+import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionResponse;
+import com.baidubce.rds.models.GetNewPurchasePriceRequest;
+import com.baidubce.rds.models.GetNewPurchasePriceResponse;
+import com.baidubce.rds.models.ObtainThePriceDifferenceOfPrepaidTransformerRequest;
+import com.baidubce.rds.models.ObtainThePriceDifferenceOfPrepaidTransformerResponse;
+import com.baidubce.rds.models.QueryInstanceListRequest;
+import com.baidubce.rds.models.QueryInstanceListResponse;
+import com.baidubce.rds.models.QuerySubnetListRequest;
+import com.baidubce.rds.models.QuerySubnetListResponse;
 import com.baidubce.rds.models.QueryTaskListRequest;
 import com.baidubce.rds.models.QueryTaskListResponse;
+import com.baidubce.rds.models.QueryTheDetailsOfTheSpecifiedInstanceRequest;
+import com.baidubce.rds.models.QueryTheDetailsOfTheSpecifiedInstanceResponse;
+import com.baidubce.rds.models.QueryTheListOfAvailableZonesResponse;
+import com.baidubce.rds.models.ReleaseInstanceRequest;
+import com.baidubce.rds.models.ReleaseInstanceResponse;
+import com.baidubce.rds.models.RestartTheInstanceRequest;
+import com.baidubce.rds.models.RetrieveInstanceAutoScalingConfigRequest;
+import com.baidubce.rds.models.RetrieveInstanceAutoScalingConfigResponse;
+import com.baidubce.rds.models.TransformationExampleRequest;
+import com.baidubce.rds.models.TransformationExampleResponse;
+import com.baidubce.rds.models.UpdateAutomaticStorageExpansionConfigurationRequest;
+import com.baidubce.rds.models.UpdateInstanceConnectionInformationRequest;
+import com.baidubce.rds.models.UpdateInstanceNameRequest;
+import com.baidubce.rds.models.UpdateInstancePublicNetworkAccessStatusRequest;
+import com.baidubce.rds.models.UpdateInstanceSynchronizationModeRequest;
+import com.baidubce.rds.models.UpdateTimeWindowRequest;
+import com.baidubce.rds.models.ZoneMigrationRequest;
 
 public class RdsClient extends AbstractBceClient {
 
@@ -29,8 +65,21 @@ public class RdsClient extends AbstractBceClient {
 
     private static final String VERSION_V1 = "v1";
     private static final String CONSTANT_INSTANCE = "instance";
+    private static final String CONSTANT_TAGS = "tags";
+    private static final String CONSTANT_STATUS = "status";
+    private static final String CONSTANT_DISK_AUTO_RESIZE = "diskAutoResize";
+    private static final String CONSTANT_CONFIG = "config";
+    private static final String CONSTANT_PROBE = "probe";
     private static final String CONSTANT_V1 = "v1";
     private static final String CONSTANT_TASK = "task";
+    private static final String CONSTANT_AZONE_MIGRATION = "azoneMigration";
+    private static final String CONSTANT_PRICE = "price";
+    private static final String CONSTANT_DIFF = "diff";
+    private static final String CONSTANT_AUTO_RESIZE_CONFIG = "autoResizeConfig";
+    private static final String CONSTANT_ZONE = "zone";
+    private static final String CONSTANT_SUBNET = "subnet";
+    private static final String CONSTANT_MAINTAINTIME = "maintaintime";
+    private static final String CONSTANT_AUTO_EXPANSION = "autoExpansion";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -49,6 +98,41 @@ public class RdsClient extends AbstractBceClient {
     */
     public RdsClient(BceClientConfiguration clientConfiguration) {
         super(clientConfiguration, CLIENT_HANDLERS);
+    }
+
+    /**
+     * batchConfigurationOfInstances
+     * 
+     * @param request 入参结构体
+     * @return BatchConfigurationOfInstancesResponse
+     */
+    public BatchConfigurationOfInstancesResponse batchConfigurationOfInstances(BatchConfigurationOfInstancesRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId());
+        internalRequest.addParameter("resize", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, BatchConfigurationOfInstancesResponse.class);
+    }
+
+    /**
+     * bindingTags
+     * 
+     * @param request 入参结构体
+     */
+    public void bindingTags(BindingTagsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_INSTANCE, CONSTANT_TAGS);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * clusterStatusCheck
+     * 
+     * @param request 入参结构体
+     * @return ClusterStatusCheckResponse
+     */
+    public ClusterStatusCheckResponse clusterStatusCheck(ClusterStatusCheckRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_STATUS);
+        return invokeHttpClient(internalRequest, ClusterStatusCheckResponse.class);
     }
 
     /**
@@ -99,6 +183,90 @@ public class RdsClient extends AbstractBceClient {
     }
 
     /**
+     * dialTestInterface
+     * 
+     * @param request 入参结构体
+     * @return DialTestInterfaceResponse
+     */
+    public DialTestInterfaceResponse dialTestInterface(DialTestInterfaceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_PROBE);
+        return invokeHttpClient(internalRequest, DialTestInterfaceResponse.class);
+    }
+
+    /**
+     * doesTheInstanceSupportEnablingAutomaticExpansion
+     * 
+     * @param request 入参结构体
+     * @return DoesTheInstanceSupportEnablingAutomaticExpansionResponse
+     */
+    public DoesTheInstanceSupportEnablingAutomaticExpansionResponse doesTheInstanceSupportEnablingAutomaticExpansion(
+            DoesTheInstanceSupportEnablingAutomaticExpansionRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_AUTO_EXPANSION);
+        return invokeHttpClient(internalRequest, DoesTheInstanceSupportEnablingAutomaticExpansionResponse.class);
+    }
+
+    /**
+     * getNewPurchasePrice
+     * 
+     * @param request 入参结构体
+     * @return GetNewPurchasePriceResponse
+     */
+    public GetNewPurchasePriceResponse getNewPurchasePrice(GetNewPurchasePriceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_INSTANCE, CONSTANT_PRICE);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, GetNewPurchasePriceResponse.class);
+    }
+
+    /**
+     * obtainThePriceDifferenceOfPrepaidTransformer
+     * 
+     * @param request 入参结构体
+     * @return ObtainThePriceDifferenceOfPrepaidTransformerResponse
+     */
+    public ObtainThePriceDifferenceOfPrepaidTransformerResponse obtainThePriceDifferenceOfPrepaidTransformer(ObtainThePriceDifferenceOfPrepaidTransformerRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_INSTANCE, CONSTANT_PRICE, CONSTANT_DIFF);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ObtainThePriceDifferenceOfPrepaidTransformerResponse.class);
+    }
+
+    /**
+     * queryInstanceList
+     * 
+     * @param request 入参结构体
+     * @return QueryInstanceListResponse
+     */
+    public QueryInstanceListResponse queryInstanceList(QueryInstanceListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        if (request.getVnetIp() != null) {
+            internalRequest.addParameter("vnetIp", request.getVnetIp());
+        }
+        return invokeHttpClient(internalRequest, QueryInstanceListResponse.class);
+    }
+
+    /**
+     * querySubnetList
+     * 
+     * @param request 入参结构体
+     * @return QuerySubnetListResponse
+     */
+    public QuerySubnetListResponse querySubnetList(QuerySubnetListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_SUBNET);
+        if (request.getZoneName() != null) {
+            internalRequest.addParameter("zoneName", request.getZoneName());
+        }
+        if (request.getVpcId() != null) {
+            internalRequest.addParameter("vpcId", request.getVpcId());
+        }
+        return invokeHttpClient(internalRequest, QuerySubnetListResponse.class);
+    }
+
+    /**
      * queryTaskList
      * 
      * @param request 入参结构体
@@ -108,6 +276,164 @@ public class RdsClient extends AbstractBceClient {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_INSTANCE, CONSTANT_TASK);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, QueryTaskListResponse.class);
+    }
+
+    /**
+     * queryTheDetailsOfTheSpecifiedInstance
+     * 
+     * @param request 入参结构体
+     * @return QueryTheDetailsOfTheSpecifiedInstanceResponse
+     */
+    public QueryTheDetailsOfTheSpecifiedInstanceResponse queryTheDetailsOfTheSpecifiedInstance(QueryTheDetailsOfTheSpecifiedInstanceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId());
+        return invokeHttpClient(internalRequest, QueryTheDetailsOfTheSpecifiedInstanceResponse.class);
+    }
+
+    /**
+     * queryTheListOfAvailableZones
+     * 
+     * @return QueryTheListOfAvailableZonesResponse
+     */
+    public QueryTheListOfAvailableZonesResponse queryTheListOfAvailableZones() {
+        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_ZONE);
+        return invokeHttpClient(internalRequest, QueryTheListOfAvailableZonesResponse.class);
+    }
+
+    /**
+     * releaseInstance
+     * 
+     * @param request 入参结构体
+     * @return ReleaseInstanceResponse
+     */
+    public ReleaseInstanceResponse releaseInstance(ReleaseInstanceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_INSTANCE);
+        return invokeHttpClient(internalRequest, ReleaseInstanceResponse.class);
+    }
+
+    /**
+     * restartTheInstance
+     * 
+     * @param request 入参结构体
+     */
+    public void restartTheInstance(RestartTheInstanceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId());
+        internalRequest.addParameter("reboot", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * retrieveInstanceAutoScalingConfig
+     * 
+     * @param request 入参结构体
+     * @return RetrieveInstanceAutoScalingConfigResponse
+     */
+    public RetrieveInstanceAutoScalingConfigResponse retrieveInstanceAutoScalingConfig(RetrieveInstanceAutoScalingConfigRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_AUTO_RESIZE_CONFIG);
+        return invokeHttpClient(internalRequest, RetrieveInstanceAutoScalingConfigResponse.class);
+    }
+
+    /**
+     * transformationExample
+     * 
+     * @param request 入参结构体
+     * @return TransformationExampleResponse
+     */
+    public TransformationExampleResponse transformationExample(TransformationExampleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId());
+        internalRequest.addParameter("resize", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, TransformationExampleResponse.class);
+    }
+
+    /**
+     * updateAutomaticStorageExpansionConfiguration
+     * 
+     * @param request 入参结构体
+     */
+    public void updateAutomaticStorageExpansionConfiguration(UpdateAutomaticStorageExpansionConfigurationRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(
+                        request,
+                        HttpMethodName.PUT,
+                        VERSION_V1,
+                        CONSTANT_INSTANCE,
+                        request.getInstanceId(),
+                        CONSTANT_DISK_AUTO_RESIZE,
+                        CONSTANT_CONFIG,
+                        request.getAction());
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateInstanceConnectionInformation
+     * 
+     * @param request 入参结构体
+     */
+    public void updateInstanceConnectionInformation(UpdateInstanceConnectionInformationRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId());
+        internalRequest.addParameter("modifyEndpoint", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateInstanceName
+     * 
+     * @param request 入参结构体
+     */
+    public void updateInstanceName(UpdateInstanceNameRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId());
+        internalRequest.addParameter("rename", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateInstancePublicNetworkAccessStatus
+     * 
+     * @param request 入参结构体
+     */
+    public void updateInstancePublicNetworkAccessStatus(UpdateInstancePublicNetworkAccessStatusRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId());
+        internalRequest.addParameter("modifyPublicAccess", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateInstanceSynchronizationMode
+     * 
+     * @param request 入参结构体
+     */
+    public void updateInstanceSynchronizationMode(UpdateInstanceSynchronizationModeRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId());
+        internalRequest.addParameter("modifySyncMode", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateTimeWindow
+     * 
+     * @param request 入参结构体
+     */
+    public void updateTimeWindow(UpdateTimeWindowRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_MAINTAINTIME);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * zoneMigration
+     * 
+     * @param request 入参结构体
+     */
+    public void zoneMigration(ZoneMigrationRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_AZONE_MIGRATION);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**

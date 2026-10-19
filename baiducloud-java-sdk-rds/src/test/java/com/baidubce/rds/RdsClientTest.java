@@ -1,13 +1,47 @@
 package com.baidubce.rds;
 
+import com.baidubce.rds.models.BatchConfigurationOfInstancesRequest;
+import com.baidubce.rds.models.BatchConfigurationOfInstancesResponse;
+import com.baidubce.rds.models.BindingTagsRequest;
+import com.baidubce.rds.models.ClusterStatusCheckRequest;
+import com.baidubce.rds.models.ClusterStatusCheckResponse;
 import com.baidubce.rds.models.CreateAPrimaryInstanceRequest;
 import com.baidubce.rds.models.CreateAPrimaryInstanceResponse;
 import com.baidubce.rds.models.CreateAProxyInstanceRequest;
 import com.baidubce.rds.models.CreateAProxyInstanceResponse;
 import com.baidubce.rds.models.CreateReadOnlyInstanceRequest;
 import com.baidubce.rds.models.CreateReadOnlyInstanceResponse;
+import com.baidubce.rds.models.DialTestInterfaceRequest;
+import com.baidubce.rds.models.DialTestInterfaceResponse;
+import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionRequest;
+import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionResponse;
+import com.baidubce.rds.models.GetNewPurchasePriceRequest;
+import com.baidubce.rds.models.GetNewPurchasePriceResponse;
+import com.baidubce.rds.models.ObtainThePriceDifferenceOfPrepaidTransformerRequest;
+import com.baidubce.rds.models.ObtainThePriceDifferenceOfPrepaidTransformerResponse;
+import com.baidubce.rds.models.QueryInstanceListRequest;
+import com.baidubce.rds.models.QueryInstanceListResponse;
+import com.baidubce.rds.models.QuerySubnetListRequest;
+import com.baidubce.rds.models.QuerySubnetListResponse;
 import com.baidubce.rds.models.QueryTaskListRequest;
 import com.baidubce.rds.models.QueryTaskListResponse;
+import com.baidubce.rds.models.QueryTheDetailsOfTheSpecifiedInstanceRequest;
+import com.baidubce.rds.models.QueryTheDetailsOfTheSpecifiedInstanceResponse;
+import com.baidubce.rds.models.QueryTheListOfAvailableZonesResponse;
+import com.baidubce.rds.models.ReleaseInstanceRequest;
+import com.baidubce.rds.models.ReleaseInstanceResponse;
+import com.baidubce.rds.models.RestartTheInstanceRequest;
+import com.baidubce.rds.models.RetrieveInstanceAutoScalingConfigRequest;
+import com.baidubce.rds.models.RetrieveInstanceAutoScalingConfigResponse;
+import com.baidubce.rds.models.TransformationExampleRequest;
+import com.baidubce.rds.models.TransformationExampleResponse;
+import com.baidubce.rds.models.UpdateAutomaticStorageExpansionConfigurationRequest;
+import com.baidubce.rds.models.UpdateInstanceConnectionInformationRequest;
+import com.baidubce.rds.models.UpdateInstanceNameRequest;
+import com.baidubce.rds.models.UpdateInstancePublicNetworkAccessStatusRequest;
+import com.baidubce.rds.models.UpdateInstanceSynchronizationModeRequest;
+import com.baidubce.rds.models.UpdateTimeWindowRequest;
+import com.baidubce.rds.models.ZoneMigrationRequest;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -33,6 +67,53 @@ public class RdsClientTest {
         rdsClient = new RdsClient(config);
     }
 
+    /**
+     * batchConfigurationOfInstances
+     *
+     */
+    @Test
+    public void batchConfigurationOfInstancesTest() {
+        BatchConfigurationOfInstancesRequest batchConfigurationOfInstancesRequest = new BatchConfigurationOfInstancesRequest();
+        batchConfigurationOfInstancesRequest.setInstanceId("");
+        batchConfigurationOfInstancesRequest.setCpuCount(0);
+        batchConfigurationOfInstancesRequest.setMemoryCapacity(0);
+        batchConfigurationOfInstancesRequest.setVolumeCapacity(0);
+        batchConfigurationOfInstancesRequest.setReadReplicas(new ArrayList<>());
+        batchConfigurationOfInstancesRequest.setIsBatchResize(false);
+        batchConfigurationOfInstancesRequest.setIsDirectPay(false);
+        batchConfigurationOfInstancesRequest.setIsEnhanced(false);
+        batchConfigurationOfInstancesRequest.setEffectiveTime("");
+        batchConfigurationOfInstancesRequest.setMasterAzone("");
+        batchConfigurationOfInstancesRequest.setBackupAzone("");
+        batchConfigurationOfInstancesRequest.setDiskIoType("");
+        batchConfigurationOfInstancesRequest.setSubnetId("");
+        batchConfigurationOfInstancesRequest.setEdgeSubnetId("");
+        batchConfigurationOfInstancesRequest.setSubnets(new ArrayList<>());
+        batchConfigurationOfInstancesRequest.setCouponId(new ArrayList<>());
+        BatchConfigurationOfInstancesResponse response = rdsClient.batchConfigurationOfInstances(batchConfigurationOfInstancesRequest);
+        System.out.println(response);
+    }
+    /**
+     * bindingTags
+     *
+     */
+    @Test
+    public void bindingTagsTest() {
+        BindingTagsRequest bindingTagsRequest = new BindingTagsRequest();
+        bindingTagsRequest.setResources(new ArrayList<>());
+        rdsClient.bindingTags(bindingTagsRequest);
+    }
+    /**
+     * clusterStatusCheck
+     *
+     */
+    @Test
+    public void clusterStatusCheckTest() {
+        ClusterStatusCheckRequest clusterStatusCheckRequest = new ClusterStatusCheckRequest();
+        clusterStatusCheckRequest.setInstanceId("");
+        ClusterStatusCheckResponse response = rdsClient.clusterStatusCheck(clusterStatusCheckRequest);
+        System.out.println(response);
+    }
     /**
      * createAPrimaryInstance
      *
@@ -130,6 +211,86 @@ public class RdsClientTest {
         System.out.println(response);
     }
     /**
+     * dialTestInterface
+     *
+     */
+    @Test
+    public void dialTestInterfaceTest() {
+        DialTestInterfaceRequest dialTestInterfaceRequest = new DialTestInterfaceRequest();
+        dialTestInterfaceRequest.setInstanceId("");
+        DialTestInterfaceResponse response = rdsClient.dialTestInterface(dialTestInterfaceRequest);
+        System.out.println(response);
+    }
+    /**
+     * doesTheInstanceSupportEnablingAutomaticExpansion
+     *
+     */
+    @Test
+    public void doesTheInstanceSupportEnablingAutomaticExpansionTest() {
+        DoesTheInstanceSupportEnablingAutomaticExpansionRequest doesTheInstanceSupportEnablingAutomaticExpansionRequest =
+                new DoesTheInstanceSupportEnablingAutomaticExpansionRequest();
+        doesTheInstanceSupportEnablingAutomaticExpansionRequest.setInstanceId("");
+        DoesTheInstanceSupportEnablingAutomaticExpansionResponse response =
+                rdsClient.doesTheInstanceSupportEnablingAutomaticExpansion(doesTheInstanceSupportEnablingAutomaticExpansionRequest);
+        System.out.println(response);
+    }
+    /**
+     * getNewPurchasePrice
+     *
+     */
+    @Test
+    public void getNewPurchasePriceTest() {
+        GetNewPurchasePriceRequest getNewPurchasePriceRequest = new GetNewPurchasePriceRequest();
+        getNewPurchasePriceRequest.setInstance(null);
+        getNewPurchasePriceRequest.setDuration(0);
+        getNewPurchasePriceRequest.setNumber(0);
+        getNewPurchasePriceRequest.setProductType("");
+        GetNewPurchasePriceResponse response = rdsClient.getNewPurchasePrice(getNewPurchasePriceRequest);
+        System.out.println(response);
+    }
+    /**
+     * obtainThePriceDifferenceOfPrepaidTransformer
+     *
+     */
+    @Test
+    public void obtainThePriceDifferenceOfPrepaidTransformerTest() {
+        ObtainThePriceDifferenceOfPrepaidTransformerRequest obtainThePriceDifferenceOfPrepaidTransformerRequest = new ObtainThePriceDifferenceOfPrepaidTransformerRequest();
+        obtainThePriceDifferenceOfPrepaidTransformerRequest.setInstanceId("");
+        obtainThePriceDifferenceOfPrepaidTransformerRequest.setCpuCount(0);
+        obtainThePriceDifferenceOfPrepaidTransformerRequest.setAllocatedMemoryInGB(0);
+        obtainThePriceDifferenceOfPrepaidTransformerRequest.setAllocatedStorageInGB(0);
+        obtainThePriceDifferenceOfPrepaidTransformerRequest.setDiskIoType("");
+        obtainThePriceDifferenceOfPrepaidTransformerRequest.setCategory("");
+        ObtainThePriceDifferenceOfPrepaidTransformerResponse response =
+                rdsClient.obtainThePriceDifferenceOfPrepaidTransformer(obtainThePriceDifferenceOfPrepaidTransformerRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryInstanceList
+     *
+     */
+    @Test
+    public void queryInstanceListTest() {
+        QueryInstanceListRequest queryInstanceListRequest = new QueryInstanceListRequest();
+        queryInstanceListRequest.setMarker("");
+        queryInstanceListRequest.setMaxKeys(0);
+        queryInstanceListRequest.setVnetIp("");
+        QueryInstanceListResponse response = rdsClient.queryInstanceList(queryInstanceListRequest);
+        System.out.println(response);
+    }
+    /**
+     * querySubnetList
+     *
+     */
+    @Test
+    public void querySubnetListTest() {
+        QuerySubnetListRequest querySubnetListRequest = new QuerySubnetListRequest();
+        querySubnetListRequest.setZoneName("");
+        querySubnetListRequest.setVpcId("");
+        QuerySubnetListResponse response = rdsClient.querySubnetList(querySubnetListRequest);
+        System.out.println(response);
+    }
+    /**
      * queryTaskList
      *
      */
@@ -147,5 +308,167 @@ public class RdsClientTest {
         queryTaskListRequest.setEndTime("");
         QueryTaskListResponse response = rdsClient.queryTaskList(queryTaskListRequest);
         System.out.println(response);
+    }
+    /**
+     * queryTheDetailsOfTheSpecifiedInstance
+     *
+     */
+    @Test
+    public void queryTheDetailsOfTheSpecifiedInstanceTest() {
+        QueryTheDetailsOfTheSpecifiedInstanceRequest queryTheDetailsOfTheSpecifiedInstanceRequest = new QueryTheDetailsOfTheSpecifiedInstanceRequest();
+        queryTheDetailsOfTheSpecifiedInstanceRequest.setInstanceId("");
+        QueryTheDetailsOfTheSpecifiedInstanceResponse response = rdsClient.queryTheDetailsOfTheSpecifiedInstance(queryTheDetailsOfTheSpecifiedInstanceRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryTheListOfAvailableZones
+     *
+     */
+    @Test
+    public void queryTheListOfAvailableZonesTest() {
+        QueryTheListOfAvailableZonesResponse response = rdsClient.queryTheListOfAvailableZones();
+        System.out.println(response);
+    }
+    /**
+     * releaseInstance
+     *
+     */
+    @Test
+    public void releaseInstanceTest() {
+        ReleaseInstanceRequest releaseInstanceRequest = new ReleaseInstanceRequest();
+        releaseInstanceRequest.setInstanceIds("");
+        ReleaseInstanceResponse response = rdsClient.releaseInstance(releaseInstanceRequest);
+        System.out.println(response);
+    }
+    /**
+     * restartTheInstance
+     *
+     */
+    @Test
+    public void restartTheInstanceTest() {
+        RestartTheInstanceRequest restartTheInstanceRequest = new RestartTheInstanceRequest();
+        restartTheInstanceRequest.setInstanceId("");
+        restartTheInstanceRequest.setEffectiveTime("");
+        rdsClient.restartTheInstance(restartTheInstanceRequest);
+    }
+    /**
+     * retrieveInstanceAutoScalingConfig
+     *
+     */
+    @Test
+    public void retrieveInstanceAutoScalingConfigTest() {
+        RetrieveInstanceAutoScalingConfigRequest retrieveInstanceAutoScalingConfigRequest = new RetrieveInstanceAutoScalingConfigRequest();
+        retrieveInstanceAutoScalingConfigRequest.setInstanceId("");
+        RetrieveInstanceAutoScalingConfigResponse response = rdsClient.retrieveInstanceAutoScalingConfig(retrieveInstanceAutoScalingConfigRequest);
+        System.out.println(response);
+    }
+    /**
+     * transformationExample
+     *
+     */
+    @Test
+    public void transformationExampleTest() {
+        TransformationExampleRequest transformationExampleRequest = new TransformationExampleRequest();
+        transformationExampleRequest.setInstanceId("");
+        transformationExampleRequest.setCpuCount(0);
+        transformationExampleRequest.setMemoryCapacity(0);
+        transformationExampleRequest.setVolumeCapacity(0);
+        transformationExampleRequest.setAllocatedMemoryInMB(0);
+        transformationExampleRequest.setNodeAmount(0);
+        transformationExampleRequest.setIsDirectPay(false);
+        transformationExampleRequest.setIsEnhanced(false);
+        transformationExampleRequest.setEffectiveTime("");
+        transformationExampleRequest.setMasterAzone("");
+        transformationExampleRequest.setBackupAzone("");
+        transformationExampleRequest.setDiskIoType("");
+        transformationExampleRequest.setSubnetId("");
+        transformationExampleRequest.setEdgeSubnetId("");
+        transformationExampleRequest.setSubnets(new ArrayList<>());
+        TransformationExampleResponse response = rdsClient.transformationExample(transformationExampleRequest);
+        System.out.println(response);
+    }
+    /**
+     * updateAutomaticStorageExpansionConfiguration
+     *
+     */
+    @Test
+    public void updateAutomaticStorageExpansionConfigurationTest() {
+        UpdateAutomaticStorageExpansionConfigurationRequest updateAutomaticStorageExpansionConfigurationRequest = new UpdateAutomaticStorageExpansionConfigurationRequest();
+        updateAutomaticStorageExpansionConfigurationRequest.setInstanceId("");
+        updateAutomaticStorageExpansionConfigurationRequest.setAction("");
+        updateAutomaticStorageExpansionConfigurationRequest.setFreeSpaceThreshold(0);
+        updateAutomaticStorageExpansionConfigurationRequest.setDiskMaxLimit(0);
+        rdsClient.updateAutomaticStorageExpansionConfiguration(updateAutomaticStorageExpansionConfigurationRequest);
+    }
+    /**
+     * updateInstanceConnectionInformation
+     *
+     */
+    @Test
+    public void updateInstanceConnectionInformationTest() {
+        UpdateInstanceConnectionInformationRequest updateInstanceConnectionInformationRequest = new UpdateInstanceConnectionInformationRequest();
+        updateInstanceConnectionInformationRequest.setInstanceId("");
+        updateInstanceConnectionInformationRequest.setAddress("");
+        rdsClient.updateInstanceConnectionInformation(updateInstanceConnectionInformationRequest);
+    }
+    /**
+     * updateInstanceName
+     *
+     */
+    @Test
+    public void updateInstanceNameTest() {
+        UpdateInstanceNameRequest updateInstanceNameRequest = new UpdateInstanceNameRequest();
+        updateInstanceNameRequest.setInstanceId("");
+        updateInstanceNameRequest.setInstanceName("");
+        rdsClient.updateInstanceName(updateInstanceNameRequest);
+    }
+    /**
+     * updateInstancePublicNetworkAccessStatus
+     *
+     */
+    @Test
+    public void updateInstancePublicNetworkAccessStatusTest() {
+        UpdateInstancePublicNetworkAccessStatusRequest updateInstancePublicNetworkAccessStatusRequest = new UpdateInstancePublicNetworkAccessStatusRequest();
+        updateInstancePublicNetworkAccessStatusRequest.setInstanceId("");
+        updateInstancePublicNetworkAccessStatusRequest.setPublicAccess(false);
+        rdsClient.updateInstancePublicNetworkAccessStatus(updateInstancePublicNetworkAccessStatusRequest);
+    }
+    /**
+     * updateInstanceSynchronizationMode
+     *
+     */
+    @Test
+    public void updateInstanceSynchronizationModeTest() {
+        UpdateInstanceSynchronizationModeRequest updateInstanceSynchronizationModeRequest = new UpdateInstanceSynchronizationModeRequest();
+        updateInstanceSynchronizationModeRequest.setInstanceId("");
+        updateInstanceSynchronizationModeRequest.setSyncMode("");
+        rdsClient.updateInstanceSynchronizationMode(updateInstanceSynchronizationModeRequest);
+    }
+    /**
+     * updateTimeWindow
+     *
+     */
+    @Test
+    public void updateTimeWindowTest() {
+        UpdateTimeWindowRequest updateTimeWindowRequest = new UpdateTimeWindowRequest();
+        updateTimeWindowRequest.setInstanceId("");
+        updateTimeWindowRequest.setMaintainStartTime("");
+        updateTimeWindowRequest.setMaintainDuration(0);
+        rdsClient.updateTimeWindow(updateTimeWindowRequest);
+    }
+    /**
+     * zoneMigration
+     *
+     */
+    @Test
+    public void zoneMigrationTest() {
+        ZoneMigrationRequest zoneMigrationRequest = new ZoneMigrationRequest();
+        zoneMigrationRequest.setInstanceId("");
+        zoneMigrationRequest.setMasterAzone("");
+        zoneMigrationRequest.setBackupAzone("");
+        zoneMigrationRequest.setZoneNames(new ArrayList<>());
+        zoneMigrationRequest.setSubnets(new ArrayList<>());
+        zoneMigrationRequest.setEffectiveTime("");
+        rdsClient.zoneMigration(zoneMigrationRequest);
     }
 }

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Billing {
     /**
-     * 付款方式（后付费：Postpaid；只读实例只支持后付费）
+     * 
      */
     private String paymentTiming;
 
