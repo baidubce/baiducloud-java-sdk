@@ -40,15 +40,15 @@ public class ExampleGetNewPurchasePrice {
         instance.setEngineVersion("");
         instance.setRdsMinorVersion("");
         instance.setCharacterSetName("");
-        Endpoint endpoint = new Endpoint();
-        endpoint.setPort(0);
-        endpoint.setVnetIp("");
-        endpoint.setInetIp("");
-        endpoint.setAddress("");
-        endpoint.setInetIpV6("");
-        endpoint.setVnetIpV6("");
+        Endpoint instanceEndpoint = new Endpoint();
+        instanceEndpoint.setPort(0);
+        instanceEndpoint.setVnetIp("");
+        instanceEndpoint.setInetIp("");
+        instanceEndpoint.setAddress("");
+        instanceEndpoint.setInetIpV6("");
+        instanceEndpoint.setVnetIpV6("");
 
-        instance.setEndpoint(endpoint);
+        instance.setEndpoint(instanceEndpoint);
         instance.setInstanceClass("");
         instance.setAllocatedMemoryInMB(0);
         instance.setAllocatedMemoryInGB(0);
