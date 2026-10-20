@@ -15,21 +15,18 @@ import com.baidubce.rds.models.DialTestInterfaceRequest;
 import com.baidubce.rds.models.DialTestInterfaceResponse;
 import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionRequest;
 import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionResponse;
-import com.baidubce.rds.models.GetNewPurchasePriceRequest;
-import com.baidubce.rds.models.GetNewPurchasePriceResponse;
-import com.baidubce.rds.models.ObtainThePriceDifferenceOfPrepaidTransformerRequest;
-import com.baidubce.rds.models.ObtainThePriceDifferenceOfPrepaidTransformerResponse;
+import com.baidubce.rds.models.InstanceEnablesAutomaticRenewalRequest;
 import com.baidubce.rds.models.QueryInstanceListRequest;
 import com.baidubce.rds.models.QueryInstanceListResponse;
 import com.baidubce.rds.models.QuerySubnetListRequest;
 import com.baidubce.rds.models.QuerySubnetListResponse;
 import com.baidubce.rds.models.QueryTaskListRequest;
 import com.baidubce.rds.models.QueryTaskListResponse;
-import com.baidubce.rds.models.QueryTheDetailsOfTheSpecifiedInstanceRequest;
-import com.baidubce.rds.models.QueryTheDetailsOfTheSpecifiedInstanceResponse;
 import com.baidubce.rds.models.QueryTheListOfAvailableZonesResponse;
 import com.baidubce.rds.models.ReleaseInstanceRequest;
 import com.baidubce.rds.models.ReleaseInstanceResponse;
+import com.baidubce.rds.models.RenewalExampleRequest;
+import com.baidubce.rds.models.RenewalExampleResponse;
 import com.baidubce.rds.models.RestartTheInstanceRequest;
 import com.baidubce.rds.models.RetrieveInstanceAutoScalingConfigRequest;
 import com.baidubce.rds.models.RetrieveInstanceAutoScalingConfigResponse;
@@ -41,7 +38,6 @@ import com.baidubce.rds.models.UpdateInstanceNameRequest;
 import com.baidubce.rds.models.UpdateInstancePublicNetworkAccessStatusRequest;
 import com.baidubce.rds.models.UpdateInstanceSynchronizationModeRequest;
 import com.baidubce.rds.models.UpdateTimeWindowRequest;
-import com.baidubce.rds.models.ZoneMigrationRequest;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -235,35 +231,16 @@ public class RdsClientTest {
         System.out.println(response);
     }
     /**
-     * getNewPurchasePrice
+     * instanceEnablesAutomaticRenewal
      *
      */
     @Test
-    public void getNewPurchasePriceTest() {
-        GetNewPurchasePriceRequest getNewPurchasePriceRequest = new GetNewPurchasePriceRequest();
-        getNewPurchasePriceRequest.setInstance(null);
-        getNewPurchasePriceRequest.setDuration(0);
-        getNewPurchasePriceRequest.setNumber(0);
-        getNewPurchasePriceRequest.setProductType("");
-        GetNewPurchasePriceResponse response = rdsClient.getNewPurchasePrice(getNewPurchasePriceRequest);
-        System.out.println(response);
-    }
-    /**
-     * obtainThePriceDifferenceOfPrepaidTransformer
-     *
-     */
-    @Test
-    public void obtainThePriceDifferenceOfPrepaidTransformerTest() {
-        ObtainThePriceDifferenceOfPrepaidTransformerRequest obtainThePriceDifferenceOfPrepaidTransformerRequest = new ObtainThePriceDifferenceOfPrepaidTransformerRequest();
-        obtainThePriceDifferenceOfPrepaidTransformerRequest.setInstanceId("");
-        obtainThePriceDifferenceOfPrepaidTransformerRequest.setCpuCount(0);
-        obtainThePriceDifferenceOfPrepaidTransformerRequest.setAllocatedMemoryInGB(0);
-        obtainThePriceDifferenceOfPrepaidTransformerRequest.setAllocatedStorageInGB(0);
-        obtainThePriceDifferenceOfPrepaidTransformerRequest.setDiskIoType("");
-        obtainThePriceDifferenceOfPrepaidTransformerRequest.setCategory("");
-        ObtainThePriceDifferenceOfPrepaidTransformerResponse response =
-                rdsClient.obtainThePriceDifferenceOfPrepaidTransformer(obtainThePriceDifferenceOfPrepaidTransformerRequest);
-        System.out.println(response);
+    public void instanceEnablesAutomaticRenewalTest() {
+        InstanceEnablesAutomaticRenewalRequest instanceEnablesAutomaticRenewalRequest = new InstanceEnablesAutomaticRenewalRequest();
+        instanceEnablesAutomaticRenewalRequest.setInstanceIds(new ArrayList<>());
+        instanceEnablesAutomaticRenewalRequest.setAutoRenewTimeUnit("");
+        instanceEnablesAutomaticRenewalRequest.setAutoRenewTime(0);
+        rdsClient.instanceEnablesAutomaticRenewal(instanceEnablesAutomaticRenewalRequest);
     }
     /**
      * queryInstanceList
@@ -310,17 +287,6 @@ public class RdsClientTest {
         System.out.println(response);
     }
     /**
-     * queryTheDetailsOfTheSpecifiedInstance
-     *
-     */
-    @Test
-    public void queryTheDetailsOfTheSpecifiedInstanceTest() {
-        QueryTheDetailsOfTheSpecifiedInstanceRequest queryTheDetailsOfTheSpecifiedInstanceRequest = new QueryTheDetailsOfTheSpecifiedInstanceRequest();
-        queryTheDetailsOfTheSpecifiedInstanceRequest.setInstanceId("");
-        QueryTheDetailsOfTheSpecifiedInstanceResponse response = rdsClient.queryTheDetailsOfTheSpecifiedInstance(queryTheDetailsOfTheSpecifiedInstanceRequest);
-        System.out.println(response);
-    }
-    /**
      * queryTheListOfAvailableZones
      *
      */
@@ -338,6 +304,18 @@ public class RdsClientTest {
         ReleaseInstanceRequest releaseInstanceRequest = new ReleaseInstanceRequest();
         releaseInstanceRequest.setInstanceIds("");
         ReleaseInstanceResponse response = rdsClient.releaseInstance(releaseInstanceRequest);
+        System.out.println(response);
+    }
+    /**
+     * renewalExample
+     *
+     */
+    @Test
+    public void renewalExampleTest() {
+        RenewalExampleRequest renewalExampleRequest = new RenewalExampleRequest();
+        renewalExampleRequest.setDuration(0);
+        renewalExampleRequest.setInstanceIds(new ArrayList<>());
+        RenewalExampleResponse response = rdsClient.renewalExample(renewalExampleRequest);
         System.out.println(response);
     }
     /**
@@ -455,20 +433,5 @@ public class RdsClientTest {
         updateTimeWindowRequest.setMaintainStartTime("");
         updateTimeWindowRequest.setMaintainDuration(0);
         rdsClient.updateTimeWindow(updateTimeWindowRequest);
-    }
-    /**
-     * zoneMigration
-     *
-     */
-    @Test
-    public void zoneMigrationTest() {
-        ZoneMigrationRequest zoneMigrationRequest = new ZoneMigrationRequest();
-        zoneMigrationRequest.setInstanceId("");
-        zoneMigrationRequest.setMasterAzone("");
-        zoneMigrationRequest.setBackupAzone("");
-        zoneMigrationRequest.setZoneNames(new ArrayList<>());
-        zoneMigrationRequest.setSubnets(new ArrayList<>());
-        zoneMigrationRequest.setEffectiveTime("");
-        rdsClient.zoneMigration(zoneMigrationRequest);
     }
 }

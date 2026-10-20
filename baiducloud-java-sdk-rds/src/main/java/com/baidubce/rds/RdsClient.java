@@ -31,21 +31,18 @@ import com.baidubce.rds.models.DialTestInterfaceRequest;
 import com.baidubce.rds.models.DialTestInterfaceResponse;
 import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionRequest;
 import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionResponse;
-import com.baidubce.rds.models.GetNewPurchasePriceRequest;
-import com.baidubce.rds.models.GetNewPurchasePriceResponse;
-import com.baidubce.rds.models.ObtainThePriceDifferenceOfPrepaidTransformerRequest;
-import com.baidubce.rds.models.ObtainThePriceDifferenceOfPrepaidTransformerResponse;
+import com.baidubce.rds.models.InstanceEnablesAutomaticRenewalRequest;
 import com.baidubce.rds.models.QueryInstanceListRequest;
 import com.baidubce.rds.models.QueryInstanceListResponse;
 import com.baidubce.rds.models.QuerySubnetListRequest;
 import com.baidubce.rds.models.QuerySubnetListResponse;
 import com.baidubce.rds.models.QueryTaskListRequest;
 import com.baidubce.rds.models.QueryTaskListResponse;
-import com.baidubce.rds.models.QueryTheDetailsOfTheSpecifiedInstanceRequest;
-import com.baidubce.rds.models.QueryTheDetailsOfTheSpecifiedInstanceResponse;
 import com.baidubce.rds.models.QueryTheListOfAvailableZonesResponse;
 import com.baidubce.rds.models.ReleaseInstanceRequest;
 import com.baidubce.rds.models.ReleaseInstanceResponse;
+import com.baidubce.rds.models.RenewalExampleRequest;
+import com.baidubce.rds.models.RenewalExampleResponse;
 import com.baidubce.rds.models.RestartTheInstanceRequest;
 import com.baidubce.rds.models.RetrieveInstanceAutoScalingConfigRequest;
 import com.baidubce.rds.models.RetrieveInstanceAutoScalingConfigResponse;
@@ -57,7 +54,6 @@ import com.baidubce.rds.models.UpdateInstanceNameRequest;
 import com.baidubce.rds.models.UpdateInstancePublicNetworkAccessStatusRequest;
 import com.baidubce.rds.models.UpdateInstanceSynchronizationModeRequest;
 import com.baidubce.rds.models.UpdateTimeWindowRequest;
-import com.baidubce.rds.models.ZoneMigrationRequest;
 
 public class RdsClient extends AbstractBceClient {
 
@@ -72,9 +68,7 @@ public class RdsClient extends AbstractBceClient {
     private static final String CONSTANT_PROBE = "probe";
     private static final String CONSTANT_V1 = "v1";
     private static final String CONSTANT_TASK = "task";
-    private static final String CONSTANT_AZONE_MIGRATION = "azoneMigration";
-    private static final String CONSTANT_PRICE = "price";
-    private static final String CONSTANT_DIFF = "diff";
+    private static final String CONSTANT_RENEW = "renew";
     private static final String CONSTANT_AUTO_RESIZE_CONFIG = "autoResizeConfig";
     private static final String CONSTANT_ZONE = "zone";
     private static final String CONSTANT_SUBNET = "subnet";
@@ -206,27 +200,15 @@ public class RdsClient extends AbstractBceClient {
     }
 
     /**
-     * getNewPurchasePrice
+     * instanceEnablesAutomaticRenewal
      * 
      * @param request 入参结构体
-     * @return GetNewPurchasePriceResponse
      */
-    public GetNewPurchasePriceResponse getNewPurchasePrice(GetNewPurchasePriceRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_INSTANCE, CONSTANT_PRICE);
+    public void instanceEnablesAutomaticRenewal(InstanceEnablesAutomaticRenewalRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE);
+        internalRequest.addParameter("autoRenew", null);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, GetNewPurchasePriceResponse.class);
-    }
-
-    /**
-     * obtainThePriceDifferenceOfPrepaidTransformer
-     * 
-     * @param request 入参结构体
-     * @return ObtainThePriceDifferenceOfPrepaidTransformerResponse
-     */
-    public ObtainThePriceDifferenceOfPrepaidTransformerResponse obtainThePriceDifferenceOfPrepaidTransformer(ObtainThePriceDifferenceOfPrepaidTransformerRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_INSTANCE, CONSTANT_PRICE, CONSTANT_DIFF);
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        return invokeHttpClient(internalRequest, ObtainThePriceDifferenceOfPrepaidTransformerResponse.class);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
@@ -279,17 +261,6 @@ public class RdsClient extends AbstractBceClient {
     }
 
     /**
-     * queryTheDetailsOfTheSpecifiedInstance
-     * 
-     * @param request 入参结构体
-     * @return QueryTheDetailsOfTheSpecifiedInstanceResponse
-     */
-    public QueryTheDetailsOfTheSpecifiedInstanceResponse queryTheDetailsOfTheSpecifiedInstance(QueryTheDetailsOfTheSpecifiedInstanceRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId());
-        return invokeHttpClient(internalRequest, QueryTheDetailsOfTheSpecifiedInstanceResponse.class);
-    }
-
-    /**
      * queryTheListOfAvailableZones
      * 
      * @return QueryTheListOfAvailableZonesResponse
@@ -308,6 +279,18 @@ public class RdsClient extends AbstractBceClient {
     public ReleaseInstanceResponse releaseInstance(ReleaseInstanceRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_INSTANCE);
         return invokeHttpClient(internalRequest, ReleaseInstanceResponse.class);
+    }
+
+    /**
+     * renewalExample
+     * 
+     * @param request 入参结构体
+     * @return RenewalExampleResponse
+     */
+    public RenewalExampleResponse renewalExample(RenewalExampleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, CONSTANT_V1, CONSTANT_INSTANCE, CONSTANT_RENEW);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, RenewalExampleResponse.class);
     }
 
     /**
@@ -421,17 +404,6 @@ public class RdsClient extends AbstractBceClient {
      */
     public void updateTimeWindow(UpdateTimeWindowRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_MAINTAINTIME);
-        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
-     * zoneMigration
-     * 
-     * @param request 入参结构体
-     */
-    public void zoneMigration(ZoneMigrationRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_AZONE_MIGRATION);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }

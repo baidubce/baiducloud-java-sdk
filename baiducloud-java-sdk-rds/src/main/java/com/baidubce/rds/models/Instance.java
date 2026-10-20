@@ -270,7 +270,7 @@ public class Instance {
     /**
      * 主机类型，默认只有dcc
      */
-    private Integer machineType;
+    private String machineType;
 
     /**
      * 权重
@@ -1040,12 +1040,12 @@ public class Instance {
         return this.dccHostIds;
     }
 
-    public Instance setMachineType(Integer machineType) {
+    public Instance setMachineType(String machineType) {
         this.machineType = machineType;
         return this;
     }
 
-    public Integer getMachineType() {
+    public String getMachineType() {
         return this.machineType;
     }
 
