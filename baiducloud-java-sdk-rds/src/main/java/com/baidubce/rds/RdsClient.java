@@ -38,6 +38,8 @@ import com.baidubce.rds.models.QuerySubnetListRequest;
 import com.baidubce.rds.models.QuerySubnetListResponse;
 import com.baidubce.rds.models.QueryTaskListRequest;
 import com.baidubce.rds.models.QueryTaskListResponse;
+import com.baidubce.rds.models.QueryTheDetailsOfTheSpecifiedInstanceRequest;
+import com.baidubce.rds.models.QueryTheDetailsOfTheSpecifiedInstanceResponse;
 import com.baidubce.rds.models.QueryTheListOfAvailableZonesResponse;
 import com.baidubce.rds.models.ReleaseInstanceRequest;
 import com.baidubce.rds.models.ReleaseInstanceResponse;
@@ -261,6 +263,17 @@ public class RdsClient extends AbstractBceClient {
     }
 
     /**
+     * queryTheDetailsOfTheSpecifiedInstance
+     * 
+     * @param request 入参结构体
+     * @return QueryTheDetailsOfTheSpecifiedInstanceResponse
+     */
+    public QueryTheDetailsOfTheSpecifiedInstanceResponse queryTheDetailsOfTheSpecifiedInstance(QueryTheDetailsOfTheSpecifiedInstanceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId());
+        return invokeHttpClient(internalRequest, QueryTheDetailsOfTheSpecifiedInstanceResponse.class);
+    }
+
+    /**
      * queryTheListOfAvailableZones
      * 
      * @return QueryTheListOfAvailableZonesResponse
@@ -278,6 +291,9 @@ public class RdsClient extends AbstractBceClient {
      */
     public ReleaseInstanceResponse releaseInstance(ReleaseInstanceRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_INSTANCE);
+        if (request.getInstanceIds() != null) {
+            internalRequest.addParameter("instanceIds", request.getInstanceIds());
+        }
         return invokeHttpClient(internalRequest, ReleaseInstanceResponse.class);
     }
 

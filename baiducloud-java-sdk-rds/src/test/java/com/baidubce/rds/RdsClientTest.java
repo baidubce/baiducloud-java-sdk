@@ -22,6 +22,8 @@ import com.baidubce.rds.models.QuerySubnetListRequest;
 import com.baidubce.rds.models.QuerySubnetListResponse;
 import com.baidubce.rds.models.QueryTaskListRequest;
 import com.baidubce.rds.models.QueryTaskListResponse;
+import com.baidubce.rds.models.QueryTheDetailsOfTheSpecifiedInstanceRequest;
+import com.baidubce.rds.models.QueryTheDetailsOfTheSpecifiedInstanceResponse;
 import com.baidubce.rds.models.QueryTheListOfAvailableZonesResponse;
 import com.baidubce.rds.models.ReleaseInstanceRequest;
 import com.baidubce.rds.models.ReleaseInstanceResponse;
@@ -284,6 +286,17 @@ public class RdsClientTest {
         queryTaskListRequest.setStartTime("");
         queryTaskListRequest.setEndTime("");
         QueryTaskListResponse response = rdsClient.queryTaskList(queryTaskListRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryTheDetailsOfTheSpecifiedInstance
+     *
+     */
+    @Test
+    public void queryTheDetailsOfTheSpecifiedInstanceTest() {
+        QueryTheDetailsOfTheSpecifiedInstanceRequest queryTheDetailsOfTheSpecifiedInstanceRequest = new QueryTheDetailsOfTheSpecifiedInstanceRequest();
+        queryTheDetailsOfTheSpecifiedInstanceRequest.setInstanceId("");
+        QueryTheDetailsOfTheSpecifiedInstanceResponse response = rdsClient.queryTheDetailsOfTheSpecifiedInstance(queryTheDetailsOfTheSpecifiedInstanceRequest);
         System.out.println(response);
     }
     /**

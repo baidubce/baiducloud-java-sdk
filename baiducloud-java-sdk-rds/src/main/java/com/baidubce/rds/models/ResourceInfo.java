@@ -35,24 +35,24 @@ public class ResourceInfo {
     private String userId;
 
     /**
-     * createTime
+     * 创建时间。
      */
-    private Object createTime;
+    private Long createTime;
 
     /**
-     * updateTime
+     * 更新时间。
      */
-    private Object updateTime;
+    private Long updateTime;
 
     /**
-     * deleteTime
+     * 删除时间。
      */
-    private Object deleteTime;
+    private Long deleteTime;
 
     /**
-     * bindTime
+     * 绑定时间。
      */
-    private Object bindTime;
+    private String bindTime;
 
     public ResourceInfo setName(String name) {
         this.name = name;
@@ -108,39 +108,39 @@ public class ResourceInfo {
         return this.userId;
     }
 
-    public ResourceInfo setCreateTime(Object createTime) {
+    public ResourceInfo setCreateTime(Long createTime) {
         this.createTime = createTime;
         return this;
     }
 
-    public Object getCreateTime() {
+    public Long getCreateTime() {
         return this.createTime;
     }
 
-    public ResourceInfo setUpdateTime(Object updateTime) {
+    public ResourceInfo setUpdateTime(Long updateTime) {
         this.updateTime = updateTime;
         return this;
     }
 
-    public Object getUpdateTime() {
+    public Long getUpdateTime() {
         return this.updateTime;
     }
 
-    public ResourceInfo setDeleteTime(Object deleteTime) {
+    public ResourceInfo setDeleteTime(Long deleteTime) {
         this.deleteTime = deleteTime;
         return this;
     }
 
-    public Object getDeleteTime() {
+    public Long getDeleteTime() {
         return this.deleteTime;
     }
 
-    public ResourceInfo setBindTime(Object bindTime) {
+    public ResourceInfo setBindTime(String bindTime) {
         this.bindTime = bindTime;
         return this;
     }
 
-    public Object getBindTime() {
+    public String getBindTime() {
         return this.bindTime;
     }
 

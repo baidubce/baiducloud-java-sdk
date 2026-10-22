@@ -37,17 +37,17 @@ public class ResourceGroup {
     /**
      * 创建时间（毫秒时间戳）
      */
-    private Long createTime;
+    private Integer createTime;
 
     /**
      * 更新时间（毫秒时间戳）
      */
-    private Long updateTime;
+    private Integer updateTime;
 
     /**
      * 删除时间（毫秒时间戳）
      */
-    private Long deleteTime;
+    private Integer deleteTime;
 
     /**
      * 绑定时间，格式：yyyy-MM-dd'T'HH:mm:ss'Z'
@@ -108,30 +108,30 @@ public class ResourceGroup {
         return this.userId;
     }
 
-    public ResourceGroup setCreateTime(Long createTime) {
+    public ResourceGroup setCreateTime(Integer createTime) {
         this.createTime = createTime;
         return this;
     }
 
-    public Long getCreateTime() {
+    public Integer getCreateTime() {
         return this.createTime;
     }
 
-    public ResourceGroup setUpdateTime(Long updateTime) {
+    public ResourceGroup setUpdateTime(Integer updateTime) {
         this.updateTime = updateTime;
         return this;
     }
 
-    public Long getUpdateTime() {
+    public Integer getUpdateTime() {
         return this.updateTime;
     }
 
-    public ResourceGroup setDeleteTime(Long deleteTime) {
+    public ResourceGroup setDeleteTime(Integer deleteTime) {
         this.deleteTime = deleteTime;
         return this;
     }
 
-    public Long getDeleteTime() {
+    public Integer getDeleteTime() {
         return this.deleteTime;
     }
 

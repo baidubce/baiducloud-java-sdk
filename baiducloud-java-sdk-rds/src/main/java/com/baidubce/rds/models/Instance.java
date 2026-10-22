@@ -23,12 +23,12 @@ public class Instance {
     private String instanceName;
 
     /**
-     * 数据库引擎类型。
+     * 数据库引擎,参见[引擎类型](/doc/RDS/s/9jwvz0wd3#%E5%BC%95%E6%93%8E%E7%B1%BB%E5%9E%8B)
      */
     private String engine;
 
     /**
-     * 数据库引擎版本。
+     * 数据库引擎版本,取值参考[数据库版本](/doc/RDS/s/9jwvz0wd3#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%89%88%E6%9C%AC)
      */
     private String engineVersion;
 
@@ -58,9 +58,9 @@ public class Instance {
     private Integer allocatedMemoryInMB;
 
     /**
-     * 内存大小，单位是 GB。
+     * 分配内存大小（单位：GB）
      */
-    private Integer allocatedMemoryInGB;
+    private Double allocatedMemoryInGB;
 
     /**
      * 实例内存（单位：GB）
@@ -68,7 +68,7 @@ public class Instance {
     private Double memoryCapacity;
 
     /**
-     * 存储大小，单位是 GB。
+     * 分配存储存空间（单位：GB）
      */
     private Integer allocatedStorageInGB;
 
@@ -98,7 +98,7 @@ public class Instance {
     private Double usedStorage;
 
     /**
-     * CPU 个数。
+     * CPU核数
      */
     private Integer cpuCount;
 
@@ -243,7 +243,7 @@ public class Instance {
     private String applicationType;
 
     /**
-     * 询价代理实例时，此值必填，表示代理节点个数。
+     * 节点数（代理实例）
      */
     private Integer nodeAmount;
 
@@ -318,7 +318,7 @@ public class Instance {
     private RoleInfo nodeProxy;
 
     /**
-     * 存储磁盘包括本地SSD磁盘（取值为：normal\_io）、增强型SSD云磁盘（取值为：cloud\_enha）、 高性能云磁盘（取值为：cloud\_high）、cloud\_nor（取值为: 通用型SSD）四种。
+     * 磁盘类型：  normal\_io : 本地盘ssd磁盘 cloud\_high : 高性能云磁盘 cloud\_nor : 通用型SSD cloud\_enha: 增强型SSD
      */
     private String diskIoType;
 
@@ -538,7 +538,7 @@ public class Instance {
     private List<MachinePO> dccHosts;
 
     /**
-     * 不传值的话默认为双机版，传 Singleton 则指定为单机版。
+     * 所属系列。Singleton：单机基础版，null：双机高可用版
      */
     private String category;
 
@@ -662,12 +662,12 @@ public class Instance {
         return this.allocatedMemoryInMB;
     }
 
-    public Instance setAllocatedMemoryInGB(Integer allocatedMemoryInGB) {
+    public Instance setAllocatedMemoryInGB(Double allocatedMemoryInGB) {
         this.allocatedMemoryInGB = allocatedMemoryInGB;
         return this;
     }
 
-    public Integer getAllocatedMemoryInGB() {
+    public Double getAllocatedMemoryInGB() {
         return this.allocatedMemoryInGB;
     }
 
