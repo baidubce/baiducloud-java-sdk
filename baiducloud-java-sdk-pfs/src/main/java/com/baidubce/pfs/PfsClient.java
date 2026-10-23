@@ -13,6 +13,7 @@ import com.baidubce.auth.SignOptions;
 import com.baidubce.util.RequestBodyUtils;
 import java.util.Arrays;
 import java.util.HashSet;
+import com.baidubce.common.BaseBceRequest;
 import com.baidubce.common.BaseBceResponse;
 
 import com.baidubce.pfs.models.CancelL2BucketLinkRequest;
@@ -23,6 +24,8 @@ import com.baidubce.pfs.models.CreateL2BucketLinkRequest;
 import com.baidubce.pfs.models.CreateL2BucketLinkResponse;
 import com.baidubce.pfs.models.CreateL2PolicyRequest;
 import com.baidubce.pfs.models.CreateL2PolicyResponse;
+import com.baidubce.pfs.models.CreateL3AccessGroupRequest;
+import com.baidubce.pfs.models.CreateL3AccessGroupResponse;
 import com.baidubce.pfs.models.CreateL3MountTargetRequest;
 import com.baidubce.pfs.models.CreateL3MountTargetResponse;
 import com.baidubce.pfs.models.CreatePfsRequest;
@@ -33,6 +36,10 @@ import com.baidubce.pfs.models.DeleteL2BucketLinkRequest;
 import com.baidubce.pfs.models.DeleteL2BucketLinkResponse;
 import com.baidubce.pfs.models.DeleteL2PolicyRequest;
 import com.baidubce.pfs.models.DeleteL2PolicyResponse;
+import com.baidubce.pfs.models.DeleteL3AccessGroupRequest;
+import com.baidubce.pfs.models.DeleteL3AccessGroupResponse;
+import com.baidubce.pfs.models.DeleteL3AccessRuleRequest;
+import com.baidubce.pfs.models.DeleteL3AccessRuleResponse;
 import com.baidubce.pfs.models.DeleteL3MountTargetRequest;
 import com.baidubce.pfs.models.DeleteL3MountTargetResponse;
 import com.baidubce.pfs.models.DeletePfsRequest;
@@ -44,6 +51,8 @@ import com.baidubce.pfs.models.DescL2PolicyRequest;
 import com.baidubce.pfs.models.DescL2PolicyResponse;
 import com.baidubce.pfs.models.DescPfsRequest;
 import com.baidubce.pfs.models.DescPfsResponse;
+import com.baidubce.pfs.models.DescribeL3AccessGroupRequest;
+import com.baidubce.pfs.models.DescribeL3AccessGroupResponse;
 import com.baidubce.pfs.models.DescribeL3MountTargetRequest;
 import com.baidubce.pfs.models.DescribeL3MountTargetResponse;
 import com.baidubce.pfs.models.InstanceListClientsRequest;
@@ -54,6 +63,10 @@ import com.baidubce.pfs.models.ListL2BucketLinkRequest;
 import com.baidubce.pfs.models.ListL2BucketLinkResponse;
 import com.baidubce.pfs.models.ListL2PolicyRequest;
 import com.baidubce.pfs.models.ListL2PolicyResponse;
+import com.baidubce.pfs.models.ListL3AccessGroupRequest;
+import com.baidubce.pfs.models.ListL3AccessGroupResponse;
+import com.baidubce.pfs.models.ListL3AccessRuleRequest;
+import com.baidubce.pfs.models.ListL3AccessRuleResponse;
 import com.baidubce.pfs.models.ListL3MountTargetRequest;
 import com.baidubce.pfs.models.ListL3MountTargetResponse;
 import com.baidubce.pfs.models.ListPfsRequest;
@@ -76,16 +89,22 @@ import com.baidubce.pfs.models.UpdateFilesetRequest;
 import com.baidubce.pfs.models.UpdateFilesetResponse;
 import com.baidubce.pfs.models.UpdateL2PolicyRequest;
 import com.baidubce.pfs.models.UpdateL2PolicyResponse;
+import com.baidubce.pfs.models.UpdateL3AccessGroupRequest;
+import com.baidubce.pfs.models.UpdateL3AccessGroupResponse;
+import com.baidubce.pfs.models.UpdateL3AccessRuleRequest;
+import com.baidubce.pfs.models.UpdateL3AccessRuleResponse;
 import com.baidubce.pfs.models.UpdatePFSTagRequest;
 
 public class PfsClient extends AbstractBceClient {
 
     private static final String[] HEADERS_TO_SIGN = {"host", "x-bce-date"};
 
+    private static final String VERSION_V2 = "v2";
     private static final String CONSTANT_V1 = "v1";
     private static final String CONSTANT_PFS = "pfs";
     private static final String CONSTANT_INSTANCE = "instance";
     private static final String CONSTANT_TAG = "tag";
+    private static final String CONSTANT_XXX = "xxx";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -163,6 +182,29 @@ public class PfsClient extends AbstractBceClient {
     }
 
     /**
+     * createL3AccessGroup
+     * 
+     * @param request 入参结构体
+     * @return CreateL3AccessGroupResponse
+     */
+    public CreateL3AccessGroupResponse createL3AccessGroup(CreateL3AccessGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "CreateL3AccessGroup");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateL3AccessGroupResponse.class);
+    }
+
+    /**
+     * createL3AccessRule
+     * 
+     */
+    public void createL3AccessRule() {
+        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.POST, VERSION_V2, CONSTANT_XXX);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * createL3MountTarget
      * 
      * @param request 入参结构体
@@ -228,6 +270,34 @@ public class PfsClient extends AbstractBceClient {
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, DeleteL2PolicyResponse.class);
+    }
+
+    /**
+     * deleteL3AccessGroup
+     * 
+     * @param request 入参结构体
+     * @return DeleteL3AccessGroupResponse
+     */
+    public DeleteL3AccessGroupResponse deleteL3AccessGroup(DeleteL3AccessGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DeleteL3AccessGroup");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DeleteL3AccessGroupResponse.class);
+    }
+
+    /**
+     * deleteL3AccessRule
+     * 
+     * @param request 入参结构体
+     * @return DeleteL3AccessRuleResponse
+     */
+    public DeleteL3AccessRuleResponse deleteL3AccessRule(DeleteL3AccessRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DeleteL3AccessRule");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DeleteL3AccessRuleResponse.class);
     }
 
     /**
@@ -314,6 +384,20 @@ public class PfsClient extends AbstractBceClient {
     }
 
     /**
+     * describeL3AccessGroup
+     * 
+     * @param request 入参结构体
+     * @return DescribeL3AccessGroupResponse
+     */
+    public DescribeL3AccessGroupResponse describeL3AccessGroup(DescribeL3AccessGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "DescribeL3AccessGroup");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, DescribeL3AccessGroupResponse.class);
+    }
+
+    /**
      * describeL3MountTarget
      * 
      * @param request 入参结构体
@@ -381,6 +465,34 @@ public class PfsClient extends AbstractBceClient {
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, ListL2PolicyResponse.class);
+    }
+
+    /**
+     * listL3AccessGroup
+     * 
+     * @param request 入参结构体
+     * @return ListL3AccessGroupResponse
+     */
+    public ListL3AccessGroupResponse listL3AccessGroup(ListL3AccessGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "ListL3AccessGroup");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ListL3AccessGroupResponse.class);
+    }
+
+    /**
+     * listL3AccessRule
+     * 
+     * @param request 入参结构体
+     * @return ListL3AccessRuleResponse
+     */
+    public ListL3AccessRuleResponse listL3AccessRule(ListL3AccessRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "ListL3AccessRule");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ListL3AccessRuleResponse.class);
     }
 
     /**
@@ -542,6 +654,34 @@ public class PfsClient extends AbstractBceClient {
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, UpdateL2PolicyResponse.class);
+    }
+
+    /**
+     * updateL3AccessGroup
+     * 
+     * @param request 入参结构体
+     * @return UpdateL3AccessGroupResponse
+     */
+    public UpdateL3AccessGroupResponse updateL3AccessGroup(UpdateL3AccessGroupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "UpdateL3AccessGroup");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, UpdateL3AccessGroupResponse.class);
+    }
+
+    /**
+     * updateL3AccessRule
+     * 
+     * @param request 入参结构体
+     * @return UpdateL3AccessRuleResponse
+     */
+    public UpdateL3AccessRuleResponse updateL3AccessRule(UpdateL3AccessRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "UpdateL3AccessRule");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, UpdateL3AccessRuleResponse.class);
     }
 
     /**

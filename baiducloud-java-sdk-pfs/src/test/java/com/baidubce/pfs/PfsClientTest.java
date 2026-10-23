@@ -8,6 +8,8 @@ import com.baidubce.pfs.models.CreateL2BucketLinkRequest;
 import com.baidubce.pfs.models.CreateL2BucketLinkResponse;
 import com.baidubce.pfs.models.CreateL2PolicyRequest;
 import com.baidubce.pfs.models.CreateL2PolicyResponse;
+import com.baidubce.pfs.models.CreateL3AccessGroupRequest;
+import com.baidubce.pfs.models.CreateL3AccessGroupResponse;
 import com.baidubce.pfs.models.CreateL3MountTargetRequest;
 import com.baidubce.pfs.models.CreateL3MountTargetResponse;
 import com.baidubce.pfs.models.CreatePfsRequest;
@@ -18,6 +20,10 @@ import com.baidubce.pfs.models.DeleteL2BucketLinkRequest;
 import com.baidubce.pfs.models.DeleteL2BucketLinkResponse;
 import com.baidubce.pfs.models.DeleteL2PolicyRequest;
 import com.baidubce.pfs.models.DeleteL2PolicyResponse;
+import com.baidubce.pfs.models.DeleteL3AccessGroupRequest;
+import com.baidubce.pfs.models.DeleteL3AccessGroupResponse;
+import com.baidubce.pfs.models.DeleteL3AccessRuleRequest;
+import com.baidubce.pfs.models.DeleteL3AccessRuleResponse;
 import com.baidubce.pfs.models.DeleteL3MountTargetRequest;
 import com.baidubce.pfs.models.DeleteL3MountTargetResponse;
 import com.baidubce.pfs.models.DeletePfsRequest;
@@ -29,6 +35,8 @@ import com.baidubce.pfs.models.DescL2PolicyRequest;
 import com.baidubce.pfs.models.DescL2PolicyResponse;
 import com.baidubce.pfs.models.DescPfsRequest;
 import com.baidubce.pfs.models.DescPfsResponse;
+import com.baidubce.pfs.models.DescribeL3AccessGroupRequest;
+import com.baidubce.pfs.models.DescribeL3AccessGroupResponse;
 import com.baidubce.pfs.models.DescribeL3MountTargetRequest;
 import com.baidubce.pfs.models.DescribeL3MountTargetResponse;
 import com.baidubce.pfs.models.InstanceListClientsRequest;
@@ -39,6 +47,10 @@ import com.baidubce.pfs.models.ListL2BucketLinkRequest;
 import com.baidubce.pfs.models.ListL2BucketLinkResponse;
 import com.baidubce.pfs.models.ListL2PolicyRequest;
 import com.baidubce.pfs.models.ListL2PolicyResponse;
+import com.baidubce.pfs.models.ListL3AccessGroupRequest;
+import com.baidubce.pfs.models.ListL3AccessGroupResponse;
+import com.baidubce.pfs.models.ListL3AccessRuleRequest;
+import com.baidubce.pfs.models.ListL3AccessRuleResponse;
 import com.baidubce.pfs.models.ListL3MountTargetRequest;
 import com.baidubce.pfs.models.ListL3MountTargetResponse;
 import com.baidubce.pfs.models.ListPfsRequest;
@@ -61,6 +73,10 @@ import com.baidubce.pfs.models.UpdateFilesetRequest;
 import com.baidubce.pfs.models.UpdateFilesetResponse;
 import com.baidubce.pfs.models.UpdateL2PolicyRequest;
 import com.baidubce.pfs.models.UpdateL2PolicyResponse;
+import com.baidubce.pfs.models.UpdateL3AccessGroupRequest;
+import com.baidubce.pfs.models.UpdateL3AccessGroupResponse;
+import com.baidubce.pfs.models.UpdateL3AccessRuleRequest;
+import com.baidubce.pfs.models.UpdateL3AccessRuleResponse;
 import com.baidubce.pfs.models.UpdatePFSTagRequest;
 import org.junit.Test;
 import org.junit.Before;
@@ -158,6 +174,29 @@ public class PfsClientTest {
         System.out.println(response);
     }
     /**
+     * createL3AccessGroup
+     *
+     */
+    @Test
+    public void createL3AccessGroupTest() {
+        CreateL3AccessGroupRequest createL3AccessGroupRequest = new CreateL3AccessGroupRequest();
+        createL3AccessGroupRequest.setAccessGroupName("");
+        createL3AccessGroupRequest.setZoneName("");
+        createL3AccessGroupRequest.setDescription("");
+        createL3AccessGroupRequest.setSourceZoneName("");
+        createL3AccessGroupRequest.setSourceAccessGroupName("");
+        CreateL3AccessGroupResponse response = pfsClient.createL3AccessGroup(createL3AccessGroupRequest);
+        System.out.println(response);
+    }
+    /**
+     * createL3AccessRule
+     *
+     */
+    @Test
+    public void createL3AccessRuleTest() {
+        pfsClient.createL3AccessRule();
+    }
+    /**
      * createL3MountTarget
      *
      */
@@ -221,6 +260,31 @@ public class PfsClientTest {
         deleteL2PolicyRequest.setInstanceId("");
         deleteL2PolicyRequest.setPolicyId("");
         DeleteL2PolicyResponse response = pfsClient.deleteL2Policy(deleteL2PolicyRequest);
+        System.out.println(response);
+    }
+    /**
+     * deleteL3AccessGroup
+     *
+     */
+    @Test
+    public void deleteL3AccessGroupTest() {
+        DeleteL3AccessGroupRequest deleteL3AccessGroupRequest = new DeleteL3AccessGroupRequest();
+        deleteL3AccessGroupRequest.setAccessGroupName("");
+        deleteL3AccessGroupRequest.setZoneName("");
+        DeleteL3AccessGroupResponse response = pfsClient.deleteL3AccessGroup(deleteL3AccessGroupRequest);
+        System.out.println(response);
+    }
+    /**
+     * deleteL3AccessRule
+     *
+     */
+    @Test
+    public void deleteL3AccessRuleTest() {
+        DeleteL3AccessRuleRequest deleteL3AccessRuleRequest = new DeleteL3AccessRuleRequest();
+        deleteL3AccessRuleRequest.setAccessGroupName("");
+        deleteL3AccessRuleRequest.setZoneName("");
+        deleteL3AccessRuleRequest.setAccessRuleId(0);
+        DeleteL3AccessRuleResponse response = pfsClient.deleteL3AccessRule(deleteL3AccessRuleRequest);
         System.out.println(response);
     }
     /**
@@ -293,6 +357,18 @@ public class PfsClientTest {
         System.out.println(response);
     }
     /**
+     * describeL3AccessGroup
+     *
+     */
+    @Test
+    public void describeL3AccessGroupTest() {
+        DescribeL3AccessGroupRequest describeL3AccessGroupRequest = new DescribeL3AccessGroupRequest();
+        describeL3AccessGroupRequest.setAccessGroupName("");
+        describeL3AccessGroupRequest.setZoneName("");
+        DescribeL3AccessGroupResponse response = pfsClient.describeL3AccessGroup(describeL3AccessGroupRequest);
+        System.out.println(response);
+    }
+    /**
      * describeL3MountTarget
      *
      */
@@ -361,6 +437,40 @@ public class PfsClientTest {
         listL2PolicyRequest.setMaxKeys(0);
         listL2PolicyRequest.setMarker("");
         ListL2PolicyResponse response = pfsClient.listL2Policy(listL2PolicyRequest);
+        System.out.println(response);
+    }
+    /**
+     * listL3AccessGroup
+     *
+     */
+    @Test
+    public void listL3AccessGroupTest() {
+        ListL3AccessGroupRequest listL3AccessGroupRequest = new ListL3AccessGroupRequest();
+        listL3AccessGroupRequest.setKeyword("");
+        listL3AccessGroupRequest.setKeywordType("");
+        listL3AccessGroupRequest.setZoneName("");
+        listL3AccessGroupRequest.setOrder("");
+        listL3AccessGroupRequest.setOrderBy("");
+        listL3AccessGroupRequest.setPageNo(0);
+        listL3AccessGroupRequest.setPageSize(0);
+        ListL3AccessGroupResponse response = pfsClient.listL3AccessGroup(listL3AccessGroupRequest);
+        System.out.println(response);
+    }
+    /**
+     * listL3AccessRule
+     *
+     */
+    @Test
+    public void listL3AccessRuleTest() {
+        ListL3AccessRuleRequest listL3AccessRuleRequest = new ListL3AccessRuleRequest();
+        listL3AccessRuleRequest.setAccessGroupName("");
+        listL3AccessRuleRequest.setZoneName("");
+        listL3AccessRuleRequest.setPageNo(0);
+        listL3AccessRuleRequest.setPageSize(0);
+        listL3AccessRuleRequest.setOrderBy("");
+        listL3AccessRuleRequest.setOrder("");
+        listL3AccessRuleRequest.setIpFilter("");
+        ListL3AccessRuleResponse response = pfsClient.listL3AccessRule(listL3AccessRuleRequest);
         System.out.println(response);
     }
     /**
@@ -517,6 +627,37 @@ public class PfsClientTest {
         updateL2PolicyRequest.setBucketName("");
         updateL2PolicyRequest.setBucketPrefix("");
         UpdateL2PolicyResponse response = pfsClient.updateL2Policy(updateL2PolicyRequest);
+        System.out.println(response);
+    }
+    /**
+     * updateL3AccessGroup
+     *
+     */
+    @Test
+    public void updateL3AccessGroupTest() {
+        UpdateL3AccessGroupRequest updateL3AccessGroupRequest = new UpdateL3AccessGroupRequest();
+        updateL3AccessGroupRequest.setAccessGroupName("");
+        updateL3AccessGroupRequest.setZoneName("");
+        updateL3AccessGroupRequest.setDescription("");
+        UpdateL3AccessGroupResponse response = pfsClient.updateL3AccessGroup(updateL3AccessGroupRequest);
+        System.out.println(response);
+    }
+    /**
+     * updateL3AccessRule
+     *
+     */
+    @Test
+    public void updateL3AccessRuleTest() {
+        UpdateL3AccessRuleRequest updateL3AccessRuleRequest = new UpdateL3AccessRuleRequest();
+        updateL3AccessRuleRequest.setAccessGroupName("");
+        updateL3AccessRuleRequest.setZoneName("");
+        updateL3AccessRuleRequest.setAccessRuleId(0);
+        updateL3AccessRuleRequest.setIp("");
+        updateL3AccessRuleRequest.setMask(0);
+        updateL3AccessRuleRequest.setWriteAccess("");
+        updateL3AccessRuleRequest.setUserAccess("");
+        updateL3AccessRuleRequest.setPriority(0);
+        UpdateL3AccessRuleResponse response = pfsClient.updateL3AccessRule(updateL3AccessRuleRequest);
         System.out.println(response);
     }
     /**
