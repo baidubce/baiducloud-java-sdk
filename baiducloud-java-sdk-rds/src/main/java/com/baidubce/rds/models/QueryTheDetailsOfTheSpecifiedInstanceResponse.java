@@ -531,7 +531,7 @@ public class QueryTheDetailsOfTheSpecifiedInstanceResponse extends BaseBceRespon
     /**
     * 分组标签。
     */
-    private List<Tag> tags;
+    private List<String> tags;
 
     /**
     * 相关任务， 如自动续费（目前只有这个）。
@@ -1549,11 +1549,11 @@ public class QueryTheDetailsOfTheSpecifiedInstanceResponse extends BaseBceRespon
         return this;
     }
 
-    public List<Tag> getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public QueryTheDetailsOfTheSpecifiedInstanceResponse setTags(List<Tag> tags) {
+    public QueryTheDetailsOfTheSpecifiedInstanceResponse setTags(List<String> tags) {
         this.tags = tags;
         return this;
     }

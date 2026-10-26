@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.rds.RdsClient;
 import com.baidubce.rds.models.CreateReadOnlyInstanceRequest;
+import com.baidubce.rds.models.Reservation;
 import com.baidubce.rds.models.CreateReadOnlyInstanceResponse;
 import com.baidubce.rds.models.Billing;
 import java.util.ArrayList;
@@ -23,7 +24,11 @@ public class ExampleCreateReadOnlyInstance {
         RdsClient client = new RdsClient(bceClientConfig);
         Billing billing = new Billing();
         billing.setPaymentTiming("");
-        billing.setReservation(null);
+        Reservation reservation = new Reservation();
+        reservation.setReservationLength(0);
+        reservation.setReservationTimeUnit("");
+
+        billing.setReservation(reservation);
 
         CreateReadOnlyInstanceRequest createReadOnlyInstanceRequest = new CreateReadOnlyInstanceRequest();
         createReadOnlyInstanceRequest.setClientToken("");

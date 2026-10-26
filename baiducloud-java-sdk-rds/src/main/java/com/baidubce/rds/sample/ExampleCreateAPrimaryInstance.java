@@ -5,6 +5,7 @@ import com.baidubce.BceClientException;
 import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.rds.RdsClient;
 import com.baidubce.rds.models.CreateAPrimaryInstanceRequest;
+import com.baidubce.rds.models.Reservation;
 import com.baidubce.rds.models.Billing;
 import com.baidubce.rds.models.CreateAPrimaryInstanceResponse;
 import com.baidubce.rds.models.InitialDataReference;
@@ -24,7 +25,11 @@ public class ExampleCreateAPrimaryInstance {
         RdsClient client = new RdsClient(bceClientConfig);
         Billing billing = new Billing();
         billing.setPaymentTiming("");
-        billing.setReservation(null);
+        Reservation reservation = new Reservation();
+        reservation.setReservationLength(0);
+        reservation.setReservationTimeUnit("");
+
+        billing.setReservation(reservation);
 
         InitialDataReference initialDataReference = new InitialDataReference();
         initialDataReference.setInstanceId("");
