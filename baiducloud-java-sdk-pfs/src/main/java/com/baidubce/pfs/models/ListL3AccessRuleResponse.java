@@ -2,6 +2,7 @@ package com.baidubce.pfs.models;
 
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ListL3AccessRuleResponse extends BaseBceResponse {
@@ -12,9 +13,9 @@ public class ListL3AccessRuleResponse extends BaseBceResponse {
     private String requestId;
 
     /**
-    * result
+    * 规则列表
     */
-    private Array result;
+    private List<AccessRuleInfo> result;
 
     /**
     * 总条数
@@ -40,11 +41,11 @@ public class ListL3AccessRuleResponse extends BaseBceResponse {
         return this;
     }
 
-    public Array getResult() {
+    public List<AccessRuleInfo> getResult() {
         return result;
     }
 
-    public ListL3AccessRuleResponse setResult(Array result) {
+    public ListL3AccessRuleResponse setResult(List<AccessRuleInfo> result) {
         this.result = result;
         return this;
     }

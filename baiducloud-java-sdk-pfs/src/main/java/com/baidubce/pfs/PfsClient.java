@@ -13,7 +13,6 @@ import com.baidubce.auth.SignOptions;
 import com.baidubce.util.RequestBodyUtils;
 import java.util.Arrays;
 import java.util.HashSet;
-import com.baidubce.common.BaseBceRequest;
 import com.baidubce.common.BaseBceResponse;
 
 import com.baidubce.pfs.models.CancelL2BucketLinkRequest;
@@ -26,6 +25,8 @@ import com.baidubce.pfs.models.CreateL2PolicyRequest;
 import com.baidubce.pfs.models.CreateL2PolicyResponse;
 import com.baidubce.pfs.models.CreateL3AccessGroupRequest;
 import com.baidubce.pfs.models.CreateL3AccessGroupResponse;
+import com.baidubce.pfs.models.CreateL3AccessRuleRequest;
+import com.baidubce.pfs.models.CreateL3AccessRuleResponse;
 import com.baidubce.pfs.models.CreateL3MountTargetRequest;
 import com.baidubce.pfs.models.CreateL3MountTargetResponse;
 import com.baidubce.pfs.models.CreatePfsRequest;
@@ -99,12 +100,10 @@ public class PfsClient extends AbstractBceClient {
 
     private static final String[] HEADERS_TO_SIGN = {"host", "x-bce-date"};
 
-    private static final String VERSION_V2 = "v2";
     private static final String CONSTANT_V1 = "v1";
     private static final String CONSTANT_PFS = "pfs";
     private static final String CONSTANT_INSTANCE = "instance";
     private static final String CONSTANT_TAG = "tag";
-    private static final String CONSTANT_XXX = "xxx";
 
     /**
     * Responsible for handling httpResponses from all service calls.
@@ -198,10 +197,15 @@ public class PfsClient extends AbstractBceClient {
     /**
      * createL3AccessRule
      * 
+     * @param request 入参结构体
+     * @return CreateL3AccessRuleResponse
      */
-    public void createL3AccessRule() {
-        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.POST, VERSION_V2, CONSTANT_XXX);
-        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    public CreateL3AccessRuleResponse createL3AccessRule(CreateL3AccessRuleRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "CreateL3AccessRule");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateL3AccessRuleResponse.class);
     }
 
     /**

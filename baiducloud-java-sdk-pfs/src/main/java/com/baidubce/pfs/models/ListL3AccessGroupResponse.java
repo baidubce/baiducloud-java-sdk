@@ -2,6 +2,7 @@ package com.baidubce.pfs.models;
 
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ListL3AccessGroupResponse extends BaseBceResponse {
@@ -12,9 +13,9 @@ public class ListL3AccessGroupResponse extends BaseBceResponse {
     private String requestId;
 
     /**
-    * result
+    * 当前页的权限组列表
     */
-    private Array result;
+    private List<AccessGroupInfo> result;
 
     /**
     * 当前页码
@@ -55,11 +56,11 @@ public class ListL3AccessGroupResponse extends BaseBceResponse {
         return this;
     }
 
-    public Array getResult() {
+    public List<AccessGroupInfo> getResult() {
         return result;
     }
 
-    public ListL3AccessGroupResponse setResult(Array result) {
+    public ListL3AccessGroupResponse setResult(List<AccessGroupInfo> result) {
         this.result = result;
         return this;
     }

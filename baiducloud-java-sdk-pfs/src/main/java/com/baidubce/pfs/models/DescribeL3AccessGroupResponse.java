@@ -2,6 +2,7 @@ package com.baidubce.pfs.models;
 
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DescribeL3AccessGroupResponse extends BaseBceResponse {
@@ -42,9 +43,9 @@ public class DescribeL3AccessGroupResponse extends BaseBceResponse {
     private String zoneName;
 
     /**
-    * attachedMountTargets
+    * 已关联的挂载点列表
     */
-    private Array attachedMountTargets;
+    private List<AttachedMountTargetInfo> attachedMountTargets;
 
     public String getRequestId() {
         return requestId;
@@ -109,11 +110,11 @@ public class DescribeL3AccessGroupResponse extends BaseBceResponse {
         return this;
     }
 
-    public Array getAttachedMountTargets() {
+    public List<AttachedMountTargetInfo> getAttachedMountTargets() {
         return attachedMountTargets;
     }
 
-    public DescribeL3AccessGroupResponse setAttachedMountTargets(Array attachedMountTargets) {
+    public DescribeL3AccessGroupResponse setAttachedMountTargets(List<AttachedMountTargetInfo> attachedMountTargets) {
         this.attachedMountTargets = attachedMountTargets;
         return this;
     }

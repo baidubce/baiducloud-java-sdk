@@ -10,6 +10,8 @@ import com.baidubce.pfs.models.CreateL2PolicyRequest;
 import com.baidubce.pfs.models.CreateL2PolicyResponse;
 import com.baidubce.pfs.models.CreateL3AccessGroupRequest;
 import com.baidubce.pfs.models.CreateL3AccessGroupResponse;
+import com.baidubce.pfs.models.CreateL3AccessRuleRequest;
+import com.baidubce.pfs.models.CreateL3AccessRuleResponse;
 import com.baidubce.pfs.models.CreateL3MountTargetRequest;
 import com.baidubce.pfs.models.CreateL3MountTargetResponse;
 import com.baidubce.pfs.models.CreatePfsRequest;
@@ -194,7 +196,12 @@ public class PfsClientTest {
      */
     @Test
     public void createL3AccessRuleTest() {
-        pfsClient.createL3AccessRule();
+        CreateL3AccessRuleRequest createL3AccessRuleRequest = new CreateL3AccessRuleRequest();
+        createL3AccessRuleRequest.setAccessGroupName("");
+        createL3AccessRuleRequest.setZoneName("");
+        createL3AccessRuleRequest.setAccessRules(new ArrayList<>());
+        CreateL3AccessRuleResponse response = pfsClient.createL3AccessRule(createL3AccessRuleRequest);
+        System.out.println(response);
     }
     /**
      * createL3MountTarget
