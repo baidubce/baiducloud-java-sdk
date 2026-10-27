@@ -53,6 +53,8 @@ import com.baidubce.pfs.models.ListL3AccessGroupRequest;
 import com.baidubce.pfs.models.ListL3AccessGroupResponse;
 import com.baidubce.pfs.models.ListL3AccessRuleRequest;
 import com.baidubce.pfs.models.ListL3AccessRuleResponse;
+import com.baidubce.pfs.models.ListL3ClientsRequest;
+import com.baidubce.pfs.models.ListL3ClientsResponse;
 import com.baidubce.pfs.models.ListL3MountTargetRequest;
 import com.baidubce.pfs.models.ListL3MountTargetResponse;
 import com.baidubce.pfs.models.ListPfsRequest;
@@ -79,6 +81,8 @@ import com.baidubce.pfs.models.UpdateL3AccessGroupRequest;
 import com.baidubce.pfs.models.UpdateL3AccessGroupResponse;
 import com.baidubce.pfs.models.UpdateL3AccessRuleRequest;
 import com.baidubce.pfs.models.UpdateL3AccessRuleResponse;
+import com.baidubce.pfs.models.UpdateL3MountTargetRequest;
+import com.baidubce.pfs.models.UpdateL3MountTargetResponse;
 import com.baidubce.pfs.models.UpdatePFSTagRequest;
 import org.junit.Test;
 import org.junit.Before;
@@ -481,6 +485,19 @@ public class PfsClientTest {
         System.out.println(response);
     }
     /**
+     * listL3Clients
+     *
+     */
+    @Test
+    public void listL3ClientsTest() {
+        ListL3ClientsRequest listL3ClientsRequest = new ListL3ClientsRequest();
+        listL3ClientsRequest.setInstanceId("");
+        listL3ClientsRequest.setMarker("");
+        listL3ClientsRequest.setMaxKeys(0);
+        ListL3ClientsResponse response = pfsClient.listL3Clients(listL3ClientsRequest);
+        System.out.println(response);
+    }
+    /**
      * listL3MountTarget
      *
      */
@@ -665,6 +682,21 @@ public class PfsClientTest {
         updateL3AccessRuleRequest.setUserAccess("");
         updateL3AccessRuleRequest.setPriority(0);
         UpdateL3AccessRuleResponse response = pfsClient.updateL3AccessRule(updateL3AccessRuleRequest);
+        System.out.println(response);
+    }
+    /**
+     * updateL3MountTarget
+     *
+     */
+    @Test
+    public void updateL3MountTargetTest() {
+        UpdateL3MountTargetRequest updateL3MountTargetRequest = new UpdateL3MountTargetRequest();
+        updateL3MountTargetRequest.setInstanceId("");
+        updateL3MountTargetRequest.setMountTargetId("");
+        updateL3MountTargetRequest.setAdmissionStatus(0);
+        updateL3MountTargetRequest.setName("");
+        updateL3MountTargetRequest.setAccessGroupName("");
+        UpdateL3MountTargetResponse response = pfsClient.updateL3MountTarget(updateL3MountTargetRequest);
         System.out.println(response);
     }
     /**

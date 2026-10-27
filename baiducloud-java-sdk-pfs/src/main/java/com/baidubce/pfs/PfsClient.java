@@ -68,6 +68,8 @@ import com.baidubce.pfs.models.ListL3AccessGroupRequest;
 import com.baidubce.pfs.models.ListL3AccessGroupResponse;
 import com.baidubce.pfs.models.ListL3AccessRuleRequest;
 import com.baidubce.pfs.models.ListL3AccessRuleResponse;
+import com.baidubce.pfs.models.ListL3ClientsRequest;
+import com.baidubce.pfs.models.ListL3ClientsResponse;
 import com.baidubce.pfs.models.ListL3MountTargetRequest;
 import com.baidubce.pfs.models.ListL3MountTargetResponse;
 import com.baidubce.pfs.models.ListPfsRequest;
@@ -94,6 +96,8 @@ import com.baidubce.pfs.models.UpdateL3AccessGroupRequest;
 import com.baidubce.pfs.models.UpdateL3AccessGroupResponse;
 import com.baidubce.pfs.models.UpdateL3AccessRuleRequest;
 import com.baidubce.pfs.models.UpdateL3AccessRuleResponse;
+import com.baidubce.pfs.models.UpdateL3MountTargetRequest;
+import com.baidubce.pfs.models.UpdateL3MountTargetResponse;
 import com.baidubce.pfs.models.UpdatePFSTagRequest;
 
 public class PfsClient extends AbstractBceClient {
@@ -500,6 +504,20 @@ public class PfsClient extends AbstractBceClient {
     }
 
     /**
+     * listL3Clients
+     * 
+     * @param request 入参结构体
+     * @return ListL3ClientsResponse
+     */
+    public ListL3ClientsResponse listL3Clients(ListL3ClientsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "ListL3Clients");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, ListL3ClientsResponse.class);
+    }
+
+    /**
      * listL3MountTarget
      * 
      * @param request 入参结构体
@@ -686,6 +704,20 @@ public class PfsClient extends AbstractBceClient {
         internalRequest.addHeader("Version", "v2");
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, UpdateL3AccessRuleResponse.class);
+    }
+
+    /**
+     * updateL3MountTarget
+     * 
+     * @param request 入参结构体
+     * @return UpdateL3MountTargetResponse
+     */
+    public UpdateL3MountTargetResponse updateL3MountTarget(UpdateL3MountTargetRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, null);
+        internalRequest.addParameter("action", "UpdateL3MountTarget");
+        internalRequest.addHeader("Version", "v2");
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, UpdateL3MountTargetResponse.class);
     }
 
     /**
