@@ -6,6 +6,9 @@ import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.rapidfs.RapidfsClient;
 import com.baidubce.rapidfs.models.ImportDataSrcRequest;
 import com.baidubce.rapidfs.models.ImportDataSrcResponse;
+import com.baidubce.rapidfs.models.MountServiceBinding;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExampleImportDataSrc {
     public static void main(String[] args) {
@@ -23,12 +26,20 @@ public class ExampleImportDataSrc {
         importDataSrcRequest.setDataSrcName("");
         importDataSrcRequest.setBucket("");
         importDataSrcRequest.setOtherAccount(false);
+        importDataSrcRequest.setStorageType("BOS");
+        importDataSrcRequest.setBucketEndpoint("");
         importDataSrcRequest.setBucketAK("");
         importDataSrcRequest.setBucketSK("");
         importDataSrcRequest.setBucketStsToken("");
         importDataSrcRequest.setDirPrefix("");
+        importDataSrcRequest.setSyncMetaOnImport(true);
         importDataSrcRequest.setKeepSymlink(false);
         importDataSrcRequest.setAuthGroupId("");
+        List<MountServiceBinding> mountServiceBindings = new ArrayList<>();
+        mountServiceBindings.add(new MountServiceBinding()
+                .setMountServiceId("MNTSVC-RAPIDFS_DEFAULT_ID")
+                .setLogicalMountPath(""));
+        importDataSrcRequest.setMountServiceBindings(mountServiceBindings);
         importDataSrcRequest.setDescription("");
         importDataSrcRequest.setQuotaMiB(0);
         try {

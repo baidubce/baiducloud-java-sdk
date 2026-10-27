@@ -109,7 +109,10 @@ public class RapidfsClientTest {
     @Before
     public void setUp() {
         BceClientConfiguration config = new BceClientConfiguration();
+
+        // ==== AK/SK 鉴权 ====
         config.setCredentials(new DefaultBceCredentials(AK, SK));
+
         rapidfsClient = new RapidfsClient(config);
     }
 
@@ -728,12 +731,16 @@ public class RapidfsClientTest {
         importDataSrcRequest.setDataSrcName("");
         importDataSrcRequest.setBucket("");
         importDataSrcRequest.setOtherAccount(false);
+        importDataSrcRequest.setStorageType("");
+        importDataSrcRequest.setBucketEndpoint("");
         importDataSrcRequest.setBucketAK("");
         importDataSrcRequest.setBucketSK("");
         importDataSrcRequest.setBucketStsToken("");
         importDataSrcRequest.setDirPrefix("");
+        importDataSrcRequest.setSyncMetaOnImport(false);
         importDataSrcRequest.setKeepSymlink(false);
         importDataSrcRequest.setAuthGroupId("");
+        importDataSrcRequest.setMountServiceBindings(new ArrayList<>());
         importDataSrcRequest.setDescription("");
         importDataSrcRequest.setQuotaMiB(0);
         ImportDataSrcResponse response = rapidfsClient.importDataSrc(importDataSrcRequest);
@@ -765,8 +772,11 @@ public class RapidfsClientTest {
         modifyDataSrcRequest.setClientToken("");
         modifyDataSrcRequest.setDataSrcId("");
         modifyDataSrcRequest.setInstanceId("");
+        modifyDataSrcRequest.setBucketAK("");
+        modifyDataSrcRequest.setBucketSK("");
         modifyDataSrcRequest.setKeepSymlink(false);
         modifyDataSrcRequest.setAuthGroupId("");
+        modifyDataSrcRequest.setMountServiceBindings(new ArrayList<>());
         modifyDataSrcRequest.setDescription("");
         modifyDataSrcRequest.setQuotaMiB(0);
         rapidfsClient.modifyDataSrc(modifyDataSrcRequest);

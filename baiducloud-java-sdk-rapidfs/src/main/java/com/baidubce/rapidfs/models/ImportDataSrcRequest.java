@@ -2,6 +2,7 @@ package com.baidubce.rapidfs.models;
 
 import com.baidubce.common.BaseBceRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -24,14 +25,24 @@ public class ImportDataSrcRequest extends BaseBceRequest {
     private String dataSrcName;
 
     /**
-    * 数据源的 BOS Bucket（当前只支持同地域的存储桶）
+    * 数据源的对象存储 Bucket（当前只支持同地域的存储桶）
     */
     private String bucket;
 
     /**
-    * 是否为其他账号的 bucket，若为true则需要提供导入 Bucket 带读写权限的AK/SK，默认 false
+    * 是否为其他账号的 bucket，若为true则需要提供导入 Bucket 带读写权限的AK/SK，默认 false; storageType 非 BOS 时必填, 传 false 或不传都会被隐式归一化为 true
     */
     private Boolean otherAccount;
+
+    /**
+    * 对象存储类型，取值 BOS（默认，兼容存量）/ OSS，其他取值报错 Invalid storageType。缺省即 BOS，存量请求语义不变
+    */
+    private String storageType;
+
+    /**
+    * 对象存储服务的 endpoint <br>storageType 非 BOS 时必填 <br>storageType 为 BOS 时可选，传入则使用传入值，未传则由后端按 region 自动推导。
+    */
+    private String bucketEndpoint;
 
     /**
     * otherAccount 为 true 时必填，无需加密
@@ -56,7 +67,12 @@ public class ImportDataSrcRequest extends BaseBceRequest {
     private String dirPrefix;
 
     /**
-    * 是否保留 BOS 软链，保留软链会降低数据源导入效率，以及后续增量元数据同步效率，默认 false
+    * 数据源导入时是否立即同步元数据，默认 true
+    */
+    private Boolean syncMetaOnImport;
+
+    /**
+    * 是否保留软链，保留软链会降低数据源导入效率，以及后续增量元数据同步效率，默认 false
     */
     private Boolean keepSymlink;
 
@@ -64,6 +80,11 @@ public class ImportDataSrcRequest extends BaseBceRequest {
     * 权限组ID，默认权限组 ID 为 AG-RAPIDFS_DEFAULT_AUTHGROUP_ID
     */
     private String authGroupId;
+
+    /**
+    * 数据源要绑定的挂载服务列表，元素类型见数据类型 MountServiceBinding。<br>不传或传空列表：不绑定任何挂载服务 <br>传入非空列表：请求时统一校验，全部通过才予受理，数据源导入成功后逐个绑定 <br>同一 mountServiceId 不可重复出现 <br>若导入失败则不执行绑定，已占用的挂载路径随之释放
+    */
+    private List<MountServiceBinding> mountServiceBindings;
 
     /**
     * 数据源描述信息
@@ -120,6 +141,24 @@ public class ImportDataSrcRequest extends BaseBceRequest {
         return this;
     }
 
+    public String getStorageType() {
+        return storageType;
+    }
+
+    public ImportDataSrcRequest setStorageType(String storageType) {
+        this.storageType = storageType;
+        return this;
+    }
+
+    public String getBucketEndpoint() {
+        return bucketEndpoint;
+    }
+
+    public ImportDataSrcRequest setBucketEndpoint(String bucketEndpoint) {
+        this.bucketEndpoint = bucketEndpoint;
+        return this;
+    }
+
     public String getBucketAK() {
         return bucketAK;
     }
@@ -156,6 +195,15 @@ public class ImportDataSrcRequest extends BaseBceRequest {
         return this;
     }
 
+    public Boolean getSyncMetaOnImport() {
+        return syncMetaOnImport;
+    }
+
+    public ImportDataSrcRequest setSyncMetaOnImport(Boolean syncMetaOnImport) {
+        this.syncMetaOnImport = syncMetaOnImport;
+        return this;
+    }
+
     public Boolean getKeepSymlink() {
         return keepSymlink;
     }
@@ -171,6 +219,15 @@ public class ImportDataSrcRequest extends BaseBceRequest {
 
     public ImportDataSrcRequest setAuthGroupId(String authGroupId) {
         this.authGroupId = authGroupId;
+        return this;
+    }
+
+    public List<MountServiceBinding> getMountServiceBindings() {
+        return mountServiceBindings;
+    }
+
+    public ImportDataSrcRequest setMountServiceBindings(List<MountServiceBinding> mountServiceBindings) {
+        this.mountServiceBindings = mountServiceBindings;
         return this;
     }
 

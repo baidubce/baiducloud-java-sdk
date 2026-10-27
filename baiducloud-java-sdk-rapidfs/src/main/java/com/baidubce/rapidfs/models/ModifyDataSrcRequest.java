@@ -2,6 +2,7 @@ package com.baidubce.rapidfs.models;
 
 import com.baidubce.common.BaseBceRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -24,6 +25,17 @@ public class ModifyDataSrcRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
+    * 修改 bucket 凭证。仅 otherAccount == true 的数据源可改；必须与 bucketSK 成对提供
+    */
+    private String bucketAK;
+
+    /**
+    * 修改 bucket 凭证，加密方式与导入数据源时一致，详见[密码加密传输规范定义](https://cloud.baidu.com/doc/BCC/s/ojwvynrqn#%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E4%BC%A0%E8%BE%93%E8%A7%84%E8%8C%83)。可参考
+    * [bce-python-sdk](https://cloud.baidu.com/doc/Developer/index.html) aes128_encrypt_16char_key()函数实现；必须与 bucketAK 成对提供
+    */
+    private String bucketSK;
+
+    /**
     * 是否保留 BOS 软链，保留软链会降低数据源导入效率，以及后续增量元数据同步效率
     */
     private Boolean keepSymlink;
@@ -32,6 +44,11 @@ public class ModifyDataSrcRequest extends BaseBceRequest {
     * 权限组Id
     */
     private String authGroupId;
+
+    /**
+    * 数据源绑定的目标全集，见数据类型 MountServiceBinding。<br>传入（含空列表）：以列表为准整体覆盖该数据源的绑定，空列表表示摘除全部绑定 <br>数据源状态为 RUNNING 或 CHANGE_FAILED 时允许修改，绑定变更为异步执行<br>BIND_FAILED / UNBIND_FAILED 的绑定可再次提交修改重试
+    */
+    private List<MountServiceBinding> mountServiceBindings;
 
     /**
     * 数据源描述信息，不超过256个字符
@@ -70,6 +87,24 @@ public class ModifyDataSrcRequest extends BaseBceRequest {
         return this;
     }
 
+    public String getBucketAK() {
+        return bucketAK;
+    }
+
+    public ModifyDataSrcRequest setBucketAK(String bucketAK) {
+        this.bucketAK = bucketAK;
+        return this;
+    }
+
+    public String getBucketSK() {
+        return bucketSK;
+    }
+
+    public ModifyDataSrcRequest setBucketSK(String bucketSK) {
+        this.bucketSK = bucketSK;
+        return this;
+    }
+
     public Boolean getKeepSymlink() {
         return keepSymlink;
     }
@@ -85,6 +120,15 @@ public class ModifyDataSrcRequest extends BaseBceRequest {
 
     public ModifyDataSrcRequest setAuthGroupId(String authGroupId) {
         this.authGroupId = authGroupId;
+        return this;
+    }
+
+    public List<MountServiceBinding> getMountServiceBindings() {
+        return mountServiceBindings;
+    }
+
+    public ModifyDataSrcRequest setMountServiceBindings(List<MountServiceBinding> mountServiceBindings) {
+        this.mountServiceBindings = mountServiceBindings;
         return this;
     }
 
