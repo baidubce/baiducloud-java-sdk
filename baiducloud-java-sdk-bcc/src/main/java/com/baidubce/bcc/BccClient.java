@@ -75,6 +75,8 @@ import com.baidubce.bcc.models.CreateDeploySetRequest;
 import com.baidubce.bcc.models.CreateDeploySetResponse;
 import com.baidubce.bcc.models.CreateEhcClusterRequest;
 import com.baidubce.bcc.models.CreateEhcClusterResponse;
+import com.baidubce.bcc.models.CreateElasticityAssuranceRequest;
+import com.baidubce.bcc.models.CreateElasticityAssuranceResponse;
 import com.baidubce.bcc.models.CreateImageRequest;
 import com.baidubce.bcc.models.CreateImageResponse;
 import com.baidubce.bcc.models.CreateInstanceBySpecRequest;
@@ -99,6 +101,7 @@ import com.baidubce.bcc.models.DeleteAspRequest;
 import com.baidubce.bcc.models.DeleteAutoRenewRuleRequest;
 import com.baidubce.bcc.models.DeleteDeploySetRequest;
 import com.baidubce.bcc.models.DeleteEhcClusterRequest;
+import com.baidubce.bcc.models.DeleteElasticityAssuranceRequest;
 import com.baidubce.bcc.models.DeleteImageRequest;
 import com.baidubce.bcc.models.DeleteInstUserOpAuthorizeRuleRequest;
 import com.baidubce.bcc.models.DeleteInstUserOpAuthorizeRuleResponse;
@@ -230,6 +233,7 @@ import com.baidubce.bcc.models.ListVolumesResponse;
 import com.baidubce.bcc.models.ListZonesResponse;
 import com.baidubce.bcc.models.ModifyCdsAttributeRequest;
 import com.baidubce.bcc.models.ModifyEhcClusterRequest;
+import com.baidubce.bcc.models.ModifyElasticityAssuranceRequest;
 import com.baidubce.bcc.models.ModifyInstUserOpAuthorizeRuleAttributeRequest;
 import com.baidubce.bcc.models.ModifyInstUserOpAuthorizeRuleAttributeResponse;
 import com.baidubce.bcc.models.ModifyInstanceAttributesRequest;
@@ -248,6 +252,8 @@ import com.baidubce.bcc.models.PurchaseReservedVolumeClusterRequest;
 import com.baidubce.bcc.models.PurchaseReservedVolumeClusterResponse;
 import com.baidubce.bcc.models.PurchaseReservedVolumeRequest;
 import com.baidubce.bcc.models.PurchaseReservedVolumeResponse;
+import com.baidubce.bcc.models.QueryElasticityAssuranceRequest;
+import com.baidubce.bcc.models.QueryElasticityAssuranceResponse;
 import com.baidubce.bcc.models.RebootInstanceRequest;
 import com.baidubce.bcc.models.RebuildBatchInstanceRequest;
 import com.baidubce.bcc.models.RebuildInstanceRequest;
@@ -262,6 +268,8 @@ import com.baidubce.bcc.models.RemoteCopySnapshotResponse;
 import com.baidubce.bcc.models.RenameImageRequest;
 import com.baidubce.bcc.models.RenameKeypairRequest;
 import com.baidubce.bcc.models.RenameVolumeRequest;
+import com.baidubce.bcc.models.RenewElasticityAssuranceRequest;
+import com.baidubce.bcc.models.RenewElasticityAssuranceResponse;
 import com.baidubce.bcc.models.RenewReservedInstanceRequest;
 import com.baidubce.bcc.models.RenewReservedInstanceResponse;
 import com.baidubce.bcc.models.ReplaceInstanceSecurityGroupRequest;
@@ -351,6 +359,8 @@ public class BccClient extends AbstractBceClient {
     private static final String CONSTANT_BID_FLAVOR = "bidFlavor";
     private static final String CONSTANT_INSTANCE_BY_SPEC = "instanceBySpec";
     private static final String CONSTANT_BATCH_DELETE = "batchDelete";
+    private static final String CONSTANT_ELASTICITY_ASSURANCE = "elasticityAssurance";
+    private static final String CONSTANT_RENEW = "renew";
     private static final String CONSTANT_BATCH_REFUND_RESOURCE = "batchRefundResource";
     private static final String CONSTANT_REFUSE = "refuse";
     private static final String CONSTANT_LIST_BY_INSTANCE_ID = "listByInstanceId";
@@ -388,6 +398,7 @@ public class BccClient extends AbstractBceClient {
     private static final String CONSTANT_SHARE = "share";
     private static final String CONSTANT_UPDATE_RELATION = "updateRelation";
     private static final String CONSTANT_DEL_IPV6 = "delIpv6";
+    private static final String CONSTANT_MODIFY_AUTO_RENEW = "modifyAutoRenew";
     private static final String CONSTANT_ENI = "eni";
     private static final String CONSTANT_BATCH_ADD_IP = "batchAddIp";
     private static final String CONSTANT_REMOTE_COPY = "remote_copy";
@@ -395,7 +406,6 @@ public class BccClient extends AbstractBceClient {
     private static final String CONSTANT_RESCUE = "rescue";
     private static final String CONSTANT_MODE = "mode";
     private static final String CONSTANT_EXIT = "exit";
-    private static final String CONSTANT_RENEW = "renew";
     private static final String CONSTANT_ENTER = "enter";
 
     /**
@@ -907,6 +917,18 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * createElasticityAssurance
+     * 
+     * @param request 入参结构体
+     * @return CreateElasticityAssuranceResponse
+     */
+    public CreateElasticityAssuranceResponse createElasticityAssurance(CreateElasticityAssuranceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_ELASTICITY_ASSURANCE, CONSTANT_CREATE);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, CreateElasticityAssuranceResponse.class);
+    }
+
+    /**
      * createImage
      * 
      * @param request 入参结构体
@@ -1074,6 +1096,17 @@ public class BccClient extends AbstractBceClient {
      */
     public void deleteEhcCluster(DeleteEhcClusterRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_EHC, CONSTANT_CLUSTER, CONSTANT_DELETE);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteElasticityAssurance
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteElasticityAssurance(DeleteElasticityAssuranceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_ELASTICITY_ASSURANCE, CONSTANT_DELETE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
@@ -2199,6 +2232,18 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * modifyElasticityAssurance
+     * 
+     * @param request 入参结构体
+     */
+    public void modifyElasticityAssurance(ModifyElasticityAssuranceRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_ELASTICITY_ASSURANCE, CONSTANT_MODIFY_AUTO_RENEW);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * modifyInstUserOpAuthorizeRuleAttribute
      * 
      * @param request 入参结构体
@@ -2363,6 +2408,18 @@ public class BccClient extends AbstractBceClient {
     }
 
     /**
+     * queryElasticityAssurance
+     * 
+     * @param request 入参结构体
+     * @return QueryElasticityAssuranceResponse
+     */
+    public QueryElasticityAssuranceResponse queryElasticityAssurance(QueryElasticityAssuranceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_ELASTICITY_ASSURANCE, CONSTANT_LIST);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, QueryElasticityAssuranceResponse.class);
+    }
+
+    /**
      * rebootInstance
      * 
      * @param request 入参结构体
@@ -2499,6 +2556,18 @@ public class BccClient extends AbstractBceClient {
         internalRequest.addParameter("rename", null);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * renewElasticityAssurance
+     * 
+     * @param request 入参结构体
+     * @return RenewElasticityAssuranceResponse
+     */
+    public RenewElasticityAssuranceResponse renewElasticityAssurance(RenewElasticityAssuranceRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V2, CONSTANT_INSTANCE, CONSTANT_ELASTICITY_ASSURANCE, CONSTANT_RENEW);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, RenewElasticityAssuranceResponse.class);
     }
 
     /**

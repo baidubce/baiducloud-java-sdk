@@ -377,6 +377,16 @@ public class InstanceModel {
      */
     private Integer networkCapacityInMbps;
 
+    /**
+     * 实例ID，符合BCE规范，是一个定长字符串，且只允许包含大小写字母、数字、连字号（-）和下划线(_)。（查询弹性保障关联实例列表）
+     */
+    private String instanceId;
+
+    /**
+     * 逻辑可用区（查询弹性保障实例instanceId列表返回）
+     */
+    private String logicalZone;
+
     public InstanceModel setId(String id) {
         this.id = id;
         return this;
@@ -1043,6 +1053,24 @@ public class InstanceModel {
         return this.networkCapacityInMbps;
     }
 
+    public InstanceModel setInstanceId(String instanceId) {
+        this.instanceId = instanceId;
+        return this;
+    }
+
+    public String getInstanceId() {
+        return this.instanceId;
+    }
+
+    public InstanceModel setLogicalZone(String logicalZone) {
+        this.logicalZone = logicalZone;
+        return this;
+    }
+
+    public String getLogicalZone() {
+        return this.logicalZone;
+    }
+
     @Override
     public String toString() {
         return "InstanceModel{" + "id=" + id + "\n" + "sourceProductId=" + sourceProductId + "\n" + "sourceProductType=" + sourceProductType + "\n" + "serialNumber="
@@ -1062,7 +1090,8 @@ public class InstanceModel {
                 + "dedicatedHostId=" + dedicatedHostId + "\n" + "autoRenew=" + autoRenew + "\n" + "autoRenewPeriodUnit=" + autoRenewPeriodUnit + "\n" + "autoRenewPeriod="
                 + autoRenewPeriod + "\n" + "ipv6=" + ipv6 + "\n" + "netEthQueueCount=" + netEthQueueCount + "\n" + "eniQuota=" + eniQuota + "\n" + "eriQuota=" + eriQuota + "\n"
                 + "rdmaType=" + rdmaType + "\n" + "serviceComponents=" + serviceComponents + "\n" + "ipv6Addresses=" + ipv6Addresses + "\n" + "nicInfo=" + nicInfo + "\n"
-                + "eniNum=" + eniNum + "\n" + "tags=" + tags + "\n" + "volumes=" + volumes + "\n" + "networkCapacityInMbps=" + networkCapacityInMbps + "\n" + "}";
+                + "eniNum=" + eniNum + "\n" + "tags=" + tags + "\n" + "volumes=" + volumes + "\n" + "networkCapacityInMbps=" + networkCapacityInMbps + "\n" + "instanceId="
+                + instanceId + "\n" + "logicalZone=" + logicalZone + "\n" + "}";
     }
 
 }

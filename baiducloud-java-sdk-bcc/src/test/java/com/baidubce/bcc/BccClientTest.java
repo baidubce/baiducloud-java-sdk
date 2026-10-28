@@ -59,6 +59,8 @@ import com.baidubce.bcc.models.CreateDeploySetRequest;
 import com.baidubce.bcc.models.CreateDeploySetResponse;
 import com.baidubce.bcc.models.CreateEhcClusterRequest;
 import com.baidubce.bcc.models.CreateEhcClusterResponse;
+import com.baidubce.bcc.models.CreateElasticityAssuranceRequest;
+import com.baidubce.bcc.models.CreateElasticityAssuranceResponse;
 import com.baidubce.bcc.models.CreateImageRequest;
 import com.baidubce.bcc.models.CreateImageResponse;
 import com.baidubce.bcc.models.CreateInstanceBySpecRequest;
@@ -83,6 +85,7 @@ import com.baidubce.bcc.models.DeleteAspRequest;
 import com.baidubce.bcc.models.DeleteAutoRenewRuleRequest;
 import com.baidubce.bcc.models.DeleteDeploySetRequest;
 import com.baidubce.bcc.models.DeleteEhcClusterRequest;
+import com.baidubce.bcc.models.DeleteElasticityAssuranceRequest;
 import com.baidubce.bcc.models.DeleteImageRequest;
 import com.baidubce.bcc.models.DeleteInstUserOpAuthorizeRuleRequest;
 import com.baidubce.bcc.models.DeleteInstUserOpAuthorizeRuleResponse;
@@ -214,6 +217,7 @@ import com.baidubce.bcc.models.ListVolumesResponse;
 import com.baidubce.bcc.models.ListZonesResponse;
 import com.baidubce.bcc.models.ModifyCdsAttributeRequest;
 import com.baidubce.bcc.models.ModifyEhcClusterRequest;
+import com.baidubce.bcc.models.ModifyElasticityAssuranceRequest;
 import com.baidubce.bcc.models.ModifyInstUserOpAuthorizeRuleAttributeRequest;
 import com.baidubce.bcc.models.ModifyInstUserOpAuthorizeRuleAttributeResponse;
 import com.baidubce.bcc.models.ModifyInstanceAttributesRequest;
@@ -232,6 +236,8 @@ import com.baidubce.bcc.models.PurchaseReservedVolumeClusterRequest;
 import com.baidubce.bcc.models.PurchaseReservedVolumeClusterResponse;
 import com.baidubce.bcc.models.PurchaseReservedVolumeRequest;
 import com.baidubce.bcc.models.PurchaseReservedVolumeResponse;
+import com.baidubce.bcc.models.QueryElasticityAssuranceRequest;
+import com.baidubce.bcc.models.QueryElasticityAssuranceResponse;
 import com.baidubce.bcc.models.RebootInstanceRequest;
 import com.baidubce.bcc.models.RebuildBatchInstanceRequest;
 import com.baidubce.bcc.models.RebuildInstanceRequest;
@@ -246,6 +252,8 @@ import com.baidubce.bcc.models.RemoteCopySnapshotResponse;
 import com.baidubce.bcc.models.RenameImageRequest;
 import com.baidubce.bcc.models.RenameKeypairRequest;
 import com.baidubce.bcc.models.RenameVolumeRequest;
+import com.baidubce.bcc.models.RenewElasticityAssuranceRequest;
+import com.baidubce.bcc.models.RenewElasticityAssuranceResponse;
 import com.baidubce.bcc.models.RenewReservedInstanceRequest;
 import com.baidubce.bcc.models.RenewReservedInstanceResponse;
 import com.baidubce.bcc.models.ReplaceInstanceSecurityGroupRequest;
@@ -298,7 +306,10 @@ public class BccClientTest {
     @Before
     public void setUp() {
         BceClientConfiguration config = new BceClientConfiguration();
+
+        // ==== AK/SK 鉴权 ====
         config.setCredentials(new DefaultBceCredentials(AK, SK));
+
         bccClient = new BccClient(config);
     }
 
@@ -829,6 +840,23 @@ public class BccClientTest {
         System.out.println(response);
     }
     /**
+     * createElasticityAssurance
+     *
+     */
+    @Test
+    public void createElasticityAssuranceTest() {
+        CreateElasticityAssuranceRequest createElasticityAssuranceRequest = new CreateElasticityAssuranceRequest();
+        createElasticityAssuranceRequest.setElasticityAssuranceName("");
+        createElasticityAssuranceRequest.setZoneName("");
+        createElasticityAssuranceRequest.setSpec("");
+        createElasticityAssuranceRequest.setCapacity(0);
+        createElasticityAssuranceRequest.setPeriod(0);
+        createElasticityAssuranceRequest.setAutoRenew(false);
+        createElasticityAssuranceRequest.setTags(new ArrayList<>());
+        CreateElasticityAssuranceResponse response = bccClient.createElasticityAssurance(createElasticityAssuranceRequest);
+        System.out.println(response);
+    }
+    /**
      * createImage
      *
      */
@@ -1109,6 +1137,16 @@ public class BccClientTest {
         DeleteEhcClusterRequest deleteEhcClusterRequest = new DeleteEhcClusterRequest();
         deleteEhcClusterRequest.setEhcClusterIdList(new ArrayList<>());
         bccClient.deleteEhcCluster(deleteEhcClusterRequest);
+    }
+    /**
+     * deleteElasticityAssurance
+     *
+     */
+    @Test
+    public void deleteElasticityAssuranceTest() {
+        DeleteElasticityAssuranceRequest deleteElasticityAssuranceRequest = new DeleteElasticityAssuranceRequest();
+        deleteElasticityAssuranceRequest.setElasticityAssuranceIds(new ArrayList<>());
+        bccClient.deleteElasticityAssurance(deleteElasticityAssuranceRequest);
     }
     /**
      * deleteImage
@@ -2120,6 +2158,18 @@ public class BccClientTest {
         bccClient.modifyEhcCluster(modifyEhcClusterRequest);
     }
     /**
+     * modifyElasticityAssurance
+     *
+     */
+    @Test
+    public void modifyElasticityAssuranceTest() {
+        ModifyElasticityAssuranceRequest modifyElasticityAssuranceRequest = new ModifyElasticityAssuranceRequest();
+        modifyElasticityAssuranceRequest.setElasticityAssuranceIds(new ArrayList<>());
+        modifyElasticityAssuranceRequest.setAutoRenew(false);
+        modifyElasticityAssuranceRequest.setAutoRenewPeriod(0);
+        bccClient.modifyElasticityAssurance(modifyElasticityAssuranceRequest);
+    }
+    /**
      * modifyInstUserOpAuthorizeRuleAttribute
      *
      */
@@ -2278,6 +2328,23 @@ public class BccClientTest {
         purchaseReservedVolumeClusterRequest.setClusterId("");
         purchaseReservedVolumeClusterRequest.setBilling(null);
         PurchaseReservedVolumeClusterResponse response = bccClient.purchaseReservedVolumeCluster(purchaseReservedVolumeClusterRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryElasticityAssurance
+     *
+     */
+    @Test
+    public void queryElasticityAssuranceTest() {
+        QueryElasticityAssuranceRequest queryElasticityAssuranceRequest = new QueryElasticityAssuranceRequest();
+        queryElasticityAssuranceRequest.setMarker("");
+        queryElasticityAssuranceRequest.setMaxKeys(0);
+        queryElasticityAssuranceRequest.setElasticityAssuranceIds(new ArrayList<>());
+        queryElasticityAssuranceRequest.setElasticityAssuranceName("");
+        queryElasticityAssuranceRequest.setZoneName("");
+        queryElasticityAssuranceRequest.setSpec("");
+        queryElasticityAssuranceRequest.setStatus(new ArrayList<>());
+        QueryElasticityAssuranceResponse response = bccClient.queryElasticityAssurance(queryElasticityAssuranceRequest);
         System.out.println(response);
     }
     /**
@@ -2449,6 +2516,18 @@ public class BccClientTest {
         renameVolumeRequest.setVolumeId("");
         renameVolumeRequest.setName("");
         bccClient.renameVolume(renameVolumeRequest);
+    }
+    /**
+     * renewElasticityAssurance
+     *
+     */
+    @Test
+    public void renewElasticityAssuranceTest() {
+        RenewElasticityAssuranceRequest renewElasticityAssuranceRequest = new RenewElasticityAssuranceRequest();
+        renewElasticityAssuranceRequest.setElasticityAssuranceIds(new ArrayList<>());
+        renewElasticityAssuranceRequest.setPeriod("");
+        RenewElasticityAssuranceResponse response = bccClient.renewElasticityAssurance(renewElasticityAssuranceRequest);
+        System.out.println(response);
     }
     /**
      * renewReservedInstance
