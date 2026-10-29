@@ -30,17 +30,17 @@ public class ChangeConfigurationRequest extends BaseBceRequest {
     private String engineVersion;
 
     /**
-    * 参见附录中[实例规格](https://cloud.baidu.com/doc/SCS/s/1jwvxtsh0#%E5%AE%9E%E4%BE%8B%E8%A7%84%E6%A0%BC)
+    * 参见附录中[实例规格](https://cloud.baidu.com/doc/SCS/s/1jwvxtsh0#%E5%AE%9E%E4%BE%8B%E8%A7%84%E6%A0%BC) ，实例规格和分片同时只能变更一个，变更实例规格时，分片和原实例保持一致。
     */
     private String nodeType;
 
     /**
-    * 分片个数
+    * 分片个数。实例规格和分片同时只能变更一个，变更实例规格时，分片和原实例保持一致。
     */
     private Integer shardNum;
 
     /**
-    * 存储空间
+    * 存储空间。仅Redis容量型（PegaDB）支持，不能和分片一起变更。
     */
     private Integer diskFlavor;
 

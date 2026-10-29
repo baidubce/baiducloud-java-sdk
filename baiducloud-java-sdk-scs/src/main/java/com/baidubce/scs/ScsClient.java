@@ -303,7 +303,7 @@ public class ScsClient extends AbstractBceClient {
      * @return AccountListResponse
      */
     public AccountListResponse accountList(AccountListRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_ACL_USER_ACTIONS);
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_ACL_USER_ACTIONS);
         return invokeHttpClient(internalRequest, AccountListResponse.class);
     }
 
@@ -415,7 +415,8 @@ public class ScsClient extends AbstractBceClient {
      * @param request 入参结构体
      */
     public void changeAccountPassword(ChangeAccountPasswordRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, request.getInstanceId(), CONSTANT_ACL_USER_ACTIONS, CONSTANT_MODIFY_PASSWD);
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_ACL_USER_ACTIONS, CONSTANT_MODIFY_PASSWD);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
@@ -568,7 +569,8 @@ public class ScsClient extends AbstractBceClient {
      * @param request 入参结构体
      */
     public void deleteAccount(DeleteAccountRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, request.getInstanceId(), CONSTANT_ACL_USER_ACTIONS, CONSTANT_DELETE);
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_ACL_USER_ACTIONS, CONSTANT_DELETE);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
@@ -1482,7 +1484,8 @@ public class ScsClient extends AbstractBceClient {
      * @param request 入参结构体
      */
     public void setPermissions(SetPermissionsRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, request.getInstanceId(), CONSTANT_ACL_USER_ACTIONS, CONSTANT_AUTHORITY);
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_ACL_USER_ACTIONS, CONSTANT_AUTHORITY);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
