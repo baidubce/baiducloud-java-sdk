@@ -15,10 +15,10 @@ public class UnbindVpcToRuleRequest extends BaseBceRequest {
     private String ruleId;
 
     /**
-    * clienToken
+    * clientToken
     */
     @JsonIgnore
-    private String clienToken;
+    private String clientToken;
 
     /**
     * 要解绑的vpc信息
@@ -34,12 +34,12 @@ public class UnbindVpcToRuleRequest extends BaseBceRequest {
         return this;
     }
 
-    public String getClienToken() {
-        return clienToken;
+    public String getClientToken() {
+        return clientToken;
     }
 
-    public UnbindVpcToRuleRequest setClienToken(String clienToken) {
-        this.clienToken = clienToken;
+    public UnbindVpcToRuleRequest setClientToken(String clientToken) {
+        this.clientToken = clientToken;
         return this;
     }
 

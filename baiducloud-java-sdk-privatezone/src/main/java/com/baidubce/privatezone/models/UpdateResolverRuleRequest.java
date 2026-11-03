@@ -9,10 +9,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class UpdateResolverRuleRequest extends BaseBceRequest {
 
     /**
-    * reluId
+    * ruleId
     */
     @JsonIgnore
-    private String reluId;
+    private String ruleId;
 
     /**
     * clientToken
@@ -35,12 +35,12 @@ public class UpdateResolverRuleRequest extends BaseBceRequest {
     */
     private List<DnsServerConfig> dnsServerConfigs;
 
-    public String getReluId() {
-        return reluId;
+    public String getRuleId() {
+        return ruleId;
     }
 
-    public UpdateResolverRuleRequest setReluId(String reluId) {
-        this.reluId = reluId;
+    public UpdateResolverRuleRequest setRuleId(String ruleId) {
+        this.ruleId = ruleId;
         return this;
     }
 

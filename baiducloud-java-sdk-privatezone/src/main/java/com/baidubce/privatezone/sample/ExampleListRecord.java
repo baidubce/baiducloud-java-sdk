@@ -9,14 +9,16 @@ import com.baidubce.privatezone.models.ListRecordResponse;
 
 public class ExampleListRecord {
     public static void main(String[] args) {
-        // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
+        String endpoint = "Your Endpoint";
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setEndpoint(endpoint);
+
+        // ==== AK/SK 鉴权 ====
         String ak = "Your Ak";
         String sk = "Your Sk";
-        String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        PrivatezoneClient client = new PrivatezoneClient(config);
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+
+        PrivatezoneClient client = new PrivatezoneClient(bceClientConfig);
         ListRecordRequest listRecordRequest = new ListRecordRequest();
         listRecordRequest.setZoneId("");
         listRecordRequest.setMarker("");

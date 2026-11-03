@@ -395,8 +395,8 @@ public class PrivatezoneClient extends AbstractBceClient {
     public void unbindVpcToRule(UnbindVpcToRuleRequest request) {
         InternalRequest internalRequest =
                 this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER, CONSTANT_RULE, request.getRuleId(), CONSTANT_UNBIND);
-        if (request.getClienToken() != null) {
-            internalRequest.addParameter("clienToken", request.getClienToken());
+        if (request.getClientToken() != null) {
+            internalRequest.addParameter("clientToken", request.getClientToken());
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
@@ -436,7 +436,7 @@ public class PrivatezoneClient extends AbstractBceClient {
      * @param request 入参结构体
      */
     public void updateResolverRule(UpdateResolverRuleRequest request) {
-        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER, CONSTANT_RULE, request.getReluId());
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_PRIVATEZONE, CONSTANT_RESOLVER, CONSTANT_RULE, request.getRuleId());
         if (request.getClientToken() != null) {
             internalRequest.addParameter("clientToken", request.getClientToken());
         }

@@ -53,7 +53,10 @@ public class PrivatezoneClientTest {
     @Before
     public void setUp() {
         BceClientConfiguration config = new BceClientConfiguration();
+
+        // ==== AK/SK 鉴权 ====
         config.setCredentials(new DefaultBceCredentials(AK, SK));
+
         privatezoneClient = new PrivatezoneClient(config);
     }
 
@@ -320,7 +323,7 @@ public class PrivatezoneClientTest {
     public void unbindVpcToRuleTest() {
         UnbindVpcToRuleRequest unbindVpcToRuleRequest = new UnbindVpcToRuleRequest();
         unbindVpcToRuleRequest.setRuleId("");
-        unbindVpcToRuleRequest.setClienToken("");
+        unbindVpcToRuleRequest.setClientToken("");
         unbindVpcToRuleRequest.setVpcRegions(new ArrayList<>());
         privatezoneClient.unbindVpcToRule(unbindVpcToRuleRequest);
     }
@@ -361,7 +364,7 @@ public class PrivatezoneClientTest {
     @Test
     public void updateResolverRuleTest() {
         UpdateResolverRuleRequest updateResolverRuleRequest = new UpdateResolverRuleRequest();
-        updateResolverRuleRequest.setReluId("");
+        updateResolverRuleRequest.setRuleId("");
         updateResolverRuleRequest.setClientToken("");
         updateResolverRuleRequest.setName("");
         updateResolverRuleRequest.setDescription("");
