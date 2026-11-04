@@ -10,7 +10,7 @@ public class AccessGroupInfo {
     private String accessGroupName;
 
     /**
-     * 描述，未设置时该字段不返回
+     * 描述，未设置时该 key 不返回
      */
     private String description;
 
@@ -30,12 +30,12 @@ public class AccessGroupInfo {
     private Integer mountCount;
 
     /**
-     * 创建时间，ISO-8601 UTC 秒精度，如 2026-09-01T03:12:45Z
+     * 创建时间，ISO-8601 UTC 秒精度，如 `2026-09-01T03:12:45Z`
      */
     private String createTime;
 
     /**
-     * 逻辑机房（可用区）
+     * 逻辑机房
      */
     private String zoneName;
 

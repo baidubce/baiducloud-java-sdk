@@ -18,7 +18,7 @@ public class DescribeL3AccessGroupResponse extends BaseBceResponse {
     private String accessGroupName;
 
     /**
-    * 描述，未设置时该字段不返回
+    * 描述，未设置时该字段返回空串
     */
     private String description;
 
@@ -43,7 +43,7 @@ public class DescribeL3AccessGroupResponse extends BaseBceResponse {
     private String zoneName;
 
     /**
-    * 已关联的挂载点列表
+    * 已关联的挂载点列表，元素见下表
     */
     private List<AttachedMountTargetInfo> attachedMountTargets;
 

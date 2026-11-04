@@ -5,19 +5,29 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateAccessRuleResult {
     /**
-     * 该条规则是否创建成功
+     * 该条是否创建成功
      */
     private Boolean success;
 
     /**
-     * 创建成功时返回的规则 ID
+     * 成功时返回的规则 ID
      */
     private Integer accessRuleId;
 
     /**
-     * 创建失败的原因
+     * 失败原因，成功时不返回
      */
     private String errorMsg;
+
+    /**
+     * 该条规则对应的客户端 IP
+     */
+    private String ip;
+
+    /**
+     * 该条规则对应的掩码位数
+     */
+    private Integer mask;
 
     public CreateAccessRuleResult setSuccess(Boolean success) {
         this.success = success;
@@ -46,9 +56,28 @@ public class CreateAccessRuleResult {
         return this.errorMsg;
     }
 
+    public CreateAccessRuleResult setIp(String ip) {
+        this.ip = ip;
+        return this;
+    }
+
+    public String getIp() {
+        return this.ip;
+    }
+
+    public CreateAccessRuleResult setMask(Integer mask) {
+        this.mask = mask;
+        return this;
+    }
+
+    public Integer getMask() {
+        return this.mask;
+    }
+
     @Override
     public String toString() {
-        return "CreateAccessRuleResult{" + "success=" + success + "\n" + "accessRuleId=" + accessRuleId + "\n" + "errorMsg=" + errorMsg + "\n" + "}";
+        return "CreateAccessRuleResult{" + "success=" + success + "\n" + "accessRuleId=" + accessRuleId + "\n" + "errorMsg=" + errorMsg + "\n" + "ip=" + ip + "\n" + "mask=" + mask
+                + "\n" + "}";
     }
 
 }

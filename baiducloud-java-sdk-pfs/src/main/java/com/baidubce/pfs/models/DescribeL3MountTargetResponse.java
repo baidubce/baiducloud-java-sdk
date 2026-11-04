@@ -36,6 +36,31 @@ public class DescribeL3MountTargetResponse extends BaseBceResponse {
     */
     private String subnetId;
 
+    /**
+    * response body
+    */
+    private String name;
+
+    /**
+    * 协议类型
+    */
+    private String protocol;
+
+    /**
+    * 权限组名称
+    */
+    private String accessGroupName;
+
+    /**
+    * 挂载客户端数量
+    */
+    private Integer clientCount;
+
+    /**
+    * 挂载点状态（0 启动；1 禁用）
+    */
+    private Integer admissionStatus;
+
     public String getRequestId() {
         return requestId;
     }
@@ -90,10 +115,56 @@ public class DescribeL3MountTargetResponse extends BaseBceResponse {
         return this;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public DescribeL3MountTargetResponse setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getProtocol() {
+        return protocol;
+    }
+
+    public DescribeL3MountTargetResponse setProtocol(String protocol) {
+        this.protocol = protocol;
+        return this;
+    }
+
+    public String getAccessGroupName() {
+        return accessGroupName;
+    }
+
+    public DescribeL3MountTargetResponse setAccessGroupName(String accessGroupName) {
+        this.accessGroupName = accessGroupName;
+        return this;
+    }
+
+    public Integer getClientCount() {
+        return clientCount;
+    }
+
+    public DescribeL3MountTargetResponse setClientCount(Integer clientCount) {
+        this.clientCount = clientCount;
+        return this;
+    }
+
+    public Integer getAdmissionStatus() {
+        return admissionStatus;
+    }
+
+    public DescribeL3MountTargetResponse setAdmissionStatus(Integer admissionStatus) {
+        this.admissionStatus = admissionStatus;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "DescribeL3MountTargetResponse{" + "requestId=" + requestId + "\n" + "domain=" + domain + "\n" + "mountTargetId=" + mountTargetId + "\n" + "ovip=" + ovip + "\n"
-                + "vpcId=" + vpcId + "\n" + "subnetId=" + subnetId + "\n" + "}";
+                + "vpcId=" + vpcId + "\n" + "subnetId=" + subnetId + "\n" + "name=" + name + "\n" + "protocol=" + protocol + "\n" + "accessGroupName=" + accessGroupName + "\n"
+                + "clientCount=" + clientCount + "\n" + "admissionStatus=" + admissionStatus + "\n" + "}";
     }
 
 }

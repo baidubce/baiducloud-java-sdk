@@ -217,6 +217,10 @@ public class PfsClientTest {
         createL3MountTargetRequest.setInstanceId("");
         createL3MountTargetRequest.setVpcId("");
         createL3MountTargetRequest.setSubnetId("");
+        createL3MountTargetRequest.setName("");
+        createL3MountTargetRequest.setAccessGroupName("");
+        createL3MountTargetRequest.setProtocol("");
+        createL3MountTargetRequest.setIpAddress("");
         CreateL3MountTargetResponse response = pfsClient.createL3MountTarget(createL3MountTargetRequest);
         System.out.println(response);
     }

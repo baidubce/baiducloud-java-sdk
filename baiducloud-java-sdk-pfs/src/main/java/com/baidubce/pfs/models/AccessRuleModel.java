@@ -10,17 +10,17 @@ public class AccessRuleModel {
     private String ip;
 
     /**
-     * 掩码位数，IPv4 默认 32，IPv6 默认 128
+     * 掩码位数，不传时 IPv4 默认 32、IPv6 默认 128
      */
     private Integer mask;
 
     /**
-     * 读写权限，read_only（只读）/ read_write（读写）
+     * 读写权限，read_only / read_write
      */
     private String writeAccess;
 
     /**
-     * 用户权限，no_squash（不限制 root 账户）/ root_squash（限制 root 账户）/ all_squash（限制所有用户）
+     * 用户权限，no_squash / root_squash / all_squash
      */
     private String userAccess;
 

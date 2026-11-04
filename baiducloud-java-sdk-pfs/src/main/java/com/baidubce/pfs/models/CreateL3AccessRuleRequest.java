@@ -1,8 +1,8 @@
 package com.baidubce.pfs.models;
 
 import com.baidubce.common.BaseBceRequest;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateL3AccessRuleRequest extends BaseBceRequest {
@@ -18,7 +18,7 @@ public class CreateL3AccessRuleRequest extends BaseBceRequest {
     private String zoneName;
 
     /**
-    * 规则列表，不能为空数组
+    * 规则列表，不能为空数组，元素见下表
     */
     private List<AccessRuleModel> accessRules;
 

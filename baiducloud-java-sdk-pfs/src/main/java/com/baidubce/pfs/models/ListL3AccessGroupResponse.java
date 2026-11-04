@@ -13,7 +13,7 @@ public class ListL3AccessGroupResponse extends BaseBceResponse {
     private String requestId;
 
     /**
-    * 当前页的权限组列表
+    * 当前页的权限组列表，元素见下表
     */
     private List<AccessGroupInfo> result;
 

@@ -23,6 +23,10 @@ public class ExampleCreateL3MountTarget {
         createL3MountTargetRequest.setInstanceId("");
         createL3MountTargetRequest.setVpcId("");
         createL3MountTargetRequest.setSubnetId("");
+        createL3MountTargetRequest.setName("");
+        createL3MountTargetRequest.setAccessGroupName("");
+        createL3MountTargetRequest.setProtocol("");
+        createL3MountTargetRequest.setIpAddress("");
         try {
             CreateL3MountTargetResponse response = client.createL3MountTarget(createL3MountTargetRequest);
             System.out.println(response.toJsonString());

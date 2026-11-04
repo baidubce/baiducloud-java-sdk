@@ -25,12 +25,12 @@ public class AccessRuleInfo {
     private Integer priority;
 
     /**
-     * 读写权限，read_only（只读）/ read_write（读写）
+     * 读写权限
      */
     private String writeAccess;
 
     /**
-     * 用户权限，no_squash / root_squash / all_squash
+     * 用户权限
      */
     private String userAccess;
 
@@ -90,8 +90,8 @@ public class AccessRuleInfo {
 
     @Override
     public String toString() {
-        return "AccessRuleInfo{" + "accessRuleId=" + accessRuleId + "\n" + "ip=" + ip + "\n" + "mask=" + mask + "\n" + "priority=" + priority + "\n" + "writeAccess="
-                + writeAccess + "\n" + "userAccess=" + userAccess + "\n" + "}";
+        return "AccessRuleInfo{" + "accessRuleId=" + accessRuleId + "\n" + "ip=" + ip + "\n" + "mask=" + mask + "\n" + "priority=" + priority + "\n" + "writeAccess=" + writeAccess
+                + "\n" + "userAccess=" + userAccess + "\n" + "}";
     }
 
 }

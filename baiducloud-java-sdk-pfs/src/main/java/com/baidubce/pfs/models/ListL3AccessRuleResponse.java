@@ -13,7 +13,7 @@ public class ListL3AccessRuleResponse extends BaseBceResponse {
     private String requestId;
 
     /**
-    * 规则列表
+    * 规则列表，元素见下表
     */
     private List<AccessRuleInfo> result;
 

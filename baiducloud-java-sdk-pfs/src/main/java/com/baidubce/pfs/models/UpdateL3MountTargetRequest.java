@@ -22,7 +22,7 @@ public class UpdateL3MountTargetRequest extends BaseBceRequest {
     private Integer admissionStatus;
 
     /**
-    * 传入该值时更新挂载点名称，长度 1~128 个字符，不可为空串；不传表示不改名
+    * 传入该值时更新挂载点名称。<br><li>支持大小写字母、数字、中文、半角冒号（:）、下划线（_）或者短划线（-）<br><li>必须以大小写字母或中文开头，长度为1~128个英文或中文字符个字符<br><li>不可为空串<br><li>不传表示不改名
     */
     private String name;
 

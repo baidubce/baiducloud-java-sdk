@@ -13,12 +13,12 @@ public class CreateL3AccessRuleResponse extends BaseBceResponse {
     private String requestId;
 
     /**
-    * 单条创建成功时返回的规则 ID
+    * 单条创建成功时返回的规则 ID，批量创建时不返回
     */
     private Integer accessRuleId;
 
     /**
-    * 批量创建时的逐条结果
+    * 批量创建时的逐条结果，元素见下表；单条创建时不返回
     */
     private List<CreateAccessRuleResult> responses;
 
