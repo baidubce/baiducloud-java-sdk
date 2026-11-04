@@ -8,14 +8,16 @@ import com.baidubce.dns.models.CreateZoneRequest;
 
 public class ExampleCreateZone {
     public static void main(String[] args) {
-        // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
+        String endpoint = "Your Endpoint";
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setEndpoint(endpoint);
+
+        // ==== AK/SK 鉴权 ====
         String ak = "Your Ak";
         String sk = "Your Sk";
-        String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        DnsClient client = new DnsClient(config);
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+
+        DnsClient client = new DnsClient(bceClientConfig);
         CreateZoneRequest createZoneRequest = new CreateZoneRequest();
         createZoneRequest.setClientToken("");
         createZoneRequest.setName("");

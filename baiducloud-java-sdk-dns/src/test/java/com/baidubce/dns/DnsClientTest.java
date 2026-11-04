@@ -37,7 +37,10 @@ public class DnsClientTest {
     @Before
     public void setUp() {
         BceClientConfiguration config = new BceClientConfiguration();
+
+        // ==== AK/SK 鉴权 ====
         config.setCredentials(new DefaultBceCredentials(AK, SK));
+
         dnsClient = new DnsClient(config);
     }
 

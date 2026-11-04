@@ -11,23 +11,25 @@ import java.util.ArrayList;
 
 public class ExampleUpgradeZone {
     public static void main(String[] args) {
-        // 设置Client的Access Key ID和Secret Access Key，获取AKSK详见:https://cloud.baidu.com/doc/Reference/s/9jwvz2egb
+        String endpoint = "Your Endpoint";
+        BceClientConfiguration bceClientConfig = new BceClientConfiguration();
+        bceClientConfig.setEndpoint(endpoint);
+
+        // ==== AK/SK 鉴权 ====
         String ak = "Your Ak";
         String sk = "Your Sk";
-        String endpoint = "Endpoint";
-        BceClientConfiguration config = new BceClientConfiguration();
-        config.setCredentials(new DefaultBceCredentials(ak, sk));
-        config.setEndpoint(endpoint);
-        DnsClient client = new DnsClient(config);
+        bceClientConfig.setCredentials(new DefaultBceCredentials(ak, sk));
+
+        DnsClient client = new DnsClient(bceClientConfig);
         Billing billing = new Billing();
-        billing.setPaymentTiming("Prepaid");
+        billing.setPaymentTiming("");
         Reservation reservation = new Reservation();
-        reservation.setReservationLength(1);
+        reservation.setReservationLength(0);
 
         billing.setReservation(reservation);
 
         UpgradeZoneRequest upgradeZoneRequest = new UpgradeZoneRequest();
-        upgradeZoneRequest.setAction("upgradeToDiscount");
+        upgradeZoneRequest.setAction("");
         upgradeZoneRequest.setClientToken("");
         upgradeZoneRequest.setNames(new ArrayList<>());
         upgradeZoneRequest.setBilling(billing);
