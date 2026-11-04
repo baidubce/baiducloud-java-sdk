@@ -192,7 +192,7 @@ public class DnsClientTest {
     @Test
     public void updateLineGroupTest() {
         UpdateLineGroupRequest updateLineGroupRequest = new UpdateLineGroupRequest();
-        updateLineGroupRequest.setLineId(0);
+        updateLineGroupRequest.setLineId("");
         updateLineGroupRequest.setClientToken("");
         updateLineGroupRequest.setName("");
         updateLineGroupRequest.setLines(new ArrayList<>());

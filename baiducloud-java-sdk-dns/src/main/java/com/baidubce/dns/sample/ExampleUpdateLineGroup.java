@@ -20,7 +20,7 @@ public class ExampleUpdateLineGroup {
 
         DnsClient client = new DnsClient(bceClientConfig);
         UpdateLineGroupRequest updateLineGroupRequest = new UpdateLineGroupRequest();
-        updateLineGroupRequest.setLineId(0);
+        updateLineGroupRequest.setLineId("");
         updateLineGroupRequest.setClientToken("");
         updateLineGroupRequest.setName("");
         updateLineGroupRequest.setLines(new ArrayList<>());
