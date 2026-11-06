@@ -1,23 +1,69 @@
 package com.baidubce.rds;
 
+import com.baidubce.rds.models.AddAccountApiAtTableGranularityRequest;
 import com.baidubce.rds.models.BatchConfigurationOfInstancesRequest;
 import com.baidubce.rds.models.BatchConfigurationOfInstancesResponse;
 import com.baidubce.rds.models.BindingTagsRequest;
+import com.baidubce.rds.models.ChangeAccountPasswordRequest;
+import com.baidubce.rds.models.CheckTheWhitelistRequest;
+import com.baidubce.rds.models.CheckTheWhitelistResponse;
 import com.baidubce.rds.models.ClusterStatusCheckRequest;
 import com.baidubce.rds.models.ClusterStatusCheckResponse;
+import com.baidubce.rds.models.CopyParameterTemplateRequest;
+import com.baidubce.rds.models.CreateADatabaseRequest;
 import com.baidubce.rds.models.CreateAPrimaryInstanceRequest;
 import com.baidubce.rds.models.CreateAPrimaryInstanceResponse;
 import com.baidubce.rds.models.CreateAProxyInstanceRequest;
 import com.baidubce.rds.models.CreateAProxyInstanceResponse;
+import com.baidubce.rds.models.CreateAccountRequest;
 import com.baidubce.rds.models.CreateReadOnlyInstanceRequest;
 import com.baidubce.rds.models.CreateReadOnlyInstanceResponse;
+import com.baidubce.rds.models.DeleteAccountRequest;
+import com.baidubce.rds.models.DeleteTheDatabaseRequest;
+import com.baidubce.rds.models.DeleteTheSpecifiedBackupSetRequest;
 import com.baidubce.rds.models.DialTestInterfaceRequest;
 import com.baidubce.rds.models.DialTestInterfaceResponse;
 import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionRequest;
 import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionResponse;
+import com.baidubce.rds.models.ErrorLogDownloadDetailsRequest;
+import com.baidubce.rds.models.ErrorLogDownloadDetailsResponse;
+import com.baidubce.rds.models.ErrorLogListRequest;
+import com.baidubce.rds.models.ErrorLogListResponse;
+import com.baidubce.rds.models.GetParameterTemplateDetailsRequest;
+import com.baidubce.rds.models.GetParameterTemplateDetailsResponse;
+import com.baidubce.rds.models.GetParameterTemplateListRequest;
+import com.baidubce.rds.models.GetParameterTemplateListResponse;
+import com.baidubce.rds.models.GetPgLogDetailsRequest;
+import com.baidubce.rds.models.GetPgLogDetailsResponse;
+import com.baidubce.rds.models.GetPgLogListRequest;
+import com.baidubce.rds.models.GetPgLogListResponse;
 import com.baidubce.rds.models.InstanceEnablesAutomaticRenewalRequest;
+import com.baidubce.rds.models.ManuallyInitiateFullPhysicalBackupRequest;
+import com.baidubce.rds.models.ModifyAccountNotesRequest;
+import com.baidubce.rds.models.ModifyAccountPermissionsRequest;
+import com.baidubce.rds.models.ModifyBackupStrategyRequest;
+import com.baidubce.rds.models.ModifyConfigurationParametersRequest;
+import com.baidubce.rds.models.ModifyDatabasePortRequest;
+import com.baidubce.rds.models.ModifyDescriptionInformationRequest;
+import com.baidubce.rds.models.ObtainBinlogInformationRequest;
+import com.baidubce.rds.models.ObtainBinlogInformationResponse;
+import com.baidubce.rds.models.ObtainSslEncryptionCertificateResponse;
+import com.baidubce.rds.models.ObtainSslEncryptionInformationRequest;
+import com.baidubce.rds.models.ObtainSslEncryptionInformationResponse;
+import com.baidubce.rds.models.QueryAccountDetailsRequest;
+import com.baidubce.rds.models.QueryAccountDetailsResponse;
+import com.baidubce.rds.models.QueryAccountListRequest;
+import com.baidubce.rds.models.QueryAccountListResponse;
+import com.baidubce.rds.models.QueryAndModifyHistoryRequest;
+import com.baidubce.rds.models.QueryAndModifyHistoryResponse;
+import com.baidubce.rds.models.QueryBackupDetailsRequest;
+import com.baidubce.rds.models.QueryBackupDetailsResponse;
+import com.baidubce.rds.models.QueryBackupListRequest;
+import com.baidubce.rds.models.QueryBackupListResponse;
 import com.baidubce.rds.models.QueryInstanceListRequest;
 import com.baidubce.rds.models.QueryInstanceListResponse;
+import com.baidubce.rds.models.QueryParameterListRequest;
+import com.baidubce.rds.models.QueryParameterListResponse;
 import com.baidubce.rds.models.QuerySubnetListRequest;
 import com.baidubce.rds.models.QuerySubnetListResponse;
 import com.baidubce.rds.models.QueryTaskListRequest;
@@ -30,8 +76,26 @@ import com.baidubce.rds.models.ReleaseInstanceResponse;
 import com.baidubce.rds.models.RenewalExampleRequest;
 import com.baidubce.rds.models.RenewalExampleResponse;
 import com.baidubce.rds.models.RestartTheInstanceRequest;
+import com.baidubce.rds.models.RestoreLibraryTablesBasedOnBackupSetsRequest;
+import com.baidubce.rds.models.RestoreTheDatabaseTableByTimePointRequest;
+import com.baidubce.rds.models.RetrieveDatabaseListRequest;
+import com.baidubce.rds.models.RetrieveDatabaseListResponse;
 import com.baidubce.rds.models.RetrieveInstanceAutoScalingConfigRequest;
 import com.baidubce.rds.models.RetrieveInstanceAutoScalingConfigResponse;
+import com.baidubce.rds.models.RetrieveTheBinlogListRequest;
+import com.baidubce.rds.models.RetrieveTheBinlogListResponse;
+import com.baidubce.rds.models.SetEncryptionPolicyApiRequest;
+import com.baidubce.rds.models.SlowLogDownloadDetailsRequest;
+import com.baidubce.rds.models.SlowLogDownloadDetailsResponse;
+import com.baidubce.rds.models.SlowLogListRequest;
+import com.baidubce.rds.models.SlowLogListResponse;
+import com.baidubce.rds.models.TableGranularityQueryUserDetailsApiRequest;
+import com.baidubce.rds.models.TableGranularityQueryUserDetailsApiResponse;
+import com.baidubce.rds.models.TableGranularityQueryUserListApiRequest;
+import com.baidubce.rds.models.TableGranularityQueryUserListApiResponse;
+import com.baidubce.rds.models.TableGranularityUpdateUserDescriptionApiRequest;
+import com.baidubce.rds.models.TargetRegionMappingListApiRequest;
+import com.baidubce.rds.models.TargetRegionMappingListApiResponse;
 import com.baidubce.rds.models.TransformationExampleRequest;
 import com.baidubce.rds.models.TransformationExampleResponse;
 import com.baidubce.rds.models.UpdateAutomaticStorageExpansionConfigurationRequest;
@@ -40,6 +104,7 @@ import com.baidubce.rds.models.UpdateInstanceNameRequest;
 import com.baidubce.rds.models.UpdateInstancePublicNetworkAccessStatusRequest;
 import com.baidubce.rds.models.UpdateInstanceSynchronizationModeRequest;
 import com.baidubce.rds.models.UpdateTimeWindowRequest;
+import com.baidubce.rds.models.UpdateWhitelistRequest;
 import org.junit.Test;
 import org.junit.Before;
 import com.baidubce.BceClientConfiguration;
@@ -65,6 +130,16 @@ public class RdsClientTest {
         rdsClient = new RdsClient(config);
     }
 
+    /**
+     * addAccountApiAtTableGranularity
+     *
+     */
+    @Test
+    public void addAccountApiAtTableGranularityTest() {
+        AddAccountApiAtTableGranularityRequest addAccountApiAtTableGranularityRequest = new AddAccountApiAtTableGranularityRequest();
+        addAccountApiAtTableGranularityRequest.setInstanceId("");
+        rdsClient.addAccountApiAtTableGranularity(addAccountApiAtTableGranularityRequest);
+    }
     /**
      * batchConfigurationOfInstances
      *
@@ -102,6 +177,29 @@ public class RdsClientTest {
         rdsClient.bindingTags(bindingTagsRequest);
     }
     /**
+     * changeAccountPassword
+     *
+     */
+    @Test
+    public void changeAccountPasswordTest() {
+        ChangeAccountPasswordRequest changeAccountPasswordRequest = new ChangeAccountPasswordRequest();
+        changeAccountPasswordRequest.setInstanceId("");
+        changeAccountPasswordRequest.setAccountName("");
+        changeAccountPasswordRequest.setPassword("");
+        rdsClient.changeAccountPassword(changeAccountPasswordRequest);
+    }
+    /**
+     * checkTheWhitelist
+     *
+     */
+    @Test
+    public void checkTheWhitelistTest() {
+        CheckTheWhitelistRequest checkTheWhitelistRequest = new CheckTheWhitelistRequest();
+        checkTheWhitelistRequest.setInstanceId("");
+        CheckTheWhitelistResponse response = rdsClient.checkTheWhitelist(checkTheWhitelistRequest);
+        System.out.println(response);
+    }
+    /**
      * clusterStatusCheck
      *
      */
@@ -111,6 +209,35 @@ public class RdsClientTest {
         clusterStatusCheckRequest.setInstanceId("");
         ClusterStatusCheckResponse response = rdsClient.clusterStatusCheck(clusterStatusCheckRequest);
         System.out.println(response);
+    }
+    /**
+     * copyParameterTemplate
+     *
+     */
+    @Test
+    public void copyParameterTemplateTest() {
+        CopyParameterTemplateRequest copyParameterTemplateRequest = new CopyParameterTemplateRequest();
+        copyParameterTemplateRequest.setName("");
+        copyParameterTemplateRequest.setDesc("");
+        copyParameterTemplateRequest.setTemplateId("");
+        rdsClient.copyParameterTemplate(copyParameterTemplateRequest);
+    }
+    /**
+     * createADatabase
+     *
+     */
+    @Test
+    public void createADatabaseTest() {
+        CreateADatabaseRequest createADatabaseRequest = new CreateADatabaseRequest();
+        createADatabaseRequest.setInstanceId("");
+        createADatabaseRequest.setCharacterSetName("");
+        createADatabaseRequest.setDbName("");
+        createADatabaseRequest.setRemark("");
+        createADatabaseRequest.setAccountPrivileges(new ArrayList<>());
+        createADatabaseRequest.setCtype("");
+        createADatabaseRequest.setCollate("");
+        createADatabaseRequest.setOwner("");
+        rdsClient.createADatabase(createADatabaseRequest);
     }
     /**
      * createAPrimaryInstance
@@ -177,6 +304,22 @@ public class RdsClientTest {
         System.out.println(response);
     }
     /**
+     * createAccount
+     *
+     */
+    @Test
+    public void createAccountTest() {
+        CreateAccountRequest createAccountRequest = new CreateAccountRequest();
+        createAccountRequest.setInstanceId("");
+        createAccountRequest.setAccountName("");
+        createAccountRequest.setPassword("");
+        createAccountRequest.setAccountType("");
+        createAccountRequest.setDatabasePrivileges(new ArrayList<>());
+        createAccountRequest.setDesc("");
+        createAccountRequest.setType("");
+        rdsClient.createAccount(createAccountRequest);
+    }
+    /**
      * createReadOnlyInstance
      *
      */
@@ -209,6 +352,39 @@ public class RdsClientTest {
         System.out.println(response);
     }
     /**
+     * deleteAccount
+     *
+     */
+    @Test
+    public void deleteAccountTest() {
+        DeleteAccountRequest deleteAccountRequest = new DeleteAccountRequest();
+        deleteAccountRequest.setInstanceId("");
+        deleteAccountRequest.setAccountName("");
+        rdsClient.deleteAccount(deleteAccountRequest);
+    }
+    /**
+     * deleteTheDatabase
+     *
+     */
+    @Test
+    public void deleteTheDatabaseTest() {
+        DeleteTheDatabaseRequest deleteTheDatabaseRequest = new DeleteTheDatabaseRequest();
+        deleteTheDatabaseRequest.setInstanceId("");
+        deleteTheDatabaseRequest.setDbName("");
+        rdsClient.deleteTheDatabase(deleteTheDatabaseRequest);
+    }
+    /**
+     * deleteTheSpecifiedBackupSet
+     *
+     */
+    @Test
+    public void deleteTheSpecifiedBackupSetTest() {
+        DeleteTheSpecifiedBackupSetRequest deleteTheSpecifiedBackupSetRequest = new DeleteTheSpecifiedBackupSetRequest();
+        deleteTheSpecifiedBackupSetRequest.setInstanceId("");
+        deleteTheSpecifiedBackupSetRequest.setSnapshotId("");
+        rdsClient.deleteTheSpecifiedBackupSet(deleteTheSpecifiedBackupSetRequest);
+    }
+    /**
      * dialTestInterface
      *
      */
@@ -233,6 +409,79 @@ public class RdsClientTest {
         System.out.println(response);
     }
     /**
+     * errorLogDownloadDetails
+     *
+     */
+    @Test
+    public void errorLogDownloadDetailsTest() {
+        ErrorLogDownloadDetailsRequest errorLogDownloadDetailsRequest = new ErrorLogDownloadDetailsRequest();
+        errorLogDownloadDetailsRequest.setInstanceId("");
+        errorLogDownloadDetailsRequest.setLogId("");
+        errorLogDownloadDetailsRequest.setDownloadValidTimeInSec(0);
+        ErrorLogDownloadDetailsResponse response = rdsClient.errorLogDownloadDetails(errorLogDownloadDetailsRequest);
+        System.out.println(response);
+    }
+    /**
+     * errorLogList
+     *
+     */
+    @Test
+    public void errorLogListTest() {
+        ErrorLogListRequest errorLogListRequest = new ErrorLogListRequest();
+        errorLogListRequest.setInstanceId("");
+        errorLogListRequest.setDatetime("");
+        ErrorLogListResponse response = rdsClient.errorLogList(errorLogListRequest);
+        System.out.println(response);
+    }
+    /**
+     * getParameterTemplateDetails
+     *
+     */
+    @Test
+    public void getParameterTemplateDetailsTest() {
+        GetParameterTemplateDetailsRequest getParameterTemplateDetailsRequest = new GetParameterTemplateDetailsRequest();
+        getParameterTemplateDetailsRequest.setTemplateId("");
+        GetParameterTemplateDetailsResponse response = rdsClient.getParameterTemplateDetails(getParameterTemplateDetailsRequest);
+        System.out.println(response);
+    }
+    /**
+     * getParameterTemplateList
+     *
+     */
+    @Test
+    public void getParameterTemplateListTest() {
+        GetParameterTemplateListRequest getParameterTemplateListRequest = new GetParameterTemplateListRequest();
+        getParameterTemplateListRequest.setDbType("");
+        getParameterTemplateListRequest.setDbVersion("");
+        GetParameterTemplateListResponse response = rdsClient.getParameterTemplateList(getParameterTemplateListRequest);
+        System.out.println(response);
+    }
+    /**
+     * getPgLogDetails
+     *
+     */
+    @Test
+    public void getPgLogDetailsTest() {
+        GetPgLogDetailsRequest getPgLogDetailsRequest = new GetPgLogDetailsRequest();
+        getPgLogDetailsRequest.setInstanceId("");
+        getPgLogDetailsRequest.setPglogId("");
+        getPgLogDetailsRequest.setDownloadValidTimeInSec(0);
+        GetPgLogDetailsResponse response = rdsClient.getPgLogDetails(getPgLogDetailsRequest);
+        System.out.println(response);
+    }
+    /**
+     * getPgLogList
+     *
+     */
+    @Test
+    public void getPgLogListTest() {
+        GetPgLogListRequest getPgLogListRequest = new GetPgLogListRequest();
+        getPgLogListRequest.setInstanceId("");
+        getPgLogListRequest.setDate("");
+        GetPgLogListResponse response = rdsClient.getPgLogList(getPgLogListRequest);
+        System.out.println(response);
+    }
+    /**
      * instanceEnablesAutomaticRenewal
      *
      */
@@ -245,6 +494,193 @@ public class RdsClientTest {
         rdsClient.instanceEnablesAutomaticRenewal(instanceEnablesAutomaticRenewalRequest);
     }
     /**
+     * manuallyInitiateFullPhysicalBackup
+     *
+     */
+    @Test
+    public void manuallyInitiateFullPhysicalBackupTest() {
+        ManuallyInitiateFullPhysicalBackupRequest manuallyInitiateFullPhysicalBackupRequest = new ManuallyInitiateFullPhysicalBackupRequest();
+        manuallyInitiateFullPhysicalBackupRequest.setInstanceId("");
+        manuallyInitiateFullPhysicalBackupRequest.setEffectiveTime("");
+        manuallyInitiateFullPhysicalBackupRequest.setDataBackupType("");
+        rdsClient.manuallyInitiateFullPhysicalBackup(manuallyInitiateFullPhysicalBackupRequest);
+    }
+    /**
+     * modifyAccountNotes
+     *
+     */
+    @Test
+    public void modifyAccountNotesTest() {
+        ModifyAccountNotesRequest modifyAccountNotesRequest = new ModifyAccountNotesRequest();
+        modifyAccountNotesRequest.setInstanceId("");
+        modifyAccountNotesRequest.setAccountName("");
+        modifyAccountNotesRequest.setRemark("");
+        rdsClient.modifyAccountNotes(modifyAccountNotesRequest);
+    }
+    /**
+     * modifyAccountPermissions
+     *
+     */
+    @Test
+    public void modifyAccountPermissionsTest() {
+        ModifyAccountPermissionsRequest modifyAccountPermissionsRequest = new ModifyAccountPermissionsRequest();
+        modifyAccountPermissionsRequest.setInstanceId("");
+        modifyAccountPermissionsRequest.setAccountName("");
+        modifyAccountPermissionsRequest.setDatabasePrivileges(new ArrayList<>());
+        rdsClient.modifyAccountPermissions(modifyAccountPermissionsRequest);
+    }
+    /**
+     * modifyBackupStrategy
+     *
+     */
+    @Test
+    public void modifyBackupStrategyTest() {
+        ModifyBackupStrategyRequest modifyBackupStrategyRequest = new ModifyBackupStrategyRequest();
+        modifyBackupStrategyRequest.setInstanceId("");
+        modifyBackupStrategyRequest.setBackupDays("");
+        modifyBackupStrategyRequest.setBackupTime("");
+        modifyBackupStrategyRequest.setPersistent(false);
+        modifyBackupStrategyRequest.setExpireInDays(0);
+        modifyBackupStrategyRequest.setLogBackupRetainDays(0);
+        modifyBackupStrategyRequest.setDataBackupType("");
+        modifyBackupStrategyRequest.setIncrementalDataBackupEnable(false);
+        modifyBackupStrategyRequest.setIncrementalDataBackupInterval(0);
+        modifyBackupStrategyRequest.setLatestDataBackupRetainDays(0);
+        modifyBackupStrategyRequest.setRetentionPeriod(0);
+        modifyBackupStrategyRequest.setTimeUnit("");
+        modifyBackupStrategyRequest.setDataBackupCopyEnable(false);
+        modifyBackupStrategyRequest.setDataBackupCopyStoragesRegions(new ArrayList<>());
+        modifyBackupStrategyRequest.setDataBackupCopyRetainDays(0);
+        rdsClient.modifyBackupStrategy(modifyBackupStrategyRequest);
+    }
+    /**
+     * modifyConfigurationParameters
+     *
+     */
+    @Test
+    public void modifyConfigurationParametersTest() {
+        ModifyConfigurationParametersRequest modifyConfigurationParametersRequest = new ModifyConfigurationParametersRequest();
+        modifyConfigurationParametersRequest.setInstanceId("");
+        modifyConfigurationParametersRequest.setEffectiveTime("");
+        modifyConfigurationParametersRequest.setParameters(new ArrayList<>());
+        rdsClient.modifyConfigurationParameters(modifyConfigurationParametersRequest);
+    }
+    /**
+     * modifyDatabasePort
+     *
+     */
+    @Test
+    public void modifyDatabasePortTest() {
+        ModifyDatabasePortRequest modifyDatabasePortRequest = new ModifyDatabasePortRequest();
+        modifyDatabasePortRequest.setInstanceId("");
+        modifyDatabasePortRequest.setEntryPort(0);
+        rdsClient.modifyDatabasePort(modifyDatabasePortRequest);
+    }
+    /**
+     * modifyDescriptionInformation
+     *
+     */
+    @Test
+    public void modifyDescriptionInformationTest() {
+        ModifyDescriptionInformationRequest modifyDescriptionInformationRequest = new ModifyDescriptionInformationRequest();
+        modifyDescriptionInformationRequest.setInstanceId("");
+        modifyDescriptionInformationRequest.setDbName("");
+        modifyDescriptionInformationRequest.setRemark("");
+        rdsClient.modifyDescriptionInformation(modifyDescriptionInformationRequest);
+    }
+    /**
+     * obtainBinlogInformation
+     *
+     */
+    @Test
+    public void obtainBinlogInformationTest() {
+        ObtainBinlogInformationRequest obtainBinlogInformationRequest = new ObtainBinlogInformationRequest();
+        obtainBinlogInformationRequest.setInstanceId("");
+        obtainBinlogInformationRequest.setLogId("");
+        obtainBinlogInformationRequest.setDownloadValidTimeInSec("");
+        ObtainBinlogInformationResponse response = rdsClient.obtainBinlogInformation(obtainBinlogInformationRequest);
+        System.out.println(response);
+    }
+    /**
+     * obtainSslEncryptionCertificate
+     *
+     */
+    @Test
+    public void obtainSslEncryptionCertificateTest() {
+        ObtainSslEncryptionCertificateResponse response = rdsClient.obtainSslEncryptionCertificate();
+        System.out.println(response);
+    }
+    /**
+     * obtainSslEncryptionInformation
+     *
+     */
+    @Test
+    public void obtainSslEncryptionInformationTest() {
+        ObtainSslEncryptionInformationRequest obtainSslEncryptionInformationRequest = new ObtainSslEncryptionInformationRequest();
+        obtainSslEncryptionInformationRequest.setInstanceId("");
+        ObtainSslEncryptionInformationResponse response = rdsClient.obtainSslEncryptionInformation(obtainSslEncryptionInformationRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryAccountDetails
+     *
+     */
+    @Test
+    public void queryAccountDetailsTest() {
+        QueryAccountDetailsRequest queryAccountDetailsRequest = new QueryAccountDetailsRequest();
+        queryAccountDetailsRequest.setInstanceId("");
+        queryAccountDetailsRequest.setAccountName("");
+        QueryAccountDetailsResponse response = rdsClient.queryAccountDetails(queryAccountDetailsRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryAccountList
+     *
+     */
+    @Test
+    public void queryAccountListTest() {
+        QueryAccountListRequest queryAccountListRequest = new QueryAccountListRequest();
+        queryAccountListRequest.setInstanceId("");
+        QueryAccountListResponse response = rdsClient.queryAccountList(queryAccountListRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryAndModifyHistory
+     *
+     */
+    @Test
+    public void queryAndModifyHistoryTest() {
+        QueryAndModifyHistoryRequest queryAndModifyHistoryRequest = new QueryAndModifyHistoryRequest();
+        queryAndModifyHistoryRequest.setInstanceId("");
+        QueryAndModifyHistoryResponse response = rdsClient.queryAndModifyHistory(queryAndModifyHistoryRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryBackupDetails
+     *
+     */
+    @Test
+    public void queryBackupDetailsTest() {
+        QueryBackupDetailsRequest queryBackupDetailsRequest = new QueryBackupDetailsRequest();
+        queryBackupDetailsRequest.setInstanceId("");
+        queryBackupDetailsRequest.setBackupId("");
+        QueryBackupDetailsResponse response = rdsClient.queryBackupDetails(queryBackupDetailsRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryBackupList
+     *
+     */
+    @Test
+    public void queryBackupListTest() {
+        QueryBackupListRequest queryBackupListRequest = new QueryBackupListRequest();
+        queryBackupListRequest.setInstanceId("");
+        queryBackupListRequest.setMarker("");
+        queryBackupListRequest.setMaxKeys(0);
+        QueryBackupListResponse response = rdsClient.queryBackupList(queryBackupListRequest);
+        System.out.println(response);
+    }
+    /**
      * queryInstanceList
      *
      */
@@ -255,6 +691,17 @@ public class RdsClientTest {
         queryInstanceListRequest.setMaxKeys(0);
         queryInstanceListRequest.setVnetIp("");
         QueryInstanceListResponse response = rdsClient.queryInstanceList(queryInstanceListRequest);
+        System.out.println(response);
+    }
+    /**
+     * queryParameterList
+     *
+     */
+    @Test
+    public void queryParameterListTest() {
+        QueryParameterListRequest queryParameterListRequest = new QueryParameterListRequest();
+        queryParameterListRequest.setInstanceId("");
+        QueryParameterListResponse response = rdsClient.queryParameterList(queryParameterListRequest);
         System.out.println(response);
     }
     /**
@@ -343,6 +790,57 @@ public class RdsClientTest {
         rdsClient.restartTheInstance(restartTheInstanceRequest);
     }
     /**
+     * restoreLibraryTablesBasedOnBackupSets
+     *
+     */
+    @Test
+    public void restoreLibraryTablesBasedOnBackupSetsTest() {
+        RestoreLibraryTablesBasedOnBackupSetsRequest restoreLibraryTablesBasedOnBackupSetsRequest = new RestoreLibraryTablesBasedOnBackupSetsRequest();
+        restoreLibraryTablesBasedOnBackupSetsRequest.setInstanceId("");
+        restoreLibraryTablesBasedOnBackupSetsRequest.setSourceInstanceId("");
+        restoreLibraryTablesBasedOnBackupSetsRequest.setTargetInstanceId("");
+        restoreLibraryTablesBasedOnBackupSetsRequest.setSnapshotId("");
+        restoreLibraryTablesBasedOnBackupSetsRequest.setData(new ArrayList<>());
+        restoreLibraryTablesBasedOnBackupSetsRequest.setDbName("");
+        restoreLibraryTablesBasedOnBackupSetsRequest.setNewDbname("");
+        restoreLibraryTablesBasedOnBackupSetsRequest.setRestoreMode("");
+        restoreLibraryTablesBasedOnBackupSetsRequest.setTables(new ArrayList<>());
+        restoreLibraryTablesBasedOnBackupSetsRequest.setTableName("");
+        restoreLibraryTablesBasedOnBackupSetsRequest.setNewTablename("");
+        rdsClient.restoreLibraryTablesBasedOnBackupSets(restoreLibraryTablesBasedOnBackupSetsRequest);
+    }
+    /**
+     * restoreTheDatabaseTableByTimePoint
+     *
+     */
+    @Test
+    public void restoreTheDatabaseTableByTimePointTest() {
+        RestoreTheDatabaseTableByTimePointRequest restoreTheDatabaseTableByTimePointRequest = new RestoreTheDatabaseTableByTimePointRequest();
+        restoreTheDatabaseTableByTimePointRequest.setInstanceId("");
+        restoreTheDatabaseTableByTimePointRequest.setSourceInstanceId("");
+        restoreTheDatabaseTableByTimePointRequest.setTargetInstanceId("");
+        restoreTheDatabaseTableByTimePointRequest.setDatetime("");
+        restoreTheDatabaseTableByTimePointRequest.setData(new ArrayList<>());
+        restoreTheDatabaseTableByTimePointRequest.setDbName("");
+        restoreTheDatabaseTableByTimePointRequest.setNewDbname("");
+        restoreTheDatabaseTableByTimePointRequest.setRestoreMode("");
+        restoreTheDatabaseTableByTimePointRequest.setTables(new ArrayList<>());
+        restoreTheDatabaseTableByTimePointRequest.setTableName("");
+        restoreTheDatabaseTableByTimePointRequest.setNewTablename("");
+        rdsClient.restoreTheDatabaseTableByTimePoint(restoreTheDatabaseTableByTimePointRequest);
+    }
+    /**
+     * retrieveDatabaseList
+     *
+     */
+    @Test
+    public void retrieveDatabaseListTest() {
+        RetrieveDatabaseListRequest retrieveDatabaseListRequest = new RetrieveDatabaseListRequest();
+        retrieveDatabaseListRequest.setInstanceId("");
+        RetrieveDatabaseListResponse response = rdsClient.retrieveDatabaseList(retrieveDatabaseListRequest);
+        System.out.println(response);
+    }
+    /**
      * retrieveInstanceAutoScalingConfig
      *
      */
@@ -351,6 +849,102 @@ public class RdsClientTest {
         RetrieveInstanceAutoScalingConfigRequest retrieveInstanceAutoScalingConfigRequest = new RetrieveInstanceAutoScalingConfigRequest();
         retrieveInstanceAutoScalingConfigRequest.setInstanceId("");
         RetrieveInstanceAutoScalingConfigResponse response = rdsClient.retrieveInstanceAutoScalingConfig(retrieveInstanceAutoScalingConfigRequest);
+        System.out.println(response);
+    }
+    /**
+     * retrieveTheBinlogList
+     *
+     */
+    @Test
+    public void retrieveTheBinlogListTest() {
+        RetrieveTheBinlogListRequest retrieveTheBinlogListRequest = new RetrieveTheBinlogListRequest();
+        retrieveTheBinlogListRequest.setInstanceId("");
+        retrieveTheBinlogListRequest.setDatetime("");
+        RetrieveTheBinlogListResponse response = rdsClient.retrieveTheBinlogList(retrieveTheBinlogListRequest);
+        System.out.println(response);
+    }
+    /**
+     * setEncryptionPolicyApi
+     *
+     */
+    @Test
+    public void setEncryptionPolicyApiTest() {
+        SetEncryptionPolicyApiRequest setEncryptionPolicyApiRequest = new SetEncryptionPolicyApiRequest();
+        setEncryptionPolicyApiRequest.setInstanceId("");
+        setEncryptionPolicyApiRequest.setBackupPolicy(new ArrayList<>());
+        rdsClient.setEncryptionPolicyApi(setEncryptionPolicyApiRequest);
+    }
+    /**
+     * slowLogDownloadDetails
+     *
+     */
+    @Test
+    public void slowLogDownloadDetailsTest() {
+        SlowLogDownloadDetailsRequest slowLogDownloadDetailsRequest = new SlowLogDownloadDetailsRequest();
+        slowLogDownloadDetailsRequest.setInstanceId("");
+        slowLogDownloadDetailsRequest.setLogId("");
+        slowLogDownloadDetailsRequest.setDownloadValidTimeInSec(0);
+        SlowLogDownloadDetailsResponse response = rdsClient.slowLogDownloadDetails(slowLogDownloadDetailsRequest);
+        System.out.println(response);
+    }
+    /**
+     * slowLogList
+     *
+     */
+    @Test
+    public void slowLogListTest() {
+        SlowLogListRequest slowLogListRequest = new SlowLogListRequest();
+        slowLogListRequest.setInstanceId("");
+        slowLogListRequest.setDatetime("");
+        SlowLogListResponse response = rdsClient.slowLogList(slowLogListRequest);
+        System.out.println(response);
+    }
+    /**
+     * tableGranularityQueryUserDetailsApi
+     *
+     */
+    @Test
+    public void tableGranularityQueryUserDetailsApiTest() {
+        TableGranularityQueryUserDetailsApiRequest tableGranularityQueryUserDetailsApiRequest = new TableGranularityQueryUserDetailsApiRequest();
+        tableGranularityQueryUserDetailsApiRequest.setInstanceId("");
+        tableGranularityQueryUserDetailsApiRequest.setUser("");
+        tableGranularityQueryUserDetailsApiRequest.setHost("");
+        TableGranularityQueryUserDetailsApiResponse response = rdsClient.tableGranularityQueryUserDetailsApi(tableGranularityQueryUserDetailsApiRequest);
+        System.out.println(response);
+    }
+    /**
+     * tableGranularityQueryUserListApi
+     *
+     */
+    @Test
+    public void tableGranularityQueryUserListApiTest() {
+        TableGranularityQueryUserListApiRequest tableGranularityQueryUserListApiRequest = new TableGranularityQueryUserListApiRequest();
+        tableGranularityQueryUserListApiRequest.setInstanceId("");
+        TableGranularityQueryUserListApiResponse response = rdsClient.tableGranularityQueryUserListApi(tableGranularityQueryUserListApiRequest);
+        System.out.println(response);
+    }
+    /**
+     * tableGranularityUpdateUserDescriptionApi
+     *
+     */
+    @Test
+    public void tableGranularityUpdateUserDescriptionApiTest() {
+        TableGranularityUpdateUserDescriptionApiRequest tableGranularityUpdateUserDescriptionApiRequest = new TableGranularityUpdateUserDescriptionApiRequest();
+        tableGranularityUpdateUserDescriptionApiRequest.setInstanceId("");
+        tableGranularityUpdateUserDescriptionApiRequest.setUser("");
+        tableGranularityUpdateUserDescriptionApiRequest.setHost("");
+        tableGranularityUpdateUserDescriptionApiRequest.setRemark("");
+        rdsClient.tableGranularityUpdateUserDescriptionApi(tableGranularityUpdateUserDescriptionApiRequest);
+    }
+    /**
+     * targetRegionMappingListApi
+     *
+     */
+    @Test
+    public void targetRegionMappingListApiTest() {
+        TargetRegionMappingListApiRequest targetRegionMappingListApiRequest = new TargetRegionMappingListApiRequest();
+        targetRegionMappingListApiRequest.setInstanceId("");
+        TargetRegionMappingListApiResponse response = rdsClient.targetRegionMappingListApi(targetRegionMappingListApiRequest);
         System.out.println(response);
     }
     /**
@@ -446,5 +1040,18 @@ public class RdsClientTest {
         updateTimeWindowRequest.setMaintainStartTime("");
         updateTimeWindowRequest.setMaintainDuration(0);
         rdsClient.updateTimeWindow(updateTimeWindowRequest);
+    }
+    /**
+     * updateWhitelist
+     *
+     */
+    @Test
+    public void updateWhitelistTest() {
+        UpdateWhitelistRequest updateWhitelistRequest = new UpdateWhitelistRequest();
+        updateWhitelistRequest.setInstanceId("");
+        updateWhitelistRequest.setAction("");
+        updateWhitelistRequest.setSecurityIps(new ArrayList<>());
+        updateWhitelistRequest.setTag("");
+        rdsClient.updateWhitelist(updateWhitelistRequest);
     }
 }

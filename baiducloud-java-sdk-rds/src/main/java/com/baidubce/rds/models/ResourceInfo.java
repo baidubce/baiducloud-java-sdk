@@ -37,17 +37,17 @@ public class ResourceInfo {
     /**
      * 创建时间。
      */
-    private Long createTime;
+    private Integer createTime;
 
     /**
      * 更新时间。
      */
-    private Long updateTime;
+    private Integer updateTime;
 
     /**
      * 删除时间。
      */
-    private Long deleteTime;
+    private Integer deleteTime;
 
     /**
      * 绑定时间。
@@ -108,30 +108,30 @@ public class ResourceInfo {
         return this.userId;
     }
 
-    public ResourceInfo setCreateTime(Long createTime) {
+    public ResourceInfo setCreateTime(Integer createTime) {
         this.createTime = createTime;
         return this;
     }
 
-    public Long getCreateTime() {
+    public Integer getCreateTime() {
         return this.createTime;
     }
 
-    public ResourceInfo setUpdateTime(Long updateTime) {
+    public ResourceInfo setUpdateTime(Integer updateTime) {
         this.updateTime = updateTime;
         return this;
     }
 
-    public Long getUpdateTime() {
+    public Integer getUpdateTime() {
         return this.updateTime;
     }
 
-    public ResourceInfo setDeleteTime(Long deleteTime) {
+    public ResourceInfo setDeleteTime(Integer deleteTime) {
         this.deleteTime = deleteTime;
         return this;
     }
 
-    public Long getDeleteTime() {
+    public Integer getDeleteTime() {
         return this.deleteTime;
     }
 

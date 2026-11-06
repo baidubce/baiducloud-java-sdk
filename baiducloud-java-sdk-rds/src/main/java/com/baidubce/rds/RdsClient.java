@@ -16,24 +16,70 @@ import java.util.HashSet;
 import com.baidubce.common.BaseBceRequest;
 import com.baidubce.common.BaseBceResponse;
 
+import com.baidubce.rds.models.AddAccountApiAtTableGranularityRequest;
 import com.baidubce.rds.models.BatchConfigurationOfInstancesRequest;
 import com.baidubce.rds.models.BatchConfigurationOfInstancesResponse;
 import com.baidubce.rds.models.BindingTagsRequest;
+import com.baidubce.rds.models.ChangeAccountPasswordRequest;
+import com.baidubce.rds.models.CheckTheWhitelistRequest;
+import com.baidubce.rds.models.CheckTheWhitelistResponse;
 import com.baidubce.rds.models.ClusterStatusCheckRequest;
 import com.baidubce.rds.models.ClusterStatusCheckResponse;
+import com.baidubce.rds.models.CopyParameterTemplateRequest;
+import com.baidubce.rds.models.CreateADatabaseRequest;
 import com.baidubce.rds.models.CreateAPrimaryInstanceRequest;
 import com.baidubce.rds.models.CreateAPrimaryInstanceResponse;
 import com.baidubce.rds.models.CreateAProxyInstanceRequest;
 import com.baidubce.rds.models.CreateAProxyInstanceResponse;
+import com.baidubce.rds.models.CreateAccountRequest;
 import com.baidubce.rds.models.CreateReadOnlyInstanceRequest;
 import com.baidubce.rds.models.CreateReadOnlyInstanceResponse;
+import com.baidubce.rds.models.DeleteAccountRequest;
+import com.baidubce.rds.models.DeleteTheDatabaseRequest;
+import com.baidubce.rds.models.DeleteTheSpecifiedBackupSetRequest;
 import com.baidubce.rds.models.DialTestInterfaceRequest;
 import com.baidubce.rds.models.DialTestInterfaceResponse;
 import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionRequest;
 import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionResponse;
+import com.baidubce.rds.models.ErrorLogDownloadDetailsRequest;
+import com.baidubce.rds.models.ErrorLogDownloadDetailsResponse;
+import com.baidubce.rds.models.ErrorLogListRequest;
+import com.baidubce.rds.models.ErrorLogListResponse;
+import com.baidubce.rds.models.GetParameterTemplateDetailsRequest;
+import com.baidubce.rds.models.GetParameterTemplateDetailsResponse;
+import com.baidubce.rds.models.GetParameterTemplateListRequest;
+import com.baidubce.rds.models.GetParameterTemplateListResponse;
+import com.baidubce.rds.models.GetPgLogDetailsRequest;
+import com.baidubce.rds.models.GetPgLogDetailsResponse;
+import com.baidubce.rds.models.GetPgLogListRequest;
+import com.baidubce.rds.models.GetPgLogListResponse;
 import com.baidubce.rds.models.InstanceEnablesAutomaticRenewalRequest;
+import com.baidubce.rds.models.ManuallyInitiateFullPhysicalBackupRequest;
+import com.baidubce.rds.models.ModifyAccountNotesRequest;
+import com.baidubce.rds.models.ModifyAccountPermissionsRequest;
+import com.baidubce.rds.models.ModifyBackupStrategyRequest;
+import com.baidubce.rds.models.ModifyConfigurationParametersRequest;
+import com.baidubce.rds.models.ModifyDatabasePortRequest;
+import com.baidubce.rds.models.ModifyDescriptionInformationRequest;
+import com.baidubce.rds.models.ObtainBinlogInformationRequest;
+import com.baidubce.rds.models.ObtainBinlogInformationResponse;
+import com.baidubce.rds.models.ObtainSslEncryptionCertificateResponse;
+import com.baidubce.rds.models.ObtainSslEncryptionInformationRequest;
+import com.baidubce.rds.models.ObtainSslEncryptionInformationResponse;
+import com.baidubce.rds.models.QueryAccountDetailsRequest;
+import com.baidubce.rds.models.QueryAccountDetailsResponse;
+import com.baidubce.rds.models.QueryAccountListRequest;
+import com.baidubce.rds.models.QueryAccountListResponse;
+import com.baidubce.rds.models.QueryAndModifyHistoryRequest;
+import com.baidubce.rds.models.QueryAndModifyHistoryResponse;
+import com.baidubce.rds.models.QueryBackupDetailsRequest;
+import com.baidubce.rds.models.QueryBackupDetailsResponse;
+import com.baidubce.rds.models.QueryBackupListRequest;
+import com.baidubce.rds.models.QueryBackupListResponse;
 import com.baidubce.rds.models.QueryInstanceListRequest;
 import com.baidubce.rds.models.QueryInstanceListResponse;
+import com.baidubce.rds.models.QueryParameterListRequest;
+import com.baidubce.rds.models.QueryParameterListResponse;
 import com.baidubce.rds.models.QuerySubnetListRequest;
 import com.baidubce.rds.models.QuerySubnetListResponse;
 import com.baidubce.rds.models.QueryTaskListRequest;
@@ -46,8 +92,26 @@ import com.baidubce.rds.models.ReleaseInstanceResponse;
 import com.baidubce.rds.models.RenewalExampleRequest;
 import com.baidubce.rds.models.RenewalExampleResponse;
 import com.baidubce.rds.models.RestartTheInstanceRequest;
+import com.baidubce.rds.models.RestoreLibraryTablesBasedOnBackupSetsRequest;
+import com.baidubce.rds.models.RestoreTheDatabaseTableByTimePointRequest;
+import com.baidubce.rds.models.RetrieveDatabaseListRequest;
+import com.baidubce.rds.models.RetrieveDatabaseListResponse;
 import com.baidubce.rds.models.RetrieveInstanceAutoScalingConfigRequest;
 import com.baidubce.rds.models.RetrieveInstanceAutoScalingConfigResponse;
+import com.baidubce.rds.models.RetrieveTheBinlogListRequest;
+import com.baidubce.rds.models.RetrieveTheBinlogListResponse;
+import com.baidubce.rds.models.SetEncryptionPolicyApiRequest;
+import com.baidubce.rds.models.SlowLogDownloadDetailsRequest;
+import com.baidubce.rds.models.SlowLogDownloadDetailsResponse;
+import com.baidubce.rds.models.SlowLogListRequest;
+import com.baidubce.rds.models.SlowLogListResponse;
+import com.baidubce.rds.models.TableGranularityQueryUserDetailsApiRequest;
+import com.baidubce.rds.models.TableGranularityQueryUserDetailsApiResponse;
+import com.baidubce.rds.models.TableGranularityQueryUserListApiRequest;
+import com.baidubce.rds.models.TableGranularityQueryUserListApiResponse;
+import com.baidubce.rds.models.TableGranularityUpdateUserDescriptionApiRequest;
+import com.baidubce.rds.models.TargetRegionMappingListApiRequest;
+import com.baidubce.rds.models.TargetRegionMappingListApiResponse;
 import com.baidubce.rds.models.TransformationExampleRequest;
 import com.baidubce.rds.models.TransformationExampleResponse;
 import com.baidubce.rds.models.UpdateAutomaticStorageExpansionConfigurationRequest;
@@ -56,6 +120,7 @@ import com.baidubce.rds.models.UpdateInstanceNameRequest;
 import com.baidubce.rds.models.UpdateInstancePublicNetworkAccessStatusRequest;
 import com.baidubce.rds.models.UpdateInstanceSynchronizationModeRequest;
 import com.baidubce.rds.models.UpdateTimeWindowRequest;
+import com.baidubce.rds.models.UpdateWhitelistRequest;
 
 public class RdsClient extends AbstractBceClient {
 
@@ -63,18 +128,52 @@ public class RdsClient extends AbstractBceClient {
 
     private static final String VERSION_V1 = "v1";
     private static final String CONSTANT_INSTANCE = "instance";
-    private static final String CONSTANT_TAGS = "tags";
+    private static final String CONSTANT_ACCOUNT = "account";
+    private static final String CONSTANT_V2 = "v2";
+    private static final String CONSTANT_TABLE_LEVEL = "tableLevel";
+    private static final String CONSTANT_UPDATE_DESC = "update_desc";
     private static final String CONSTANT_STATUS = "status";
-    private static final String CONSTANT_DISK_AUTO_RESIZE = "diskAutoResize";
-    private static final String CONSTANT_CONFIG = "config";
-    private static final String CONSTANT_PROBE = "probe";
+    private static final String CONSTANT_BACKUP = "backup";
+    private static final String CONSTANT_BINLOGS = "binlogs";
+    private static final String CONSTANT_PARA_TEMPLATE = "paraTemplate";
+    private static final String CONSTANT_TEMPLATE = "template";
+    private static final String CONSTANT_DETAIL = "detail";
+    private static final String CONSTANT_PORT = "port";
+    private static final String CONSTANT_SLOWLOGS = "slowlogs";
+    private static final String CONSTANT_DOWNLOAD_URL = "download_url";
     private static final String CONSTANT_V1 = "v1";
     private static final String CONSTANT_TASK = "task";
+    private static final String CONSTANT_DESC = "desc";
     private static final String CONSTANT_RENEW = "renew";
+    private static final String CONSTANT_PASSWORD = "password";
+    private static final String CONSTANT_SSL = "ssl";
+    private static final String CONSTANT_STATIC = "static";
+    private static final String CONSTANT_CA = "ca";
     private static final String CONSTANT_AUTO_RESIZE_CONFIG = "autoResizeConfig";
     private static final String CONSTANT_ZONE = "zone";
+    private static final String CONSTANT_DATABASES = "databases";
+    private static final String CONSTANT_PARAMETER = "parameter";
+    private static final String CONSTANT_HISTORY = "history";
     private static final String CONSTANT_SUBNET = "subnet";
+    private static final String CONSTANT_SECURITY_IP = "securityIp";
+    private static final String CONSTANT_ERRORLOGS = "errorlogs";
+    private static final String CONSTANT_DUPLICATE = "duplicate";
     private static final String CONSTANT_MAINTAINTIME = "maintaintime";
+    private static final String CONSTANT_TAGS = "tags";
+    private static final String CONSTANT_RECOVERY_TO_SOURCE_INSTANCE_BY_SNAPSHOT = "recoveryToSourceInstanceBySnapshot";
+    private static final String CONSTANT_DISK_AUTO_RESIZE = "diskAutoResize";
+    private static final String CONSTANT_CONFIG = "config";
+    private static final String CONSTANT_CREATE = "create";
+    private static final String CONSTANT_PROBE = "probe";
+    private static final String CONSTANT_LIST = "list";
+    private static final String CONSTANT_PG = "pg";
+    private static final String CONSTANT_LOG_LIST = "logList";
+    private static final String CONSTANT_PRIVILEGES = "privileges";
+    private static final String CONSTANT_RECOVERY_TO_SOURCE_INSTANCE_BY_DATETIME = "recoveryToSourceInstanceByDatetime";
+    private static final String CONSTANT_TARGET = "target";
+    private static final String CONSTANT_REGION = "region";
+    private static final String CONSTANT_REMARK = "remark";
+    private static final String CONSTANT_DOWNLOAD = "download";
     private static final String CONSTANT_AUTO_EXPANSION = "autoExpansion";
 
     /**
@@ -94,6 +193,17 @@ public class RdsClient extends AbstractBceClient {
     */
     public RdsClient(BceClientConfiguration clientConfiguration) {
         super(clientConfiguration, CLIENT_HANDLERS);
+    }
+
+    /**
+     * addAccountApiAtTableGranularity
+     * 
+     * @param request 入参结构体
+     */
+    public void addAccountApiAtTableGranularity(AddAccountApiAtTableGranularityRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.POST, CONSTANT_V2, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_ACCOUNT, CONSTANT_TABLE_LEVEL, CONSTANT_CREATE);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
@@ -121,6 +231,37 @@ public class RdsClient extends AbstractBceClient {
     }
 
     /**
+     * changeAccountPassword
+     * 
+     * @param request 入参结构体
+     */
+    public void changeAccountPassword(ChangeAccountPasswordRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(
+                        request,
+                        HttpMethodName.PUT,
+                        VERSION_V1,
+                        CONSTANT_INSTANCE,
+                        request.getInstanceId(),
+                        CONSTANT_ACCOUNT,
+                        request.getAccountName(),
+                        CONSTANT_PASSWORD);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * checkTheWhitelist
+     * 
+     * @param request 入参结构体
+     * @return CheckTheWhitelistResponse
+     */
+    public CheckTheWhitelistResponse checkTheWhitelist(CheckTheWhitelistRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_SECURITY_IP);
+        return invokeHttpClient(internalRequest, CheckTheWhitelistResponse.class);
+    }
+
+    /**
      * clusterStatusCheck
      * 
      * @param request 入参结构体
@@ -129,6 +270,29 @@ public class RdsClient extends AbstractBceClient {
     public ClusterStatusCheckResponse clusterStatusCheck(ClusterStatusCheckRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_STATUS);
         return invokeHttpClient(internalRequest, ClusterStatusCheckResponse.class);
+    }
+
+    /**
+     * copyParameterTemplate
+     * 
+     * @param request 入参结构体
+     */
+    public void copyParameterTemplate(CopyParameterTemplateRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_INSTANCE, CONSTANT_PARA_TEMPLATE, CONSTANT_DUPLICATE, CONSTANT_TEMPLATE);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * createADatabase
+     * 
+     * @param request 入参结构体
+     */
+    public void createADatabase(CreateADatabaseRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_DATABASES);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
@@ -163,6 +327,17 @@ public class RdsClient extends AbstractBceClient {
     }
 
     /**
+     * createAccount
+     * 
+     * @param request 入参结构体
+     */
+    public void createAccount(CreateAccountRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_ACCOUNT);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
      * createReadOnlyInstance
      * 
      * @param request 入参结构体
@@ -176,6 +351,39 @@ public class RdsClient extends AbstractBceClient {
         }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         return invokeHttpClient(internalRequest, CreateReadOnlyInstanceResponse.class);
+    }
+
+    /**
+     * deleteAccount
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteAccount(DeleteAccountRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_ACCOUNT, request.getAccountName());
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteTheDatabase
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteTheDatabase(DeleteTheDatabaseRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_DATABASES, request.getDbName());
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * deleteTheSpecifiedBackupSet
+     * 
+     * @param request 入参结构体
+     */
+    public void deleteTheSpecifiedBackupSet(DeleteTheSpecifiedBackupSetRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.DELETE, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_BACKUP, request.getSnapshotId());
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
 
     /**
@@ -202,6 +410,118 @@ public class RdsClient extends AbstractBceClient {
     }
 
     /**
+     * errorLogDownloadDetails
+     * 
+     * @param request 入参结构体
+     * @return ErrorLogDownloadDetailsResponse
+     */
+    public ErrorLogDownloadDetailsResponse errorLogDownloadDetails(ErrorLogDownloadDetailsRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(
+                        request,
+                        HttpMethodName.GET,
+                        VERSION_V1,
+                        CONSTANT_INSTANCE,
+                        request.getInstanceId(),
+                        CONSTANT_ERRORLOGS,
+                        CONSTANT_DOWNLOAD_URL,
+                        request.getLogId(),
+                        request.getDownloadValidTimeInSec());
+        return invokeHttpClient(internalRequest, ErrorLogDownloadDetailsResponse.class);
+    }
+
+    /**
+     * errorLogList
+     * 
+     * @param request 入参结构体
+     * @return ErrorLogListResponse
+     */
+    public ErrorLogListResponse errorLogList(ErrorLogListRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(
+                        request,
+                        HttpMethodName.GET,
+                        VERSION_V1,
+                        CONSTANT_INSTANCE,
+                        request.getInstanceId(),
+                        CONSTANT_ERRORLOGS,
+                        CONSTANT_LOG_LIST,
+                        request.getDatetime());
+        return invokeHttpClient(internalRequest, ErrorLogListResponse.class);
+    }
+
+    /**
+     * getParameterTemplateDetails
+     * 
+     * @param request 入参结构体
+     * @return GetParameterTemplateDetailsResponse
+     */
+    public GetParameterTemplateDetailsResponse getParameterTemplateDetails(GetParameterTemplateDetailsRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(
+                        request,
+                        HttpMethodName.GET,
+                        VERSION_V1,
+                        CONSTANT_INSTANCE,
+                        CONSTANT_PARA_TEMPLATE,
+                        CONSTANT_TEMPLATE,
+                        CONSTANT_DETAIL,
+                        request.getTemplateId());
+        return invokeHttpClient(internalRequest, GetParameterTemplateDetailsResponse.class);
+    }
+
+    /**
+     * getParameterTemplateList
+     * 
+     * @param request 入参结构体
+     * @return GetParameterTemplateListResponse
+     */
+    public GetParameterTemplateListResponse getParameterTemplateList(GetParameterTemplateListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, CONSTANT_PARA_TEMPLATE);
+        internalRequest.addParameter("pageNo", "1");
+        internalRequest.addParameter("pageSize", "10");
+        internalRequest.addParameter("type", "system");
+        if (request.getDbType() != null) {
+            internalRequest.addParameter("dbType", request.getDbType());
+        }
+        if (request.getDbVersion() != null) {
+            internalRequest.addParameter("dbVersion", request.getDbVersion());
+        }
+        return invokeHttpClient(internalRequest, GetParameterTemplateListResponse.class);
+    }
+
+    /**
+     * getPgLogDetails
+     * 
+     * @param request 入参结构体
+     * @return GetPgLogDetailsResponse
+     */
+    public GetPgLogDetailsResponse getPgLogDetails(GetPgLogDetailsRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_PG, CONSTANT_DOWNLOAD);
+        if (request.getPglogId() != null) {
+            internalRequest.addParameter("pglogId", request.getPglogId());
+        }
+        if (request.getDownloadValidTimeInSec() != null) {
+            internalRequest.addParameter("downloadValidTimeInSec", String.valueOf(request.getDownloadValidTimeInSec()));
+        }
+        return invokeHttpClient(internalRequest, GetPgLogDetailsResponse.class);
+    }
+
+    /**
+     * getPgLogList
+     * 
+     * @param request 入参结构体
+     * @return GetPgLogListResponse
+     */
+    public GetPgLogListResponse getPgLogList(GetPgLogListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_PG, CONSTANT_LIST);
+        if (request.getDate() != null) {
+            internalRequest.addParameter("date", request.getDate());
+        }
+        return invokeHttpClient(internalRequest, GetPgLogListResponse.class);
+    }
+
+    /**
      * instanceEnablesAutomaticRenewal
      * 
      * @param request 入参结构体
@@ -211,6 +531,200 @@ public class RdsClient extends AbstractBceClient {
         internalRequest.addParameter("autoRenew", null);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * manuallyInitiateFullPhysicalBackup
+     * 
+     * @param request 入参结构体
+     */
+    public void manuallyInitiateFullPhysicalBackup(ManuallyInitiateFullPhysicalBackupRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.POST, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_BACKUP);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * modifyAccountNotes
+     * 
+     * @param request 入参结构体
+     */
+    public void modifyAccountNotes(ModifyAccountNotesRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_ACCOUNT, request.getAccountName(), CONSTANT_DESC);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * modifyAccountPermissions
+     * 
+     * @param request 入参结构体
+     */
+    public void modifyAccountPermissions(ModifyAccountPermissionsRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(
+                        request,
+                        HttpMethodName.PUT,
+                        VERSION_V1,
+                        CONSTANT_INSTANCE,
+                        request.getInstanceId(),
+                        CONSTANT_ACCOUNT,
+                        request.getAccountName(),
+                        CONSTANT_PRIVILEGES);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * modifyBackupStrategy
+     * 
+     * @param request 入参结构体
+     */
+    public void modifyBackupStrategy(ModifyBackupStrategyRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId());
+        internalRequest.addParameter("modifyBackupPolicy", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * modifyConfigurationParameters
+     * 
+     * @param request 入参结构体
+     */
+    public void modifyConfigurationParameters(ModifyConfigurationParametersRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_PARAMETER);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * modifyDatabasePort
+     * 
+     * @param request 入参结构体
+     */
+    public void modifyDatabasePort(ModifyDatabasePortRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_PORT);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * modifyDescriptionInformation
+     * 
+     * @param request 入参结构体
+     */
+    public void modifyDescriptionInformation(ModifyDescriptionInformationRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_DATABASES, request.getDbName(), CONSTANT_REMARK);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * obtainBinlogInformation
+     * 
+     * @param request 入参结构体
+     * @return ObtainBinlogInformationResponse
+     */
+    public ObtainBinlogInformationResponse obtainBinlogInformation(ObtainBinlogInformationRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(
+                        request,
+                        HttpMethodName.GET,
+                        VERSION_V1,
+                        CONSTANT_INSTANCE,
+                        request.getInstanceId(),
+                        CONSTANT_BINLOGS,
+                        request.getLogId(),
+                        request.getDownloadValidTimeInSec());
+        return invokeHttpClient(internalRequest, ObtainBinlogInformationResponse.class);
+    }
+
+    /**
+     * obtainSslEncryptionCertificate
+     * 
+     * @return ObtainSslEncryptionCertificateResponse
+     */
+    public ObtainSslEncryptionCertificateResponse obtainSslEncryptionCertificate() {
+        InternalRequest internalRequest = this.createRequest(new BaseBceRequest(), HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, CONSTANT_SSL, CONSTANT_STATIC, CONSTANT_CA);
+        return invokeHttpClient(internalRequest, ObtainSslEncryptionCertificateResponse.class);
+    }
+
+    /**
+     * obtainSslEncryptionInformation
+     * 
+     * @param request 入参结构体
+     * @return ObtainSslEncryptionInformationResponse
+     */
+    public ObtainSslEncryptionInformationResponse obtainSslEncryptionInformation(ObtainSslEncryptionInformationRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, CONSTANT_SSL, request.getInstanceId());
+        return invokeHttpClient(internalRequest, ObtainSslEncryptionInformationResponse.class);
+    }
+
+    /**
+     * queryAccountDetails
+     * 
+     * @param request 入参结构体
+     * @return QueryAccountDetailsResponse
+     */
+    public QueryAccountDetailsResponse queryAccountDetails(QueryAccountDetailsRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_ACCOUNT, request.getAccountName());
+        return invokeHttpClient(internalRequest, QueryAccountDetailsResponse.class);
+    }
+
+    /**
+     * queryAccountList
+     * 
+     * @param request 入参结构体
+     * @return QueryAccountListResponse
+     */
+    public QueryAccountListResponse queryAccountList(QueryAccountListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_ACCOUNT);
+        return invokeHttpClient(internalRequest, QueryAccountListResponse.class);
+    }
+
+    /**
+     * queryAndModifyHistory
+     * 
+     * @param request 入参结构体
+     * @return QueryAndModifyHistoryResponse
+     */
+    public QueryAndModifyHistoryResponse queryAndModifyHistory(QueryAndModifyHistoryRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_PARAMETER, CONSTANT_HISTORY);
+        return invokeHttpClient(internalRequest, QueryAndModifyHistoryResponse.class);
+    }
+
+    /**
+     * queryBackupDetails
+     * 
+     * @param request 入参结构体
+     * @return QueryBackupDetailsResponse
+     */
+    public QueryBackupDetailsResponse queryBackupDetails(QueryBackupDetailsRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_BACKUP, request.getBackupId());
+        return invokeHttpClient(internalRequest, QueryBackupDetailsResponse.class);
+    }
+
+    /**
+     * queryBackupList
+     * 
+     * @param request 入参结构体
+     * @return QueryBackupListResponse
+     */
+    public QueryBackupListResponse queryBackupList(QueryBackupListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_BACKUP);
+        if (request.getMarker() != null) {
+            internalRequest.addParameter("marker", request.getMarker());
+        }
+        if (request.getMaxKeys() != null) {
+            internalRequest.addParameter("maxKeys", String.valueOf(request.getMaxKeys()));
+        }
+        return invokeHttpClient(internalRequest, QueryBackupListResponse.class);
     }
 
     /**
@@ -231,6 +745,18 @@ public class RdsClient extends AbstractBceClient {
             internalRequest.addParameter("vnetIp", request.getVnetIp());
         }
         return invokeHttpClient(internalRequest, QueryInstanceListResponse.class);
+    }
+
+    /**
+     * queryParameterList
+     * 
+     * @param request 入参结构体
+     * @return QueryParameterListResponse
+     */
+    public QueryParameterListResponse queryParameterList(QueryParameterListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_PARAMETER);
+        internalRequest.addParameter("keyword", "keyword");
+        return invokeHttpClient(internalRequest, QueryParameterListResponse.class);
     }
 
     /**
@@ -322,6 +848,41 @@ public class RdsClient extends AbstractBceClient {
     }
 
     /**
+     * restoreLibraryTablesBasedOnBackupSets
+     * 
+     * @param request 入参结构体
+     */
+    public void restoreLibraryTablesBasedOnBackupSets(RestoreLibraryTablesBasedOnBackupSetsRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_RECOVERY_TO_SOURCE_INSTANCE_BY_SNAPSHOT);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * restoreTheDatabaseTableByTimePoint
+     * 
+     * @param request 入参结构体
+     */
+    public void restoreTheDatabaseTableByTimePoint(RestoreTheDatabaseTableByTimePointRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_RECOVERY_TO_SOURCE_INSTANCE_BY_DATETIME);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * retrieveDatabaseList
+     * 
+     * @param request 入参结构体
+     * @return RetrieveDatabaseListResponse
+     */
+    public RetrieveDatabaseListResponse retrieveDatabaseList(RetrieveDatabaseListRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_DATABASES);
+        return invokeHttpClient(internalRequest, RetrieveDatabaseListResponse.class);
+    }
+
+    /**
      * retrieveInstanceAutoScalingConfig
      * 
      * @param request 入参结构体
@@ -330,6 +891,120 @@ public class RdsClient extends AbstractBceClient {
     public RetrieveInstanceAutoScalingConfigResponse retrieveInstanceAutoScalingConfig(RetrieveInstanceAutoScalingConfigRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_AUTO_RESIZE_CONFIG);
         return invokeHttpClient(internalRequest, RetrieveInstanceAutoScalingConfigResponse.class);
+    }
+
+    /**
+     * retrieveTheBinlogList
+     * 
+     * @param request 入参结构体
+     * @return RetrieveTheBinlogListResponse
+     */
+    public RetrieveTheBinlogListResponse retrieveTheBinlogList(RetrieveTheBinlogListRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_BINLOGS, request.getDatetime());
+        return invokeHttpClient(internalRequest, RetrieveTheBinlogListResponse.class);
+    }
+
+    /**
+     * setEncryptionPolicyApi
+     * 
+     * @param request 入参结构体
+     */
+    public void setEncryptionPolicyApi(SetEncryptionPolicyApiRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, CONSTANT_V1, CONSTANT_INSTANCE, request.getInstanceId());
+        internalRequest.addParameter("updateEncryptPolicy", null);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * slowLogDownloadDetails
+     * 
+     * @param request 入参结构体
+     * @return SlowLogDownloadDetailsResponse
+     */
+    public SlowLogDownloadDetailsResponse slowLogDownloadDetails(SlowLogDownloadDetailsRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(
+                        request,
+                        HttpMethodName.GET,
+                        VERSION_V1,
+                        CONSTANT_INSTANCE,
+                        request.getInstanceId(),
+                        CONSTANT_SLOWLOGS,
+                        CONSTANT_DOWNLOAD_URL,
+                        request.getLogId(),
+                        request.getDownloadValidTimeInSec());
+        return invokeHttpClient(internalRequest, SlowLogDownloadDetailsResponse.class);
+    }
+
+    /**
+     * slowLogList
+     * 
+     * @param request 入参结构体
+     * @return SlowLogListResponse
+     */
+    public SlowLogListResponse slowLogList(SlowLogListRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(
+                        request,
+                        HttpMethodName.GET,
+                        VERSION_V1,
+                        CONSTANT_INSTANCE,
+                        request.getInstanceId(),
+                        CONSTANT_SLOWLOGS,
+                        CONSTANT_LOG_LIST,
+                        request.getDatetime());
+        return invokeHttpClient(internalRequest, SlowLogListResponse.class);
+    }
+
+    /**
+     * tableGranularityQueryUserDetailsApi
+     * 
+     * @param request 入参结构体
+     * @return TableGranularityQueryUserDetailsApiResponse
+     */
+    public TableGranularityQueryUserDetailsApiResponse tableGranularityQueryUserDetailsApi(TableGranularityQueryUserDetailsApiRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.POST, CONSTANT_V2, CONSTANT_INSTANCE, CONSTANT_ACCOUNT, CONSTANT_TABLE_LEVEL, CONSTANT_DETAIL);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        return invokeHttpClient(internalRequest, TableGranularityQueryUserDetailsApiResponse.class);
+    }
+
+    /**
+     * tableGranularityQueryUserListApi
+     * 
+     * @param request 入参结构体
+     * @return TableGranularityQueryUserListApiResponse
+     */
+    public TableGranularityQueryUserListApiResponse tableGranularityQueryUserListApi(TableGranularityQueryUserListApiRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.GET, CONSTANT_V2, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_ACCOUNT, CONSTANT_TABLE_LEVEL, CONSTANT_LIST);
+        return invokeHttpClient(internalRequest, TableGranularityQueryUserListApiResponse.class);
+    }
+
+    /**
+     * tableGranularityUpdateUserDescriptionApi
+     * 
+     * @param request 入参结构体
+     */
+    public void tableGranularityUpdateUserDescriptionApi(TableGranularityUpdateUserDescriptionApiRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.PUT, CONSTANT_V2, CONSTANT_INSTANCE, CONSTANT_ACCOUNT, CONSTANT_TABLE_LEVEL, CONSTANT_UPDATE_DESC);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * targetRegionMappingListApi
+     * 
+     * @param request 入参结构体
+     * @return TargetRegionMappingListApiResponse
+     */
+    public TargetRegionMappingListApiResponse targetRegionMappingListApi(TargetRegionMappingListApiRequest request) {
+        InternalRequest internalRequest =
+                this.createRequest(request, HttpMethodName.GET, CONSTANT_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_BACKUP, CONSTANT_TARGET, CONSTANT_REGION);
+        return invokeHttpClient(internalRequest, TargetRegionMappingListApiResponse.class);
     }
 
     /**
@@ -420,6 +1095,20 @@ public class RdsClient extends AbstractBceClient {
      */
     public void updateTimeWindow(UpdateTimeWindowRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_MAINTAINTIME);
+        RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
+        invokeHttpClient(internalRequest, BaseBceResponse.class);
+    }
+
+    /**
+     * updateWhitelist
+     * 
+     * @param request 入参结构体
+     */
+    public void updateWhitelist(UpdateWhitelistRequest request) {
+        InternalRequest internalRequest = this.createRequest(request, HttpMethodName.PUT, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_SECURITY_IP);
+        if (request.getAction() != null) {
+            internalRequest.addParameter("action", request.getAction());
+        }
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
     }
