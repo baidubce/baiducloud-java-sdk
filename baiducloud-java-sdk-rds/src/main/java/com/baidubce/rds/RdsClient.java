@@ -41,8 +41,6 @@ import com.baidubce.rds.models.DialTestInterfaceRequest;
 import com.baidubce.rds.models.DialTestInterfaceResponse;
 import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionRequest;
 import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionResponse;
-import com.baidubce.rds.models.ErrorLogDownloadDetailsRequest;
-import com.baidubce.rds.models.ErrorLogDownloadDetailsResponse;
 import com.baidubce.rds.models.ErrorLogListRequest;
 import com.baidubce.rds.models.ErrorLogListResponse;
 import com.baidubce.rds.models.GetParameterTemplateDetailsRequest;
@@ -101,8 +99,6 @@ import com.baidubce.rds.models.RetrieveInstanceAutoScalingConfigResponse;
 import com.baidubce.rds.models.RetrieveTheBinlogListRequest;
 import com.baidubce.rds.models.RetrieveTheBinlogListResponse;
 import com.baidubce.rds.models.SetEncryptionPolicyApiRequest;
-import com.baidubce.rds.models.SlowLogDownloadDetailsRequest;
-import com.baidubce.rds.models.SlowLogDownloadDetailsResponse;
 import com.baidubce.rds.models.SlowLogListRequest;
 import com.baidubce.rds.models.SlowLogListResponse;
 import com.baidubce.rds.models.TableGranularityQueryUserDetailsApiRequest;
@@ -140,7 +136,6 @@ public class RdsClient extends AbstractBceClient {
     private static final String CONSTANT_DETAIL = "detail";
     private static final String CONSTANT_PORT = "port";
     private static final String CONSTANT_SLOWLOGS = "slowlogs";
-    private static final String CONSTANT_DOWNLOAD_URL = "download_url";
     private static final String CONSTANT_V1 = "v1";
     private static final String CONSTANT_TASK = "task";
     private static final String CONSTANT_DESC = "desc";
@@ -407,27 +402,6 @@ public class RdsClient extends AbstractBceClient {
             DoesTheInstanceSupportEnablingAutomaticExpansionRequest request) {
         InternalRequest internalRequest = this.createRequest(request, HttpMethodName.GET, VERSION_V1, CONSTANT_INSTANCE, request.getInstanceId(), CONSTANT_AUTO_EXPANSION);
         return invokeHttpClient(internalRequest, DoesTheInstanceSupportEnablingAutomaticExpansionResponse.class);
-    }
-
-    /**
-     * errorLogDownloadDetails
-     * 
-     * @param request 入参结构体
-     * @return ErrorLogDownloadDetailsResponse
-     */
-    public ErrorLogDownloadDetailsResponse errorLogDownloadDetails(ErrorLogDownloadDetailsRequest request) {
-        InternalRequest internalRequest =
-                this.createRequest(
-                        request,
-                        HttpMethodName.GET,
-                        VERSION_V1,
-                        CONSTANT_INSTANCE,
-                        request.getInstanceId(),
-                        CONSTANT_ERRORLOGS,
-                        CONSTANT_DOWNLOAD_URL,
-                        request.getLogId(),
-                        request.getDownloadValidTimeInSec());
-        return invokeHttpClient(internalRequest, ErrorLogDownloadDetailsResponse.class);
     }
 
     /**
@@ -915,27 +889,6 @@ public class RdsClient extends AbstractBceClient {
         internalRequest.addParameter("updateEncryptPolicy", null);
         RequestBodyUtils.fillPayloadAsJson(internalRequest, request);
         invokeHttpClient(internalRequest, BaseBceResponse.class);
-    }
-
-    /**
-     * slowLogDownloadDetails
-     * 
-     * @param request 入参结构体
-     * @return SlowLogDownloadDetailsResponse
-     */
-    public SlowLogDownloadDetailsResponse slowLogDownloadDetails(SlowLogDownloadDetailsRequest request) {
-        InternalRequest internalRequest =
-                this.createRequest(
-                        request,
-                        HttpMethodName.GET,
-                        VERSION_V1,
-                        CONSTANT_INSTANCE,
-                        request.getInstanceId(),
-                        CONSTANT_SLOWLOGS,
-                        CONSTANT_DOWNLOAD_URL,
-                        request.getLogId(),
-                        request.getDownloadValidTimeInSec());
-        return invokeHttpClient(internalRequest, SlowLogDownloadDetailsResponse.class);
     }
 
     /**

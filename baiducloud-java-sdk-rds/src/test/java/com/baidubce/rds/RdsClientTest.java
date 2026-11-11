@@ -25,8 +25,6 @@ import com.baidubce.rds.models.DialTestInterfaceRequest;
 import com.baidubce.rds.models.DialTestInterfaceResponse;
 import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionRequest;
 import com.baidubce.rds.models.DoesTheInstanceSupportEnablingAutomaticExpansionResponse;
-import com.baidubce.rds.models.ErrorLogDownloadDetailsRequest;
-import com.baidubce.rds.models.ErrorLogDownloadDetailsResponse;
 import com.baidubce.rds.models.ErrorLogListRequest;
 import com.baidubce.rds.models.ErrorLogListResponse;
 import com.baidubce.rds.models.GetParameterTemplateDetailsRequest;
@@ -85,8 +83,6 @@ import com.baidubce.rds.models.RetrieveInstanceAutoScalingConfigResponse;
 import com.baidubce.rds.models.RetrieveTheBinlogListRequest;
 import com.baidubce.rds.models.RetrieveTheBinlogListResponse;
 import com.baidubce.rds.models.SetEncryptionPolicyApiRequest;
-import com.baidubce.rds.models.SlowLogDownloadDetailsRequest;
-import com.baidubce.rds.models.SlowLogDownloadDetailsResponse;
 import com.baidubce.rds.models.SlowLogListRequest;
 import com.baidubce.rds.models.SlowLogListResponse;
 import com.baidubce.rds.models.TableGranularityQueryUserDetailsApiRequest;
@@ -406,19 +402,6 @@ public class RdsClientTest {
         doesTheInstanceSupportEnablingAutomaticExpansionRequest.setInstanceId("");
         DoesTheInstanceSupportEnablingAutomaticExpansionResponse response =
                 rdsClient.doesTheInstanceSupportEnablingAutomaticExpansion(doesTheInstanceSupportEnablingAutomaticExpansionRequest);
-        System.out.println(response);
-    }
-    /**
-     * errorLogDownloadDetails
-     *
-     */
-    @Test
-    public void errorLogDownloadDetailsTest() {
-        ErrorLogDownloadDetailsRequest errorLogDownloadDetailsRequest = new ErrorLogDownloadDetailsRequest();
-        errorLogDownloadDetailsRequest.setInstanceId("");
-        errorLogDownloadDetailsRequest.setLogId("");
-        errorLogDownloadDetailsRequest.setDownloadValidTimeInSec(0);
-        ErrorLogDownloadDetailsResponse response = rdsClient.errorLogDownloadDetails(errorLogDownloadDetailsRequest);
         System.out.println(response);
     }
     /**
@@ -873,19 +856,6 @@ public class RdsClientTest {
         setEncryptionPolicyApiRequest.setInstanceId("");
         setEncryptionPolicyApiRequest.setBackupPolicy(new ArrayList<>());
         rdsClient.setEncryptionPolicyApi(setEncryptionPolicyApiRequest);
-    }
-    /**
-     * slowLogDownloadDetails
-     *
-     */
-    @Test
-    public void slowLogDownloadDetailsTest() {
-        SlowLogDownloadDetailsRequest slowLogDownloadDetailsRequest = new SlowLogDownloadDetailsRequest();
-        slowLogDownloadDetailsRequest.setInstanceId("");
-        slowLogDownloadDetailsRequest.setLogId("");
-        slowLogDownloadDetailsRequest.setDownloadValidTimeInSec(0);
-        SlowLogDownloadDetailsResponse response = rdsClient.slowLogDownloadDetails(slowLogDownloadDetailsRequest);
-        System.out.println(response);
     }
     /**
      * slowLogList
