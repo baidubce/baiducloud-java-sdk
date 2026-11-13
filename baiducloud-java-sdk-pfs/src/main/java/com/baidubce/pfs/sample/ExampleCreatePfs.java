@@ -28,6 +28,7 @@ public class ExampleCreatePfs {
         createPfsRequest.setSubnetId("");
         createPfsRequest.setDescription("");
         createPfsRequest.setTags(new ArrayList<>());
+        createPfsRequest.setResourceGroupId("");
         try {
             CreatePfsResponse response = client.createPfs(createPfsRequest);
             System.out.println(response.toJsonString());

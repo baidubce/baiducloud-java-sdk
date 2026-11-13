@@ -13,7 +13,7 @@ public class CreatePfsRequest extends BaseBceRequest {
     private String name;
 
     /**
-    * 可选类型包括：base、basic、baseX、plus、plus2、plusl2X
+    * 可选类型包括：base、basic、baseX、plus、plus2、plusl2X、plusl3_p1
     */
     private String instanceType;
 
@@ -41,6 +41,11 @@ public class CreatePfsRequest extends BaseBceRequest {
     * 实例标签
     */
     private List<Tag> tags;
+
+    /**
+    * 资源所属资源分组 ID，格式通常为 RESG- 开头；不传或为空时使用默认分组
+    */
+    private String resourceGroupId;
 
     public String getName() {
         return name;
@@ -102,6 +107,15 @@ public class CreatePfsRequest extends BaseBceRequest {
 
     public CreatePfsRequest setTags(List<Tag> tags) {
         this.tags = tags;
+        return this;
+    }
+
+    public String getResourceGroupId() {
+        return resourceGroupId;
+    }
+
+    public CreatePfsRequest setResourceGroupId(String resourceGroupId) {
+        this.resourceGroupId = resourceGroupId;
         return this;
     }
 

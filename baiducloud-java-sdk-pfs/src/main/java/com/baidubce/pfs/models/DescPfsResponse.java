@@ -72,6 +72,16 @@ public class DescPfsResponse extends BaseBceResponse {
     */
     private List<Tag> tags;
 
+    /**
+    * 资源所属资源分组 ID，格式通常为 RESG- 开头
+    */
+    private String resourceGroupId;
+
+    /**
+    * 资源所属资源分组名称；可能为空或不返回，调用方需兼容
+    */
+    private String resourceGroupName;
+
     public Integer getCapacity() {
         return capacity;
     }
@@ -189,11 +199,30 @@ public class DescPfsResponse extends BaseBceResponse {
         return this;
     }
 
+    public String getResourceGroupId() {
+        return resourceGroupId;
+    }
+
+    public DescPfsResponse setResourceGroupId(String resourceGroupId) {
+        this.resourceGroupId = resourceGroupId;
+        return this;
+    }
+
+    public String getResourceGroupName() {
+        return resourceGroupName;
+    }
+
+    public DescPfsResponse setResourceGroupName(String resourceGroupName) {
+        this.resourceGroupName = resourceGroupName;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "DescPfsResponse{" + "capacity=" + capacity + "\n" + "createTime=" + createTime + "\n" + "description=" + description + "\n" + "endpoint=" + endpoint + "\n"
                 + "instanceId=" + instanceId + "\n" + "instanceStatus=" + instanceStatus + "\n" + "instanceType=" + instanceType + "\n" + "name=" + name + "\n" + "paymentTiming="
-                + paymentTiming + "\n" + "subnetModel=" + subnetModel + "\n" + "usage=" + usage + "\n" + "vpcId=" + vpcId + "\n" + "tags=" + tags + "\n" + "}";
+                + paymentTiming + "\n" + "subnetModel=" + subnetModel + "\n" + "usage=" + usage + "\n" + "vpcId=" + vpcId + "\n" + "tags=" + tags + "\n" + "resourceGroupId="
+                + resourceGroupId + "\n" + "resourceGroupName=" + resourceGroupName + "\n" + "}";
     }
 
 }

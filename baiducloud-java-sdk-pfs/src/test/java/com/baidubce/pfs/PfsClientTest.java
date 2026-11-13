@@ -240,6 +240,7 @@ public class PfsClientTest {
         createPfsRequest.setSubnetId("");
         createPfsRequest.setDescription("");
         createPfsRequest.setTags(new ArrayList<>());
+        createPfsRequest.setResourceGroupId("");
         CreatePfsResponse response = pfsClient.createPfs(createPfsRequest);
         System.out.println(response);
     }
