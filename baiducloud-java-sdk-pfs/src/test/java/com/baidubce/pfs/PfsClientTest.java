@@ -158,6 +158,7 @@ public class PfsClientTest {
         createL2BucketLinkRequest.setBucketBelongUserId("");
         createL2BucketLinkRequest.setLccId("");
         createL2BucketLinkRequest.setScope(0);
+        createL2BucketLinkRequest.setPathFilters(new ArrayList<>());
         CreateL2BucketLinkResponse response = pfsClient.createL2BucketLink(createL2BucketLinkRequest);
         System.out.println(response);
     }
@@ -176,6 +177,7 @@ public class PfsClientTest {
         createL2PolicyRequest.setExecuteTime(0);
         createL2PolicyRequest.setBucketName("");
         createL2PolicyRequest.setBucketPrefix("");
+        createL2PolicyRequest.setPathFilters(new ArrayList<>());
         CreateL2PolicyResponse response = pfsClient.createL2Policy(createL2PolicyRequest);
         System.out.println(response);
     }

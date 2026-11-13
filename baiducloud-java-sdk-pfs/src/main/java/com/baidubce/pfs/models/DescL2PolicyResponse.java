@@ -2,6 +2,7 @@ package com.baidubce.pfs.models;
 
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DescL2PolicyResponse extends BaseBceResponse {
@@ -60,6 +61,11 @@ public class DescL2PolicyResponse extends BaseBceResponse {
     * 规则当前状态：<br><li>0：生效中<br><li>1：运行中<br><li>2：删除中<br><li>3：失败
     */
     private Integer status;
+
+    /**
+    * 路径过滤规则，未设置时不返回。type：0 后缀匹配，1 路径匹配；pattern：匹配规则
+    */
+    private List<PathFilter> pathFilters;
 
     public String getRequestId() {
         return requestId;
@@ -160,11 +166,20 @@ public class DescL2PolicyResponse extends BaseBceResponse {
         return this;
     }
 
+    public List<PathFilter> getPathFilters() {
+        return pathFilters;
+    }
+
+    public DescL2PolicyResponse setPathFilters(List<PathFilter> pathFilters) {
+        this.pathFilters = pathFilters;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "DescL2PolicyResponse{" + "requestId=" + requestId + "\n" + "policyId=" + policyId + "\n" + "policyName=" + policyName + "\n" + "instanceId=" + instanceId + "\n"
                 + "path=" + path + "\n" + "expiredTime=" + expiredTime + "\n" + "createTime=" + createTime + "\n" + "executeTime=" + executeTime + "\n" + "type=" + type + "\n"
-                + "bosPath=" + bosPath + "\n" + "status=" + status + "\n" + "}";
+                + "bosPath=" + bosPath + "\n" + "status=" + status + "\n" + "pathFilters=" + pathFilters + "\n" + "}";
     }
 
 }

@@ -6,6 +6,7 @@ import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.pfs.PfsClient;
 import com.baidubce.pfs.models.CreateL2BucketLinkRequest;
 import com.baidubce.pfs.models.CreateL2BucketLinkResponse;
+import java.util.ArrayList;
 
 public class ExampleCreateL2BucketLink {
     public static void main(String[] args) {
@@ -33,6 +34,7 @@ public class ExampleCreateL2BucketLink {
         createL2BucketLinkRequest.setBucketBelongUserId("");
         createL2BucketLinkRequest.setLccId("");
         createL2BucketLinkRequest.setScope(0);
+        createL2BucketLinkRequest.setPathFilters(new ArrayList<>());
         try {
             CreateL2BucketLinkResponse response = client.createL2BucketLink(createL2BucketLinkRequest);
             System.out.println(response.toJsonString());

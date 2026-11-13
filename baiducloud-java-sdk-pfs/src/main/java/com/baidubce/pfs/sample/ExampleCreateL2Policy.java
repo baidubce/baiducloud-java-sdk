@@ -6,6 +6,7 @@ import com.baidubce.auth.DefaultBceCredentials;
 import com.baidubce.pfs.PfsClient;
 import com.baidubce.pfs.models.CreateL2PolicyRequest;
 import com.baidubce.pfs.models.CreateL2PolicyResponse;
+import java.util.ArrayList;
 
 public class ExampleCreateL2Policy {
     public static void main(String[] args) {
@@ -28,6 +29,7 @@ public class ExampleCreateL2Policy {
         createL2PolicyRequest.setExecuteTime(0);
         createL2PolicyRequest.setBucketName("");
         createL2PolicyRequest.setBucketPrefix("");
+        createL2PolicyRequest.setPathFilters(new ArrayList<>());
         try {
             CreateL2PolicyResponse response = client.createL2Policy(createL2PolicyRequest);
             System.out.println(response.toJsonString());

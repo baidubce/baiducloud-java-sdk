@@ -1,5 +1,7 @@
 package com.baidubce.pfs.models;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -53,6 +55,11 @@ public class PolicyInfo {
      * 规则当前状态：<br>• 0：生效中<br>• 1：运行中<br>• 2：删除中<br>• 3：失败
      */
     private Integer status;
+
+    /**
+     * 路径过滤规则，未设置时不返回。type：0 后缀匹配，1 路径匹配；pattern：匹配规则
+     */
+    private List<PathFilter> pathFilters;
 
     public PolicyInfo setPolicyId(String policyId) {
         this.policyId = policyId;
@@ -144,11 +151,20 @@ public class PolicyInfo {
         return this.status;
     }
 
+    public PolicyInfo setPathFilters(List<PathFilter> pathFilters) {
+        this.pathFilters = pathFilters;
+        return this;
+    }
+
+    public List<PathFilter> getPathFilters() {
+        return this.pathFilters;
+    }
+
     @Override
     public String toString() {
         return "PolicyInfo{" + "policyId=" + policyId + "\n" + "policyName=" + policyName + "\n" + "instanceId=" + instanceId + "\n" + "path=" + path + "\n" + "expiredTime="
                 + expiredTime + "\n" + "createTime=" + createTime + "\n" + "executeTime=" + executeTime + "\n" + "type=" + type + "\n" + "bosPath=" + bosPath + "\n" + "status="
-                + status + "\n" + "}";
+                + status + "\n" + "pathFilters=" + pathFilters + "\n" + "}";
     }
 
 }

@@ -12,7 +12,7 @@ public class ListL2BucketLinkRequest extends BaseBceRequest {
     private String instanceId;
 
     /**
-    * 返回bucketlink列表长度，默认为20个，取值范围为【1，20】，超过范围的规整为1或20
+    * 返回bucketlink列表长度，默认为50个，取值范围为【1，50】，超过范围的规整为1或50
     */
     private Integer maxKeys;
 

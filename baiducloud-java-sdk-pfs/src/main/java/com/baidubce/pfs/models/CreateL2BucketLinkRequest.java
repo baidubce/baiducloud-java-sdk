@@ -1,6 +1,7 @@
 package com.baidubce.pfs.models;
 
 import com.baidubce.common.BaseBceRequest;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -72,6 +73,11 @@ public class CreateL2BucketLinkRequest extends BaseBceRequest {
     * 任务可见范围，1：主账号以及子账号全部可见，2：仅主账号和子账号可见
     */
     private Integer scope;
+
+    /**
+    * 路径过滤规则，仅创建时可设置，目前最多1条。type：0 后缀匹配（如 <code>\*.jpg</code>），1 路径匹配（如 <code>\*&#47;data/\*&#47;test</code>）；pattern：匹配规则
+    */
+    private List<PathFilter> pathFilters;
 
     public String getInstanceId() {
         return instanceId;
@@ -187,6 +193,15 @@ public class CreateL2BucketLinkRequest extends BaseBceRequest {
 
     public CreateL2BucketLinkRequest setScope(Integer scope) {
         this.scope = scope;
+        return this;
+    }
+
+    public List<PathFilter> getPathFilters() {
+        return pathFilters;
+    }
+
+    public CreateL2BucketLinkRequest setPathFilters(List<PathFilter> pathFilters) {
+        this.pathFilters = pathFilters;
         return this;
     }
 

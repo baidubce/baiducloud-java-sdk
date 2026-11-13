@@ -2,6 +2,7 @@ package com.baidubce.pfs.models;
 
 import com.baidubce.common.BaseBceResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DescL2BucketLinkResponse extends BaseBceResponse {
@@ -95,6 +96,11 @@ public class DescL2BucketLinkResponse extends BaseBceResponse {
     * 任务可见范围，1：主账号以及子账号全部可见，2：仅主账号和子账号可见
     */
     private Integer scope;
+
+    /**
+    * 路径过滤规则，未设置时为null。type：0 后缀匹配，1 路径匹配；pattern：匹配规则
+    */
+    private List<PathFilter> pathFilters;
 
     public String getRequestId() {
         return requestId;
@@ -258,13 +264,22 @@ public class DescL2BucketLinkResponse extends BaseBceResponse {
         return this;
     }
 
+    public List<PathFilter> getPathFilters() {
+        return pathFilters;
+    }
+
+    public DescL2BucketLinkResponse setPathFilters(List<PathFilter> pathFilters) {
+        this.pathFilters = pathFilters;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "DescL2BucketLinkResponse{" + "requestId=" + requestId + "\n" + "bucketlinkId=" + bucketlinkId + "\n" + "bucketlinkName=" + bucketlinkName + "\n" + "instanceId="
                 + instanceId + "\n" + "transferType=" + transferType + "\n" + "createTime=" + createTime + "\n" + "finishTime=" + finishTime + "\n" + "conflictPolicy="
                 + conflictPolicy + "\n" + "throughputLimit=" + throughputLimit + "\n" + "status=" + status + "\n" + "src=" + src + "\n" + "dst=" + dst + "\n" + "progress="
                 + progress + "\n" + "report=" + report + "\n" + "cron=" + cron + "\n" + "bucketBelongUserId=" + bucketBelongUserId + "\n" + "lccId=" + lccId + "\n" + "scope="
-                + scope + "\n" + "}";
+                + scope + "\n" + "pathFilters=" + pathFilters + "\n" + "}";
     }
 
 }

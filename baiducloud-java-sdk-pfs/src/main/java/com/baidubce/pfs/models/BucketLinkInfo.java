@@ -1,5 +1,7 @@
 package com.baidubce.pfs.models;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -88,6 +90,11 @@ public class BucketLinkInfo {
      * 任务可见范围，1：主账号以及子账号全部可见，2：仅主账号和子账号可见
      */
     private Integer scope;
+
+    /**
+     * 路径过滤规则，未设置时为null。type：0 后缀匹配，1 路径匹配；pattern：匹配规则
+     */
+    private List<PathFilter> pathFilters;
 
     public BucketLinkInfo setBucketlinkId(String bucketlinkId) {
         this.bucketlinkId = bucketlinkId;
@@ -242,12 +249,22 @@ public class BucketLinkInfo {
         return this.scope;
     }
 
+    public BucketLinkInfo setPathFilters(List<PathFilter> pathFilters) {
+        this.pathFilters = pathFilters;
+        return this;
+    }
+
+    public List<PathFilter> getPathFilters() {
+        return this.pathFilters;
+    }
+
     @Override
     public String toString() {
         return "BucketLinkInfo{" + "bucketlinkId=" + bucketlinkId + "\n" + "bucketlinkName=" + bucketlinkName + "\n" + "instanceId=" + instanceId + "\n" + "transferType="
                 + transferType + "\n" + "createTime=" + createTime + "\n" + "finishTime=" + finishTime + "\n" + "conflictPolicy=" + conflictPolicy + "\n" + "throughputLimit="
                 + throughputLimit + "\n" + "status=" + status + "\n" + "src=" + src + "\n" + "dst=" + dst + "\n" + "progress=" + progress + "\n" + "report=" + report + "\n"
-                + "cron=" + cron + "\n" + "bucketBelongUserId=" + bucketBelongUserId + "\n" + "lccId=" + lccId + "\n" + "scope=" + scope + "\n" + "}";
+                + "cron=" + cron + "\n" + "bucketBelongUserId=" + bucketBelongUserId + "\n" + "lccId=" + lccId + "\n" + "scope=" + scope + "\n" + "pathFilters=" + pathFilters
+                + "\n" + "}";
     }
 
 }

@@ -1,6 +1,7 @@
 package com.baidubce.pfs.models;
 
 import com.baidubce.common.BaseBceRequest;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -45,6 +46,11 @@ public class CreateL2PolicyRequest extends BaseBceRequest {
     * 数据转存对应的prefix，当type为数据转存时，该字段必须声明prefix非"/'开头，以"/"结尾
     */
     private String bucketPrefix;
+
+    /**
+    * 路径过滤规则，仅创建时可设置，目前最多1条。type：0 后缀匹配（如 <code>\*.jpg</code>），1 路径匹配（如 <code>\*&#47;data/\*&#47;test</code>）；pattern：匹配规则
+    */
+    private List<PathFilter> pathFilters;
 
     public String getInstanceId() {
         return instanceId;
@@ -115,6 +121,15 @@ public class CreateL2PolicyRequest extends BaseBceRequest {
 
     public CreateL2PolicyRequest setBucketPrefix(String bucketPrefix) {
         this.bucketPrefix = bucketPrefix;
+        return this;
+    }
+
+    public List<PathFilter> getPathFilters() {
+        return pathFilters;
+    }
+
+    public CreateL2PolicyRequest setPathFilters(List<PathFilter> pathFilters) {
+        this.pathFilters = pathFilters;
         return this;
     }
 
